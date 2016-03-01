@@ -1,0 +1,100 @@
+[16-Jul-2015 04:05:59 UTC] PHP Warning:  Invalid argument supplied for foreach() in F:\wamp\wamp\www\fenxiao\official_app\api\app\models\Sns\FriendModel.php on line 153
+[16-Jul-2015 04:05:59 UTC] PHP Stack trace:
+[16-Jul-2015 04:05:59 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 04:05:59 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 04:05:59 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 04:05:59 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 04:05:59 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 04:05:59 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:05:59 UTC] PHP   7. Sns_FriendCtl->getFriendSingle() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:05:59 UTC] PHP   8. Sns_FriendModel->getFriendRecent() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\Sns\FriendCtl.php:48
+[16-Jul-2015 04:11:28 UTC] PHP Warning:  PDO::__construct() [<a href='pdo.--construct'>pdo.--construct</a>]: [2002] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+ (trying to connect via tcp://localhost:3306) in F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db\Pdo.php on line 109
+[16-Jul-2015 04:11:28 UTC] PHP Stack trace:
+[16-Jul-2015 04:11:28 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 04:11:28 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 04:11:28 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 04:11:28 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 04:11:28 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 04:11:28 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:11:28 UTC] PHP   7. MessageCtl->get() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:11:28 UTC] PHP   8. MessageModel->getMessageUnread() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\MessageCtl.php:186
+[16-Jul-2015 04:11:28 UTC] PHP   9. Yf_Model->getKeyByMultiCond() F:\wamp\wamp\www\fenxiao\official_app\api\app\models\MessageModel.php:35
+[16-Jul-2015 04:11:28 UTC] PHP  10. Yf_Model->_selectKey() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Model.php:377
+[16-Jul-2015 04:11:28 UTC] PHP  11. Yf_Sql->getAll() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Model.php:93
+[16-Jul-2015 04:11:28 UTC] PHP  12. Yf_Sql->getDb() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Sql.php:322
+[16-Jul-2015 04:11:28 UTC] PHP  13. Yf_Sql->resetDb() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Sql.php:380
+[16-Jul-2015 04:11:28 UTC] PHP  14. Yf_Db::get() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Sql.php:385
+[16-Jul-2015 04:11:28 UTC] PHP  15. Yf_Db_Pdo::get() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db.php:45
+[16-Jul-2015 04:11:28 UTC] PHP  16. Yf_Db_Pdo->__construct() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db\Pdo.php:235
+[16-Jul-2015 04:11:28 UTC] PHP  17. PDO->__construct() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db\Pdo.php:109
+[16-Jul-2015 04:37:14 UTC] PHP Warning:  Invalid argument supplied for foreach() in F:\wamp\wamp\www\fenxiao\official_app\api\app\models\Sns\FriendModel.php on line 153
+[16-Jul-2015 04:37:14 UTC] PHP Stack trace:
+[16-Jul-2015 04:37:14 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 04:37:14 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 04:37:14 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 04:37:14 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 04:37:14 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 04:37:14 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:37:14 UTC] PHP   7. Sns_FriendCtl->getFriendSingle() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:37:14 UTC] PHP   8. Sns_FriendModel->getFriendRecent() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\Sns\FriendCtl.php:48
+[16-Jul-2015 04:37:19 UTC] PHP Warning:  Invalid argument supplied for foreach() in F:\wamp\wamp\www\fenxiao\official_app\api\app\models\Sns\FriendModel.php on line 153
+[16-Jul-2015 04:37:19 UTC] PHP Stack trace:
+[16-Jul-2015 04:37:19 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 04:37:19 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 04:37:19 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 04:37:19 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 04:37:19 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 04:37:19 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:37:19 UTC] PHP   7. Sns_FriendCtl->getFriendSingle() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 04:37:19 UTC] PHP   8. Sns_FriendModel->getFriendRecent() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\Sns\FriendCtl.php:48
+[16-Jul-2015 06:02:53 UTC] PHP Warning:  Invalid argument supplied for foreach() in F:\wamp\wamp\www\fenxiao\official_app\api\app\models\Sns\FriendModel.php on line 153
+[16-Jul-2015 06:02:53 UTC] PHP Stack trace:
+[16-Jul-2015 06:02:53 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 06:02:53 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 06:02:53 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 06:02:53 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 06:02:53 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 06:02:53 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 06:02:53 UTC] PHP   7. Sns_FriendCtl->getFriendSingle() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 06:02:53 UTC] PHP   8. Sns_FriendModel->getFriendRecent() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\Sns\FriendCtl.php:48
+[16-Jul-2015 06:14:01 UTC] PHP Warning:  PDO::__construct() [<a href='pdo.--construct'>pdo.--construct</a>]: [2002] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+ (trying to connect via tcp://localhost:3306) in F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db\Pdo.php on line 109
+[16-Jul-2015 06:14:01 UTC] PHP Stack trace:
+[16-Jul-2015 06:14:01 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 06:14:01 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 06:14:01 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 06:14:01 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 06:14:01 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 06:14:01 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 06:14:01 UTC] PHP   7. MessageCtl->get() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 06:14:01 UTC] PHP   8. MessageModel->getMessageUnread() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\MessageCtl.php:186
+[16-Jul-2015 06:14:01 UTC] PHP   9. Yf_Model->getKeyByMultiCond() F:\wamp\wamp\www\fenxiao\official_app\api\app\models\MessageModel.php:35
+[16-Jul-2015 06:14:01 UTC] PHP  10. Yf_Model->_selectKey() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Model.php:377
+[16-Jul-2015 06:14:01 UTC] PHP  11. Yf_Sql->getAll() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Model.php:93
+[16-Jul-2015 06:14:01 UTC] PHP  12. Yf_Sql->getDb() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Sql.php:322
+[16-Jul-2015 06:14:01 UTC] PHP  13. Yf_Sql->resetDb() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Sql.php:380
+[16-Jul-2015 06:14:01 UTC] PHP  14. Yf_Db::get() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Sql.php:385
+[16-Jul-2015 06:14:01 UTC] PHP  15. Yf_Db_Pdo::get() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db.php:45
+[16-Jul-2015 06:14:01 UTC] PHP  16. Yf_Db_Pdo->__construct() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db\Pdo.php:235
+[16-Jul-2015 06:14:01 UTC] PHP  17. PDO->__construct() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Db\Pdo.php:109
+[16-Jul-2015 08:55:17 UTC] PHP Warning:  Invalid argument supplied for foreach() in F:\wamp\wamp\www\fenxiao\official_app\api\app\models\Sns\FriendModel.php on line 153
+[16-Jul-2015 08:55:17 UTC] PHP Stack trace:
+[16-Jul-2015 08:55:17 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 08:55:17 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 08:55:17 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 08:55:17 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 08:55:17 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 08:55:17 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 08:55:17 UTC] PHP   7. Sns_FriendCtl->getFriendSingle() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 08:55:17 UTC] PHP   8. Sns_FriendModel->getFriendRecent() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\Sns\FriendCtl.php:48
+[16-Jul-2015 08:55:30 UTC] PHP Warning:  Invalid argument supplied for foreach() in F:\wamp\wamp\www\fenxiao\official_app\api\app\models\Sns\FriendModel.php on line 153
+[16-Jul-2015 08:55:30 UTC] PHP Stack trace:
+[16-Jul-2015 08:55:30 UTC] PHP   1. {main}() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:0
+[16-Jul-2015 08:55:30 UTC] PHP   2. Yf_App::start() F:\wamp\wamp\www\fenxiao\official_app\api\index.php:169
+[16-Jul-2015 08:55:30 UTC] PHP   3. Yf_Router->service() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\App.php:93
+[16-Jul-2015 08:55:30 UTC] PHP   4. Yf_Router->getData() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:101
+[16-Jul-2015 08:55:30 UTC] PHP   5. Yf_AppController->run() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\Router.php:174
+[16-Jul-2015 08:55:30 UTC] PHP   6. call_user_func() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 08:55:30 UTC] PHP   7. Sns_FriendCtl->getFriendSingle() F:\wamp\wamp\www\fenxiao\official_app\api\libraries\Yf\AppController.php:86
+[16-Jul-2015 08:55:30 UTC] PHP   8. Sns_FriendModel->getFriendRecent() F:\wamp\wamp\www\fenxiao\official_app\api\app\controllers\Sns\FriendCtl.php:48

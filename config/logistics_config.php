@@ -1,0 +1,1 @@
+<?php $logistics_config = unserialize('a:3:{s:17:"logistics_connect";s:1:"1";s:15:"logistic_app_id";s:6:"104636";s:19:"logistic_api_sceret";s:32:"c7c3bf8fee1ec89372cf65ce8453cebe";}');?>
