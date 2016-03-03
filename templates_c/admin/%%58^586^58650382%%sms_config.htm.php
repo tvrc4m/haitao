@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 09:38:59
+<?php /* Smarty version 2.6.20, created on 2016-03-03 15:00:40
          compiled from sms_config.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -71,6 +71,17 @@
             <tr>
                 <td>
                 <input class="w350" name="sms_pass" type="text" id="sms_pass" value="<?php echo $this->_tpl_vars['reg_config']['sms_pass']; ?>
+">
+                </td>
+                <td class="tip"></td>
+            </tr>
+
+            <tr>
+                <td class="td" colspan="2">签名</td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="w350" name="sms_sigin" type="text" id="sms_sigin" value="<?php echo $this->_tpl_vars['reg_config']['sms_sigin']; ?>
 ">
                 </td>
                 <td class="tip"></td>

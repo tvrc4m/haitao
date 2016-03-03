@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 09:36:48
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:37:41
          compiled from search_word.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'urlencode', 'search_word.htm', 2, false),)), $this); ?>

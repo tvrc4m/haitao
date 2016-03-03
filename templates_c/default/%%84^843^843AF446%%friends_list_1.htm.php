@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 11:00:01
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:51:20
          compiled from friends_list_1.htm */ ?>
 <?php $_from = $this->_tpl_vars['member']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['num'] => $this->_tpl_vars['list']):

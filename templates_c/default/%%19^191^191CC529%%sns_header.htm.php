@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 11:02:29
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:40:38
          compiled from sns_header.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'sns_header.htm', 19, false),)), $this); ?>

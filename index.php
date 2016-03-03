@@ -1,6 +1,7 @@
 <?php
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
+
 // ========= 微信支付第一步骤 =========
 if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
 {
@@ -84,6 +85,7 @@ if($true_prefix!=$original_prefix&&empty($dpid)&&empty($dcid)&&empty($dir)&&!emp
 }
 else
 {
+
 	$file=$config['webroot'].'/cache/front/index.htm';
 	if(file_exists($file) && (time() - filemtime($file)<$config['cacheTime']*1)&&empty($_GET['m']))
 	{

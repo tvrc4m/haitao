@@ -656,6 +656,7 @@ function tplfetch($file,$flag=NULL,$no_return=false)
 		$tpl->template_dir=$config['webroot'].'/module/'.$_GET['m'].'/templates/';
 	}
 	$tpl->statu=$tpl->template_dir;
+
 	if($no_return)
 	{
 		$tpl->display($file,$flag);die;

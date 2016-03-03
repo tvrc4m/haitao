@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 09:37:11
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:39:58
          compiled from shop.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'shop.htm', 150, false),array('modifier', 'getdistrictid', 'shop.htm', 434, false),)), $this); ?>

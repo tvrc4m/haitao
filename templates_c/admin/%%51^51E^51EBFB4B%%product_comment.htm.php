@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 11:49:22
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:39:52
          compiled from product_comment.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'product_comment.htm', 78, false),array('modifier', 'date_format', 'product_comment.htm', 95, false),)), $this); ?>

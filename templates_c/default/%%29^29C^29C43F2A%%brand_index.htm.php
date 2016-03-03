@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 11:02:26
+<?php /* Smarty version 2.6.20, created on 2016-03-03 12:52:07
          compiled from brand_index.htm */ ?>
 <link href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /module/brand/templates/brand.css" rel="stylesheet" type="text/css" />

@@ -59,7 +59,7 @@ function sns($ar)
 	else
 		$tpl->template_dir = $config['webroot']."/templates/default/label/";
 	$ar['temp']=empty($ar['temp'])?'pro_default':$ar['temp'];
-	
+
 	if(!$tpl->is_cached($ar['temp'].".htm",$flag))
 	{
 		global $config;
@@ -69,7 +69,7 @@ function sns($ar)
 		$sql="select title,member_id,img,member_name,create_time,comment_count,copy_count  from ".SNS." where type!=1 and original_id=0 order by create_time desc limit 0 , $limit";
 		$db->query($sql);
 		$re=$db->getRows();
-		
+
 		include_once($config['webroot']."/module/sns/face.php");
 		foreach($face_array as $key=>$val)
 		{

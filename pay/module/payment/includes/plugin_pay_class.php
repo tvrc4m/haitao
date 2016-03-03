@@ -19,17 +19,19 @@ class pay
 	
 	function check()
 	{
+
+
 		global $UID,$config;
 		if($_GET['s']!="accounts")
 		{
+
 			if($UID)
 			{
 				$sql = "select pay_id from ".MEMBER." where userid='$UID'";
 				$this->db->query($sql);
 				$this -> pay_uid = $this->db->fetchField('pay_id');
-
 				if(!$this -> pay_uid)
-				{	
+				{
 					msg($config["web_url"]."/login.php");
 				}
 				else
@@ -138,11 +140,11 @@ class pay
 
 			if($config['bw'] == 'weixin')
 			{
-				$str = " and payment_type = 'wap_alipay' or payment_type = 'wx_pay'";
+				$str = " and payment_type = 'wap_alipay' or payment_type = 'wx_pay' or payment_type='cards' or payment_type='account' ";
 			}
 			else
 			{
-				$str = " and payment_type = 'wap_alipay'";
+				$str = " and payment_type = 'wap_alipay' or payment_type='cards' or payment_type='account' ";
 			}
 
 		}
@@ -155,6 +157,7 @@ class pay
 
 		$sql = "select * from ".PAYMENT." where active=1 $str order by nums , payment_id ";
 		$this->db->query($sql);
+
 		return $this->db->getRows();
 	}
 	

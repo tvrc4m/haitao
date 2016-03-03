@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 11:02:29
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:40:38
          compiled from sns_index.htm */ ?>
 <!--
 /*

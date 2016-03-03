@@ -14,15 +14,17 @@ if($_GET['operation']=="add" or $_GET['operation']=="edit")
 			$total_price=$_POST['total_price']*1;
 			if($total_price>0)
 			{
-				$str="abcdefghijklmnopqrstuvwxyz";
+				$str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 				$num=$_POST['num']?$_POST['num']*1:"1";
 				for($j=0;$j<$num;$j++)
 				{
 					$password='';
-					for($i=0;$i<8;$i++) $password.=$str[rand(0,25)];
-					$card_num=rand(1000000000,9999999999);
-					
-					$sql="INSERT INTO ".PAYCARD." (`card_num` ,`total_price` ,`password` 
+					for($i=0;$i<8;$i++) $password.=$str[rand(0,51)];
+                    
+					//$card_num=rand(1000000000,9999999999);
+                    $card_num = microtime(true)*10000;
+                    $card_num .= rand(0,9);
+                    $sql="INSERT INTO ".PAYCARD." (`card_num` ,`total_price` ,`password`
 					,`statu` ,`creat_time` ,`pic`,`stime`,`etime`)VALUES('$card_num','$total_price','$password', '0', '".time()."', '$_POST[pic]','".($_POST['stime']?strtotime($_POST['stime']):0)."','".($_POST['etime']?strtotime($_POST['etime']):0)."')";
 					$db->query($sql);
 				}	

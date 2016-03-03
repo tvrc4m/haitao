@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 09:36:48
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:37:41
          compiled from friendlink.htm */ ?>
 <?php $_from = $this->_tpl_vars['textlist']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['list']):

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 09:40:14
+<?php /* Smarty version 2.6.20, created on 2016-03-03 13:02:59
          compiled from wechat_config.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'stripslashes', 'wechat_config.htm', 49, false),)), $this); ?>

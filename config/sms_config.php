@@ -1,1 +1,1 @@
-<?php $sms_config = unserialize('a:3:{s:11:"sms_account";s:11:"yuanfengsms";s:8:"sms_pass";s:11:"yuanfeng021";s:3:"act";s:4:"save";}');?>
+<?php $sms_config = unserialize('a:4:{s:11:"sms_account";s:10:"mayihaitao";s:8:"sms_pass";s:32:"4169e031c11dd9d265704cf57dc147fc";s:3:"act";s:4:"save";s:9:"sms_sigin";s:18:"【蚂蚁海淘】";}');?>

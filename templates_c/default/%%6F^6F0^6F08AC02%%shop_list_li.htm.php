@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 11:02:27
+<?php /* Smarty version 2.6.20, created on 2016-03-03 12:52:09
          compiled from shop_list_li.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'shop_list_li.htm', 10, false),)), $this); ?>

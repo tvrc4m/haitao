@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 11:02:27
+<?php /* Smarty version 2.6.20, created on 2016-03-03 12:52:09
          compiled from shop_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'replace', 'shop_index.htm', 32, false),array('modifier', 'getdistrictname', 'shop_index.htm', 45, false),array('modifier', 'number_format', 'shop_index.htm', 98, false),array('modifier', 'truncate', 'shop_index.htm', 117, false),array('function', 'geturl', 'shop_index.htm', 82, false),array('insert', 'label', 'shop_index.htm', 143, false),)), $this); ?>

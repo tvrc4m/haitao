@@ -12,10 +12,13 @@ if($cat_pro)
 	{
 		//--------类别名--------------
 		$sql="select brand,cat,catid,pic from ".PCAT." where catid='$v[catid]'";
+
 		$db->query($sql);
 		$cata=$db->fetchRow();
+
 		$cat_pro[$key]['name'] = $v['name']?$v['name']:$cata['cat'];
 		$cat_pro[$key]['pic'] = $cata['pic'];
+
 			//--------类别下面的子分类------
 		$s=$v['catid']."00";
 		$b=$v['catid']."99";
@@ -40,6 +43,7 @@ if($cat_pro)
 			{
 				$brand_id=$cata['brand'];
 				$sql="select id,name,logo from ".BRAND." where 1 and id in($brand_id) limit 0,10";
+
 				$db->query($sql);
 				$cat_pro[$key]['brand']=$db->getRows();
 			}
@@ -49,7 +53,9 @@ if($cat_pro)
 			$count=count($cat_pro[$key]['sub_cat'])-1;
 			$cat_pro[$key]['rand'][]=rand(0,$count);
 			$cat_pro[$key]['rand'][]=rand(0,$count);
+
 		}
+
 	}
 
 	$tpl->assign("categorys",$cat_pro);
@@ -99,4 +105,5 @@ include_once("footer.php");
 
 //=============================================
 $out=tplfetch("product_index.htm",NULL);
+
 ?>

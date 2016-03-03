@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-01 10:59:08
+<?php /* Smarty version 2.6.20, created on 2016-03-03 11:37:40
          compiled from product_list_li_2.htm */ ?>
 <?php $_from = $this->_tpl_vars['pro']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['num'] => $this->_tpl_vars['list']):

@@ -73,6 +73,7 @@ else
 $sql = "select * from ".PAYMENT." where active=1 $s order by payment_id";
 
 $db->query($sql);
+
 $pays=$db->getRows();
 
 if($config['bw'] == "weixin")
