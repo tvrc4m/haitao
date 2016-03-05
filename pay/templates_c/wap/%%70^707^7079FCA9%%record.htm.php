@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 10:26:24
+<?php /* Smarty version 2.6.20, created on 2016-04-21 18:58:50
          compiled from record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 77, false),)), $this); ?>
@@ -39,7 +39,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=payment&s=record&mold=1" <?php if ($_GET['mold'] == 1): ?>class="pay_sgo"<?php endif; ?> >充值记录</a>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=record&mold=2" <?php if ($_GET['mold'] == 2): ?>class="pay_sgo"<?php endif; ?> >提现记录</a>
+/?m=payment&s=record&mold=2" <?php if ($_GET['mold'] == 2): ?>class="pay_sgo"<?php endif; ?> >提ss现记录</a>
         </p>
     	<?php if (! $_GET['mold']): ?>
    		<div class="filter">

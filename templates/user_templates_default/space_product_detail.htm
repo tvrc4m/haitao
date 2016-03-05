@@ -5,6 +5,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".add-cart").click(function(event) {
+
         if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
             alert('不能购买自己店铺的商品！');
             return;

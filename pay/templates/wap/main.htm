@@ -91,6 +91,27 @@
                 </td>
             </tr>
             <{/foreach}>
+            <tr>
+                <td colspan="99">
+                    <a href="javascript:ajax_page();" class="m_jiazai next"><i></i>点击加载更多</a>
+                </td>
+            </tr>
         </table>
     </div> 
 </div>
+<script>
+    var  page = 0 ;
+    function ajax_page(){
+        $.ajax({
+            url: "<{$config.weburl}>/"+"ajax_index.php",
+            type: 'post',
+            data: {type: 'payments',page:page},
+            dataType: "json",
+            success: function(msg){
+                //msg是返回的json数据
+                alert(msg);
+                page+=5;
+            }
+        });
+    }
+</script>

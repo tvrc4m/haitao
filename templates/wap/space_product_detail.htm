@@ -22,7 +22,7 @@
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
             <{if $de.is_virtual neq 1}>
-            <a class="incar incar_c add-cart" href="javascript:void(0)">加入购物车</a>
+            <a class="incar incar_c " href="javascript:void(0)">加入购物车</a>
             <{/if}>
         </div>
     </div>
@@ -53,8 +53,8 @@
                     </a>
                 </div>
             </div>
-                <div id="price">
-                    <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></span>
+                <div >
+                    <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
                     <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>
                     <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
                 </div>
@@ -427,6 +427,7 @@ function check_nums()
             }
         }
     }
+
     $(".incar_c").click(function(){
         
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
@@ -447,6 +448,7 @@ function check_nums()
             return false;
         }
     })
+
     function buy(){
         var flag = false;
         if (goodsspec.getSpec() == null || flag)
