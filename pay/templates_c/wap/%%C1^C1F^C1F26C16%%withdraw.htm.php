@@ -1,7 +1,8 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-20 09:13:09
+<?php /* Smarty version 2.6.20, created on 2016-04-21 19:40:39
          compiled from withdraw.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 40, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 41, false),)), $this); ?>
+<script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="script/Validator.js"></script>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
@@ -19,11 +20,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <dd><input type="text" class="text w100" name="CardName" id="CardName" placeholder="开户人姓名" dataType="Require" msg="请填写开户人姓名" /></dd>
         </dl>
     	<dl>
-        	<dt>卡号</dt>
+        	<dt>银行</dt>
             <dd><input type="text" class="text w210" name="bank" id="bank" placeholder="输入银行"  dataType="Require" msg="请填写收款方"/></dd>
         </dl>
     	<dl>
-        	<dt>银行</dt>
+        	<dt>卡号</dt>
             <dd><input type="text" class="text w210" name="CardNo" id="CardNo" placeholder="银行卡号" maxlength="32"  dataType="Require" msg="请填写银行卡号" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" onkeyup="value=value.replace(/[^\d.]/g,'')"/></dd>
         </dl>
     	
@@ -94,13 +95,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
         </dl> -->
         </fieldset>
         <fieldset id="other">
-        <dl>
+        <dl class="otherss">
         	<dt>说明</dt>
             <dd><input type="text" class="text w210" name="reason" id="reason" placeholder="可选" /></dd>
         </dl>
         </fieldset>
         <fieldset>
-            <dl>
+            <dl class="otherss">
                 <dt>密码</dt>
                 <dd><input type="password" class="text w210" name="pay_passwd" id="pay_passwd" placeholder="支付密码" /></dd>
             </dl>
@@ -109,7 +110,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <dt></dt>
             <dd>
             <input type="submit" class="submit" value="确定提现" />
-            <div class="tixian">本次提现额度为<span>1234.00</span>元</div>
+            <div class="tixian">提现额度不低于<span>100.00</span>元</div>
             </dd>
         </dl>
     </form>    
@@ -135,6 +136,7 @@ function calculateFee(val){
 	var amount = parseFloat(val).toFixed(2);
 	if (amount <= 0) return;
 	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
+    console.log(data)
 	eval("data = "+data);
 	var i=data.min;
 	var a=data.max;
@@ -149,4 +151,12 @@ function calculateFee(val){
 	$('#extraFee').html(n);
 	$('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
 }
+// $(function(){
+//     var a=$("#amount").val();
+//     console.log(a)
+//     if(a<100){
+//         a=100;
+//     } 
+// })
+   
 </script>

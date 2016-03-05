@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-04-21 18:43:56
+=======
+<?php /* Smarty version 2.6.20, created on 2016-04-21 19:13:59
+>>>>>>> 1f672a7cd20be23bd885314dad102ccda76d4466
          compiled from index.htm */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));
@@ -34,6 +38,7 @@ unset($_smarty_tpl_vars);
                             <?php endif; ?>
                         </li>
                         <li>
+<<<<<<< HEAD
                             <?php if ($this->_tpl_vars['verify_pay'] == 'yes'): ?>
                                 <a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已设置</a>
                             <?php else: ?>
@@ -41,6 +46,15 @@ unset($_smarty_tpl_vars);
 /?m=payment&s=setpass" class="duser-auth-ema">未设置</a>
                             <?php endif; ?>
 
+=======
+                            <?php if ($this->_tpl_vars['de']['pay_pass']): ?>
+                            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=setpass" class="duser-auth-ema duser-auth-ema-j">修改</a>
+                            <?php else: ?>
+                            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=setpass" class="duser-auth-ema">未设置</a>
+                            <?php endif; ?>
+>>>>>>> 1f672a7cd20be23bd885314dad102ccda76d4466
                         </li>
                     </ul>
                 </p>

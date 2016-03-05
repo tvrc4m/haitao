@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 10:51:22
+<?php /* Smarty version 2.6.20, created on 2016-04-21 11:20:18
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -54,6 +54,9 @@ function formSubmit() {
                     $("#real_name").attr("readonly","readonly");
                     $("#identity_card").attr("readonly","readonly");
                     $("#form dl:last").remove();
+            }
+            if(data.url){
+                window.location.href(url);
             }
         }
     });

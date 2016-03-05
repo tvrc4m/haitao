@@ -552,3 +552,5 @@ a.goods_text {
 .agr_main a{line-height: 20px;background-color: #fe5f5c;color: #fff;border-radius: 5px;padding: 10px;margin-left: 453px;margin-bottom: 15px;cursor: pointer;}
 /*物品添加到购物车的动画样式*/
 .u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;}
+.module_special{background-color: #fff;}
+.module_special .con{padding: 0 30px;}

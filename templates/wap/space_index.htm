@@ -8,14 +8,10 @@
                        "<div class='collect_box'>"+
                             "<div class='collect_box_content'></div>"+
                             "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
-                            "<div class='collect_box_hid'>+</div>"+
                         "</div>"+
                    "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".collect_box_out").addClass('collect_box_out_test');
-        $(".collect_box_hid").click(function(){
-            removeco();
-        })
         $(".collect_box_btn a").click(function(){
             removeco();
         })
@@ -38,9 +34,6 @@
         if(uname=='')
         {
             altto('<{$lang.no_logo}>');
-            $(".collect_box_hid").click(function(){
-               removeco();
-            })
             $(".collect_box_btn a").click(function(){
                 window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
             })
@@ -73,9 +66,6 @@
         if(uname=='')
         {
             altto('<{$lang.no_logo}>');
-            $(".collect_box_hid").click(function(){
-               removeco();
-            })
             $(".collect_box_btn a").click(function(){
                  window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
             })

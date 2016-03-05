@@ -1,7 +1,4 @@
 <link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
-<style>
-	.wap_pdetail p{line-height:1.2;}
-</style>
 </head>
 <body class="um-vp bc-bg" ontouchstart>
 <header>
@@ -39,7 +36,6 @@
             </ul>
             <div class='dot'></div>
         </div>
-        <!-- <img src="<{if $de.pic}><{$de.pic}><{else}>image/default/nopic.gif<{/if}>"/> -->
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
             <div>
@@ -112,17 +108,6 @@
             <{/if}>
         </div>
     </div>
-    <!-- <div style="height:0px;border-top:1px solid #ff5c5c;"></div>
-    <div class="c-wh bgw clearfix">
-        <div class="select_style clearfix">
-            <dl class="clearfix select_style_xiangqing">
-                <dt class="select_style_title select_style_titleg">蚂蚁说</dt>
-                <dd class="mati_say_content">
-                <img src="../../../image/wap/wap_haitao_user1.png" class="slogote">
-                <p class="mayi_say">消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书</p></dd>
-            </dl>
-        </div>
-    </div> -->
     <div style="height:0px;border-top:1px solid #ccc;"></div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
@@ -159,12 +144,8 @@
             </dl>
         </div>
     </div>
-    <!-- <div style="height:0px;border-top:1px solid #ccc;"></div> -->
     <div class="clearfix"></div>
     <div class="c-wh bgw c-wh-commit clearfix">
-        <!-- <div class="c-wh-commit-gao clearfix">
-            <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
-        </div> -->
         <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_logo5.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="品牌服务承诺">
     </div>
     <div class="c-wh bgw clearfix">
@@ -178,7 +159,6 @@
     <div style="height:10px;background-color:#f5f5f5;width:100%;"></div>
     <div class="c-wh bgw c-wh-dianpu">
         <div class="clearfix"></div>
-
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-xinxi clearfix">
             <li class="ut-s">
                 <a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"> <img src="<{if $com.plogo}><{$com.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" class="slogo"/></a>
@@ -225,7 +205,6 @@
         <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_shu.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="消费者告知书" />
         <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_qg.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="什么是海外直发" />
     </div>
-   <!--  <div style="height:50px" class="hidden_jianxi"></div> -->
     <input name="id" type="hidden" value="<{$de.id}>" />
     <input name="sid" id="sid" type="hidden" value="0" />
     <input name="sku" id="sku" type="hidden" value="0" />
@@ -324,14 +303,10 @@ function check_nums()
                        "<div class='collect_box'>"+
                             "<div class='collect_box_content'></div>"+
                             "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
-                            "<div class='collect_box_hid'>+</div>"+
                         "</div>"+
                    "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".collect_box_out").addClass('collect_box_out_test');
-        $(".collect_box_hid").on("click",function(){
-            removeco();
-        })
         $(".collect_box_btn a").on("click",function(){
             removeco();
         })
@@ -347,10 +322,6 @@ function check_nums()
     }
     $(function(){
         $("dl ul[genre*=property]").each(function(index){
-            // var a=$(this).find("li").size();
-            // if(a==1){
-            //     $(this).find("li").eq(0).find("a").addClass("checked"); 
-            // }
             $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
         })    
     })
@@ -365,10 +336,6 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
-            // alert('请先登录！');
-            $(".collect_box_hid").on("click",function(){
-               removeco();
-            })
             $(".collect_box_btn a").on("click",function(){
                 window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
             })
@@ -400,10 +367,6 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
-            // alert('<{$lang.no_logo}>');
-            $(".collect_box_hid").on("click",function(){
-               removeco();
-            })
             $(".collect_box_btn a").on("click",function(){  
                 window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
             }) 
