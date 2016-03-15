@@ -1,5 +1,5 @@
 <?php
-		$config['dbhost'] = 'localhost';      //数据库所在IP地址
+		$config['dbhost'] = '192.168.101.153';      //数据库所在IP地址
 		$config['dbport'] = '';  //数据库用户
 		$config['dbuser'] = 'root';  //数据库用户
 		$config['dbpass'] = 'root';   	 //数据库密码
