@@ -49,8 +49,15 @@
         </h1>
         <div id="nav">
             <ul>
+
+
+            <li><a <{if $menu.personal.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $menu.personal.action|truncate:1:''!='?' and $menu.personal.action|truncate:4:''!='http'}>?action=<{/if}><{$menu.personal.action}>"><{$menu.personal.name}></a></li>
+
+
                 <{foreach item=list name=name key=num from=$menu}>
+                <{if $num!="inquire"}>
                 <li class="<{if $cmenu==$num}>frist<{/if}>"><a <{if $list.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
+                <{/if}>
                 <{/foreach}>
             </ul>
             <div class="search_box">
