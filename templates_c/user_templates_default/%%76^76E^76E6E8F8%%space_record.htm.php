@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-17 19:57:29
+<?php /* Smarty version 2.6.20, created on 2016-03-19 14:33:27
          compiled from space_record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'space_record.htm', 24, false),array('modifier', 'date_format', 'space_record.htm', 26, false),)), $this); ?>
 <table width="100%" cellpadding="0" cellspacing="0" class="record">
-<thead>
+<!-- <thead>
     <tr>
         <td colspan="5">交易中<b><?php echo $this->_tpl_vars['re']['total1']; ?>
 </b>笔，交易成功<b><?php echo $this->_tpl_vars['re']['total2']; ?>
@@ -15,9 +15,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 <em><?php echo $this->_tpl_vars['de']['price']; ?>
 </em><span>拍下价格的不同可能会由促销和打折引起的，详情可以咨询卖家。</span></td>
     </tr>
-</thead>
+</thead> -->
 <tbody>
-    <tr>
+    <tr class="pl_nav">
         <th class="pl15">买家</th>
         <th>拍下价格</th>
         <th>数量</th>

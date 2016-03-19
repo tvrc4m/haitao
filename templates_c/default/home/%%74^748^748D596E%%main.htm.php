@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-17 09:41:53
+<?php /* Smarty version 2.6.20, created on 2016-03-18 13:18:18
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 85, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 141, false),)), $this); ?>
 <script>
 function collect_goods(id){
 	
@@ -35,6 +35,80 @@ function collect_goods(id){
 	
 }
 </script>
+<div class="head">
+    <div class="info clearfix">
+        <div class="info-left">
+            <div class="basic-info">
+                <h2 class="name"><div class="nick"><?php echo $this->_tpl_vars['member']['name']; ?>
+</div></h2>
+                <span class="realy-info">
+                    <span class="credit">买家信用</span>
+                    <img class="points" align="absmiddle" title="<?php echo $this->_tpl_vars['member']['buyerpoints']; ?>
+个买家信用积分" src="image/points/<?php echo $this->_tpl_vars['member']['buyerpointsimg']; ?>
+">
+                </span>
+                <span class="meta">
+                    <span class="sex<?php if ($this->_tpl_vars['member']['sex'] == 2): ?> female<?php endif; ?>"><?php if ($this->_tpl_vars['member']['sex'] == 2): ?>女<?php else: ?>男<?php endif; ?></span>
+                    <!-- <span><?php echo $this->_tpl_vars['member']['area']; ?>
+</span> -->
+                    <span><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/shop.php?uid=<?php echo $_GET['uid']; ?>
+">逛TA商铺</a></span>
+                </span>
+                
+            </div>
+            <div class="user-avatar"><img width="160" height="160" src="<?php if ($this->_tpl_vars['member']['logo']): ?><?php echo $this->_tpl_vars['member']['logo']; ?>
+<?php else: ?>image/default/avatar.png<?php endif; ?>"></div>
+        </div>
+        <div class="info-right">
+            <div class="attention-box">
+                <div class="attention clearfix">
+                    <ul>
+                        <li><b class="large"><?php echo $this->_tpl_vars['count']['f']; ?>
+</b><span>粉丝</span></li>
+                        <li><b class="large"><?php echo $this->_tpl_vars['count']['g']; ?>
+</b><span>关注</span></li>
+                        <li><b class="large"><?php echo $this->_tpl_vars['count']['v']; ?>
+</b><span>访问</span></li><li class="clear"></li>
+                    </ul>
+                </div>
+            </div>
+            <?php if ($_GET['uid'] != $this->_tpl_vars['userid']): ?>
+                <div class="follow-widget">
+                    <?php if ($this->_tpl_vars['friend']): ?>
+                        <span class="<?php if ($this->_tpl_vars['fan']): ?>all_gz<?php else: ?>have_gz<?php endif; ?>">
+                        <b style="margin-left:25px;">已关注</b> &nbsp;&nbsp;
+                        <a href="main.php?m=message&s=admin_message_sed&uid=<?php echo $_GET['uid']; ?>
+">发私信</a></span>
+                    <?php else: ?>
+                        <a genre="followbtn" data-param="{'mid':'<?php echo $_GET['uid']; ?>
+'}" href="javascript:void(0)"></a>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="nav">
+        <ul class="clearfix">
+            <li class="<?php if ($_GET['act'] == ''): ?>current <?php endif; ?>first">
+                <a class="front" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/home.php?uid=<?php echo $_GET['uid']; ?>
+">首页</a>
+            </li>
+            <li <?php if ($_GET['act'] == 'product'): ?>class="current"<?php endif; ?> >
+                <a class="product" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/home.php?uid=<?php echo $_GET['uid']; ?>
+&act=product">宝贝</a>
+            </li>
+            <li class="<?php if ($_GET['act'] == 'trace'): ?>current <?php endif; ?>last">
+                <a class="trace" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/home.php?uid=<?php echo $_GET['uid']; ?>
+&act=trace">新鲜事</a>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="main-widget">
 	<h3 class="item-hd">
     	<a class="read-more" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
@@ -155,9 +229,9 @@ _120X120.jpg"></li>
                     <span class="sns-action">
                         <span>
                         <a data-param="{&quot;bid&quot;:&quot;<?php echo $this->_tpl_vars['list']['id']; ?>
-&quot;}" genre="sns_forward" href="javascript:void(0);">转发</a>
+&quot;}" genre="sns_forward" href="javascript:void(0);" class="sns-action-forward">转发</a>
                         <a data-param="{&quot;bid&quot;:&quot;<?php echo $this->_tpl_vars['list']['id']; ?>
-&quot;}" genre="sns_comment" href="javascript:void(0);">评论</a>
+&quot;}" genre="sns_comment" href="javascript:void(0);" class="sns-action-comment">评论</a>
                         </span>
                     </span>
                 </div>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-17 19:57:28
+<?php /* Smarty version 2.6.20, created on 2016-03-19 15:42:01
          compiled from space_product_detail.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'space_product_detail.htm', 129, false),array('modifier', 'date_format', 'space_product_detail.htm', 180, false),array('modifier', 'replace', 'space_product_detail.htm', 611, false),array('modifier', 'count', 'space_product_detail.htm', 612, false),array('insert', 'label', 'space_product_detail.htm', 221, false),array('function', 'math', 'space_product_detail.htm', 280, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'space_product_detail.htm', 129, false),array('modifier', 'date_format', 'space_product_detail.htm', 180, false),array('modifier', 'replace', 'space_product_detail.htm', 645, false),array('modifier', 'count', 'space_product_detail.htm', 646, false),array('insert', 'label', 'space_product_detail.htm', 221, false),array('function', 'math', 'space_product_detail.htm', 280, false),)), $this); ?>
 <script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /script/jquery.ui.js" type="text/javascript"></script>
 <script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
@@ -126,7 +126,7 @@ function buy()
                     <div class="gallery">
                         <div class="main-pic">
                             <a target="_blank" href="<?php echo $this->_tpl_vars['de']['pic']; ?>
-"><img class="jqzoom" height="400" width="400" alt="<?php echo $this->_tpl_vars['de']['pname']; ?>
+"><img class="jqzoom" height="350" width="350" alt="<?php echo $this->_tpl_vars['de']['pname']; ?>
 " src="<?php echo $this->_tpl_vars['de']['pic']; ?>
 " rel="<?php echo $this->_tpl_vars['de']['pic']; ?>
 " title="<?php echo $this->_tpl_vars['de']['pname']; ?>
@@ -138,7 +138,7 @@ function buy()
 ?>
                             <li class="<?php if ($this->_tpl_vars['num'] == 0): ?>hover<?php endif; ?>"><img src="<?php echo $this->_tpl_vars['pic']; ?>
 _60X60.jpg" big="<?php echo $this->_tpl_vars['pic']; ?>
-" height="60" width="60"></li>
+" height="60" width="60" class="jqzoom-img"></li>
                             <?php endforeach; endif; unset($_from); ?>
                         </ul>
                     </div>
@@ -382,12 +382,42 @@ echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'ty
                         <div id="cart_show"></div>
                     </div>
                 </div>
+                <div class="inner-wrap">
+                    <ul class="clearfix">
+                        <li class="cur"><a href="javascript:void(0);">商品详情</a></li>
+                        <li><a href="javascript:void(0);">累计评论</a></li>
+                        <li><a href="javascript:void(0);">成交记录</a></li>
+                        <li><a href="javascript:void(0);">商品问答</a></li>
+                    </ul>
+                </div>
+                <div class="layout clearfix">
+                    <div class="con clearfix">
+                        <div class="i-con">
+                            <?php if ($this->_tpl_vars['de']['brand'] || $this->_tpl_vars['de']['extfiled']['s']): ?>
+                            <div class="attributes clearfix">
+                                <ul class="clearfix">
+                                    <li>品牌：<?php echo $this->_tpl_vars['de']['brand']; ?>
+</li>
+                                    <?php $_from = $this->_tpl_vars['de']['extfiled']['s']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['list']):
+?><?php echo $this->_tpl_vars['list']; ?>
+<?php endforeach; endif; unset($_from); ?>
+                                </ul>
+                            </div>
+                            <?php endif; ?>
+                            <div class="description"><?php echo $this->_tpl_vars['de']['detail']; ?>
+</div>
+                        </div>
+                        <div id="reviews" class="i-con hidden"></div>
+                        <div id="deal-record" class="i-con hidden"></div>
+                        <div id="consult" class="i-con hidden"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="sidebar clearfix">
             <div class="shop-info">
-                <a class="shop-info-bg" href=""><img width="198" height="45" src="image/points/<?php echo $this->_tpl_vars['com']['sellerpointsid']; ?>
-.png" /></a>
+                <a class="shop-info-bg" href="">供货商家</a>
                 <div class="shop-info-wrap clearfix">
                     <div class="shop-info-hd">
                         <dl>
@@ -446,17 +476,27 @@ echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'ty
                 </div>
             </div>
             <div class="pine">
-                <div class="pine-hd clearfix">看了又看</div>
+                <div class="pine-hd clearfix">已浏览商品</div>
                 <div class="pine-bd clearfix">
                     <?php require_once(SMARTY_CORE_DIR . 'core.run_insert_handler.php');
 echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'type' => 'product', 'uid' => $this->_tpl_vars['de']['member_id'], 'o' => '1', 'noid' => $this->_tpl_vars['de']['id'], 'temp' => 'product_list_li', 'limit' => 4)), $this); ?>
 
                 </div>
             </div>
+            <div class="left hotsell">
+                <div class="m">
+                    <div class="mt"><h3>热销产品</h3></div>
+                    <div class="mc">
+                        <?php require_once(SMARTY_CORE_DIR . 'core.run_insert_handler.php');
+echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'type' => 'product', 'uid' => $this->_tpl_vars['de']['member_id'], 'o' => '1', 'temp' => 'product_list_li', 'limit' => 5)), $this); ?>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="tabbar-wrap clearfix">
+<!-- <div class="tabbar-wrap clearfix">
     <div class="shop-search">
         <div class="search-panel">
             <form action="<?php echo $this->_tpl_vars['config']['weburl']; ?>
@@ -484,8 +524,8 @@ echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'ty
             <li><a href="javascript:void(0);">商品问答</a></li>
         </ul>
     </div>
-</div>
-<div class="layout clearfix">
+</div> -->
+<!-- <div class="layout clearfix">
     <div class="left">
         <div class="m">
             <div class="mt"><h3>热销产品</h3></div>
@@ -518,7 +558,7 @@ echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'ty
         <div id="consult" class="i-con hidden"></div>
     </div>
     <div class="right"><ul></ul></div>
-</div>
+</div> -->
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 <script type="text/javascript">
