@@ -1,1 +1,1 @@
-<?php $config = array_merge($config, unserialize('a:5:{s:10:"opensuburl";s:1:"0";s:7:"rewrite";s:1:"1";s:5:"title";s:23:"Mallbuilder官方演示";s:7:"keyword";s:0:"";s:11:"description";s:0:"";}'));?>
+<?php $config = array_merge($config, unserialize('a:5:{s:10:"opensuburl";s:1:"0";s:7:"rewrite";s:1:"1";s:5:"title";s:12:"蚂蚁海淘";s:7:"keyword";s:57:"蚂蚁海淘，蚂蚁在线，日本海淘，跨境电商";s:11:"description";s:63:"蚂蚁海淘是一家集金融与社区的跨境电商平台。";}'));?>

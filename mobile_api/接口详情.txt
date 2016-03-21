@@ -1,0 +1,2422 @@
+前端发送请求，每个请求中，必须包含key这个参数,此参数由登录成功时候，从后端获取
+	k:权限数据
+
+数据返回格式
+	{
+		"cmd_id": -140,     //为了未来以及不同客户需求的api扩展预留，目前忽略
+		"status": 200,      //状态200, 为正常. 其它都为错误， 根据不同url，前后端可以自行约定。
+		"msg": "success",   //提示消息
+		"data": {}          //返回的数据, 下面所有接口中返回只标注出此数据。
+	}
+
+备注： 前端更多的需要关注自己要的数据是否存在，多余的数据，前端使用不到的，可以忽略！
+
+配置数据接口
+	全局配置	- 黄新泽
+		请求地址
+			api.php?ctl=Config&met=get&typ=json
+		请求参数
+		返回数据
+			{
+			}
+首页
+	登录	- 黄新泽
+		请求地址
+			api.php?ctl=User&met=login&typ=json
+		请求参数
+			user_account:用户名/email/手机
+			user_password:密码
+		返回数据
+			{
+				user_id:用户id
+				k:认证信息，每次发送请求必须带的参数
+			}
+
+
+	注册验证码	- 黄新泽
+		请求地址
+			api.php?ctl=User&met=regCode&typ=json
+		请求参数
+			mobile:手机
+		返回数据
+			{
+				user_code:验证码 //测试使用,正式会通过手机短信接收
+			}
+
+	注册	- 黄新泽
+		请求地址
+			api.php?ctl=User&met=register&typ=json
+		请求参数
+			user_account:用户名/email/手机
+			user_passwd:密码
+			user_code:验证码
+		返回数据
+			{
+				user_id:用户id
+				k:认证信息，每次发送请求必须带的参数
+			}
+
+	注销	- 黄新泽
+		请求地址
+			api.php?ctl=User&met=logout&typ=json
+		请求参数
+			user_id:用户id
+		返回数据
+			{
+			}
+
+	找回密码验证码	- 黄新泽
+		请求地址
+			api.php?ctl=User&met=findPasswdCode&typ=json
+		请求参数
+			mobile:手机账号
+		返回数据
+			{
+				user_code:验证码 //测试使用,正式会通过手机短信接收
+			}
+	找回密码	- 黄新泽
+		请求地址
+			api.php?ctl=User&met=resetPasswd&typ=json
+		请求参数
+			user_account:用户名/email/手机
+			user_passwd:新密码
+			user_code:验证码
+		返回数据
+			{
+			}
+
+
+首页
+	广告接口-首页carousel - 吴东焕
+		请求地址
+			api.php?ctl=Adv&met=get&typ=json
+		请求参数
+			group_id:广告位ID = 13
+		返回数据
+			{
+				"45":{
+					"ID":"45",
+					"userid":"会员ID",
+					"group_id":"13",
+					"name":"广告名",
+					"type":"类型",
+					"url":"地址",
+					"con":"内容",
+					"picName":"图片",
+					"isopen":"是否开启",
+					"ctime":"创建时间",
+					"province":"省",
+					"city":"市",
+					"area":"区",
+					"street":"街道",
+					"width":"宽度",
+					"height":"高度",
+					"catid":"类别ID",
+					"unit":单位,
+					"show_time":"展出时间",
+					"statu":"0：待支付，1：购买成功",
+					"shownum":"展示次数",
+					"stime":"开始时间",
+					"etime":"结束时间",
+					"sort_num":"排序"
+				      }
+			}
+	精品分类接口 - 黄新泽
+		请求地址
+			api.php?ctl=Category&met=hot&typ=json
+		请求参数
+
+		返回数据
+			{
+				"1000": {
+					"catid": "分类id",
+					"displayorder": "显示排序",
+					"name": "分类名称",
+					"color": "显示颜色",
+					"pic": "图片地址"
+				},
+				.....
+			}
+
+	导航类接口
+	
+	商品列表接口 - 朱羽婷
+		请求地址：
+			api.php?ctl=Goods&met=getListByOrder&typ=json
+		请求参数
+			order:price（价格）,sales(|销量),clicks（人气），goodbad(信用)
+			page
+			rows
+		返回参数
+			{
+				"page":  当前第几页
+				"total": 总记录数
+				"totalsize": 总页数
+				"records": 当前页显示记录数
+				"items":{
+						"0": {
+							"id": "2432",
+							"member_id": "349",
+							"member_name": "taiyanghua@163.com",
+							"catid": "10010406",
+							"type": "0",
+							"name": "\u52a8\u611f\u5355\u8f66\u5bb6\u7528\u8d85\u9759\u97f3\u5ba4\u5185\u78c1\u63a7\u8f66\u811a\u8e0f\u84dd\u5821\u5065\u8eab\u5668\u6750\u8fd0\u52a8\u81ea\u884c\u8f66\u5065\u8eab\u8f66",
+							"subhead": "\u3010\u5168\u5bb6\u9002\u7528\u3011 \u53ef\u6298\u53e0\u8d85\u9759 \u5065\u8eab\u63d0\u81c0\u5851\u5f62 \uff01\uff01\uff01",
+							"keywords": "",
+							"brand": "Fairwhale\/\u9a6c\u514b\u534e\u83f2",
+							"market_price": "599.00",
+							"price": "499.00",
+							"stock": "3262",
+							"sales": "0",
+							"code": "",
+							"con": null,
+							"pic": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg",
+							"pic_more": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg,http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847819.jpg",
+							"start_time_type": "1",
+							"start_time": "0",
+							"valid_time": "2",
+							"weight": "0.00",
+							"cubage": "0.00",
+							"freight_id": "23",
+							"freight_type": "1",
+							"post_price": "0.00",
+							"express_price": "0.00",
+							"ems_price": "0.00",
+							"province_id": "9",
+							"city_id": "145",
+							"area_id": "1824",
+							"street_id": "0",
+							"area": "\u4e0a\u6d77\u5e02 \u5f90\u6c47\u533a \u5929\u5e73\u8def\u8857\u9053",
+							"clicks": "486",
+							"rank": "0",
+							"uptime": "1441865141",
+							"status": "1",
+							"is_shelves": "1",
+							"custom_cat_id": "0",
+							"promotion_id": "0",
+							"goodbad": "0",
+							"shop_rec": "1",
+							"is_invoice": "true",
+							"is_tg": "false",
+							"is_virtual": "0",
+							"is_dist": "0",
+							"down_reason": "",
+							"district": ["\u4e0a\u6d77\u5e02", "\u5f90\u6c47\u533a", "\u5929\u5e73\u8def\u8857\u9053"],
+							"detail": "商品详情html描述"
+						},
+						......
+				}
+				
+			}
+
+			
+	商品评价列表接口 - 朱羽婷
+		请求地址
+			api.php?ctl=Goods&met=getCommentList&typ=json
+		请求参数
+			pid:商品id
+			goodbad:1-好评 0-中评 -1-差评
+			
+			page
+			rows
+		返回数据
+			{
+				[page] => 1   当前页数
+	            [total] => 1  总记录数
+	            [totalsize] => 1 总页数
+	            [good] => 3    好评总数
+	            [middle] => 1  中评总数
+	            [bad] => 1     差评总数
+	            [records] => 1 当前记录数
+	            [items] => Array
+	                (
+	                    [0] => Array
+	                        (
+	                            [id] => 7
+	                            [userid] => 175
+	                            [user] => wangqian198583@126.c
+	                            [fromid] => 175
+	                            [pid] => 438
+	                            [puid] => 175
+	                            [pname] => 书
+	                            [price] => 20.00
+	                            [con] => 对商品进行评价，中评
+	                            [uptime] => 1401070124
+	                            [goodbad] => 0
+	                        )
+
+	                )
+			}
+			
+	商品详情接口 - 朱羽婷
+		请求地址
+			api.php?ctl=Goods&met=get&typ=json
+		请求参数
+			pid:商品id
+		返回数据
+			Array
+			(
+			    [cmd_id] => -140
+			    [status] => 200
+			    [msg] => success
+			    [data] => Array
+			        (
+			            [0] => Array
+			                (
+			                    [id] => 572
+			                    [member_id] => 24
+			                    [member_name] => jackyang
+			                    [catid] => 10050301
+			                    [type] => 0
+			                    [name] => 秋鹿梦伴纯棉短袖睡衣女人家居服套装夏季2014新款卡通可爱休闲
+			                    [subhead] => 
+			                    [keywords] => 睡衣、家居服
+			                    [brand] => 浪莎
+			                    [market_price] => 86.00
+			                    [price] => 66.00
+			                    [stock] => 13
+			                    [sales] => 0
+			                    [code] => 545798
+			                    [con] => 
+			                    [pic] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407295995.jpg
+			                    [pic_more] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407295995.jpg
+			                    [start_time_type] => 1
+			                    [start_time] => 0
+			                    [valid_time] => 2
+			                    [weight] => 
+			                    [cubage] => 
+			                    [freight_id] => 28
+			                    [freight_type] => 2
+			                    [post_price] => 0.00
+			                    [express_price] => 0.00
+			                    [ems_price] => 0.00
+			                    [province_id] => 9
+			                    [city_id] => 144
+			                    [area_id] => 0
+			                    [street_id] => 1819
+			                    [area] => 上海市 卢湾区 打浦桥街道
+			                    [clicks] => 485
+			                    [rank] => 0
+			                    [uptime] => 1448431044
+			                    [status] => 1
+			                    [is_shelves] => 1
+			                    [custom_cat_id] => 0
+			                    [promotion_id] => 1
+			                    [goodbad] => 2
+			                    [shop_rec] => 1
+			                    [is_invoice] => true
+			                    [is_tg] => false
+			                    [is_virtual] => 0
+			                    [is_dist] => 0
+			                    [down_reason] => 
+			                    [district] => Array
+			                        (
+			                            [0] => 上海市
+			                            [1] => 卢湾区
+			                            [2] => 打浦桥街道
+			                        )
+
+			                    [detail] => ssdsdsdcc
+			                    [spec_name] => Array
+			                        (
+			                            [颜色分类] => Array
+			                                (
+			                                    [0] => 黑色
+			                                    [1] => 白色
+			                                    [2] => 红色
+			                                    [6] => 天蓝色
+			                                )
+
+			                            [套餐] => Array
+			                                (
+			                                    [0] => 
+			                                    [6] => M
+			                                    [7] => L
+			                                    [8] => XL
+			                                )
+
+			                            [尺码] => Array
+			                                (
+			                                    [0] => L
+			                                    [2] => M
+			                                    [3] => S
+			                                    [6] => XS
+			                                )
+
+			                        )
+
+			                    [porperty] => Array
+			                        (
+			                            [1426] => Array
+			                                (
+			                                    [尺码] => L
+			                                    [颜色分类] => 黑色
+			                                    [sid] => 1426
+			                                    [price] => 132.00
+			                                    [stock] => 544
+			                                )
+
+			                            [1425] => Array
+			                                (
+			                                    [尺码] => L
+			                                    [颜色分类] => 白色
+			                                    [sid] => 1425
+			                                    [price] => 132.00
+			                                    [stock] => 285
+			                                )
+
+			                            [1424] => Array
+			                                (
+			                                    [尺码] => M
+			                                    [颜色分类] => 红色
+			                                    [sid] => 1424
+			                                    [price] => 132.00
+			                                    [stock] => 362
+			                                )
+
+			                            [1421] => Array
+			                                (
+			                                    [尺码] => S
+			                                    [颜色分类] => 红色
+			                                    [sid] => 1421
+			                                    [price] => 132.00
+			                                    [stock] => 254
+			                                )
+
+			                            [1422] => Array
+			                                (
+			                                    [尺码] => M
+			                                    [颜色分类] => 白色
+			                                    [sid] => 1422
+			                                    [price] => 132.00
+			                                    [stock] => 222
+			                                )
+
+			                            [1423] => Array
+			                                (
+			                                    [尺码] => M
+			                                    [颜色分类] => 黑色
+			                                    [sid] => 1423
+			                                    [price] => 132.00
+			                                    [stock] => 325
+			                                )
+
+			                            [351] => Array
+			                                (
+			                                    [颜色分类] => 天蓝色
+			                                    [套餐] => M
+			                                    [尺码] => XS
+			                                    [sid] => 351
+			                                    [price] => 299.00
+			                                    [stock] => 100
+			                                )
+
+			                            [352] => Array
+			                                (
+			                                    [颜色分类] => 天蓝色
+			                                    [套餐] => L
+			                                    [尺码] => XS
+			                                    [sid] => 352
+			                                    [price] => 299.00
+			                                    [stock] => 99
+			                                )
+
+			                            [353] => Array
+			                                (
+			                                    [颜色分类] => 天蓝色
+			                                    [套餐] => XL
+			                                    [尺码] => XS
+			                                    [sid] => 353
+			                                    [price] => 299.00
+			                                    [stock] => 100
+			                                )
+
+			                        )
+
+			                    [shop] => Array
+			                        (
+			                            [userid] => 24
+			                            [company] => 我的小店
+			                            [logo] => http://democn.mall-builder.com/uploadfile/shop/24/2014/05/05/1399283757.jpg
+			                            [tel] => 3251545
+			                        )
+
+			                    [rest] => 0
+			                )
+
+			        )
+
+			)
+
+	商品图文详情
+	商品搜索 - 朱羽婷
+			请求地址
+				api.php?ctl=Goods&met=getListByKey&typ=json
+			请求参数
+				keyword: 搜索词
+				order：排序方式 默认price   price（价格） sales（价格） clicks（人气） goodbad（信用）
+				page
+				rows
+				shop_id:店铺id
+			返回数据
+				{
+					"page":"当前页数"
+					"total":"总记录数"
+					"totalsize":"总页数"
+					"records":"本页记录数"
+
+					"items":{
+							"0": {
+								"id": "2432",
+								"member_id": "349",
+								"member_name": "taiyanghua@163.com",
+								"catid": "10010406",
+								"type": "0",
+								"name": "\u52a8\u611f\u5355\u8f66\u5bb6\u7528\u8d85\u9759\u97f3\u5ba4\u5185\u78c1\u63a7\u8f66\u811a\u8e0f\u84dd\u5821\u5065\u8eab\u5668\u6750\u8fd0\u52a8\u81ea\u884c\u8f66\u5065\u8eab\u8f66",
+								"subhead": "\u3010\u5168\u5bb6\u9002\u7528\u3011 \u53ef\u6298\u53e0\u8d85\u9759 \u5065\u8eab\u63d0\u81c0\u5851\u5f62 \uff01\uff01\uff01",
+								"keywords": "",
+								"brand": "Fairwhale\/\u9a6c\u514b\u534e\u83f2",
+								"market_price": "599.00",
+								"price": "499.00",
+								"stock": "3262",
+								"sales": "0",
+								"code": "",
+								"con": null,
+								"pic": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg",
+								"pic_more": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg,http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847819.jpg",
+								"start_time_type": "1",
+								"start_time": "0",
+								"valid_time": "2",
+								"weight": "0.00",
+								"cubage": "0.00",
+								"freight_id": "23",
+								"freight_type": "1",
+								"post_price": "0.00",
+								"express_price": "0.00",
+								"ems_price": "0.00",
+								"province_id": "9",
+								"city_id": "145",
+								"area_id": "1824",
+								"street_id": "0",
+								"area": "\u4e0a\u6d77\u5e02 \u5f90\u6c47\u533a \u5929\u5e73\u8def\u8857\u9053",
+								"clicks": "486",
+								"rank": "0",
+								"uptime": "1441865141",
+								"status": "1",
+								"is_shelves": "1",
+								"custom_cat_id": "0",
+								"promotion_id": "0",
+								"goodbad": "0",
+								"shop_rec": "1",
+								"is_invoice": "true",
+								"is_tg": "false",
+								"is_virtual": "0",
+								"is_dist": "0",
+								"down_reason": "",
+								"district": ["\u4e0a\u6d77\u5e02", "\u5f90\u6c47\u533a", "\u5929\u5e73\u8def\u8857\u9053"],
+								"detail": "商品详情html描述"
+							},
+							......
+					}
+
+				}
+
+	商品搜索关键词 - 黄新泽
+			请求地址
+				api.php?ctl=Goods&met=getSearchWords&typ=json
+			请求参数
+				sort：排序方式 默认nums DESC
+				page:当前显示页数,默认从1开始
+				rows:分页一页显示记录数
+			返回数据
+				{
+					"page":"当前页数"
+					"total":"总记录数"
+					"totalsize":"总页数"
+					"records":"本页记录数"
+					"items":[
+						"keyword":"关键字",
+						"nums":"查询次数"
+							......
+					]
+
+				}
+
+	店铺商品 - 朱羽婷
+			请求地址
+				api.php?ctl=Shop&met=getGoodsListByStatus&typ=json
+			请求参数
+				uid    : 开店用户id
+				status :商品状态 1-新上架 2-热销 空-所有商品
+				page
+				rows
+			返回数据
+				{
+					"page":"当前页数"
+					"total_all":"所有商品个数"
+					"total_new":"新上架商品个数"
+					"total_hot":"热销商品个数"
+					"totalsize":"总页数"
+					"records":"本页记录数"
+					"items":{
+							"0": {
+								"id": "2432",
+								"member_id": "349",
+								"member_name": "taiyanghua@163.com",
+								"catid": "10010406",
+								"type": "0",
+								"name": "\u52a8\u611f\u5355\u8f66\u5bb6\u7528\u8d85\u9759\u97f3\u5ba4\u5185\u78c1\u63a7\u8f66\u811a\u8e0f\u84dd\u5821\u5065\u8eab\u5668\u6750\u8fd0\u52a8\u81ea\u884c\u8f66\u5065\u8eab\u8f66",
+								"subhead": "\u3010\u5168\u5bb6\u9002\u7528\u3011 \u53ef\u6298\u53e0\u8d85\u9759 \u5065\u8eab\u63d0\u81c0\u5851\u5f62 \uff01\uff01\uff01",
+								"keywords": "",
+								"brand": "Fairwhale\/\u9a6c\u514b\u534e\u83f2",
+								"market_price": "599.00",
+								"price": "499.00",
+								"stock": "3262",
+								"sales": "0",
+								"code": "",
+								"con": null,
+								"pic": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg",
+								"pic_more": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg,http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847819.jpg",
+								"start_time_type": "1",
+								"start_time": "0",
+								"valid_time": "2",
+								"weight": "0.00",
+								"cubage": "0.00",
+								"freight_id": "23",
+								"freight_type": "1",
+								"post_price": "0.00",
+								"express_price": "0.00",
+								"ems_price": "0.00",
+								"province_id": "9",
+								"city_id": "145",
+								"area_id": "1824",
+								"street_id": "0",
+								"area": "\u4e0a\u6d77\u5e02 \u5f90\u6c47\u533a \u5929\u5e73\u8def\u8857\u9053",
+								"clicks": "486",
+								"rank": "0",
+								"uptime": "1441865141",
+								"status": "1",
+								"is_shelves": "1",
+								"custom_cat_id": "0",
+								"promotion_id": "0",
+								"goodbad": "0",
+								"shop_rec": "1",
+								"is_invoice": "true",
+								"is_tg": "false",
+								"is_virtual": "0",
+								"is_dist": "0",
+								"down_reason": "",
+								"district": ["\u4e0a\u6d77\u5e02", "\u5f90\u6c47\u533a", "\u5929\u5e73\u8def\u8857\u9053"],
+								"detail": "商品详情html描述"
+							},
+							......
+					}
+
+				}
+
+	首页推荐商品 - 朱羽婷
+		    请求地址
+				api.php?ctl=Goods&met=getListByProid&typ=json
+			请求参数
+				proid    : 查找条件 疯狂抢购(newpro)，热卖产品(hotpro)，新品上架商品列表
+				page
+				rows
+			返回数据
+				{
+					"page":"当前页数"
+					"total":"总记录数"
+					"totalsize":"总页数"
+					"records":"本页记录数"
+					"items":{
+							"0": {
+								"id": "2432",
+								"member_id": "349",
+								"member_name": "taiyanghua@163.com",
+								"catid": "10010406",
+								"type": "0",
+								"name": "\u52a8\u611f\u5355\u8f66\u5bb6\u7528\u8d85\u9759\u97f3\u5ba4\u5185\u78c1\u63a7\u8f66\u811a\u8e0f\u84dd\u5821\u5065\u8eab\u5668\u6750\u8fd0\u52a8\u81ea\u884c\u8f66\u5065\u8eab\u8f66",
+								"subhead": "\u3010\u5168\u5bb6\u9002\u7528\u3011 \u53ef\u6298\u53e0\u8d85\u9759 \u5065\u8eab\u63d0\u81c0\u5851\u5f62 \uff01\uff01\uff01",
+								"keywords": "",
+								"brand": "Fairwhale\/\u9a6c\u514b\u534e\u83f2",
+								"market_price": "599.00",
+								"price": "499.00",
+								"stock": "3262",
+								"sales": "0",
+								"code": "",
+								"con": null,
+								"pic": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg",
+								"pic_more": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg,http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847819.jpg",
+								"start_time_type": "1",
+								"start_time": "0",
+								"valid_time": "2",
+								"weight": "0.00",
+								"cubage": "0.00",
+								"freight_id": "23",
+								"freight_type": "1",
+								"post_price": "0.00",
+								"express_price": "0.00",
+								"ems_price": "0.00",
+								"province_id": "9",
+								"city_id": "145",
+								"area_id": "1824",
+								"street_id": "0",
+								"area": "\u4e0a\u6d77\u5e02 \u5f90\u6c47\u533a \u5929\u5e73\u8def\u8857\u9053",
+								"clicks": "486",
+								"rank": "0",
+								"uptime": "1441865141",
+								"status": "1",
+								"is_shelves": "1",
+								"custom_cat_id": "0",
+								"promotion_id": "0",
+								"goodbad": "0",
+								"shop_rec": "1",
+								"is_invoice": "true",
+								"is_tg": "false",
+								"is_virtual": "0",
+								"is_dist": "0",
+								"down_reason": "",
+								"district": ["\u4e0a\u6d77\u5e02", "\u5f90\u6c47\u533a", "\u5929\u5e73\u8def\u8857\u9053"],
+								"detail": "商品详情html描述"
+							},
+							......
+					}
+
+				}
+	根据分类读取商品 - 朱羽婷
+			请求地址
+				api.php?ctl=Goods&met=getListByCatid&typ=json
+			请求参数
+				catid    : 分类id
+				order    : 排序方式 默认price   price（价格） sales（价格） clicks（人气） goodbad（信用）
+				page
+				rows
+			返回数据
+				{
+					"page":"当前页数"
+					"total":"总记录数"
+					"totalsize":"总页数"
+					"records":"本页记录数"
+					"items":{
+							"0": {
+								"id": "2432",
+								"member_id": "349",
+								"member_name": "taiyanghua@163.com",
+								"catid": "10010406",
+								"type": "0",
+								"name": "\u52a8\u611f\u5355\u8f66\u5bb6\u7528\u8d85\u9759\u97f3\u5ba4\u5185\u78c1\u63a7\u8f66\u811a\u8e0f\u84dd\u5821\u5065\u8eab\u5668\u6750\u8fd0\u52a8\u81ea\u884c\u8f66\u5065\u8eab\u8f66",
+								"subhead": "\u3010\u5168\u5bb6\u9002\u7528\u3011 \u53ef\u6298\u53e0\u8d85\u9759 \u5065\u8eab\u63d0\u81c0\u5851\u5f62 \uff01\uff01\uff01",
+								"keywords": "",
+								"brand": "Fairwhale\/\u9a6c\u514b\u534e\u83f2",
+								"market_price": "599.00",
+								"price": "499.00",
+								"stock": "3262",
+								"sales": "0",
+								"code": "",
+								"con": null,
+								"pic": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg",
+								"pic_more": "http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847778.jpg,http:\/\/www.mallbuilder.cn\/uploadfile\/product\/349\/2015\/09\/10\/1441847819.jpg",
+								"start_time_type": "1",
+								"start_time": "0",
+								"valid_time": "2",
+								"weight": "0.00",
+								"cubage": "0.00",
+								"freight_id": "23",
+								"freight_type": "1",
+								"post_price": "0.00",
+								"express_price": "0.00",
+								"ems_price": "0.00",
+								"province_id": "9",
+								"city_id": "145",
+								"area_id": "1824",
+								"street_id": "0",
+								"area": "\u4e0a\u6d77\u5e02 \u5f90\u6c47\u533a \u5929\u5e73\u8def\u8857\u9053",
+								"clicks": "486",
+								"rank": "0",
+								"uptime": "1441865141",
+								"status": "1",
+								"is_shelves": "1",
+								"custom_cat_id": "0",
+								"promotion_id": "0",
+								"goodbad": "0",
+								"shop_rec": "1",
+								"is_invoice": "true",
+								"is_tg": "false",
+								"is_virtual": "0",
+								"is_dist": "0",
+								"down_reason": "",
+								"district": ["\u4e0a\u6d77\u5e02", "\u5f90\u6c47\u533a", "\u5929\u5e73\u8def\u8857\u9053"],
+								"detail": "商品详情html描述"
+							},
+							......
+					}
+
+				}
+
+	商品评价接口 - 朱羽婷
+		请求地址
+				api.php?ctl=Goods&met=addComment&typ=json
+			请求参数：
+				{
+					"order_id":"111111111111",   订单号；
+					"g0":"-1"  订单中第一件商品的评价(1-好评 0-中评 -1-差评)
+					"comment_text0":"string"  订单中第一件商品的文字评价
+					"g1":"-1"  订单中第二件商品的评价(1-好评 0-中评 -1-差评)
+					"comment_text1":"string"  订单中第二件商品的文字评价
+					·
+					·
+					·
+					"snuma":"3"  商品与描述相符（1最差 5最好）
+					"snumb":"3"  卖家的服务态度（1最差 5最好）
+					"snumc":"3"  卖家的发货速度（1最差 5最好）
+					"snumd":"3"  物流发货的速度（1最差 5最好）
+				}
+			返回参数：
+			{
+			}
+
+
+	店铺推荐商品列表 - 朱羽婷
+		请求地址
+			api.php?ctl=Shop&met=getGoodsListByRec&typ=json
+		请求参数：
+			uid: 卖家id
+			page：
+			rows
+		返回参数
+			{
+			[page] => 1
+            [total] => 7
+            [totalsize] => 3
+            [records] => 3
+            [items] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => 572
+                            [member_id] => 24
+                            [member_name] => jackyang
+                            [catid] => 10050301
+                            [type] => 0
+                            [name] => 秋鹿梦伴纯棉短袖睡衣女人家居服套装夏季2014新款卡通可爱休闲
+                            [subhead] => 
+                            [keywords] => 睡衣、家居服
+                            [brand] => 浪莎
+                            [market_price] => 86.00
+                            [price] => 66.00
+                            [stock] => 13
+                            [sales] => 0
+                            [code] => 545798
+                            [con] => 
+                            [pic] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407295995.jpg
+                            [pic_more] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407295995.jpg
+                            [start_time_type] => 1
+                            [start_time] => 0
+                            [valid_time] => 2
+                            [weight] => 
+                            [cubage] => 
+                            [freight_id] => 28
+                            [freight_type] => 2
+                            [post_price] => 0.00
+                            [express_price] => 0.00
+                            [ems_price] => 0.00
+                            [province_id] => 9
+                            [city_id] => 144
+                            [area_id] => 0
+                            [street_id] => 1819
+                            [area] => 上海市 卢湾区 打浦桥街道
+                            [clicks] => 485
+                            [rank] => 0
+                            [uptime] => 1448431044
+                            [status] => 1
+                            [is_shelves] => 1
+                            [custom_cat_id] => 0
+                            [promotion_id] => 1
+                            [goodbad] => 2
+                            [shop_rec] => 1
+                            [is_invoice] => true
+                            [is_tg] => false
+                            [is_virtual] => 0
+                            [is_dist] => 0
+                            [down_reason] => 
+                        )
+
+                    [1] => Array
+                        (
+                            [id] => 577
+                            [member_id] => 24
+                            [member_name] => jackyang
+                            [catid] => 10050301
+                            [type] => 0
+                            [name] => 润微 若如初见 3号杯 唯美印花舒适女士超聚拢无钢圈文胸无痕内衣
+                            [subhead] => 
+                            [keywords] => 文胸、内衣
+                            [brand] => K-boxing/劲霸
+                            [market_price] => 0.00
+                            [price] => 88.00
+                            [stock] => 56
+                            [sales] => 0
+                            [code] => 
+                            [con] => 
+                            [pic] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296354.jpg
+                            [pic_more] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296354.jpg,http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296321.jpg,http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296327.jpg,http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296332.jpg,http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296360.jpg
+                            [start_time_type] => 1
+                            [start_time] => 0
+                            [valid_time] => 2
+                            [weight] => 
+                            [cubage] => 
+                            [freight_id] => 28
+                            [freight_type] => 0
+                            [post_price] => 0.00
+                            [express_price] => 0.00
+                            [ems_price] => 0.00
+                            [province_id] => 9
+                            [city_id] => 144
+                            [area_id] => 0
+                            [street_id] => 1819
+                            [area] => 上海市 卢湾区 打浦桥街道
+                            [clicks] => 407
+                            [rank] => 0
+                            [uptime] => 1407296398
+                            [status] => 1
+                            [is_shelves] => 1
+                            [custom_cat_id] => 0
+                            [promotion_id] => 1
+                            [goodbad] => 0
+                            [shop_rec] => 1
+                            [is_invoice] => true
+                            [is_tg] => false
+                            [is_virtual] => 0
+                            [is_dist] => 0
+                            [down_reason] => 
+                        )
+
+                    [2] => Array
+                        (
+                            [id] => 576
+                            [member_id] => 24
+                            [member_name] => jackyang
+                            [catid] => 10050303
+                            [type] => 0
+                            [name] => 润微 蔚蓝花瓣 5号杯 奢华收副乳女士调整型文胸聚拢厚小胸内衣
+                            [subhead] => 
+                            [keywords] => 内衣、文胸
+                            [brand] => K-boxing/劲霸
+                            [market_price] => 0.00
+                            [price] => 99.00
+                            [stock] => 13
+                            [sales] => 1
+                            [code] => 25435498
+                            [con] => 
+                            [pic] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296221.jpg
+                            [pic_more] => http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296221.jpg,http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296239.jpg,http://democn.mall-builder.com/uploadfile/product/24/2014/08/06/1407296245.jpg
+                            [start_time_type] => 1
+                            [start_time] => 0
+                            [valid_time] => 2
+                            [weight] => 
+                            [cubage] => 
+                            [freight_id] => 28
+                            [freight_type] => 0
+                            [post_price] => 0.00
+                            [express_price] => 0.00
+                            [ems_price] => 0.00
+                            [province_id] => 9
+                            [city_id] => 144
+                            [area_id] => 0
+                            [street_id] => 1819
+                            [area] => 上海市 卢湾区 打浦桥街道
+                            [clicks] => 468
+                            [rank] => 0
+                            [uptime] => 1407296266
+                            [status] => 1
+                            [is_shelves] => 1
+                            [custom_cat_id] => 0
+                            [promotion_id] => 1
+                            [goodbad] => 0
+                            [shop_rec] => 1
+                            [is_invoice] => false
+                            [is_tg] => false
+                            [is_virtual] => 0
+                            [is_dist] => 0
+                            [down_reason] => 
+                        )
+
+                )
+			}
+
+	*收藏商品查询 - 王江涛
+		请求地址
+			api.php?ctl=GoodsFavorites&met=get&typ=json
+		请求参数：
+			{
+				"page":"1",   第几页；
+				"lenght":"5"  显示几条
+			}
+		返回参数： 
+			{
+				"data" {
+					"id": "主键",
+					"pid": "商品详情主键",
+					"uname": "用户名",
+					"addtime": "关注时间",
+					"pname": "商品名称",
+					"image": "图片地址",
+					"price": "价格"
+				},
+			}
+	*收藏商品添加
+		请求地址
+			api.php?ctl=GoodsFavorites&met=add&typ=json
+		请求参数
+			{				
+				"user_name": "用户名称"
+				"goods_id": "商品id"
+				"shop_id": "商品所属门店id"
+			}
+		返回参数：
+		 
+	*收藏商品 取消关注
+		请求地址
+			api.php?ctl=GoodsFavorites&met=remove&typ=json
+		请求参数
+			{
+				"id" : "商品主键id"				//=>1关注列表里面的商品主键id，2商品详情页面里传'调用是否关注接口'返回的collect_id
+			}
+		返回参数
+	*收藏商品人数 - 王江涛
+		请求地址
+			api.php?ctl=GoodsFavorites&met=getShareNum&typ=json
+		请求参数：
+			{
+				"pid": "商品id"
+			}
+		返回参数
+			{
+				"data":
+					{"count":7}
+			}
+	*收藏商品-是否收藏 - 王江涛
+		请求地址
+			api.php?ctl=GoodsFavorites&met=isCollect&typ=json
+		请求参数：
+			{
+				"id":"1"  商品详情获取到的 pid
+			}
+		返回参数： 
+			{
+			  "cmd_id": -140,
+			  "status": 200,
+			  "msg": "success",
+			  "data": {
+			    "collect_id": [					
+			      "12"
+			    ]
+			  }
+			}
+	*用户收藏商品数量  - 王江涛
+		请求地址
+			api.php?ctl=GoodsFavorites&met=getUserShareNum&typ=json
+		请求参数：
+			{
+			}
+		返回参数： 
+			{
+				{"count":7}
+			}
+	*收藏店铺查询接口 - 王江涛
+		请求地址
+			api.php?ctl=ShopFavorites&met=get&typ=json
+		请求参数：
+			{
+				"page":"1",   第几页；
+				"lenght":"5"  显示几条
+			}
+		返回参数： 
+			{
+				"id": "主键",
+				"shopid": "门店id",
+				"shopname": "门店名称",
+				"addtime": "添加时间",
+				"picshop": "图片地址",
+				"collect": "关注数"
+			}
+
+	*收藏店铺添加 - 王江涛
+		请求地址
+			api.php?ctl=ShopFavorites&met=add&typ=json
+		请求参数
+			{
+				"shop_id": "门店id",
+				"user_name": "用户名"
+			}
+		返回参数
+			{
+			
+			}		
+	*收藏店铺删除 - 王江涛
+		请求地址
+			api.php?ctl=ShopFavorites&met=remove&typ=json
+		请求参数：
+			{
+					"id": "主键"
+			}
+		返回参数
+			{
+			
+			}
+	*收藏店铺人数 - 王江涛
+		请求地址
+			api.php?ctl=ShopFavorites&met=getShareNum&typ=json
+		请求参数：
+			{
+				"shop_id": "门店id"
+			}
+		返回参数
+			{
+			}
+	*收藏店铺 是否收藏 - 王江涛
+		请求地址
+			api.php?ctl=ShopFavorites&met=isCollect&typ=json
+		请求参数：
+			{
+				"shop_id":"1"  店铺id
+			}
+		返回参数： 
+			{
+			}
+	*用户收藏商品数量  - 王江涛
+		请求地址
+			api.php?ctl=ShopFavorites&met=getUserShareNum&typ=json
+		请求参数：
+			{
+			}
+		返回参数： 
+			{
+				{"count":7}
+			}
+分类页面接口
+
+	一级分类接口 - 黄新泽
+	二级分类接口
+	三级分类接口
+		请求地址
+			api.php?ctl=Category&met=getItem&typ=json
+		请求参数
+			pid:父类id, 第一级别pid=0
+			flag:是否返回子类数据 default 0:不返回  1=>返回
+		返回数据
+			{
+				"100001": {
+					"catid": "100001",
+                    "cat": "\u7535\u5b50\u4e66",
+                    "title": null,
+                    "keyword": null,
+                    "description": null,
+                    "nums": "255",
+                    "isindex": "0",
+                    "char_index": null,
+                    "all_char": null,
+                    "pic": "",
+                    "brand": "55,82,10",
+                    "rec_nums": "0",
+                    "isbuy": "0",
+                    "ext_table": "mallbuilder_defind_2",
+                    "ext_field_cat": "2",
+                    "is_setmeal": "0",
+                    "commission": "0",
+                    "current": "",
+                    "templates": "",
+                    "month": "",
+                    "isvirtual": "0",
+					sub_cat":"子分类数据"
+				},
+				.....
+			}
+
+
+
+	array
+	id:主键值
+	id:主键值    :数量
+
+
+购物车
+	购物车列表 - 朱羽婷
+		请求地址
+			api.php?ctl=Trade&met=cartList&typ=json
+		请求参数：
+
+		返回参数：
+			{
+				"data" {
+					"cart" {
+						"349" {
+							"id":"3604",
+							"buyer_id":"1",
+							"product_id":"516",
+							"seller_id]":"349",
+                            [price] => 0.00
+                            [quantity] => 0
+                            [create_time] => 1447147136
+                            [spec_id] => 0
+                            [is_tg] => 
+                            [discounts] => 0.0
+                            [dist_user_id] => 0
+                            [cartid] => 3604,3605,3606
+                            [company] => 太阳花
+                            [sumprice] => 7596
+                            [voucher] => Array
+                                (
+                                )
+
+                            [mail] => 0
+                            [ems] => 0
+                            [express] => 10
+                            [is_invoice] => 0
+                            [prolist] => Array
+                                (
+                                    [3606] => Array
+                                        (
+                                            [id] => 3606
+                                            [buyer_id] => 1
+                                            [product_id] => 516
+                                            [seller_id] => 349
+                                            [price] => 1899.00
+                                            [quantity] => 4
+                                            [create_time] => 1447147388
+                                            [spec_id] => 0
+                                            [is_tg] => 
+                                            [discounts] => 0.0
+                                            [dist_user_id] => 0
+                                            [sumprice] => 7596
+                                            [num] => 4
+                                            [weight] => 0.00
+                                            [cubage] => 0.00
+                                            [subhead] => 
+                                            [brand] => Nike/耐克
+                                            [type] => 0
+                                            [is_shelves] => 1
+                                            [status] => 1
+                                            [market_price] => 0.00
+                                            [pname] => 菊花制冷空调扇单冷冷风扇冷风机 水冷空调家用冷气扇 定时遥控
+                                            [pic] => http://democn.mall-builder.com/uploadfile/product/349/2014/07/28/1406515696.jpg
+                                            [catid] => 10010102
+                                            [pid] => 516
+                                            [freight] => 23
+                                            [freight_type] => 1
+                                            [setmealname] => 
+                                            [spec_name] => 
+                                            [stock] => 201
+                                        )
+						}
+					}
+				},
+			}
+	购物车添加 - 朱羽婷
+		请求地址
+			api.php?ctl=Trade&met=cartAdd&typ=json
+		请求参数：
+			{
+				"pid":"商品id",
+				"quantity":"数量"
+				"sid":"规格id"
+			}
+		返回参数：
+			{
+			}
+
+
+	批量添加购物车 - 朱羽婷
+		请求地址
+			api.php?ctl=Trade&met=cartAdd&typ=json
+		请求参数：
+			{
+				"pid":"商品id",
+				"quantity":"数量"
+				"sid":"规格id"
+			}
+		返回参数：
+			{
+				[649] => Array
+	                (
+	                    [res] => 购买商品不存在或者已经下架
+	                    [msg] => failure
+	                    [status] => 250
+	                )
+
+	            [572] => Array
+	                (
+	                    [res] => 商品已成功加入购物车
+	                    [msg] => success
+	                    [status] => 200
+	                )
+
+	            [1330] => Array
+	                (
+	                    [res] => 商品已成功加入购物车
+	                    [msg] => success
+	                    [status] => 200
+	                )
+
+			}
+	购物车删除
+		请求地址
+			api.php?ctl=Trade&met=cartRemove&typ=json
+		请求参数：
+			{
+				"id":"主键值"
+			}
+		返回参数：
+			{
+				"data" {
+					"id": "主键",
+					"pid": "商品详情主键",
+					"uname": "用户名",
+					"addtime": "关注时间",
+					"pname": "商品名称",
+					"image": "图片地址",
+					"price": "价格"
+				},
+			}
+	购物车数量修改
+		请求地址
+			api.php?ctl=Trade&met=cartEdit&typ=json
+		请求参数：
+			{
+				"id":"购物车id"
+				"quantity":"数量"
+				"act":"操作"  1-> '+'  2-> '-' 空->直接将购物车数量修改为传递数量 
+			}
+		返回参数：
+			{
+			}
+	发票列表
+	发票添加
+	发票删除
+	发票内容列表
+	更换收货地址
+	可用支付方式列表 --王江涛
+		请求地址
+			api.php?ctl=PayMethod&met=getTypeList&typ=json
+		请求参数
+			{
+				"page":"1",   第几页；
+				"lenght":"count"
+					{
+						"count">0  显示第几页的几条
+					}"  "count"<=0 显示所有
+			}
+		返回参数
+			{
+				["payment_id"]=>     string(1) "1"        //主键
+			      ["payment_type"]=> string(7) "account"	//类型
+			      ["payment_name"]=> 	string(15) "预存款支付"		//名称
+			      ["payment_commission"]=>    string(0) ""		//手续费
+			      ["payment_desc"]=>      string(15) "预存款支付"	//描述
+			      ["payment_config"]=>     string(0) ""	//配置
+			      ["active"]=>      string(1) "1"	//是否启用
+			      ["nums"]=>     string(1) "0"	//排序
+			}
+	支付
+	代金券
+
+我的
+	获取地址详情
+
+	地址列表	- 王江涛
+		请求地址
+			api.php?ctl=UserAddress&met=getList&typ=json
+		请求参数
+			{
+				"page":"1",   第几页；
+				"lenght":"count"
+				{
+					"count">0  显示第几页的几条
+				  	"count"<=0 显示所有该用户的数据
+				}
+				isdefault="1" 添加该参数=1只查询默认地址,不传值获取所有该用户地址列表
+			}
+		返回参数
+			{
+				id":"1",
+				"userid":"1",
+				"name":"\u6d4b\u8bd5",
+				"provinceid":"15",			
+				"cityid":"223","areaid":"0"
+				,"area":"\u5c71\u4e1c\u7701 \u6d4e\u5357\u5e02",
+				"address":"\u5c71\u4e1c\u6d4e\u5357\u5e02\u5386\u4e0b\u533a\u5c71\u5927\u8def178\u53f7",
+				"zip":"250000",
+				"tel":"15666660070",
+				"mobile":"15666660070",
+				"default":"2"
+			}
+
+	删除地址	- 王江涛
+		请求地址
+				api.php?ctl=UserAddress&met=remove&typ=json
+		请求参数
+			{
+				"id":"1"    //=> 要删除的 地址 主键id
+			}
+
+		返回参数
+			{
+			}
+	添加地址	- 王江涛
+		请求地址
+				api.php?ctl=UserAddress&met=add&typ=json
+		请求参数
+			{
+				array:
+				{
+					"userid": "",
+					"name": "",
+					"provinceid": "",
+					"cityid": "",
+					"areaid": "",
+					"area": "",
+					"address": "",
+					"zip": "",
+					"tel": "",
+					"mobile": ""
+				}				
+			}
+
+		返回参数
+			{
+			}
+	编辑地址	-王江涛
+		请求地址
+				api.php?ctl=UserAddress&met=edit&typ=json
+		请求参数
+			{
+				"id":"1"    //=> 要编辑的 地址 主键id				
+				array:
+				{
+					"userid": "",
+					"name": "",
+					"provinceid": "",
+					"cityid": "",
+					"areaid": "",
+					"area": "",
+					"address": "",
+					"zip": "",
+					"tel": "",
+					"mobile": ""
+				}				
+			}
+
+		返回参数
+			{
+			}
+	编辑默认地址	-王江涛
+		请求地址
+				api.php?ctl=UserAddress&met=setDefaultAddr&typ=json
+		请求参数
+			{
+				"id":"1"    //=> 地址 主键id								
+			}
+
+		返回参数
+			{
+				0/1
+			}
+6.8地区列表 - 吴东焕
+	求情地址：api.php?ctl=District&met=get&typ=json
+	请求参数：pid
+6.9收藏列表
+6.10订单列表 - 朱羽婷
+	请求地址：
+			api.php?ctl=Trade&met=orderList&typ=json
+	请求参数：
+			status  :订单状态 '-1'=>'已删除','0'=>'交易关闭(取消的订单)','1'=>'等待买家付款','2'=>'买家已付款','3'=>'卖家已发货','4'=>'交易成功','5'=>'退货中的订单','6'=>'退货成功','10'=>'待评价'（在获取待评价订单的时候，必须同时输入rate）,'21'=>'所有的订单'
+			page
+			rows
+			rate   ：待评价状态  '1'=>'买家未评价，卖家未评价','2'=>'买家评价，卖家未评价','3'=>'买家未评价，卖家评价','4'=>'买家评价，卖家评价'
+
+			name  ：订单商品数据
+	返回参数
+		{
+			"page":"当前页数"
+			"total":"总记录数"
+			"totalsize":"总页数"
+			"records":"本页记录数"
+			"items":{
+					"0": {
+				        "id": "5291",							'ID'
+				        "userid": "1",        					'会员ID'
+						"order_id": "201510220236165",			'订单ID'
+						"out_trade_no": "",							
+						"buyer_id": "0",						'买家ID'
+						"seller_id":"0",						'卖家ID'
+						"consignee": sfh 						'收货人姓名'
+                        "consignee_address" :"辽宁省 抚顺市 清原满族自治县 gsdfgs",		'收货人地址'
+                        "consignee_tel ":"",					'收货人电话'
+                        "consignee_mobile":"18805763442",		'收货人手机号'
+                        "product_price":"299.00", 				'订购价格'
+                        "logistics_type":"快递",				'物流类型'
+                        "logistics_price":"0",					'快递费'
+                        "logistics_name":"", 					'物流公司名称'
+                        "invoice_no":"",						'物流发货单号'
+                        "invoice_title":"",						'发表抬头'
+                        "payment_name":"",						'支付名称'
+                        "status":"",							'订单状态'
+                        "return_status":"0",					'退货/退货状态'
+                        "buyer_comment":"0", 					'卖家是否评论'
+                        "seller_comment":"0",					'买家是否评论'
+                        "des":"",								'备注'
+                        "create_time":"1445495776",				'下订单时间'
+                        "payment_time":"",						'支付时间'
+                        "deliver_time":"",						'配送时间'
+                        "uptime":"1445616084",					'更新时间'
+                        "time_expand":"10",						'延长时间'
+                        "voucher_price":"0.00",					'优惠价格计算'
+                        "discounts":"0.0",						'会员折扣'
+                        "is_virtual" :"0",						'是否为虚拟商品  1是， 0不是 ，默认0'
+                        "dist_user_id":"0",						'分销者ID'
+                        "is_line":"0",							'是否是线下订单'
+                        "deduction":"0.00",						'优惠金额'
+                        "product":{
+								"2915":{
+										"id":"2915",						'ID'
+                                        "order_id":"201510220236165",		'订单ID'
+                                        "buyer_id":"1",						'买家ID'
+                                        "pid":"578",						'商品ID'
+                                        "pcatid":"10050101",
+                                        "name":"AngelFeel欧洲站2014春夏装新款剪纸印花圆领修身显瘦短袖连衣裙",								'产品名'
+                                        "pic":"http://democn.mall-builder.	com/uploadfile/product/4/2014/08/06/1407298973.jpg", '产品图片'
+                                        "price":"299.00",					'价格'
+                                        "num":"1",							'数量'
+                                        "time":"1445495776",				'创建时间'
+                                        "setmeal":"0",						'套餐'
+                                        "status":"-1",						'订单状态  -1交易关闭，0未付款，1未发货，2已发货，3已确认收货，4退款中，5退款成功'
+                                        "freight":"0.00",					'运费'
+                                        "is_tg":"false",					'团购'
+                                        "spec_value":"",					'商品规格属性值'
+                                        "spec_name":"",						'商品规格属性名称'
+                                        "reason":"",						'订单取消的原因'
+                                        "discountRate":"0.00",				'折扣率'
+                                        "deduction":"0.00",					'折扣额'
+                                        "amount":"0.00",					'折扣后金额'
+                                        "taxRate":"0.00",					'税率'
+                                        "tax":"0.00",						'税额'
+                                        "taxAmount":"0.00",					'价税合计'
+                                        "des":"",							'描述'
+                                        "is_offline":"0"					'0线上单，1线下单'
+                                        "spec": {							'规格属性'
+								              "颜色:红色",
+								              "品牌:迪奥",
+								              "版本类型:内地版",
+								              "机身内存:32G",
+								              "套餐:套餐三"
+								            },
+								        "is_invoice":"false"				'是否开发票 true 开 ，false 不开'
+								},
+								......
+							}
+
+                        },
+						......
+
+		}
+		
+	6.11订单取消（未付款）- 朱羽婷
+			请求地址：
+				api.php?ctl=Trade&met=orderCancel&typ=json
+			请求参数：
+					id         :订单号
+					state_info :退货理由
+			返回参数
+				{
+				}
+	6.12 订单确认 - 朱羽婷
+			请求地址：
+				api.php?ctl=Trade&met=orderAdd&typ=json
+			请求参数：
+					consignee_id    :收货地址id
+					pid_row 		:商品id数组(订单商品id)
+					logistics_type_.卖家id : 物流方式
+					logistics_price_.卖家id：物流价格
+					invoice_.卖家id : 有无发票 0无  大于0有发票
+					invoice_title_.卖家id : 发票抬头
+					msg_.卖家id： 留言
+					voucher_.卖家id：代金券id
+			返回参数
+				{
+					"message":'订单提交成功'
+				}
+
+
+	订单查询 - 朱羽婷
+		请求地址：
+			api.php?ctl=Trade&met=OrderRefund&typ=json
+		请求参数：
+			orderid ：订单id
+		    proid:订单商品id
+			reason:退款原因
+			pic:上传凭证(图片)
+		返回参数：
+
+
+	申请退款/退货 - 朱羽婷
+		请求地址：
+			api.php?ctl=Trade&met=OrderRefund&typ=json
+		请求参数：
+			orderid ：订单id
+		    proid:订单商品id
+			reason:退款原因
+			pic:上传凭证(图片)
+		返回参数：
+
+				
+	删除订单 - 朱羽婷
+		请求地址：
+				api.php?ctl=Trade&met=orderDelete&typ=json
+			请求参数：
+					id    :订单号
+			返回参数
+				{
+					"message":'订单删除成功'
+				}
+
+	支付成功后修改订单状态与库存商品 - 朱羽婷
+		请求地址：
+				api.php?ctl=Trade&met=editOrderStatus&typ=json
+			请求参数：
+				order_id       :订单id
+		        payment_name   : 支付方式
+			返回参数
+				{
+				}
+
+	确认收货 - 朱羽婷
+			请求地址
+				api.php?ctl=Trade&met=orderFirm&typ=json
+			请求参数
+				id: 订单号
+			返回参数
+				{
+				}
+	6.13订单物流流转信息
+			请求地址
+				api.php?ctl=Logistics&met=status&typ=json
+			请求参数：
+				{
+					"com":"物流公司名称",
+					"nu":"运单号"
+				}
+			返回参数：
+				{
+					//参见快递100
+					com	物流公司编号
+                    nu	物流单号
+                    time	每条跟踪信息的时间
+                    context	每条跟综信息的描述
+                    state	快递单当前的状态 ：　
+	                    0：在途，即货物处于运输过程中；
+	                    1：揽件，货物已由快递公司揽收并且产生了第一条跟踪信息；
+	                    2：疑难，货物寄送过程出了问题；
+	                    3：签收，收件人已签收；
+	                    4：退签，即货物由于用户拒签、超区等原因退回，而且发件人已经签收；
+	                    5：派件，即快递正在进行同城派件；
+	                    6：退回，货物正处于退回发件人的途中；
+	                    该状态还在不断完善中，若您有更多的参数需求，欢迎发邮件至 kuaidi@kingdee.com 提出。
+                    status	查询结果状态：
+	                    0：物流单暂无结果，
+	                    1：查询成功，
+	                    2：接口出现异常，
+				}
+
+
+
+
+	代金券模板列表 - 黄新泽
+		请求地址：
+			api.php?ctl=Voucher&met=getShopVoucherTemp&typ=json
+		请求参数：
+			shop_id:店铺ID
+			status:状态 1-有效,2-失效
+		返回数据：
+			{
+				'id':'编号',
+				'isindex':'推荐',
+				'name':'代金券模板名称',
+				'desc':'模板描述',
+				'start_time':'开始时间',
+				'end_time':'结束时间',
+				'price':'面额',
+				'limit':'使用时的消费金额限制',
+				'shop_id':'店铺ID',
+				'shop_name':'店铺名称',
+				'status':'状态1-有效,2-失效',
+				'total':'数量',
+				'giveout':'已发放数量',
+				'used':'已使用数量',
+				'points':'兑换所需积分',
+				'eachlimit':'没人限制领取',
+				'logo':'LOGO图片'
+			}
+
+
+	领取代金券列表 - 黄新泽
+		请求地址：
+			api.php?ctl=Voucher&met=exchangeVoucher&typ=json
+		请求参数：
+			shop_id:店铺ID
+			temp_id:代金券ID
+		返回数据：
+			{
+
+			}
+
+	6.14代金券列表 - 吴东焕
+		请求地址：
+			api.php?ctl=Voucher&met=get&typ=json
+		请求参数：
+			member_id:会员ID
+			status:购物券状态 1-未用 2-已用 3-过期 4-收回(默认status<4)
+		返回数据：
+			{
+				"id":"主键",
+				"serial":"序列号",
+				"temp_id":"模板编号",
+				"name":"代金券名称",
+				"desc":"代金券描述",
+				"start_time":"开始时间",
+				"end_time":"结束时间",
+				"price":"面额",
+				"limit":"使用时的最低消费限制",
+				"shop_id":"店铺ID",
+				"status":"购物券状态",
+				"create_time":"代金券领取日期",
+				"member_id":"会员ID",
+				"member_name":"会员名称",
+				"order_id":"绑定订单ID",
+				"logo":"图标",
+				"shop_name":"店铺名称"
+			}
+
+	店铺可领取代金券列表-卖家使用 - 黄新泽
+		请求地址：
+			api.php?ctl=Voucher&met=getShopVoucherList&typ=json
+		请求参数：
+		返回数据：
+			{
+				"id":"主键",
+				"serial":"序列号",
+				"temp_id":"模板编号",
+				"name":"代金券名称",
+				"desc":"代金券描述",
+				"start_time":"开始时间",
+				"end_time":"结束时间",
+				"price":"面额",
+				"limit":"使用时的最低消费限制",
+				"shop_id":"店铺ID",
+				"status":"购物券状态",
+				"create_time":"代金券领取日期",
+				"member_id":"会员ID",
+				"member_name":"会员名称",
+				"order_id":"绑定订单ID",
+				"logo":"图标",
+				"shop_name":"店铺名称"
+			}
+
+	根据经纬度获取代金券 - 黄新泽
+		请求地址：
+			api.php?ctl=Voucher&met=getNearVoucher&typ=json
+		请求参数：
+			lng:纬度
+			lat:经度
+		返回数据：
+			{
+				"userid":"1997",
+				"lng":"",
+				"lat":"",
+				"distance":"0",
+				"temp_id":"31",
+				"shop_id":"1997"
+			}
+
+		然后根据temp_id  和 shop_id 去调用领取 代金券接口
+
+
+	6.15会员卡列表 - 吴东焕
+		请求地址：
+			api.php?ctl=Member&met=getCard&typ=json
+		请求参数：
+			status :会员卡状态 默认1    (-1)-会员删除  0-失效   1-有效 2-卖家取消
+			page:当前显示页数,默认从1开始
+			row:分页一页显示记录数
+			serial:会员卡序列号(读取单条记录使用,列表忽略)
+		返回数据：
+			{
+				"id":"",
+				"create_time":"创建时间",
+				"blind_member_id":"绑定会员ID",
+				"blind_member_name":"绑定会员名称",
+				"discounts":"折扣比例",
+				"logo":"图标",
+				"used_time":"使用时间",
+				"name":"会员名称",
+				"temp_id":"模板编号",
+				"shop_id":"店铺编号",
+				"shop_name":"店铺名称",
+				"serial":"序列号",
+				"status":"卡状态"
+			}
+	店铺可领取会员卡片列表,卖家使用 - 黄新泽
+		请求地址：
+			api.php?ctl=Member&met=getShopCardList&typ=json
+		请求参数：
+		返回数据：
+			{
+				"id":"",
+				"create_time":"创建时间",
+				"blind_member_id":"绑定会员ID",
+				"blind_member_name":"绑定会员名称",
+				"discounts":"折扣比例",
+				"logo":"图标",
+				"used_time":"使用时间",
+				"name":"会员名称",
+				"temp_id":"模板编号",
+				"shop_id":"店铺编号",
+				"shop_name":"店铺名称",
+				"serial":"序列号",
+				"status":"卡状态"
+			}
+	绑定会员卡  - 黄新泽
+		请求地址：
+			api.php?ctl=Member&met=bindCard&typ=json
+		请求参数：
+			serial:绑定会员卡序列号
+			shop_id:店铺id
+		返回数据：
+			{
+			}
+=========用户===================
+获取用户详情 - 朱羽婷
+	请求地址：
+		api.php?ctl=Member&met=get&typ=json
+	请求参数：
+	
+	返回参数：
+		[1] => Array
+                (
+                    [userid] => 1
+                    [pay_id] => 2
+                    [number] => 1
+                    [pid] => 
+                    [user] => test
+                    [password] => 098f6bcd4621d373cade4e832627b4f6
+                    [name] => 哈哈
+                    [sex] => 2
+                    [mobile] => 
+                    [email] => 
+                    [qq] => 526863390
+                    [ww] => 132132
+                    [provinceid] => 23
+                    [cityid] => 385
+                    [areaid] => 4216
+                    [streetid] => 32240
+                    [area] => 四川省 成都市 武侯区 华兴街道
+                    [grade_id] => 2
+                    [logo] => http://www.mallbuilder.cn/uploadfile/member/2135/2015/11/17/1447744639.jpg
+                    [ip] => 180.173.96.122
+                    [statu] => 2
+                    [regtime] => 2014-04-23 10:50:27
+                    [lastLoginTime] => 1447905823
+                    [invite] => surey
+                    [sellerpoints] => 6000033
+                    [buyerpoints] => 3000005
+                    [email_verify] => 1
+                    [mobile_verify] => 1
+                    [identification] => 
+                    [id_pic] => 
+                    [card_num] => 
+                    [update_time] => 
+                    [operator] => 
+                    [operate_id] => 
+                    [birth] => 
+                    [real_name] => 
+                    [open_id] => 
+                )
+
+        )
+
+设置用户信息 - 朱羽婷
+	请求地址
+		api.php?ctl=Member&met=editMemberInfo&typ=json
+	请求参数
+		logo  头像(可选)
+		name  昵称(可选)
+		sex   性别(可选)
+		pwd   密码(可选)
+		birth 生日(可选)
+	返回参数
+	[data] => Array
+        (
+            [msg] => 用户信息修改成功
+        )
+
+
+获取账户余额 - 朱羽婷
+	请求地址：
+		api.php?ctl=Member&met=getMemberCash&typ=json
+	请求参数
+	
+	返回参数：
+        {
+			"2":"53.78"   //2为用户的支付id  53.78为账户余额
+		}
+
+设置用户支付密码 - 朱羽婷
+	请求地址：
+		api.php?ctl=Member&met=resetPayPasswd&typ=json
+	请求参数
+			user_account:用户名/email/手机
+			pay_passwd:新密码
+			user_code:验证码
+		返回数据
+			{
+			}
+=========店铺===================
+店铺详情
+	请求地址：
+		api.php?ctl=Shop&met=get&typ=json
+	请求参数
+		shop_id  :  店铺id
+	返回数据
+		Array
+(
+    [cmd_id] => -140
+    [status] => 200
+    [msg] => success
+    [data] => Array
+        (
+            [1] => Array
+                (
+                    [userid] => 1
+                    [user] => test
+                    [catid] => 1
+                    [company] => jinyungu
+                    [tel] => 23315515
+                    [addr] => 广东省 深圳市 宝安区 龙华街道 
+                    [provinceid] => 19
+                    [cityid] => 291
+                    [areaid] => 3059
+                    [streetid] => 29275
+                    [area] => 广东省 深圳市 宝安区 龙华街道
+                    [main_pro] => 珠宝
+                    [logo] => http://www.mallbuilder.cn/uploadfile/shop/1/2015/09/07/1441610466.jpg
+                    [template] => 
+                    [stime] => 1367942400
+                    [etime] => 1744041600
+                    [statu] => 1
+                    [rank] => 541
+                    [view_times] => 63824
+                    [uptime] => 1445305049
+                    [create_time] => 1445305049
+                    [shop_statu] => 1
+                    [shop_type] => 2
+                    [credit] => 0
+                    [shop_collect] => 58
+                    [earnest] => 500.00
+                    [grade] => 2
+                    [shop_auth] => 1
+                    [shopkeeper_auth] => 1
+                    [shop_auth_pic] => 00
+                    [shopkeeper_auth_pic] => 00
+                    [domin] => 
+                    [lng] => 116.39199
+                    [lat] => 39.913672
+                    [shop_free_shipping] => 100000.00
+                    [shop_free_price] => []
+                    [reason] => 
+                    [sellerpoints] => 6000033
+                    [score] => Array
+                        ( 
+                            [a] => 4.12     '商品评分'
+                            [b] => 3.88		'物流速度'
+                            [c] => 4.24     '物流态度'
+                            [d] => 3.74     
+                            [aw] => 2.74    '正数高于同行，负数低于同行'
+                            [bw] => -2.76  
+                            [cw] => 2.42
+                            [dw] => -4.08
+                        )
+
+                )
+        )
+
+店铺列表（包含至多3个店铺推荐商品）
+	请求地址：
+		api.php?ctl=Shop&met=getShopList&typ=json
+	请求参数：
+		page
+		rows
+	返回数据：
+		"page":"0"
+		"total":"0"
+		"totalsize":"0"
+		"records":"14"
+		"items":{
+			"0": {
+				"userid": "1",
+				"user": "test",
+				"catid": "1",
+				"company": "jinyuangu",
+				"tel": "23315515",
+				"addr": "广东省 深圳市 宝安区 龙华街道", 
+                "provinceid":"19",
+                "cityid":"291",
+                "areaid":"3059",
+                streetid":"29275",
+                "area": "广东省 深圳市 宝安区 龙华街道",
+                "main_pro":"珠宝",
+                "logo": "http://www.mallbuilder.cn/uploadfile/shop/1/2015/09/07/1441610466.jpg",
+                "template":"" 
+                "stime": "1367942400",
+                "etime":"1744041600",
+                "statu": "1",
+                [rank] => 541
+                [view_times] => 63808
+                [uptime] => 1445305049
+                [create_time] => 1445305049
+                [shop_statu] => 1
+                [shop_type] => 2
+                [credit] => 0
+                [shop_collect] => 58            '店铺收藏数'
+                [earnest] => 500.00
+                [grade] => 2
+                [shop_auth] => 1
+                [shopkeeper_auth] => 1
+                [shop_auth_pic] => 00
+                [shopkeeper_auth_pic] => 00
+                [domin] => 
+                [lng] => 116.39199
+                [lat] => 39.913672
+                [shop_free_shipping] => 100000.00
+                [shop_free_price] => []
+                [reason] => 
+                [newgoods] =>0                      '新上架商品'
+                [goods_sales] =>17  				'销量'
+                [favorablerate] =>100  				'好评率'
+                [sellerpoints] =>6000033 			'信用度'
+				[pro] => Array
+                        (
+                                    [page] => 1
+                                    [total] => 1
+                                    [totalsize] => 1
+                                    [records] => 1
+                                    [items] => Array
+                                        (
+                                            [0] => Array
+                                                (
+                                                    [id] => 2453
+                                                    [member_id] => 1
+                                                    [member_name] => test
+                                                    [catid] => 10020101
+                                                    [type] => 0
+                                                    [name] => Apple/苹果 iPhone 6 A1586公开版全网通智能手机行货正品
+                                                    [subhead] => Apple/苹果 iPhone 6 A1586公开版
+                                                    [keywords] => iPhone 6
+                                                    [brand] => 华为
+                                                    [market_price] => 4888.00
+                                                    [price] => 4870.00
+                                                    [stock] => 171
+                                                    [sales] => 17
+                                                    [code] => 
+                                                    [con] => 
+                                                    [pic] => http://www.mallbuilder.cn/uploadfile/product/1/2015/07/17/1437120580.jpg
+                                                    [pic_more] => http://www.mallbuilder.cn/uploadfile/product/1/2015/07/17/1437120580.jpg
+                                                    [start_time_type] => 1
+                                                    [start_time] => 0
+                                                    [valid_time] => 2
+                                                    [weight] => 0.00
+                                                    [cubage] => 1.00
+                                                    [freight_id] => 83
+                                                    [freight_type] => 0
+                                                    [post_price] => 0.00
+                                                    [express_price] => 0.00
+                                                    [ems_price] => 0.00
+                                                    [province_id] => 1
+                                                    [city_id] => 37
+                                                    [area_id] => 567
+                                                    [street_id] => 0
+                                                    [area] => 北京市 东城区 东华门街道
+                                                    [clicks] => 3020
+                                                    [rank] => 0
+                                                    [uptime] => 1444639338
+                                                    [status] => 1
+                                                    [is_shelves] => 1
+                                                    [custom_cat_id] => 0
+                                                    [promotion_id] => 1
+                                                    [goodbad] => 1
+                                                    [shop_rec] => 1
+                                                    [is_invoice] => false
+                                                    [is_tg] => false
+                                                    [is_virtual] => 0
+                                                    [is_dist] => 0
+                                                    [down_reason] => 
+                                                )
+
+										)
+						)
+				},
+				......
+			   }
+			   
+			   
+			   
+浏览记录 - 朱羽婷
+		请求地址
+			api.php?ctl=Goods&met=getListByFooter&typ=json
+		请求参数
+			{
+				page
+				rows
+			}
+		返回参数
+		[data] => Array
+        (
+            [total] => 260
+            [2015-11-19] => Array
+                (
+                    [count] => 4
+                    [date] => 19日
+                    [product] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => 13322
+                                    [userid] => 1
+                                    [tid] => 527
+                                    [type] => 1
+                                    [time] => 1447906009
+                                    [ip] => 192.168.0.205
+                                    [name] => 少有人走的路 【白金升级版】全集4册1234全套装作者:M斯科特派克 (M. Scott Peck) 自我实现励志 正版 
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/49/2014/07/28/1406517256.jpg
+                                    [price] => 2900.00
+                                )
+
+                            [1] => Array
+                                (
+                                    [id] => 13326
+                                    [userid] => 1
+                                    [tid] => 578
+                                    [type] => 1
+                                    [time] => 1447906009
+                                    [ip] => 192.168.0.205
+                                    [name] => AngelFeel欧洲站2014春夏装新款剪纸印花圆领修身显瘦短袖连衣裙
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/4/2014/08/06/1407298973.jpg
+                                    [price] => 299.00
+                                )
+
+                            [2] => Array
+                                (
+                                    [id] => 13320
+                                    [userid] => 1
+                                    [tid] => 516
+                                    [type] => 1
+                                    [time] => 1447906008
+                                    [ip] => 192.168.0.205
+                                    [name] => 菊花制冷空调扇单冷冷风扇冷风机 水冷空调家用冷气扇 定时遥控
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/349/2014/07/28/1406515696.jpg
+                                    [price] => 1899.00
+                                )
+
+                            [3] => Array
+                                (
+                                    [id] => 13324
+                                    [userid] => 1
+                                    [tid] => 649
+                                    [type] => 1
+                                    [time] => 1447906007
+                                    [ip] => 192.168.0.205
+                                    [name] => 浩家床笠1.8米加厚夹棉床垫套床罩床套床单双人席梦思床垫保护套
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/487/2014/08/29/1409296121.jpg
+                                    [price] => 310.00
+                                )
+
+                        )
+
+                )
+
+            [2015-11-11] => Array
+                (
+                    [count] => 1
+                    [date] => 11日
+                    [product] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => 13318
+                                    [userid] => 1
+                                    [tid] => 516
+                                    [type] => 1
+                                    [time] => 1447204117
+                                    [ip] => 192.168.0.205
+                                    [name] => 菊花制冷空调扇单冷冷风扇冷风机 水冷空调家用冷气扇 定时遥控
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/349/2014/07/28/1406515696.jpg
+                                    [price] => 1899.00
+                                )
+
+                        )
+
+                )
+
+            [2015-11-10] => Array
+                (
+                    [count] => 1
+                    [date] => 10日
+                    [product] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => 13316
+                                    [userid] => 1
+                                    [tid] => 516
+                                    [type] => 1
+                                    [time] => 1447146790
+                                    [ip] => 192.168.0.205
+                                    [name] => 菊花制冷空调扇单冷冷风扇冷风机 水冷空调家用冷气扇 定时遥控
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/349/2014/07/28/1406515696.jpg
+                                    [price] => 1899.00
+                                )
+
+                        )
+
+                )
+
+            [2015-10-22] => Array
+                (
+                    [count] => 4
+                    [date] => 22日
+                    [product] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => 13311
+                                    [userid] => 1
+                                    [tid] => 578
+                                    [type] => 1
+                                    [time] => 1445495767
+                                    [ip] => 101.81.140.40
+                                    [name] => AngelFeel欧洲站2014春夏装新款剪纸印花圆领修身显瘦短袖连衣裙
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/4/2014/08/06/1407298973.jpg
+                                    [price] => 299.00
+                                )
+
+                            [1] => Array
+                                (
+                                    [id] => 13310
+                                    [userid] => 1
+                                    [tid] => 540
+                                    [type] => 1
+                                    [time] => 1445495742
+                                    [ip] => 101.81.140.40
+                                    [name] => 思怡微电脑预约定时电炖盅bb煲
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/349/2014/07/28/1406519118.jpg
+                                    [price] => 212.00
+                                )
+
+                            [2] => Array
+                                (
+                                    [id] => 13308
+                                    [userid] => 1
+                                    [tid] => 591
+                                    [type] => 1
+                                    [time] => 1445488347
+                                    [ip] => 119.35.36.13
+                                    [name] => 正品保罗真皮新款男包 男士商务休闲单肩包 牛皮手提斜跨包电脑包
+                                    [pic] => http://democn.mall-builder.com/uploadfile/product/19/2014/08/06/1407305061.jpg
+                                    [price] => 566.00
+                                )
+
+                            [3] => Array
+                                (
+                                    [id] => 13307
+                                    [userid] => 1
+                                    [tid] => 2453
+                                    [type] => 1
+                                    [time] => 1445487956
+                                    [ip] => 119.35.36.13
+                                    [name] => Apple/苹果 iPhone 6 A1586公开版全网通智能手机行货正品
+                                    [pic] => http://www.mallbuilder.cn/uploadfile/product/1/2015/07/17/1437120580.jpg
+                                    [price] => 4870.00
+                                )
+
+                        )
+				)
+		)
+		
+		
+添加浏览记录 - 朱羽婷
+		请求地址
+			api.php?ctl=Goods&met=addFooter&typ=json
+		请求参数
+			{
+				id :表示某个内容的主ＩＤ，例如，产品，店铺，新闻等与后面的type共同起作用
+				type :产品1,会员商铺3
+			}
+		返回参数
+		{
+		}
+
+清空浏览记录 - 朱羽婷
+		请求地址
+			api.php?ctl=Goods&met=delFooter&typ=json
+		请求参数
+
+		返回参数
+		{
+		}
+========数量接口=========
+1.浏览记录数量接口 - 朱羽婷
+	请求地址：
+		api.php?ctl=Goods&met=getListByFooterNum&typ=json
+	请求参数：
+		
+	返回参数：
+		{
+			"total":"260"
+		}
+		
+2.代金券数量接口 - 朱羽婷
+	请求地址：
+		api.php?ctl=Voucher&met=getVoucherNum&typ=json
+	请求参数：
+	
+	返回参数：
+		{
+			"total":"4"
+		}
+		
+3.代付款/待收货/待评价  订单数量 - 朱羽婷
+	请求地址：
+		api.php?ctl=Trade&met=getOrderNum&typ=json
+	请求参数：
+		status:订单状态 代付款（1）  待收货（3） 待评价（10）
+		rate : 1 返回待评价订单时需要填写的参数
+	返回参数：
+		{
+			"total":"28"
+		}
+4.购物车商品数量 - 朱羽婷
+	请求地址：
+		api.php?ctl=Trade&met=getCartNum&typ=json
+	请求参数：
+
+	返回参数：
+		{
+			[num] => 6
+		}
+
+
+==========好友接口=======
+1.获取好友接口 - 朱羽婷
+	请求地址：
+		api.php?ctl=Member&met=getFriends&typ=json
+	请求参数：
+
+	请求结果：
+	Array
+(
+    [cmd_id] => -140
+    [status] => 200
+    [msg] => success
+    [data] => Array
+        (
+             [0] => Array
+                (
+                    [id] => 361
+                    [uid] => 1
+                    [group_id] => 1
+                    [uname] => test
+                    [uimg] => http://democn.mall-builder.com/uploadfile/member/1/2015/05/18/1431929265.jpg
+                    [fuid] => 11
+                    [funame] => admin123
+                    [fnickname] => 
+                    [fuimg] => http://democn.mall-builder.com/uploadfile/member/11/1398309359.jpg
+                    [addtime] => 1442319753
+                    [state] => 2
+                    [mobile] => 15188899797
+                )
+
+            [1] => Array
+                (
+                    [id] => 372
+                    [uid] => 1
+                    [group_id] => 1
+                    [uname] => test
+                    [uimg] => http://www.mallbuilder.cn/uploadfile/member/1/2015/10/10/1444467603.jpg
+                    [fuid] => 755
+                    [funame] => duxiangyuu
+                    [fnickname] => 呼呼
+                    [fuimg] => http://democn.mall-builder.com/uploadfile/member/755/2014/11/11/1415696736.jpg
+                    [addtime] => 1445291203
+                    [state] => 1
+                    [mobile] => 
+                )
+
+        )
+
+)
+
+2.关注好友 - 朱羽婷
+	请求地址：
+		api.php?ctl=Member&met=addFriend&typ=json
+
+	请求参数：
+		uid : 被关注的用户id
+
+	返回参数：
+		1、关注成功
+		Array
+		(
+		    [cmd_id] => -140
+		    [status] => 200
+		    [msg] => success
+		    [data] => Array
+		        (
+		        )
+
+		)
+		2、关注失败
+		Array
+		(
+		    [cmd_id] => -140
+		    [status] => 250
+		    [msg] => 失败
+		    [data] => Array
+		        (
+		            [0] => 1     //1--该用户已经关注过  2--关注失败
+		        )
+
+		)
+
+3.取消关注好友 - 朱羽婷
+	请求地址：
+		api.php?ctl=Member&met=delFriends&typ=json
+
+	请求参数：
+		fid : 关注id
+
+	返回参数：
+
+=====降价通知接口====
+1.添加降价通知
+	请求地址：
+		api.php?ctl=NoticePrice&met=add&typ=json
+
+	请求参数：
+		member_id : 用户id
+		product_id : 商品id
+		notice_price : 降价价格	
+
+	返回参数：
+       {
+            cmd_id : -140
+            status : 200(成功)/250(失败)
+            msg : success/failure
+            data : []
+       }

@@ -63,7 +63,7 @@ if($ie6)
 //=================================================
 if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) //判断是否在微信中打开
 {
-	//$config['bw']="weixin";
+	$config['bw']="weixin";
 
 	/*
 	include_once("pay/module/payment/lib/WxPayPubHelper/WxPay.pub.config.php");

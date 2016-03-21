@@ -1,4 +1,4 @@
-.idea/
-templates_c/
-cache/
-uploadfile/
+.idea/*
+templates_c/*
+cache/*
+uploadfile/*
