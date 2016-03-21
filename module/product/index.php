@@ -57,8 +57,7 @@ if($cat_pro)
 		}
 
 	}
-	/*echo '<pre>';
-	print_r($cat_pro);*/
+
 	$tpl->assign("categorys",$cat_pro);
 }
 if($config['temp'] != "wap")
