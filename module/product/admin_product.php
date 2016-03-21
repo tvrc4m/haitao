@@ -86,7 +86,7 @@ else
 			$admin->msg("main.php?m=product&s=admin_product_list");
 	}
 	//------------------------------------
-	
+    
 	if(!empty($_GET['edit']))
 	{	
 		$de=$product->product_detail($_GET['edit']);
@@ -150,7 +150,7 @@ else
 	$tpl->assign("custom_cat",$admin->get_custom_cat_list(1,0));
     $tpl->assign("custom_national",array(array("id"=>1,"name"=>"日本馆"),array("id"=>2,"name"=>"澳洲馆")));
 	$tpl->assign("prov",GetDistrict());
-	
+
 	//--------------------------自定义字段
 	$nc=explode(",",$pactidlist);
 	$now_catid=$nc[count($nc)-1];
@@ -177,6 +177,7 @@ else
 	$re=$db->getRows();
 	$tpl->assign("lgs",$re);
 	//==================================
+
     //-----------国家馆---------
     $sql="select * from ".NATIONAL." where 1";
     $db->query($sql);
@@ -210,5 +211,6 @@ else
 	}
 
 	$output=tplfetch("admin_product.htm");
+
 }
 ?>

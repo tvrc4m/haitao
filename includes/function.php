@@ -647,6 +647,7 @@ function send_mail($email,$name,$title,$con,$reply=NULL)
 
 function tplfetch($file,$flag=NULL,$no_return=false)
 {
+
 	global $tpl,$config;
 	
 	if(file_exists($tpl->template_dir.$file))
@@ -656,7 +657,6 @@ function tplfetch($file,$flag=NULL,$no_return=false)
 		$tpl->template_dir=$config['webroot'].'/module/'.$_GET['m'].'/templates/';
 	}
 	$tpl->statu=$tpl->template_dir;
-
 	if($no_return)
 	{
 		$tpl->display($file,$flag);die;

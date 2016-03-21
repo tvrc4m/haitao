@@ -108,5 +108,4 @@ include_once("footer.php");
 //=============================================
 
 $out=tplfetch("product_index.htm",NULL);
-
 ?>
