@@ -662,7 +662,7 @@ function tplfetch($file,$flag=NULL,$no_return=false)
 		$tpl->display($file,$flag);die;
 	}
 	else
-		return $tpl->fetch($file,$flag);
+        return $tpl->fetch($file,$flag);
 }
 
 function get_mail_template($flag)
