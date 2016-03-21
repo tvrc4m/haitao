@@ -11,6 +11,7 @@
 <{/foreach}>
 -->
 
+<<<<<<< HEAD
  <{foreach item=list key=num from=$pro}>
     <li class="<{if $num == 2 || $num == 5}>ml404<{/if}>" >
          <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="goods_img"><img src='<{$list.pic}>_220X220.jpg' /></a>
@@ -18,3 +19,12 @@
          <p><var>￥180</var><s>￥235</s></p>
      </li>
  <{/foreach}>
+=======
+<{foreach item=list key=num from=$pro}>
+<li class="<{if $num == 2 || $num == 5}>ml404<{/if}>" >
+    <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+    <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="" class="goods_text"><{$list.pname}></a>
+    <p><var>￥180</var><s>￥235</s></p>
+</li>
+<{/foreach}>
+>>>>>>> 743387a0a505a5159853466967c8079607034947
