@@ -4,7 +4,7 @@
         <div class="ban_slider" id="ht_ban_slider">
             <div class="w guide">
                 <ul>
-                    <li>●</li><li>●</li><li>●</li><li>●</li>
+                    <li class="on">●</li><li>●</li><li>●</li><li>●</li>
                 </ul>
             </div>
             <div class="ban_li">
@@ -96,42 +96,26 @@
        <{insert name="label" type="cat" temp="pro_index_01"}>
     </div>
     <!--商品分类 end-->
-    <script src="js/libs.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-        /**
-         * RequireJs Config
-         * @param {string} baseUrl default load any module path
-         */
-        require.config({
-            //By default load any module IDs from js/lib
-            baseUrl: '/js/',
-            paths: {
-                "slider":"jquery.SuperSlide",
-                "utility":"util"
-            },
-            shim: {}
-        });
-        require(['pages/ht_index'], function (I) {
-
-        });
-    </script>
+    <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+    
     <script type="text/javascript">
         var num = 1;
         var oLi = $(".slide_box li");
+        var aLi = $(".guide li");
         var interval = window.setInterval(changeBanner,5000);
         function changeBanner(){
             for(var i=0;i<4;i++){
                 oLi[i].style.display="none";
+                if($(aLi[i]).hasClass("on"))
+                $(aLi[i]).removeClass("on");
             }
             if(num > 3){
                 num = 0;
                 changeBanner();
             }else{
                 oLi[num].style.display="";
+                $(aLi[num]).addClass("on");
                 num +=1;
             }
         }
-        $(".guide li").bind("mouseenter mouseleave", function(){
-            $("this").toggleClass("entered");
-        });
     </script>

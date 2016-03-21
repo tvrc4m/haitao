@@ -42,7 +42,7 @@
                 <!--menu start-->
                 <dl class="m_menu">
                     <dt><i class="icon_menu"></i><span class="mid">全部商品分类</span></dt>
-                    <dd class="newclear">
+                    <dd class="newclear hidden">
                         <div class="m_goods_list">
                             <ul <{if $smarty.get.m=='product' && $smarty.get.s=='index'}><{/if}>>
                                 <{insert name="label" type="cat" temp="pro_cat_shop_left"}>
@@ -117,4 +117,7 @@ function select_word(v)
     $('#key').val(v);
     $('#key_select').hide();
 }
+$(".m_menu").bind("mouseenter mouseleave",function(){
+    $(".m_menu dd").toggleClass("hidden");
+});
 </script>
