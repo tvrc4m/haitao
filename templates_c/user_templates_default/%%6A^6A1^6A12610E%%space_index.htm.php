@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-18 13:41:14
+<?php /* Smarty version 2.6.20, created on 2016-03-18 13:41:27
          compiled from space_index.htm */ ?>
 <?php if ($this->_tpl_vars['com']['shop_statu'] == 1): ?>
 <div class="module_special">

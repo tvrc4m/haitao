@@ -1,14 +1,15 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-17 19:57:29
+<?php /* Smarty version 2.6.20, created on 2016-03-19 14:18:55
          compiled from space_consult.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'space_consult.htm', 12, false),)), $this); ?>
-<div class="consult-hd"><a class="add-consult" href="javascript:void(0);">我要提问</a>因厂家更改商品包装、场地、附配件等不做提前通知，且每位咨询者购买、提问时间等不同。为此，客服给到的回复仅对提问者3天内有效，其他网友仅供参考！给您带来的不变还请谅解，谢谢！</div>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'space_consult.htm', 13, false),)), $this); ?>
+<!-- <div class="consult-hd"><a class="add-consult" href="javascript:void(0);">我要提问</a>因厂家更改商品包装、场地、附配件等不做提前通知，且每位咨询者购买、提问时间等不同。为此，客服给到的回复仅对提问者3天内有效，其他网友仅供参考！给您带来的不变还请谅解，谢谢！</div> -->
+<div class="consult-hd"><a class="add-consult" href="javascript:void(0);">联系客服</a>购买前如果有问题请向<span class="consult-hd-haoqi">好奇</span>提问</div>
 <div class="consult-bd clearfix">
 <ul>
 <?php $_from = $this->_tpl_vars['re']['list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['list']):
 ?>
-    <li class="clearfix">
+    <!-- <li class="clearfix">
         <div class="buyer">
             <div class="avatar">
                 <span>
@@ -27,7 +28,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
             <dd><em>A:</em><?php echo $this->_tpl_vars['list']['answer']; ?>
 </dd>
         </dl>
-    </li>
+    </li> -->
 <?php endforeach; else: ?>
 	<li class="no-result">购买之前，如有问题，请<a class="add-consult" href="javascript:void(0);">提问</a></li>
 <?php endif; unset($_from); ?>

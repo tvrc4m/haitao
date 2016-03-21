@@ -105,11 +105,11 @@ function buy()
                 <div class="left">
                     <div class="gallery">
                         <div class="main-pic">
-                            <a target="_blank" href="<{$de.pic}>"><img class="jqzoom" height="400" width="400" alt="<{$de.pname}>" src="<{$de.pic}>" rel="<{$de.pic}>" title="<{$de.pname}>"></a>
+                            <a target="_blank" href="<{$de.pic}>"><img class="jqzoom" height="350" width="350" alt="<{$de.pname}>" src="<{$de.pic}>" rel="<{$de.pic}>" title="<{$de.pname}>"></a>
                         </div>
                         <ul id="jqzoom" class="clearfix">
                             <{foreach item=pic key=num from=$de.pic_more}>
-                            <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>_60X60.jpg" big="<{$pic}>" height="60" width="60"></li>
+                            <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>_60X60.jpg" big="<{$pic}>" height="60" width="60" class="jqzoom-img"></li>
                             <{/foreach}>
                         </ul>
                     </div>
@@ -302,11 +302,37 @@ function buy()
                         <div id="cart_show"></div>
                     </div>
                 </div>
+                <div class="inner-wrap">
+                    <ul class="clearfix">
+                        <li class="cur"><a href="javascript:void(0);">商品详情</a></li>
+                        <li><a href="javascript:void(0);">累计评论</a></li>
+                        <li><a href="javascript:void(0);">成交记录</a></li>
+                        <li><a href="javascript:void(0);">商品问答</a></li>
+                    </ul>
+                </div>
+                <div class="layout clearfix">
+                    <div class="con clearfix">
+                        <div class="i-con">
+                            <{if $de.brand || $de.extfiled.s}>
+                            <div class="attributes clearfix">
+                                <ul class="clearfix">
+                                    <li>品牌：<{$de.brand}></li>
+                                    <{foreach item=list from=$de.extfiled.s}><{$list}><{/foreach}>
+                                </ul>
+                            </div>
+                            <{/if}>
+                            <div class="description"><{$de.detail}></div>
+                        </div>
+                        <div id="reviews" class="i-con hidden"></div>
+                        <div id="deal-record" class="i-con hidden"></div>
+                        <div id="consult" class="i-con hidden"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="sidebar clearfix">
             <div class="shop-info">
-                <a class="shop-info-bg" href=""><img width="198" height="45" src="image/points/<{$com.sellerpointsid}>.png" /></a>
+                <a class="shop-info-bg" href="">供货商家</a>
                 <div class="shop-info-wrap clearfix">
                     <div class="shop-info-hd">
                         <dl>
@@ -353,15 +379,23 @@ function buy()
                 </div>
             </div>
             <div class="pine">
-                <div class="pine-hd clearfix">看了又看</div>
+                <div class="pine-hd clearfix">已浏览商品</div>
                 <div class="pine-bd clearfix">
                     <{insert name="label" type="product" uid=$de.member_id o='1' noid=$de.id temp="product_list_li" limit=4}>
+                </div>
+            </div>
+            <div class="left hotsell">
+                <div class="m">
+                    <div class="mt"><h3>热销产品</h3></div>
+                    <div class="mc">
+                        <{insert name="label" type="product" uid=$de.member_id o='1' temp="product_list_li" limit=5}>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="tabbar-wrap clearfix">
+<!-- <div class="tabbar-wrap clearfix">
     <div class="shop-search">
         <div class="search-panel">
             <form action="<{$config.weburl}>/shop.php" method="get">
@@ -386,8 +420,8 @@ function buy()
             <li><a href="javascript:void(0);">商品问答</a></li>
         </ul>
     </div>
-</div>
-<div class="layout clearfix">
+</div> -->
+<!-- <div class="layout clearfix">
     <div class="left">
         <div class="m">
             <div class="mt"><h3>热销产品</h3></div>
@@ -413,7 +447,7 @@ function buy()
         <div id="consult" class="i-con hidden"></div>
     </div>
     <div class="right"><ul></ul></div>
-</div>
+</div> -->
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 <script type="text/javascript">
