@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-17 21:37:57
+<?php /* Smarty version 2.6.20, created on 2016-03-19 16:12:01
          compiled from product_list.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getName', 'product_list.htm', 12, false),array('modifier', 'replace', 'product_list.htm', 59, false),array('modifier', 'getdistrictname', 'product_list.htm', 105, false),array('modifier', 'urlencode', 'product_list.htm', 130, false),array('insert', 'label', 'product_list.htm', 158, false),)), $this); ?>
@@ -54,7 +54,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getName', '
     </div>
 </div>
 
-<div class="w">
+<div class="w pd20">
     <?php if ($this->_tpl_vars['brand'] || $this->_tpl_vars['catfile'] || $this->_tpl_vars['cat']): ?>
     <div id="select">
     	<?php if ($this->_tpl_vars['cat']): ?>
@@ -126,7 +126,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'getName', '
     </div>
     <?php endif; ?>
     
-    <div class="itemSearchList">
+    <div class="itemSearchList clearfix">
     	<?php if ($this->_tpl_vars['info']['list']): ?>
         <div class="itemSearchResult clearfix">
 
