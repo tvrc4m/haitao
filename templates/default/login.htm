@@ -21,26 +21,25 @@ var norandcode='<{$lang.nocode}>';
 <div id="header">
 	<div class="w header">
     	<div class="logo ld">
-        <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="<{if $config.logo}><{$config.logo}><{else}><{$config.weburl}>/image/logo.gif<{/if}>" /></a>
+        <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
         <b></b>
         </div>
-        <div class="regist-now">
-            <span class="avatar"><img src="templates/default/images/default_user_portrait.gif"></span>
-            <span>您好，欢迎来到<{$config.company}><br>已注册的会员请登录，或立即<a href="<{$config.regname}>" class="register">注册新会员</a></span></div>
+        <div class="welcome">欢迎登录</div>
 	</div>
 </div>
 
-<div class="w">
+<div class="wl">
     <div class="mc">
-        <div class="adv"><script src='<{$config.weburl}>/api/ad.php?id=7'></script></div>
+       
         <div class="form">
-            <ul class="tabs-nav">
-                <li class="tabulous_active">用户登录<i></i></li>
-                <li></li>
+            <ul class="tabs-nav clearfix">
+                <li class="text-left">蚂蚁会员</li>
+                <li class="text-right"><img src="image/default/icon1.png"><a href="<{$config.regname}>" class="register">立即注册</a></li>
             </ul>
             <form id="login" name="login" action="login.php" method="post">
                 <dl>
-                    <dt>账&nbsp;&nbsp;&nbsp;号：</dt>
+                    <dt><img src="image/default/icon2.png"></dt>
+                   <!--  <dt>账&nbsp;&nbsp;&nbsp;号：</dt> -->
                     <dd>
                         <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="可使用已注册的用户名或手机号登录" id="user">
                     </dd>
@@ -49,7 +48,8 @@ var norandcode='<{$lang.nocode}>';
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
                 <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
                 <dl>
-                    <dt>密&nbsp;&nbsp;&nbsp;码：</dt>
+                    <dt><img src="image/default/icon3.png"></dt>
+                    <!-- <dt>密&nbsp;&nbsp;&nbsp;码：</dt> -->
                     <dd>
                         <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="6-20个大小写英文字母、符号或数字"/>
                     </dd>
@@ -57,7 +57,7 @@ var norandcode='<{$lang.nocode}>';
                 <{if $smarty.get.erry=="-2"}>
                 <font color="red" class="clearfix"><{$lang.passerr}></font>
                 <{/if}>
-                <div class="code-div mt15">
+                <!-- <div class="code-div mt15">
                 <dl>
                     <dt>验证码：</dt>
                     <dd>
@@ -68,7 +68,7 @@ var norandcode='<{$lang.nocode}>';
                     <{if $smarty.get.erry=="-3"}>
                     <font color="red" class="clearfix"><{$lang.codeerr}></font>
                     <{/if}>
-                </div>
+                </div> -->
                 <div class="item fore4">
                     <div class="item-ifo mt15">
                         <a href="lostpass.php" class="">忘记密码?</a>
@@ -97,11 +97,57 @@ var norandcode='<{$lang.nocode}>';
     </div>
 </div>
 <div class="clear"></div>
-<div class="footer clearfix">
+<div class="footer w">
+        <ul class="icon clearfix">
+            <li class="clearfix">
+                <div class="footer_img"><img src="image/default/login1.png"/></div>
+                <div class="footer_text">
+                    <p class="font18">品质保证</p>
+                    <p class="font14">蚂蚁在线 平台信誉</p>
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="footer_img"><img src="image/default/login2.png"/></div>
+                <div class="footer_text">
+                    <p class="font18">海外直供</p>
+                    <p class="font14">全球资源 购物无境</p>
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="footer_img"><img src="image/default/login3.png"/></div>
+                <div class="footer_text">
+                    <p class="font18">优质品牌</p>
+                    <p class="font14">名品荟萃 质优大牌</p>
+                </div>
+            </li>
+            <li class="clearfix">
+                <div class="footer_img"><img src="image/default/login4.png"/></div>
+                <div class="footer_text">
+                    <p class="font18">售后保障</p>
+                    <p class="font14">专业客服 售后无忧</p>
+                </div>
+            </li>
+        </ul>
+        <ul class="text">
+            <li>关于我们</li>
+            <li>联系我们</li>
+            <li>人才招聘</li>
+            <li>商家入驻</li>
+            <li>广告服务</li>
+            <li>手机蚂蚁</li>
+            <li>友情链接</li>
+            <li>销售联盟</li>
+            <li>蚂蚁社区</li>
+            <li>蚂蚁公益</li>
+            <li>English Site</li>
+        </ul>
+        <p class="copytight">Copyright@2014-2016 mayizaixian.cn版权所有</p>
+</div>
+<!-- <div class="footer clearfix">
     <div class="w">
         <div class="links"><{$web_con}></div>
         <div class="copyright"><{$bt}></div>
     </div>
-</div>
+</div> -->
 </body>
 </html>
