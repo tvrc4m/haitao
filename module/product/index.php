@@ -57,7 +57,8 @@ if($cat_pro)
 		}
 
 	}
-
+	/*echo '<pre>';
+	print_r($cat_pro);*/
 	$tpl->assign("categorys",$cat_pro);
 }
 if($config['temp'] != "wap")
@@ -95,6 +96,7 @@ if($config['sina_connect']==1)//sina
 //修正连接地址信息
 include_once("module/shop/includes/plugin_shop_class.php");
 $shop=new shop();
+
 $cominfo=$shop->get_shop_info($buid);
 
 $tpl->assign("cominfo",$cominfo);
@@ -104,6 +106,7 @@ $tpl->assign("current","index");
 include_once("footer.php");
 
 //=============================================
+
 $out=tplfetch("product_index.htm",NULL);
 
 ?>
