@@ -10,9 +10,9 @@
             <div class="ban_li">
                 <ul class="slide_box">
                     <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
+                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_02.jpg)"><a href="" title=""></a></li>
+                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_03.jpg)"><a href="" title=""></a></li>
+                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_04.jpg)"><a href="" title=""></a></li>
                 </ul>
             </div>
             <!-- <a class="prev" href="javascript:void(0)"></a>
@@ -113,5 +113,25 @@
         });
         require(['pages/ht_index'], function (I) {
 
+        });
+    </script>
+    <script type="text/javascript">
+        var num = 1;
+        var oLi = $(".slide_box li");
+        var interval = window.setInterval(changeBanner,5000);
+        function changeBanner(){
+            for(var i=0;i<4;i++){
+                oLi[i].style.display="none";
+            }
+            if(num > 3){
+                num = 0;
+                changeBanner();
+            }else{
+                oLi[num].style.display="";
+                num +=1;
+            }
+        }
+        $(".guide li").bind("mouseenter mouseleave", function(){
+            $("this").toggleClass("entered");
         });
     </script>
