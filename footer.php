@@ -31,7 +31,7 @@ if(isset($li))
 //------------------------------------------------------------------
 if(!empty($config['copyright']))
 {
-	$config['copyright'].='<br />Powered by <a href="http://www.mall-builder.com">'.$config['version'].'</a>';
+	//$config['copyright'].='<br />Powered by <a href="http://www.mall-builder.com">'.$config['version'].'</a>';
 	$tpl->assign("bt",$config['copyright']);
 }
 $pathinfo = pathinfo($_SERVER['SCRIPT_FILENAME']);

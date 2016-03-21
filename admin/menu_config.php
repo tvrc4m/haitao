@@ -45,6 +45,7 @@ $mem = array(
 					'fast_mail.php,1,logistics,预置物流公司',
 					'search_word.php,1',
 					'district.php,1',
+					'national_pavilions.php,1,,国家馆设置',
 					//'sphinx_config.php,1,,Sphinx搜索设置',
 					'to_login.php,0,,登录会员后台',
 				)

@@ -49,7 +49,8 @@
 				{
 					if(!empty($catv))
 					{
-						$sql="insert into ".PCAT." (`catid`,`cat`,`nums`,`isindex`,`pic`,`wpic`,`brand`,ext_table,ext_field_cat,commission,is_setmeal,isbuy,current,templates,`isvirtual`) values  ('$id','$catv','255','$_POST[isindex]','$_POST[pic]','$_POST[wpic]','$_POST[brand]','$ext_table','$_POST[ext_field_cat]','$_POST[commission]','$_POST[is_setmeal]','$_POST[isbuy]','$_POST[current]','$_POST[templates]','$_POST[isvirtual]')";
+					//	$sql="insert into ".PCAT." (`catid`,`cat`,`nums`,`isindex`,`pic`,`wpic`,`brand`,ext_table,ext_field_cat,commission,is_setmeal,isbuy,current,templates,`isvirtual`) values  ('$id','$catv','255','$_POST[isindex]','$_POST[pic]','$_POST[wpic]','$_POST[brand]','$ext_table','$_POST[ext_field_cat]','$_POST[commission]','$_POST[is_setmeal]','$_POST[isbuy]','$_POST[current]','$_POST[templates]','$_POST[isvirtual]')";
+                        $sql="insert into ".PCAT." (`catid`,`cat`,`nums`,`isindex`,`pic`,`wpic`,`brand`,ext_table,ext_field_cat,commission,is_setmeal,isbuy,current,templates,`isvirtual`)values('$id','$catv','255','$_POST[isindex]','$_POST[pic]','$_POST[wpic]','$_POST[brand]','$ext_table','$_POST[ext_field_cat]','$_POST[commission]','$_POST[is_setmeal]','$_POST[isbuy]','$_POST[current]','$_POST[templates]','$_POST[isvirtual]')";
 						$db->query($sql);
 						$id+=1;
 					}
@@ -87,8 +88,9 @@
 				else
 					$id=$_POST['id'];
 				
-				$sql="update ".PCAT." set catid='$id',`isvirtual` = '$_POST[isvirtual]', cat='$_POST[cat]',isindex='$_POST[isindex]' ,pic='',isbuy='$_POST[isbuy]',brand='$_POST[brand]',pic='$_POST[pic]',wpic='$_POST[wpic]',ext_table='$ext_table',ext_field_cat='$_POST[ext_field_cat]',commission='$_POST[commission]',is_setmeal='$_POST[is_setmeal]',current='$_POST[current]',templates='$_POST[templates]',nums='$_POST[displayorder]' where catid='".$_POST['id']."'";
-				$db->query($sql);
+				//$sql="update ".PCAT." set catid='$id',`isvirtual` = '$_POST[isvirtual]', cat='$_POST[cat]',isindex='$_POST[isindex]' ,pic='',isbuy='$_POST[isbuy]',brand='$_POST[brand]',pic='$_POST[pic]',wpic='$_POST[wpic]',ext_table='$ext_table',ext_field_cat='$_POST[ext_field_cat]',commission='$_POST[commission]',is_setmeal='$_POST[is_setmeal]',current='$_POST[current]',templates='$_POST[templates]',nums='$_POST[displayorder]' where catid='".$_POST['id']."'";
+                $sql="update ".PCAT." set catid='$id',`isvirtual` = '$_POST[isvirtual]', cat='$_POST[cat]',isindex='$_POST[isindex]' ,pic='',isbuy='$_POST[isbuy]',brand='$_POST[brand]',pic='$_POST[pic]',wpic='$_POST[wpic]',ext_table='$ext_table',ext_field_cat='$_POST[ext_field_cat]',commission='$_POST[commission]',is_setmeal='$_POST[is_setmeal]',current='$_POST[current]',templates='$_POST[templates]',nums='$_POST[displayorder]' where catid='".$_POST['id']."'";
+                $db->query($sql);
 				
 				if($_POST["pid"]!=substr($_POST['id'],0,strlen($_POST['id'])-2))
 				{
