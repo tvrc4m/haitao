@@ -6,11 +6,14 @@
                 	<a target="_blank" href="<{$config.weburl}>?m=product&s=list&id=<{$slist.catid}>"><{$slist.name}></a>
                 </span>
                 <p>
-	                <{foreach item=cList key=num from=$cat}>
+	                <!--<{foreach item=cList key=num from=$cat}>
 						<{foreach item=sublist key=n from=$cList.scat}>
 							<a href="<{$config.weburl}>/?m=product&s=list&id=<{$sublist.catid}>" title=""><{$sublist.cat}></a>
 						<{/foreach}>
-					<{/foreach}>
+					<{/foreach}>-->
+                    <{foreach item=sublist key=n from=$slist.sub_cat}>
+                    <a href="<{$config.weburl}>/?m=product&s=list&id=<{$sublist.catid}>" title=""><{$sublist.cat}></a>
+                    <{/foreach}>
                 </p>
             </div>
             <div class="m_list m_list_02 newclear">
