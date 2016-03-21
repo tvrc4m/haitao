@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-03 11:51:20
+<?php /* Smarty version 2.6.20, created on 2016-03-17 00:12:01
          compiled from notice_list.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strip_tags', 'notice_list.htm', 3, false),array('modifier', 'truncate', 'notice_list.htm', 3, false),)), $this); ?>

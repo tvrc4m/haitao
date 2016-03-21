@@ -1,1 +1,1 @@
-<?php $module_product_config = unserialize('a:8:{s:5:"title";s:6:"首页";s:7:"keyword";s:0:"";s:11:"description";s:0:"";s:6:"title2";s:9:"[catname]";s:8:"keyword2";s:9:"[catname]";s:12:"description2";s:9:"[catname]";s:9:"validTime";s:19:"7天|1个月|永久";s:5:"ptype";s:13:"全新|二手";}');?>
+<?php $module_product_config = unserialize('a:8:{s:5:"title";s:12:"蚂蚁海淘";s:7:"keyword";s:12:"蚂蚁海淘";s:11:"description";s:12:"蚂蚁海淘";s:6:"title2";s:12:"蚂蚁海淘";s:8:"keyword2";s:12:"蚂蚁海淘";s:12:"description2";s:12:"蚂蚁海淘";s:9:"validTime";s:19:"7天|1个月|永久";s:5:"ptype";s:13:"全新|二手";}');?>

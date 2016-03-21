@@ -90,7 +90,6 @@ else
 	if(!empty($_GET['edit']))
 	{	
 		$de=$product->product_detail($_GET['edit']);
-
 		// 判断所在顶级分类是否为虚拟商品分类
 		if($de['is_virtual'] > 0)
 		{
@@ -149,7 +148,7 @@ else
 	$tpl->assign("ptype",explode('|',$config['ptype']));
 	$tpl->assign("validTime",explode('|',$config['validTime']));
 	$tpl->assign("custom_cat",$admin->get_custom_cat_list(1,0));
-	
+    $tpl->assign("custom_national",array(array("id"=>1,"name"=>"日本馆"),array("id"=>2,"name"=>"澳洲馆")));
 	$tpl->assign("prov",GetDistrict());
 	
 	//--------------------------自定义字段
@@ -178,6 +177,13 @@ else
 	$re=$db->getRows();
 	$tpl->assign("lgs",$re);
 	//==================================
+    //-----------国家馆---------
+    $sql="select * from ".NATIONAL." where 1";
+    $db->query($sql);
+    $re=$db->getRows();
+
+    $tpl->assign("nations",$re);
+    //==================================
 	$nocheck=true;
 	include_once("footer.php");
 	$tpl->assign("config",$config);

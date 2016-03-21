@@ -378,7 +378,18 @@ var weburl="<{$config.weburl}>";
         <a target="_blank" href="main.php?m=product&s=admin_product_cat">管理类别</a>
         </td>
     </tr>
-    
+    <tr>
+        <th>国家馆</th>
+        <td>
+            <select name="national_id">
+                <option value="">请选择国家馆</option>
+                <{foreach item=list from=$nations}>
+                <option <{if $list.id==$de.national}>selected="selected"<{/if}> value="<{$list.id}>"><{$list.title}></option>
+                <{/foreach}>
+            </select>
+
+        </td>
+    </tr>
     <{if $t neq 1}>
     <tr>
         <th>有效期</th>

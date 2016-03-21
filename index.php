@@ -1,7 +1,7 @@
 <?php
 include_once("includes/global.php");
-include_once("includes/smarty_config.php");
 
+include_once("includes/smarty_config.php");
 // ========= 微信支付第一步骤 =========
 if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
 {
@@ -46,9 +46,11 @@ $original_prefix=str_replace('http://','',str_replace($config['baseurl'],'',$con
 //view:abc.ocm view, baseurl:abc.com, weburl:www.abc.com true_prefix='',original_prefix='www'
 
 if(empty($true_prefix)&&!empty($original_prefix))
-{
+{    
 	header("Location: ".$config['weburl']);exit();
 }
+
+
 if($true_prefix!=$original_prefix&&empty($dpid)&&empty($dcid)&&empty($dir)&&!empty($config['baseurl'])&&empty($mlang))
 {
 
@@ -89,7 +91,6 @@ else
 	$file=$config['webroot'].'/cache/front/index.htm';
 	if(file_exists($file) && (time() - filemtime($file)<$config['cacheTime']*1)&&empty($_GET['m']))
 	{
-
 		include($file);
 	}
 	else
