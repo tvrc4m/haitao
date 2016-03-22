@@ -131,7 +131,7 @@ else
 			$catname[]=substr($id,0,-2);
 		$catname[]=$id;
 		$tpl->assign("catname",$catname);
-
+		
 		$cat=readCat($id);
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
