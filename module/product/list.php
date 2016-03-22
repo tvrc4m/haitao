@@ -120,6 +120,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 }
 else
 {
+
     //===================================分类
 	if(is_numeric($id))
 	{
@@ -131,7 +132,6 @@ else
 			$catname[]=substr($id,0,-2);
 		$catname[]=$id;
 		$tpl->assign("catname",$catname);
-		
 		$cat=readCat($id);
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
@@ -141,6 +141,7 @@ else
 			$re=$db->getRows();
 			$tpl->assign("brand",$re);
 		}
+
 		//-----------------------------子类
 		$sql="select cat,catid from ".PCAT." where catid < ".$id."99 and catid > ".$id."00 order by nums asc ";
 		$db->query($sql);
@@ -200,7 +201,6 @@ else
 
 	if(!empty($_GET['ptype']) and $_GET['ptype']>=0 and $_GET['ptype']<count($ptype))
 		$scl.=" and a.type='$_GET[ptype]' ";
-
 
 	if(!empty($_GET['is_dist']) and $_GET['is_dist']==1)
 		$scl.=" and a.is_dist=1 ";
