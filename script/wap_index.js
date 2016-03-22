@@ -119,7 +119,15 @@ $(document).scroll(function(){
 	var h = $(document).scrollTop();
 	if(h > 50)
 	{
-		$(".main").css({"position":"fixed","top":0,"width":"100%"})
-		$(".m_main").eq(0).css({"margin-top":"50px"})
+		$(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"20"})
+		$("#J_search").eq(0).css({"margin-top":"50px"});
+		$(".filter").eq(0).css({"margin-top":"50px"})
 	}
+})
+$(function(){
+	$(".guanggao_kong").each(function(index){
+		$(".guanggao_kong").eq(index).append("<div class='g_wei'>"+
+	        	"<img src='image/wap/mayi_wap_guanggao1.jpg'>"+
+	        "</div>")
+	})		
 })

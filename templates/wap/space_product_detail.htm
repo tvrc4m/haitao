@@ -75,9 +75,16 @@ function distribute_goods(id){
     <div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><font>&#xe60d</font></section>
         <section class="nav-c"><span>商品详情</span></section>
-         <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
+        <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
     </div>
 </header>
+<div class="shoping-fixed">
+    <div class="c-wh bgw">
+        <div class="addcart">
+            <a class="incar" href="javascript:buy()">加入购物车</a>
+        </div>
+    </div>
+</div>
 <form id="form" name="form" action="<{$config.weburl}>/?m=product&s=cart<{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
 <input name="dist_user_id" type="hidden" value="<{$smarty.get.shop_id}>" />
 <div class="ub ub-ver" id="pro_detail">
@@ -86,14 +93,12 @@ function distribute_goods(id){
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
                 <div id="pname"><{$de.name}></div>
-                <div id="price"><{$config.money}>  <{$de.price|number_format:2}></div>
+                <div id="price">
+                    <span class="price_moneys"><{$config.money}>  <{$de.price|number_format:2}></span>
+                    <span class="price_dels"><{$config.money}>  <{$de.price|number_format:2}></span>
+                    <span class="price_zhes"><i></i>9.5折</span>
+                </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
-            </div>
-            <div class="col">
-                <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
-                    <div id="collect" class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
-                    <div style="font-size: .7em">收藏</div>
-                </a>
             </div>
         </div>
     </div>
@@ -109,47 +114,21 @@ function distribute_goods(id){
 		</div>
 	<{/if}>
 
-    <div class="c-wh bgw">
-        <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}>
-            <div class="space_zhifu">
-                <img src="<{$config.weburl}>/templates/wap/images/2015-05-22_194356.png" alt="">
-                <dd>正品保障</dd>
-            </div>
-            <div class="space_zhifu">
-                <img src="<{$config.weburl}>/templates/wap/images/2015-05-22_194356.png" alt="">
-                <dd>担保交易</dd>
-            </div>
-            <div class="space_zhifu">
-                <img src="<{$config.weburl}>/templates/wap/images/2015-05-22_194356.png" alt="">
-                <dd>七天退换</dd>
-            </div>
-            <div class="space_zhifu">
-                <img src="<{$config.weburl}>/templates/wap/images/2015-05-22_194356.png" alt="">
-                <dd>分享赚拥</dd>
-            </div>
-        <{/if}>
-		
-        <!-- <br><br><br> -->
-        <dl style="padding:5px;">
-            <dt style="margin-bottom: 6px;">物流运费：</dt>
-            <dd>
-            <{if $de.freight_type==0}>
-                 卖家承担运费
-            <{else}>
-                <{if $de.user_ip}><{$de.area}>|<{$lang.to}> <{$de.user_ip}><{/if}>
-               <!--  <{if !$de.freight_id}>
-                快递:&nbsp; <{$config.money}> <{$de.express_price}>
-                平邮:&nbsp; <{$config.money}> <{$de.post_price}>
-                EMS:&nbsp; <{$config.money}> <{$de.ems_price}>
-                <{else}>
-                <{$de.freight_count}>
-                <{/if}> -->
-            <{/if}>
-            </dd>
-        </dl>
-    </div>
     <div class="c-wh bgw" style="margin-bottom: 0">
         <div class="select_style clearfix">
+            <{if $de.rest==0 && !$de.offertime}>
+            <dl class="clearfix">
+                <dt>数量</dt>
+                <dd class="stock">
+                    <a href="javascript:void(0);" id="low_num">-</a>
+                    <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
+                    <a href="javascript:void(0);" id="add_num">+</a>
+                </dd>
+                <dd class="stock_kucun">
+                    <em> （库存 <span id="stock"><{$de.stock}></span> 件<{if $de.is_virtual eq 1 && $de.maxbuy lt $de.stock  && $de.maxbuy gt 0}>，每人限购<strong style='color:#f40'><{$de.maxbuy}>件<{/if}></strong>） </em>
+                </dd>
+            </dl>
+            <{/if}>
             <{if $de.porperty}>
                 <ul class="ub t-bla ub-ac">
                     <li class="ub-f1 ut-s">选择商品规格</li>
@@ -159,50 +138,67 @@ function distribute_goods(id){
                 <{$list}>
                 <{/foreach}>
             <{/if}>
-            <{if $de.rest==0 && !$de.offertime}>
-            <dl>
-                <dt>数量</dt>
-                <dd class="stock">
-                    <a href="javascript:void(0);" id="low_num">-</a>
-                    <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
-                    <a href="javascript:void(0);" id="add_num">+</a>
-                    <em>件 （库存 <span id="stock"><{$de.stock}></span> 件<{if $de.is_virtual eq 1 && $de.maxbuy lt $de.stock  && $de.maxbuy gt 0}>，每人限购<strong style='color:#f40'><{$de.maxbuy}>件<{/if}></strong>） </em>
-                </dd>
-            </dl>
-            <{/if}>
         </div>
     </div>
-    <div class="c-wh bgw">
-        <div class="addcart">
-            <a class="incar" href="javascript:buy()"><span class="iconfont">&#xe60f;</span>加入购物车</a>
-        </div>
-    </div>
+
     <div class="clearfix"></div>
-    <div class="c-wh bgw">
+    <div class="c-wh bgw c-wh-commit clearfix">
+            <div class="commit-left clearfix">
+                <!-- <div class="commit-left-img"><img src="../../../image/wap/mayi_wap_icon20.png"></div> -->
+                <div class="commit-left-text"><ul><li>品牌</li><li>服务承诺</li></ul></div>
+            </div>
+            <div class="commit-rifht clearfix">
+                <div class="space_zhifu space_zhifu_b space_zhifu_t clearfix">
+                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <dd>正品保障</dd>
+                </div>
+                <div class="space_zhifu space_zhifu_b clearfix">
+                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <dd>担保交易</dd>
+                </div>
+                <div class="space_zhifu space_zhifu_t clearfix">
+                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <dd>七天退换</dd>
+                </div>
+                <div class="space_zhifu clearfix">
+                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <dd><!-- 分享赚拥 -->9天无理由退货</dd>
+                </div>
+            </div>
+            <div class="commit-rifht-icon"></div>
+     
+    </div>
+    <div class="c-wh bgw c-wh-dianpu">
         <div class="clearfix"></div>
 
-        <ul class="ub t-bla ub-ac uinn-pFS1">
+        <ul class="ub t-bla ub-ac uinn-pFS1 ub-xinxi">
             <li class="ut-s">
                 <a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"> <img src="<{if $com.wap_logo}><{$com.wap_logo}><{else}>templates/wap/images/user.png<{/if}>" class="slogo"/></a>
-                <{if $chat_open_flag}>
-                <p class="chats"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;">
-                    <span class="iconfont" style="">&#xe635;</span>&nbsp;&nbsp;联系卖家</a>
-                </p>
-                <{/if}>
             </li>
             <li class="ub-f1 sinfo">
                 <p><strong><{$com.company}></strong></p>
-                <p><font color="#525252">地点：<{$com.area}></font></p>
+                <p><font color="#525252"><{$com.area}></font></p>
             </li>
-            <li class="goshop"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>">进入店铺
-            </a></li>
-            <li class="iconfont fas"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><font color="#FD0D0D">&#xe607;</font></a></li>
+           <!--  <li class="goshop"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>">进入店铺
+            </a></li> -->
+            <li class="iconfont fas"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><font class="dianpu-on"></font></a></li>
+        </ul>
+        <ul class="ub t-bla ub-ac uinn-pFS1">
+            <li class="ub-f2">
+                <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
+                <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
+                <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
+            </li>
+        </ul>
+        <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu">
+            <li class="ub-kefu_first"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;"><i class="kefu_icon1"></i>联系客服</a></li>
+            <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
     </div>
-    <div class="c-wh bgw">
+    <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
-            <dl>
-                <dt>商品详情</dt>
+            <dl class="clearfix">
+                <dt><i></i>商品详情</dt>
                 <dd class="wap_pdetail">
                      <{$de.detail}>
                 </dd>
@@ -215,25 +211,6 @@ function distribute_goods(id){
     <input name="sku" id="sku" type="hidden" value="0" />
 </div>
 </form>
-<!--<footer>
-    <div class="choose_btn ub b-gra-cf">
-        <div class="ub ub-ver ub-f1">
-            <a href="<{$config.weburl}>/shop.php?uid=<{$de.member_id}>">
-                <div class="iconfont_min">&#xe619;</div>
-                <div>商家店铺</div>
-            </a>
-        </div>
-        <div class="ub ub-ver ub-f1 addcart">
-            <a href="?m=product&s=cart">
-                <div class="iconfont_min">&#xe618;</div>
-                <div>购物车</div>
-            </a>
-        </div>
-        <div class="ub ub-ver ub-f1 btn">
-            <a class="incar" href="javascript:buy()">加入购物车</a>
-        </div>
-    </div>
-</footer>-->
 <script>
     function collect_goods(id){
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';

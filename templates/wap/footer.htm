@@ -30,16 +30,16 @@
 <footer>
     <section>
     <div class="fl"><script src="<{$config.weburl}>/login_statu.php"></script></div>
-    <div class="fr"><a href="javascript:scroll(0,0)">TOP<b></b></a></div>
+    <div class="fr"><a href="javascript:scroll(0,0)">返回顶部<b></b></a></div>
     </section>
     <nav>
-        <a href="<{$config.weburl}>/?temp=default">电脑版</a><{if $smarty.session.USER_TYPE==2}><a href="<{$config.weburl}>/main.php?cg_u_type=1">买家中心</a><{else}><a href="<{$config.weburl}>/main.php?cg_u_type=2&st=1">卖家中心</a><{/if}>　<a href="<{$config.weburl}>/help.php">帮助</a>
+        <a href="<{$config.weburl}>/?temp=default" class="footer_diannao">电脑版</a><{if $smarty.session.USER_TYPE==2}><a href="<{$config.weburl}>/main.php?cg_u_type=1" >买家中心</a><{else}><a href="<{$config.weburl}>/main.php?cg_u_type=2&st=1" class="footer_maijia">卖家中心</a><{/if}>　<a href="<{$config.weburl}>/help.php" class="footer_bangzhu">帮助</a>
     </nav>
     <p><{$bt}></p>
 </footer>
 </div>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_taoplus.js"></script>
-
+<script type="text/javascript" src="<{$config.weburl}>/script/libs.js"></script>
 <script src="<{$config.weburl}>/script/jquery.cookie.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/my_lightbox.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/chat.js"></script>
@@ -92,7 +92,6 @@
         $("#page_0").hide();
 
         $("#chat_box_icon").hide();
-
 
         function init_chat() {
             //$(document).ready(function() {

@@ -27,6 +27,7 @@ function change(text){
 	$.post(url, pars,showResponse);
 	function showResponse(originalRequest)
 	{
+		originalRequest = originalRequest.trim(); 
 		if(originalRequest != "{};")
 		{
 			$('#button_next_step').attr('disabled',true);

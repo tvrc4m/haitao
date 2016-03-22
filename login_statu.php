@@ -9,7 +9,7 @@ function showUser()
 	{
 		if($config['temp']=='wap')
 		{
-			$new='<a href=\'main.php?cg_u_type=1\'>'.$_COOKIE['USER']."</a> &nbsp;&nbsp;<a href='$config[weburl]/main.php?action=logout'>退出</a>";
+			$new='<a href=\'main.php?cg_u_type=1\' class=\'footer_denglu_user\'>'.$_COOKIE['USER']."</a> &nbsp;&nbsp;<a href='$config[weburl]/main.php?action=logout' class='footer_denglu'>退出</a>";
 		}
 		else if($_GET['m'] == 'index')
 		{
@@ -32,7 +32,7 @@ function showUser()
 	{	
 		if($config['temp']=='wap')
 		{
-			$new="<a href='".$config["weburl"]."/login.php'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/$config[regname]'>注册</a>";
+			$new="<a href='".$config["weburl"]."/login.php' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/$config[regname]' class='footer_denglu'>注册</a>";
 		}
 		else
 		{
