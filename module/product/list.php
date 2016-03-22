@@ -316,5 +316,6 @@ if($cat['templates'])
 
 $tpl->assign("current","product");
 include_once("footer.php");
+
 $out=tplfetch("product_list.htm");
 ?>
