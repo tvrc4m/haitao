@@ -48,6 +48,7 @@ em{font-style:normal;}
 .mt .fr a{color:#005EA7;}
 .mc, .smc{border-color:#F1F1F1;border-style:solid;border-width:0 1px 1px;}
 .w{margin:0 auto;width:1212px;}
+
 /*.gray{background:#F2F2F2;}*/
 .mt20{margin-top:20px;}
 .p-img,.p-name,.p-price,.p-market,.p-detail{overflow:hidden;}
@@ -444,6 +445,12 @@ ul,ol{list-style:none}
 .newfooter .foot ul li p{margin-top:20px;}
 .newfooter .foot ul li p a{display:block;font-size:14px;color:#666;line-height:25px}
 .newfooter .foot ul li p a:hover{text-decoration:underline;}
+.newfooter .foot .attention{position: relative;}
+.newfooter .foot .attention a{width: 32px;height: 31px;display: inline-block;vertical-align: middle;text-indent: -9999px;background-repeat: no-repeat;overflow: hidden;}
+.newfooter .foot .attention div{width: 130px;height: 170px;padding: 25px;position: absolute;background: #fff;top:0;left:0;}
+.newfooter .foot .weibo{background-image: url(../../../image/default/sina.png);}
+.newfooter .foot .weixin{background-image: url(../../../image/default/weixin.png);}
+.newfooter .foot .qq{background-image: url(../../../image/default/qq1.png);}
 
 [class^="icon_"]{display:inline-block;vertical-align:middle;text-indent:-9999px;background-image:url(../../../uploadfile/adv/2016/m_sprite.png);background-repeat:no-repeat;overflow:hidden}
 /*.icon_logo{background-position:0 0}*/
