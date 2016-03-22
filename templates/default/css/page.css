@@ -59,9 +59,11 @@ em{font-style:normal;}
 
 
 /*--顶部--*/
-.site-nav{z-index:10000;width:100%;background:#f5f5f5;border-bottom:1px solid #eee;*zoom:1}
-.site-nav .w{background:#f5f5f5;height:35px;}
+.site-nav{z-index:10000;width:100%;background:#e1e1e1;border-bottom:1px solid #eee;*zoom:1}
+.site-nav .w{background:#e1e1e1;height:35px;}
 .site-nav .nav{float:left;}
+.site-nav .nav .icon4{display: inline-block;width: 12px;height: 16px;background: url(../../../image/default/icon4.png) no-repeat;float: left;margin:9px 5px;}
+.site-nav .nav .icon5{display: inline-block;width: 17px;height: 16px;background: url(../../../image/default/icon5.png) no-repeat;float: left;margin: 9px -3px 9px 8px;}
 .site-nav .nav .nav-fore1{z-index:10002;position:relative;padding:0 10px;height:35px;line-height:35px;overflow:hidden;_display:inline;_zoom:1}
 .site-nav .nav .nav-fore1 a{text-decoration:none;display:inline;float:left;font-size:12px;color:#6c6c6c;}
 .site-nav .nav .nav-fore1 a:hover,
@@ -70,6 +72,7 @@ em{font-style:normal;}
 .site-nav .nav .nav-fore1 i{float:left;display:inline;width:8px;height:6px;position:relative;}
 .site-nav .nav .nav-fore1 i em{border-color:rgba(255, 255, 255, 0);border-style:solid;border-width:3px 4px 0;height:0;right:0;overflow:hidden;position:absolute;width:0;border-top-color:#6C6C6C;top:16px;}
 .site-nav .nav-fore2{display:none;}
+.site-nav .sjmy{width: 100px;height: 100px;position: absolute;top: 0;left: 0;padding:10px;background: #fff;}
 .site-nav .hover .nav-fore1{background:#FFF;border-color:#EEE;border-style:solid;border-width:0 1px;padding:0 9px 1px;}
 .site-nav .hover .nav-fore2{display:block;margin-top:-1px;position:relative;z-index:10001;}
 .site-nav .hover .nav-fore2 ul{position:absolute;left:0;top:0;padding:0px 6px 6px;line-height:normal;border:1px solid #eee;background:#fff;}
