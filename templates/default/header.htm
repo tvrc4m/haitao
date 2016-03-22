@@ -29,9 +29,8 @@
                 </form>
             </div>
             <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><span class="mid">我的购物车</span><i class="icon_cart"></i></div>
+                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i></a></div>
                 <div class="cart_list">
-                    
                 </div>
             </div>
         </div>
@@ -69,12 +68,18 @@
                 <!--menu end-->
                 <!--nav start-->
                 <ul class="nav ml20 newclear">
-                    <li><a href="" title="">首页</a></li>
-                    <li><a href="" title="">海外直邮</a></li>
-                    <li><a href="" title="">母婴专区</a></li>
-                    <li><a href="" title="">美妆个护</a></li>
-                    <li><a href="" title="">健康生活</a></li>
-                    <li><a href="" title="">潮流生活</a></li>
+                    <{foreach item=list key=num from=$menus name=nav}>
+                    <li <{if $list.identifier==$current}>class="current"<{/if}>>
+                    <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
+                    <{if $list.scat}>
+                    <div class="i-items">
+                        <{foreach item=slist from=$list.scat}>
+                        <a href="<{if $slist.url|truncate:4:''=='http'}><{$slist.url}><{else}><{$config.weburl}>/<{$slist.url}><{/if}>"><{$slist.name}></a>
+                        <{/foreach}>
+                    </div>
+                    <{/if}>
+                    </li>
+                    <{/foreach}>
                 </ul>
                 <!--nav end-->
                 <div class="m_gz"><i class="icon_wx_gray"></i><span class="mid">关注蚂蚁在线</span></div>
