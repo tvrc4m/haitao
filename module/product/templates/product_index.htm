@@ -7,20 +7,22 @@
                     <li class="on">●</li><li>●</li><li>●</li><li>●</li>
                 </ul>
             </div>
-            <div class="ban_li">
-                <ul class="slide_box">
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_02.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_03.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_04.jpg)"><a href="" title=""></a></li>
-                </ul>
-            </div>
+           <!--<div class="ban_li">
+               <ul class="slide_box">
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_01.jpg" alt=""></a></li>
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_02.jpg" alt=""></a></li>
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_03.jpg" alt=""></a></li>
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_04.jpg" alt=""></a></li>-->
+                    <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
+                    <script src='<{$config.weburl}>/api/ad.php?id=1&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
+                <!--</ul>
+            </div>-->
             <!-- <a class="prev" href="javascript:void(0)"></a>
             <a class="next" href="javascript:void(0)"></a> -->
         </div>
         <div class="w pos_ab">
             <div class="extend">
-                <a href=""><img src="../../../uploadfile/adv/2016/m_extend.jpg" alt="" title=""></a>
+                <script src='<{$config.weburl}>/api/ad.php?id=30&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
             </div>
         </div>
     </div>
@@ -98,7 +100,7 @@
     <!--商品分类 end-->
     <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
     
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         var num = 1;
         var oLi = $(".slide_box li");
         var aLi = $(".guide li");
@@ -118,4 +120,4 @@
                 num +=1;
             }
         }
-    </script>
+    </script>-->
