@@ -782,8 +782,9 @@ ins,a
 
 .cc-search
 {
-	height:50px;
-	background:#fc5b35;
+	height:1.75rem;
+	background:#ff5c5c;
+	text-align: center;
 }
 .s_left
 {
@@ -798,29 +799,40 @@ ins,a
 }
 .main95
 {
-	width:95%;
+	width:100%;
 	margin:0 auto;
 	overflow:hidden;
+	
 }
 .s_main
 {
-	width:85%;
+	width:93%;
 	overflow:hidden;
 	display:inline-block;
 	vertical-align: top;
+	position: relative;
 }
 .s_main input 
 {
-	float:left;
+	height: 1.25rem;
+	line-height: 1.25rem;
 	width:100%;
 	border:0;
-	background:#e7512a;
-	color:#fff;
-	margin-top:7px;
-	border-radius:5px;
+	background:#fff;
+	font-size: 0.45rem;
+	color:#555!important;
+	margin: 0 auto;
+	margin-top:0.25rem;
+	border-radius:0.125rem;
 	outline:0;
-	padding: 10px;
 }
+.s_images{width:0.7rem;
+	height: 0.7rem;
+	overflow: hidden;
+	background:url(../../../image/wap/mayi_wap_icon32.png) no-repeat;
+	background-size:contain;
+	display:inline-block;
+	position: absolute;right: 0.7rem;top: 0.55rem;}
 .s_main input:-moz-placeholder{color:#fff;}
 .s_main input::-moz-placeholder{color:#fff;}
 .s_main input:-ms-input-placeholder{color:#fff;}
@@ -875,7 +887,8 @@ ins,a
 	clear:both;
 }
 
-.m{width: 95%;max-width:540px;margin: 0 auto;overflow: hidden;}
+.m{width: 100%;max-width:720px;margin: 0 auto;overflow: hidden;padding:0 0.4rem;
+    box-sizing: border-box;}
 
 .owl-theme .owl-controls{margin-top: 0!important;}
 .owl-pagination
@@ -906,18 +919,21 @@ ins,a
 .index_pline{text-align: center;font-size: 12px;color: rgb(102, 102, 102);margin-bottom: 0.2rem;height: 0.9rem;line-height: 0.9rem;width: 100%;margin-top: 5px;}
 .mm_icon {overflow: hidden;background: #fff;margin-top: 8px;padding-bottom: 8px;margin-bottom: 8px;}
 .mm_icon li a{width: 100%;height: 100%;overflow: hidden;cursor: pointer;text-decoration: none;}
-.index_tt{text-align: left;line-height: 25px;font-weight: bold;font-size: 14px;text-indent: 1em}
+.index_tt{text-align: left;height: 1.25rem; line-height: 1.25rem;font-weight: bold;font-size: 0.45rem;text-indent: 1em;float: left; border-left: 4px solid #ff5c5c;
+}
+.index_view_more{float: right;height: 1.25rem; line-height: 1.25rem;font-size: 0.45rem;}
 .w100{width: 100%;}
 
 /*** 精选频道 ****/
 .slide img{width:100%;height:160px}
-.cates{float:left;width:100%}
-.cates .cateul{border-left:1px #e8e8e8 solid;border-bottom:1px #e8e8e8 solid;width:100%;margin:0px;padding:0px;float:left}
+.cates{float:left;width:100%;padding: 1rem 0;}
+.cates .cateul{width:100%;margin:0px;padding:0px;float:left}
 .cates .cateimg{height: 25px;}
-.cates .catename{font-size:12px}
-.cates li{background-color:#fff;float:left;border-top:1px #e8e8e8 solid;width:33%;height:75px;text-align:center;}
-.cates li.mm_flt{border-right:1px #e8e8e8 solid;}
-.cates li a{width: 100%;height: auto;padding-top:20px;display: block;text-decoration: none;}
+.cates .catename{font-size:0.45rem;margin-top: 0.5rem;}
+.cates li{float:left;width:20%;text-align:center;}
+.cates li.mm_flt{border-right:1px #b9b9b9 solid;}
+.cates li.mm_flt:nth-of-type(5n){border-right:none;}
+.cates li a{width: 100%;height: auto;display: block;text-decoration: none;}
 
 .avs{margin-top:10px;float: left;width:100%}
 .item img ,.avs img{width:100%!important;}
@@ -934,16 +950,29 @@ ins,a
 .zhoushop {background: #fff;overflow: hidden;padding: 3px 6px 3px 2px;border-bottom: 1px dashed #F8E1E1;}
 
 /*** 更多精彩 ****/
+.shop{position: relative;}
 .shop .mor{float:right;font-size:12px;color:#8d8d8d}
 .shop .shoplist{width:100%}
-.shop .shopli{float:left;width:49%;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;}
-.shop .shopli a {width: 85%;height: auto;outline: 0; font-size: 12px;overflow: hidden;text-decoration: none;margin: 0 auto;display: block;}
+.shop .shopli{float:left;width:48%;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 0.4rem;border:1px solid #b9b9b9;}
+.shop .shopli .shopli_bottom{border-top: 1px solid #b9b9b9;padding: 0.5rem;}
+.shopli_bottom_message{width:100%;font-size: 0.6rem;float: left;}
+.shopli_top_img{margin-bottom: 1px;margin: 0.25rem 0;} 
+.shopli_bottom_text{margin-bottom: 0.25rem;}
+.shop .shopli .shopli_bottom_rob a.shopli_bottom_zhuanxiang{float: right;width: 3.5rem;height: 1rem;line-height: 1rem;text-align: center;background-color: #ff5c5c;color: #fff;margin-top: -1.2rem;font-size: 0.6rem;margin-right: -0.5rem;}
+.shopli_bottom_message p{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;}
+.shop .shopli a {width: 100%;height: auto;outline: 0; font-size: 0.6rem;overflow: hidden;text-decoration: none;margin: 0 auto;display: block;}
 .money{color: #bc0000;text-align: left;}
 .shop .shopli p{text-align: left;}
-.shop .shopli.even{float: right;}
+.shopli_bottom_money{float: left;}
+.money_del{text-decoration: line-through;color: #999;}
+.shop .shopli.even{margin-left: 2.5%;}
 .nearShop {background: #fff;height: auto;text-align: center;}
 .nearShop li{text-align: left;}
-
+.guanggao_kong{margin-bottom: 6.75rem!important;}
+.g_wei{width: 100%;position: absolute;left: 0px;margin-top: 0.5rem}
+.g_wei img{width: 100%;}
+.m_jiazai{text-align: center;padding: 0px;width: 100%;display: inline-block;height: 1.75rem;line-height:1.75rem;border-radius: 0.25rem;font-size: 0.6rem;color: #b4b4b4;background-color: #fff;margin-bottom: 1rem;}
+.m_jiazai i{display: inline-block;width: 0.9rem;height: 0.55rem; background: url(../../../image/wap/mayi_wap_icon19.png) no-repeat 0 0;background-size:cover;margin-right: 0.5rem;vertical-align: middle;}
 /*** 附近的店铺 ****/
 .locate_self{width: 100%;height: auto;overflow: hidden;margin: 10px 0;}
 .locate_area{width: 95%;margin: 0 auto;background: #fff;border-radius: 8px;padding: 2px 1%;}
@@ -951,3 +980,11 @@ ins,a
 .flag_l s{width: 11px;border: 2px solid #fff;border-radius: 8;height: 11px;margin: 0 auto;display: inline-block;background: #1A8527;}
 #wlocate{float: left;}
 .reload{float: right;margin-right: 6px;}
+
+@media screen and (min-width: 600px) and (max-width: 800px) { 
+ 	.guanggao_kong{margin-bottom: 10.5rem!important;}
+ 	.shop .shopli {margin-bottom: 0.7rem;border: 1px solid #b9b9b9;
+}
+@media screen and  (height: 960px) {
+ 	.guanggao_kong{margin-bottom: 8.9rem!important;}
+}
