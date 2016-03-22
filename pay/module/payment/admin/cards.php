@@ -20,7 +20,7 @@ if($_GET['operation']=="add" or $_GET['operation']=="edit")
 				{
 					$password='';
 					for($i=0;$i<8;$i++) $password.=$str[rand(0,51)];
-                    
+
 					//$card_num=rand(1000000000,9999999999);
                     $card_num = microtime(true)*10000;
                     $card_num .= rand(0,9);

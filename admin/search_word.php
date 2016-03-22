@@ -4,6 +4,7 @@ include_once("../includes/page_utf_class.php");
 $script_tmp = explode('/', $_SERVER['SCRIPT_NAME']);
 $sctiptName = array_pop($script_tmp);
 @include_once("auth.php");
+
 //====================================
 if(!empty($_POST['keyword']))
 {
