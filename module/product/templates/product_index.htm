@@ -12,11 +12,12 @@
                    <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_01.jpg" alt=""></a></li>
                    <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_02.jpg" alt=""></a></li>
                    <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_03.jpg" alt=""></a></li>
-                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_04.jpg" alt=""></a></li>-->
-                    <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
-                    <script src='<{$config.weburl}>/api/ad.php?id=1&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-                <!--</ul>
-            </div>-->
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_04.jpg" alt=""></a></li>
+                </ul>
+            </div>
+            <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
+            -->
+            <script src='<{$config.weburl}>/api/ad.php?id=1&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
             <!-- <a class="prev" href="javascript:void(0)"></a>
             <a class="next" href="javascript:void(0)"></a> -->
         </div>
@@ -100,9 +101,9 @@
     <!--商品分类 end-->
     <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
     
-    <!--<script type="text/javascript">
+    <script type="text/javascript">
         var num = 1;
-        var oLi = $(".slide_box li");
+        var oLi = $(".slides li");
         var aLi = $(".guide li");
         var interval = window.setInterval(changeBanner,5000);
         function changeBanner(){
@@ -120,4 +121,4 @@
                 num +=1;
             }
         }
-    </script>-->
+    </script>
