@@ -46,10 +46,17 @@
         </div>
     </div>
     <!--footer end-->
-</body>
-<script type="text/javascript">
-    $(".attention>a").bind("mouseenter mouseleave",function(){
-       $(this).next.toggleClass("fn-hide");
+    <script type="text/javascript">
+    $(".weibo").bind("mouseenter mouseleave",function(){
+       $(".dia-wb").toggleClass("fn-hide");
+    });
+    $(".weixin").bind("mouseenter mouseleave",function(){
+       $(".dia-wx").toggleClass("fn-hide");
+    });
+    $(".qq").bind("mouseenter mouseleave",function(){
+       $(".dia-qq").toggleClass("fn-hide");
     });
 </script>
+</body>
+
 </html>
