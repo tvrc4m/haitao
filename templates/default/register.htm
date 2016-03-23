@@ -85,8 +85,19 @@
     var ml1 = Math.floor(($(window).width()-1920)/2);
     $(".mc").css("margin-left",ml);
     $(".wl>img").css("margin-left",ml1);
-    $(".idcode btn").onclick(function(){
-        $(".idcode btn").css("disabled","true");
+    var num = 10;
+    $(".idcode .btn").click(function(){
+        $(this).attr("disabled","true").css("background-color","#ccc");
+        var interval = window.setInterval(function(){
+            num = num - 1;
+            $(".idcode .btn").attr("value",num+ "秒后重新发送");
+            if (num < 1) {
+                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                clearInterval(interval);
+                $(".idcode .btn").attr("value","发送短信验证码");
+                num = 10;
+            };
+        },1000);
     })
 </script>
 </body>
