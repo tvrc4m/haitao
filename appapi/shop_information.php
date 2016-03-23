@@ -85,7 +85,7 @@ $re['asdiscribe']=number_format($u['a'],1);//描述相符
 $re['attitude']=number_format($u['b'],1);//服务态度
 $re['sendspeed']=number_format($u['c'],1);//发货速度
 $re['lospeed']=number_format($u['d'],1);//物流速度
-$re['result']=0;
+
 echo json_encode($re);
 return 0;
 ?>
