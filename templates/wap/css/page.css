@@ -28,11 +28,11 @@ a,a:visited{color:#333;text-decoration:none;}
 /*头部样式*/
 .head{width: 100%;margin: 0px auto;text-align: center;height: 50px;line-height: 50px;background-color: #f5f5f5;padding: 0px 0.5rem;box-sizing: border-box;}
 .head a.logo_haitao{vertical-align: middle;display: inline-block; width: 120px;height: 23px;background: url(../../../image/wap/mayi_wap_log4.png) center no-repeat;background-size: contain;margin-top: 13px;}
-.head a.user_icon{vertical-align: middle; float:left; width: 30px; height: 30px; background-repeat: no-repeat; background-image: url(../../../image/wap/mayi_wap_icon3.png);margin-top: 11px;}
-#y_menu_icon{vertical-align: middle; float: right; width: 30px; height: 22px; background-repeat: no-repeat; background-image: url(../../../image/wap/mayi_wap_icon17.png);margin-top: 14px;}
+.head a.user_icon{vertical-align: middle; float:left; width: 25px; height: 25px; background-repeat: no-repeat; background-image: url(../../../image/wap/mayi_wap_icon3.png);margin-top: 13px;background-size: contain;}
+#y_menu_icon{vertical-align: middle; float: right; width: 25px; height: 18.33px; background-repeat: no-repeat; background-image: url(../../../image/wap/mayi_wap_icon17.png);margin-top: 16px;background-size: contain;}
 .head{}
 header{width:100%;}
-.nav-w{background-color:#fff;border-bottom:1px #d9d9d9 solid;width:100%;font-size:12px;padding:5px 0 10px;height:50px;line-height:50px;display:-webkit-box;left:0;position:fixed;top:0;z-index:199;}
+.nav-w{background-color:#fff;border-bottom:1px #d9d9d9 solid;width:100%;font-size:12px;/*padding:5px 0 10px;*/height:50px;line-height:50px;display:-webkit-box;left:0;position:fixed;top:0;z-index:199;}
 .nav-w a{color:#666;}
 .nav-s{min-width:74px;padding-left:0.75rem;}
 .nav-c{text-align:center;-webkit-box-flex:1;}
