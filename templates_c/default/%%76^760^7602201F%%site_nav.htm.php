@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-03-22 20:55:11
          compiled from site_nav.htm */ ?>
+=======
+<?php /* Smarty version 2.6.20, created on 2016-03-22 20:48:47
+         compiled from site_nav.htm */ ?>
+>>>>>>> 9e4d35877495ce331f1236a7eeb29ba34bda9902
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -153,4 +158,4 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
        $(".fn-left .sjmy").toggleClass("fn-hide");
     });
 </script>
-
+

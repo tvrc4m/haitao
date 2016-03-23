@@ -117,7 +117,7 @@ function distribute_goods(id){
     <div class="c-wh bgw" style="margin-bottom: 0">
         <div class="select_style clearfix">
             <{if $de.rest==0 && !$de.offertime}>
-            <dl class="clearfix">
+            <dl class="clearfix select_style_num">
                 <dt>数量</dt>
                 <dd class="stock">
                     <a href="javascript:void(0);" id="low_num">-</a>
@@ -197,15 +197,15 @@ function distribute_goods(id){
     </div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
-            <dl class="clearfix">
-                <dt><i></i>商品详情</dt>
+            <dl class="clearfix select_style_xiangqing">
+                <dt class="select_style_title"><i></i>商品详情</dt>
                 <dd class="wap_pdetail">
                      <{$de.detail}>
                 </dd>
             </dl>
         </div>
     </div>
-    <div style="height:50px"></div>
+    <div style="height:50px" class="hidden_jianxi"></div>
     <input name="id" type="hidden" value="<{$de.id}>" />
     <input name="sid" id="sid" type="hidden" value="0" />
     <input name="sku" id="sku" type="hidden" value="0" />
