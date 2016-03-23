@@ -31,7 +31,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 
 /**************space_product_detail*******************/
 #pro_detail img{width:100%}
-#pro_detail #pname{line-height: 1.5em;font-weight: 800;font-size: 0.45rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;}
+#pro_detail #pname{line-height: 1.5em;font-weight: 800;font-size: 0.6rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;}
 #pro_detail #price{font-family: 'microsoft yahei';font-size:1.2em;color:#dd3030;border-bottom: 1px dashed #b9b9b9;height: 50px;line-height: 50px;}
 #pro_detail #price .price_moneys{font-size: 0.9rem;color: #ff5c5c;margin-right: 0.5rem;}
 #pro_detail #price .price_dels{font-size: 0.45rem;color: #535353;text-decoration: line-through;margin-right: 0.1rem;}
@@ -120,10 +120,13 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 
 .select_style{position:relative;background:#FFFFFF;padding: 0 0.5rem;}
 .select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:50px;border-bottom: 1px dashed #b9b9b9;margin-bottom: 0.5rem;}
+.select_style dl.select_style_num{line-height: 28px;padding: 10px 0;}
+.select_style dl.select_style_xiangqing{border-bottom: none;margin-bottom: 0px;}
 .select_style dt{color:#6D6D6D;font-family:simsun;float:left;display: inline-block;font-size: 0.45rem;}
-.select_style dt i{display: inline-block;width: 1rem;height: 1rem; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;}
+.select_style dt.select_style_title{width: 100%;border-bottom: 1px dashed #b9b9b9;margin-bottom: 0.5rem;font-size: 18px;}
+.select_style dt i{display: inline-block;width: 25px;height: 25px; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;margin-top: -5px;}
 .select_style dd{color:#404040;}
-.select_style dd.stock{margin-top: 11px;margin-left: 0.5rem;float: left;}
+.select_style dd.stock{/*margin-top: 11px;*/margin-left: 0.5rem;float: left;}
 .select_style dd.stock_kucun{float: right;font-size: 0.45rem;}
 .select_style ul{clear:both;display:block;overflow: hidden;}
 .select_style li{background-color:#FFFFFF;float:left;line-height:20px;margin:0 4px 6px 0;padding:1px;position:relative;vertical-align:middle;display: inline-block;}
@@ -150,6 +153,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .money{color: #bc0000;text-align: left;}
 .shopli p{text-align: left;}
 .shopli.even{float: right;}
+.hidden_jianxi{background-color: #fff;}
 
 .font12{font-size: 12px;}
 .main{overflow: hidden;width: 100%;}
