@@ -1,60 +1,99 @@
-<{include file="header.htm"}>
-<div class="w">
-    <div class="detailnav">
-        <strong><a href="index.php">首页</a></strong>
-        <span> >  <{$lang.callpass}></span>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册<{$config.company}></title>
+<meta name="description" content="<{$config.description}>" />
+<meta name="keywords" content="<{$config.keyword}>" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link href="<{$config.weburl}>/templates/default/page.css" rel="stylesheet" type="text/css" />
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+</head>
+<body class="login">
+<div id="header">
+    <div class="header">
+        <div class="logo">
+            <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
+        </div>
+        <div class="welcome">欢迎登录</div>
+        <div class="logo2"></div>
     </div>
 </div>
 
-<script type="text/javascript" src="script/Validator.js"></script>
-<div class="w lostpass">
-	<div class="mt"><h2><{$lang.callpass}></h2></div>
-	<div class="mc">
-        <form method="post" action="" onSubmit="return Validator.Validate(this,3)">
-            <table cellspacing="0" cellpadding="0">
-              <tr>
-                <td width="300" align="right">用户名：</td>
-                <td><input name="user" class="i-text" type="text" id="user" dataType="Require" msg="<{$lang.pls_user}>" size="25" value="<{$smarty.post.user}>" style="width:300px;"/></td>
-              </tr>
-              <tr>
-                <td align="right">邮箱地址：</td>
-                <td><input name="email" class="i-text" size="25" type="text" value="<{$smarty.post.email}>" dataType="Email" msg="<{$lang.pls_email}>"style="width:300px;" /></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td align="left" >
-                    <input type="submit" name="Submit" value="<{$lang.isure}>" />
-                    <input name="action" type="hidden" id="action" value="com" />
-                  </td>
-              </tr>
-            </table>
-        </form>		
-        <{if $smarty.post.action!=''}>
-         <{if $company.userid!=""}>
-        <form action="" method="post">
-        <table>
-            <tr>
-                <td width="300"></td>
-                <td>
-                <input name="userid" type="radio" value="<{$company.userid}>|<{$company.email}>" /><a href="shop.php?uid=<{$company.userid}>" target="_blank"><{$company.user}></a>
-                </td>
-            </tr> 
-            <tr>  
-                <td></td>
-                <td>     
-                <input name="action" type="hidden" id="action" value="submit" />
-                <input name="<{$lang.isure}>" type="submit" value="<{$lang.isure}>" />
-                </td>
-            </tr>
-        </table>
-        </form>
-        <{else}>
-        <p>
-        <{$lang.nosearch}><a href="<{$config.regname}>" target="_blank"><{$lang.reguser}></a>
-        <{$lang.contactme}><a href="aboutus.php?type=3" target="_blank"><{$lang.conme}></a>．
-        </p>
-        <{/if}>
-        <{/if}>
-	</div>
+<div class="wl">
+    <div class="mc lostpass">
+        <div class="form">
+            <ul class="tabs-nav clearfix">
+                <li class="text-left">蚂蚁会员</li>
+                <li class="fr"><img src="image/default/icon1.png" class="mr2"><a href="<{$config.regname}>" class="register">已有蚂蚁账号，去登录</a></li>
+            </ul>
+            <form id="login" name="login" action="login.php" method="post">
+                <dl>
+                    <dt><img src="image/default/icon2.png"></dt>
+                    <dd>
+                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
+                    </dd>
+                </dl>
+                <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
+                <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
+                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
+                <div class="idcode">
+                    <input class="text" tabindex="2" autocomplete="off" placeholder="短信验证码"/>
+                    <input class="btn" type="button" value="发送短信验证码" />
+                </div>
+                <dl>
+                    <dt><img src="image/default/icon6.png"></dt>
+                    <dd>
+                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="手机号"/>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt><img src="image/default/icon3.png"></dt>
+                    <dd>
+                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="设置密码"/>
+                    </dd>
+                </dl>
+                <{if $smarty.get.erry=="-2"}>
+                <font color="red" class="clearfix"><{$lang.passerr}></font>
+                <{/if}>
+                <div class="item login-btn">
+                    <input name="action" type="hidden" value="submit" />
+                    <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
+                    <input type="submit" tabindex="4" value="注册" onclick="return do_login();">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-<{include file="footer.htm"}>
+<div class="footer">
+    <div class="login_commitment"></div>
+    <p class="copytight">Copyright@2014-2016 mayizaixian.cn版权所有</p>
+</div>
+<!-- <div class="footer clearfix">
+    <div class="w">
+        <div class="links"><{$web_con}></div>
+        <div class="copyright"><{$bt}></div>
+    </div>
+</div> -->
+<script type="text/javascript">
+    var ml = Math.floor(($(window).width()-1212)/2);
+    var ml1 = Math.floor(($(window).width()-1920)/2);
+    $(".mc").css("margin-left",ml);
+    $(".wl>img").css("margin-left",ml1);
+    var num = 10;
+    $(".idcode .btn").click(function(){
+        $(this).attr("disabled","true").css("background-color","#ccc");
+        var interval = window.setInterval(function(){
+            num = num - 1;
+            $(".idcode .btn").attr("value",num+ "秒后重新发送");
+            if (num < 1) {
+                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                clearInterval(interval);
+                $(".idcode .btn").attr("value","发送短信验证码");
+                num = 10;
+            };
+        },1000);
+    })
+</script>
+</body>
+</html>

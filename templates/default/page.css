@@ -221,7 +221,7 @@ input:-webkit-autofill,
 .login .idcode{height: 40px;margin-bottom:20px;}
 .login .idcode .text{width: 130px;border: 1px solid #ccc;text-indent: 10px;padding: 7px 4px;}
 .login .idcode .btn{color: #FFF;background-color: #ff5c5d;height: 40px;border: none;cursor: pointer;width: 140px;margin-left:10px; }
-
+.login .lostpass{background: #fff;}
 /*.login .regist-now{font-size: 14px;color: #AAA;line-height: 20px;float: right;height: 40px;margin-top: 30px;}
 
 .login .regist-now a {font-weight: 600;margin-left: 4px;color: #06C;}
@@ -267,7 +267,7 @@ input:-webkit-autofill,
 .login .fore3 .text{width:50px;}
 .login .fore4{height:50px;overflow:hidden;z-index:3;}
 .login .extra span{float:left;height:18px;line-height:18px;margin-right:2px;overflow:hidden;position:relative;margin-right:5px;}
-.login font{background:#FFEBEC;border:1px solid #FFBDBF;color:#E6393D;line-height:25px;padding:2px 0 2px 3px;width: 309px;}
+.login font{background:#FFEBEC;border:1px solid #FFBDBF;color:#E6393D;line-height:25px;padding:2px;width: 290px;}
 /*.login font{background: #FFEBEC;border: 1px solid #FFBDBF;color: #E6393D;line-height: 25px;padding: 2px 0 2px 3px;}*/
 .login .login-btn{height:50px;}
 .login input[type="submit"]{font-size: 16px;font-weight: 600;color: #FFF;background-color: #ff5c5d;width: 290px;height: 42px;border: none;cursor: pointer;}
