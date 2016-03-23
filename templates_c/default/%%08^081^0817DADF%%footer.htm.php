@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-03-22 20:55:11
+<?php /* Smarty version 2.6.20, created on 2016-03-23 15:08:33
          compiled from footer.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'footer.htm', 11, false),)), $this); ?>
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-22 20:48:47
-         compiled from footer.htm */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'footer.htm', 11, false),)), $this); ?>
->>>>>>> 9e4d35877495ce331f1236a7eeb29ba34bda9902
 <!--田晓宝添加-->
     <!--footer start-->
     <div class="newfooter">
