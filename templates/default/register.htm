@@ -27,39 +27,39 @@
         <div class="form">
             <ul class="tabs-nav clearfix">
                 <li class="text-left">蚂蚁会员</li>
-                <li class="fr"><img src="image/default/icon1.png" class="mr2"><a href="<{$config.regname}>" class="register">已有蚂蚁账号，去登录</a></li>
+                <li class="fr"><img src="image/default/icon1.png" class="mr2"><a href="login.php" class="register">已有蚂蚁账号，去登录</a></li>
             </ul>
-            <form id="login" name="login" action="login.php" method="post">
+            <form  action="" method="post">
                 <dl>
                     <dt><img src="image/default/icon2.png"></dt>
                     <dd>
-                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
+                        <input type="text" class="text" maxlength="16"  autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
                     </dd>
                 </dl>
-                <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
+                <!--<{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
-                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
-                <div class="idcode">
-                    <input class="text" tabindex="2" autocomplete="off" placeholder="短信验证码"/>
-                    <input class="btn" type="button" value="发送短信验证码" />
-                </div>
+                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>-->
                 <dl>
                     <dt><img src="image/default/icon6.png"></dt>
                     <dd>
-                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="手机号"/>
+                        <input class="text" type="text" name="mobile" id="mobile" maxlength="11" tabindex="2" autocomplete="off" placeholder="手机号"/>
                     </dd>
                 </dl>
+                <div class="idcode">
+                    <input class="text" name="smsvode" maxlength="6" tabindex="3" autocomplete="off" placeholder="短信验证码"/>
+                    <input class="btn" type="button" value="发送短信验证码" />
+                </div>
                 <dl>
                     <dt><img src="image/default/icon3.png"></dt>
                     <dd>
-                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="设置密码"/>
+                        <input class="text" type="password" name="password" id="password" tabindex="4" autocomplete="off" placeholder="设置密码"/>
                     </dd>
                 </dl>
                 <{if $smarty.get.erry=="-2"}>
                 <font color="red" class="clearfix"><{$lang.passerr}></font>
                 <{/if}>
                 <div class="protocol">
-                    <input type="checkbox"><a href="lostpass.php" class="">蚂蚁海淘注册协议</a>
+                    <input type="checkbox" name="agreement" value="yes"><a href="lostpass.php" class="">蚂蚁海淘注册协议</a>
                 </div>
                 <div class="item login-btn">
                     <input name="action" type="hidden" value="submit" />
@@ -72,7 +72,7 @@
 </div>
 <div class="footer">
     <div class="login_commitment"></div>
-    <p class="copytight">Copyright@2014-2016 mayizaixian.cn版权所有</p>
+    <p class="copytight"><!--Copyright@2014-2016 mayizaixian.cn版权所有<{$web_con}>--><{$bt}></p>
 </div>
 <!-- <div class="footer clearfix">
     <div class="w">
