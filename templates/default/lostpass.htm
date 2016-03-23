@@ -8,6 +8,7 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link href="<{$config.weburl}>/templates/default/page.css" rel="stylesheet" type="text/css" />
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/login.js" type="text/javascript"></script>
 </head>
 <body class="login">
 <div id="header">
@@ -22,59 +23,64 @@
 
 <div class="wl">
     <div class="mc lostpass">
-        <div class="form">
-            <ul class="tabs-nav clearfix">
-                <li class="text-left">蚂蚁会员</li>
-                <li class="fr"><img src="image/default/icon1.png" class="mr2"><a href="<{$config.regname}>" class="register">已有蚂蚁账号，去登录</a></li>
-            </ul>
-            <form id="login" name="login" action="login.php" method="post">
-                <dl>
-                    <dt><img src="image/default/icon2.png"></dt>
-                    <dd>
-                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
-                    </dd>
-                </dl>
+        <div class="title">
+            <div class="first">找回密码</div>
+            <div class="second"><img src="image/default/icon1.png" class="mr2">想起密码？<a href="<{$config.regname}>" class="register">去登录</a>&nbsp还没有蚂蚁账号？<a href="<{$config.regname}>" class="register">20秒注册</a></div>
+        </div>
+        <div class="form lostpass1">
+            <form id="lostpass" name="lostpass" action="lostpass.php" method="post">
+                <div>
+                    <dl>
+                        <dt><img src="image/default/icon2.png"></dt>
+                        <dd>
+                            <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
+                        </dd>
+                    </dl>
+                    <span></span>
+                </div>
                 <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
                 <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
+                <div>
+                    <dl>
+                        <dt><img src="image/default/icon3.png"></dt>
+                        <dd>
+                            <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="新密码"/>
+                        </dd>
+                    </dl>
+                    <span></span>
+                </div>
+                <div>
+                    <dl>
+                        <dt><img src="image/default/icon6.png"></dt>
+                        <dd>
+                            <input class="text" id="phone" tabindex="3" autocomplete="off" placeholder="手机号"/>
+                        </dd>
+                    </dl>
+                    <span></span>
+                </div>
                 <div class="idcode">
                     <input class="text" tabindex="2" autocomplete="off" placeholder="短信验证码"/>
                     <input class="btn" type="button" value="发送短信验证码" />
                 </div>
-                <dl>
-                    <dt><img src="image/default/icon6.png"></dt>
-                    <dd>
-                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="手机号"/>
-                    </dd>
-                </dl>
-                <dl>
-                    <dt><img src="image/default/icon3.png"></dt>
-                    <dd>
-                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="设置密码"/>
-                    </dd>
-                </dl>
+                
                 <{if $smarty.get.erry=="-2"}>
                 <font color="red" class="clearfix"><{$lang.passerr}></font>
                 <{/if}>
                 <div class="item login-btn">
                     <input name="action" type="hidden" value="submit" />
                     <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
-                    <input type="submit" tabindex="4" value="注册" onclick="return do_login();">
+                    <input type="submit" tabindex="4" value="确定" onclick="return do_login();">
                 </div>
             </form>
         </div>
+         <p>注：密码找回功能仅限于在蚂蚁海淘验证过手机号码或邮箱的用户</p>
     </div>
 </div>
 <div class="footer">
     <div class="login_commitment"></div>
     <p class="copytight">Copyright@2014-2016 mayizaixian.cn版权所有</p>
 </div>
-<!-- <div class="footer clearfix">
-    <div class="w">
-        <div class="links"><{$web_con}></div>
-        <div class="copyright"><{$bt}></div>
-    </div>
-</div> -->
 <script type="text/javascript">
     var ml = Math.floor(($(window).width()-1212)/2);
     var ml1 = Math.floor(($(window).width()-1920)/2);

@@ -222,6 +222,21 @@ input:-webkit-autofill,
 .login .idcode .text{width: 130px;border: 1px solid #ccc;text-indent: 10px;padding: 7px 4px;}
 .login .idcode .btn{color: #FFF;background-color: #ff5c5d;height: 40px;border: none;cursor: pointer;width: 140px;margin-left:10px; }
 .login .lostpass{background: #fff;}
+.login .lostpass .title{height: 40px;margin-top:40px;line-height:40px;}
+.login .lostpass .title .first{display: inline-block;float: left;font-size: 20px;color: #f00;margin-left: 50px;}
+.login .lostpass .title .second{display: inline-block;float: right;margin-right: 50px;}
+.login .lostpass .title a{color: #ff5f5c}
+.login .lostpass .form {margin: 0 auto;padding: 10px 30px;float: none;}
+.login .lostpass p{text-align: center;margin-bottom: 50px;color: #7f7f7f}
+.login .lostpass1 form div{position: relative;}
+.login .lostpass1 form div span{position: absolute; top: 12px;right: -20px;width: 15px;height: 15px;}
+.login .lostpass1 form div .correct{background: url(../../image/default/true.png);}
+.login .lostpass1 form div .fault{background: url(../../image/default/false.png);}
+.login .form.register{margin-top:30px; }
+.login .register form div{position: relative;}
+.login .register form div span{position: absolute; top: 12px;right: -20px;width: 15px;height: 15px;}
+.login .register form div .correct{background: url(../../image/default/true.png);}
+.login .register form div .fault{background: url(../../image/default/false.png);}
 /*.login .regist-now{font-size: 14px;color: #AAA;line-height: 20px;float: right;height: 40px;margin-top: 30px;}
 
 .login .regist-now a {font-weight: 600;margin-left: 4px;color: #06C;}
