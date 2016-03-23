@@ -39,16 +39,16 @@
                 <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
                 <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
-                <div class="idcode">
-                    <input class="text" tabindex="2" autocomplete="off" placeholder="短信验证码"/>
-                    <input class="btn" type="button" value="发送短信验证码" />
-                </div>
                 <dl>
                     <dt><img src="image/default/icon6.png"></dt>
                     <dd>
                         <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="手机号"/>
                     </dd>
                 </dl>
+                <div class="idcode">
+                    <input class="text" tabindex="2" autocomplete="off" placeholder="短信验证码"/>
+                    <input class="btn" type="button" value="发送短信验证码" />
+                </div>
                 <dl>
                     <dt><img src="image/default/icon3.png"></dt>
                     <dd>
