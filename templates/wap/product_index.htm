@@ -37,7 +37,7 @@
     	<div class="cates">
             <ul class="cateul">
 			<{foreach item=cList name=cat key=num from=$categorys}>
-			<{if $smarty.foreach.cat.iteration lt 10}>
+			<{if $smarty.foreach.cat.iteration lt 6}>
             <li class="mm_flt">
                 <a href="<{$config.weburl}>/?m=product&s=list&id=<{$cList.catid}>" data-refresh-ajax="true">
 	                <img src="<{if $cList.pic}><{$cList.pic}><{else}><{$config.weburl}>/image/wap/cate<{$cList.catid}>.png<{/if}>" class="cateimg"/>

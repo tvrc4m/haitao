@@ -926,7 +926,7 @@ ins,a
 
 /*** 精选频道 ****/
 .slide img{width:100%;height:160px}
-.cates{float:left;width:100%;padding: 1rem 0;}
+.cates{float:left;width:100%;padding: 1rem 0 0.5rem;}
 .cates .cateul{width:100%;margin:0px;padding:0px;float:left}
 .cates .cateimg{height: 25px;}
 .cates .catename{font-size:0.45rem;margin-top: 0.5rem;}
