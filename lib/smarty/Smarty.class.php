@@ -1713,8 +1713,7 @@ class Smarty
     {
         $_args = func_get_args();
         list($_modifier_name, $_map_array) = array_splice($_args, 0, 2);
-        list($_func_name, $_tpl_file, $_tpl_line) =
-            $this->_plugins['modifier'][$_modifier_name];
+        list($_func_name, $_tpl_file, $_tpl_line) = $this->_plugins['modifier'][$_modifier_name];
 
         $_var = $_args[0];
         foreach ($_var as $_key => $_val) {

@@ -120,6 +120,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 }
 else
 {
+
     //===================================分类
 	if(is_numeric($id))
 	{
@@ -131,7 +132,6 @@ else
 			$catname[]=substr($id,0,-2);
 		$catname[]=$id;
 		$tpl->assign("catname",$catname);
-
 		$cat=readCat($id);
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
@@ -141,6 +141,7 @@ else
 			$re=$db->getRows();
 			$tpl->assign("brand",$re);
 		}
+
 		//-----------------------------子类
 		$sql="select cat,catid from ".PCAT." where catid < ".$id."99 and catid > ".$id."00 order by nums asc ";
 		$db->query($sql);
@@ -201,7 +202,6 @@ else
 	if(!empty($_GET['ptype']) and $_GET['ptype']>=0 and $_GET['ptype']<count($ptype))
 		$scl.=" and a.type='$_GET[ptype]' ";
 
-
 	if(!empty($_GET['is_dist']) and $_GET['is_dist']==1)
 		$scl.=" and a.is_dist=1 ";
 
@@ -231,7 +231,7 @@ else
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=8;
+	$page->listRows=16;
 	if(empty($cat['ext_field_cat']))
 		$sql="SELECT a.id,a.name as pname,a.price,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
@@ -313,8 +313,8 @@ if($cat['templates'])
 	$tpl -> template_dir = $config['webroot'] . "/templates/".$cat['templates']."/";
 	$tpl -> compile_dir  = $config["webroot"] . "/templates_c/".$cat['templates']."/";
 }
-
 $tpl->assign("current","product");
 include_once("footer.php");
+
 $out=tplfetch("product_list.htm");
 ?>
