@@ -171,7 +171,7 @@ function distribute_goods(id){
     <div class="c-wh bgw c-wh-dianpu">
         <div class="clearfix"></div>
 
-        <ul class="ub t-bla ub-ac uinn-pFS1 ub-xinxi">
+        <ul class="ub t-bla ub-ac uinn-pFS1 ub-xinxi clearfix">
             <li class="ut-s">
                 <a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"> <img src="<{if $com.wap_logo}><{$com.wap_logo}><{else}>templates/wap/images/user.png<{/if}>" class="slogo"/></a>
             </li>
@@ -190,7 +190,7 @@ function distribute_goods(id){
                 <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
             </li>
         </ul>
-        <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu">
+        <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
             <li class="ub-kefu_first"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;"><i class="kefu_icon1"></i>联系客服</a></li>
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
