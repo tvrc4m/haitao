@@ -27,3 +27,35 @@ $(function(){
         });
     });
 });
+var phnumber=/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
+    var user=/^[A-Za-z0-9\u4e00}-\u9fa5}]{4,16}$/;
+    var password=/^[A-Za-z0-9]{6,10}$/;
+    $(document).ready(function(){ 
+        jQuery.focusblur = function(focusid) { 
+            var focusblurid = $(focusid);
+            var span = $(focusid).parent().parent().next(); 
+            focusblurid.blur(function(){ 
+                var thisval = $(this).val();
+                var flag; 
+                if(focusid == "#user")
+                    flag = user.test(thisval);
+                if(focusid == "#mobile")
+                    flag = phnumber.test(thisval);
+                if(focusid == "#password")
+                    flag = password.test(thisval);
+
+                if(flag){
+                    span.removeClass("fault");
+                    span.addClass("correct");
+                    } else{
+                    span.removeClass("correct");
+                    span.addClass("fault");
+                }
+    
+            }); 
+        }; 
+        /*下面是调用方法*/ 
+        $.focusblur("#user"); 
+        $.focusblur("#mobile"); 
+        $.focusblur("#password");
+    }); 
