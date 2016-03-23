@@ -7,7 +7,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .uh, .uf {width: 100%;font-size: 1.2em;}
 .ub-ver {-webkit-box-orient: vertical;box-orient: vertical;}
 .ub{display: -webkit-box !important;display: box !important;position: relative;}
-.bc-bg{background-color:#daddda}
+.bc-bg{background-color:#daddda;padding-bottom: 50px;}
 .c-wh-dianpu{padding: 0 0.5rem;border-bottom: 1px solid #ff5c5c;}
 .ub-ac { -webkit-box-align: center;box-align: center;}
 .ub-f1 {position: relative; -webkit-box-flex: 1; box-flex: 1;}
