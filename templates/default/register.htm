@@ -29,45 +29,27 @@
                 <li class="text-left">蚂蚁会员</li>
                 <li class="fr"><img src="image/default/icon1.png" class="mr2"><a href="login.php" class="register">已有蚂蚁账号，去登录</a></li>
             </ul>
-<<<<<<< HEAD
-            <form id="register" name="register" action="register.php" method="post">
+            <form id="register" name="register" action="" method="post">
                 <div>
                     <dl>
                         <dt><img src="image/default/icon2.png"></dt>
                         <dd>
-                            <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
+                            <input type="text" class="text" maxlength="16" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
                         </dd>
                     </dl>
                     <span></span>
                 </div>
-                <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
-=======
-            <form  action="" method="post">
-                <dl>
-                    <dt><img src="image/default/icon2.png"></dt>
-                    <dd>
-                        <input type="text" class="text" maxlength="16"  autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
-                    </dd>
-                </dl>
-                <!--<{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
->>>>>>> ef9d307acc5bc095b4dc2b91d471fff715b18eb3
-                <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
-<<<<<<< HEAD
-                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>-->
-=======
-                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
-<<<<<<< HEAD
                 <div>
                     <dl>
                         <dt><img src="image/default/icon6.png"></dt>
                         <dd>
-                            <input class="text" name="phone" id="phone" tabindex="2" autocomplete="off" placeholder="手机号"/>
+                            <input class="text" name="mobile" id="mobile" tabindex="2" maxlength="11" autocomplete="off" placeholder="手机号"/>
                         </dd>
                     </dl>
                     <span></span>
                 </div>
                 <div class="idcode">
-                    <input class="text" tabindex="3" autocomplete="off" placeholder="短信验证码"/>
+                    <input class="text" tabindex="3" name="smsvode" maxlength="6" autocomplete="off" placeholder="短信验证码"/>
                     <input class="btn" type="button" value="发送短信验证码" />
                 </div>
                 <div>
@@ -79,29 +61,6 @@
                     </dl>
                     <span></span>
                 </div>
-=======
->>>>>>> 98d43c7797826f00b190f0c6f508f5a9e4a39a87
-                <dl>
-                    <dt><img src="image/default/icon6.png"></dt>
-                    <dd>
-                        <input class="text" type="text" name="mobile" id="mobile" maxlength="11" tabindex="2" autocomplete="off" placeholder="手机号"/>
-                    </dd>
-                </dl>
-                <div class="idcode">
-<<<<<<< HEAD
-                    <input class="text" name="smsvode" maxlength="6" tabindex="3" autocomplete="off" placeholder="短信验证码"/>
-=======
-                    <input class="text" tabindex="2" autocomplete="off" placeholder="短信验证码"/>
->>>>>>> 98d43c7797826f00b190f0c6f508f5a9e4a39a87
-                    <input class="btn" type="button" value="发送短信验证码" />
-                </div>
-                <dl>
-                    <dt><img src="image/default/icon3.png"></dt>
-                    <dd>
-                        <input class="text" type="password" name="password" id="password" tabindex="4" autocomplete="off" placeholder="设置密码"/>
-                    </dd>
-                </dl>
->>>>>>> ef9d307acc5bc095b4dc2b91d471fff715b18eb3
                 <{if $smarty.get.erry=="-2"}>
                 <font color="red" class="clearfix"><{$lang.passerr}></font>
                 <{/if}>

@@ -39,7 +39,7 @@ var phnumber=/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9
                 var flag; 
                 if(focusid == "#user")
                     flag = user.test(thisval);
-                if(focusid == "#phone")
+                if(focusid == "#mobile")
                     flag = phnumber.test(thisval);
                 if(focusid == "#password")
                     flag = password.test(thisval);
@@ -56,6 +56,6 @@ var phnumber=/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9
         }; 
         /*下面是调用方法*/ 
         $.focusblur("#user"); 
-        $.focusblur("#phone"); 
+        $.focusblur("#mobile"); 
         $.focusblur("#password");
     }); 
