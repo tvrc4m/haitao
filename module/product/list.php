@@ -231,7 +231,7 @@ else
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=8;
+	$page->listRows=16;
 	if(empty($cat['ext_field_cat']))
 		$sql="SELECT a.id,a.name as pname,a.price,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
