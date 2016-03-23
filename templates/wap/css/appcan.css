@@ -15,11 +15,11 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .kefu_icon1{width:0.75rem;height: 0.65rem;display: inline-block;background: url(../../../image/wap/mayi_wap_icon25.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;}
 .kefu_icon2{width:0.75rem;height: 0.65rem;display: inline-block;background: url(../../../image/wap/mayi_wap_icon24.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;}
 .ub-kefu ul li a{font-size: 0.6rem;}
-.ub-f2 p{float: left;width: 33.33%;font-size: 0.45rem;}
+.ub-f2 p{float: left;width: 33.33%;font-size: 0.6rem;}
 .ub-f2-test{text-align: center;}
 .ub-kefu_first{margin-right: 4%;}
 .ub-f2-test2{text-align: right;}
-.ub-kefu li{width: 48%;height: 1.5rem;line-height: 1.5rem;text-align: center;box-shadow: 0px 0px 1px #b9b9b9;border-radius: 0.2rem;}
+.ub-kefu li{width: 48%;height: 1.5rem;line-height: 1.5rem;text-align: center;box-shadow: 0px 0px 1px #b9b9b9;border-radius: 0.2rem;font-size: 0.6rem;}
 .nav-s-fanhui{width:1.5rem;height: 1.5rem;display: inline-block;background: url(../../../image/wap/mayi_wap_icon1.png) no-repeat;background-size: contain;vertical-align: middle;margin-top: 12px;}
 .sinfo_num{color: #ff5c5c;}
 .uinn-pFS1{padding:0.5rem 0em 0.5rem 0em;}
@@ -31,15 +31,15 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 
 /**************space_product_detail*******************/
 #pro_detail img{width:100%}
-#pro_detail #pname{line-height: 1.5em;font-weight: 800;font-size: 0.6rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;}
+#pro_detail #pname{line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;}
 #pro_detail #price{font-family: 'microsoft yahei';font-size:1.2em;color:#dd3030;border-bottom: 1px dashed #b9b9b9;height: 50px;line-height: 50px;}
 #pro_detail #price .price_moneys{font-size: 0.9rem;color: #ff5c5c;margin-right: 0.5rem;}
-#pro_detail #price .price_dels{font-size: 0.45rem;color: #535353;text-decoration: line-through;margin-right: 0.1rem;}
-#pro_detail #price .price_zhes{position: relative; display: inline-block; font-size: 0.45rem;color: #fff;width: 2rem;height: 0.9rem;line-height: 0.9rem;background-color: #ff5c5c;border-radius: 0.2rem;text-align: center;margin-top: -0.5rem;}
+#pro_detail #price .price_dels{font-size: 0.6rem;color: #535353;text-decoration: line-through;margin-right: 0.1rem;}
+#pro_detail #price .price_zhes{position: relative; display: inline-block; font-size: 0.5rem;color: #fff;width: 2rem;height: 0.9rem;line-height: 0.9rem;background-color: #ff5c5c;border-radius: 0.2rem;text-align: center;margin-top: -0.5rem;}
 #pro_detail #price .price_zhes i{display: inline-block;position: absolute;left: -6px;bottom: 0px;width:0px;height: 0px;border-width:6px;border-style: solid;border-color: transparent transparent #ff5c5c transparent;}
 #pro_detail .fas{font-size: 1.5em;color:#000}
 #pro_detail .slogo{width:4em;height:4em;border-radius:2em}
-#pro_detail .sinfo{padding-left:.5em;color:#000}
+#pro_detail .sinfo{padding-left:.5em;color:#000;font-size: 0.6rem;}
 .chats{margin: 5px 0;}
 .chats a{font-size: 14px;font-weight: bold;color: #FF6600;}
 .chats a span{color: #FF6600;font-size: 16px;}
@@ -122,12 +122,12 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:50px;border-bottom: 1px dashed #b9b9b9;margin-bottom: 0.5rem;}
 .select_style dl.select_style_num{line-height: 28px;padding: 10px 0;}
 .select_style dl.select_style_xiangqing{border-bottom: none;margin-bottom: 0px;}
-.select_style dt{color:#6D6D6D;font-family:simsun;float:left;display: inline-block;font-size: 0.45rem;}
+.select_style dt{color:#6D6D6D;font-family:simsun;float:left;display: inline-block;font-size: 0.6rem;}
 .select_style dt.select_style_title{width: 100%;border-bottom: 1px dashed #b9b9b9;margin-bottom: 0.5rem;font-size: 18px;}
 .select_style dt i{display: inline-block;width: 25px;height: 25px; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;margin-top: -5px;}
 .select_style dd{color:#404040;}
 .select_style dd.stock{/*margin-top: 11px;*/margin-left: 0.5rem;float: left;}
-.select_style dd.stock_kucun{float: right;font-size: 0.45rem;}
+.select_style dd.stock_kucun{float: right;font-size: 0.6rem;}
 .select_style ul{clear:both;display:block;overflow: hidden;}
 .select_style li{background-color:#FFFFFF;float:left;line-height:20px;margin:0 4px 6px 0;padding:1px;position:relative;vertical-align:middle;display: inline-block;}
 .select_style li a{background-color:#FFFFFF;border:1px solid #E2E1E3;color:#000000;display:block;min-width:10px;padding:5px 10px;text-align:center;text-decoration:none;white-space:nowrap;width:auto!important;cursor:pointer;color:#404040;}
@@ -167,5 +167,5 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .space_zhifu_b{margin-bottom: 0.1rem;}
 .space_zhifu_t{margin-right: 0.5rem;float: left;}
 .space_zhifu img{max-width: 20px;max-height: 20px;float: left;margin-right: 5px;}
-.space_zhifu dd{font-size: 0.5rem;color:#fff;float: left;}
+.space_zhifu dd{font-size: 0.6rem;color:#fff;float: left;}
 

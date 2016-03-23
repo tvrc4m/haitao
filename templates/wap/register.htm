@@ -50,30 +50,30 @@
 <header>
 	<div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><font>&#xe60d</font></section>
-    	<section class="nav-c"><span>会员注册</span></section>
+    	<section class="nav-c"><span>注册蚂蚁海淘</span></section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>/login.php"><nav>会员登录</nav></a></section>
     </div>
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/register.css" rel="stylesheet" type="text/css" />
-<section class="register">
+<section class="register form_z">
 
 <{if $config.closetype==2}>
 <div style="height:300px; padding-top:150px; color:#FF0000; border: 1px solid #A9B9D3; font-size:16px"> <{$config.closecon}></div>
 <{else}>
 
 <form action="" method="post">
-<table>
+<!-- <table>
 	<tr>
     	<td>
          <input  class="text" name="user" type="text" id="user" placeholder="<{if $config.user_reg eq 3}>手机号<{else}>邮箱/用户名/手机号<{/if}>"/>
          <div id="tishi"></div>
         </td>
     </tr>
-	<tr><!--
+	<tr>
     	<td>
             <input  class="text" name="email" type='email' id="email" placeholder="邮箱"/>
             <div id="tishi_email"></div>
-        </td>-->
+        </td>
     </tr>
 	<tr>
     	<td>
@@ -106,16 +106,52 @@
 		<input class="submit" type='submit' name='submitreg' id="submitreg" value='注册' />
         </td>
     </tr>
-</table>
+</table> -->
+ <ul>
+    <li class="user_names">
+        <input  class="text" name="user" type="text" id="user" placeholder="设置您的昵称"/>
+        <div id="tishi"></div>
+         <div class="inp_close"><i></i></div>
+    </li>
+    <li>
+        <input  class="text" name="mobile" type="text" id="mobile" placeholder="请输入手机号"/>
+        <div id="tishi"></div>
+    </li>
+    <li class="clearfix">
+        <input  class="text" name="yzm" type="text" id="yzm" placeholder="请输入验证码"/>
+        <p class="gain_ma" id="gain_ma">获取验证码</p>
+    </li>
+    <li>
+        <input type="passwords" name="password" id="password" placeholder="请输入密码（6-16位）"/>
+    </li>
+    <li class="spe_del">
+        <a href="javascript:void(0);">注册即接受<span class="spe_del_xieyi">《蚂蚁海淘使用协议》</span></a>
+    </li>
+    <!-- <li>
+        <input type="text" maxlength="4" name="randcode" id="randcode" placeholder="验证码" />
+        <img onclick="get_randfunc(this);" src='<{$config.weburl}>/includes/rand_func.php'/>
+    </li> -->
+    <li>
+       <input class="submit" type='submit' name='submitreg' id="submitreg" value='免费注册' />
+    </li>
+    <li>
+        <a id="regist" href="<{$config.weburl}>/login.php">已有账号？马上登陆</a>
+    </li>
+</ul>
 </form>  
 <{/if}>
 
 <{include file="footer.htm"}>
-    <script type=text/javascript>
-        $(function(){
-            <{if $config.user_reg eq 3}>
-            showcode("mobile");
-            <{else}>
-            <{/if}>
-            });
-    </script>
+<script type=text/javascript>
+    $(function(){
+        <{if $config.user_reg eq 3}>
+        showcode("mobile");
+        <{else}>
+        <{/if}>
+        });
+</script>
+<script type="text/javascript">
+     $(".gain_ma").on("click",function(){
+        alert(1)
+    })
+</script>
