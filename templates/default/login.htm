@@ -43,9 +43,9 @@ var norandcode='<{$lang.nocode}>';
                         <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名/邮箱/手机号" id="user">
                     </dd>
                 </dl>
-                <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
+                <!--<{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
-                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
+                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>-->
                 <dl>
                     <dt><img src="image/default/icon3.png"></dt>
                     <dd>
@@ -53,8 +53,15 @@ var norandcode='<{$lang.nocode}>';
                     </dd>
                 </dl>
                 <div class="tip hidden">用户名或密码错误</div>
+                <{if $smarty.get.erry=="-1"}>
+                    <font color="red" class="clearfix"><{$lang.noname}></font>
+                <{elseif $smarty.get.erry=="-5"}>
+                    <font color="red" class="clearfix">用户被禁止访问</font>
+                <{elseif $smarty.get.erry=="-4"}>
+                    <font color="red" class="clearfix"><{$lang.have_restpass}></font>
+                <{/if}>
                 <{if $smarty.get.erry=="-2"}>
-                <font color="red" class="clearfix"><{$lang.passerr}></font>
+                    <font color="red" class="clearfix"><{$lang.passerr}></font>
                 <{/if}>
                 <div class="item fore4">
                     <div class="item-ifo mt15">

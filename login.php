@@ -12,11 +12,14 @@ if(!empty($post["action"])&&$post["action"]=="submit")
 	include_once("includes/global.php");
 	include_once("includes/smarty_config.php");
 	include_once("config/reg_config.php");
-	if(strtolower($_SESSION["auth"])!=strtolower($post["randcode"])&&empty($post['first_index'])&&empty($post['connect_id']))
+	/**
+	 * @验证码 操作
+	 */
+	/*if(strtolower($_SESSION["auth"])!=strtolower($post["randcode"])&&empty($post['first_index'])&&empty($post['connect_id']))
 	{
 		header("Location: login.php?erry=-3");
 		exit();
-	} 
+	} */
 	$config = array_merge($config,$reg_config);
 	if($config['openbbs']==2)
 	{	
