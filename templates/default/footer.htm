@@ -12,31 +12,36 @@
                     <li>
                         <span>关注我们</span>
                         <div class="attention">
-                            <a href="" title="" class="weibo"></a>
-                            <div class="dia-wb fn-hide">
-                                <img src="../../../image/default/Logo1.png" />
-                                <span>新浪微博</span>
-                                <span>mayihaitao_wb</span>
-                                <span class="focus">立即关注</span>
-                                <span></span>
-                            </div>
-                            <a href="" title="" class="weixin"></a>
-                            <div class="dia-wx fn-hide">
-                                <img src="../../../image/default/code.jpg" />
-                                <span>微信供公众号</span>
-                                <span>mayihaitao_wx</span>
-                                <span></span>
-                            </div>
-                            <a href="" title="" class="qq"></a>
-                            <div class="dia-qq fn-hide">
-                                <p>客服QQ：</p>
-                                <a href=""><img src="../../../image/default/qq2.png" />123456</a>
-                                <a href=""><img src="../../../image/default/qq2.png" />123456</a>
-                                <hr>
-                                <p>官方交流技术群：</p>
-                                <a href=""><img src="../../../image/default/qun.png" />123456</a>
-                                <a href=""><img src="../../../image/default/qun.png" />123456</a>
-                                <span></span>
+                            <a href="" title="" class="weibo">
+                                <div class="dia-wb fn-hide">
+                                    <img src="../../../image/default/Logo1.png" />
+                                    <span>新浪微博</span>
+                                    <span>mayihaitao_wb</span>
+                                    <span class="focus">立即关注</span>
+                                    <span class="arr"></span>
+                                </div>
+                            </a>
+                            
+                            <a href="" title="" class="weixin">
+                                <div class="dia-wx fn-hide">
+                                    <img src="../../../image/default/code.jpg" />
+                                    <span>微信供公众号</span>
+                                    <span>mayihaitao_wx</span>
+                                    <span class="arr"></span>
+                                </div>
+                            </a>
+                           
+                            <div class="qq">
+                                <div class="dia-qq fn-hide">
+                                    <p>客服QQ：</p>
+                                    <a href=""><img src="../../../image/default/qq2.png" />123456</a>
+                                    <a href=""><img src="../../../image/default/qq2.png" />123456</a>
+                                    <hr>
+                                    <p>官方交流技术群：</p>
+                                    <a href=""><img src="../../../image/default/qun.png" />123456</a>
+                                    <a href=""><img src="../../../image/default/qun.png" />123456</a>
+                                    <span class="arr"></span>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -53,8 +58,12 @@
     $(".weixin").bind("mouseenter mouseleave",function(){
        $(".dia-wx").toggleClass("fn-hide");
     });
-    $(".qq").bind("mouseenter mouseleave",function(){
-       $(".dia-qq").toggleClass("fn-hide");
+    $(".qq").bind("mouseenter",function(){
+       $(".dia-qq").removeClass("fn-hide");
+    });
+    $(".qq").bind("mouseleave",function(){
+        if(!($(".dia-qq").hasClass("fn-hide")))
+       $(".dia-qq").addClass("fn-hide");
     });
 </script>
 </body>
