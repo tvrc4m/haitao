@@ -10,7 +10,7 @@ if(!empty($_GET['msg']))
 	$page="reset_pass.htm";
 }
 
-if(!empty($_POST['resetpass'])&&!empty($_POST['newpass'])&&!empty($_GET['md5']))
+/*if(!empty($_POST['resetpass'])&&!empty($_POST['newpass'])&&!empty($_GET['md5']))
 {
 	echo 1;
 	//重设密码
@@ -22,7 +22,7 @@ if(!empty($_POST['resetpass'])&&!empty($_POST['newpass'])&&!empty($_GET['md5']))
 		           where userid='$_GET[userid]' and password='$_GET[md5]'");
 		msg("lostpass.php?msg=2");
 	}
-}
+}*/
 if(!empty($_GET['md5'])&&!empty($_GET['userid']))
 {
 	echo 2;
@@ -68,21 +68,53 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 //找回密码页
 if(!empty($_POST["action"])&&$_POST["action"]=="com"&&!empty($_POST['user']))
 {//根据用户名和密码确定是哪一个公司在找回密码
-	echo 3;
-	$sql="select * from ".MEMBER." where user='$_POST[user]' and email='$_POST[email]'";
+
+	//定义所有正则
+	$str_check = [
+			'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
+			'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
+			'smsvode' => '/^[0-9]{6}$/',
+			'password' => '/^[A-Za-z0-9]{6,10}$/',
+	];
+	foreach($str_check as $key => $val){
+		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
+			die('请填写正确格式的数据');
+		}
+	}
+
+	//手机验证码
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
+		if($_SESSION['mon_yzm']['ytime']<time()){
+			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
+		}
+	}else{
+		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
+	}
+
+	$sql="select * from ".MEMBER." where user='$_POST[user]' and mobile='$_POST[mobile]'";
 	$db->query($sql);
 	$re=$db->fetchRow();
+
 	if(!$re)
 	{
 		msg("lostpass.php","会员不存在！");
 	}
 	else
 	{
-		$md5=md5(time().rand(0,100));
+		/*$md5=md5(time().rand(0,100));
 		$md5='lock'.substr($md5,5,strlen($md5));
-		$db->query("update ".MEMBER." SET password='$md5' where userid='$re[userid]'");
-		
-		$mail_temp=get_mail_template('find_pwd');
+		$db->query("update ".MEMBER." SET password='$md5' where userid='$re[userid]'");*/
+		//var_dump($re); die;
+		$userid = $re['userid'];
+		$re = $db->query("update ".MEMBER." set password='".md5($_POST['password'])."'
+		           where userid='$userid'");
+
+		if($re){
+			msg('login.php','密码修改成功！');
+		}else{
+			msg('lostpass.php','系统繁忙，请稍后修改！');
+		}
+		/*$mail_temp=get_mail_template('find_pwd');
 
 		$link=$config['weburl']."/lostpass.php?md5=$md5&userid=$re[userid]";
 		$link="<a target='_blank' href='".$link."'>".$link."</a>";
@@ -102,9 +134,9 @@ if(!empty($_POST["action"])&&$_POST["action"]=="com"&&!empty($_POST['user']))
 		$ar4=array($user,$config['company']);
 		$title=str_replace($ar3,$ar4,$title);
 		send_mail($re["email"],$re["user"], $title,$con);
-		$tpl->assign("email",$re["email"]);
+		$tpl->assign("email",$re["email"]);*/
 	}
-	$tpl->assign('p_email',$re["email"]);
+	//$tpl->assign('p_email',$re["email"]);
 	$page="lostpass_steptwo.htm";
 }
 
