@@ -10,6 +10,7 @@ function get_log_price($lgid,$area)
 	$sql="select * from ".LGSTEMPCON." where temp_id='$lgid' and define_citys like '%$city%' and logistics_type='mail'";
 	$db->query($sql);
 	$re=$db->fetchRow();
+
 	if(empty($re['id']))
 	{	//没有为城市定价
 		$sql="select * from ".LGSTEMPCON." where temp_id='$lgid' and define_citys='default' and logistics_type='mail'";
@@ -18,7 +19,7 @@ function get_log_price($lgid,$area)
 	}
 	$str=$re['default_price']?"平邮:$re[default_price]元 ":"";
 
-$sql="select * from ".LGSTEMPCON." where temp_id='$lgid' and define_citys like '%$city%' and logistics_type='express'";
+	$sql="select * from ".LGSTEMPCON." where temp_id='$lgid' and define_citys like '%$city%' and logistics_type='express'";
 	$db->query($sql);
 	$re=$db->fetchRow();
 	if(empty($re['id']))
@@ -45,6 +46,7 @@ $sql="select * from ".LGSTEMPCON." where temp_id='$lgid' and define_citys like '
 //-----------------------------------产品详情
 include_once($config['webroot']."/module/product/includes/plugin_product_class.php");
 $id=$_GET["id"]*1;
+
 //-----------------------------------
 user_read_rec($buid,$id,1);//记录会员查看商品
 //-----------------------------------    20150624 lemons 商品被删除后从订单点进去，进入快照
@@ -93,6 +95,7 @@ if (isset($_REQUEST['dist_id']))
 $sql="select isbuy,ext_table from ".PCAT." where catid='$prode[catid]'";
 $db->query($sql);
 $current_cat=$db->fetchRow();
+
 //-----------------------------------扩展字段
 include_once("$config[webroot]/module/product/includes/plugin_add_field_class.php");
 $addfield = new AddField('product');
@@ -102,6 +105,7 @@ $prode['user_ip']=convertip(getip());
 if($prode['user_ip']=='- LAN') $prode['user_ip']='上海';
 //----------------------------------跟据所在地自动算出的运费
 $prode['freight_count']=get_log_price($prode['freight_id'],$prode['user_ip']);
+
 //----------------------------------
 if(!empty($prode['member_id']))
 {

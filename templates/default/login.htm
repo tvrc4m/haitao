@@ -19,56 +19,50 @@ var norandcode='<{$lang.nocode}>';
 <body class="login">
 
 <div id="header">
-	<div class="w header">
-    	<div class="logo ld">
-        <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
-        <b></b>
+    <div class="header">
+        <div class="logo">
+            <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
         </div>
         <div class="welcome">欢迎登录</div>
-	</div>
+        <div class="logo2"></div>
+    </div>
 </div>
 
 <div class="wl">
+<img src="../../image/default/login_bg.jpg">
     <div class="mc">
-       
         <div class="form">
             <ul class="tabs-nav clearfix">
                 <li class="text-left">蚂蚁会员</li>
-                <li class="text-right"><img src="image/default/icon1.png"><a href="<{$config.regname}>" class="register">立即注册</a></li>
+                <li class="fr"><img src="image/default/icon1.png" class="mr2"><a href="<{$config.regname}>" class="register">还没有蚂蚁账号，20秒注册</a></li>
             </ul>
             <form id="login" name="login" action="login.php" method="post">
                 <dl>
                     <dt><img src="image/default/icon2.png"></dt>
-                   <!--  <dt>账&nbsp;&nbsp;&nbsp;号：</dt> -->
                     <dd>
                         <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名/邮箱/手机号" id="user">
                     </dd>
                 </dl>
-                <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
+                <!--<{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
-                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
+                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>-->
                 <dl>
                     <dt><img src="image/default/icon3.png"></dt>
-                    <!-- <dt>密&nbsp;&nbsp;&nbsp;码：</dt> -->
                     <dd>
                         <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="密码"/>
                     </dd>
                 </dl>
-                <{if $smarty.get.erry=="-2"}>
-                <font color="red" class="clearfix"><{$lang.passerr}></font>
+                <div class="tip hidden">用户名或密码错误</div>
+                <{if $smarty.get.erry=="-1"}>
+                    <font color="red" class="clearfix"><{$lang.noname}></font>
+                <{elseif $smarty.get.erry=="-5"}>
+                    <font color="red" class="clearfix">用户被禁止访问</font>
+                <{elseif $smarty.get.erry=="-4"}>
+                    <font color="red" class="clearfix"><{$lang.have_restpass}></font>
                 <{/if}>
-                <!-- <div class="code-div mt15">
-                <dl>
-                    <dt>验证码：</dt>
-                    <dd>
-                        <input type="text" maxlength="4" class="text w100" name="randcode" id="randcode" autocomplete="off" tabindex="3" placeholder="输入验证码"/>
-                    </dd>
-                </dl>
-                <span><img onclick="get_randfunc(this);" src='<{$config.weburl}>/includes/rand_func.php?rand_num=<{math equation=rand(1,9999)}>'/></span>
-                    <{if $smarty.get.erry=="-3"}>
-                    <font color="red" class="clearfix"><{$lang.codeerr}></font>
-                    <{/if}>
-                </div> -->
+                <{if $smarty.get.erry=="-2"}>
+                    <font color="red" class="clearfix"><{$lang.passerr}></font>
+                <{/if}>
                 <div class="item fore4">
                     <div class="item-ifo mt15">
                         <a href="lostpass.php" class="">忘记密码?</a>
@@ -79,72 +73,13 @@ var norandcode='<{$lang.nocode}>';
                     <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
                     <input type="submit" tabindex="4" value="登录" onclick="return do_login();">
                 </div>
-
-                <div class="item extra">
-                    <h4>无需注册，使用合作网站账号登录：</h4>
-                    <div>
-                        <{if $config.qq_connect==1}>
-                        <a target="_blank" class="qq" href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=<{$config.qq_app_id}>&redirect_uri=<{$config.weburl|cat:'/login.php'|urlencode}>&state=<{$config.company}>&client_secret=<{$config.qq_key}>"><i></i>QQ</a>
-                        <{/if}>
-                        <{if $config.sina_connect==1}>
-                        <a class="sina" href="<{$sina_login_url}>"><i></i>新浪微博</a>
-                        <{/if}>
-                        <{if $config.weixin_connect==1}>
-                        <a class="weixin" href="<{$wechat_url}>"><i></i>微信</a>
-                        <{/if}>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
 </div>
-<div class="clear"></div>
-<div class="footer w">
-        <div class="login_commitment"></div>
-        <!-- <ul class="icon clearfix">
-            <li class="clearfix">
-                <div class="footer_img"><img src="image/default/login1.png"/></div>
-                <div class="footer_text">
-                    <p class="font18">品质保证</p>
-                    <p class="font14">蚂蚁在线 平台信誉</p>
-                </div>
-            </li>
-            <li class="clearfix">
-                <div class="footer_img"><img src="image/default/login2.png"/></div>
-                <div class="footer_text">
-                    <p class="font18">海外直供</p>
-                    <p class="font14">全球资源 购物无境</p>
-                </div>
-            </li>
-            <li class="clearfix">
-                <div class="footer_img"><img src="image/default/login3.png"/></div>
-                <div class="footer_text">
-                    <p class="font18">优质品牌</p>
-                    <p class="font14">名品荟萃 质优大牌</p>
-                </div>
-            </li>
-            <li class="clearfix">
-                <div class="footer_img"><img src="image/default/login4.png"/></div>
-                <div class="footer_text">
-                    <p class="font18">售后保障</p>
-                    <p class="font14">专业客服 售后无忧</p>
-                </div>
-            </li>
-        </ul> -->
-        <ul class="text">
-            <li>关于我们</li>
-            <li>联系我们</li>
-            <li>人才招聘</li>
-            <li>商家入驻</li>
-            <li>广告服务</li>
-            <li>手机蚂蚁</li>
-            <li>友情链接</li>
-            <li>销售联盟</li>
-            <li>蚂蚁社区</li>
-            <li>蚂蚁公益</li>
-            <li class="nbr">English Site</li>
-        </ul>
-        <p class="copytight">Copyright@2014-2016 mayizaixian.cn版权所有</p>
+<div class="footer">
+    <div class="login_commitment"></div>
+    <p class="copytight">Copyright@2014-2016 mayizaixian.cn版权所有</p>
 </div>
 <!-- <div class="footer clearfix">
     <div class="w">
@@ -152,5 +87,11 @@ var norandcode='<{$lang.nocode}>';
         <div class="copyright"><{$bt}></div>
     </div>
 </div> -->
+<script type="text/javascript">
+    var ml = Math.floor(($(window).width()-1212)/2);
+    var ml1 = Math.floor(($(window).width()-1920)/2);
+    $(".mc").css("margin-left",ml);
+    $(".wl>img").css("margin-left",ml1);
+</script>
 </body>
 </html>

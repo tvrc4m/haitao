@@ -42,7 +42,11 @@ if ($config['bw'] == "weixin")
 //====================================产品详情
 
 $tpl->assign("de",$prode);
-$tpl->assign("score",$shop->score());
+$score = $shop->score();
+foreach ($score as $key => $value) {
+	$score[$key] = $value?$value:0;
+}
+$tpl->assign("score",$score);
 
 $tpl->assign("chat_open_flag", $chat_open_flag);
 //====================================购买记录

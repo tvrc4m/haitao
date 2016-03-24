@@ -84,8 +84,13 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		$tpl -> compile_dir = $config['webroot'] . "/templates_c/".$company['template']."/";
 		$tpl -> assign("imgurl","templates/".$company['template']."/img/");
 		//-----------------------------------------------------
-		$tpl->assign("ulink",$shop->get_user_link());
-		$tpl->assign("score",$shop->score());
+		$score = $shop->score();		
+		foreach ($score as $key => $value) {
+			$score[$key] = $value?$value:0;
+		}
+
+		$tpl->assign("ulink",$shop->get_user_link());		
+		$tpl->assign("score",$score);
 		$tpl->assign("custom_cat",$shop->get_custom_cat_list(1));
 		$tpl->assign("shop_nav",$shop->get_shop_nav());
 		//-------------------------module分发--------------------

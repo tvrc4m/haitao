@@ -361,7 +361,7 @@ ul,ol{list-style:none}
 .m_nav .m_menu{float:left;position:relative;width:245px;color:#fff}
 .m_nav .m_menu dt{height:40px;line-height:40px;padding-left:20px;background:#2c2c2c}
 .m_nav .m_menu dt i{width:18px;height:12px;margin-right:10px}
-.m_nav .m_menu dd{position:absolute;top:40px;left:0;width:245px;background:url(../../../uploadfile/adv/2016/menu_bg.png) top left repeat;z-index:9999}
+.m_nav .m_menu dd{position:absolute;top:40px;left:0;width:245px;background:url(../../../uploadfile/adv/2016/menu_bg.png) top left repeat;z-index:19999}
 
 .m_nav .nav{float:left;}
 .m_nav .nav li{float:left;}
