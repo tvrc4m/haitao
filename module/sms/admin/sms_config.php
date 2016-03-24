@@ -1,11 +1,12 @@
 <?php
 $type='sms';
+
+//短信发送
 if($_POST["act"]=='send' and !empty($_POST['mob']) and !empty($_POST['con']))
 {
 	include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
 	$sms=new sms();
 	$str=$sms->send($_POST['mob'],$_POST['con']);
-
 	$str = iconv("gb2312","utf-8//IGNORE",urldecode($str));
 	msg("?m=sms&s=sms_config.php&operation=test",$str);
 	exit;
