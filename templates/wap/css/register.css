@@ -25,12 +25,12 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 	background: 0 0;background: url(../../../image/wap/wap_haitao_icon7.png) 5.8% no-repeat;background-size: .65rem;border: none;border-radius: .2rem;margin-top: .8rem;}    
 .form_z li input[name="password"]{box-shadow: 0px 0px 3px #b9b9b9;background-color: #fff!important; width: 100%;font-size: .7rem;padding-left: 18%;padding-right: 5%;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
 	background: 0 0;background:url(../../../image/wap/wap_haitao_icon8.png) 5.8% no-repeat;background-size: .75rem;border: none;border-radius: .2rem;margin-top: .8rem;}
-.form_z li input[name="yzm"]{box-shadow: 0px 0px 3px #b9b9b9;float: left; background-color: #fff!important; width: 60%;font-size: .7rem;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
+.form_z li input[name="yzm"]{box-shadow: 0px 0px 3px #b9b9b9;float: left; background-color: #fff!important; width: 55%;font-size: .7rem;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
 	background: 0 0;border: none;border-radius: .2rem;margin-top: .8rem;padding-left: 9%;}
 .spe_del{margin-top: .5rem;line-height: 1rem;font-size: .6rem;overflow: hidden;text-align: center;}
-.gain_ma{box-shadow: 0px 0px 3px #b9b9b9;background-color: #ddd;width: 35%;float: right;font-size: .7rem;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
+.gain_ma{box-shadow: 0px 0px 3px #b9b9b9;background-color: #ddd;width: 40%;float: right;font-size: .7rem;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
 	background: 0 0;border: none;border-radius: .2rem;margin-top: .8rem;}
 .gain_ma_test{background-color: #ff5c5d;color: #fff;}
-.spe_del_xieyi{color:#ff5c5d; }
+a.spe_del_xieyi{color:#ff5c5d;text-decoration: underline;}
 .user_names{position: relative;}
 .inp_close {width: 1rem;height: 1rem;background: url(../../../image/wap/wap_haitao_icon1.png) no-repeat;position: absolute;right: 3%;top:24%;background-size: contain;}
