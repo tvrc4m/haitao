@@ -82,7 +82,13 @@
                     <{/foreach}>
                 </ul>
                 <!--nav end-->
-                <div class="m_gz"><i class="icon_wx_gray"></i><span class="mid">关注蚂蚁在线</span></div>
+                <div class="m_gz">
+                    <i class="icon_wx_gray"></i><span class="mid">微信蚂蚁在线</span>
+                    <div class="sjmy fn-hide">
+                        <img src="../../../image/default/code.jpg" />
+                        <span></span>
+                    </div>
+                </div>
             </div>
         </div>
         <!--导航 end-->
@@ -94,6 +100,9 @@ $('.menu-items li').hover(function(){
 },function(){
     $(this).removeClass("hover");   
 });
+$(".m_gz").bind("mouseenter mouseleave",function(){
+       $(".m_gz .sjmy").toggleClass("fn-hide");
+    });
 function get_search_word(k)
 {
     if(k!='')

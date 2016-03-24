@@ -52,17 +52,9 @@ $(function(){
 <div class="site-nav">
     <div class="w fn-clear">
         <ul class="fn-left">
-            <li class="nav drop-down">
-                <div class="nav-fore1">
+            <li class="nav">
                     <span class="icon4"></span>
-                    <a>手机蚂蚁</a>
-                </div>
-                <div class="nav-fore2">
-                    <div class="sjmy fn-hide">
-                        <img src="../../../image/default/code.jpg" />
-                        <span></span>
-                     </div>
-                </div>
+                    <div class="nav-fore1"><a href="<{$config.weburl}>/?temp=wap">手机蚂蚁</a></div>
             </li>
             <li class="nav">
                 <span class="icon5"></span>
@@ -159,7 +151,7 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
                 <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
                     <input type="hidden" value="product" name="m" id="m">
                     <input type="hidden" value="list" name="s" id="s">
-                    <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
+                    <input style="width:210px" type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input style="margin:2px" type="submit" name="s_submit" value="搜本店"><input style="margin:2px" type="submit" name="s_submit" value="搜平台">
                 </form>
             </div>
             <div class="m_shop_cart mid pos_re">
@@ -200,7 +192,13 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
                     <{/foreach}>
                 </ul>
                 <!--nav end-->
-                <div class="m_gz"><i class="icon_wx_gray"></i><span class="mid">关注蚂蚁在线</span></div>
+                <div class="m_gz">
+                    <i class="icon_wx_gray"></i><span class="mid">微信蚂蚁在线</span>
+                    <div class="sjmy fn-hide">
+                        <img src="../../../image/default/code.jpg" />
+                        <span></span>
+                    </div>
+                </div>
             </div>
         </div>
         <!--导航 end-->
@@ -625,6 +623,9 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
     $(".qq").bind("mouseleave",function(){
         if(!($(".dia-qq").hasClass("fn-hide")))
        $(".dia-qq").addClass("fn-hide");
+    });
+    $(".m_gz").bind("mouseenter mouseleave",function(){
+       $(".m_gz .sjmy").toggleClass("fn-hide");
     });
 </script>
 <!-- <div id="footer">
