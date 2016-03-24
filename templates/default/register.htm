@@ -8,6 +8,7 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link href="<{$config.weburl}>/templates/default/page.css" rel="stylesheet" type="text/css" />
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/dialog/dialog.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/login.js" type="text/javascript"></script>
 </head>
 <body class="login">
@@ -105,7 +106,8 @@
                 data: {m_send: 'm_send', mobile: mob},
                 dataType: 'json',
                 success: function(datainfo){
-                    alert(datainfo.message);
+                    iframe_form("dia","nihao");
+                    // alert(datainfo.message);
                     num = datainfo.data?datainfo.data:num;
                 }
             });
