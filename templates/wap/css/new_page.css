@@ -820,31 +820,31 @@ ins,a
 	vertical-align: top;
 	position: relative;
 }
+.s_images{width:0.7rem;
+	height: 0.7rem;
+	overflow: hidden;
+	background:url(../../../image/wap/wap_haitao_icon4.png) no-repeat;
+	background-size:contain;
+	display:inline-block;
+	position: absolute;right: 0.7rem;top: 0.55rem;}
+.s_main input:-moz-placeholder{color:#555;}
+.s_main input::-moz-placeholder{color:#555;}
+.s_main input:-ms-input-placeholder{color:#555;}
+.s_main input::-webkit-input-placeholder{color:#555;}
 .s_main input 
 {
+	color:#555!important;
 	height: 1.25rem;
 	line-height: 1.25rem;
 	width:100%;
 	border:0;
 	background:#fff;
-	font-size: 6rem;
-	color:#555!important;
+	font-size: 0.6rem;
 	margin: 0 auto;
 	margin-top:0.25rem;
 	border-radius:0.125rem;
 	outline:0;
 }
-.s_images{width:0.7rem;
-	height: 0.7rem;
-	overflow: hidden;
-	background:url(../../../image/wap/mayi_wap_icon32.png) no-repeat;
-	background-size:contain;
-	display:inline-block;
-	position: absolute;right: 0.7rem;top: 0.55rem;}
-.s_main input:-moz-placeholder{color:#fff;}
-.s_main input::-moz-placeholder{color:#fff;}
-.s_main input:-ms-input-placeholder{color:#fff;}
-.s_main input::-webkit-input-placeholder{color:#fff;}
 .s-page{display:none;}
 .cc-search-show{display:block!important}
 .cc-search-tab li{float:left}
@@ -966,7 +966,7 @@ ins,a
 .shopli_bottom_message{width:100%;font-size: 0.6rem;float: left;}
 .shopli_top_img{margin-bottom: 1px;margin: 0.25rem 0;} 
 .shopli_bottom_text{margin-bottom: 0.25rem;}
-.shop .shopli .shopli_bottom_rob a.shopli_bottom_zhuanxiang{float: right;width: 3.5rem;height: 1rem;line-height: 1rem;text-align: center;background-color: #ff5c5c;color: #fff;margin-top: -1.2rem;font-size: 0.6rem;margin-right: -0.5rem;}
+.shop .shopli .shopli_bottom_rob a.shopli_bottom_zhuanxiang{float: right;width: 3.5rem;padding: 0.2rem 0; text-align: center;background-color: #ff5c5c;color: #fff;margin-top: -1.4rem;font-size: 0.6rem;margin-right: -0.5rem;}
 .shopli_bottom_message p{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;}
 .shop .shopli a {width: 100%;height: auto;outline: 0; font-size: 0.6rem;overflow: hidden;text-decoration: none;margin: 0 auto;display: block;}
 .money{color: #bc0000;text-align: left;}
@@ -980,7 +980,7 @@ ins,a
 .g_wei{width: 100%;position: absolute;left: 0px;margin-top: 0.5rem}
 .g_wei img{width: 100%;}
 .m_jiazai{text-align: center;padding: 0px;width: 100%;display: inline-block;height: 1.75rem;line-height:1.75rem;border-radius: 0.25rem;font-size: 0.6rem;color: #b4b4b4;background-color: #fff;margin-bottom: 1rem;}
-.m_jiazai i{display: inline-block;width: 0.9rem;height: 0.55rem; background: url(../../../image/wap/mayi_wap_icon19.png) no-repeat 0 0;background-size:cover;margin-right: 0.5rem;vertical-align: middle;}
+.m_jiazai i{display: inline-block;width: 0.9rem;height: 0.55rem; background: url(../../../image/wap/wap_haitao_icon11.png) no-repeat 0 0;background-size:cover;margin-right: 0.5rem;vertical-align: middle;}
 /*** 附近的店铺 ****/
 .locate_self{width: 100%;height: auto;overflow: hidden;margin: 10px 0;}
 .locate_area{width: 95%;margin: 0 auto;background: #fff;border-radius: 8px;padding: 2px 1%;}
