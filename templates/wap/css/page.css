@@ -32,16 +32,18 @@ a,a:visited{color:#333;text-decoration:none;}
 #y_menu_icon{vertical-align: middle; float: right; width: 25px; height: 18.33px; background-repeat: no-repeat; background-image: url(../../../image/wap/wap_haitao_icon3.png);margin-top: 16px;background-size: contain;}
 .head{}
 header{width:100%;}
-.nav-w{background-color:#fff;border-bottom:1px #d9d9d9 solid;width:100%;font-size:12px;/*padding:5px 0 10px;*/height:50px;line-height:50px;display:-webkit-box;left:0;position:fixed;top:0;z-index:199;}
+.nav-w{background-color:#ff5c5c;border-bottom:1px #d9d9d9 solid;width:100%;font-size:12px;/*padding:5px 0 10px;*/height:50px;line-height:50px;display:-webkit-box;left:0;position:fixed;top:0;z-index:199;}
 .nav-w a{color:#666;}
-.nav-s{min-width:74px;padding-left:0.75rem;}
+.nav-s{min-width:50px;padding-left:0.75rem;}
 .nav-c{text-align:center;-webkit-box-flex:1;-ms-box-flex:1;-moz-box-flex:1;-o-box-flex:1;}
-.nav-e{min-width:60px;padding-right: 15px;}
-.nav-s a{display:inline-block;width:74px;height:34px;line-height:34px;}
+.nav-e{min-width:50px;padding-right: 15px;}
+i.home_icon{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_icon9.png) right no-repeat;background-size: 50%;}
+i.fanhui_icon{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_icon10.png) 5.8% no-repeat;background-size: 50%;}
+.nav-s a{display:inline-block;width:50px;height:34px;line-height:34px;}
 .nav-s a nav{color:#666666;display:inline-block;height:34px;line-height:34px;padding-left:15px;text-align:center;text-decoration:none;width:62px;}
 .nav-s font{color:#FD0D0D;font-size: 25px;padding-left: 15px;}
-.nav-c span{display:block;height:50px;line-height:50px;padding:0 10px;font-size:18px;font-weight:bold;color:#333;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
-.nav-e a{color:#666666;display:inline-block;width:60px;height:32px;}
+.nav-c span{display:block;height:50px;line-height:50px;padding:0 10px;font-size:18px;/*font-weight:bold;*/color:#fff;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.nav-e a{color:#666666;display:inline-block;width:50px;height:32px;}
 .nav-e a nav{color:#666666;display:inline-block;height:32px;line-height:32px;text-align:center;text-decoration:none;width:60px;}
 .nav-e a.list nav{color:#666;}
 .select em{background:url(../../../image/wap/down.png);background-position:center center;background-repeat:no-repeat;background-size:contain;display:inline-block;height:13px;width:13px;}
