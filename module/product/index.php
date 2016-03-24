@@ -8,11 +8,11 @@ else
 	$cat_pro=array();
 if($cat_pro)
 {
+	$i = 0;
 	foreach($cat_pro as $key=>$v)
 	{
 		//--------类别名--------------
 		$sql="select brand,cat,catid,pic from ".PCAT." where catid='$v[catid]'";
-
 		$db->query($sql);
 		$cata=$db->fetchRow();
 
@@ -55,7 +55,17 @@ if($cat_pro)
 			$cat_pro[$key]['rand'][]=rand(0,$count);
 
 		}
-
+		$guang = [
+			[15,16,17],
+			[18,19,20],
+			[21,22,23],
+			[24,25,26],
+			[27,28,29]
+		];
+		if($key<1005){
+			$cat_pro[$key]['guanggao'] = $guang[$i];
+			$i++;
+		}
 	}
 	/*echo '<pre>';
 	print_r($cat_pro);*/
@@ -96,7 +106,6 @@ if($config['sina_connect']==1)//sina
 //修正连接地址信息
 include_once("module/shop/includes/plugin_shop_class.php");
 $shop=new shop();
-
 $cominfo=$shop->get_shop_info($buid);
 
 $tpl->assign("cominfo",$cominfo);
@@ -106,6 +115,5 @@ $tpl->assign("current","index");
 include_once("footer.php");
 
 //=============================================
-
 $out=tplfetch("product_index.htm",NULL);
 ?>

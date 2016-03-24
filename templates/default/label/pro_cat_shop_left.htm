@@ -1,16 +1,18 @@
 <{foreach item=cList key=num from=$cat}>
-    <li>
-        <label>
-            <a target="_blank" href="<{$config.weburl}>/?m=product&s=list&id=<{$cList.catid}>">
-                <i class="icon_menu_01"></i>
-                <b class="mid"><{$cList.cat|truncate:8:""}>
-                </b>
-            </a>
-        </label>
-        <p>
-            <{foreach item=sublist key=n from=$cList.scat}>
-                <a href="<{$config.weburl}>/?m=product&s=list&id=<{$sublist.catid}>" title=""><{$sublist.cat}></a>
-            <{/foreach}>
-        </p>
-    </li>
+    <{if $num<5 }>
+        <li>
+            <label>
+                <a target="_blank" href="<{$config.weburl}>/?m=product&s=list&id=<{$cList.catid}>">
+                    <i class="icon_menu_01"></i>
+                    <b class="mid"><{$cList.cat|truncate:8:""}>
+                    </b>
+                </a>
+            </label>
+            <p>
+                <{foreach item=sublist key=n from=$cList.scat}>
+                    <a href="<{$config.weburl}>/?m=product&s=list&id=<{$sublist.catid}>" title=""><{$sublist.cat}></a>
+                <{/foreach}>
+            </p>
+        </li>
+    <{/if}>
 <{/foreach}>

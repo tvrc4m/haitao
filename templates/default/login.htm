@@ -41,7 +41,7 @@ var norandcode='<{$lang.nocode}>';
                     <dt><img src="image/default/icon2.png"></dt>
                    <!--  <dt>账&nbsp;&nbsp;&nbsp;号：</dt> -->
                     <dd>
-                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="可使用已注册的用户名或手机号登录" id="user">
+                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名/邮箱/手机号" id="user">
                     </dd>
                 </dl>
                 <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
@@ -51,7 +51,7 @@ var norandcode='<{$lang.nocode}>';
                     <dt><img src="image/default/icon3.png"></dt>
                     <!-- <dt>密&nbsp;&nbsp;&nbsp;码：</dt> -->
                     <dd>
-                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="6-20个大小写英文字母、符号或数字"/>
+                        <input class="text" type="password" name="password" id="password" tabindex="2" autocomplete="off" placeholder="密码"/>
                     </dd>
                 </dl>
                 <{if $smarty.get.erry=="-2"}>
@@ -81,16 +81,18 @@ var norandcode='<{$lang.nocode}>';
                 </div>
 
                 <div class="item extra">
-                    <h4>使用合作网站账号登录：</h4>
-                    <{if $config.qq_connect==1}>
-                    <a target="_blank" class="qq" href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=<{$config.qq_app_id}>&redirect_uri=<{$config.weburl|cat:'/login.php'|urlencode}>&state=<{$config.company}>&client_secret=<{$config.qq_key}>"><i></i>QQ</a>
-                    <{/if}>
-                    <{if $config.sina_connect==1}>
-                    <a class="sina" href="<{$sina_login_url}>"><i></i>新浪微博</a>
-                    <{/if}>
-                    <{if $config.weixin_connect==1}>
-                    <a class="weixin" href="<{$wechat_url}>"><i></i>微信</a>
-                    <{/if}>
+                    <h4>无需注册，使用合作网站账号登录：</h4>
+                    <div>
+                        <{if $config.qq_connect==1}>
+                        <a target="_blank" class="qq" href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=<{$config.qq_app_id}>&redirect_uri=<{$config.weburl|cat:'/login.php'|urlencode}>&state=<{$config.company}>&client_secret=<{$config.qq_key}>"><i></i>QQ</a>
+                        <{/if}>
+                        <{if $config.sina_connect==1}>
+                        <a class="sina" href="<{$sina_login_url}>"><i></i>新浪微博</a>
+                        <{/if}>
+                        <{if $config.weixin_connect==1}>
+                        <a class="weixin" href="<{$wechat_url}>"><i></i>微信</a>
+                        <{/if}>
+                    </div>
                 </div>
             </form>
         </div>
@@ -98,7 +100,8 @@ var norandcode='<{$lang.nocode}>';
 </div>
 <div class="clear"></div>
 <div class="footer w">
-        <ul class="icon clearfix">
+        <div class="login_commitment"></div>
+        <!-- <ul class="icon clearfix">
             <li class="clearfix">
                 <div class="footer_img"><img src="image/default/login1.png"/></div>
                 <div class="footer_text">
@@ -127,7 +130,7 @@ var norandcode='<{$lang.nocode}>';
                     <p class="font14">专业客服 售后无忧</p>
                 </div>
             </li>
-        </ul>
+        </ul> -->
         <ul class="text">
             <li>关于我们</li>
             <li>联系我们</li>
@@ -139,7 +142,7 @@ var norandcode='<{$lang.nocode}>';
             <li>销售联盟</li>
             <li>蚂蚁社区</li>
             <li>蚂蚁公益</li>
-            <li>English Site</li>
+            <li class="nbr">English Site</li>
         </ul>
         <p class="copytight">Copyright@2014-2016 mayizaixian.cn版权所有</p>
 </div>

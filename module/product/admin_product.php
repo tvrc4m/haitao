@@ -148,7 +148,6 @@ else
 	$tpl->assign("ptype",explode('|',$config['ptype']));
 	$tpl->assign("validTime",explode('|',$config['validTime']));
 	$tpl->assign("custom_cat",$admin->get_custom_cat_list(1,0));
-    $tpl->assign("custom_national",array(array("id"=>1,"name"=>"日本馆"),array("id"=>2,"name"=>"澳洲馆")));
 	$tpl->assign("prov",GetDistrict());
 
 	//--------------------------自定义字段

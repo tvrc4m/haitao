@@ -4,29 +4,32 @@
         <div class="ban_slider" id="ht_ban_slider">
             <div class="w guide">
                 <ul>
-                    <li>●</li><li>●</li><li>●</li><li>●</li>
+                    <li class="on">●</li><li>●</li><li>●</li><li>●</li>
                 </ul>
             </div>
-            <div class="ban_li">
-                <ul class="slide_box">
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
-                    <li style="background-image:url(../../../uploadfile/adv/2016/ban_01.jpg)"><a href="" title=""></a></li>
+           <!--<div class="ban_li">
+               <ul class="slide_box">
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_01.jpg" alt=""></a></li>
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_02.jpg" alt=""></a></li>
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_03.jpg" alt=""></a></li>
+                   <li><a href="" title=""><img src="../../../uploadfile/adv/2016/ban_04.jpg" alt=""></a></li>
                 </ul>
             </div>
+            <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
+            -->
+            <script src='<{$config.weburl}>/api/ad.php?id=1&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
             <!-- <a class="prev" href="javascript:void(0)"></a>
             <a class="next" href="javascript:void(0)"></a> -->
         </div>
-        <div class="w pos_ab">
+        <!-- <div class="w pos_ab">
             <div class="extend">
-                <a href=""><img src="../../../uploadfile/adv/2016/m_extend.jpg" alt="" title=""></a>
+                <script src='<{$config.weburl}>/api/ad.php?id=30&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
             </div>
-        </div>
+        </div> -->
     </div>
     <!--banner end-->
     <!--海淘国家 start-->
-    <div class="m_country_list">
+    <!-- <div class="m_country_list">
         <div class="w">
             <ul class="country_nav newclear" id="country_tab_nav">
                 <li class="item focu"><i class="icon_Japan"></i><span class="mid">日本馆</span></li>
@@ -89,29 +92,33 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--海淘国家 end-->
     <!--商品分类 start-->
     <div class="m_goods_category">
        <{insert name="label" type="cat" temp="pro_index_01"}>
     </div>
     <!--商品分类 end-->
-    <script src="js/libs.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-        /**
-         * RequireJs Config
-         * @param {string} baseUrl default load any module path
-         */
-        require.config({
-            //By default load any module IDs from js/lib
-            baseUrl: '/js/',
-            paths: {
-                "slider":"jquery.SuperSlide",
-                "utility":"util"
-            },
-            shim: {}
-        });
-        require(['pages/ht_index'], function (I) {
-
-        });
+    <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script>
+    
+    <script type="text/javascript">
+        var num = 1;
+        var oLi = $(".slides li");
+        var aLi = $(".guide li");
+        var interval = window.setInterval(changeBanner,5000);
+        function changeBanner(){
+            for(var i=0;i<4;i++){
+                oLi[i].style.display="none";
+                if($(aLi[i]).hasClass("on"))
+                $(aLi[i]).removeClass("on");
+            }
+            if(num > 3){
+                num = 0;
+                changeBanner();
+            }else{
+                oLi[num].style.display="";
+                $(aLi[num]).addClass("on");
+                num +=1;
+            }
+        }
     </script>
