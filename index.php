@@ -1,5 +1,6 @@
 <?php
 
+
 include_once("includes/global.php");
 
 include_once("includes/smarty_config.php");
@@ -48,6 +49,7 @@ $original_prefix=str_replace('http://','',str_replace($config['baseurl'],'',$con
 
 if(empty($true_prefix)&&!empty($original_prefix))
 {    
+	
 	header("Location: ".$config['weburl']);exit();
 }
 

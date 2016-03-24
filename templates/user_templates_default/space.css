@@ -192,7 +192,7 @@ html[xmlns] .clearfix{display:block;}
 #footer a{color:#666666;text-decoration:none;}
 #footer em{padding:0 10px;}
 /* 幻灯片 */
-.flexslider{width:1140px;overflow:hidden;background:#FFFFFF;position:relative;clear:both;margin:15px auto;padding:0;}
+.flexslider{width:1212px;overflow:hidden;background:#FFFFFF;position:relative;clear:both;margin:15px auto;padding:0;}
 .slides:after{clear:both;content:".";display:block;height:0;line-height:0;visibility:hidden;}
 .slides li{position:relative;}
 .slides img{display:block;max-width:100%;}
