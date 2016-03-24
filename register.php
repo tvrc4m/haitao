@@ -2,6 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("config/reg_config.php");
+
 if($reg_config)
 {
 	$config = array_merge($config,$reg_config);
@@ -18,6 +19,29 @@ if ($connect_config['ucenter_connect'])
 
 		$login_url = $login_url . '&from=mall&callback=' . urlencode($callback);
 		header('location:' . $login_url);
+	}
+}
+
+//发送验证码
+if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
+	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
+		$number = range(1,6);
+		shuffle($number);
+		foreach($number as $value){
+			$num .= $value;
+		}
+		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
+			if ($a=Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $num, 10)) == 1) {
+				$vser['yzm'] = $num;
+				$vser['ytime'] = time()+60*10;
+				$vser['ltime'] = time()+60;
+				$_SESSION['mon_yzm'] = $vser;
+			}
+			echo 1;
+		}else{
+			echo 2;
+		}
+		 die;
 	}
 }
 
@@ -45,6 +69,20 @@ if(!empty($_POST['user']))
 		if(trim($_POST['ckyzwt'])!=trim($_SESSION['YZWT']))
 			 die("Verification question error...");
 	}*/
+
+	//蚂蚁海淘注册协议
+	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
+		die('请阅读并勾选蚂蚁海淘注册协议');
+	}
+
+	//手机验证码
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
+		if($_SESSION['mon_yzm']['ytime']<time()){
+			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
+		}
+	}else{
+		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
+	}
 
 	$ip = getip();
 	if($config['regctrl']>0)
@@ -119,10 +157,6 @@ if(!empty($_POST['user']))
 		}
 	}
 
-	//蚂蚁海淘注册协议
-	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
-		die('请阅读并勾选蚂蚁海淘注册协议');
-	}
 	//暂时不用邮箱
 	/*if(valid_email($user))
 	{
@@ -194,12 +228,14 @@ function doreg($guid=NULL)
 	$user_reg = "2";
 	
 	$db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
-	
+
+	//验证用户名唯一
 	$sql="select * from ".MEMBER." where user = '$user'";
     $db->query($sql);
     if($db->num_rows())
 		die('<script>alert("User name is have");history.go(-1);</script>;');
 
+	//验证手机号唯一
 	$sql="select * from ".MEMBER." where mobile = '$mobile'";
     $db->query($sql);
     if($db->num_rows())
@@ -247,6 +283,22 @@ function doreg($guid=NULL)
 	 else
 		 die("Can not register...");
 }
+
+//短信发送
+function Send_msg($mob = null, $con = null)
+{
+		include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
+		$sms = new sms();
+		$str = $sms->send($mob, $con);
+		$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);
+		if($res['error']==0&&$res['msg']=='ok'){
+			return 1;
+		}else{
+			return 2;
+		}
+	die;
+}
+
 include_once("footer.php");	
 $tpl->display("register.htm");
 ?>

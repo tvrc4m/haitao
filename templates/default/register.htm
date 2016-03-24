@@ -83,24 +83,37 @@
     <p class="copytight"><!--Copyright@2014-2016 mayizaixian.cn版权所有<{$web_con}>--><{$bt}></p>
 </div>
 <script type="text/javascript">
-    
     var ml = Math.floor(($(window).width()-1212)/2);
     var ml1 = Math.floor(($(window).width()-1920)/2);
     $(".mc").css("margin-left",ml);
     $(".wl>img").css("margin-left",ml1);
-    var num = 10;
+    var num = 60;
     $(".idcode .btn").click(function(){
-        $(this).attr("disabled","true").css("background-color","#ccc");
-        var interval = window.setInterval(function(){
-            num = num - 1;
-            $(".idcode .btn").attr("value",num+ "秒后重新发送");
-            if (num < 1) {
-                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
-                clearInterval(interval);
-                $(".idcode .btn").attr("value","发送短信验证码");
-                num = 10;
-            };
-        },1000);
+        var mob = $('#mobile').val();
+        var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
+        if(str.test(mob)) {
+            $.post('register.php', {m_send: 'm_send', mobile: mob}, function (datainfo) {
+                if(datainfo==1){
+                    alert('短信发送成功，请注意查收');
+                }else{
+                    alert('系统正忙，请稍后~');
+                }
+            });
+
+            $(this).attr("disabled","true").css("background-color","#ccc");
+            var interval = window.setInterval(function(){
+                num = num - 1;
+                $(".idcode .btn").attr("value",num+ "秒后重新发送");
+                if (num < 1) {
+                    $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                    clearInterval(interval);
+                    $(".idcode .btn").attr("value","发送短信验证码");
+                    num = 60;
+                };
+            },1000);
+        }else{
+            alert('no');
+        }
     });
 </script> 
 </body>
