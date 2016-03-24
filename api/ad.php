@@ -106,7 +106,7 @@ function get_add($re,$ar)
 	else
 	{
 		if($re["url"])
-			$str="<a href=".$re['url']." target=_blank><ig msrc=".$re['picName']." border=0></a>";
+			$str="<a href=".$re['url']." target=_blank><img src=".$re['picName']." border=0></a>";
 		else
 			$str="<img src=".$re['picName'].">";
 			

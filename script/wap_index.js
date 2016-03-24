@@ -127,7 +127,7 @@ $(document).scroll(function(){
 $(function(){
 	$(".guanggao_kong").each(function(index){
 		$(".guanggao_kong").eq(index).append("<div class='g_wei'>"+
-	        	"<img src='image/wap/mayi_wap_guanggao1.jpg'>"+
+	        	"<a href='javascript:void(0)'><img src='image/wap/mayi_wap_guanggao1.jpg'></a>"+
 	        "</div>")
 	})		
 })
