@@ -200,6 +200,11 @@ function doreg($guid=NULL)
     if($db->num_rows())
 		die('<script>alert("User name is have");history.go(-1);</script>;');
 
+	$sql="select * from ".MEMBER." where mobile = '$mobile'";
+    $db->query($sql);
+    if($db->num_rows())
+		die('<script>alert("User mobile is have");history.go(-1);</script>;');
+
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
 	$userid=$db->lastid();
