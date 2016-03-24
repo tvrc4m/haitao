@@ -73,7 +73,7 @@ function distribute_goods(id){
 </script>
 <header>
     <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><font>&#xe60d</font></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
         <section class="nav-c"><span>商品详情</span></section>
         <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
     </div>
