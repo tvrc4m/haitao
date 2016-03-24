@@ -47,7 +47,6 @@
 	$u['dw']=$u['d']/5*100;
 	$tpl->assign("u",$u);
 	
-	
 //------------------------------------Seo config
 $shopconfig["hometitle"]="信用评价".'-'.$shopconfig["hometitle"];
 $shopconfig["homedes"]="信用评价".','.$shopconfig["homedes"];

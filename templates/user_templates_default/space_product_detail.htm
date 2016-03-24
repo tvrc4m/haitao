@@ -123,7 +123,7 @@ function buy()
                         <ul class="promo-meta clearfix">
                             <{if $de.market_price>0}>
                             <li>
-                                <span>价格</span>
+                              
                                 <strong class="del">
                                     <em class="rmb"><{$config.money}></em>
                                     <em class="rmb-num"><{$de.market_price|number_format:2}></em>
@@ -140,7 +140,7 @@ function buy()
                             </li>
                             <{else}>
                             <li>
-                                <span><{if $de.market_price>0}>促销<{else}>价格<{/if}></span>
+                                <span class="mr10"><{if $de.market_price>0}>促销<{else}>价格<{/if}></span>
                                 <{if $de.is_tg=="true"}>
                                 <b class="promo-type">团购</b>
                                 <{/if}>
@@ -152,7 +152,7 @@ function buy()
                             <{/if}>
                             <{if $de.is_virtual neq 1}>
                             <li>
-                                <span>配送</span>
+                                <span class="mr10">配送</span>
                                 <p>
                                     <{$de.district.0}><{$de.district.1}> 至
                                     <a class="region" href="javascript:void(0);"><{$de.user_ip}></a>
@@ -359,15 +359,16 @@ function buy()
                     <div class="shop-info-bd clearfix">
                         <div class="shop-rate clearfix">
                             <dl>
-                                <dt>描述&nbsp;&nbsp;</dt>
+                                <dt>描述<{$score.a}></dt>
+
                                 <dd><b><{$score.a|number_format:1}></b></dd>
                             </dl>
                             <dl>
-                                <dt>物流&nbsp;&nbsp;</dt>
+                                <dt>物流</dt>
                                 <dd><b><{$score.c|number_format:1}></b></dd>
                             </dl>
-                            <dl>
-                                <dt>服务&nbsp;&nbsp;</dt>
+                            <dl class="nbr">
+                                <dt>服务</dt>
                                 <dd><b><{$score.b|number_format:1}></b></dd>
                             </dl>
                         </div>

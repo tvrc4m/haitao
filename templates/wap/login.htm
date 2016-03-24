@@ -9,40 +9,34 @@ var norandcode='<{$lang.nocode}>';
 </script>
 <header>
 	<div class="nav-w">
-    	<section class="nav-s iconfont"><a href="<{$config.weburl}>"><font>&#xe619</font></a></section>
-    	<section class="nav-c"><span>会员登录</span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>/register.php"><nav>会员注册</nav></a></section>
+    	<section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe619</font> --></section>
+    	<section class="nav-c"><span>登录蚂蚁海淘</span></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/login.css" rel="stylesheet" type="text/css" />
-<section class="login">
+<section class="login form_d">
 <form id="login" name="login" action="login.php" method="post">
-<table>
-	<tr>
-    	<td>
-        <input name="user" type="text" id="user" placeholder="会员名"/>
-       
-        </td>
-    </tr>
-	<tr>
-    	<td>
-        <input type="password" name="password" id="password" placeholder="密码"/>
-        </td>
-    </tr>
-	<tr>
-    	<td>
-        <input type="text" maxlength="4" name="randcode" id="randcode" placeholder="验证码" />
-        <img onclick="get_randfunc(this);" src='<{$config.weburl}>/includes/rand_func.php'/>
-        </td>
-    </tr>
-	<tr>
-    	<td>
-        <input name="action" type="hidden" value="submit" />
-        <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
-        <input type="submit" value="登录" onclick="return do_login();">
-        </td>
-    </tr>
-</table>
+    <ul>
+        <li class="user_names">
+            <input name="user" type="text" id="user" placeholder="请输入手机号/昵称"/>
+            <div class="inp_close"><i></i></div>
+        </li>
+        <li>
+            <input type="password" name="password" id="password" placeholder="请输入密码（6-16位）"/>
+        </li>
+        <li class="spe_del">
+            <a href="<{$config.weburl}>/register.php">忘记密码?</a>
+        </li>
+        <li>
+            <input name="action" type="hidden" value="submit" />
+            <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
+            <input type="submit" value="登录" onclick="return do_login();">
+        </li>
+        <li>
+            <a id="regist" href="<{$config.weburl}>/register.php">新用户注册</a>
+        </li>
+    </ul>
 
 <{if $wechat_url}>
 <div class="other">
@@ -55,14 +49,14 @@ var norandcode='<{$lang.nocode}>';
 
 <{if $smarty.get.erry}>
 	<script>
-    $('.form-error').offset();
-    function closefunc()
-    {
-        $('.form-error').remove();
-    }
-    setTimeout(closefunc,2000);
+    // $('.form-error').offset();
+    // function closefunc()
+    // {
+    //     $('.form-error').remove();
+    // }
+    // setTimeout(closefunc,2000); 
     </script>
-    <div class="form-error">
+    <!-- <div class="form-error">
         <{if $smarty.get.erry=="-1"}>
             <{$lang.noname}>
         <{elseif $smarty.get.erry=="-4"}>
@@ -72,7 +66,7 @@ var norandcode='<{$lang.nocode}>';
         <{elseif $smarty.get.erry=="-3"}>
             <{$lang.codeerr}>
         <{/if}>
-    </div>
+    </div> -->
 <{/if}>
 </form>
 </section>

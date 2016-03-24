@@ -2,6 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("config/reg_config.php");
+
 if($reg_config)
 {
 	$config = array_merge($config,$reg_config);
@@ -21,6 +22,37 @@ if ($connect_config['ucenter_connect'])
 	}
 }
 
+//发送验证码
+if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
+	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
+		$number = range(1,6);
+		shuffle($number);
+		foreach($number as $value){
+			$num .= $value;
+		}
+		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
+			if ($a=Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $num, 10)) == 1) {
+				$vser['yzm'] = $num;
+				$vser['ytime'] = time()+60*10;
+				$vser['ltime'] = time()+60;
+				$_SESSION['mon_yzm'] = $vser;
+			}
+			echo Return_data([
+					'status_code' => '200',
+					'message' => '短信发送成功，请注意查收',
+					'data' => null
+			]);
+		}else{
+			echo Return_data([
+					'status_code' => '300',
+					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
+					'data' => $_SESSION['mon_yzm']['ltime']-time()
+			]);
+		}
+		 die;
+	}
+}
+
 if($buid)
 {	//已经登录
 	msg('main.php');
@@ -31,18 +63,35 @@ if(is_array($stop_reg))
 	unset($stop_reg);
 }
 //----------------------------------------------------
-if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth']))
+//if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth']))
+if(!empty($_POST['user']))
 {
+
 	if($config['closetype']==2)
 	{	//关闭注册
 		die('access dined!');
 	}
-	if($config['user_reg_verf'])
+	//暂不使用本地验证码
+	/*if($config['user_reg_verf'])
 	{	//验证码不对
 		if(trim($_POST['ckyzwt'])!=trim($_SESSION['YZWT']))
 			 die("Verification question error...");
+	}*/
+
+	//蚂蚁海淘注册协议
+	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
+		die('请阅读并勾选蚂蚁海淘注册协议');
 	}
-	
+
+	//手机验证码
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
+		if($_SESSION['mon_yzm']['ytime']<time()){
+			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
+		}
+	}else{
+		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
+	}
+
 	$ip = getip();
 	if($config['regctrl']>0)
 	{
@@ -54,6 +103,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 			die("Your IP has been registered...");
 		}
 	}
+
 	if($config['regfloodctrl'] > 0)
 	{
 		$sql = "select * from ".MEMBER." where ip='$ip' and to_days(regtime) = to_days(now()) ";
@@ -81,7 +131,8 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 	$pass = trim($_POST['password']);
 	$time = time();
 
-	if (isset($_POST['re_password']))
+	//暂时不用确认密码
+	/*if (isset($_POST['re_password']))
 	{
 		$re_pass = trim($_POST['re_password']);
 
@@ -89,7 +140,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 		{
 			die('<script>alert("两次输入密码不一致!");history.go(-1);</script>;');
 		}
-	}
+	}*/
 
 	if(valid_mobile($user))
 	{
@@ -100,7 +151,22 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 			$_POST["user"] = $user = $user.substr(md5($time),-5);
 		}
 	}
-	if(valid_email($user))
+
+	//定义所有正则
+	$str_check = [
+		'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
+		'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
+		'smsvode' => '/^[0-9]{6}$/',
+		'password' => '/^[A-Za-z0-9]{6,10}$/',
+	];
+	foreach($str_check as $key => $val){
+		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
+			die('请填写正确格式的数据');
+		}
+	}
+
+	//暂时不用邮箱
+	/*if(valid_email($user))
 	{
 		$_POST["email"] = $email = $user;
 		$user = explode("@",$email);
@@ -109,7 +175,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 		{
 			$_POST["user"] = $user = $user.substr(md5($time),-5);
 		}
-	}
+	}*/
 	if($config['openbbs']==2)
 	{	//关联UCHENTER
 		include_once('uc_client/client.php');
@@ -121,6 +187,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 	}
 	else
 		doreg();
+	var_dump($_POST);
 }
 else
 {
@@ -130,6 +197,7 @@ else
 	}
 }
 
+//用户名唯一
 function is_repeat($str)
 {
 	global $db;
@@ -138,24 +206,27 @@ function is_repeat($str)
 	$num = $db->num_rows();
 	return $num > 0 ? false : true;
 }
-function valid_mobile($str)//手机号码正则表达试
+
+//手机号码正则表达试
+function valid_mobile($str)
 {                 
- 	return ( ! preg_match("/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/",$str))?FALSE:TRUE; 
+ 	return ( ! preg_match("/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/",$str))?FALSE:TRUE;
 }
 
-function valid_email($str)
+//邮箱正则表达式	暂不使用
+/*function valid_email($str)
 {
 	return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
-}
+}*/
 
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
 	$user = addslashes($_POST['user']);
 	$pass = $_POST['password'];
-	$email = $_POST['email'];
+//	$email = $_POST['email'];
 	$mobile = $_POST['mobile'];
-	$email_verify = $email&&$config['user_reg']==2 ? "1":"0";
+//	$email_verify = $email&&$config['user_reg']==2 ? "1":"0";
 	$mobile_verify = $mobile&&$config['user_reg']==3 ? "1":"0";
 	
 	$ip = getip();
@@ -165,11 +236,18 @@ function doreg($guid=NULL)
 	$user_reg = "2";
 	
 	$db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
-	
+
+	//验证用户名唯一
 	$sql="select * from ".MEMBER." where user = '$user'";
     $db->query($sql);
     if($db->num_rows())
 		die('<script>alert("User name is have");history.go(-1);</script>;');
+
+	//验证手机号唯一
+	$sql="select * from ".MEMBER." where mobile = '$mobile'";
+    $db->query($sql);
+    if($db->num_rows())
+		die('<script>alert("User mobile is have");history.go(-1);</script>;');
 
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
@@ -212,6 +290,28 @@ function doreg($guid=NULL)
 	 }
 	 else
 		 die("Can not register...");
+}
+
+//短信发送
+function Send_msg($mob = null, $con = null)
+{
+		include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
+		$sms = new sms();
+		$str = $sms->send($mob, $con);
+		$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);
+		if($res['error']==0&&$res['msg']=='ok'){
+			return 1;
+		}else{
+			return 2;
+		}
+	die;
+}
+
+//格式数据返回
+function Return_data($data = null, $type = 'json'){
+	if($type == 'json'){
+		return json_encode($data);
+	}
 }
 include_once("footer.php");	
 $tpl->display("register.htm");
