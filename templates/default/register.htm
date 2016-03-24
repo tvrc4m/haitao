@@ -92,11 +92,21 @@
         var mob = $('#mobile').val();
         var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
         if(str.test(mob)) {
-            $.post('register.php', {m_send: 'm_send', mobile: mob}, function (datainfo) {
+            /*$.post('register.php', {m_send: 'm_send', mobile: mob}, function (datainfo) {
                 if(datainfo==1){
                     alert('短信发送成功，请注意查收');
                 }else{
                     alert('系统正忙，请稍后~');
+                }
+            });*/
+            $.ajax({
+                url: 'register.php',
+                type: 'post',
+                data: {m_send: 'm_send', mobile: mob},
+                dataType: 'json',
+                success: function(datainfo){
+                    alert(datainfo.message);
+                    num = datainfo.data?datainfo.data:num;
                 }
             });
 

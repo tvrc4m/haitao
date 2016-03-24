@@ -37,9 +37,17 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 				$vser['ltime'] = time()+60;
 				$_SESSION['mon_yzm'] = $vser;
 			}
-			echo 1;
+			echo Return_data([
+					'status_code' => '200',
+					'message' => '短信发送成功，请注意查收',
+					'data' => null
+			]);
 		}else{
-			echo 2;
+			echo Return_data([
+					'status_code' => '300',
+					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
+					'data' => $_SESSION['mon_yzm']['ltime']-time()
+			]);
 		}
 		 die;
 	}
@@ -299,6 +307,12 @@ function Send_msg($mob = null, $con = null)
 	die;
 }
 
+//格式数据返回
+function Return_data($data = null, $type = 'json'){
+	if($type == 'json'){
+		return json_encode($data);
+	}
+}
 include_once("footer.php");	
 $tpl->display("register.htm");
 ?>
