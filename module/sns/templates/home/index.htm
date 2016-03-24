@@ -105,61 +105,6 @@ $(function(){
 <div id="ajaxwaitid"></div>
 <div id="container">
 	<div id="content" class="wrapper">
-    	<div class="head">
-        	<div class="info clearfix">
-            	<div class="info-left">
-                	<div class="basic-info">
-                        <div class="realy-info">
-                       		<span class="credit">买家信用</span>
-                            <img class="points" align="absmiddle" title="<{$member.buyerpoints}>个买家信用积分" src="image/points/<{$member.buyerpointsimg}>">
-                        </div>
-                        <div class="meta">
-                        	<span class="sex<{if $member.sex==2}> female<{/if}>"><{if $member.sex==2}>女<{else}>男<{/if}></span>
-                        	<span><{$member.area}></span><br />
-							<span><a href="<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>">逛TA商铺</a></span>
-                        </div>
-                        <h2 class="name"><div class="nick"><{$member.name}></div></h2>
-                    </div>
-                    <div class="user-avatar"><img width="160" height="160" src="<{if $member.logo}><{$member.logo}><{else}>image/default/avatar.png<{/if}>"></div>
-                </div>
-                <div class="info-right">
-                	<div class="attention-box">
-                        <div class="attention clearfix">
-                            <ul>
-                                <li><b class="large"><{$count.f}></b><span>粉丝</span></li>
-                                <li><b class="large"><{$count.g}></b><span>关注</span></li>
-                                <li><b class="large"><{$count.v}></b><span>访问</span></li><li class="clear"></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <{if $smarty.get.uid!=$userid}>
-						<div class="follow-widget">
-							<{if $friend}>
-								<span class="<{if $fan}>all_gz<{else}>have_gz<{/if}>">
-								<b style="margin-left:25px;">已关注</b> &nbsp;&nbsp;
-								<a href="main.php?m=message&s=admin_message_sed&uid=<{$smarty.get.uid}>">发私信</a></span>
-							<{else}>
-								<a genre="followbtn" data-param="{'mid':'<{$smarty.get.uid}>'}" href="javascript:void(0)"></a>
-							<{/if}>
-						</div>
-                    <{/if}>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <div class="nav">
-            	<ul class="clearfix">
-                	<li class="<{if $smarty.get.act==''}>current <{/if}>first">
-                    	<a class="front" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>">首页</a>
-                    </li>
-                    <li <{if $smarty.get.act=='product'}>class="current"<{/if}> >
-                    	<a class="product" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">宝贝</a>
-                    </li>
-                    <li class="<{if $smarty.get.act=='trace'}>current <{/if}>last">
-                    	<a class="trace" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">新鲜事</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
         
         <div class="body clearfix">
         	<div class="body-main <{if $smarty.get.act=='product'}>pro<{/if}>"><{$output}></div>
@@ -167,14 +112,16 @@ $(function(){
             <div class="body-side">
             	<div class="visitors">
 					<h4><em>最近访客</em></h4>   
-					<ul class="visitlist">
+					<ul class="visitlist clearfix">
                     	<{foreach item=list key=nums from=$visitors}>
-                        <li>
+                        <li class="clearfix">
                             <p class="visitor_pic">
                                 <a target="_blank" href="home.php?uid=<{$list.userid}>"><img height="60" width="60" src="<{if $list.logo!=''&&$list.logo!='0'}><{$list.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" /></a>
                             </p>
-                            <p class="visitor_name"><a target="_blank" href="home.php?uid=<{$list.userid}>"><{$list.user}></a></p>
-                            <p class="visitor_time"><{$list.time|date_format:"%m月 %d日"}></p>
+                            <div class="visitor_pic_rt">
+                                <p class="visitor_name"><a target="_blank" href="home.php?uid=<{$list.userid}>"><{$list.user}></a></p>
+                                <p class="visitor_time"><{$list.time|date_format:"%m月 %d日"}></p>
+                            </div>  
                         </li>
                         <{foreachelse}>
                         <span>&nbsp;&nbsp;暂无访客</span>

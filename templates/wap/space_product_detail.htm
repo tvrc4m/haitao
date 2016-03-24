@@ -73,7 +73,7 @@ function distribute_goods(id){
 </script>
 <header>
     <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><font>&#xe60d</font></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
         <section class="nav-c"><span>商品详情</span></section>
         <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
     </div>
@@ -149,19 +149,19 @@ function distribute_goods(id){
             </div>
             <div class="commit-rifht clearfix">
                 <div class="space_zhifu space_zhifu_b space_zhifu_t clearfix">
-                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
                     <dd>正品保障</dd>
                 </div>
                 <div class="space_zhifu space_zhifu_b clearfix">
-                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
                     <dd>担保交易</dd>
                 </div>
                 <div class="space_zhifu space_zhifu_t clearfix">
-                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
                     <dd>七天退换</dd>
                 </div>
                 <div class="space_zhifu clearfix">
-                    <img src="../../../image/wap/mayi_wap_icon27.png" alt="">
+                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
                     <dd><!-- 分享赚拥 -->9天无理由退货</dd>
                 </div>
             </div>
@@ -171,7 +171,7 @@ function distribute_goods(id){
     <div class="c-wh bgw c-wh-dianpu">
         <div class="clearfix"></div>
 
-        <ul class="ub t-bla ub-ac uinn-pFS1 ub-xinxi">
+        <ul class="ub t-bla ub-ac uinn-pFS1 ub-xinxi clearfix">
             <li class="ut-s">
                 <a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"> <img src="<{if $com.wap_logo}><{$com.wap_logo}><{else}>templates/wap/images/user.png<{/if}>" class="slogo"/></a>
             </li>
@@ -190,7 +190,7 @@ function distribute_goods(id){
                 <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
             </li>
         </ul>
-        <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu">
+        <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
             <li class="ub-kefu_first"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;"><i class="kefu_icon1"></i>联系客服</a></li>
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>

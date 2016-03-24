@@ -49,73 +49,55 @@
 <script type="text/javascript" id="dialog_js" charset="utf-8" src="<{$config.weburl}>/script/dialog/dialog.js" ></script>
 <header>
 	<div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><font>&#xe60d</font></section>
-    	<section class="nav-c"><span>会员注册</span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>/login.php"><nav>会员登录</nav></a></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
+    	<section class="nav-c"><span>注册蚂蚁海淘</span></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/register.css" rel="stylesheet" type="text/css" />
-<section class="register">
+<section class="register form_z">
 
 <{if $config.closetype==2}>
 <div style="height:300px; padding-top:150px; color:#FF0000; border: 1px solid #A9B9D3; font-size:16px"> <{$config.closecon}></div>
 <{else}>
 
 <form action="" method="post">
-<table>
-	<tr>
-    	<td>
-         <input  class="text" name="user" type="text" id="user" placeholder="<{if $config.user_reg eq 3}>手机号<{else}>邮箱/用户名/手机号<{/if}>"/>
-         <div id="tishi"></div>
-        </td>
-    </tr>
-	<tr><!--
-    	<td>
-            <input  class="text" name="email" type='email' id="email" placeholder="邮箱"/>
-            <div id="tishi_email"></div>
-        </td>-->
-    </tr>
-	<tr>
-    	<td>
-        <input  type="password" name="password" id="password" placeholder="密码"/>
-        </td>
-    </tr>
-	<tr>
-    	<td>
-        <input  type="password" name="re_password" id="re_password" placeholder="确认密码"/>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <div class="fore4">
-                <span style="display: none;">验证码：</span>
-                <div class="item-ifo">
-                    <input name="yzm" type="text" id="yzm" class="text"  placeholder="验证码" />
-                    <div class="yzm text">
-                        <input type="button" class="send hidden" data-type="email" value="获取邮件验证码" style="position:relative;top:-37px;left:200px;width: 95px;height: 33px;" />
-                        <img onclick="get_randfunc(this);" src='<{$config.weburl}>/includes/rand_func.php' style="position:relative;top:-37px;left:200px;"/>
-                    </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-
-	<tr>
-    	<td>
-		<input class="submit" type='submit' name='submitreg' id="submitreg" value='注册' />
-        </td>
-    </tr>
-</table>
+ <ul>
+    <li class="user_names">
+        <input  class="text" name="user" type="text" id="user" placeholder="设置您的昵称"/>
+        <div id="tishi"></div>
+         <div class="inp_close"><i></i></div>
+    </li>
+    <li>
+        <input  class="text" name="mobile" type="text" id="mobile" placeholder="请输入手机号"/>
+        <div id="tishi"></div>
+    </li>
+    <li class="clearfix">
+        <input  class="text" name="yzm" type="text" id="yzm" placeholder="请输入验证码"/>
+        <p class="gain_ma" id="gain_ma">获取验证码</p>
+    </li>
+    <li>
+        <input type="password" name="password" id="password" placeholder="请输入密码（6-16位）"/>
+    </li>
+    <li class="spe_del">
+        <div>注册即接受<a class="spe_del_xieyi" href="#javascript:void(0);">《蚂蚁海淘使用协议》</a></div>
+    </li>
+    <li>
+       <input class="submit" type='submit' name='submitreg' id="submitreg" value='免费注册' />
+    </li>
+    <li>
+        <a id="regist" href="<{$config.weburl}>/login.php">已有账号？马上登陆</a>
+    </li>
+</ul>
 </form>  
 <{/if}>
 
 <{include file="footer.htm"}>
-    <script type=text/javascript>
-        $(function(){
-            <{if $config.user_reg eq 3}>
-            showcode("mobile");
-            <{else}>
-            <{/if}>
-            });
-    </script>
+<script type=text/javascript>
+    $(function(){
+        <{if $config.user_reg eq 3}>
+        showcode("mobile");
+        <{else}>
+        <{/if}>
+        });
+</script>
