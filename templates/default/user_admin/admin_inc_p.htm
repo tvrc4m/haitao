@@ -44,20 +44,18 @@
 
 <div id="main">
     <div class="header">
-        <h1 style="top:20px;">
+       <!--  <h1 style="top:20px;">
         	<a href="<{$config.weburl}>/main.php" title="<{$config.company}>"> <img title="<{$config.company}>" alt="<{$config.company}>" src="<{if $config.logo}><{$config.logo}><{else}><{$config.weburl}>/image/logo.gif<{/if}>" /></a>
-        </h1>
+        </h1> -->
         <div id="nav">
             <ul>
 
 
-            <li><a <{if $menu.personal.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $menu.personal.action|truncate:1:''!='?' and $menu.personal.action|truncate:4:''!='http'}>?action=<{/if}><{$menu.personal.action}>"><{$menu.personal.name}></a></li>
+            <!-- <li><a <{if $menu.personal.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $menu.personal.action|truncate:1:''!='?' and $menu.personal.action|truncate:4:''!='http'}>?action=<{/if}><{$menu.personal.action}>"><{$menu.personal.name}></a></li> -->
 
 
                 <{foreach item=list name=name key=num from=$menu}>
-                <{if $num!="inquire"}>
                 <li class="<{if $cmenu==$num}>frist<{/if}>"><a <{if $list.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
-                <{/if}>
                 <{/foreach}>
             </ul>
             <div class="search_box">
@@ -92,25 +90,22 @@
                     </div>
                 <{/foreach}>
             <{else}>
-                <dl class="user">
-                    <dd>
-                        <div class="pic">
-                       		<a href="main.php?m=member&s=admin_member">
-                        		<img height="100" width="100" src="<{if !$cominfo.plogo}>image/default/user_admin/default_user_portrait.gif<{else}><{$cominfo.plogo}><{/if}>" />
-							</a>
-                        </div>
-                    </dd>
-                </dl>
-               
                 <div class="business_handle" id="my_menu">
-                    <h3><{$lang.trading_operations}></h3>
+                   <!--  <h3><{$lang.trading_operations}></h3> -->
+                    <div id="nav" class="nav_left">
+                        <ul class="nav_left_ul">
+                            <{foreach item=list name=name key=num from=$menu}>
+                            <li class="<{if $cmenu==$num}>frist first_test<{/if}>"><a <{if $list.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
+                            <{/foreach}>
+                        </ul>
+                    </div>
                     <{foreach name=name item=list from=$submenu.sub}>
                         <{if $list.action|truncate:1:''=='?'}>
                        	 <{assign var="gets" value=$list.action|explode:"&"}>
-                            <div class="<{ if $smarty.get.action==$list.action or in_array($smarty.get.type,$gets) or in_array($smarty.get.s,$gets) }>active<{else}>normal<{/if}>"><em class="i<{$smarty.foreach.name.iteration}>"></em><a href="<{$list.action}>"><{$list.name}></a></div>
+                            <div class="<{ if $smarty.get.action==$list.action or in_array($smarty.get.type,$gets) or in_array($smarty.get.s,$gets) }>active<{else}>normal<{/if}>"><!-- <em class="i<{$smarty.foreach.name.iteration}>"></em> --><a href="<{$list.action}>"><{$list.name}></a></div>
 						<{else}>
                             <dl>
-                            <dt><em class="i<{$smarty.foreach.name.iteration}>"></em><a href="javascript:void(0)"><{$list.name}></a></dt>
+                            <dt><!-- <em class="i<{$smarty.foreach.name.iteration}>"></em> --><a href="javascript:void(0)"><{$list.name}></a></dt>
                                 <{foreach item=slist key=akey from=$list.action}>
                                 <{if $slist}>
                                 <{assign var="gets" value=$akey|explode:"&"}>
@@ -134,6 +129,5 @@
 </div>
 
 <{$chat_html}>
-
 </body>
 </html>
