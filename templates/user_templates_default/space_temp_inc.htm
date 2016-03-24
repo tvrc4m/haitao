@@ -151,7 +151,7 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
                 <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
                     <input type="hidden" value="product" name="m" id="m">
                     <input type="hidden" value="list" name="s" id="s">
-                    <input style="width:210px" type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input style="margin:2px" type="submit" name="s_submit" value="搜本店"><input style="margin:2px" type="submit" name="s_submit" value="搜平台">
+                    <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
                 </form>
             </div>
             <div class="m_shop_cart mid pos_re">
