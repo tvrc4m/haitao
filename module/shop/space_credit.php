@@ -45,6 +45,9 @@
 	$u['bw']=$u['b']/5*100;
 	$u['cw']=$u['c']/5*100;
 	$u['dw']=$u['d']/5*100;
+	foreach($u as $key => $val){
+			$u[$key] = $val?$val:0;
+	}
 	$tpl->assign("u",$u);
 	
 //------------------------------------Seo config
