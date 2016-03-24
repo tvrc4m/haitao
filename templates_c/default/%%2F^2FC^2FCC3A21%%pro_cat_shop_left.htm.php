@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-03-24 14:56:50
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-24 14:48:41
->>>>>>> 277c74e9ea83f0bfed795c1112f463e6f437e2be
          compiled from pro_cat_shop_left.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'pro_cat_shop_left.htm', 7, false),)), $this); ?>
