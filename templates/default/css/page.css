@@ -197,6 +197,7 @@ em{font-style:normal;}
 .help_side .current h4{border-bottom:0 none;}
 .help_side .current ul{display:block;}
 .help_side .current b{background-position:right 0;}
+.help.clearfix{margin-bottom: 10px;}
 .help .right{padding-top:0px;}
 .help_tit{background:url(../../../image/default/help_title_bg.png) repeat-x;height:36px;line-height:36px;padding-left:9px;}
 .help_box{padding:10px 10px 10px 20px;}
