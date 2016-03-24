@@ -1,19 +1,36 @@
 <div class="wrap_buyer clearfix">
     <div class="layout_l">
         <div class="member_info">
-            <dl>
-                <dt>
-                	<a title="编辑用户信息" href="main.php?m=member&s=admin_member"><{$cominfo.name}></a>&nbsp;(<{$smarty.cookies.USER}>)
-                </dt>
-                <dd class="qd">
-                    <span class="iconfont">&#xe621;</span>&nbsp;<a href="main.php?m=member&s=admin_member&type=email"><{if $cominfo.email&&$cominfo.email_verify==1}>已认证<{else}>未认证<{/if}></a>
-                    <span class="iconfont">&#xe61d;</span><a href="main.php?m=member&s=admin_member&type=mobile"><{if $cominfo.mobile&&$cominfo.mobile_verify==1}>已认证<{else}>未认证<{/if}></a>
+        	<dl class="user haitao_user clearfix">
+                <dd>
+                    <div class="pic">
+                   		<a href="main.php?m=member&s=admin_member">
+                    		<img height="125" width="125" src="<{if !$cominfo.plogo}>image/default/user_admin/default_user_portrait.gif<{else}><{$cominfo.plogo}><{/if}>" />
+                    		<!-- <img height="125" width="125" src="<{if !$cominfo.plogo}>image/default/user_admin/default_user_portrait.gif<{else}>image/default/user_admin/mayi_username.png<{/if}>" /> -->
+						</a>
+                    </div>
                 </dd>
-				<dd class="payment">
-                    <a target="_blank" href="<{$config.pay_url}>"><{$config.pay_name}></a>
-                    &nbsp;&nbsp;<span class="iconfont">&#xe61c;</span>&nbsp;<span class="qd"><{if $is_qd}>已签到<{else}><a href="javascript:void(0)">每日签到</a><{/if}></span>
-                    &nbsp;&nbsp;<span class="iconfont">&#xe615;</span>&nbsp;<a href="main.php?m=points&s=admin_points">积分明细</a></dd>
             </dl>
+            <div class="haitao_user_ri">
+	            <dl class="haitao_user2">
+	                <dt>
+	                	<a title="编辑用户信息" href="main.php?m=member&s=admin_member"><{$cominfo.name}></a>&nbsp;(<{$smarty.cookies.USER}>)
+	                </dt>
+	                <dd class="qd">
+	                    <a href="main.php?m=member&s=admin_member&type=email" class="qd_icon1"><{if $cominfo.email&&$cominfo.email_verify==1}>已认证<{else}>未认证<{/if}></a>
+	                    <a href="main.php?m=member&s=admin_member&type=mobile" class="qd_icon2"><{if $cominfo.mobile&&$cominfo.mobile_verify==1}>已认证<{else}>未认证<{/if}></a>
+	                    <a target="_blank" href="<{$config.pay_url}>" class="qd_icon3"><{$config.pay_name}></a>
+	                    <a href="javascript:void(0)" class="qd_icon4"><{if $is_qd}>已签到<{else}>每日签到</a><{/if}>
+	                    <a href="main.php?m=points&s=admin_points" class="qd_icon5">积分明细</a></dd>
+	        	</dl>
+	        	<div class="user_atten clearfix">
+		            <ul>
+		                <li><a href="main.php?m=sns&s=admin_friends"><strong><{$count.friend}></strong><span>关注 </span></a></li>
+		                <li><a href="main.php?m=sns&s=admin_friends&type=fan"><strong><{$count.fan}></strong><span>粉丝 </span></a></li>
+		                <li class="li"><a href=""><strong><{$count.blog}></strong><span>微博 </span></a></li>
+		            </ul>
+		        </div>
+	        </div>
             <div class="clear"></div>
         </div>
         
@@ -27,6 +44,7 @@
                 <input type="hidden" name="act" value="share">
                 <textarea name="content" id="content"></textarea><span class="form-error"></span>
                 <div></div>
+                <img src="image/default/user_admin/mayi_weibomayi2.png" class="weibo-bg">
             </div>
             <div class="weibo_button clearfix">
                 <a id="shareGoods" style="color: #FFCF2B;" class="iconfont" href="javascript:void(0)" title="分享产品">&#xe609;</a>
@@ -37,56 +55,50 @@
         </form>
         </div>
         
-        <div class="tabmenu">
+        <!-- <div class="tabmenu">
             <ul class="tab">
                 <li class="active"><a href="javascript:void(0)">&nbsp;&nbsp;&nbsp;动态</a><div></div></li>
             </ul>
-        </div>
+        </div> -->
         <div class="friendtrace" id="friendtrace"></div>
     </div>
     
     <div class="layout_r">
-        <div class="user_atten clearfix">
-            <ul>
-                <li><a href="main.php?m=sns&s=admin_friends"><strong><{$count.friend}></strong><span>关注 </span></a></li>
-                <li><a href="main.php?m=sns&s=admin_friends&type=fan"><strong><{$count.fan}></strong><span>粉丝 </span></a></li>
-                <li class="li"><a href=""><strong><{$count.blog}></strong><span>微博 </span></a></li>
-            </ul>
-        </div>
-        <div class="right_module">            
+    	<div class="right_module">            
             <form class="right_module_title">
-                <fieldset><legend>可能感兴趣的人</legend></fieldset>
-            </form>
-            <div class="right_module_content friends">
-            <{insert name="label" type="sns_friends" temp="friends_list_1" limit=3}>
-            </div>
-        </div>
-        
-        <div class="right_module">            
-            <form class="right_module_title">
-                <fieldset><legend>热门活动</legend></fieldset>
-            </form>
-            <div class="right_module_content ad174">
-            <script src='<{$config.weburl}>/api/ad.php?id=8&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-            </div>
-        </div>
-        
-        <div class="right_module">            
-            <form class="right_module_title">
-                <fieldset><legend>商品推荐</legend></fieldset>
-            </form>
-            <div class="right_module_content ad174">
-            <script src='<{$config.weburl}>/api/ad.php?id=9&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-            </div>
-        </div>
-        <div class="right_module">            
-            <form class="right_module_title">
-                <fieldset><legend>公告栏</legend></fieldset>
+                 <div class="haitao_legend">公告栏</div>
             </form>
             <div class="right_module_content con">
             <{insert name="label" type="announcement" temp="notice_list" limit=5}>
             </div>
         </div>
+
+        <div class="right_module">            
+            <form class="right_module_title">
+                 <div class="haitao_legend">商品推荐</div>
+            </form>
+            <div class="right_module_content ad174">
+            <script src='<{$config.weburl}>/api/ad.php?id=9&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
+            </div>
+        </div>
+
+        <div class="right_module">            
+            <form class="right_module_title">
+                 <div class="haitao_legend">热门活动</div>
+            </form>
+            <div class="right_module_content ad174">
+            <script src='<{$config.weburl}>/api/ad.php?id=8&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
+            </div>
+        </div>
+
+        <div class="right_module right_module_test">            
+            <form class="right_module_title">
+                 <div class="haitao_legend haitao_legend_test">可能感兴趣的人</div>
+            </form>
+            <div class="right_module_content friends">
+            <{insert name="label" type="sns_friends" temp="friends_list_1" limit=3}>
+            </div>
+        </div>      
     </div>
 </div>
 </div>

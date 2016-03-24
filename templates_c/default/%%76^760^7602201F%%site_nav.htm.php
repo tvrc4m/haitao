@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-23 11:23:52
+<?php /* Smarty version 2.6.20, created on 2016-03-24 14:48:41
          compiled from site_nav.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,24 +29,21 @@
     <div class="w fn-clear">
     	<ul class="fn-left">
           
-        	<li class="nav drop-down">
-            	<div class="nav-fore1">
-                    <!-- <a>手机逛<?php echo $this->_tpl_vars['config']['company']; ?>
-</a> -->
+        	<li class="nav">
                     <span class="icon4"></span>
-                    <a>手机蚂蚁</a>
-                </div>
-                <div class="nav-fore2">
+                    <div class="nav-fore1"><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?temp=wap">手机蚂蚁</a></div>
+                <!-- <div class="nav-fore2">
                 	<div class="sjmy fn-hide">
                         <img src="../../../image/default/code.jpg" />
                         <span></span>
                      </div>
-                    <!-- <ul>
+                    <ul>
                         <li><a href="wap.php">扫一扫进入</a></li>
                         <li><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?temp=wap">直接进入</a></li>
-                    </ul> -->
-                </div>
+                    </ul>
+                </div> -->
             </li>
             <li class="nav">
             	<span class="icon5"></span>
