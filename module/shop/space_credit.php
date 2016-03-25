@@ -49,7 +49,7 @@
 			$u[$key] = $val?$val:0;
 	}
 	$tpl->assign("u",$u);
-	
+
 //------------------------------------Seo config
 $shopconfig["hometitle"]="信用评价".'-'.$shopconfig["hometitle"];
 $shopconfig["homedes"]="信用评价".','.$shopconfig["homedes"];
