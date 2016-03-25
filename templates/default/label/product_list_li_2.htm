@@ -10,9 +10,9 @@
 </li>
 <{/foreach}>
 -->
-
+<!--<li class="<{if $num == 2 || $num == 5}>ml404<{/if}>" >-->
  <{foreach item=list key=num from=$pro}>
-    <li class="<{if $num == 2 || $num == 5}>ml404<{/if}>" >
+    <li>
          <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="goods_img"><img src='<{$list.pic}>_220X220.jpg' /></a>
          <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="" class="goods_text"><{$list.pname}></a>
          <p><var>￥180</var><s>￥235</s></p>
