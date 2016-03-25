@@ -618,7 +618,6 @@ class pay
             $gateway = "https://ibsbjstar.ccb.com.cn/app/ccbMain";
             echo $this->buildForm($parameter,$gateway,"get","ccb");
         }
-
     }
 
     /**

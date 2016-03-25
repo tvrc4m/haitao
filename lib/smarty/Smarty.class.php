@@ -1115,6 +1115,7 @@ class Smarty
      */
     function fetch($resource_name, $cache_id = null, $compile_id = null, $display = false)
     {
+
 		global $config;
 		if(strpos($this->template_dir,"/admin/")&&!file_exists($this->template_dir.$resource_name))
 		{
@@ -1140,6 +1141,7 @@ class Smarty
 			elseif(!file_exists($this->template_dir.$resource_name))
 				$resource_name="$config[webroot]/templates/default/".$resource_name;
 		}
+
         static $_cache_info = array();
         
         $_smarty_old_error_level = $this->debugging ? error_reporting() : error_reporting(isset($this->error_reporting)
@@ -1281,6 +1283,7 @@ class Smarty
             }
         } else {
             ob_start();
+
             if ($this->_is_compiled($resource_name, $_smarty_compile_path)
                     || $this->_compile_resource($resource_name, $_smarty_compile_path))
             {
