@@ -88,22 +88,12 @@ $(function(){
                 document.getElementById('password').focus();
                 return false;
             }
-
-<<<<<<< HEAD
             // if(document.getElementById('re_password').value.length < 1)
             // {
             //     alert('请确认密码！');
             //     document.getElementById('re_password').focus();
             //     return false;
             // }
-=======
-           /!* if(document.getElementById('re_password').value.length < 1)
-            {
-                alert('请确认密码！');
-                document.getElementById('re_password').focus();
-                return false;
-            }
->>>>>>> 6de1c9fd3d05ee3f74fd6ba6c30e03c8e7bb4294
 
             if ($('#re_password').val() != $('#password').val())
             {
@@ -203,13 +193,11 @@ function check_mobile(obj)
 	if(!val){
 		obj.addClass('red');
 		div.attr('class','error').html(error);
-		alert(error);
 		return false;
 	}
 	else if(!patrn.test(val)){  
 		obj.addClass('red');
 		div.attr('class','error').html(error_mobile1);
-		alert(error_mobile1);
 		return false;
 	}
 	else{
@@ -226,7 +214,6 @@ function check_mobile(obj)
 			else{			
 				obj.addClass('red');
 				div.attr('class','error').html(error_mobile);
-				alert(error_mobile);
 				flag=false;
 			}
 			return flag;
@@ -278,21 +265,16 @@ function check_user(obj)
 		if(!betweenLength(val.replace(/[^\x00-\xff]/g, "**"), 4, 20)){
 			obj.addClass('red');
 			div.attr('class','error').html(error_user1);
-			alert(error_user1);
 			return false;
 		}
 		else if(!username.test(val)){
 			obj.addClass('red');
 			div.attr('class','error').html(error_user3);
-
-			alert(error_user3);
 			return false;
 		}
 		else if(fullNumber.test(val)){
 			obj.addClass('red');
 			div.attr('class','error').html(error_user2);
-
-			alert(error_user2);
 			return false;
 		}
 		else{
@@ -311,7 +293,6 @@ function check_user(obj)
 				else{			
 					obj.addClass('red');
 					div.attr('class','error').html(error_user);
-					alert(error_user);
 					flag=false;
 				}
 				return flag;
