@@ -428,7 +428,7 @@ ul,ol{list-style:none}
 /*silder*/
 .m_banner .w.pos_ab{top:0;left:50%;margin-left:-606px}
 .m_banner .extend{position:absolute;top:0;right:0;z-index:999}
-/*.m_banner .ban_slider{height:460px}*/
+.m_banner .ban_slider{height:460px}
 .ban_li .slide_box li{width:100%;height:460px}
 .ban_li .slide_box li a{display:block;width:100%;height:100%}
 
