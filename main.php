@@ -3,6 +3,7 @@ include_once("includes/global.php");
 include_once("includes/admin_global.php");
 include_once("includes/admin_class.php");
 include_once("includes/insert_function.php");
+include_once($config["webroot"]."/config/nav_menu.php");
 //===============================================
 //================未读消息验证===================
 $sql="select iflook from ".FEEDBACK." where touserid=$buid and iflook=0";
@@ -261,7 +262,7 @@ switch ($action)
 	}
 }
 $tpl->assign("lang",$lang);
-
+$tpl -> assign("menus",$nav_menu);
 include_once("footer.php");
 if(!empty($nohead))
 	$tpl->display($page);
