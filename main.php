@@ -14,6 +14,7 @@ $submit=isset($_POST['submit'])?$_POST['submit']:NULL;
 $deid=isset($_GET['deid'])?$_GET['deid']:NULL;
 $admin = new admin();
 //---------------------清缓存
+
 if(!empty($_POST)||!empty($_GET['deid'])||!empty($_GET['rec']))
 	$admin->clear_user_shop_cache();
 //---------------------登录检查,个人或企业会员

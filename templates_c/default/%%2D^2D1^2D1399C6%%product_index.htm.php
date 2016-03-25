@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 12:25:13
+<?php /* Smarty version 2.6.20, created on 2016-03-25 15:43:08
          compiled from product_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 99, false),)), $this); ?>
@@ -8,7 +8,7 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'prod
         <div class="ban_slider" id="ht_ban_slider">
             <div class="w guide">
                 <ul>
-                    <li class="on">●</li><li>●</li><li>●</li><li>●</li>
+                    <li class="on">●</li><li>●</li><!-- <li>●</li><li>●</li> -->
                 </ul>
             </div>
            <!--<div class="ban_li">
@@ -121,12 +121,12 @@ echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'ty
         var aLi = $(".guide li");
         var interval = window.setInterval(changeBanner,5000);
         function changeBanner(){
-            for(var i=0;i<4;i++){
+            for(var i=0;i<2;i++){
                 oLi[i].style.display="none";
                 if($(aLi[i]).hasClass("on"))
                 $(aLi[i]).removeClass("on");
             }
-            if(num > 3){
+            if(num > 1){
                 num = 0;
                 changeBanner();
             }else{
