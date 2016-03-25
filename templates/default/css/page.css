@@ -374,6 +374,7 @@ ul,ol{list-style:none}
 .m_nav .m_gz{position:absolute;top:10px;right:0;cursor:pointer}
 .m_nav .m_gz i{width:20px;height:17px;margin-right:10px}
 .m_nav .m_gz .sjmy{width: 100px;height: 100px;position: absolute;top: 25px;left: 0;padding:10px;background: #fff;z-index: 9999;}
+.m_nav .m_gz .sjmy span{top:-11px;left:50px;position: absolute;display: inline-block;width: 16px;height: 16px;background: url(../../../image/default/arr2.png);}
 
 .m_goods_list{width:202px;margin:30px auto;overflow:hidden;}
 .m_goods_list ul{margin-top:-1px}
@@ -382,7 +383,7 @@ ul,ol{list-style:none}
 .m_goods_list li label i{width:20px;height:20px;margin-right:10px}
 .m_goods_list li label b{font-weight:normal}
 .m_goods_list a{color:#fff;margin-right:10px}
-.m_goods_list a:hover{color:#fff}
+.m_goods_list p a:hover{color:#fff;text-decoration: underline;}
 
 /**国家列表*/
 .m_country_list{padding:20px 0;background:#eff0f2;}
@@ -460,7 +461,7 @@ ul,ol{list-style:none}
 .newfooter .foot .attention{position: relative;margin-top: 40px;}
 .newfooter .foot .attention a{width: 32px;height: 31px;display: inline-block;vertical-align: middle;background-repeat: no-repeat;overflow: hidden;}
 .newfooter .foot .attention div{box-shadow:0 0 10px #DDDDDD;width: 130px;padding: 25px;position: absolute;background: #fff;border:1px solid #dedede;}
-.newfooter .foot .attention .arr{position: absolute;bottom: -9px;left: 80px;display: inline-block;width: 17px;height: 9px;background: url(../../../image/default/arr1.png);}
+.newfooter .foot .attention .arr{position: absolute;bottom: -12px;left: 80px;display: inline-block;width: 16px;height: 16px;background: url(../../../image/default/arr1.png);}
 .newfooter .foot .attention span{line-height: 20px;border-bottom: none;font-size: 14px;}
 .newfooter .foot .attention .focus{background: #007ae8;color: #fff;padding: 5px 10px;border-radius: 3px;margin-top: 5px;}
 .newfooter .foot .weibo{background-image: url(../../../image/default/sina.png);}
@@ -468,7 +469,7 @@ ul,ol{list-style:none}
 .newfooter .foot .attention .qq{background-image: url(../../../image/default/qq1.png);display: inline-block;width: 32px;height: 32px;box-shadow: none;
  padding: 0; border: none;}
 .newfooter .foot .attention .dia-wb {bottom: 40px;right:16px;}
-.newfooter .foot .attention .dia-wx {top:-230px;right:-18px;}
+.newfooter .foot .attention .dia-wx {top:-230px;right:-20px;}
 .newfooter .foot .attention .dia-qq {bottom: 40px;right:-76px;}
 .newfooter .foot .attention .dia-qq p{text-align: left;margin-top: 0;}
 .newfooter .foot .attention .dia-qq img{padding: 5px;}
