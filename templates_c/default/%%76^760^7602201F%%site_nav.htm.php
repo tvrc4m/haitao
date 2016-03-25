@@ -1,25 +1,38 @@
+<?php /* Smarty version 2.6.20, created on 2016-03-25 12:25:13
+         compiled from site_nav.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><{if $title}><{$title}>,<{$config.company}><{else}><{$config.title}>,<{$config.company}><{/if}>- Powered by MallBuilder</title>
-<meta name="description" content="<{$config.description}>" />
-<meta name="keywords" content="<{$config.keyword}>" />
+<title><?php if ($this->_tpl_vars['title']): ?><?php echo $this->_tpl_vars['title']; ?>
+,<?php echo $this->_tpl_vars['config']['company']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['config']['title']; ?>
+,<?php echo $this->_tpl_vars['config']['company']; ?>
+<?php endif; ?>- Powered by MallBuilder</title>
+<meta name="description" content="<?php echo $this->_tpl_vars['config']['description']; ?>
+" />
+<meta name="keywords" content="<?php echo $this->_tpl_vars['config']['keyword']; ?>
+" />
 <meta name="copyright" content="MallBuilder" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/base.js" type="text/javascript"></script>
+<script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/script/base.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/templates/<?php echo $this->_tpl_vars['config']['temp']; ?>
+/css/page.css" rel="stylesheet" type="text/css" />
 
 </head>
-<body <{if $current=='index'}>class="gray"<{/if}>>
+<body <?php if ($this->_tpl_vars['current'] == 'index'): ?>class="gray"<?php endif; ?>>
 <div class="site-nav">
     <div class="w fn-clear">
     	<ul class="fn-left">
           
         	<li class="nav">
                     <span class="icon4"></span>
-                    <div class="nav-fore1"><a href="<{$config.weburl}>/?temp=wap">手机蚂蚁</a></div>
+                    <div class="nav-fore1"><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?temp=wap">手机蚂蚁</a></div>
                 <!-- <div class="nav-fore2">
                 	<div class="sjmy fn-hide">
                         <img src="../../../image/default/code.jpg" />
@@ -27,7 +40,8 @@
                      </div>
                     <ul>
                         <li><a href="wap.php">扫一扫进入</a></li>
-                        <li><a href="<{$config.weburl}>/?temp=wap">直接进入</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?temp=wap">直接进入</a></li>
                     </ul>
                 </div> -->
             </li>
@@ -37,16 +51,19 @@
             </li>
         </ul>
     	<ul class="fn-right">
-    		<li class="nav<{if $smarty.cookies.USER}> drop-down<{/if}> user">
-				<script src="<{$config.weburl}>/login_statu.php?m=index"></script>
+    		<li class="nav<?php if ($_COOKIE['USER']): ?> drop-down<?php endif; ?> user">
+				<script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/login_statu.php?m=index"></script>
             </li>
-        	<{if $current != 'index'}>
+        	<?php if ($this->_tpl_vars['current'] != 'index'): ?>
         	<li class="nav">
             	<div class="nav-fore1">
-                	<a href="<{$config.weburl}>"><{$config.company}>首页</a>
+                	<a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+"><?php echo $this->_tpl_vars['config']['company']; ?>
+首页</a>
                 </div>
             </li>
-            <{/if}>
+            <?php endif; ?>
         	<li class="nav drop-down">
             	<div class="nav-fore1">
                     <a href="main.php?cg_u_type=1">我的商城</a>
@@ -56,14 +73,18 @@
                     <ul>
                         <li><a href="main.php?m=product&s=admin_buyorder&cg_u_type=1">已买到的商品</a></li>
                         <li><a href="main.php?m=product&s=admin_footprint&cg_u_type=1">我的足迹</a></li>
-                        <li><a href="<{$config.pay_url}>"><{$config.pay_name}></a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['pay_url']; ?>
+"><?php echo $this->_tpl_vars['config']['pay_name']; ?>
+</a></li>
                     </ul>
                 </div>
             </li>
         	<!-- <li class="nav cart drop-down">
             	<div class="nav-fore1">
-                	<a href="<{$config.weburl}>?m=product&s=cart">
-                    <span>购物车</span><font><script src="<{$config.weburl}>/?m=product&s=cart_number"></script></font>件
+                	<a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+?m=product&s=cart">
+                    <span>购物车</span><font><script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=product&s=cart_number"></script></font>件
                     </a>
                     <i><em></em></i>
                 </div>
@@ -72,17 +93,20 @@
         	
             <!-- <li class="nav">
             	<div class="nav-fore1">
-                <a href="<{$config.weburl}>?m=product&s=cat">商品分类</a>
+                <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+?m=product&s=cat">商品分类</a>
                 </div>
             </li> -->
             <li class="site-nav-pipe">|</li>
             <li class="nav drop-down">
             	<div class="nav-fore1">
-                    <{if $cominfo.shop_type eq 1}>
-                    <a href="<{$config.weburl}>/main.php?m=shop&s=admin_step&shop_type=2&cg_u_type=2">卖家中心</a>
-                    <{else}>
-                    <a href="<{$config.weburl}>/main.php?cg_u_type=2">卖家中心</a>
-                    <{/if}>
+                    <?php if ($this->_tpl_vars['cominfo']['shop_type'] == 1): ?>
+                    <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/main.php?m=shop&s=admin_step&shop_type=2&cg_u_type=2">卖家中心</a>
+                    <?php else: ?>
+                    <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/main.php?cg_u_type=2">卖家中心</a>
+                    <?php endif; ?>
                    	<i><em></em></i>
                 </div>
                 <div class="nav-fore2">
@@ -116,7 +140,8 @@ $('.drop-down').hover(function(){
 	$(this).addClass("hover");					 
 	if($(this).hasClass("cart"))
 	{
-		$('.cart .nav-fore2').load('<{$config.weburl}>/?m=product&s=cart_number&act=list');
+		$('.cart .nav-fore2').load('<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=product&s=cart_number&act=list');
 	}
 },function(){
 	$(this).removeClass("hover");	
@@ -125,4 +150,4 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
        $(".fn-left .sjmy").toggleClass("fn-hide");
     });
 </script>
-
+

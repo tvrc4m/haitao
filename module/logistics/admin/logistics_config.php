@@ -94,16 +94,15 @@ $reg_config=read_config($type);
 				[<a href="http://www.kuaidi100.com/openapi/applyapi.shtml">审请API</a>]</td>
 		</tr>
 		<tr>
-			<td width="16%"  align="left" >APP Key</td>
+			<td width="16%"  align="left" >APP ID</td>
 			<td width="84%" align="left" >
 				<input class="text" name="logistic_app_id" type="text" id="logistic_app_id" value="<?php echo $reg_config['logistic_app_id'];?>"></td>
 		</tr>
-		<!--
+
 		<tr>
 			<td align="left">APP Sceret</td>
 			<td align="left" ><input class="text" name="logistic_api_sceret" type="text" id="logistic_api_sceret" value="<?php echo $reg_config['logistic_api_sceret'];?>"></td>
 		</tr>
-		-->
 
 
         <tr>

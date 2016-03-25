@@ -1,3 +1,7 @@
+<?php /* Smarty version 2.6.20, created on 2016-03-25 12:25:13
+         compiled from footer.htm */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'footer.htm', 11, false),)), $this); ?>
 <!--田晓宝添加-->
     <!--footer start-->
     <div class="newfooter">
@@ -8,7 +12,9 @@
             <div class="w">
                 <i class="icon_b_logo fl"></i>
                 <ul class="fl">
-                    <{insert name="label" type="ftlink" temp="ftlink_list"}>
+                    <?php require_once(SMARTY_CORE_DIR . 'core.run_insert_handler.php');
+echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'type' => 'ftlink', 'temp' => 'ftlink_list')), $this); ?>
+
                     <li>
                         <span>关注我们</span>
                         <div class="attention">
