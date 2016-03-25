@@ -73,7 +73,7 @@ function distribute_goods(id){
 </script>
 <header>
     <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><font>&#xe60d</font></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
         <section class="nav-c"><span>商品详情</span></section>
         <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
     </div>
@@ -96,7 +96,7 @@ function distribute_goods(id){
                 <div id="price">
                     <span class="price_moneys"><{$config.money}>  <{$de.price|number_format:2}></span>
                     <span class="price_dels"><{$config.money}>  <{$de.price|number_format:2}></span>
-                    <span class="price_zhes"><i></i>9.5折</span>
+                   <!--  <span class="price_zhes"><i></i>9.5折</span> -->
                 </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
@@ -183,13 +183,13 @@ function distribute_goods(id){
             </a></li> -->
             <li class="iconfont fas"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><font class="dianpu-on"></font></a></li>
         </ul>
-        <ul class="ub t-bla ub-ac uinn-pFS1">
+       <!--  <ul class="ub t-bla ub-ac uinn-pFS1">
             <li class="ub-f2">
                 <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
                 <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
                 <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
             </li>
-        </ul>
+        </ul> -->
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
             <li class="ub-kefu_first"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;"><i class="kefu_icon1"></i>联系客服</a></li>
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>

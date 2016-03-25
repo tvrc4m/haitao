@@ -6,7 +6,7 @@
 	$db->query($sql);
 	$re=$db->getRows();
 	$tpl->assign("pro",$re);
-	
+
 	if($_POST['submit']=="submit")
 	{
 		$sql="select user,userid from ".MEMBER." where userid='$_GET[uid]' ";

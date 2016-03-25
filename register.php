@@ -2,6 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("config/reg_config.php");
+
 if($reg_config)
 {
 	$config = array_merge($config,$reg_config);
@@ -18,6 +19,37 @@ if ($connect_config['ucenter_connect'])
 
 		$login_url = $login_url . '&from=mall&callback=' . urlencode($callback);
 		header('location:' . $login_url);
+	}
+}
+
+//发送验证码
+if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
+	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
+		$number = range(1,6);
+		shuffle($number);
+		foreach($number as $value){
+			$num .= $value;
+		}
+		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
+			if ($a=Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $num, 10)) == 1) {
+				$vser['yzm'] = $num;
+				$vser['ytime'] = time()+60*10;
+				$vser['ltime'] = time()+60;
+				$_SESSION['mon_yzm'] = $vser;
+			}
+			echo Return_data([
+					'status_code' => '200',
+					'message' => '短信发送成功，请注意查收',
+					'data' => null
+			]);
+		}else{
+			echo Return_data([
+					'status_code' => '300',
+					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
+					'data' => $_SESSION['mon_yzm']['ltime']-time()
+			]);
+		}
+		 die;
 	}
 }
 
@@ -46,6 +78,20 @@ if(!empty($_POST['user']))
 			 die("Verification question error...");
 	}*/
 
+	//蚂蚁海淘注册协议
+	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
+		die('<script>alert("请阅读并勾选蚂蚁海淘注册协议!");history.go(-1);</script>;');
+	}
+
+	//手机验证码
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
+		if($_SESSION['mon_yzm']['ytime']<time()){
+			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
+		}
+	}else{
+		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
+	}
+
 	$ip = getip();
 	if($config['regctrl']>0)
 	{
@@ -54,7 +100,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die("Your IP has been registered...");
+			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
 		}
 	}
 
@@ -65,7 +111,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num >= $config['regfloodctrl'])
 		{
-			die("Your IP has been registered...");
+			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
 		}	
 	}
 	
@@ -78,7 +124,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die("Your IP has been registered...");
+			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
 		}
 	}
 	$user = trim($_POST['user']);
@@ -115,14 +161,10 @@ if(!empty($_POST['user']))
 	];
 	foreach($str_check as $key => $val){
 		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
-			die('请填写正确格式的数据');
+			die('<script>alert("请填写正确格式的数据");history.go(-1);</script>;');
 		}
 	}
 
-	//蚂蚁海淘注册协议
-	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
-		die('请阅读并勾选蚂蚁海淘注册协议');
-	}
 	//暂时不用邮箱
 	/*if(valid_email($user))
 	{
@@ -194,11 +236,18 @@ function doreg($guid=NULL)
 	$user_reg = "2";
 	
 	$db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
-	
+
+	//验证用户名唯一
 	$sql="select * from ".MEMBER." where user = '$user'";
     $db->query($sql);
     if($db->num_rows())
 		die('<script>alert("User name is have");history.go(-1);</script>;');
+
+	//验证手机号唯一
+	$sql="select * from ".MEMBER." where mobile = '$mobile'";
+    $db->query($sql);
+    if($db->num_rows())
+		die('<script>alert("User mobile is have");history.go(-1);</script>;');
 
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
@@ -240,7 +289,29 @@ function doreg($guid=NULL)
 		}
 	 }
 	 else
-		 die("Can not register...");
+		 die('<script>alert("Can not register...!");history.go(-1);</script>;');
+}
+
+//短信发送
+function Send_msg($mob = null, $con = null)
+{
+		include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
+		$sms = new sms();
+		$str = $sms->send($mob, $con);
+		$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);
+		if($res['error']==0&&$res['msg']=='ok'){
+			return 1;
+		}else{
+			return 2;
+		}
+	die;
+}
+
+//格式数据返回
+function Return_data($data = null, $type = 'json'){
+	if($type == 'json'){
+		return json_encode($data);
+	}
 }
 include_once("footer.php");	
 $tpl->display("register.htm");

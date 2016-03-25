@@ -123,7 +123,7 @@ function buy()
                         <ul class="promo-meta clearfix">
                             <{if $de.market_price>0}>
                             <li>
-                                <span>价格</span>
+                              
                                 <strong class="del">
                                     <em class="rmb"><{$config.money}></em>
                                     <em class="rmb-num"><{$de.market_price|number_format:2}></em>
@@ -280,7 +280,7 @@ function buy()
                         <div class="qrcode" style="float: right; padding-right: 70px;display: none"><img src="api/share_qrcode.php?type=product&pid=<{$smarty.get.id}>&rand=<{math equation=rand(1,10000)}>"></div>
                         <div class="bshare-custom icon-medium hidden">
                             <div class="bsPromo bsPromo2"></div>
-                            <a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a>
+                            <a title="分享到微信" class="bshare-weixin" onclick="shareTo('weixin')" href="javascript:void(0);"></a>
                             <a title="分享到QQ空间" class="bshare-qzone"></a>
                             <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
                             <a title="分享到人人网" class="bshare-renren"></a>
@@ -387,7 +387,7 @@ function buy()
             </div>
             <div class="left hotsell">
                 <div class="m">
-                    <div class="mt"><h3>热销产品</h3></div>
+                    <div class="pine-hd">热销产品</div>
                     <div class="mc">
                         <{insert name="label" type="product" uid=$de.member_id o='1' temp="product_list_li" limit=5}>
                     </div>
@@ -661,4 +661,6 @@ $(".inner-wrap li").click(function(){
 $('#reviews').load('<{$config.weburl}>/?m=product&s=detail&id=<{$de.id}>&ajax=reviews');
 $('#deal-record').load('<{$config.weburl}>/?m=product&s=detail&id=<{$de.id}>&ajax=deal-record');
 $('#consult').load('<{$config.weburl}>/?m=product&s=detail&id=<{$de.id}>&ajax=consult');
+$(".pine-bd li:last").css("border-bottom","none");
+$(".mc li:last").css("border-bottom","none");
 </script>

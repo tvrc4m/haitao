@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 12:01:25
+<?php /* Smarty version 2.6.20, created on 2016-03-25 12:22:30
          compiled from pro_cat_shop_left.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'pro_cat_shop_left.htm', 7, false),)), $this); ?>
@@ -11,7 +11,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 
                 <a target="_blank" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=product&s=list&id=<?php echo $this->_tpl_vars['cList']['catid']; ?>
 ">
-                    <i class="icon_menu_01"></i>
+                    <i class="icon_menu_0<?php echo $this->_tpl_vars['num']+1; ?>
+"></i>
                     <b class="mid"><?php echo ((is_array($_tmp=$this->_tpl_vars['cList']['cat'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 8, "") : smarty_modifier_truncate($_tmp, 8, "")); ?>
 
                     </b>
