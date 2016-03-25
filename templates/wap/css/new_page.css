@@ -898,7 +898,7 @@ ins,a
 .m_main-v2{background-color: #fff;
     margin: 1rem 0 1rem;}
 
-.m{width: 100%;max-width:720px;margin: 0 auto;overflow: hidden;padding:0 0.4rem;
+.m{width: 100%;max-width:720px;margin: 0 auto;overflow: hidden;/*padding:0 0.4rem;*/
     box-sizing: border-box;}
 
 .owl-theme .owl-controls{margin-top: 0!important;}
@@ -941,9 +941,9 @@ ins,a
 .cates .cateul{width:100%;margin:0px;padding:0px;float:left}
 .cates .cateimg{height: 25px;}
 .cates .catename{font-size:0.6rem;margin-top: 0.5rem;}
-.cates li{float:left;width:25%;text-align:center;}
-.cates li.mm_flt{box-shadow: 0.5px 0px 0px #b9b9b9;-webkit-box-shadow: 0.5px 0px 0px #b9b9b9;}
-.cates li.mm_flt:nth-of-type(4n){box-shadow:none;-webkit-box-shadow:none;}
+.cates li{float:left;width:3.95rem;text-align:center;}
+.cates li.mm_flt{/*box-shadow: 0.5px 0px 0px #b9b9b9;-webkit-box-shadow: 0.5px 0px 0px #b9b9b9;*/border-right: 1px solid #ccc;}
+.cates li.mm_flt:nth-of-type(4n){box-shadow:none;-webkit-box-shadow:none;border-right:none;}
 .cates li a{width: 100%;height: auto;display: block;text-decoration: none;padding: 0.5rem 0rem;}
 
 .avs{margin-top:10px;float: left;width:100%}
@@ -995,10 +995,12 @@ ins,a
 @media screen and (min-width: 600px) and (max-width: 800px) { 
  	/*.guanggao_kong{margin-bottom: 10.5rem!important;}*/
  	.shop .shopli {margin-bottom: 0.7rem;box-shadow: 0px 0px 1px #b9b9b9;-webkit-box-shadow: 0px 0px 1px #b9b9b9;}
- 	.cates li.mm_flt {-webkit-box-shadow: 0.5px 0.3px 0px #b9b9b9;box-shadow: 0.5px 0.3px 0px #b9b9b9;}
+ 	/*.cates li.mm_flt {-webkit-box-shadow: 0.5px 0.3px 0px #b9b9b9;box-shadow: 0.5px 0.3px 0px #b9b9b9;}*/
+ 	.cates li{width: 24.8%;}
 }
 @media screen and  (height: 960px) {
  	/*.guanggao_kong{margin-bottom: 8.9rem!important;}*/
- 	.cates li.mm_flt {-webkit-box-shadow: 0.5px 0.3px 0px #b9b9b9;box-shadow: 0.5px 0.3px 0px #b9b9b9;}
+ 	/*.cates li.mm_flt {-webkit-box-shadow: 0.5px 0.3px 0px #b9b9b9;box-shadow: 0.5px 0.3px 0px #b9b9b9;}*/
  	.shop .shopli {margin-bottom: 0.7rem;-webkit-box-shadow: 0px 0px 1px #b9b9b9;box-shadow: 0px 0px 1px #b9b9b9;}
+ 	.cates li{width: 24.8%;}
 }
