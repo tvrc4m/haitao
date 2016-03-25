@@ -11,7 +11,7 @@
 	
 	$home = new home();
 	$sns = new sns();
-	
+
 	$tpl -> template_dir = $config['webroot'] . "/module/sns/templates/home/";
 	$tpl -> compile_dir     = $config["webroot"] . "/templates_c/".$config['temp']."/home/";
 	

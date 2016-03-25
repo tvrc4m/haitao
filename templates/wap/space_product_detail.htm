@@ -96,7 +96,7 @@ function distribute_goods(id){
                 <div id="price">
                     <span class="price_moneys"><{$config.money}>  <{$de.price|number_format:2}></span>
                     <span class="price_dels"><{$config.money}>  <{$de.price|number_format:2}></span>
-                    <span class="price_zhes"><i></i>9.5折</span>
+                   <!--  <span class="price_zhes"><i></i>9.5折</span> -->
                 </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
@@ -183,13 +183,13 @@ function distribute_goods(id){
             </a></li> -->
             <li class="iconfont fas"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><font class="dianpu-on"></font></a></li>
         </ul>
-        <ul class="ub t-bla ub-ac uinn-pFS1">
+       <!--  <ul class="ub t-bla ub-ac uinn-pFS1">
             <li class="ub-f2">
                 <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
                 <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
                 <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
             </li>
-        </ul>
+        </ul> -->
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
             <li class="ub-kefu_first"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;"><i class="kefu_icon1"></i>联系客服</a></li>
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>

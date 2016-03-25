@@ -3,6 +3,7 @@ var pwlength = pwlength ? pwlength : 4;
 var tips_user="<i></i>请输入邮箱/用户名/手机号。";
 var tips_password="<i></i>请填写密码, 最小长度为 "+pwlength+" 个字符。";
 var tips_re_password="<i></i>再输一次密码";
+var tips_mobile="<i></i>请填写正确手机号码！";
 var tips_yzm="";
 var tips_ckyzwt="";
 var tips_email="<i></i>请输入您常用的电子邮箱，以方便日后找回密码。";
@@ -48,7 +49,7 @@ $(function(){
 			eval("check_"+name+"($(this))");
 		});
 	});
-	$(".submit").click(function(e){
+	/*$(".submit").click(function(e){
 		var arr_flag = new Array();
         e.preventDefault();
 
@@ -88,19 +89,28 @@ $(function(){
                 return false;
             }
 
-            if(document.getElementById('re_password').value.length < 1)
+<<<<<<< HEAD
+            // if(document.getElementById('re_password').value.length < 1)
+            // {
+            //     alert('请确认密码！');
+            //     document.getElementById('re_password').focus();
+            //     return false;
+            // }
+=======
+           /!* if(document.getElementById('re_password').value.length < 1)
             {
                 alert('请确认密码！');
                 document.getElementById('re_password').focus();
                 return false;
             }
+>>>>>>> 6de1c9fd3d05ee3f74fd6ba6c30e03c8e7bb4294
 
             if ($('#re_password').val() != $('#password').val())
             {
                 alert('两次密码不一致！');
                 $('#password').focus();
                 return false;
-            }
+            }*!/
 
             if(document.getElementById('yzm').value.length < 1)
             {
@@ -111,7 +121,7 @@ $(function(){
 
             //$("form").submit();
         }
-    });
+    });*/
 	$("form .read em").click(function(){
 		if($(".agreement").css("display")=='block')
 			$(".agreement").hide();
@@ -379,7 +389,7 @@ function check_yzm(obj){
 	var div=obj.parent().next().children("div");
 	var url = 'ajax_back_end.php';
 	var sj = new Date();
-	var pars = 'shuiji=' + sj+'&yzm='+val; 
+	var pars = 'shuiji=' + sj+'&yzm='+val;
 	if(!val){
 		obj.addClass('red');
 		div.attr('class','error').html(error);return false;

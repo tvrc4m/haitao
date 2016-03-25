@@ -57,9 +57,9 @@ if(isset($_GET["yzm"]))
 	}
     die;
 }
-if(isset($_POST["yzm"]))
+if(isset($_POST["smsvode"]))
 {
-	if(strtolower($_POST["yzm"])!=strtolower($_SESSION["auth"]))
+	if(strtolower($_POST["smsvode"])!=strtolower($_SESSION["auth"]))
 		echo "false";
 	else
 		echo "true";

@@ -976,7 +976,7 @@ ins,a
 .shop .shopli.even{margin-left: 2.5%;}
 .nearShop {background: #fff;height: auto;text-align: center;}
 .nearShop li{text-align: left;}
-.guanggao_kong{margin-bottom: 6.75rem!important;}
+/*.guanggao_kong{margin-bottom: 6.75rem!important;}*/
 .g_wei{width: 100%;position: absolute;left: 0px;margin-top: 0.5rem}
 .g_wei img{width: 100%;}
 .m_jiazai{text-align: center;padding: 0px;width: 100%;display: inline-block;height: 1.75rem;line-height:1.75rem;border-radius: 0.25rem;font-size: 0.6rem;color: #b4b4b4;background-color: #fff;margin-bottom: 1rem;}
@@ -990,12 +990,12 @@ ins,a
 .reload{float: right;margin-right: 6px;}
 
 @media screen and (min-width: 600px) and (max-width: 800px) { 
- 	.guanggao_kong{margin-bottom: 10.5rem!important;}
+ 	/*.guanggao_kong{margin-bottom: 10.5rem!important;}*/
  	.shop .shopli {margin-bottom: 0.7rem;box-shadow: 0px 0px 1px #b9b9b9;}
  	.cates li.mm_flt {box-shadow: 0.5px 0.3px 0px #b9b9b9;}
 }
 @media screen and  (height: 960px) {
- 	.guanggao_kong{margin-bottom: 8.9rem!important;}
+ 	/*.guanggao_kong{margin-bottom: 8.9rem!important;}*/
  	.cates li.mm_flt {box-shadow: 0.5px 0.3px 0px #b9b9b9;}
  	.shop .shopli {margin-bottom: 0.7rem;box-shadow: 0px 0px 1px #b9b9b9;}
 }

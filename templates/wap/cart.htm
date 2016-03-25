@@ -2,12 +2,9 @@
 	<div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
     	<section class="nav-c"><span>购物车</span></section>
-   		<section class="nav-e"><a href="javascript:$('form').submit()"><nav>删除</nav></a></section>
+   		<section class="nav-e"> <div class="operations"><a class="delete" href="javascript:void(0);">删除</a></div></section>
     </div>
 </header>
-<br />
-<br />
-<br />
 <link href="<{$config.weburl}>/templates/wap/css/cart.css" rel="stylesheet" type="text/css" />
 <{if $smarty.get.type=="clear" || $cart.cart|@count<1}>
 <div class="cart-empty">
@@ -21,8 +18,8 @@
     <div align="center"> <font color="#FF0000">产品不存在或订购销完或已经删除</font></div>
     <{elseif $smarty.get.type=="del"}>
     <div align="center"><font color="#FF0000">购物车不存在该产品已经删除</font></div>
-    <{/if}>
-    <form id="form" name="form" method="post">
+    <{/if}>   
+        <form id="form" name="form" method="post">
         <input type="hidden" name="act" value="del">
         <{foreach item=list from=$cart.cart}>
         <div class="item">
@@ -43,13 +40,9 @@
                         <{if $pro.setmealname}>
                         <p>规格：<{$pro.setmealname}></p>
                         <{/if}>
-                        <p class="p-price clearfix">
+                        <p class="p-price">
                             <strong><{$config.money}><{$pro.price|number_format:2}></strong>
-                            <p class="stock clearfix">
-                                <a href="javascript:void(0);" id="low_num">-</a>
-                                <input data-param='{"id":"<{$pro.id}>", "uid":"<{if $list.dist_user_id}><{$list.dist_user_id}><{else}><{$list.seller_id}><{/if}>"}' name="nums" id="nums" oninput="javascript:inputBuynum(this);" class="numIpt" type="number" value="<{$pro.num}>" min="1" max="<{$pro.stock}>" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'');" id="nums">
-                                <a href="javascript:void(0);" id="add_num">+</a>
-                            </p>
+                            <input data-param='{"id":"<{$pro.id}>", "uid":"<{if $list.dist_user_id}><{$list.dist_user_id}><{else}><{$list.seller_id}><{/if}>"}' name="nums" id="nums" oninput="javascript:inputBuynum(this);" class="numIpt" type="number" value="<{$pro.num}>" min="1" max="<{$pro.stock}>" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'');">
                         </p>
                     </dd>
                 </dl>
