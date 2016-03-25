@@ -1,8 +1,6 @@
 <?php
-
-
+include_once("includes/waf.php");
 include_once("includes/global.php");
-
 include_once("includes/smarty_config.php");
 // ========= 微信支付第一步骤 =========
 if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
