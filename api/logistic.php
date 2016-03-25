@@ -38,14 +38,29 @@ function lookorder($com,$nu)
 	$api_sceret=API_Sceret;
 
 	//爱查快递
-	$url2="http://api.ickd.cn/?com=".$com."&nu=".$nu."&id=".$api_id."&secret=".$api_sceret."&type=html&encode=utf8";
+	//$url2="http://api.ickd.cn/?com=".$com."&nu=".$nu."&id=".$api_id."&secret=".$api_sceret."&type=html&encode=utf8";
 
 	//快递100  show=[0|1|2|3]
 
 
-	$url2="http://api.kuaidi100.com/api?id=$api_id&com=$com&nu=$nu&valicode=[]&show=2&muti=1&order=desc";
+	//$url2="http://api.kuaidi100.com/api?id=$api_id&com=$com&nu=$nu&valicode=[]&show=2&muti=1&order=desc";
+    $url2 = "http://poll.kuaidi100.com/poll/query.do";
+    $body = json_encode(array("com"=>$com,"num"=>$nu,"from"=>"","to"=>""));
+    $sigin = md5($body.$api_sceret.$api_id);
+    $post_data=array("customer"=>$api_id,"sign"=>$sigin,"param"=>$body);
 
-	$con=file_get_contents($url2);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url2);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    // post数据
+    curl_setopt($ch, CURLOPT_POST, 1);
+    // post的变量
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+    $con = curl_exec($ch);
+    curl_close($ch);
+    var_dump($con);
+	//$con=file_get_contents($url2);
 	//return "document.write('".$con."');";
 	return 'document.write("'.$con.'");';
 }
