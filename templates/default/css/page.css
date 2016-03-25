@@ -249,6 +249,7 @@ em{font-style:normal;}
 .goods_items{margin-bottom:20px}
 .goods_items .til{line-height:50px}
 .goods_items .til span{float:left;padding-left:15px;font-size:18px;letter-spacing:1px}
+.goods_items .til span a:hover{text-decoration: underline;color: inherit;}
 .goods_items .til p{float:right;height:50px;}
 .goods_items .til p a{margin-left:20px;color:#666}
 .goods_items .til p a:hover{color:#007be6;}
