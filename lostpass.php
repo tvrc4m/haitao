@@ -78,7 +78,7 @@ if(!empty($_POST["action"])&&$_POST["action"]=="com"&&!empty($_POST['user']))
 	];
 	foreach($str_check as $key => $val){
 		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
-			die('请填写正确格式的数据');
+			die('<script>alert("请填写正确格式的数据!");history.go(-1);</script>;');
 		}
 	}
 
