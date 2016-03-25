@@ -86,11 +86,7 @@
     <li>
         <input name="action" type="hidden" value="submit">
         <input name="forward" type="hidden" id="forward" value="">
-<<<<<<< HEAD
        <input class="submit" type='submit' name='submitreg' id="submitreg" value='免费注册' />
-=======
-        <input class="submit" type='submit' name='submitreg' id="submitreg" value='免费注册' />
->>>>>>> 6de1c9fd3d05ee3f74fd6ba6c30e03c8e7bb4294
     </li>
     <li>
         <a id="regist" href="<{$config.weburl}>/login.php">已有账号？马上登陆</a>
@@ -98,17 +94,7 @@
 </ul>
 </form>
 <{/if}>
-    <div class="form-error">
-        <{if $smarty.get.erry=="-1"}>
-        <{$lang.noname}>
-        <{elseif $smarty.get.erry=="-4"}>
-        <{$lang.have_restpass}>
-        <{elseif $smarty.get.erry=="-2"}>
-        <{$lang.passerr}>
-        <{elseif $smarty.get.erry=="-3"}>
-        <{$lang.codeerr}>
-        <{/if}>
-    </div>
+
 <{include file="footer.htm"}>
 <!--<script type=text/javascript>
     $(function(){
