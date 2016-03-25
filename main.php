@@ -260,6 +260,7 @@ switch ($action)
 	}
 }
 $tpl->assign("lang",$lang);
+
 include_once("footer.php");
 if(!empty($nohead))
 	$tpl->display($page);
