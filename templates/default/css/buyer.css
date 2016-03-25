@@ -169,7 +169,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .haitao_user{padding: 32px;float: left;}
 /*.haitao_user2{padding-top: 32px;}*/
 /*--sns--*/
-.weibo{clear:both;font-size:12px;position:relative;width: 723px;}
+/*.weibo{clear:both;font-size:12px;position:relative;width: 723px;}*/
 .weibo_con{border:1px solid #D0D0D0;border-radius:3px;line-height:1.231;position:relative;transition:border 0.2s linear 0s, -moz-box-shadow 0.2s linear 0s;word-break:break-all;word-wrap:break-word;z-index:104;}
 .weibo_con.focus{border-color:#7BD6F6;-moz-outline-radius:8px;-webkit-box-shadow:0 0 10px rgba(123,214,246,.6);-moz-box-shadow:0 0 10px rgba(123,214,246,.6);box-shadow:0 0 10px rgba(123,214,246,.6)}
 .weibo textarea{box-shadow:none;background:#FFF;border:0 none!important;border-radius:8px 8px 0 0;font:14px/21px Tahoma,Arial;height:63px;margin:0 auto;overflow-y:none;padding:5px 1%!important;width:97.9%;resize:none;}
