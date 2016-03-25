@@ -94,17 +94,7 @@
 </ul>
 </form>
 <{/if}>
-    <div class="form-error">
-        <{if $smarty.get.erry=="-1"}>
-        <{$lang.noname}>
-        <{elseif $smarty.get.erry=="-4"}>
-        <{$lang.have_restpass}>
-        <{elseif $smarty.get.erry=="-2"}>
-        <{$lang.passerr}>
-        <{elseif $smarty.get.erry=="-3"}>
-        <{$lang.codeerr}>
-        <{/if}>
-    </div>
+
 <{include file="footer.htm"}>
 <!--<script type=text/javascript>
     $(function(){
