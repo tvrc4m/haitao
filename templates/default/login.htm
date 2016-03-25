@@ -40,7 +40,11 @@ var norandcode='<{$lang.nocode}>';
                 <dl>
                     <dt><img src="image/default/icon2.png"></dt>
                     <dd>
-                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名/邮箱/手机号" id="user">
+                        <{if $smarty.get.user!=null}>
+                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" value="<{$smarty.get.user}>" placeholder="用户名/手机号" id="user">
+                        <{else}>
+                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名/手机号" id="user">
+                        <{/if}>
                     </dd>
                 </dl>
                 <!--<{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
