@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 12:25:13
+<?php /* Smarty version 2.6.20, created on 2016-03-25 14:40:43
          compiled from footer.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'footer.htm', 11, false),)), $this); ?>
@@ -6,7 +6,7 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'foot
     <!--footer start-->
     <div class="newfooter">
         <div class="m_b_commitment">
-            <div class="w"><img src="../../../uploadfile/adv/2016/b_commitment.png" alt="品质保证 全球直供 优质品牌 售后保障"></div>
+            <div class="w"><img src="/image/default/b_commitment.png" alt="品质保证 全球直供 优质品牌 售后保障"></div>
         </div>
         <div class="foot">
             <div class="w">

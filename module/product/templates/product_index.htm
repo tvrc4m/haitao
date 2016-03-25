@@ -4,7 +4,7 @@
         <div class="ban_slider" id="ht_ban_slider">
             <div class="w guide">
                 <ul>
-                    <li class="on">●</li><li>●</li><li>●</li><li>●</li>
+                    <li class="on">●</li><li>●</li><!-- <li>●</li><li>●</li> -->
                 </ul>
             </div>
            <!--<div class="ban_li">
@@ -107,12 +107,12 @@
         var aLi = $(".guide li");
         var interval = window.setInterval(changeBanner,5000);
         function changeBanner(){
-            for(var i=0;i<4;i++){
+            for(var i=0;i<2;i++){
                 oLi[i].style.display="none";
                 if($(aLi[i]).hasClass("on"))
                 $(aLi[i]).removeClass("on");
             }
-            if(num > 3){
+            if(num > 1){
                 num = 0;
                 changeBanner();
             }else{
