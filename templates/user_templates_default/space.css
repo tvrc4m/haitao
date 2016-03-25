@@ -350,7 +350,7 @@ html[xmlns] .clearfix{display:block;}
 .consult-bd li dt em{color:#5aa5ff;}
 .consult-bd li dd em{color:#ff6400;}
 
-.consult-box{position:absolute;top:0;z-index:999;width:730px;height:360px;background-color:rgba(130, 130, 130, 0.25);box-shadow:0 0 12px rgba(0, 0, 0, 0.75);border-radius:5px;}
+.consult-box{position:absolute;top:0;left:100px;z-index:999;width:730px;height:360px;background-color:rgba(130, 130, 130, 0.25);box-shadow:0 0 12px rgba(0, 0, 0, 0.75);border-radius:5px;}
 .consult-form{height:360px;width:730px;background:#FFF;border-radius:5px;}
 .consult-form .consult-mt{height:36px;padding:0 10px 0 15px;background:#ef3739;color:#FFF;border-radius:5px 5px 0 0;}
 .consult-form .consult-mt h2{font-size:16px;font-weight:normal;line-height:36px;}
