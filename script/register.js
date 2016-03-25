@@ -3,6 +3,7 @@ var pwlength = pwlength ? pwlength : 4;
 var tips_user="<i></i>请输入邮箱/用户名/手机号。";
 var tips_password="<i></i>请填写密码, 最小长度为 "+pwlength+" 个字符。";
 var tips_re_password="<i></i>再输一次密码";
+var tips_mobile="<i></i>请填写正确手机号码！";
 var tips_yzm="";
 var tips_ckyzwt="";
 var tips_email="<i></i>请输入您常用的电子邮箱，以方便日后找回密码。";
@@ -88,12 +89,21 @@ $(function(){
                 return false;
             }
 
+<<<<<<< HEAD
+            // if(document.getElementById('re_password').value.length < 1)
+            // {
+            //     alert('请确认密码！');
+            //     document.getElementById('re_password').focus();
+            //     return false;
+            // }
+=======
            /!* if(document.getElementById('re_password').value.length < 1)
             {
                 alert('请确认密码！');
                 document.getElementById('re_password').focus();
                 return false;
             }
+>>>>>>> 6de1c9fd3d05ee3f74fd6ba6c30e03c8e7bb4294
 
             if ($('#re_password').val() != $('#password').val())
             {
