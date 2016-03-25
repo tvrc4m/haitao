@@ -1,25 +1,23 @@
-<?php 
+<?php
 include_once("../includes/global.php");
 @include_once("../config/logistics_config.php");
 
-$api_id = $logistics_config['logistic_app_id']?$logistics_config['logistic_app_id']:"";
-$api_sceret = $logistics_config['logistic_api_sceret']?$logistics_config['logistic_api_sceret']:"";
+$api_id = $logistics_config['logistic_app_id'] ? $logistics_config['logistic_app_id'] : "";
+$api_sceret = $logistics_config['logistic_api_sceret'] ? $logistics_config['logistic_api_sceret'] : "";
 define("API_Id", $api_id);
 define("API_Sceret", $api_sceret);
-if($_GET["com"]&&$_GET["nu"])
-{
-	$sql="select * from  ".FASTMAIL." where company='".$_GET["com"]."'";
-	
+if ($_GET["com"] && $_GET["nu"]) {
+    $sql = "select * from  " . FASTMAIL . " where company='" . $_GET["com"] . "'";
+
     $db->query($sql);
-	
-	if($db->num_rows())
-	{
-		$fast_mail=$db->fetchRow();
-		$com = $fast_mail["pinyin"]; 
-		echo $str=lookorder($com,$_GET["nu"]);
-	}else{
-		echo "document.write('暂时没有物流信息！');";
-	}
+
+    if ($db->num_rows()) {
+        $fast_mail = $db->fetchRow();
+        $com = $fast_mail["pinyin"];
+        echo $str = lookorder($com, $_GET["nu"]);
+    } else {
+        echo "document.write('暂时没有物流信息！');";
+    }
 }
 
 //http://api.ickd.cn/?id=[]&secret=[]&com=[]&nu=[]&type=[]&encode=[]&ord=[]&lang=[]
@@ -32,37 +30,45 @@ type	可选	返回结果类型，值分别为 html | json（默认） | text | x
 encode	可选	gbk（默认）| utf8
 ord	可选	asc（默认）|desc，返回结果排序
 lang	可选	en返回英文结果，目前仅支持部分快递（EMS、顺丰、DHL）*/
-function lookorder($com,$nu)
+function lookorder($com, $nu)
 {
-	$api_id=API_Id;
-	$api_sceret=API_Sceret;
+   // $api_id = API_Id;
+   // $api_sceret = API_Sceret;
 
-	//爱查快递
-	//$url2="http://api.ickd.cn/?com=".$com."&nu=".$nu."&id=".$api_id."&secret=".$api_sceret."&type=html&encode=utf8";
+    //爱查快递
+   // $url2 = "http://api.ickd.cn/?com=" . $com . "&nu=" . $nu . "&id=" . $api_id . "&secret=" . $api_sceret . "&type=html&encode=utf8";
 
-	//快递100  show=[0|1|2|3]
+    //快递100  show=[0|1|2|3]
 
-
-	//$url2="http://api.kuaidi100.com/api?id=$api_id&com=$com&nu=$nu&valicode=[]&show=2&muti=1&order=desc";
-    $url2 = "http://poll.kuaidi100.com/poll/query.do";
-    $body = json_encode(array("com"=>$com,"num"=>$nu,"from"=>"","to"=>""));
-    $sigin = md5($body.$api_sceret.$api_id);
-    $post_data=array("customer"=>$api_id,"sign"=>$sigin,"param"=>$body);
-
-
+    /**
+     * $url2="http://api.kuaidi100.com/api?id=$api_id&com=$com&nu=$nu&valicode=[]&show=2&muti=1&order=desc";
+     *
+     * $con=file_get_contents($url2);
+     * //return "document.write('".$con."');";
+     * return 'document.write("'.$con.'");';
+     */
+    $post_data = array();
+    $post_data["customer"] = API_Id;
+    $key = API_Sceret;
+    $post_data["param"] =json_encode(array("com"=>$com,"num"=>$nu)) ;
+    $url = 'http://www.kuaidi100.com/poll/query.do';
+    $post_data["sign"] = md5($post_data["param"] . $key . $post_data["customer"]);
+    $post_data["sign"] = strtoupper($post_data["sign"]);
+    $o = "";
+    foreach ($post_data as $k => $v) {
+        $o .= "$k=" . urlencode($v) . "&";        //默认UTF-8编码格式
+    }
+    $post_data = substr($o, 0, -1);
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url2);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    // post数据
     curl_setopt($ch, CURLOPT_POST, 1);
-    // post的变量
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-    $con = curl_exec($ch);
+    $result = curl_exec($ch);
     curl_close($ch);
-    var_dump($con);
-	//$con=file_get_contents($url2);
-	//return "document.write('".$con."');";
-	return 'document.write("'.$con.'");';
+    $con = str_replace("\&quot;", '"', $result);
+    return 'document.write("' . $con . '");';
 }
 
 ?>
