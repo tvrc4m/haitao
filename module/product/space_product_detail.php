@@ -223,6 +223,7 @@ function namereplace($name, $charset = 'UTF8') {
 		return mb_substr($name, 0, 1, $charset).str_repeat('*',$strlen-1);
 	}
 }
+
 //====================================SEO
 $company["shop_title"] = $prode['name'];
 $company["shop_keywords"] = $prode['keywords'].','.$shopconfig["homedes"];
@@ -241,4 +242,5 @@ if ($dist_user_row)
 }
 
 $output=tplfetch("space_product_detail.htm",$flag);
+
 ?>

@@ -1,8 +1,8 @@
 <{foreach item=slist key=key from=$categorys}>
-    <{if $key<1005 }>
+    <{if $key<1004 }>
         <div class="w goods_items">
             <div class="til newclear">
-                <span class="til_01">
+                <span class="til_<{$key+1}>">
                 	<a target="_blank" href="<{$config.weburl}>?m=product&s=list&id=<{$slist.catid}>"><{$slist.name}></a>
                 </span>
                 <p>
@@ -54,6 +54,7 @@
                     </ul>
                     <div class="m_img_box pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.1}>&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
                     <div class="m_img_box spe pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.2}>&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
+
                 </div>
             </div>
         </div>

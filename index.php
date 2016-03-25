@@ -1,6 +1,5 @@
 <?php
-
-
+include_once("includes/waf.php");
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 // ========= 微信支付第一步骤 =========
@@ -102,7 +101,7 @@ else
 		$_GET['m'] = preg_replace('#[^a-z]#iuU', '',$_GET['m']);
 
 		if(!empty($_GET['m']))
-		{	
+		{
 			$s=$_GET['s'];
 			$m=$_GET['m'];
 			if(file_exists($config['webroot'].'/module/'.$m.'/'.$s.'.php'))
@@ -120,7 +119,9 @@ else
 					if($home_config)
 					@$config = array_merge($config,$home_config);
 				}
+
 				@include('module/'.$m.'/lang/'.$config['language'].'.php');
+
 				include('module/'.$m.'/'.$s.'.php');
 
 			}

@@ -647,6 +647,7 @@ function send_mail($email,$name,$title,$con,$reply=NULL)
 
 function tplfetch($file,$flag=NULL,$no_return=false)
 {
+
 	global $tpl,$config;
 	
 	if(file_exists($tpl->template_dir.$file))
@@ -655,14 +656,14 @@ function tplfetch($file,$flag=NULL,$no_return=false)
 	{	//如果不存在就去模块目录下面找
 		$tpl->template_dir=$config['webroot'].'/module/'.$_GET['m'].'/templates/';
 	}
-	$tpl->statu=$tpl->template_dir;
 
+	$tpl->statu=$tpl->template_dir;
 	if($no_return)
 	{
 		$tpl->display($file,$flag);die;
 	}
 	else
-		return $tpl->fetch($file,$flag);
+        return $tpl->fetch($file,$flag);
 }
 
 function get_mail_template($flag)

@@ -6,6 +6,7 @@ $order_id=$_GET['tradeNo']?$_GET['tradeNo']:NULL;
 $sql="select a.*,b.real_name from ".RECORD." a left join ".MEMBER." b on a.pay_uid=b.pay_id 	 where order_id='$order_id' and pay_uid='$buid'";
 $db->query($sql);
 $re=$db->fetchRow();
+
 $re['price']=$re['price']<0?($re['price']*(-1)):$re['price'];
 $re_wx = $re;
 $tpl->assign("re",$re);
