@@ -42,13 +42,13 @@ html[xmlns] .clearfix{display:block;}
 .iconfont{font-family:"iconfont";font-style:normal;}
 
 /* --------------- */
-.site-nav{background:#F5F5F5;border-bottom:1px solid #EEE;padding:8px 0;height:16px;line-height:16px;}
+/*.site-nav{background:#F5F5F5;border-bottom:1px solid #EEE;padding:8px 0;height:16px;line-height:16px;}
 .site-nav .left a{margin-right:5px;}
 .site-nav .right{width:600px;}
 .site-nav .right li{float:right;border-right:1px solid #DDD;padding:0 10px 0 10px}
 .site-nav .right span{color:#F00;margin:0 3px;}
 .site-nav .shopping{background:url(img/cart.png) 0 -1px no-repeat;padding-left:25px;}
-.site-nav .index{color:#FF6600;}
+.site-nav .index{color:#FF6600;}*/
 /* --------------- */
 .header{background-color:#FFFFFF;height:60px;border-bottom:1px solid #EEE;position:relative;z-index:199;}
 .logo{border-right:1px solid #EEEEEE;float:left;height:40px;padding:12px 10px 8px 0px;}
@@ -78,7 +78,7 @@ html[xmlns] .clearfix{display:block;}
 .nav_bg .collection{width:124px;height:40px;line-height:40px;background:url(img/collection.png) no-repeat #FF494B;float:right;}
 /* --------------- */
 #left{width:208px;float:left;}
-.user{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;}
+/*.user{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;}*/
 .user_photo{width:206px;}
 .user_photo h2{color:#3D3F3E;font-size:14px;margin:13px 0 10px 0;padding-left:15px;}
 .user_photo p{margin-top:6px;}
@@ -395,8 +395,10 @@ html[xmlns] .clearfix{display:block;}
 .shop-info-hd .shop-icon .personal{background-position:-22px -343px;}
 .shop-info-hd .shop-icon .shop{background-position:-42px -343px;}
 .shop-info-bd{margin-bottom:16px;padding-top:13px;overflow:hidden;}
-.shop-rate{width:196px;overflow:hidden;margin:0 0 0 -28px;}
-.shop-rate dl{display:inline;float:left;padding-left:14px;margin-left:14px;border-left:1px solid #ebebeb;}
+/*.shop-rate{width:196px;overflow:hidden;margin:0 0 0 -28px;}
+.shop-rate dl{display:inline;float:left;padding-left:14px;margin-left:14px;border-left:1px solid #ebebeb;}*/
+.shop-rate{width:198px;overflow:hidden;}
+.shop-rate dl{display:inline;float:left;width: 65px;border-right:1px solid #ebebeb;text-align: center;}
 .shop-rate dt{font-size:12px;line-height:12px;}
 .shop-rate dd{line-height:14px;font-size:12px;margin-top:5px;}
 .shop-rate dd b{color:#f40;font-weight:500;}

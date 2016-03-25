@@ -84,8 +84,13 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		$tpl -> compile_dir = $config['webroot'] . "/templates_c/".$company['template']."/";
 		$tpl -> assign("imgurl","templates/".$company['template']."/img/");
 		//-----------------------------------------------------
-		$tpl->assign("ulink",$shop->get_user_link());
-		$tpl->assign("score",$shop->score());
+		$score = $shop->score();		
+		foreach ($score as $key => $value) {
+			$score[$key] = $value?$value:0;
+		}
+
+		$tpl->assign("ulink",$shop->get_user_link());		
+		$tpl->assign("score",$score);
 		$tpl->assign("custom_cat",$shop->get_custom_cat_list(1));
 		$tpl->assign("shop_nav",$shop->get_shop_nav());
 		//-------------------------module分发--------------------
@@ -94,7 +99,9 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
             $_GET['m'] = preg_replace('#[^a-z]#iuU', '',$_GET['m']);
 			if(file_exists("$config[webroot]/module/".$_GET['m']."/lang/".$config['language'].".php"))
 				include("$config[webroot]/module/".$_GET['m']."/lang/".$config['language'].".php");//#调用模块语言包
-			include("module/".$_GET['m']."/space_".$_GET['action'].".php");
+
+		    	include("module/".$_GET['m']."/space_".$_GET['action'].".php");
+
 			$tpl -> template_dir = $config['webroot'] . "/templates/".$company['template']."/";
 		}
 		else

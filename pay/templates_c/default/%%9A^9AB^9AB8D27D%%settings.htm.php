@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-03 10:50:47
+<?php /* Smarty version 2.6.20, created on 2016-03-24 19:16:22
          compiled from settings.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <script src="script/my_lightbox.js" language="javascript"></script>

@@ -31,18 +31,21 @@ if(is_array($stop_reg))
 	unset($stop_reg);
 }
 //----------------------------------------------------
-if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth']))
+//if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth']))
+if(!empty($_POST['user']))
 {
+
 	if($config['closetype']==2)
 	{	//关闭注册
 		die('access dined!');
 	}
-	if($config['user_reg_verf'])
+	//暂不使用本地验证码
+	/*if($config['user_reg_verf'])
 	{	//验证码不对
 		if(trim($_POST['ckyzwt'])!=trim($_SESSION['YZWT']))
 			 die("Verification question error...");
-	}
-	
+	}*/
+
 	$ip = getip();
 	if($config['regctrl']>0)
 	{
@@ -54,6 +57,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 			die("Your IP has been registered...");
 		}
 	}
+
 	if($config['regfloodctrl'] > 0)
 	{
 		$sql = "select * from ".MEMBER." where ip='$ip' and to_days(regtime) = to_days(now()) ";
@@ -81,7 +85,8 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 	$pass = trim($_POST['password']);
 	$time = time();
 
-	if (isset($_POST['re_password']))
+	//暂时不用确认密码
+	/*if (isset($_POST['re_password']))
 	{
 		$re_pass = trim($_POST['re_password']);
 
@@ -89,7 +94,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 		{
 			die('<script>alert("两次输入密码不一致!");history.go(-1);</script>;');
 		}
-	}
+	}*/
 
 	if(valid_mobile($user))
 	{
@@ -100,7 +105,26 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 			$_POST["user"] = $user = $user.substr(md5($time),-5);
 		}
 	}
-	if(valid_email($user))
+
+	//定义所有正则
+	$str_check = [
+		'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
+		'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
+		'smsvode' => '/^[0-9]{6}$/',
+		'password' => '/^[A-Za-z0-9]{6,10}$/',
+	];
+	foreach($str_check as $key => $val){
+		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
+			die('请填写正确格式的数据');
+		}
+	}
+
+	//蚂蚁海淘注册协议
+	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
+		die('请阅读并勾选蚂蚁海淘注册协议');
+	}
+	//暂时不用邮箱
+	/*if(valid_email($user))
 	{
 		$_POST["email"] = $email = $user;
 		$user = explode("@",$email);
@@ -109,7 +133,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 		{
 			$_POST["user"] = $user = $user.substr(md5($time),-5);
 		}
-	}
+	}*/
 	if($config['openbbs']==2)
 	{	//关联UCHENTER
 		include_once('uc_client/client.php');
@@ -121,6 +145,7 @@ if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth
 	}
 	else
 		doreg();
+	var_dump($_POST);
 }
 else
 {
@@ -130,6 +155,7 @@ else
 	}
 }
 
+//用户名唯一
 function is_repeat($str)
 {
 	global $db;
@@ -138,24 +164,27 @@ function is_repeat($str)
 	$num = $db->num_rows();
 	return $num > 0 ? false : true;
 }
-function valid_mobile($str)//手机号码正则表达试
+
+//手机号码正则表达试
+function valid_mobile($str)
 {                 
- 	return ( ! preg_match("/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/",$str))?FALSE:TRUE; 
+ 	return ( ! preg_match("/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/",$str))?FALSE:TRUE;
 }
 
-function valid_email($str)
+//邮箱正则表达式	暂不使用
+/*function valid_email($str)
 {
 	return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
-}
+}*/
 
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
 	$user = addslashes($_POST['user']);
 	$pass = $_POST['password'];
-	$email = $_POST['email'];
+//	$email = $_POST['email'];
 	$mobile = $_POST['mobile'];
-	$email_verify = $email&&$config['user_reg']==2 ? "1":"0";
+//	$email_verify = $email&&$config['user_reg']==2 ? "1":"0";
 	$mobile_verify = $mobile&&$config['user_reg']==3 ? "1":"0";
 	
 	$ip = getip();

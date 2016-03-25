@@ -137,7 +137,8 @@
 .itemSearchResult .p-price{margin-left:20px;}
 .itemSearchResult .p-price strong{font-size:24px;color:#ff4545;font-weight: normal;}
 .itemSearchResult .p-shop{background:#F5F5F5;border-color:#DDDDDD;border-right:1px solid #DDDDDD;border-style:none solid solid;border-width:0 1px 1px;bottom:-20px;box-shadow:0 2px 4px #DDDDDD;display:none;height:25px;left:-1px;line-height:25px;position:absolute;text-align:center;width:100%;z-index:3;}
-.itemSearchResult .page{margin-top:10px;}
+.itemSearchResult .page{margin-top:0; margin-right:50px; }
+.itemSearchResult .flpage{width: 995px;padding: 16px 0;}
 .itemSearchResult li:hover .p-shop{display:block;}
 .itemsNull{background:url(../../../image/default/null.png) no-repeat 40px 20px #FFF3E8;border:1px solid #F4D9BF;color:#666666;height:85px;line-height:20px;margin:10px 0;padding:20px 40px 10px 150px;}
 .itemsNull h3{font-size:14px;margin:16px 0 10px;}
@@ -148,8 +149,8 @@
 .hotProduct .mt h3{text-align: center;color: #007ae7;font-size: 18px;}
 .hotProduct .mc{border:none;text-align:center;}
 .hotProduct .mc li{border-top: 1px dashed #ddd;margin-bottom:10px;}
-.hotProduct .mc li img{width:150px;}
-.hotProduct .mc li .p-price{text-align: left;margin-left: 20px;}
+.hotProduct .mc li img{width:150px;height: 160px}
+.hotProduct .mc li .p-price{text-align: left;margin-left: 20px;font-size: 18px;}
 .hotProduct .mc li .p-name{height:40px;line-height:20px;padding: 0 20px;text-align: left;}
 /*------------------------End------------------------*/
 /*------------------------分类页----------------------*/

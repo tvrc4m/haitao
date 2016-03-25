@@ -45,7 +45,7 @@
                 <{assign var=id value=$smarty.get.id}>
                 <{foreach item=list from=$cat}>
                 <div>
-                <a <{if $id==$list.catid}>class="curr"<{/if}> href="<{$config.weburl}>/?m=product&s=list&id=<{$list.catid}>"><{$list.cat}></a>
+                    <a <{if $id==$list.catid}>class="curr"<{/if}> href="<{$config.weburl}>/?m=product&s=list&id=<{$list.catid}>"><{$list.cat}></a>
                 </div>
                 <{/foreach}>
             </dd>
@@ -64,7 +64,7 @@
                 <{/foreach}>
             </dd>
         </dl>
-        <{/if}>            
+        <{/if}>
         <{foreach item=list key=num from=$catfile}>
         <{assign var=fieldName value=$list.field}>
         <{assign var=s value=$smarty.get.$fieldName}>
@@ -81,12 +81,9 @@
         <{/foreach}>
     </div>
     <{/if}>
-    
     <div class="itemSearchList clearfix">
     	<{if $info.list}>
         <div class="itemSearchResult clearfix">
-
-
         <div class="filter clearfix">
             <div class="fore1 clearfix">
                 <div class="order">
@@ -100,7 +97,6 @@
                     
                     
                 </div>
-
                 <div class="sendadd">发货地</div>
                 <div class="area"><span><{if $smarty.get.province|getdistrictname}><{$smarty.get.province|getdistrictname}><{else}><{/if}></span><b></b></div>
                 <div style="display:none;" class="i-area">
@@ -135,7 +131,6 @@
                <!--  <div class="total">共<strong><{$info.count}></strong>个商品</div> -->
             </div>
         </div>
-    
             <ul class="clearfix border_left">
                 <{foreach item=list key=num from=$info.list}>
                 <li <{if ($num+1)%4==0}>class="mr0"<{/if}> >
@@ -148,8 +143,10 @@
                     </div>
                 </li>
                 <{/foreach}>
-            </ul>
-			<div class="page"><{$info.page}></div>
+            </ul>   
+            <div class="flpage clearfix">
+                <div class="page"><{$info.page}></div>
+            </div>
         </div>
         <div class="hotProduct">
         	<div class="m">
