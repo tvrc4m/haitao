@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-24 14:56:50
+<?php /* Smarty version 2.6.20, created on 2016-03-25 10:46:41
          compiled from product_list_li_2.htm */ ?>
 <!--
  <?php $_from = $this->_tpl_vars['pro']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
@@ -37,4 +37,4 @@ _220X220.jpg' /></a>
          <p><var>￥180</var><s>￥235</s></p>
      </li>
  <?php endforeach; endif; unset($_from); ?>
-
+

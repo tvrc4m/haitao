@@ -49,6 +49,7 @@ var norandcode='<{$lang.nocode}>';
 
 <{if $smarty.get.erry}>
 	<script>
+<<<<<<< HEAD
     $('.form-error').offset();
     function closefunc()
     {
@@ -57,6 +58,16 @@ var norandcode='<{$lang.nocode}>';
     setTimeout(closefunc,2000); 
     </script>
     <div class="form-error">
+=======
+     $('.form-error').offset();
+     function closefunc()
+     {
+         $('.form-error').remove();
+     }
+     setTimeout(closefunc,2000);
+    </script>
+     <div class="form-error">
+>>>>>>> 6de1c9fd3d05ee3f74fd6ba6c30e03c8e7bb4294
         <{if $smarty.get.erry=="-1"}>
             <{$lang.noname}>
         <{elseif $smarty.get.erry=="-4"}>
