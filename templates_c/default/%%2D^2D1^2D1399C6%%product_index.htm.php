@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-03-28 13:54:47
+=======
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.20, created on 2016-03-28 13:10:33
+=======
+<?php /* Smarty version 2.6.20, created on 2016-03-28 13:20:21
+>>>>>>> 92d37d6e5a5c9fd5fddf7ce0ae6e72cc164b8907
+>>>>>>> 0113ab0d8dd20cf2b9cf61aa9927c164d64dba1e
          compiled from product_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 75, false),)), $this); ?>
