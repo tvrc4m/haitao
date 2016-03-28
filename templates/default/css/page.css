@@ -377,9 +377,9 @@ ul,ol{list-style:none}
 .m_nav .m_gz .sjmy{width: 100px;height: 100px;position: absolute;top: 25px;left: 0;padding:10px;background: #fff;z-index: 9999;}
 .m_nav .m_gz .sjmy span{top:-11px;left:50px;position: absolute;display: inline-block;width: 16px;height: 16px;background: url(../../../image/default/arr2.png);}
 
-.m_goods_list{width:202px;margin:30px auto;overflow:hidden;}
+.m_goods_list{width:202px;margin:10px auto;overflow:hidden;}
 .m_goods_list ul{margin-top:-1px}
-.m_goods_list li{padding:10px;border-top:1px solid #716f85;line-height:25px;font-size: 12px;}
+.m_goods_list li{padding:5px 10px;border-top:1px solid #716f85;line-height:25px;font-size: 12px;height: 77px;}
 .m_goods_list li label{font-size:16px}
 .m_goods_list li label i{width:20px;height:20px;margin-right:10px}
 .m_goods_list li label b{font-weight:normal}
@@ -409,7 +409,8 @@ ul,ol{list-style:none}
 .m_list{border-bottom:1px solid #e5e5e5}
 .m_list .clu{float:left;}
 .m_list .m_img_box{line-height:0;overflow:hidden}
-.m_list .list_box li{float:left;width:201px;padding:22px 0 20px;font-size:14px;text-align:center;border-right:1px solid #e5e5e5;border-top:1px solid #e5e5e5;background:#fff;overflow:hidden;}
+.m_list .list_box li{float:left;width:202px;font-size:14px;text-align:center;background:#fff;overflow:hidden;}
+.m_list .list_box li div{padding:22px 0 20px;border-right:1px solid #e5e5e5;border-top:1px solid #e5e5e5;}
 .m_list .list_box a{display:block;line-height:26px}
 .m_list .list_box .goods_img{width:160px;height:160px;line-height:0;margin:0 auto;overflow:hidden}
 .m_list .list_box p var{color:#ff4545;margin-right:5px}
@@ -426,8 +427,9 @@ ul,ol{list-style:none}
 .m_list_02 .list_box li:hover img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 
 /*silder*/
-/*.m_banner .w.pos_ab{top:0;left:50%;margin-left:-606px}
-.m_banner .extend{position:absolute;top:0;right:0;z-index:999}
+.pos_re .extend{position:absolute;top:0;right:0;z-index:999}
+.pos_re .w.pos_ab{top:0;left:50%;margin-left:-606px}
+/*.m_banner .extend{position:absolute;top:0;right:0;z-index:999}
 .m_banner .ban_slider{height:460px}
 .m_banner .ban_slider .slide_box a img{position: relative;}
 .ban_li .slide_box li{width:100%;height:460px}
@@ -530,6 +532,6 @@ a.goods_text {
 /* Control Nav */
 .flex-control-nav {width: 100%; position: absolute; bottom: 10px; text-align: center;z-index: 2}
 .flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
-.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); box-shadow: inset 0 0 3px rgba(0,0,0,0.3); }
-.flex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
-.flex-control-paging li a.flex-active { background: #000; background: rgba(0,0,0,0.9); cursor: default; }
+.flex-control-paging li a {width: 60px; height: 5px; display: block; background: url(../../../image/default/uncheck.jpg) no-repeat ; cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px;}
+.flex-control-paging li a:hover {background: url(../../../image/default/checked.jpg) no-repeat;}
+.flex-control-paging li a.flex-active {background: url(../../../image/default/checked.jpg) no-repeat ; cursor: default;}

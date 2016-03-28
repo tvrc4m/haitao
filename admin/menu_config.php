@@ -166,7 +166,7 @@ if (!$distribution_open_flag)
 {
 	//unset($mem['distribution']);
 }
-echo ADMINMENU;
+
 $sql="select name,url from ".ADMINMENU." where uid='$_SESSION[ADMIN_USER_ID]' order by displayorder,id ";
 $db->query($sql);
 $de=$db->getRows();
@@ -175,17 +175,19 @@ foreach($de as $key=>$val)
 	$mem['index'][1][0][1][$key+2]="$val[url],1,,$val[name]";	
 }
 $dir=$config['webroot'].'/module/';
-$handle = opendir($dir); 
+$handle = opendir($dir);
 while ($filename = readdir($handle))
 { 
 	if($filename!="."&&$filename!="..")
 	{
 	  if(file_exists($dir.$filename.'/config.php'))
 	  {
+
 		include("$dir/$filename/config.php");
 	  }
    }
 }
+
 foreach($mem as $key=>$v)
 {
 	if(isset($mem[$key][1]))

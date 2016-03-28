@@ -113,7 +113,6 @@ $tpl->assign("cominfo",$cominfo);
 $tpl->assign("cat_pro",$cat_pro);
 $tpl->assign("current","index");
 include_once("footer.php");
-
 //=============================================
 $out=tplfetch("product_index.htm",NULL);
 ?>

@@ -1,8 +1,8 @@
 @charset "utf-8";
 /*--base--*/
 html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend{margin:0;padding:0;}
-body{background:none repeat scroll 0 0 #FFFFFF;color:#333333;font:12px/150% Arial,Verdana,"宋体";}
-h1{font:20px "microsoft yahei","宋体";}
+body{background:none repeat scroll 0 0 #FFFFFF;color:#333333;font:12px/150% Arial,Verdana,"microsoft yahei";}
+h1{font:20px "microsoft yahei","";}
 h2, h3{font-size:14px;}
 h4, h5, h6{font-size:12px;}
 a:link, a:visited{color:#333333;text-decoration:none;}
@@ -78,7 +78,7 @@ input:-webkit-autofill,
 #shortcut .fr li{float:left;}
 #shortcut .fr li a span{padding:0 2px;}
 /*--菜单--*/
-.header{height:60px;padding:15px 0;}
+/*.header{height:60px;padding:15px 0;}*/
 .logo{float:left;width:250px;margin-top:5px;}
 .domain{float:left;height:30px;padding:15px 10px;}
 .domain .p{ font-size:16px; font-weight:bold; font-family:"microsoft yahei";}
@@ -208,14 +208,16 @@ input:-webkit-autofill,
 .login .item-ifo .i-name{background:url(../../image/default/icon1.jpg) no-repeat #FFFFFF;height:16px;top:8px;width:16px;}
 .login .item-ifo .i-pass{background:url(../../image/default/icon2.jpg) no-repeat #FFFFFF;height:19px;top:8px;width:14px;}
 .login .item-ifo img{height:34px;float:left;margin-left:5px;}
-
-.login{background:#F5F5f5 !important;font-family: microsoft yahei;}
-.login .header{height: 60px;width: 1212px;margin: 0 auto;}
+/*--登录--*/
+.login{background:#F5F5f5;}
+.login .header{height: 60px;width: 1212px;padding:15px 0;margin: 0 auto;}
 .login .header .logo{margin-top: 0;}
-.login .header .logo2{background:url(../../image/default/logo2.png) no-repeat;display: inline-block;float: right;width: 435px;height: 34px;margin-top: 12px;}
+.login .header .logo2{background:url(../../image/default/logo2.png) no-repeat;float: right;width: 435px;height: 34px;margin-top: 12px;}
 .login .header .welcome{font-size: 24px;color: #666;display: inline-block;line-height: 59px;}
+
 .login .wl{width: 100%;height: 475px;position: relative;overflow: hidden;}
-.login .mc{position:absolute;width: 1212px;top: 0;}
+.login .wl img{position: absolute;top: 0;left:50%;margin-left: -960px;}
+.login .mc{position:absolute;width: 1212px;top: 0;left:50%;margin-left: -606px;}
 .login .protocol{height: 30px;}
 .login .protocol a{color: #959595;}
 .login .idcode{height: 40px;margin-bottom:20px;}
@@ -228,28 +230,20 @@ input:-webkit-autofill,
 .login .lostpass .title a{color: #ff5f5c}
 .login .lostpass .form {margin: 0 auto;padding: 10px 30px;float: none;}
 .login .lostpass p{text-align: center;margin-bottom: 50px;color: #7f7f7f}
-.login .lostpass1 form div{position: relative;}
+/*.login .lostpass1 form div{position: relative;}
 .login .lostpass1 form div span{position: absolute; top: 12px;right: -20px;width: 15px;height: 15px;}
 .login .lostpass1 form div .correct{background: url(../../image/default/true.png);}
-.login .lostpass1 form div .fault{background: url(../../image/default/false.png);}
+.login .lostpass1 form div .fault{background: url(../../image/default/false.png);}*/
 .login .form.register{margin-top:30px; }
 .login .register form div{position: relative;}
 .login .register form div span{position: absolute; top: 12px;right: -20px;width: 15px;height: 15px;}
 .login .register form div .correct{background: url(../../image/default/true.png);}
 .login .register form div .fault{background: url(../../image/default/false.png);}
-/*.login .regist-now{font-size: 14px;color: #AAA;line-height: 20px;float: right;height: 40px;margin-top: 30px;}
-
-.login .regist-now a {font-weight: 600;margin-left: 4px;color: #06C;}
-.login .regist-now span {vertical-align: top;display: inline-block;}
-.login .regist-now .avatar {width: 40px;height: 40px;margin-right: 6px;border-radius: 100%;}
-.login .regist-now .avatar img {width: 40px;height: 40px;border-radius: 100%;}*/
-
 .login .logo b{background:url(../../image/default/login_word.png) no-repeat;height:46px;left:280px;position:absolute;top:10px;width:111px;}
 
 .login .adv{width: 450px;height: 350px;float: left;margin: 30px 0;position: relative;z-index: 1;}
 .login .adv img {height: 350px;width: 450px;}
-.login .form{background-color: #FFF;width: 290px;margin-top:40px;padding: 25px 30px;float: right;}
-/*.login .tabs-nav .tabulous_active{font-size: 18px;color: #F32613;line-height: 24px;padding-bottom: 13px;position: relative;z-index: 1;  border-bottom: 3px solid #F32613;  width: 45%;text-align: center;margin-left:5%}*/
+.login .form{background-color: #FFF;width: 290px;margin-top:80px;padding: 25px 30px;float: right;}
 .login .tabs-nav .text-left {font-size: 18px;float: left;}
 .login .tabs-nav .fr a{color: #ff5757;font-size: 12px}
 .login .tabs-nav i{font-size: 0;line-height: 0;border-color: #F32613 transparent transparent transparent;border-style: solid dashed dashed dashed;border-width: 7px;width: 0;height: 0;margin-left: -4px;position: absolute;z-index: 1;left: 50%;bottom: -17px;}
