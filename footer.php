@@ -92,6 +92,7 @@ if($config['rewrite']>0&&$config['temp']=='default')     //防止手机版无法
 {
 	if($config['rewrite']==1)
 	{
+		$searcharray = array();
 		$searcharray[] = "/\/\?m=(\w+)&s=(\w+)&id=(\w+)/";
 		$searcharray[] = "/\/\?m=(\w+)&s=(\w+)/";
 		$searcharray[] = "/\/\?m=(\w+)/";
