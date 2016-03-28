@@ -377,9 +377,9 @@ ul,ol{list-style:none}
 .m_nav .m_gz .sjmy{width: 100px;height: 100px;position: absolute;top: 25px;left: 0;padding:10px;background: #fff;z-index: 9999;}
 .m_nav .m_gz .sjmy span{top:-11px;left:50px;position: absolute;display: inline-block;width: 16px;height: 16px;background: url(../../../image/default/arr2.png);}
 
-.m_goods_list{width:202px;margin:35px auto;overflow:hidden;}
+.m_goods_list{width:202px;margin:10px auto;overflow:hidden;}
 .m_goods_list ul{margin-top:-1px}
-.m_goods_list li{padding:10px;border-top:1px solid #716f85;line-height:25px;font-size: 12px;}
+.m_goods_list li{padding:5px 10px;border-top:1px solid #716f85;line-height:25px;font-size: 12px;height: 77px;}
 .m_goods_list li label{font-size:16px}
 .m_goods_list li label i{width:20px;height:20px;margin-right:10px}
 .m_goods_list li label b{font-weight:normal}
@@ -427,8 +427,9 @@ ul,ol{list-style:none}
 .m_list_02 .list_box li:hover img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 
 /*silder*/
-/*.m_banner .w.pos_ab{top:0;left:50%;margin-left:-606px}
-.m_banner .extend{position:absolute;top:0;right:0;z-index:999}
+.pos_re .extend{position:absolute;top:0;right:0;z-index:999}
+.pos_re .w.pos_ab{top:0;left:50%;margin-left:-606px}
+/*.m_banner .extend{position:absolute;top:0;right:0;z-index:999}
 .m_banner .ban_slider{height:460px}
 .m_banner .ban_slider .slide_box a img{position: relative;}
 .ban_li .slide_box li{width:100%;height:460px}
