@@ -187,7 +187,6 @@ if(!empty($_POST['user']))
 	}
 	else
 		doreg();
-	var_dump($_POST);
 }
 else
 {
@@ -295,7 +294,7 @@ function doreg($guid=NULL)
 //短信发送
 function Send_msg($mob = null, $con = null)
 {
-		include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
+		include_once("{$config[webroot]}/module/sms/includes/plugin_sms_class.php");
 		$sms = new sms();
 		$str = $sms->send($mob, $con);
 		$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);

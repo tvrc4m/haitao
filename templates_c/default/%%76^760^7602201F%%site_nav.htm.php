@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-03-28 13:10:33
+=======
+<?php /* Smarty version 2.6.20, created on 2016-03-28 10:06:53
+>>>>>>> 92d37d6e5a5c9fd5fddf7ce0ae6e72cc164b8907
          compiled from site_nav.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,7 +19,7 @@
 " />
 <meta name="copyright" content="MallBuilder" />
 <script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /script/base.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />

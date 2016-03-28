@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-03-28 13:10:33
+=======
+<?php /* Smarty version 2.6.20, created on 2016-03-28 10:06:53
+>>>>>>> 92d37d6e5a5c9fd5fddf7ce0ae6e72cc164b8907
          compiled from product_list_li_2.htm */ ?>
 <!--
  <?php $_from = $this->_tpl_vars['pro']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
