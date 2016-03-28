@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-28 18:13:57
+<?php /* Smarty version 2.6.20, created on 2016-03-28 18:45:46
          compiled from product_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 87, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 92, false),)), $this); ?>
 <!--田晓宝添加-->
 <!--banner start-->
 <div class="pos_re newclear">
@@ -9,6 +9,11 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'prod
 /api/ad.php?id=1&catid=<?php echo $_GET['id']; ?>
 &name=<?php echo $_GET['key']; ?>
 '></script>
+    <div class="w pos_ab">
+        <div class="extend">
+            <a href=""><img src="uploadfile/adv/2016/m_extend.jpg" alt="" title=""></a>
+        </div>
+    </div>
 </div>
 <!--banner end-->
 <!--海淘国家 start-->
