@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-03-28 13:54:47
-=======
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-03-28 13:10:33
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-28 13:20:21
->>>>>>> 92d37d6e5a5c9fd5fddf7ce0ae6e72cc164b8907
->>>>>>> 0113ab0d8dd20cf2b9cf61aa9927c164d64dba1e
+<?php /* Smarty version 2.6.20, created on 2016-03-28 14:27:37
          compiled from product_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 75, false),)), $this); ?>
@@ -22,14 +14,14 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'prod
 <!--海淘国家 start-->
 <div class="m_country_list">
 <div class="w">
-    <ul class="country_nav newclear" id="country_tab_nav">                                                                         
+    <!-- <ul class="country_nav newclear" id="country_tab_nav">                                                                         
         <li class="item focu"><i class="icon_Japan"></i><span class="mid">日本馆</span></li>
         <li class="item"><i class="icon_Korea_South"></i><span class="mid">韩国馆</span></li>
         <li class="item"><i class="icon_Australia"></i><span class="mid">澳洲馆</span></li>
         <li class="item"><i class="icon_America"></i><span class="mid">美国馆</span></li>
         <li class="item"><i class="icon_Europe"></i><span class="mid">欧洲馆</span></li>
         <li class="item spe"><i class="icon_Hongkong_and_Taiwan"></i><span class="mid">港台馆</span></li>
-    </ul>
+    </ul> -->
     <div class="country_goods_list">
         <ul class="m_tab_con pos_re" id="country_tab_con">
             <li class="item cur">
@@ -113,4 +105,6 @@ var imgdefereds=[];
     $.when.apply(null,imgdefereds).done(function(){
         $(".slides img").css("margin-left",Math.floor(($(window).width()-1920)/2));
     });
+    $(".m_menu").unbind("mouseenter mouseleave");
+    $(".m_menu dd").removeClass("hidden");
 </script>
