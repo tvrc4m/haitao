@@ -3,7 +3,7 @@
 <header>
 	<div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
-    	<section class="nav-c"><span>确认订单</span></section>
+    	<section class="nav-c"><span>提交订单</span></section>
    		<section class="nav-e"></section>
     </div>
 </header>
@@ -29,17 +29,21 @@
 <input type="hidden" name="act" value="order" />
 <input type="hidden" name="hidden_consignee_id" id="hidden_consignee_id" value="<{$consignee.id}>" />
 <div class="order">
-	<h2>收货地址</h2>
- 	<div class="address">
-        <a href="main.php?m=member&s=admin_orderadder&t=pro">
-            <p><{$consignee.name}></p>
+	<!-- <h2>收货地址</h2> -->
+ 	<div class="address clearfix">
+        <div class="address_user_img">
+            <img src="../../../image/wap/wap_haitao_dizhi.png" alt="地址">
+        </div>        
+        <a href="main.php?m=member&s=admin_orderadder&t=pro" class="address_content">
+            <p><span><{$consignee.name}></span><span class="address_mobile"><{$consignee.mobile}></span></p>
             <p><{$consignee.area}></p>
             <p><{$consignee.address}></p>
-            <p><{$consignee.mobile}></p>
+            
      	 </a>
     </div>
-  	<h2>商品清单</h2>
- 	<div>
+    <img src="../../../image/wap/mayi_wap_line1.png" class="address_line">
+  <!-- 	<h2>商品清单</h2> -->
+ 	<div class="inventory">
 	<{foreach item=list from=$cart}> 
 	<div class="item">
         <div class="top">
@@ -50,12 +54,12 @@
         <{foreach item=pro from=$list.prolist}>
             <dl class="clearfix">
                 <dt>
-                    <a href="?m=product&s=detail&id=<{$pro.pid}>"><img height="80" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg"></a>
+                    <a href="?m=product&s=detail&id=<{$pro.pid}>"><img height="90" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg"></a>
                 </dt>
                 <dd>
                     <p class="p-name"><a href="?m=product&s=detail&id=<{$pro.pid}>"><{$pro.pname}></a></p>
-                    <{if $pro.setmealname}><p>规格：<{$pro.setmealname}></p><{/if}>
-                    <p class="p-price"><strong><{$config.money}><{$pro.price|number_format:2}></strong> X <{$pro.num}></p>
+                    <{if $pro.setmealname}><p class="p-name-gunge">规格：<{$pro.setmealname}></p><{/if}>
+                    <p class="p-price clearfix"><strong><{$config.money}><{$pro.price|number_format:2}></strong><span class="p-price-num">X <var class="p-price-num-z"><{$pro.num}></var></span></p>
                 </dd>
             </dl>
         <{/foreach}>
@@ -63,7 +67,7 @@
 			<{foreach item=giftlist from=$list.giftlist}>
 				<dl class="clearfix">
 					<dt>
-						<a href="?m=product&s=detail&id=<{$giftlist.pid}>"><img height="80" alt="<{$giftlist.name}>" src="<{$giftlist.pic}>_220X220.jpg"></a>
+						<a href="?m=product&s=detail&id=<{$giftlist.pid}>"><img height="90" alt="<{$giftlist.name}>" src="<{$giftlist.pic}>_220X220.jpg"></a>
 					</dt>
 					<dd>
 						<p class="p-name"><a href="?m=product&s=detail&id=<{$giftlist.pid}>"><{$giftlist.pname}></a></p>
@@ -76,9 +80,8 @@
 		<{/if}>
         </div>
         <div class="bottom clearfix">
-             <p style="text-align:left">补充说明: <input placeholder="选填，可告诉卖家您的特殊要求" name="msg_<{$list.seller_id}>"></p>
-            <div class="p-detail">
-            	配送方式：
+            <div class="p-detail clearfix">
+            	<span class="p-detail-test">配送方式</span>
                 <{if $list.mail>0 or $list.express>0 or $list.ems>0}>
                 <{assign var="m_price" value="0.00"}>
                 <select id='cem_<{$list.seller_id}>' onchange="count_price('<{$list.seller_id}>');">
@@ -96,7 +99,7 @@
                 <{/if}>
                 </select>
                 <{else}>
-                卖家承担
+                <span class="p-detail-user">卖家承担</span>
                 <{/if}>
                 <{if $list.mail>0 or $list.express>0 or $list.ems>0}>
                     <span class="hidden" id="show_cem_<{$list.seller_id}>">
@@ -108,6 +111,7 @@
                 <input name="logistics_price_<{$list.seller_id}>" id="logistics_price_<{$list.seller_id}>" type="hidden" value="<{$m_price}>" />
             </div>
             <p class="v_order">
+                <span class="v_order_juan">优惠券/代金券</span>
                 <select name="voucher_<{$list.seller_id}>" uid="<{$list.seller_id}>" class="d_select">
                 <option value="" item=0>不使用代金券</option>
                 <{foreach from=$list.voucher item=vo}>
@@ -115,6 +119,7 @@
                 <{/foreach}>
                 </select>
             </p>
+            <p style="text-align:left" class="replenish"><span class="replenish_buchong">补充说明：</span><input placeholder="选填，可告诉卖家您的特殊要求" name="msg_<{$list.seller_id}>" class="replenish-btn"></p>
 			<{if $list.reduce_price}>
 			<div>
 				<span class="p-name">
@@ -131,7 +136,8 @@
 			<{/if}>
 			
         	<div class="fr">
-            小计(含运费):&nbsp;&nbsp;
+           <!--  <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span> -->
+            合计(含运费):&nbsp;&nbsp;
             <span class="p-name">
                 <strong class="price">
                 	<{$config.money}>
@@ -145,15 +151,24 @@
     	   
     </div>	
     <{/foreach}>
-	</div>
-    <span class="p-price">应付总额：
-        <strong><{$config.money}><span id="s_sumprice"></span></strong>
-	</span>
-    <div class="choose_btn">
-        <a class="cart-button" id="submitToPay" href="javascript:void(0)">提交订单</a>
-    </div>       
+	</div>     
 </div>
+<div class="choose_btn clearfix">
+    <div class="choose_btn_inner clearfix">
+        <span class="p-price"><span class="p-price-he">合计：</span>
+            <strong><{$config.money}><span id="s_sumprice"></span></strong>
+        </span>
+        <a class="cart-button" id="submitToPay" href="javascript:void(0)">提交订单</a>
+    </div>  
+</div>  
 <script>
+// $(".inventory .item").each(function(index){
+//     var itemDl=$(".item").eq(index).find("dl");
+//     itemDl.each(function(num){
+//         var a=itemDl.eq(num).find(".p-price-num-z").html();
+//         console.log(a);
+//     })
+// })
 function count_price(id,flag)
 {	
     if(!flag)
