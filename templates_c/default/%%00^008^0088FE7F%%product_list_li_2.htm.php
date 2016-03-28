@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-03-28 16:59:14
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-28 14:18:31
->>>>>>> c9289b8066ae0b822208550005f87647a6a1c338
+<?php /* Smarty version 2.6.20, created on 2016-03-28 18:13:58
          compiled from product_list_li_2.htm */ ?>
 <!--
  <?php $_from = $this->_tpl_vars['pro']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
@@ -30,6 +26,7 @@ _220X220.jpg' />
     foreach ($_from as $this->_tpl_vars['num'] => $this->_tpl_vars['list']):
 ?>
     <li class="<?php if ($this->_tpl_vars['num'] == 2 || $this->_tpl_vars['num'] == 5): ?>ml404<?php endif; ?>" >
+    	<div>
          <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=product&s=detail&id=<?php echo $this->_tpl_vars['list']['id']; ?>
 " class="goods_img"><img src='<?php echo $this->_tpl_vars['list']['pic']; ?>
@@ -43,6 +40,7 @@ _220X220.jpg' /></a>
 </var><s><?php echo $this->_tpl_vars['config']['money']; ?>
 <?php echo $this->_tpl_vars['list']['market_price']; ?>
 </s></p>
+         </div>
      </li>
  <?php endforeach; endif; unset($_from); ?>
 

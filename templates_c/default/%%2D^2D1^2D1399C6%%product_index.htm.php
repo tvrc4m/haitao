@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-03-28 16:59:14
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-28 14:27:37
->>>>>>> c9289b8066ae0b822208550005f87647a6a1c338
+<?php /* Smarty version 2.6.20, created on 2016-03-28 18:13:57
          compiled from product_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 75, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 87, false),)), $this); ?>
 <!--田晓宝添加-->
 <!--banner start-->
 <div class="pos_re newclear">
@@ -34,34 +30,46 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'prod
                     <div class="clu pos_re list_box">
                         <ul class="newclear">
                             <li class="spe">
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li class="ml404">
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                         </ul>
                         <div class="m_img_box pos_ab"><a href="" title=""><img src="../../../uploadfile/adv/2016/ad_02.jpg" alt=""></a></div>
@@ -91,6 +99,7 @@ echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'ty
 <script type="text/javascript" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /script/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
+function adjust(obj){
 /*图片加载完成功能设置margin值使其居中*/
 var imgdefereds=[];
     $('.slides img').each(function(){
@@ -108,7 +117,12 @@ var imgdefereds=[];
     });
     $.when.apply(null,imgdefereds).done(function(){
         $(".slides img").css("margin-left",Math.floor(($(window).width()-1920)/2));
-    });
-    $(".m_menu").unbind("mouseenter mouseleave");
-    $(".m_menu dd").removeClass("hidden");
+    }); 
+}  
+window.onload=function(){  
+  window.onresize = adjust;  
+  adjust();  
+}  
+$(".m_menu").unbind("mouseenter mouseleave");
+$(".m_menu dd").removeClass("hidden");
 </script>

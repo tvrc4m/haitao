@@ -409,7 +409,8 @@ ul,ol{list-style:none}
 .m_list{border-bottom:1px solid #e5e5e5}
 .m_list .clu{float:left;}
 .m_list .m_img_box{line-height:0;overflow:hidden}
-.m_list .list_box li{float:left;width:201px;padding:22px 0 20px;font-size:14px;text-align:center;border-right:1px solid #e5e5e5;border-top:1px solid #e5e5e5;background:#fff;overflow:hidden;}
+.m_list .list_box li{float:left;width:202px;font-size:14px;text-align:center;background:#fff;overflow:hidden;}
+.m_list .list_box li div{padding:22px 0 20px;border-right:1px solid #e5e5e5;border-top:1px solid #e5e5e5;}
 .m_list .list_box a{display:block;line-height:26px}
 .m_list .list_box .goods_img{width:160px;height:160px;line-height:0;margin:0 auto;overflow:hidden}
 .m_list .list_box p var{color:#ff4545;margin-right:5px}
