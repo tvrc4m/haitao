@@ -95,7 +95,7 @@ function distribute_goods(id){
                 <div id="pname"><{$de.name}></div>
                 <div id="price">
                     <span class="price_moneys"><{$config.money}>  <{$de.price|number_format:2}></span>
-                    <span class="price_dels"><{$config.money}>  <{$de.price|number_format:2}></span>
+                    <span class="price_dels"><{$config.money}>  <{$list.market_price|number_format:2}></span>
                    <!--  <span class="price_zhes"><i></i>9.5折</span> -->
                 </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>

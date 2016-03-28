@@ -44,12 +44,12 @@ i.fanhui_icon{display: inline-block;height: 50px;width: 50px;background: url(../
 .nav-s a nav{color:#666666;display:inline-block;height:34px;line-height:34px;padding-left:15px;text-align:center;text-decoration:none;width:62px;}
 .nav-s font{color:#FD0D0D;font-size: 25px;padding-left: 15px;}
 .nav-c span{display:block;height:50px;line-height:50px;padding:0 10px;font-size:18px;/*font-weight:bold;*/color:#fff;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
-.nav-e a{color:#666666;display:inline-block;width:50px;height: 50px;
+.nav-e a{color:#666666;display:inline-block;width:75px;height: 50px;
     text-align: right;
     color: #fff;
     letter-spacing: 1px;
     font-size: 14px;}
-.nav-e a nav{color:#fff;display:inline-block;height:50px;line-height:50px;text-align:right;text-decoration:none;width:50px;}
+.nav-e a nav{color:#fff;display:inline-block;height:50px;line-height:50px;text-align:right;text-decoration:none;width:75px;}
 .nav-e a.list nav{color:#666;}
 .select em{background:url(../../../image/wap/down.png);background-position:center center;background-repeat:no-repeat;background-size:contain;display:inline-block;height:13px;width:13px;}
 .select em.up{background-image:url(../../../image/wap/up.png);}
