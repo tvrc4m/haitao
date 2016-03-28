@@ -135,7 +135,7 @@ function jside($re,$ar,$type)
 	/*田晓宝更改开始，首页的滚动banner返回数据格式调整*/
 	// 	$js="$(window).load(function(){\$(\"#slider_".$ar['id']."\").flexslider({controlNav:false,slideshowSpeed:9000})});";
 	// $str="document.write('<div class=\"slide\" id=\"slider_".$ar['id']."\"><ul class=\"slides\">".implode("",$ssp)."</ul></div>');".$js;
-	$js="$(window).load(function(){\$(\".flexslider\").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true})});";
+	$js="$(window).load(function(){\$(\".flexslider\").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true})});";
 	$str="document.write('<div class=\"flexslider\" id=\"slider_".$ar['id']."\"><ul class=\"slides clearfix\">".implode("",$ssp)."</ul></div>');".$js;
 	/*田晓宝更改结束*/
 	return $str;
