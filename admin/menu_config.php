@@ -166,7 +166,7 @@ if (!$distribution_open_flag)
 {
 	//unset($mem['distribution']);
 }
-
+echo ADMINMENU;
 $sql="select name,url from ".ADMINMENU." where uid='$_SESSION[ADMIN_USER_ID]' order by displayorder,id ";
 $db->query($sql);
 $de=$db->getRows();
