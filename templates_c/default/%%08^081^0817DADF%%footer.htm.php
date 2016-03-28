@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-28 14:18:31
+<?php /* Smarty version 2.6.20, created on 2016-03-28 15:59:08
          compiled from footer.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'footer.htm', 11, false),)), $this); ?>

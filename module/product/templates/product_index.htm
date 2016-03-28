@@ -23,34 +23,46 @@
                     <div class="clu pos_re list_box">
                         <ul class="newclear">
                             <li class="spe">
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li class="ml404">
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                             <li>
-                                <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                <p><var>￥180</var><s>￥235</s></p>
+                                <div>
+                                    <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
+                                    <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                                    <p><var>￥180</var><s>￥235</s></p>
+                                </div>
                             </li>
                         </ul>
                         <div class="m_img_box pos_ab"><a href="" title=""><img src="../../../uploadfile/adv/2016/ad_02.jpg" alt=""></a></div>
@@ -77,6 +89,7 @@
 <!--商品分类 end-->
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
+function adjust(obj){
 /*图片加载完成功能设置margin值使其居中*/
 var imgdefereds=[];
     $('.slides img').each(function(){
@@ -94,7 +107,12 @@ var imgdefereds=[];
     });
     $.when.apply(null,imgdefereds).done(function(){
         $(".slides img").css("margin-left",Math.floor(($(window).width()-1920)/2));
-    });
-    $(".m_menu").unbind("mouseenter mouseleave");
-    $(".m_menu dd").removeClass("hidden");
+    }); 
+}  
+window.onload=function(){  
+  window.onresize = adjust;  
+  adjust();  
+}  
+$(".m_menu").unbind("mouseenter mouseleave");
+$(".m_menu dd").removeClass("hidden");
 </script>
