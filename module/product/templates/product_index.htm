@@ -7,7 +7,7 @@
 <!--海淘国家 start-->
 <div class="m_country_list">
 <div class="w">
-    <ul class="country_nav newclear" id="country_tab_nav">                                                                                  
+    <ul class="country_nav newclear" id="country_tab_nav">                                                                         
         <li class="item focu"><i class="icon_Japan"></i><span class="mid">日本馆</span></li>
         <li class="item"><i class="icon_Korea_South"></i><span class="mid">韩国馆</span></li>
         <li class="item"><i class="icon_Australia"></i><span class="mid">澳洲馆</span></li>
@@ -93,6 +93,6 @@ var imgdefereds=[];
         imgdefereds.push(dfd);
     });
     $.when.apply(null,imgdefereds).done(function(){
-        $(".slides img").css("margin-left","-276px");
+        $(".slides img").css("margin-left",Math.floor(($(window).width()-1920)/2));
     });
 </script>
