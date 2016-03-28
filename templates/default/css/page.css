@@ -429,6 +429,7 @@ ul,ol{list-style:none}
 .m_banner .w.pos_ab{top:0;left:50%;margin-left:-606px}
 .m_banner .extend{position:absolute;top:0;right:0;z-index:999}
 .m_banner .ban_slider{height:460px}
+.m_banner .ban_slider .slide_box a img{position: relative;}
 .ban_li .slide_box li{width:100%;height:460px}
 .ban_li .slide_box li a{display:block;width:100%;height:100%}
 
@@ -504,3 +505,23 @@ a.goods_text {
     width: 180px;
     margin: 0 auto;
 }
+/*分享图标*/
+.bshare-custom.icon-medium{text-align: center;}
+.bshare-custom.icon-medium a{padding-left:27px;height: 24px;}
+.bshare-custom.icon-medium .bshare-weixin{background: url(../../../image/default/weixin.jpg) no-repeat;display: inline-block;}
+.bshare-custom.icon-medium .bshare-qzone{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -338px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-sinaminiblog{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -390px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-renren{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -364px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-qqmb{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -286px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-neteasemb{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -234px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-ifengmb{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -130px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-sohuminiblog{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -442px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-douban{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -52px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-kaixin001{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -182px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-tianya{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -468px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-baiduhi{background: url(../../../image/default/baiduhi.jpg) no-repeat;display: inline-block;}
+.bshare-custom.icon-medium .bshare-qqxiaoyou{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -312px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-taojianghu{background: url(../../../image/default/taojianghu.jpg) no-repeat;display: inline-block;}
+.bshare-custom.icon-medium .bshare-feixin{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -104px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-facebook{background: url(../../../image/default/top_logos_sprite.jpg) no-repeat 0 -78px;display: inline-block;}
+.bshare-custom.icon-medium .bshare-email{background: url(../../../image/default/email.jpg) no-repeat ;display: inline-block;}
