@@ -59,3 +59,9 @@ $(document).ready(function(){
     $.focusblur("#mobile"); 
     $.focusblur("#password");
 }); 
+// $(".inp_close").live("tap",function(){
+//     var userName=$("#user");
+//     if(userName.val() != ""){
+//         userName.val("");
+//     }
+// })

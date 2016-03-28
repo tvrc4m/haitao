@@ -19,14 +19,14 @@ var norandcode='<{$lang.nocode}>';
 <form id="login" name="login" action="login.php" method="post">
     <ul>
         <li class="user_names">
-            <input name="user" type="text" id="user" placeholder="请输入手机号/昵称"/>
+            <input name="user" type="text" id="user" placeholder="请输入手机号/用户名" value=""/>
             <div class="inp_close"><i></i></div>
         </li>
         <li>
-            <input type="password" name="password" id="password" placeholder="请输入密码（6-16位）"/>
+            <input type="password" name="password" id="password" placeholder="请输入密码"/>
         </li>
         <li class="spe_del">
-            <a href="<{$config.weburl}>/register.php">忘记密码?</a>
+            <a href="<{$config.weburl}>/lostpass.php">忘记密码?</a>
         </li>
         <li>
             <input name="action" type="hidden" value="submit" />
@@ -49,14 +49,14 @@ var norandcode='<{$lang.nocode}>';
 
 <{if $smarty.get.erry}>
 	<script>
-    // $('.form-error').offset();
-    // function closefunc()
-    // {
-    //     $('.form-error').remove();
-    // }
-    // setTimeout(closefunc,2000); 
+    $('.form-error').offset();
+    function closefunc()
+    {
+        $('.form-error').remove();
+    }
+    setTimeout(closefunc,2000); 
     </script>
-    <!-- <div class="form-error">
+    <div class="form-error">
         <{if $smarty.get.erry=="-1"}>
             <{$lang.noname}>
         <{elseif $smarty.get.erry=="-4"}>
@@ -66,7 +66,7 @@ var norandcode='<{$lang.nocode}>';
         <{elseif $smarty.get.erry=="-3"}>
             <{$lang.codeerr}>
         <{/if}>
-    </div> -->
+    </div>
 <{/if}>
 </form>
 </section>

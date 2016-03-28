@@ -78,7 +78,7 @@ if(!empty($_POST["action"])&&$_POST["action"]=="com"&&!empty($_POST['user']))
 	];
 	foreach($str_check as $key => $val){
 		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
-			die('请填写正确格式的数据');
+			die('<script>alert("请填写正确格式的数据!");history.go(-1);</script>;');
 		}
 	}
 
@@ -143,7 +143,7 @@ if(!empty($_POST["action"])&&$_POST["action"]=="com"&&!empty($_POST['user']))
 //短信发送
 function Send_msg($mob = null, $con = null)
 {
-	include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
+	include_once("{$config[webroot]}/module/sms/includes/plugin_sms_class.php");
 	$sms = new sms();
 	$str = $sms->send($mob, $con);
 	$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);

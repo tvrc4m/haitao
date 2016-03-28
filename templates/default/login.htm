@@ -17,15 +17,12 @@ var norandcode='<{$lang.nocode}>';
 </script>
 </head>
 <body class="login">
-
-<div id="header">
-    <div class="header">
-        <div class="logo">
-            <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
-        </div>
-        <div class="welcome">欢迎登录</div>
-        <div class="logo2"></div>
+<div class="header">
+    <div class="logo">
+        <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
     </div>
+    <div class="welcome">欢迎登录</div>
+    <div class="logo2"></div>
 </div>
 
 <div class="wl">
@@ -40,7 +37,11 @@ var norandcode='<{$lang.nocode}>';
                 <dl>
                     <dt><img src="image/default/icon2.png"></dt>
                     <dd>
-                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名/邮箱/手机号" id="user">
+                        <{if $smarty.get.user!=null}>
+                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" value="<{$smarty.get.user}>" placeholder="用户名/手机号" id="user">
+                        <{else}>
+                        <input type="text" class="text" autocomplete="off" name="user" tabindex="1" placeholder="用户名/手机号" id="user">
+                        <{/if}>
                     </dd>
                 </dl>
                 <!--<{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>

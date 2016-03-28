@@ -99,7 +99,9 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
             $_GET['m'] = preg_replace('#[^a-z]#iuU', '',$_GET['m']);
 			if(file_exists("$config[webroot]/module/".$_GET['m']."/lang/".$config['language'].".php"))
 				include("$config[webroot]/module/".$_GET['m']."/lang/".$config['language'].".php");//#调用模块语言包
-			include("module/".$_GET['m']."/space_".$_GET['action'].".php");
+
+		    	include("module/".$_GET['m']."/space_".$_GET['action'].".php");
+
 			$tpl -> template_dir = $config['webroot'] . "/templates/".$company['template']."/";
 		}
 		else

@@ -33,7 +33,7 @@
     <div class="fr"><a href="javascript:scroll(0,0)">返回顶部<b></b></a></div>
     </section>
     <nav>
-        <a href="<{$config.weburl}>/?temp=default" class="footer_diannao">电脑版</a><{if $smarty.session.USER_TYPE==2}><a href="<{$config.weburl}>/main.php?cg_u_type=1" >买家中心</a><{else}><a href="<{$config.weburl}>/main.php?cg_u_type=2&st=1" class="footer_maijia">卖家中心</a><{/if}>　<a href="<{$config.weburl}>/help.php" class="footer_bangzhu">帮助</a>
+        <a href="<{$config.weburl}>/?temp=default" class="footer_diannao">电脑版</a><{if $smarty.session.USER_TYPE==2}><a href="<{$config.weburl}>/main.php?cg_u_type=1" class="footer_maijia">买家中心</a><{else}><a href="<{$config.weburl}>/main.php?cg_u_type=2&st=1" class="footer_maijia">卖家中心</a><{/if}>　<a href="<{$config.weburl}>/help.php" class="footer_bangzhu">帮助</a>
     </nav>
     <p><{$bt}></p>
 </footer>

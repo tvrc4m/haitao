@@ -80,7 +80,7 @@ if(!empty($_POST['user']))
 
 	//蚂蚁海淘注册协议
 	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
-		die('请阅读并勾选蚂蚁海淘注册协议');
+		die('<script>alert("请阅读并勾选蚂蚁海淘注册协议!");history.go(-1);</script>;');
 	}
 
 	//手机验证码
@@ -100,7 +100,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die("Your IP has been registered...");
+			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
 		}
 	}
 
@@ -111,7 +111,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num >= $config['regfloodctrl'])
 		{
-			die("Your IP has been registered...");
+			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
 		}	
 	}
 	
@@ -124,7 +124,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die("Your IP has been registered...");
+			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
 		}
 	}
 	$user = trim($_POST['user']);
@@ -161,7 +161,7 @@ if(!empty($_POST['user']))
 	];
 	foreach($str_check as $key => $val){
 		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
-			die('请填写正确格式的数据');
+			die('<script>alert("请填写正确格式的数据");history.go(-1);</script>;');
 		}
 	}
 
@@ -187,7 +187,6 @@ if(!empty($_POST['user']))
 	}
 	else
 		doreg();
-	var_dump($_POST);
 }
 else
 {
@@ -289,13 +288,13 @@ function doreg($guid=NULL)
 		}
 	 }
 	 else
-		 die("Can not register...");
+		 die('<script>alert("Can not register...!");history.go(-1);</script>;');
 }
 
 //短信发送
 function Send_msg($mob = null, $con = null)
 {
-		include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
+		include_once("{$config[webroot]}/module/sms/includes/plugin_sms_class.php");
 		$sms = new sms();
 		$str = $sms->send($mob, $con);
 		$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);
