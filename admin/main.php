@@ -80,7 +80,6 @@ foreach($mem as $key=>$v)
 	}
 	$item.="<ul id='menu_$key' style='display:none'>$con</ul>";
 }
-//var_dump($nav);die;
 $tpl->assign("rand",rand(10,100));
 $tpl->assign("nav",$nav);
 $tpl->assign("item",$item);

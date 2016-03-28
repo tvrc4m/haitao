@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-28 18:08:48
+<?php /* Smarty version 2.6.20, created on 2016-03-28 18:13:57
          compiled from product_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 87, false),)), $this); ?>

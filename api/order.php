@@ -7,6 +7,14 @@ if(!empty($_GET['statu'])&&$_GET['statu']==1)
 {
 	if($_GET['auth']!=md5($config['authkey']))
 		die('参数错误');
+    //订单api
+    function order_api($id){
+        global $db;
+        $sql = "select *,name,price,order_id, from ".ORPRO." where order_id='$id'";
+        $db->query($sql);
+        $t_re = $db->fetchRow();
+       var_dump($t_re);
+    }
 	
 	function order_oprate($id)
 	{
@@ -20,6 +28,7 @@ if(!empty($_GET['statu'])&&$_GET['statu']==1)
 
 		if($status < 2)
 		{
+
 			//---------------------付款成功减库存，
 			$sql="select pid,num,setmeal from ".ORPRO." where order_id='$id'";
 			$db->query($sql);
@@ -55,7 +64,8 @@ if(!empty($_GET['statu'])&&$_GET['statu']==1)
 			
 			$sql="update ".ORPRO." set status='1' where order_id='$id'";
 			$db->query($sql);
-
+            /*order_api($id);
+            exit;*/
 		}
 	}
 

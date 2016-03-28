@@ -27,7 +27,7 @@ $mem['product'][1][1]=array(
 		'brand_cat.php,0,brand,品牌分类管理',
 		'property.php,1,product,类型管理',
 		'spec.php,1,product,规格管理',
-	),	
+	),
 );
 $mem['business'][1][0]=array(
 	'',
