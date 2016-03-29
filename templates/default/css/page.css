@@ -471,7 +471,7 @@ ul,ol{list-style:none}
 .newfooter .foot .weibo{background-image: url(../../../image/default/sina.png);}
 .newfooter .foot .weixin{background-image: url(../../../image/default/weixin.png);}
 .newfooter .foot .attention .qq{background-image: url(../../../image/default/qq1.png);display: inline-block;width: 32px;height: 32px;box-shadow: none;
- padding: 0; border: none;}
+ padding: 0; border: none;margin-left: 2px;}
 .newfooter .foot .attention .dia-wb {bottom: 40px;right:16px;}
 .newfooter .foot .attention .dia-wx {top:-230px;right:-20px;}
 .newfooter .foot .attention .dia-qq {bottom: 40px;right:-76px;}
@@ -492,6 +492,7 @@ ul,ol{list-style:none}
 .icon_menu_02{background-position:-260px -5px}
 .icon_menu_03{background-position:-290px -5px}
 .icon_menu_04{background-position:-320px -5px}
+.icon_menu_05{background-position: -249px -236px;width: 24px !important;margin-right: 6px !important;}
 
 .icon_Japan{background-position:-2px -238px}
 .icon_Korea_South{background-position:-30px -238px}
