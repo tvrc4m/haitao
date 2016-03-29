@@ -84,7 +84,7 @@
             	<span class="p-detail-test">配送方式</span>
                 <{if $list.mail>0 or $list.express>0 or $list.ems>0}>
                 <{assign var="m_price" value="0.00"}>
-                <select id='cem_<{$list.seller_id}>' onchange="count_price('<{$list.seller_id}>');">
+                <select id='cem_<{$list.seller_id}>' class="cem_num" onchange="count_price('<{$list.seller_id}>');">
                 <{if $list.express>0}>
                 <{assign var="m_price" value=$list.express}>
                 <option value="快递,<{$list.express}>">快递<{$config.money}><{$list.express|number_format:2}></option>
@@ -136,7 +136,7 @@
 			<{/if}>
 			
         	<div class="fr">
-           <!--  <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span> -->
+            <!-- <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span> -->
             合计(含运费):&nbsp;&nbsp;
             <span class="p-name">
                 <strong class="price">
@@ -165,7 +165,7 @@
 // $(".inventory .item").each(function(index){
 //     var itemDl=$(".item").eq(index).find("dl");
 //     itemDl.each(function(num){
-//         var a=itemDl.eq(num).find(".p-price-num-z").html();
+//         var a=itemDl.eq(index).find(".p-price-num-z").eq(num).html();
 //         console.log(a);
 //     })
 // })
