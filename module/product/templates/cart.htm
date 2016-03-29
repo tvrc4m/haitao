@@ -352,7 +352,7 @@ $(".submit-btn").bind("click",function(){
 	}
 });
 $(".cart-checkbox input[type='checkbox']").click(function(){
-	var flag = $(this).attr("checked");
+	var flag = $(this).prop("checked");
 	var data_type = $(this).attr("data-type");
 	if(flag == true)
 	{
@@ -389,13 +389,13 @@ function ckeckbox(obj,flag)
 		if(flag == true)
 		{
 			$(this).parent().addClass("cart-checkbox-checked");
-			$(this).attr("checked","checked");
+			$(this).prop("checked","checked");
 		}
 		else
 		{
 			$(this).parent().parent().parent().removeClass("checked");
 			$(this).parent().removeClass("cart-checkbox-checked");
-			$(this).attr("checked","");	
+			$(this).prop("checked","");	
 		}
 	});
 }
