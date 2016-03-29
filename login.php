@@ -394,6 +394,7 @@ if(!empty($_GET['code'])&&$config['qq_connect']==1&&$_GET['type']!='sina'&&$_GET
 	$con=get_url_contents($url3);
 	$ar=json_decode($con,true);
 	//--------------------------
+
 	$sql="select * from ".USERCOON." where type=1 and openid='$ar2[openid]'";
 	$db->query($sql);
 	$cre=$db->fetchRow();
