@@ -1,139 +1,6 @@
 <{include file="../../../templates/default/site_nav.htm"}>
 <link type="text/css" rel="stylesheet" href="<{$config.weburl}>/module/product/templates/cart.css">
-<div class="newheader">
-        <!--top start-->
-       <!--  <div class="top">
-            <div class="w newclear">
-                <span class="fl"><a href="<{$config.weburl}>" title="蚂蚁海淘">蚂蚁海淘首页</a><a href="<{$config.weburl}>/login.php" title="登陆">登陆</a><a href="<{$config.weburl}>/register.php">注册</a></span>
-                <span class="fr"><a href="" title="">蚂蚁海淘App</a><a href="" title="">我的订单</a><a href="" title="">个人中心</a><a href="aboutus.php?type=8" title="">联系客服</a><a href="" title="">蚂蚁在线</a></span>
-            </div>
-        </div> -->
-        <!--top end-->
-        <!--顶部广告位 start-->
-        <div class="m_top_ban"></div>
-        <!--顶部广告位 end-->
-        <!--head start-->
-        <div class="w head newclear">
-            <a href="<{$config.weburl}>" class="icon_logo ml10 mid"></a>
-            <ul class="m_commitment ml60 newclear mid">
-                <li><i class="icon_commitment_01"></i><em class="mid">品质<br>保证</em></li>
-                <li><i class="icon_commitment_02"></i><em class="mid">全球<br>直供</em></li>
-                <li><i class="icon_commitment_03"></i><em class="mid">无忧<br>售后</em></li>
-            </ul>
-            <div class="m_t_search ml40 mid">
-                <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
-                    <input type="hidden" value="product" name="m" id="m">
-                    <input type="hidden" value="list" name="s" id="s">
-                    <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
-                </form>
-            </div>
-            <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" ><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
-                <div class="cart_list">
-                </div>
-            </div>
-        </div>
-        <!--head end-->
-        <!--导航 start-->
-        <div class="m_nav">
-            <div class="w pos_re">
-                <!--menu start-->
-                <dl class="m_menu">
-                    <dt><i class="icon_menu"></i><span class="mid">全部商品分类</span></dt>
-                    <dd class="newclear hidden">
-                        <div class="m_goods_list">
-                            <ul <{if $smarty.get.m=='product' && $smarty.get.s=='index'}><{/if}>>
-                                <{insert name="label" type="cat" temp="pro_cat_shop_left"}>
-                               <!--  <li>
-                                    <label><i class="icon_menu_01"></i><b class="mid">母婴专区</b></label>
-                                    <p><a href="" title="">奶粉</a><a href="" title="">纸尿裤</a><a href="" title="">孕产必备</a></p>
-                                </li>
-                                <li>
-                                    <label><i class="icon_menu_02"></i><b class="mid">美妆个护</b></label>
-                                    <p><a href="" title="">奶粉</a><a href="" title="">纸尿裤</a><a href="" title="">孕产必备</a></p>
-                                </li>
-                                <li>
-                                    <label><i class="icon_menu_03"></i><b class="mid">健康生活</b></label>
-                                    <p><a href="" title="">奶粉</a><a href="" title="">纸尿裤</a><a href="" title="">孕产必备</a></p>
-                                </li>
-                                <li>
-                                    <label><i class="icon_menu_04"></i><b class="mid">潮流生活</b></label>
-                                    <p><a href="" title="">奶粉</a><a href="" title="">纸尿裤</a><a href="" title="">孕产必备</a></p>
-                                </li> -->
-                            </ul>
-                        </div>
-                    </dd>
-                </dl>
-                <!--menu end-->
-                <!--nav start-->
-                <ul class="nav ml20 newclear">
-                    <{foreach item=list key=num from=$menus name=nav}>
-                    <li <{if $list.identifier==$current}>class="current"<{/if}>>
-                    <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
-                    <{if $list.scat}>
-                    <div class="i-items">
-                        <{foreach item=slist from=$list.scat}>
-                        <a href="<{if $slist.url|truncate:4:''=='http'}><{$slist.url}><{else}><{$config.weburl}>/<{$slist.url}><{/if}>"><{$slist.name}></a>
-                        <{/foreach}>
-                    </div>
-                    <{/if}>
-                    </li>
-                    <{/foreach}>
-                </ul>
-                <!--nav end-->
-                <div class="m_gz">
-                    <i class="icon_wx_gray"></i><span class="mid">微信蚂蚁海淘</span>
-                    <div class="sjmy fn-hide">
-                        <img src="../../../image/default/code.jpg" />
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--导航 end-->
-    </div>
-    <!--header end-->
-<script>
-$('.menu-items li').hover(function(){                    
-    $(this).addClass("hover");
-},function(){
-    $(this).removeClass("hover");   
-});
-$(".m_gz").bind("mouseenter mouseleave",function(){
-       $(".m_gz .sjmy").toggleClass("fn-hide");
-    });
-function get_search_word(k)
-{
-    if(k!='')
-    {
-        var url = '<{$config.weburl}>/ajax_back_end.php';
-        var sj = Math.random();
-        var pars = 'shuiji=' + sj+'&search_flag=1&key='+k;
-        $.post(url, pars,showResponse);
-    }
-
-    function showResponse(originalRequest)
-    {
-        if(originalRequest)
-        {
-            $('#key_select').show();
-            //$('#key_select').css("display",'block');
-            $('#key_select').html(originalRequest);
-        }
-        else
-            $('#key_select').hide();
-    }
-
-}
-function select_word(v)
-{
-    $('#key').val(v);
-    $('#key_select').hide();
-}
-$(".m_menu").bind("mouseenter mouseleave",function(){
-    $(".m_menu dd").toggleClass("hidden");
-});
-</script>
+<{include file="../../../templates/default/header_nonav.htm"}>
 <!-- <div class="header">
 	<div class="w fn-clear">
         <div class="logo">
@@ -154,12 +21,13 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
         </div>
     </div>  
 </div> -->
+<div class="cart-wrap">
 <div class="cart w">
     <div class="cart-hd">
         <h2>我的购物车</h2><{$smarty.get.dist_user_id}>
-        <{if $cart.cart}>
+        <!-- <{if $cart.cart}>
         <span>已选商品(不含运费)：<strong class="Price"><{$config.money}><em class="subtotal">0.00</em></strong><a class="submit-btn submit-btn-disabled" href="javascript:void(0);">结算</a></span>
-        <{/if}>
+        <{/if}> -->
     </div>
     <{if $smarty.get.type=="clear" || $cart.cart|@count<1}>
         <div class="cart-empty w">
@@ -338,6 +206,7 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
     </div>
     </form>
     <{/if}>
+</div>
 </div>
 <script type="text/javascript">
 $(".operations a").bind("click",function(){
