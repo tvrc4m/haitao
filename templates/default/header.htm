@@ -28,8 +28,9 @@
                     <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
                 </form>
             </div>
+
             <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i></a></div>
+                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" style="display: none"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
                 <div class="cart_list">
             </div>
             </div>
@@ -131,7 +132,16 @@ function select_word(v)
     $('#key').val(v);
     $('#key_select').hide();
 }
+
 $(".m_menu").bind("mouseenter mouseleave",function(){
     $(".m_menu dd").toggleClass("hidden");
+});
+
+$(function(){
+    if($("#cart_num").text() > 0){
+        $("#cart_num").css("display","inline-block");
+    }else{
+        $("#cart_num").css("display","none");
+    }
 });
 </script>
