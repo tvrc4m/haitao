@@ -1,5 +1,6 @@
 <link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
+<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <style>
 	.wap_pdetail p{
 		line-height:1.2;
@@ -89,7 +90,14 @@ function distribute_goods(id){
 <input name="dist_user_id" type="hidden" value="<{$smarty.get.shop_id}>" />
 <div class="ub ub-ver" id="pro_detail">
     <div class="c-wh bgw">
-        <img src="<{if $de.pic}><{$de.pic}><{else}>image/default/nopic.gif<{/if}>"/>
+        <div class="t_slide pos_re" id="hj_slide">
+            <ul class="clearfix slides">
+            <{foreach item=pic key=num from=$de.pic_more}>
+                <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>" big="<{$pic}>" width="320" height="320" class="jqzoom-img"></li>
+            <{/foreach}>
+            </ul>
+        </div>
+        <!-- <img src="<{if $de.pic}><{$de.pic}><{else}>image/default/nopic.gif<{/if}>"/> -->
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
                 <div id="pname"><{$de.name}></div>
@@ -213,6 +221,41 @@ function distribute_goods(id){
     <input name="sku" id="sku" type="hidden" value="0" />
 </div>
 </form>
+<script type="text/javascript">
+    window.jsVersion = "7b3d28d5da";
+    require.config({
+        //By default load any module IDs from js/lib
+        baseUrl: '/script/',
+        urlArgs: "v="+window.jsVersion,
+        paths: {
+            "formValid":"formvalid",
+            "utility":"util"
+        },
+        shim: {},
+        waitSeconds:0
+    });
+    require(['pages/hj_index'], function (hjIndex) {
+        hjIndex.hjSlide("#hj_slide",4000);
+    //              hjIndex.cashEvent("#cash_event");
+    //              hjIndex.ajaxLoadPage(".load_links");
+    });
+
+    window.addEventListener('load', function() {
+        var _slideObj = $("#hj_slide");
+        setTimeout(function() {
+            var slideH = _slideObj.find("li").find("img").height();
+            _slideObj.animate({height:slideH},800);
+        }, 800);
+    }, false);
+    
+    // var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
+    // for(var i=0;i<imgIndex;i++){
+    //     dot.append("<span></span>")
+    // }
+    // if(imgIndex==1){
+    //     dot.html("");
+    // }
+</script>
 <script>
     function collect_goods(id){
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
