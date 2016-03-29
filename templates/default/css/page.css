@@ -471,7 +471,7 @@ ul,ol{list-style:none}
 .newfooter .foot .weibo{background-image: url(../../../image/default/sina.png);}
 .newfooter .foot .weixin{background-image: url(../../../image/default/weixin.png);}
 .newfooter .foot .attention .qq{background-image: url(../../../image/default/qq1.png);display: inline-block;width: 32px;height: 32px;box-shadow: none;
- padding: 0; border: none;}
+ padding: 0; border: none;margin-left: 2px;}
 .newfooter .foot .attention .dia-wb {bottom: 40px;right:16px;}
 .newfooter .foot .attention .dia-wx {top:-230px;right:-20px;}
 .newfooter .foot .attention .dia-qq {bottom: 40px;right:-76px;}
