@@ -30,7 +30,7 @@
             </div>
 
             <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" class="hidden"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
+                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" style="display: none"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
                 <div class="cart_list">
             </div>
             </div>
@@ -139,7 +139,9 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
 
 $(function(){
     if($("#cart_num").text() > 0){
-        $("#cart_num").removeClass("hidden");
+        $("#cart_num").css("display","inline-block");
+    }else{
+        $("#cart_num").css("display","none");
     }
 });
 </script>
