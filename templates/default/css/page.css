@@ -358,7 +358,9 @@ ul,ol{list-style:none}
 .m_shop_cart .cart_box{font-size:14px}
 .m_shop_cart .cart_box i{width:45px;height:45px;margin-left:10px;}
 .m_shop_cart .icon_cart{display:inline-block;vertical-align:middle;text-indent:-9999px;background-image:url(../../../image/default/cart.png);background-repeat:no-repeat;overflow:hidden}
-
+#cart_num{background: #ffa23e;color: #fff;display: inline-block;width: 20px;height: 20px;line-height: 20px;text-align: center; border-radius: 50%;position: relative;
+    top: -15px;
+    left: -20px;}
 /**导航*/
 .m_nav{font-size:14px;border-bottom:2px solid #000;background:#f1f1f1}
 .m_nav .w:after{content:"";display:block;width:100%;clear:both}
