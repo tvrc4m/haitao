@@ -155,7 +155,7 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
                 </form>
             </div>
             <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i></a></div>
+                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" class="hidden"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
                 <div class="cart_list">
                 </div>
             </div>
@@ -628,6 +628,13 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
     $(".m_gz").bind("mouseenter mouseleave",function(){
        $(".m_gz .sjmy").toggleClass("fn-hide");
     });
+
+    $(function(){
+        if($("#cart_num").text() > 0){
+            $("#cart_num").removeClass("hidden");
+        }
+    });
+
 </script>
 <!-- <div id="footer">
     <p><{$web_con}></p><{$bt}> 
