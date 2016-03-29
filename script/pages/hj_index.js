@@ -5,7 +5,7 @@
  */
 define(["module", "utility"], function(module, Util) {
     "use strict";
-
+    var $j = jQuery.noConflict();
     function hjIndex() {
         this.init();
     }
