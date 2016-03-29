@@ -40,7 +40,7 @@ if ($config['bw'] == "weixin")
 
 
 //====================================产品详情
-var_dump($prode);
+
 $tpl->assign("de",$prode);
 $score = $shop->score();
 foreach ($score as $key => $value) {

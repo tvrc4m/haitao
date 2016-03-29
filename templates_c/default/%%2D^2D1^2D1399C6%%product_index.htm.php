@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-03-28 18:26:04
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-28 18:45:46
->>>>>>> efcbf796acddb9f82acea0255942ec1ff07b48f3
+<?php /* Smarty version 2.6.20, created on 2016-03-29 09:12:11
          compiled from product_index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 92, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'product_index.htm', 30, false),)), $this); ?>
 <!--田晓宝添加-->
 <!--banner start-->
 <div class="pos_re newclear">
@@ -38,7 +34,10 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'prod
                     <div class="clu m_img_box w_202"><img src="../../../uploadfile/adv/2016/bg_jp_l.jpg"></div>
                     <div class="clu pos_re list_box">
                         <ul class="newclear">
-                            <li class="spe">
+                            <?php require_once(SMARTY_CORE_DIR . 'core.run_insert_handler.php');
+echo smarty_core_run_insert_handler(array('args' => array('name' => 'label', 'catid' => 1006, 'type' => 'product', 'o' => 6, 'temp' => 'product_list_li_3', 'limit' => 6)), $this); ?>
+
+                            <!--<li class="spe">
                                 <div>
                                     <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
                                     <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
@@ -79,7 +78,7 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'prod
                                     <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
                                     <p><var>￥180</var><s>￥235</s></p>
                                 </div>
-                            </li>
+                            </li>-->
                         </ul>
                         <div class="m_img_box pos_ab"><a href="" title=""><img src="../../../uploadfile/adv/2016/ad_02.jpg" alt=""></a></div>
                     </div>
@@ -95,6 +94,7 @@ smarty_core_load_plugins(array('plugins' => array(array('insert', 'label', 'prod
             <li class="item">6</li>
         </ul>
     </div>
+
 </div>
 </div>
 <!--海淘国家 end-->
