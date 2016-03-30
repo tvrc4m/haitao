@@ -5,8 +5,8 @@
 .header .search{margin:15px 0 10px;height:45px;}
 
 .step{margin:20px auto 20px;}
-.step h3{border-bottom:2px solid #F1F1F1;padding:0 5px 10px;margin-bottom:20px;}
-.step h3 a{float:right;font-size:12px;font-weight:400;}
+.step h3{border-bottom:1px solid #e0e0e0;padding:0 5px 10px;margin-bottom:20px;color: #666;}
+/*.step h3 a{float:right;font-size:12px;font-weight:400;}
 .step li{border:1px solid #FFFFFF;position:relative;line-height:36px;padding:0 0 0 96px;}
 .step li s{background:url(../../../image/default/order/icon.gif) no-repeat;height:25px;left:10px;position:absolute;top:8px;width:15px;display:none;}
 .step li span{display:none;position:absolute;left:30px;color:#F50;font-weight:700;display:none;height:36px;line-height:36px;margin-left:4px;}
@@ -16,7 +16,7 @@
 .step li.selected{background-color:#fff5cc;border:1px solid #ffe580;-webkit-box-shadow:5px 5px 0 #f3f3f3;-moz-box-shadow:5px 5px 0 #f3f3f3;box-shadow:5px 5px 0 #f3f3f3;line-height:36px;}
 .step li.selected s{display:block;}
 .step li.selected span{display:block;}
-.step li.selected label{font-size:12px;font-weight:700;}
+.step li.selected label{font-size:12px;font-weight:700;}*/
 .step th{height:24px;line-height:24px;text-align:center;border-bottom:2px solid #B2D1FF;border-left:3px solid #FFF;}
 .step th.first{border-left:none;}
 .step .shop td{line-height:30px;padding:20px 0 5px;border-bottom:1px dotted #B2D1FF;}
@@ -34,6 +34,8 @@
 .step td.price{text-align:right;padding-right:15px;}
 .step td b{color:#FF5500;font:700 12px tahoma;}
 .step .tg{background-color:#ff4400;border-radius:4px;color:#fff;height:16px;line-height:16px;padding:4px 5px;display:inline-block;margin-top:4px;}
+
+.step li{width: 275px;height: 135px;display: inline-block;border: 1px solid #e4e4e4;position: relative;}
 
 .order_submit{background:url(../../../image/default/btn-updata.png) no-repeat;height:36px;line-height:100px;overflow:hidden;width:135px;border:0 none;cursor:pointer;float:right;}
 
@@ -60,7 +62,27 @@
 #buyer_phone{padding: 3px;border: 1px solid #ccc}
 #buyer_phone:focus{border:1px solid  #ADADFF;}
 .step table{font-size: 12px;}
-.step a{font-size: 12px;}
+/*.step a{font-size: 12px;}*/
 .v-t-price{font:700 12px tahoma;line-height: 38px;}
 .step td.v-t-price b{font-size: 18px;}
 .v-o-tips{line-height: 26px;}
+
+.order_wrap{background: #f5f5f5;overflow:hidden;}
+.order_wrap .order{border: 1px solid #ccc;margin:20px auto 50px;background-color: #fff;}
+.order_wrap .order .step{margin: 20px;}
+.order_wrap .order .selectadd{height: 40px;border-bottom: 1px solid #e0e0e0;line-height: 40px;font-size: 16px;}
+.order_wrap .order .selectadd span{display: inline-block;padding: 0 15px;background-color: #f5f5f5;color: #ff5c5c;margin-right: 30px;border-bottom:2px solid #ff5c5c }
+.step ul{padding: 20px 0;color: #666;font-size: 14px;display: -moz-box;display: -ms-flexbox;display: -webkit-box;display: -webkit-flex;}
+.step .modify{line-height: 30px;}
+.step .modify a{color: #999;margin-right: 8px;}
+.step .addressee{margin: 0 20px;line-height: 40px;}
+.step .addressee .name{font-size: 18px;color: #ff5c5c;}
+.step .addressee .name{font-size: 18px;color: #ff5c5c;}
+.step .address{margin: 0 20px;}
+.step li.selected{border: 2px solid #ff5c5c;}
+.step li .check{display: none;}
+.step li.selected .check{display:block;position: absolute;bottom: 0;right: 0;border-top: 40px solid transparent;border-right: 40px solid #ff5c5c; width: 0;height: 0;transition: 0.3s}
+.step li.selected .check .iconfont{font-family:iconfont;font-size: 17px;position: absolute;top: -26px;left: 19px;color: #fff;font-weight:bold;}
+
+
+
