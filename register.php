@@ -25,29 +25,25 @@ if ($connect_config['ucenter_connect'])
 //发送验证码
 if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
-		$number = range(1,6);
-		shuffle($number);
-		foreach($number as $value){
-			$num .= $value;
-		}
+		$number = rand(100000,999999);
 		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
-			if ($a=Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $num, 10)) == 1) {
-				$vser['yzm'] = $num;
+			if (Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
+				$vser['yzm'] = $number;
 				$vser['ytime'] = time()+60*10;
 				$vser['ltime'] = time()+60;
 				$_SESSION['mon_yzm'] = $vser;
 			}
-			echo Return_data([
+			echo Return_data(array(
 					'status_code' => '200',
 					'message' => '短信发送成功，请注意查收',
 					'data' => null
-			]);
+			));
 		}else{
-			echo Return_data([
+			echo Return_data(array(
 					'status_code' => '300',
 					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
 					'data' => $_SESSION['mon_yzm']['ltime']-time()
-			]);
+			));
 		}
 		 die;
 	}
@@ -89,6 +85,8 @@ if(!empty($_POST['user']))
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
 		}
 	}else{
+		var_dump($_SESSION['mon_yzm']['yzm']);
+		var_dump($_POST['smsvode']);
 		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
 	}
 
@@ -100,7 +98,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
+			die('<script>alert("您的IP已注册！");history.go(-1);</script>;');
 		}
 	}
 
@@ -111,7 +109,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num >= $config['regfloodctrl'])
 		{
-			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
+			die('<script>alert("您的IP已注册！");history.go(-1);</script>;');
 		}	
 	}
 	
@@ -124,7 +122,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
+			die('<script>alert("您的IP已注册！");history.go(-1);</script>;');
 		}
 	}
 	$user = trim($_POST['user']);
@@ -240,13 +238,13 @@ function doreg($guid=NULL)
 	$sql="select * from ".MEMBER." where user = '$user'";
     $db->query($sql);
     if($db->num_rows())
-		die('<script>alert("User name is have");history.go(-1);</script>;');
+		die('<script>alert("该用户名已经存在！");history.go(-1);</script>;');
 
 	//验证手机号唯一
 	$sql="select * from ".MEMBER." where mobile = '$mobile'";
     $db->query($sql);
     if($db->num_rows())
-		die('<script>alert("User mobile is have");history.go(-1);</script>;');
+		die('<script>alert("该手机号已经存在！");history.go(-1);</script>;');
 
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
@@ -288,7 +286,7 @@ function doreg($guid=NULL)
 		}
 	 }
 	 else
-		 die('<script>alert("Can not register...!");history.go(-1);</script>;');
+		 die('<script>alert("系统繁忙，请稍后注册!");history.go(-1);</script>;');
 }
 
 //短信发送

@@ -5,7 +5,8 @@
 <script type="text/javascript">
 weburl="<{$config.weburl}>";
 </script>
-<div class="header">
+<{include file="../../../templates/default/header_nonav.htm"}>
+<!-- <div class="header">
 	<div class="w fn-clear">
         <div class="logo">
         <a title="<{$config.company}>" href="<{$config.weburl}>"><img src="<{if $config.logo}><{$config.logo}><{else}><{$config.weburl}>/image/logo.gif<{/if}>" /></a>
@@ -21,7 +22,7 @@ weburl="<{$config.weburl}>";
             </form>
         </div>
     </div>  
-</div>
+</div> -->
 
 <{if $smarty.get.type=='login'}>
     <div class="w" style="margin:80px auto;">
@@ -54,6 +55,22 @@ weburl="<{$config.weburl}>";
                 <{$list.area}> <{$list.address}>&nbsp;&nbsp;(<{$list.name}>&nbsp;收) 
                  <em><{$consignee.mobile}></em>
                 </label>
+                <!-- <div>
+                    <div class="addressee">
+                        <span class="name" op-value="full_name">田先生</span>
+                        <span class="phone" op-value="mobile">18513290108</span>
+                        <span class="default" op-value="defalutMark" op-attr="style" style="display:none;">默认</span>
+                    </div>
+                    <div class="address">
+                        <strong>寄送至</strong> <span op-value="province_text">北京</span> <span op-value="city_text">北京市</span> <span op-value="area_text">朝阳区</span> <span op-value="address">尚都国际中心</span>
+                    </div>
+                    <div class="footer">
+                        <a href="javascript:;" class="modify view-ModifyAddressBtn" op-value="id" op-attr="address-id" address-id="18028680">修改</a>
+                    </div>
+                    <div class="check">
+                        <i class="iconfont">󰂲</i>
+                    </div>
+                </div> -->
 			</li>
             <{/foreach}>
         </ul>
@@ -68,6 +85,14 @@ $("#step-1").find("input[type='radio']").bind("click",function(){
 	$('#cart').html('<div class="loading"><p>正在努力加载中...</p></div>');
 	$(this).parent().parent().addClass('selected').siblings().removeClass("selected");
 	$('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax&id='+id+'<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
+});
+
+$(function(){
+    if($("#cart_num").text() > 0){
+        $("#cart_num").css("display","inline-block");
+    }else{
+        $("#cart_num").css("display","none");
+    }
 });
 </script>
 <{/if}>
