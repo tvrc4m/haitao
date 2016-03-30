@@ -30,7 +30,7 @@ $(function(){
 var phnumber=/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
 var user=/^[A-Za-z0-9\u4e00}-\u9fa5}]{4,16}$/;
 var password=/^[A-Za-z0-9]{6,10}$/;
-$(document).ready(function(){ 
+$(document).ready(function(){
     jQuery.focusblur = function(focusid) { 
         var focusblurid = $(focusid);
         var span = $(focusid).parent().parent().next(); 
@@ -44,21 +44,61 @@ $(document).ready(function(){
             if(focusid == "#password")
                 flag = password.test(thisval);
 
-            if(flag){
+            if(flag&&focusid == "#user"){
+                /* 验证用户名 */
+                    $.ajax({
+                        url: 'register.php',
+                        type: 'post',
+                        data: {user: thisval, is_check: 'check'},
+                        dataType: 'json',
+                        success: function(datainfo){
+                            if(datainfo.status_code!=200) {
+                                span.removeClass("correct");
+                                span.addClass("fault");
+                                layer.alert(datainfo.message, {
+                                    closeBtn: 0
+                                });
+                            }else{
+                                span.removeClass("fault");
+                                span.addClass("correct");
+                            }
+                        }
+                    });
+
+                }else if(flag&&focusid == "#mobile"){
+                $.ajax({
+                    url: 'register.php',
+                    type: 'post',
+                    data: {mobile: thisval, check_mobile: 'check'},
+                    dataType: 'json',
+                    success: function(datainfo){
+                        if(datainfo.status_code!=200) {
+                            span.removeClass("correct");
+                            span.addClass("fault");
+                            layer.alert(datainfo.message, {
+                                closeBtn: 0
+                            });
+                        }else{
+                            span.removeClass("fault");
+                            span.addClass("correct");
+                        }
+                    }
+                });
+            }else if(flag){
                 span.removeClass("fault");
                 span.addClass("correct");
-                } else{
+            }else{
                 span.removeClass("correct");
                 span.addClass("fault");
             }
 
         }); 
     }; 
-    /*下面是调用方法*/ 
+    //下面是调用方法
     $.focusblur("#user"); 
     $.focusblur("#mobile"); 
     $.focusblur("#password");
-}); 
+});
 // $(".inp_close").live("tap",function(){
 //     var userName=$("#user");
 //     if(userName.val() != ""){
