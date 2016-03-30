@@ -1,13 +1,22 @@
 <?php
-//aes加密
-function encrypt ($encrypt,$key=''){
-    $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
-    $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-    $encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key,$encrypt,MCRYPT_MODE_CBC,$iv);
-    return base64_encode($encrypted);
+//接口方法
+function aes($url){
+    $ob = curl_init();
+    curl_setopt($ob, CURLOPT_URL, $url);
+    curl_setopt($ob, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ob, CURLOPT_HEADER, 0);
+    $con = curl_exec($ob);
+    curl_close($ob);
+    return json_decode($con,true);
 }
+$pass = "AiMeiHtBoyWholeSaler001";
 $time = "20160324120817";
-$token = encrypt($time,'AiMeiHtBoyWholeSaler001');
+$tokens = aes("http://121.40.31.77:8015/Service/Get_Aes.aspx?time={$time}&pass={$pass}");
+if(is_array($tokens)){
+    if($tokens['status']==0){
+        $token = $tokens['aes'];
+    }
+}
 
 $arr = array(
     "goods_order_count"=>"5",
@@ -41,12 +50,7 @@ $arr = array(
     )
 );
 $order = json_encode($arr);
-
-$ob = curl_init();
-curl_setopt($ob, CURLOPT_URL, "http://121.40.31.77:8015/Service/Send_Goods_Order.aspx?time={$time}&token={$token}&order={$order}");
-curl_setopt($ob, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ob, CURLOPT_HEADER, 0);
-$con = curl_exec($ob);
-curl_close($ob);
+$type = aes("http://121.40.31.77:8015/Service/Send_Goods_Order.aspx?time={$time}&token={$token}&order={$order}&pass={$pass}");
+var_dump($type);
 
 ?>

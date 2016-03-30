@@ -412,7 +412,7 @@ html[xmlns] .clearfix{display:block;}
     border-bottom: 1px dashed #ccc;
     padding: 20px 20px 18px;}
 .pine-bd img{width:80px;}
-.pine-bd .p-name{display:none;}
+/*.pine-bd .p-name{display:none;}*/
 .pine-bd .p-price{margin-top:4px;}
 .mt{padding: 0 !important;color:#ff5c5c;height: 40px !important;line-height: 40px !important;text-align: center;font-size: 18px;border-top: 3px solid #ff5c5c;border-bottom: 1px dashed #ccc !important;}
 .hotsell{border:1px solid #ccc;border-top: none;margin-bottom: 20px;}

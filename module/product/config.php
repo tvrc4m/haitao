@@ -15,7 +15,7 @@ $mem['product'][1][1]=array(
 		'product_comment.php,1,product,产品评价',
 	),
 );
-$mem['product'][1][2]=array(
+$mem['product'][1][1]=array(
 	'产品配置',
 	array(
 		'module_config.php,1,product,模块设置',

@@ -24,7 +24,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
 	if($config['openbbs']==2)
 	{	
 	//ucenter1.5 login
-		$sql="select userid,user,password,email from ".MEMBER." a where user='$post[user]' or email='$post[user]'";
+		$sql="select userid,user,password,email from ".MEMBER." a where user='$post[user]' or mobile='$post[mobile]'";
 		$db->query($sql);
 		$re=$db->fetchRow();
 		if(!empty($re['password']))
@@ -394,6 +394,7 @@ if(!empty($_GET['code'])&&$config['qq_connect']==1&&$_GET['type']!='sina'&&$_GET
 	$con=get_url_contents($url3);
 	$ar=json_decode($con,true);
 	//--------------------------
+
 	$sql="select * from ".USERCOON." where type=1 and openid='$ar2[openid]'";
 	$db->query($sql);
 	$cre=$db->fetchRow();

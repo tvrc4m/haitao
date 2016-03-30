@@ -163,7 +163,7 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
                 </form>
             </div>
             <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i></a></div>
+                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" style="display: none"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
                 <div class="cart_list">
                 </div>
             </div>
@@ -420,6 +420,9 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
                 <div style="clear:both;"></div>
             </div>
         </div>
+        <div class="footer">
+            <p class="copytight"><{$bt}></p>
+        </div>
     </div>
     <!--footer end-->
     <script type="text/javascript">
@@ -436,6 +439,15 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
         if(!($(".dia-qq").hasClass("fn-hide")))
        $(".dia-qq").addClass("fn-hide");
     });
+
+    $(function(){
+        if($("#cart_num").text() > 0){
+            $("#cart_num").css("display","inline-block");
+        }else{
+            $("#cart_num").css("display","none");
+        }
+    });
+
 </script>    
 <!-- <div id="footer">
     <p><{$web_con}></p>
