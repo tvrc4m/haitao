@@ -24,7 +24,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
 	if($config['openbbs']==2)
 	{	
 	//ucenter1.5 login
-		$sql="select userid,user,password,email from ".MEMBER." a where user='$post[user]' or email='$post[user]'";
+		$sql="select userid,user,password,email from ".MEMBER." a where user='$post[user]' or mobile='$post[mobile]'";
 		$db->query($sql);
 		$re=$db->fetchRow();
 		if(!empty($re['password']))
