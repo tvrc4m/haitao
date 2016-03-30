@@ -5,7 +5,6 @@
 <script type="text/javascript">
 weburl="<{$config.weburl}>";
 </script>
-<link type="text/css" rel="stylesheet" href="<{$config.weburl}>/templates/default/css/page.css">
 <{include file="../../../templates/default/header_nonav.htm"}>
 <!-- <div class="header">
 	<div class="w fn-clear">
@@ -56,6 +55,22 @@ weburl="<{$config.weburl}>";
                 <{$list.area}> <{$list.address}>&nbsp;&nbsp;(<{$list.name}>&nbsp;收) 
                  <em><{$consignee.mobile}></em>
                 </label>
+                <!-- <div>
+                    <div class="addressee">
+                        <span class="name" op-value="full_name">田先生</span>
+                        <span class="phone" op-value="mobile">18513290108</span>
+                        <span class="default" op-value="defalutMark" op-attr="style" style="display:none;">默认</span>
+                    </div>
+                    <div class="address">
+                        <strong>寄送至</strong> <span op-value="province_text">北京</span> <span op-value="city_text">北京市</span> <span op-value="area_text">朝阳区</span> <span op-value="address">尚都国际中心</span>
+                    </div>
+                    <div class="footer">
+                        <a href="javascript:;" class="modify view-ModifyAddressBtn" op-value="id" op-attr="address-id" address-id="18028680">修改</a>
+                    </div>
+                    <div class="check">
+                        <i class="iconfont">󰂲</i>
+                    </div>
+                </div> -->
 			</li>
             <{/foreach}>
         </ul>
