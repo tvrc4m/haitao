@@ -80,13 +80,11 @@ if(!empty($_POST['user']))
 	}
 
 	//手机验证码
-	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
 		if($_SESSION['mon_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
 		}
 	}else{
-		var_dump($_SESSION['mon_yzm']['yzm']);
-		var_dump($_POST['smsvode']);
 		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
 	}
 
