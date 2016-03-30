@@ -1,4 +1,5 @@
 <?php
+
 if(empty($buid))
 {
 	if (isset($_SERVER['HTTP_REFERER']))
@@ -45,6 +46,8 @@ else
 		$addr = $orderadder -> get_orderadderlist();
 	}
 	$tpl -> assign("consignee",$addr);
+	//echo '<pre>';
+	//var_dump($addr);
 	//============================读出购物车的数据
 	if($_GET['id']&&is_numeric($_GET['id']))
 	{
