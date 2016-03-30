@@ -96,6 +96,7 @@ function distribute_goods(id){
                 <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>" big="<{$pic}>" width="320" height="320" class="jqzoom-img"></li>
             <{/foreach}>
             </ul>
+            <div class='dot'></div>
         </div>
         <!-- <img src="<{if $de.pic}><{$de.pic}><{else}>image/default/nopic.gif<{/if}>"/> -->
         <div class="ub b-gra-cf">
@@ -248,13 +249,13 @@ function distribute_goods(id){
         }, 800);
     }, false);
     
-    // var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
-    // for(var i=0;i<imgIndex;i++){
-    //     dot.append("<span></span>")
-    // }
-    // if(imgIndex==1){
-    //     dot.html("");
-    // }
+    var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
+    for(var i=0;i<imgIndex;i++){
+        dot.append("<span></span>")
+    }
+    if(imgIndex==1){
+        dot.html("");
+    }
 </script>
 <script>
     function collect_goods(id){
