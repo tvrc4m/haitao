@@ -40,7 +40,7 @@
 .loading{text-align:center;height:72px;padding-top:40px;+position:relative;}
 .loading p{height:32px;line-height:32px;padding-left:42px;background:url(../../../image/default/loading.gif) no-repeat 0 50%;color:#f50;display:inline-block;_display:inline;_height:14px;_line-height:14px;_padding:9px 0 9px 42px;_background-position-y:0;+position:absolute;+left:50%;+margin-left:-55px;}
 
-.footer{width:990px;padding:0;margin:30px auto 30px;border-top:2px solid #FF4400;color:#6C6C6C;}
+/*.footer{width:990px;padding:0;margin:30px auto 30px;border-top:2px solid #FF4400;color:#6C6C6C;}*/
 .footer .helps{display:none;}
 .footer .link{margin-bottom:10px;padding:15px 0;border-bottom:1px solid #DDDDDD;}
 .footer .link dd{width:850px;}
