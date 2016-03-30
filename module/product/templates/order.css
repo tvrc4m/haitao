@@ -96,4 +96,7 @@
 .step .seg-entry{height:15px;}
 .step .other td{background-color: #f5f5f5;}
 .step .total td{background-color: #f5f5f5;}
+.step tr.other{border-top: 1px solid #d8d8d8;border-left: 1px solid #d8d8d8;}
+.step tr.total{border-left:1px solid #d8d8d8;}
+.step tr.total:nth-child(even){border-bottom:1px solid #d8d8d8;}  
 
