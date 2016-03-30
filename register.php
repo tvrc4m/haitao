@@ -49,6 +49,78 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 	}
 }
 
+if(!empty($_POST['user'])&&$_POST['is_check']=='check'){
+    if(preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $_POST['user'])){
+        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
+        //验证用户名唯一
+        $sql="select * from ".MEMBER." where user = '".$_POST['user']."'";
+        $db->query($sql);
+        if($db->num_rows()){
+            echo Return_data(array(
+                'status_code' => '300',
+                'message' => '该用户已存在！',
+                'data' => null
+            ));die;
+        }else{
+            echo Return_data(array(
+                'status_code' => '200',
+                'message' => '用户名可用！',
+                'data' => null
+            ));die;
+        }
+    }else{
+        echo Return_data(array(
+            'status_code' => '300',
+            'message' => '请填正确的用户名！',
+            'data' => null
+        ));die;
+    }
+    die;
+}else if($_POST['is_check']=='check'){
+    echo Return_data(array(
+        'status_code' => '300',
+        'message' => '请填写用户名！',
+        'data' => null
+    ));
+    die;
+}
+
+if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
+    if(preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
+        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
+        //验证用户名唯一
+        $sql="select * from ".MEMBER." where mobile = '".$_POST['mobile']."'";
+        $db->query($sql);
+        if($db->num_rows()){
+            echo Return_data(array(
+                'status_code' => '300',
+                'message' => '该手机号已存在！',
+                'data' => null
+            ));die;
+        }else{
+            echo Return_data(array(
+                'status_code' => '200',
+                'message' => '手机号可用！',
+                'data' => null
+            ));die;
+        }
+    }else{
+        echo Return_data(array(
+            'status_code' => '300',
+            'message' => '请填正确的手机号！',
+            'data' => null
+        ));die;
+    }
+    die;
+}else if($_POST['check_mobile']=='check'){
+    echo Return_data(array(
+        'status_code' => '300',
+        'message' => '请填写手机号！',
+        'data' => null
+    ));
+    die;
+}
+
 if($buid)
 {	//已经登录
 	msg('main.php');
@@ -305,7 +377,7 @@ function Send_msg($mob = null, $con = null)
 //格式数据返回
 function Return_data($data = null, $type = 'json'){
 	if($type == 'json'){
-		return json_encode($data);
+		return json_encode($data, JSON_UNESCAPED_UNICODE);
 	}
 }
 include_once("footer.php");	
