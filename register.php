@@ -24,7 +24,7 @@ if ($connect_config['ucenter_connect'])
 
 //发送验证码
 if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
-	if(!empty($_POST['mobile'])&&preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $_POST['mobile'])){
+	if(!empty($_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
 		$number = rand(100000,999999);
 		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
 			if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
@@ -86,7 +86,7 @@ if(!empty($_POST['user'])&&$_POST['is_check']=='check'){
 }
 
 if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
-    if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $_POST['mobile'])){
+    if(preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
         $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
         //验证用户名唯一
         $sql="select * from ".MEMBER." where mobile = '".$_POST['mobile']."'";
@@ -225,8 +225,7 @@ if(!empty($_POST['user']))
 	//定义所有正则
 	$str_check = [
 		'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
-		'mobile' => '/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/',
-		//'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
+		'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
 		'smsvode' => '/^[0-9]{6}$/',
 		'password' => '/^[A-Za-z0-9]{6,10}$/',
 	];
@@ -383,6 +382,6 @@ function Return_data($data = null, $type = 'json'){
 		return json_encode($data, JSON_UNESCAPED_UNICODE);
 	}
 }
-include_once("footer.php");	
+include_once("footer.php");
 $tpl->display("register.htm");
 ?>
