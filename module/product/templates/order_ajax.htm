@@ -166,7 +166,7 @@
             </tr>
 			<{/if}>
             <{/foreach}>
-            <tr class="sum">
+            <!-- <tr class="sum">
             	<td colspan="4">
                 <input type="hidden" name="act" value="order" />
                 <input type="hidden" name="hidden_consignee_id" id="hidden_consignee_id" value="<{if $consignee_id}><{$consignee_id}><{else}><{$consignee.0.id}><{/if}>" />
@@ -175,9 +175,13 @@
                 <td class="price">
                 <b><{$config.money}> <span id="s_sumprice"></span></b>
                 </td>
-            </tr>
-		</table>      
+            </tr> -->
+            <input type="hidden" name="act" value="order" />
+            <input type="hidden" name="hidden_consignee_id" id="hidden_consignee_id" value="<{if $consignee_id}><{$consignee_id}><{else}><{$consignee.0.id}><{/if}>" />
+            <tr class="seg-entry"></tr>
+		</table>
    		<input type="submit" value="" class="order_submit">
+        <div class="order_sum">实付款&nbsp&nbsp<b><{$config.money}> <span id="s_sumprice"></span></b></div>
    </div>
 </form>
 <script>
