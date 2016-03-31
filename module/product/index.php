@@ -55,13 +55,14 @@ if($cat_pro)
 			$cat_pro[$key]['rand'][]=rand(0,$count);
 
 		}
-		$guang = [
-			[15,16,17],
-			[18,19,20],
-			[21,22,23],
-			[24,25,26],
-			[27,28,29]
-		];
+
+        $guang = array(
+            array(15,16,17),
+            array(18,19,20),
+            array(21,22,23),
+            array(24,25,26),
+            array(27,28,29)
+        );
 		if($key<1005){
 			$cat_pro[$key]['guanggao'] = $guang[$i];
 			$i++;
