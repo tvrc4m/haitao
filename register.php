@@ -24,10 +24,10 @@ if ($connect_config['ucenter_connect'])
 
 //发送验证码
 if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
-	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
+	if(!empty($_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
 		$number = rand(100000,999999);
 		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
-			if (Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
+			if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
 				$vser['yzm'] = $number;
 				$vser['ytime'] = time()+60*10;
 				$vser['ltime'] = time()+60;
@@ -155,7 +155,9 @@ if(!empty($_POST['user']))
 	if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
 		if($_SESSION['mon_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
-		}
+		}else{
+
+        }
 	}else{
 		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
 	}
