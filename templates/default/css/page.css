@@ -538,4 +538,5 @@ a.goods_text {
 .flex-control-paging li a.flex-active {background: url(../../../image/default/checked.jpg) no-repeat ; cursor: default;}
 
 /*注册协议样式*/
-.agr_wrap{width: 1100px;margin: 20px auto;padding: 10px 54px;border: 1px solid #ccc;font-size: 14px;word-wrap: break-word;font-family: "微软雅黑";line-height: 25px;}
+.agr_wrap{background-color: #f5f5f5;}
+.agr_main{background-color: #f5f5f5; width: 1100px;margin: 20px auto;padding: 10px 54px;border: 1px solid #ccc;font-size: 14px;word-wrap: break-word;font-family: "微软雅黑";line-height: 25px;}
