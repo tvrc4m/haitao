@@ -224,7 +224,7 @@ input:-webkit-autofill,
 .login .protocol a{color: #959595;}
 .login .idcode{height: 40px;margin-bottom:20px;}
 .login .idcode .text{width: 130px;border: 1px solid #ccc;text-indent: 10px;padding: 7px 4px;}
-.login .idcode .btn{color: #FFF;background-color: #ff5c5d;height: 40px;border: none;cursor: pointer;width: 140px;margin-left:10px; }
+.login .idcode .btn{color: #FFF;background-color: #ff5c5d;height: 40px;border: none;cursor: pointer;width: 140px;float: right; }
 .login .lostpass{background: #fff;}
 .login .lostpass .title{height: 40px;margin-top:40px;line-height:40px;}
 .login .lostpass .title .first{display: inline-block;float: left;font-size: 20px;color: #f00;margin-left: 50px;}
