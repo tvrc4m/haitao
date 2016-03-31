@@ -41,12 +41,12 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 		foreach($number as $value){
 			$num .= $value;
 		}
-		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
+		if(empty($_SESSION['lost_yzm'])||$_SESSION['lost_yzm']['ltime']<time()) {
 			if ($a=Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $num, 10)) == 1) {
 				$vser['yzm'] = $num;
 				$vser['ytime'] = time()+60*10;
 				$vser['ltime'] = time()+60;
-				$_SESSION['mon_yzm'] = $vser;
+				$_SESSION['lost_yzm'] = $vser;
 			}
 			echo Return_data([
 					'status_code' => '200',
@@ -56,8 +56,8 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 		}else{
 			echo Return_data([
 					'status_code' => '300',
-					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
-					'data' => $_SESSION['mon_yzm']['ltime']-time()
+					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['lost_yzm']['ltime']-time()),
+					'data' => $_SESSION['lost_yzm']['ltime']-time()
 			]);
 		}
 		die;
@@ -65,6 +65,8 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 }
 
 if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
+
+    //$str = '/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/';
     if(preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
         //验证用户名唯一
         $sql="select * from ".MEMBER." where mobile = '".$_POST['mobile']."'";
@@ -117,10 +119,12 @@ if(!empty($_POST["action"])&&$_POST["action"]=="com")
 	}
 
 	//手机验证码
-	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
-		if($_SESSION['mon_yzm']['ytime']<time()){
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['lost_yzm']['yzm']){
+		if($_SESSION['lost_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
-		}
+		}else{
+            session_unset($_SESSION['lost_yzm']);
+        }
 	}else{
 		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
 	}
