@@ -540,3 +540,4 @@ a.goods_text {
 /*注册协议样式*/
 .agr_wrap{background-color: #f5f5f5;overflow: hidden;}
 .agr_main{background-color: #fff; width: 1100px;margin: 20px auto;padding: 10px 54px;border: 1px solid #ccc;font-size: 14px;word-wrap: break-word;font-family: "微软雅黑";line-height: 25px;}
+.agr_main a{line-height: 20px;background-color: #fe5f5c;color: #fff;border-radius: 5px;padding: 10px;margin-left: 453px;margin-bottom: 15px;cursor: pointer;}
