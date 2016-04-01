@@ -111,13 +111,6 @@ $(".step li:not(:last-child)").bind("click",function(){
     $(this).addClass('selected').siblings().removeClass("selected");
     $('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax&id='+id+'<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
 });
-$(function(){
-    if($("#cart_num").text() > 0){
-        $("#cart_num").css("display","inline-block");
-    }else{
-        $("#cart_num").css("display","none");
-    }
-});
 </script>
 <{/if}>
 <{include file="../../../templates/default/footer.htm"}>

@@ -3,7 +3,7 @@
 .cart-button{height:2.5rem;font-size:0.8rem;width: 5rem;margin-top: -1px; line-height:2.5rem;display:inline-block;background:#D63638;color:#FFFFFF!important;text-align:center;float: right;}
 .order{padding:0px 0px;font-size:14px;}
 .p-price-he{color: #666;padding-left: 1rem;}
-.choose_btn{line-height: 2.5rem;height: 2.5rem;position: fixed;
+.choose_btn{line-height: 50px;height: 50px;position: fixed;
     bottom: 0px;
     width: 100%;
     background-color: #f5f5f5;z-index: 99;}

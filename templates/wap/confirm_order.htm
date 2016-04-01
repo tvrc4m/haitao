@@ -136,7 +136,7 @@
 			<{/if}>
 			
         	<div class="fr">
-            <!-- <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span> -->
+           <!--  <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span> -->
             合计(含运费):&nbsp;&nbsp;
             <span class="p-name">
                 <strong class="price">
@@ -163,10 +163,9 @@
 </div>  
 <script>
 // $(".inventory .item").each(function(index){
-//     var itemDl=$(".item").eq(index).find("dl");
-//     itemDl.each(function(num){
-//         var a=itemDl.eq(index).find(".p-price-num-z").eq(num).html();
-//         console.log(a);
+//     $(this).find(".p-price-num-z").each(function(i){
+//         var itemDl=$(this).html();
+//         console.log(itemDl)
 //     })
 // })
 function count_price(id,flag)
@@ -256,3 +255,8 @@ $(function(){
 <{/if}>
 </section>
 <{/if}>
+<script type="text/javascript">
+    $(function(){
+        $("footer").css({"margin-bottom":"50px"})
+    })
+</script>

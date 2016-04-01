@@ -280,7 +280,8 @@ function count()
 		price = price.replace(/,/g, "")
 		price = Number(price);
 		count = count + price;
-		num ++;
+		// num ++;
+        num = num +parseInt($(this).parentsUntil("tbody").find("#nums").val());
 		$(this).parent().parent().parent().addClass("checked");
 	});
 	$(".subtotal").html(count.toFixed(2));
@@ -365,14 +366,5 @@ function edit_num(id,num,obj){
 		count()
 	}
 }
-
-$(function(){
-    if($("#cart_num").text() > 0){
-        $("#cart_num").css("display","inline-block");
-    }else{
-        $("#cart_num").css("display","none");
-    }
-});
-
 </script>
 <{include file="../../../templates/default/footer.htm"}>
