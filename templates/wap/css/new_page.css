@@ -950,7 +950,7 @@ ins,a
 .item img ,.avs img{width:100%!important;}
 
 /*首页轮播图*/
-.w100{height: 6.65rem;overflow: hidden;}
+.w100{height: 6.65rem;overflow: hidden;position: relative;}
 .t_slide {position: relative;max-width: 720px;height: 16rem;overflow: hidden;text-align: center;line-height: 0;margin: 0px auto;}
 .t_slide .slides {position: absolute;width: 100%;top: 0;left: 0;height: 100%;}
 .t_slide .slides li {position: absolute;width: 100%;top: 0;left: 0;line-height: 0;z-index: 400;}
