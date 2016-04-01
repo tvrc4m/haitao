@@ -20,6 +20,7 @@
 <section class="m_main">
     <div class="w100">
         <script src='<{$config.weburl}>/api/ad.php?id=13&catid=1'></script>
+        <div class="dot"></div>
     </div>
 </section>
 <!-- <section class="m_main">
@@ -97,7 +98,7 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_index.js"></script>
 <script type="text/javascript">
 $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
-$(".m_main .w100 .flexslider").append("<div class='dot'></div>")
+// $(".m_main .w100 .flexslider").append("")
     window.jsVersion = "7b3d28d5da";
     require.config({
         //By default load any module IDs from js/lib
@@ -128,6 +129,7 @@ $(".m_main .w100 .flexslider").append("<div class='dot'></div>")
     for(var i=0;i<imgIndex;i++){
         dot.append("<span></span>")
     }
+    $(".dot span").eq(0).addClass("cur");
     if(imgIndex==1){
         dot.html("");
     }

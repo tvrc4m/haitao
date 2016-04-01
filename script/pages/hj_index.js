@@ -97,10 +97,10 @@ define(["module", "utility"], function(module, Util) {
             lazyLoad : true,
             speed: time,
             firstCallback: function(i, sum, me) {
-                me.find(".dot").children().first().addClass('cur');
+                me.parent().find(".dot").children().first().addClass('cur');
             },
             callback: function(i, sum, me) {
-                me.find(".dot").children().eq(i).addClass('cur').siblings().removeClass('cur');
+                me.parent().find(".dot").children().eq(i).addClass('cur').siblings().removeClass('cur');
             }
         });
     }
