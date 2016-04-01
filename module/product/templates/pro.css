@@ -149,7 +149,7 @@
 .hotProduct .m{border:1px solid #DDDDDD;border-top:none;}
 .hotProduct .mt{border-top: 3px solid #007ae7;border-bottom:none;height: 48px;padding: 0;line-height: 48px;}
 .hotProduct .mt h3{text-align: center;color: #007ae7;font-size: 18px;}
-.hotProduct .mc{border:none;text-align:center;}
+.hotProduct .mc{border:none;text-align:center;font-size: 14px;}
 .hotProduct .mc li{border-top: 1px dashed #ddd;margin-bottom:10px;}
 .hotProduct .mc li img{width:150px;height: 160px}
 .hotProduct .mc li img{-webkit-transform:none;-moz-transform:none;-o-transform:none;transform:none;-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;transition:all .4s ease-out;}
