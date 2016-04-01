@@ -470,7 +470,7 @@ ins,a
 	-webkit-animation:iconaction .2s linear 5;
 }
 
-50%
+/*50%
 {
 	margin-top:5px;
 }
@@ -478,7 +478,7 @@ ins,a
 100%
 {
 	margin-top:0;
-}
+}*/
 
 .taoplus .circle
 {

@@ -384,7 +384,7 @@ function distribute_goods(id){
         if (spec != null && sign == 't')
         {
             $('#stock').html(spec.stock);
-            $('#price').html("￥ "+spec.price.toFixed(2));
+            $('#price').html("￥ "+parseFloat(spec.price).toFixed(2));
             $('#code').html(spec.code);
             $('#sid').val(spec.id);
             $('#sku').val(spec.code);
