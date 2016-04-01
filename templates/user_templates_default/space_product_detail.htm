@@ -275,7 +275,7 @@ function buy()
                             <li class="fav"><a href="javascript:collect_goods('<{$de.id}>');"><i></i>收藏商品</a></li>
                             <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><li class="fav"><a href="javascript:distribute_goods('<{$de.id}>');"><i></i>立即分销赚佣金</a></li><{/if}>
                             <li class="share"><a href="javascript:void(0);"><i></i>分享</a></li>
-                            <li class="ercode iconfont"><a href="javascript:void(0);" style="padding-left: 0"><span style="color:orange">&#xe626</span> 二维码</a></li>
+                            <li class="ercode iconfont"><a href="javascript:void(0);" style="padding-left: 0"><span style="color:orange">&#xe626</span>二维码</a></li>
                         </ul>
                         <div class="qrcode" style="float: right; padding-right: 70px;display: none"><img src="api/share_qrcode.php?type=product&pid=<{$smarty.get.id}>&rand=<{math equation=rand(1,10000)}>"></div>
                         <div class="bshare-custom icon-medium hidden">
