@@ -468,7 +468,7 @@ ul,ol{list-style:none}
 .newfooter .foot .attention a{width: 32px;height: 31px;display: inline-block;vertical-align: middle;background-repeat: no-repeat;overflow: hidden;}
 .newfooter .foot .attention div{box-shadow:0 0 10px #DDDDDD;width: 130px;padding: 25px;position: absolute;background: #fff;border:1px solid #dedede;}
 .newfooter .foot .attention .arr{position: absolute;bottom: -12px;left: 80px;display: inline-block;width: 16px;height: 16px;background: url(../../../image/default/arr1.png);}
-.newfooter .foot .attention span{line-height: 20px;border-bottom: none;font-size: 14px;}
+.newfooter .foot .attention span{line-height: 20px;border-bottom: none;font-size: 14px;color: #333;}
 .newfooter .foot .attention .focus{background: #007ae8;color: #fff;padding: 5px 10px;border-radius: 3px;margin-top: 5px;}
 .newfooter .foot .weibo{background-image: url(../../../image/default/sina.png);}
 .newfooter .foot .weixin{background-image: url(../../../image/default/weixin.png);}
