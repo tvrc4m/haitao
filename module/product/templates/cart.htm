@@ -280,7 +280,8 @@ function count()
 		price = price.replace(/,/g, "")
 		price = Number(price);
 		count = count + price;
-		num ++;
+		// num ++;
+        num = num +parseInt($(this).parentsUntil("tbody").find("#nums").val());
 		$(this).parent().parent().parent().addClass("checked");
 	});
 	$(".subtotal").html(count.toFixed(2));
