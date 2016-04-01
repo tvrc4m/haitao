@@ -665,11 +665,11 @@ $(".mc li:last").css("border-bottom","none");
 function shareTo(site){
   var e = encodeURIComponent, s = screen, d = document, wd = 640, hg = 480, u = d.location;
   var uuid = '';
-  var img ="http://ww4.sinaimg.cn/mw690/005QP7Jmgw1em6xv6694hg30dw07unei.gif";
+  var img =$(".jqzoom").attr("src");
 
-  var ctxt = "";
+  var ctxt = $(".summary .title>p").text();
   
-var url = "http://api.bshare.cn/share/"+site+"?url="+e("http://www.bshare.cn")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
+var url = "http://api.bshare.cn/share/"+site+"?url="+e("https://www.mayihaitao.com")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
   window.open(url, 'bshare', ['toolbar=0,status=0,resizable=1,width='+ wd +',height='+ hg +',left='+ (s.width - wd) / 2+ ',top='+ (s.height - hg) / 2]);
 
 }
