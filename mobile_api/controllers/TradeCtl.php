@@ -866,8 +866,8 @@ fb($order_rows);
 	public function orderAdd()
 	{
 		$user_id = Perm::$userId;
-		echo $consignee_id = request_int('consignee_id'); //收货地址id
-		echo $pid = request_string('pid_row');		 //商品id字符串
+		$consignee_id = request_int('consignee_id'); //收货地址id
+		$pid = request_string('pid_row');		 //商品id字符串
 		$pid_row = explode(',', $pid);
 
 		if($consignee_id)
@@ -1000,115 +1000,113 @@ fb($order_rows);
 				}
 			}
 		}
-//fb($sumprice);
-		//免运费设置
-		$shop_data = $ShopModel->getShop($seller_id);
-		// foreach ($shop_data as $key) 
-		// {
-		// 	$shop_free_shipping = $key['shop_free_shipping'];
-		// 	$shop_free_price_str = $key['shop_free_price'];
-		// }
+        //fb($sumprice);
+        //免运费设置
+        $shop_data = $ShopModel->getShop($seller_id);
+        // foreach ($shop_data as $key)
+        // {
+        // 	$shop_free_shipping = $key['shop_free_shipping'];
+        // 	$shop_free_price_str = $key['shop_free_price'];
+        // }
+        //fb($cart_pro_rows);
+        //fb($shop_data);
+        foreach ($shop_data as $kes =>$key) //店铺信息
+        {
+                $re = array();
+                $list = array();
+                $list['is_invoice'] = 0;
+                //fb($key);
+                $shop_free_shipping = $key['shop_free_shipping'];
+                $shop_free_price_str = $key['shop_free_price'];
 
-//fb($cart_pro_rows);
-//fb($shop_data);
-foreach ($shop_data as $kes =>$key) //店铺信息
-{
-$re = array();
-$list = array();
-$list['is_invoice'] = 0;
-//fb($key);
-$shop_free_shipping = $key['shop_free_shipping'];
-$shop_free_price_str = $key['shop_free_price'];
+                $shop_free_price_row = json_decode($shop_free_price_str);
 
+                $shop_free_shipping = $shop_free_shipping ? $shop_free_shipping : "0";
 
-		$shop_free_price_row = json_decode($shop_free_price_str);
+                if($sumprice[$kes] >= $shop_free_shipping)
+                {
+                    $list['mail'] = $list['ems'] = $list['express'] = 0; //免运费设置end
+                }
+                else
+                {
+                    $mail = $ems = $express = 0;
+                    $logistics = array();
+                    //fb($cart_pro_rows[$key['userid']]);
+                    $akey = $key['userid'];
+                    foreach ($cart_pro_rows[$key['userid']] as $val)
+                    {
+                        fb($val);
+                        //foreach ($value as $ke => $val) {
 
-		$shop_free_shipping = $shop_free_shipping ? $shop_free_shipping : "0";
+                            //获取商品平邮、快递、EMS、总邮费
+                            $logistics[$val['freight']]['freight_id'] = $val['freight'];
+                            $logistics[$val['freight']]['freight_type'] = $val['freight_type'];
+                            $logistics[$val['freight']]['num'] = $val['num'];
+                            $logistics[$val['freight']]['weight'] = $val['weight']*$val['num'];
+                            $logistics[$val['freight']]['cubage'] = $val['cubage']*$val['num'];
+                        //}
+                    }
 
-		if($sumprice[$kes] >= $shop_free_shipping)
-		{
-			$list['mail'] = $list['ems'] = $list['express'] = 0; //免运费设置end
-		}
-		else
-		{
-			$mail = $ems = $express = 0;
-			$logistics = array();
-			//fb($cart_pro_rows[$key['userid']]);
-			$akey = $key['userid'];
-			foreach ($cart_pro_rows[$key['userid']] as $val) 
-			{
-				fb($val);
-				//foreach ($value as $ke => $val) {
-					
-					//获取商品平邮、快递、EMS、总邮费
-					$logistics[$val['freight']]['freight_id'] = $val['freight'];
-					$logistics[$val['freight']]['freight_type'] = $val['freight_type'];
-					$logistics[$val['freight']]['num'] = $val['num'];
-					$logistics[$val['freight']]['weight'] = $val['weight']*$val['num'];
-					$logistics[$val['freight']]['cubage'] = $val['cubage']*$val['num'];
-				//}
-			}
+                    foreach($logistics as $key => $val)
+                    {
+                        if(intval($val['freight_type']))
+                        {
+                            //获取运费模板平邮、快递、EMS
+                            $Logistics_TempModel = new Logistics_TempModel();
+                            $price_types = $Logistics_TempModel->getTemp($val['freight_id']);
+                            $unit = $price_types[$val['freight_id']]['price_type'];
 
-			foreach($logistics as $key => $val)
-			{
-				if(intval($val['freight_type']))
-				{
-					//获取运费模板平邮、快递、EMS
-					$Logistics_TempModel = new Logistics_TempModel();
-					$price_types = $Logistics_TempModel->getTemp($val['freight_id']); 
-					$unit = $price_types[$val['freight_id']]['price_type'];
+                            //更加expess、mail、ems获取自定义物流模板内容
+                            $Logistics_TempConModel = new Logistics_TempConModel();
+                            $tempcon_express = $Logistics_TempConModel->getTempConByType($val['freight_id'],$area,'express',$unit,$val['num']);
+                            $express +=$tempcon_express;
 
-					//更加expess、mail、ems获取自定义物流模板内容
-					$Logistics_TempConModel = new Logistics_TempConModel();
-					$tempcon_express = $Logistics_TempConModel->getTempConByType($val['freight_id'],$area,'express',$unit,$val['num']);
-					$express +=$tempcon_express;
+                            $tempcon_mail = $Logistics_TempConModel->getTempConByType($val['freight_id'],$area,'mail',$unit,$val['num']);
+                            $mail +=$tempcon_mail;
 
-					$tempcon_mail = $Logistics_TempConModel->getTempConByType($val['freight_id'],$area,'mail',$unit,$val['num']);
-					$mail +=$tempcon_mail;
+                            $tempcon_ems = $Logistics_TempConModel->getTempConByType($val['freight_id'],$area,'ems',$unit,$val['num']);
+                            $ems +=$tempcon_ems;
+                        }
+                    }
+                    $list['mail'] = $re['mail'] = $mail;
+                    $list['ems'] = $re['ems'] = $ems;
+                    $list['express'] = $re['express'] = $express;
+                    //fb($list);
+                    if($re['mail']>0 || $re['ems']>0 || $re['express']>0)
+                    {
+                        if($re['mail'] <= 0){$list['mails'] = 1;}else{$list['mails'] = 0;}
+                        if($re['ems'] <= 0){$list['emss'] = 1;}else{$list['emss'] = 0;}
+                        if($re['express'] <= 0){$list['expresss'] = 1;}else{$list['expresss'] = 0;}
+                    }
+                    else
+                    {
+                        $list['mails'] = 0;
+                        $list['emss'] = 0;
+                        $list['expresss'] = 0;
+                    }
+                }
 
-					$tempcon_ems = $Logistics_TempConModel->getTempConByType($val['freight_id'],$area,'ems',$unit,$val['num']);
-					$ems +=$tempcon_ems;
-				}	
-			}
-			$list['mail'] = $re['mail'] = $mail;
-		 	$list['ems'] = $re['ems'] = $ems;
-			$list['express'] = $re['express'] = $express;
-			//fb($list);
-			if($re['mail']>0 || $re['ems']>0 || $re['express']>0)
-			{
-				if($re['mail'] <= 0){$list['mails'] = 1;}else{$list['mails'] = 0;}
-			 	if($re['ems'] <= 0){$list['emss'] = 1;}else{$list['emss'] = 0;}
-				if($re['express'] <= 0){$list['expresss'] = 1;}else{$list['expresss'] = 0;}
-			}
-			else
-			{
-				$list['mails'] = 0;
-				$list['emss'] = 0;
-				$list['expresss'] = 0;
-			}
-		}
+                $list['sumprice'] = $sumprice[$kes];//单个卖家的商品总价
+                $list['prolist']  = $cart_pro_rows[$akey]; //单个商店的产品列表
+                //fb($list);
 
-		$list['sumprice'] = $sumprice[$kes];//单个卖家的商品总价
-		$list['prolist']  = $cart_pro_rows[$akey]; //单个商店的产品列表
-		//fb($list);
+                //获取当前店铺下可用的代金券
+                $v_price = $sumprice[$kes] ? $sumprice[$kes] : '0';
+                $VoucherModel = new VoucherModel();
+                $voucher[$kes] = $VoucherModel->getVoucherByMid($user_id,$kes,$v_price);
 
-		//获取当前店铺下可用的代金券
-		$v_price = $sumprice[$kes] ? $sumprice[$kes] : '0';
-		$VoucherModel = new VoucherModel();
-		$voucher[$kes] = $VoucherModel->getVoucherByMid($user_id,$kes,$v_price);
+                $lists[$kes] = $list;
 
-		$lists[$kes] = $list;
-
-}
-// fb($voucher);
-// fb($lists);
-// fb($data);
+        }
+        // fb($voucher);
+        // fb($lists);
+        // fb($data);
 		foreach ($data as $key => $value) 
 		{
 			$rde[$value['seller_id']] = $value;
 		}
-//fb($re);
-$sumprices = 0;
+        //fb($re);
+        $sumprices = 0;
 		foreach ($rde as $key => $value) 
 		{
 			if($lists[$key]['prolist'])
@@ -1137,7 +1135,7 @@ $sumprices = 0;
 
 		//循环店铺，生成多个订单
 
-fb($res);
+        fb($res);
 
 		//合并付款
 		$uprice = 0;
@@ -1358,33 +1356,29 @@ fb($res);
 		$flag = $Product_CartModel->removeUserCart($pid_row,$user_id);
 
 		//更改流水订单状态
+        }
+        else
+        {
+            $flag = false;
+            $dat = array('message' => '请填写正确的收货地址');
+        }
+        }
+        else
+        {
+            $flag = false;
+            $dat = array('message' => '请填写收货地址');
+        }
 
-
-	}
-	else
-	{
-		$flag = false;
-		$dat = array('message' => '请填写正确的收货地址');
-	}
-	}
-	else
-	{
-		$flag = false;
-		$dat = array('message' => '请填写收货地址');
-	}
-
-		if ($flag)
-		{
-			$msg    = 'success';
-			$status = 200;
-		}
-		else
-		{
-			$msg    = 'failure';
-			$status = 250;
-		}
-
-
+        if ($flag)
+        {
+            $msg    = 'success';
+            $status = 200;
+        }
+        else
+        {
+            $msg    = 'failure';
+            $status = 250;
+        }
 		$this->data->addBody(-140, $dat, $msg, $status);
 	}
 
@@ -1569,10 +1563,6 @@ fb($res);
 
 	}
 
-
-
-
-
 	/**
 	 * 退款/退货
 	 *	$status = '0'
@@ -1683,10 +1673,6 @@ fb($res);
 
 			}
 		}
-
-
-
-
 
 		$MemberModel = new MemberModel();
 		$user_row = $MemberModel->getMember($user_id);
@@ -1814,8 +1800,6 @@ fb($res);
 		$this->data->addBody(-140, $data, $msg, $status);
 		
 	}
-
-
 
 	/**
 	 * 取消订单（未付款）
@@ -1986,11 +1970,7 @@ fb($res);
 			$msg    = 'failure';
 			$status = 250;
 		}
-
-
 		$this->data->addBody(-140, array(), $msg, $status);
-
-		
 	}
 
 
@@ -2029,8 +2009,6 @@ fb($res);
 			$msg    = 'failure';
 			$status = 250;
 		}
-
-
 		$this->data->addBody(-140, $order_row, $msg, $status);
 	}
 
@@ -2140,7 +2118,6 @@ fb($res);
 					{
 						$Product_OrderModel->editOrder($v['id'],$file1);
 					}
-					
 
 					//获取订单商品详情
 					$Product_OrderProModel = new Product_OrderProModel();
@@ -2226,7 +2203,6 @@ fb($res);
 			$msg    = 'failure';
 			$status = 250;
 		}
-
 
 		$this->data->addBody(-140, $res, $msg, $status);
 	}
