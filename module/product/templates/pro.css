@@ -131,6 +131,8 @@
 .itemSearchResult .p-info{padding-bottom: 20px;}
 .itemSearchResult .border_left{border-left: 1px solid #ddd;}
 .itemSearchResult li{float:left;display:inline;text-align:left;width:228px;padding:0 10px;border-bottom:1px solid #ddd;border-right: 1px solid #ddd;}
+.itemSearchResult li img{-webkit-transform:none;-moz-transform:none;-o-transform:none;transform:none;-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;transition:all .4s ease-out;}
+.itemSearchResult li:hover img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 /*.itemSearchResult li:hover{border:1px solid #DDDDDD;box-shadow:0 0 8px #DDDDDD;position:relative;}*/
 .itemSearchResult .p-img{display:block;height:200px;width:200px;padding: 0;margin: 30px auto;}
 .itemSearchResult .p-name{display:block;height:40px;line-height:20px;margin:0 20px;}
@@ -150,6 +152,8 @@
 .hotProduct .mc{border:none;text-align:center;}
 .hotProduct .mc li{border-top: 1px dashed #ddd;margin-bottom:10px;}
 .hotProduct .mc li img{width:150px;height: 160px}
+.hotProduct .mc li img{-webkit-transform:none;-moz-transform:none;-o-transform:none;transform:none;-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;transition:all .4s ease-out;}
+.hotProduct .mc li:hover img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 .hotProduct .mc li .p-price{text-align: left;margin-left: 20px;font-size: 18px;}
 .hotProduct .mc li .p-name{height:40px;line-height:20px;padding: 0 20px;text-align: left;}
 /*------------------------End------------------------*/
