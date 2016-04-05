@@ -9,7 +9,7 @@
 <link href="<{$config.weburl}>/templates/default/page.css" rel="stylesheet" type="text/css" />
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/login.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/lostpass.js" type="text/javascript"></script>
 </head>
 <body class="login">
 <div>
@@ -30,7 +30,7 @@
         </div>
         <div class="form lostpass1">
             <form id="lostpass" name="lostpass" action="lostpass.php" method="post">
-                <div>
+                <!-- <div>
                     <dl>
                         <dt><img src="image/default/icon2.png"></dt>
                         <dd>
@@ -38,19 +38,10 @@
                         </dd>
                     </dl>
                     <span></span>
-                </div>
+                </div> -->
                 <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
                 <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
-                <div>
-                    <dl>
-                        <dt><img src="image/default/icon3.png"></dt>
-                        <dd>
-                            <input class="text" type="password" name="password" maxlength="12" id="password" tabindex="2" autocomplete="off" placeholder="新密码"/>
-                        </dd>
-                    </dl>
-                    <span></span>
-                </div>
                 <div>
                     <dl>
                         <dt><img src="image/default/icon6.png"></dt>
@@ -63,6 +54,15 @@
                 <div class="idcode">
                     <input class="text" tabindex="2" autocomplete="off" maxlength="6" name="smsvode" placeholder="短信验证码"/>
                     <input class="btn" type="button" value="发送短信验证码" />
+                </div>
+                 <div>
+                    <dl>
+                        <dt><img src="image/default/icon3.png"></dt>
+                        <dd>
+                            <input class="text" type="password" name="password" maxlength="12" id="password" tabindex="2" autocomplete="off" placeholder="新密码"/>
+                        </dd>
+                    </dl>
+                    <span></span>
                 </div>
                 
                 <{if $smarty.get.erry=="-2"}>

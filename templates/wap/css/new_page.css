@@ -470,7 +470,7 @@ ins,a
 	-webkit-animation:iconaction .2s linear 5;
 }
 
-50%
+/*50%
 {
 	margin-top:5px;
 }
@@ -478,7 +478,7 @@ ins,a
 100%
 {
 	margin-top:0;
-}
+}*/
 
 .taoplus .circle
 {
@@ -950,13 +950,13 @@ ins,a
 .item img ,.avs img{width:100%!important;}
 
 /*首页轮播图*/
-.w100{height: 6.65rem;overflow: hidden;}
+.w100{height: 6.65rem;overflow: hidden;position: relative;}
 .t_slide {position: relative;max-width: 720px;height: 16rem;overflow: hidden;text-align: center;line-height: 0;margin: 0px auto;}
 .t_slide .slides {position: absolute;width: 100%;top: 0;left: 0;height: 100%;}
 .t_slide .slides li {position: absolute;width: 100%;top: 0;left: 0;line-height: 0;z-index: 400;}
 .t_slide .slides li img {width:100%;height: auto;width: auto\9;}
 .dot {bottom: .2rem;text-align: center;z-index: 400;position: absolute;width: 100%;}
-.dot span {display: inline-block;width: 8px;height: 8px;margin: 0 2px;background-color: #fff; border-radius: 100%;}
+.dot span {display: inline-block;width: 8px;height: 8px;margin: 0 2px;background-color: #ccc; border-radius: 100%;}
 .dot .cur {background-color: #ff5c5c;}
 /*** 附近的店铺 ****/
 .righdhd ul.mides{list-style:none;margin-left:8px; margin-right:10px;display:block; float:left;}

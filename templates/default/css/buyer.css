@@ -10,7 +10,8 @@ fieldset,img{border:medium none;}
 caption,th{text-align:left;}
 table{border-collapse:collapse;border-spacing:0;}
 body{background:none repeat scroll 0 0 #FFF;color:#333333;font:12px/1.5 Tahoma,Helvetica,Arial,'宋体',sans-serif;}
-input,select,textarea{font:12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;}
+/*input,select,textarea{font:12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;}*/
+select,textarea{font:12px/1 Tahoma,Helvetica,Arial,"\5b8b\4f53",sans-serif;}
 a{outline:medium none;color:#0579C6;}
 a:link,a:visited,a:active{text-decoration:none;}
 a:hover{text-decoration:underline;}
@@ -35,8 +36,8 @@ li{list-style-type:none;}
 /*==============================*/ 
 select{background-color:#FFFFFF;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-image:none;border-style:solid;border-width:1px;box-shadow:2px 2px 1px 0 #E7E7E7 inset;height:24px;line-height:24px;padding:1px;}
 textarea{background-color:#FBFBFB;border-color:#CCCCCC;border-image:none;border-style:solid;border-width:1px;font-family:Tahoma;line-height:20px;padding:6px;resize:none;}
-input[type="text"],input[type="password"],input.text,input.password{background-color:#FBFBFB;border:1px solid #CCCCCC;font-family:Tahoma;height:17px;line-height:17px;padding:4px 8px;vertical-align:middle;}
-
+/*input[type="text"],input[type="password"],input.text,input.password{background-color:#FBFBFB;border:1px solid #CCCCCC;font-family:Tahoma;height:17px;line-height:17px;padding:4px 8px;vertical-align:middle;}*/
+input[type="password"],input.text,input.password{background-color:#FBFBFB;border:1px solid #CCCCCC;font-family:Tahoma;height:17px;line-height:17px;padding:4px 8px;vertical-align:middle;}
 input.submit{background:url(../../../image/default/user_admin/submit.gif) no-repeat;border:0 none;border-radius:4px 4px 4px 4px;box-shadow:1px 1px 0 rgba(0, 0, 0, 0.1);color:#555555;cursor:pointer;font-weight:700;height:34px;line-height:34px;width:120px;}
 input.submit:hover{background:url(../../../image/default/user_admin/submit.gif) 0 bottom no-repeat;box-shadow:none;color:#000000;}
 /*==============================*/

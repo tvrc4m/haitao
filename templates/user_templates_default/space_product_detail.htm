@@ -1,27 +1,51 @@
 <script src="<{$config.weburl}>/script/jquery.ui.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/dialog/dialog.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/jquery.imagezoom.min.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/jquery.fly.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $(".add-cart").click(function(){
-        if ('<{$shop_user}>'=='<{$smarty.cookies.USER}>')
-        {
+    $(".add-cart").click(function(event) {
+        if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
             alert('不能购买自己店铺的商品！');
             return;
         }
-        flag=buy();
-        if(flag)
-        {
-        var price=$('#price').html();
-        var num=$('#nums').val();
-        var sid=$('#sid').val();
-        var pid='<{$smarty.get.id}>';
-        var dist_user_id='<{$smarty.get.shop_id}>';
-        $('#cart_show').fadeIn(500);
-        $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price='+price+'&nums='+num+'&id='+pid+'&sid='+sid+'&dist_user_id='+dist_user_id);
-        x=$(".buy_box").offset();
-        $("#cart_show").offset({top:x.top,left:x.left});
-        return false;
+        flag = buy();
+        if (flag) {
+            var offset = $("#cart_num").offset();
+            var img = $(".jqzoom").attr('src');
+            var flyer = $('<img class="u-flyer" src="' + img + '">');
+            flyer.fly({
+                start: {
+                    left: event.pageX,
+                    //开始位置（必填）#fly元素会被设置成position: fixed 
+                    top: event.pageY //开始位置（必填） 
+                },
+                end: {
+                    left: offset.left + 10,
+                    //结束位置（必填） 
+                    top: offset.top + 10,
+                    //结束位置（必填） 
+                    width: 0,
+                    //结束时宽度 
+                    height: 0 //结束时高度 
+                },
+                onEnd: function() { //结束回调 
+                    var price = $('#price').html();
+                    var num = $('#nums').val();
+                    $("#cart_num").text(parseInt($('#nums').val())+parseInt($('#cart_num').text()));
+                    var sid = $('#sid').val();
+                    var pid = '<{$smarty.get.id}>';
+                    var dist_user_id = '<{$smarty.get.shop_id}>';
+                    $('#cart_show').fadeIn(500);
+                    $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
+                    x = $(".buy_box").offset();
+                    $("#cart_show").offset({
+                        top: x.top,
+                        left: x.left
+                    });
+                    return false;
+                }
+            });
         }
     });
     $("#low_num").click(function(){
@@ -109,7 +133,7 @@ function buy()
                         </div>
                         <ul id="jqzoom" class="clearfix">
                             <{foreach item=pic key=num from=$de.pic_more}>
-                           <!--  <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>_60X60.jpg" big="<{$pic}>" height="60" width="60" class="jqzoom-img"></li> -->
+                            <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>_60X60.jpg" big="<{$pic}>" height="60" width="60" class="jqzoom-img"></li>
                             <{/foreach}>
                         </ul>
                     </div>
@@ -275,7 +299,7 @@ function buy()
                             <li class="fav"><a href="javascript:collect_goods('<{$de.id}>');"><i></i>收藏商品</a></li>
                             <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><li class="fav"><a href="javascript:distribute_goods('<{$de.id}>');"><i></i>立即分销赚佣金</a></li><{/if}>
                             <li class="share"><a href="javascript:void(0);"><i></i>分享</a></li>
-                            <li class="ercode iconfont"><a href="javascript:void(0);" style="padding-left: 0"><span style="color:orange">&#xe626</span> 二维码</a></li>
+                            <li class="ercode iconfont"><a href="javascript:void(0);" style="padding-left: 0"><span style="color:orange">&#xe626</span>二维码</a></li>
                         </ul>
                         <div class="qrcode" style="float: right; padding-right: 70px;display: none"><img src="api/share_qrcode.php?type=product&pid=<{$smarty.get.id}>&rand=<{math equation=rand(1,10000)}>"></div>
                         <div class="bshare-custom icon-medium hidden">
@@ -359,8 +383,7 @@ function buy()
                     <div class="shop-info-bd clearfix">
                         <div class="shop-rate clearfix">
                             <dl>
-                                <dt>描述<{$score.a}></dt>
-
+                                <dt>描述</dt>
                                 <dd><b><{$score.a|number_format:1}></b></dd>
                             </dl>
                             <dl>
@@ -666,11 +689,11 @@ $(".mc li:last").css("border-bottom","none");
 function shareTo(site){
   var e = encodeURIComponent, s = screen, d = document, wd = 640, hg = 480, u = d.location;
   var uuid = '';
-  var img ="http://ww4.sinaimg.cn/mw690/005QP7Jmgw1em6xv6694hg30dw07unei.gif";
+  var img =$(".jqzoom").attr("src");
 
-  var ctxt = "";
+  var ctxt = $(".summary .title>p").text();
   
-var url = "http://api.bshare.cn/share/"+site+"?url="+e("http://www.bshare.cn")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
+var url = "http://api.bshare.cn/share/"+site+"?url="+e("https://www.mayihaitao.com")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
   window.open(url, 'bshare', ['toolbar=0,status=0,resizable=1,width='+ wd +',height='+ hg +',left='+ (s.width - wd) / 2+ ',top='+ (s.height - hg) / 2]);
 
 }

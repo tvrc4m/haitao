@@ -16,7 +16,7 @@ sup{vertical-align:text-top}
 sub{vertical-align:text-bottom}
 /* a */
 a{display:inline-block;color:#333;text-decoration:none;outline:none}
-a:hover{color:#007be6;text-decoration:none}
+a:hover{color:#ff5853;text-decoration:none}
 /* list */
 ul,ol{list-style:none}
 /*margin*/
@@ -158,7 +158,7 @@ ul,ol{list-style:none}
 .goods_items .til span{float:left;padding-left:15px;font-size:18px;letter-spacing:1px}
 .goods_items .til p{float:right;height:50px;}
 .goods_items .til p a{margin-left:20px;color:#666}
-.goods_items .til p a:hover{color:#007be6;}
+.goods_items .til p a:hover{color:#ff5853;}
 
 .til_01{border-left:20px solid #ff5853;color:#ff5853}
 .til_02{border-left:20px solid #9a4bc3;color:#9a4bc3}

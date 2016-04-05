@@ -55,13 +55,14 @@ if($cat_pro)
 			$cat_pro[$key]['rand'][]=rand(0,$count);
 
 		}
-		$guang = [
-			[15,16,17],
-			[18,19,20],
-			[21,22,23],
-			[24,25,26],
-			[27,28,29]
-		];
+
+        $guang = array(
+            array(15,16,17),
+            array(18,19,20),
+            array(21,22,23),
+            array(24,25,26),
+            array(27,28,29)
+        );
 		if($key<1005){
 			$cat_pro[$key]['guanggao'] = $guang[$i];
 			$i++;
@@ -70,6 +71,7 @@ if($cat_pro)
 	/*echo '<pre>';
 	print_r($cat_pro);*/
 	$tpl->assign("categorys",$cat_pro);
+
 }
 if($config['temp'] != "wap")
 {
@@ -77,7 +79,7 @@ if($config['temp'] != "wap")
 	$db->query($sql);
 	$member = $db->fetchRow();
 	$tpl->assign("member",$member);
-	
+
 	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '1' ";
 	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '3' ";
 	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '4' and buyer_comment='0' and seller_comment = '0' ";	
@@ -111,6 +113,7 @@ $cominfo=$shop->get_shop_info($buid);
 $tpl->assign("cominfo",$cominfo);
 
 $tpl->assign("cat_pro",$cat_pro);
+
 $tpl->assign("current","index");
 include_once("footer.php");
 //=============================================

@@ -24,10 +24,10 @@ if ($connect_config['ucenter_connect'])
 
 //发送验证码
 if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
-	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
+	if(!empty($_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
 		$number = rand(100000,999999);
 		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
-			if (Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
+			if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
 				$vser['yzm'] = $number;
 				$vser['ytime'] = time()+60*10;
 				$vser['ltime'] = time()+60;
@@ -47,6 +47,78 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 		}
 		 die;
 	}
+}
+
+if(!empty($_POST['user'])&&$_POST['is_check']=='check'){
+    if(preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $_POST['user'])){
+        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
+        //验证用户名唯一
+        $sql="select * from ".MEMBER." where user = '".$_POST['user']."'";
+        $db->query($sql);
+        if($db->num_rows()){
+            echo Return_data(array(
+                'status_code' => '300',
+                'message' => '该用户已存在！',
+                'data' => null
+            ));die;
+        }else{
+            echo Return_data(array(
+                'status_code' => '200',
+                'message' => '用户名可用！',
+                'data' => null
+            ));die;
+        }
+    }else{
+        echo Return_data(array(
+            'status_code' => '300',
+            'message' => '请填正确的用户名！',
+            'data' => null
+        ));die;
+    }
+    die;
+}else if($_POST['is_check']=='check'){
+    echo Return_data(array(
+        'status_code' => '300',
+        'message' => '请填写用户名！',
+        'data' => null
+    ));
+    die;
+}
+
+if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
+    if(preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
+        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
+        //验证用户名唯一
+        $sql="select * from ".MEMBER." where mobile = '".$_POST['mobile']."'";
+        $db->query($sql);
+        if($db->num_rows()){
+            echo Return_data(array(
+                'status_code' => '300',
+                'message' => '该手机号已存在！',
+                'data' => null
+            ));die;
+        }else{
+            echo Return_data(array(
+                'status_code' => '200',
+                'message' => '手机号可用！',
+                'data' => null
+            ));die;
+        }
+    }else{
+        echo Return_data(array(
+            'status_code' => '300',
+            'message' => '请填正确的手机号！',
+            'data' => null
+        ));die;
+    }
+    die;
+}else if($_POST['check_mobile']=='check'){
+    echo Return_data(array(
+        'status_code' => '300',
+        'message' => '请填写手机号！',
+        'data' => null
+    ));
+    die;
 }
 
 if($buid)
@@ -80,13 +152,13 @@ if(!empty($_POST['user']))
 	}
 
 	//手机验证码
-	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
 		if($_SESSION['mon_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
-		}
+		}else{
+            session_unset($_SESSION['mon_yzm']);
+        }
 	}else{
-		var_dump($_SESSION['mon_yzm']['yzm']);
-		var_dump($_POST['smsvode']);
 		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
 	}
 
@@ -307,9 +379,9 @@ function Send_msg($mob = null, $con = null)
 //格式数据返回
 function Return_data($data = null, $type = 'json'){
 	if($type == 'json'){
-		return json_encode($data);
+		return json_encode($data, JSON_UNESCAPED_UNICODE);
 	}
 }
-include_once("footer.php");	
+include_once("footer.php");
 $tpl->display("register.htm");
 ?>

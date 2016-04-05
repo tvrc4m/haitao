@@ -240,7 +240,11 @@ switch ($action)
 					
 					//---------------------------------
 					//获取当前用户店铺动态评分
-					$admin->tpl->assign("shop_comment",$shop->get_shop_comment());
+                    $shop_comment = $shop->get_shop_comment();
+                    foreach($shop_comment as $key => $val){
+                        $shop_comment[$key] = empty($val) ? 0 : $val ;
+                    }
+					$admin->tpl->assign("shop_comment",$shop_comment);
 					//获取当前用户产品 评论 订单 数量
 					
 					$count['consult']=$shop->GetConsultNumber();

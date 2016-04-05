@@ -44,6 +44,7 @@ if(!$cache->begin(array($id,'','',$_GET['catid']),3600*0))
 	$db->query("update ".ADVSCON." set shownum = shownum + 1 where group_id='$id'");//广告展示次数加
 	$db->query("select ad_type,width,height,id from ".ADVS." where ID='$id'");
 	$ad_re=$db->fetchRow();
+
 	if(empty($ad_re['id']))
 	{
 		$sql="insert into ".ADVS." (id,ad_type,width,height) values ('$id','1','100','100')";

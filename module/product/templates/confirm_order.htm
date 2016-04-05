@@ -37,62 +37,79 @@ weburl="<{$config.weburl}>";
 <{elseif $smarty.get.type=='orderf'}>
     <div class="w" style="margin:80px auto;">产品库存不足</div>
 <{else}>
-
+<div class="order_wrap">
 <div class="w order">
     <div id="step-1" class="step">
     <form action="" method="post">
-        <h3>
-            确认收货地址
-            <a target="_blank" href="main.php?m=member&s=admin_orderadder&cg_u_type=1">管理收货地址</a>
-        </h3>
+        <h3>确认订单信息</h3>
+        <div class="selectadd"><span>选择收货地址</span><a target="_blank" href="main.php?m=member&s=admin_orderadder&cg_u_type=1">管理收货地址</a></div>
         <ul>
             <{foreach item=list key=key from=$consignee}>
-			<li class="fn-clear<{if $list.default==2||$key==0}> selected<{/if}>">
-                <s></s>
+			<li class="fn-clear<{if $list.default==2||$key==0}> selected<{/if}>" value="<{$list.id}>">
+               <!--  <s></s>
                 <span>寄送至</span>
                 <label>
                 <input <{if $list.default==2||$key==0}>checked <{/if}>type="radio" name="id" value="<{$list.id}>" />
                 <{$list.area}> <{$list.address}>&nbsp;&nbsp;(<{$list.name}>&nbsp;收) 
                  <em><{$consignee.mobile}></em>
-                </label>
-                <!-- <div>
+                </label> -->
+                <div>
+                    <div class="modify clearfix">
+                        <a href="javascript:;" class="fr">修改</a>
+                    </div>
+                    <div class="addressee">
+                        <span class="name" op-value="full_name"><{$list.name}></span>
+                        <span class="phone" op-value="mobile"><{$list.mobile}></span>
+                    </div>
+                    <div class="address">
+                        <strong>寄送至</strong> <{$list.area}> <{$list.address}>
+                    </div>
+                    <div class="check">
+                        <i class="iconfont">√</i>
+                    </div>
+                </div>
+			</li>
+           <!--  <li class="fn-clear">
+                <div>
+                    <div class="modify clearfix">
+                        <a href="javascript:;" class="fr">修改</a>
+                    </div>
                     <div class="addressee">
                         <span class="name" op-value="full_name">田先生</span>
                         <span class="phone" op-value="mobile">18513290108</span>
-                        <span class="default" op-value="defalutMark" op-attr="style" style="display:none;">默认</span>
                     </div>
                     <div class="address">
-                        <strong>寄送至</strong> <span op-value="province_text">北京</span> <span op-value="city_text">北京市</span> <span op-value="area_text">朝阳区</span> <span op-value="address">尚都国际中心</span>
-                    </div>
-                    <div class="footer">
-                        <a href="javascript:;" class="modify view-ModifyAddressBtn" op-value="id" op-attr="address-id" address-id="18028680">修改</a>
+                        <strong>寄送至</strong>北京北京市朝阳区尚都国际中心
                     </div>
                     <div class="check">
-                        <i class="iconfont">󰂲</i>
+                        <i class="iconfont">√</i>
                     </div>
-                </div> -->
-			</li>
+                </div>
+            </li> -->
+                       
             <{/foreach}>
+            <li class="fn-clear">
+                <div class="addAddr"><a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&type=add">+ 添加新地址</a></div>
+            </li>
         </ul>
     </form>  
     </div>
     <div id="cart"></div>
 </div> 
+</div>
 <script>
 $('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
-$("#step-1").find("input[type='radio']").bind("click",function(){
-	var id=$(this).val();
-	$('#cart').html('<div class="loading"><p>正在努力加载中...</p></div>');
-	$(this).parent().parent().addClass('selected').siblings().removeClass("selected");
-	$('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax&id='+id+'<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
-});
-
-$(function(){
-    if($("#cart_num").text() > 0){
-        $("#cart_num").css("display","inline-block");
-    }else{
-        $("#cart_num").css("display","none");
-    }
+// $("#step-1").find("input[type='radio']").bind("click",function(){
+// 	var id=$(this).val();
+// 	$('#cart').html('<div class="loading"><p>正在努力加载中...</p></div>');
+// 	$(this).parent().parent().addClass('selected').siblings().removeClass("selected");
+// 	$('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax&id='+id+'<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
+// });
+$(".step li:not(:last-child)").bind("click",function(){
+    var id=$(this).attr("value");
+    $('#cart').html('<div class="loading"><p>正在努力加载中...</p></div>');
+    $(this).addClass('selected').siblings().removeClass("selected");
+    $('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax&id='+id+'<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
 });
 </script>
 <{/if}>
