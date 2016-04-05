@@ -956,7 +956,7 @@ ins,a
 .t_slide .slides li {position: absolute;width: 100%;top: 0;left: 0;line-height: 0;z-index: 400;}
 .t_slide .slides li img {width:100%;height: auto;width: auto\9;}
 .dot {bottom: .2rem;text-align: center;z-index: 400;position: absolute;width: 100%;}
-.dot span {display: inline-block;width: 8px;height: 8px;margin: 0 2px;background-color: #fff; border-radius: 100%;}
+.dot span {display: inline-block;width: 8px;height: 8px;margin: 0 2px;background-color: #ccc; border-radius: 100%;}
 .dot .cur {background-color: #ff5c5c;}
 /*** 附近的店铺 ****/
 .righdhd ul.mides{list-style:none;margin-left:8px; margin-right:10px;display:block; float:left;}
