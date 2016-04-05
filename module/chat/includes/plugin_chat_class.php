@@ -79,7 +79,7 @@ EOT;
 			}
 
 			$web_html .= '<script type="text/javascript" src="./script/jquery.charCount.js" charset="utf-8"></script>';
-			$web_html .= '<script type="text/javascript" src="./script/chat.js" charset="utf-8"></script>';
+			//$web_html .= '<script type="text/javascript" src="./script/chat.js" charset="utf-8"></script>';
 			$web_html .= '<script type="text/javascript" src="./script/chat/jquery.smilies.js" charset="utf-8"></script>';
 			$web_html .= '<script type="text/javascript" src="./script/my_lightbox.js" charset="utf-8"></script>';
 			$web_html .= '<script type="text/javascript" src="./script/chat/user.js" charset="utf-8"></script>';
