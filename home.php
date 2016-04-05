@@ -51,9 +51,13 @@
 			break;
 		}
 	}
-	
+
 	//访客
-	$tpl->assign("visitors",$home->Visitors($uid));
+    $visitors = $home->Visitors($uid);
+    foreach($visitors as $key => $val){
+        $visitors[$key]['dtime'] = date('m月 d日', intval($val[time]));
+    }
+	$tpl->assign("visitors",$visitors);
 	
 	$tpl->assign("title",'看TA怎么淘到好宝贝');
 	include_once("footer.php");
