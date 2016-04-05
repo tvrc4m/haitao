@@ -30,9 +30,12 @@ include_once($config['webroot']."/includes/function.php");
 
 if (!get_magic_quotes_gpc())
 {
-	$_POST    = quotes($_POST);
+    $a= array();
+    //2016-04-05 与下面的魔术方法重叠
+	//$_POST    = quotes($_POST);
 	$_GET     = quotes($_GET);
 	$_REQUEST = quotes($_REQUEST);
+
 }
 
 include_once($config['webroot']."/config/uc_config.php");
