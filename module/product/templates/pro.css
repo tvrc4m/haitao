@@ -135,7 +135,7 @@
 .itemSearchResult li:hover img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 /*.itemSearchResult li:hover{border:1px solid #DDDDDD;box-shadow:0 0 8px #DDDDDD;position:relative;}*/
 .itemSearchResult .p-img{display:block;height:200px;width:200px;padding: 0;margin: 30px auto;}
-.itemSearchResult .p-name{display:block;height:40px;line-height:20px;margin:0 20px;}
+.itemSearchResult .p-name{display:block;height:40px;line-height:20px;margin:0 20px;font-size: 14px;}
 .itemSearchResult .p-price{margin-left:20px;}
 .itemSearchResult .p-price strong{font-size:24px;color:#ff4545;font-weight: normal;}
 .itemSearchResult .p-shop{background:#F5F5F5;border-color:#DDDDDD;border-right:1px solid #DDDDDD;border-style:none solid solid;border-width:0 1px 1px;bottom:-20px;box-shadow:0 2px 4px #DDDDDD;display:none;height:25px;left:-1px;line-height:25px;position:absolute;text-align:center;width:100%;z-index:3;}
