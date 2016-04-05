@@ -872,88 +872,84 @@ fb($order_rows);
 
 		if($consignee_id)
 		{
-
 		
-		//获取收货地址
-		$Delivery_AddressModel = new Delivery_AddressModel();
-		$address = $Delivery_AddressModel->getAddress($consignee_id);
-		//fb($address);
-		if($address)
-		{
-
-
-		$addr = $address[$consignee_id];
-		//fb($addr);
-		$on_city = $address[$consignee_id]['cityid'];
-
-		$DistrictModel = new DistrictModel();
-		$area = $DistrictModel->getdistrictname($on_city);
-
-		
-		//从购物车表按照店铺读取商品信息
-		$Product_CartModel = new Product_CartModel();
-		$data = $Product_CartModel->getCartClist($user_id);
-
-
-		$sumprice = 0;
-		//获取店铺名称
-		foreach ($data as $key => $value) 
-		{
-			$ShopModel = new ShopModel();
-			$company = $ShopModel->getCompanyByUid($value['seller_id']);
-			$seller_id[] = $value['seller_id'];
-
-			$data[$key]['company'] = $company;
-
-			//获取单个店铺商品及商品总价格、平邮、快递、EMS、总邮费
-			$cart_list = $Product_CartModel->getCartList($user_id, $value['seller_id'], $pid_row);//cart表
-			
-			foreach ($cart_list as $ke => $va) 
+			//获取收货地址
+			$Delivery_AddressModel = new Delivery_AddressModel();
+			$address = $Delivery_AddressModel->getAddress($consignee_id);
+			//fb($address);
+			if($address)
 			{
-				$cart_list[$ke]['sumprice'] = $cart_list[$ke]['price']*$cart_list[$ke]['quantity']*1;
-				$cart_list[$ke]['num'] = $cart_list[$ke]['quantity'];
-				//product表
-				$ProductModel   = new ProductModel();
-				$product_row    = $ProductModel->getProduct($va['product_id']); 
-				$cart_list[$ke]['weight']   	= $product_row[$va['product_id']]['weight'];
-				$cart_list[$ke]['cubage']   	= $product_row[$va['product_id']]['cubage'];
-				$cart_list[$ke]['subhead']  	= $product_row[$va['product_id']]['subhead'];
-				$cart_list[$ke]['brand']    	= $product_row[$va['product_id']]['brand'];
-				$cart_list[$ke]['type']         = $product_row[$va['product_id']]['type'];
-				$cart_list[$ke]['is_shelves'] 	= $product_row[$va['product_id']]['is_shelves'];
-				$cart_list[$ke]['status'] 		= $product_row[$va['product_id']]['status'];
-				$cart_list[$ke]['market_price'] = $product_row[$va['product_id']]['market_price'];
-				$cart_list[$ke]['pprice'] 		= $product_row[$va['product_id']]['price'];
-				$cart_list[$ke]['amount'] 		= $product_row[$va['product_id']]['stock'];
-				$cart_list[$ke]['pname'] 		= $product_row[$va['product_id']]['name'];
-				$cart_list[$ke]['pic'] 			= $product_row[$va['product_id']]['pic'];
-				$cart_list[$ke]['catid'] 		= $product_row[$va['product_id']]['catid'];
-				$cart_list[$ke]['pid'] 			= $product_row[$va['product_id']]['id'];
-				$cart_list[$ke]['freight'] 		= $product_row[$va['product_id']]['freight_id'];
-				$cart_list[$ke]['freight_type'] = $product_row[$va['product_id']]['freight_type'];
-				$cart_list[$ke]['is_invoice'] 	= $product_row[$va['product_id']]['is_invoice'];
 
-				//setmeal规格表
-				if($va['spec_id'] != '0')
-				{
-					$Product_SetmealModel = new Product_SetmealModel();
-					$setmeal              = $Product_SetmealModel->getSetmeal($va['spec_id']);
-					$cart_list[$ke]['setmealname'] = $setmeal[$va['spec_id']]['setmeal'];
-					$cart_list[$ke]['spec_name']   = $setmeal[$va['spec_id']]['spec_name'];
-					$cart_list[$ke]['stock']       = $setmeal[$va['spec_id']]['stock'];
-					$cart_list[$ke]['sprice']      = $setmeal[$va['spec_id']]['price'];
-				}
-				else
-				{
-					$cart_list[$ke]['setmealname'] = '';
-					$cart_list[$ke]['spec_name']   = '';
-					$cart_list[$ke]['stock']       = '';
-					$cart_list[$ke]['sprice']      = '';
-				}
+				$addr = $address[$consignee_id];
+				//fb($addr);
+				$on_city = $address[$consignee_id]['cityid'];
 
-			}
-			$cart_pro_rows[$value['seller_id']]=$cart_list;
-		}
+				$DistrictModel = new DistrictModel();
+				$area = $DistrictModel->getdistrictname($on_city);
+
+				//从购物车表按照店铺读取商品信息
+				$Product_CartModel = new Product_CartModel();
+				$data = $Product_CartModel->getCartClist($user_id);
+
+				$sumprice = 0;
+				//获取店铺名称
+				foreach ($data as $key => $value)
+				{
+					$ShopModel = new ShopModel();
+					$company = $ShopModel->getCompanyByUid($value['seller_id']);
+					$seller_id[] = $value['seller_id'];
+
+					$data[$key]['company'] = $company;
+
+					//获取单个店铺商品及商品总价格、平邮、快递、EMS、总邮费
+					$cart_list = $Product_CartModel->getCartList($user_id, $value['seller_id'], $pid_row);//cart表
+			
+					foreach ($cart_list as $ke => $va)
+					{
+						$cart_list[$ke]['sumprice'] = $cart_list[$ke]['price']*$cart_list[$ke]['quantity']*1;
+						$cart_list[$ke]['num'] = $cart_list[$ke]['quantity'];
+						//product表
+						$ProductModel   = new ProductModel();
+						$product_row    = $ProductModel->getProduct($va['product_id']);
+						$cart_list[$ke]['weight']   	= $product_row[$va['product_id']]['weight'];
+						$cart_list[$ke]['cubage']   	= $product_row[$va['product_id']]['cubage'];
+						$cart_list[$ke]['subhead']  	= $product_row[$va['product_id']]['subhead'];
+						$cart_list[$ke]['brand']    	= $product_row[$va['product_id']]['brand'];
+						$cart_list[$ke]['type']         = $product_row[$va['product_id']]['type'];
+						$cart_list[$ke]['is_shelves'] 	= $product_row[$va['product_id']]['is_shelves'];
+						$cart_list[$ke]['status'] 		= $product_row[$va['product_id']]['status'];
+						$cart_list[$ke]['market_price'] = $product_row[$va['product_id']]['market_price'];
+						$cart_list[$ke]['pprice'] 		= $product_row[$va['product_id']]['price'];
+						$cart_list[$ke]['amount'] 		= $product_row[$va['product_id']]['stock'];
+						$cart_list[$ke]['pname'] 		= $product_row[$va['product_id']]['name'];
+						$cart_list[$ke]['pic'] 			= $product_row[$va['product_id']]['pic'];
+						$cart_list[$ke]['catid'] 		= $product_row[$va['product_id']]['catid'];
+						$cart_list[$ke]['pid'] 			= $product_row[$va['product_id']]['id'];
+						$cart_list[$ke]['freight'] 		= $product_row[$va['product_id']]['freight_id'];
+						$cart_list[$ke]['freight_type'] = $product_row[$va['product_id']]['freight_type'];
+						$cart_list[$ke]['is_invoice'] 	= $product_row[$va['product_id']]['is_invoice'];
+
+						//setmeal规格表
+						if($va['spec_id'] != '0')
+						{
+							$Product_SetmealModel = new Product_SetmealModel();
+							$setmeal              = $Product_SetmealModel->getSetmeal($va['spec_id']);
+							$cart_list[$ke]['setmealname'] = $setmeal[$va['spec_id']]['setmeal'];
+							$cart_list[$ke]['spec_name']   = $setmeal[$va['spec_id']]['spec_name'];
+							$cart_list[$ke]['stock']       = $setmeal[$va['spec_id']]['stock'];
+							$cart_list[$ke]['sprice']      = $setmeal[$va['spec_id']]['price'];
+						}
+						else
+						{
+							$cart_list[$ke]['setmealname'] = '';
+							$cart_list[$ke]['spec_name']   = '';
+							$cart_list[$ke]['stock']       = '';
+							$cart_list[$ke]['sprice']      = '';
+						}
+
+					}
+					$cart_pro_rows[$value['seller_id']]=$cart_list;
+				}
 		
 		//fb($cart_pro_rows);
 		$sumprice = array();
@@ -1018,11 +1014,8 @@ fb($order_rows);
                 //fb($key);
                 $shop_free_shipping = $key['shop_free_shipping'];
                 $shop_free_price_str = $key['shop_free_price'];
-
                 $shop_free_price_row = json_decode($shop_free_price_str);
-
                 $shop_free_shipping = $shop_free_shipping ? $shop_free_shipping : "0";
-
                 if($sumprice[$kes] >= $shop_free_shipping)
                 {
                     $list['mail'] = $list['ems'] = $list['express'] = 0; //免运费设置end
@@ -1037,7 +1030,6 @@ fb($order_rows);
                     {
                         fb($val);
                         //foreach ($value as $ke => $val) {
-
                             //获取商品平邮、快递、EMS、总邮费
                             $logistics[$val['freight']]['freight_id'] = $val['freight'];
                             $logistics[$val['freight']]['freight_type'] = $val['freight_type'];
@@ -1094,9 +1086,7 @@ fb($order_rows);
                 $v_price = $sumprice[$kes] ? $sumprice[$kes] : '0';
                 $VoucherModel = new VoucherModel();
                 $voucher[$kes] = $VoucherModel->getVoucherByMid($user_id,$kes,$v_price);
-
                 $lists[$kes] = $list;
-
         }
         // fb($voucher);
         // fb($lists);
@@ -1132,11 +1122,8 @@ fb($order_rows);
 
 		$res['cart']     = $de;
 		$res['sumprice'] = $sumprices;
-
 		//循环店铺，生成多个订单
-
         fb($res);
-
 		//合并付款
 		$uprice = 0;
 		$buyer = $user_id;
