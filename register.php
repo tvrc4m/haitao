@@ -46,10 +46,11 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['p
             if(empty($_SESSION['mon_yzm']['lnum'])||$_SESSION['mon_yzm']['lnum']<=3) {
                 $number = rand(100000,999999);
                 if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
-                    $vser['yzm'] = $number;
+
                     if(date('i',time()-$_SESSION['mon_yzm']['ltime'])<5){
                         $vser['lnum'] =  $_SESSION['mon_yzm']['lnum']+1;
                     }
+                    $vser['yzm'] = $number;
                     $vser['ytime'] = time() + 60 * 10;
                     $vser['ltime'] = time() + 60;
                     $vser['lasttime'] = time() + 60 * 60;
@@ -98,6 +99,8 @@ if(!empty($_POST['mobile']))
 
 	//手机验证码
 	if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
+        var_dump($_SESSION['mon_yzm']['yzm']);
+        var_dump($_POST['smsvode']);
 		if($_SESSION['mon_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
 		}else{
@@ -256,6 +259,7 @@ function doreg($guid=NULL)
  * 检测验证码
  */
 function Check_sms($data = null){
+
     if(!empty($data)&&$data==$_SESSION['mon_yzm']['yzm']){
         if($_SESSION['mon_yzm']['ytime']<time()){
             die(Return_data(array('status_code' => '300', 'message' => "验证码已失效!", 'data' => null )));
