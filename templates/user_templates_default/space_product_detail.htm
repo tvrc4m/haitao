@@ -310,17 +310,12 @@ function buy()
                             <a title="分享到人人网" onclick="shareTo('renren')" href="javascript:void(0);" class="bshare-renren"></a>
                             <a title="分享到腾讯微博" onclick="shareTo('qqmb')" href="javascript:void(0);" class="bshare-qqmb"></a>
                             <a title="分享到网易微博" onclick="shareTo('neteasemb')" href="javascript:void(0);"class="bshare-neteasemb"></a>
-                            <!-- <a title="分享到凤凰微博" onclick="shareTo('ifengmb')" href="javascript:void(0);" class="bshare-ifengmb" href="javascript:void(0);"></a>
-                            <a title="分享到搜狐微博" onclick="shareTo('sohuminiblog')" href="javascript:void(0);" class="bshare-sohuminiblog" href="javascript:void(0);"></a> -->
                             <a title="分享到豆瓣" onclick="shareTo('douban')" href="javascript:void(0);" class="bshare-douban" href="javascript:void(0);"></a>
                             <a title="分享到开心网" onclick="shareTo('kaixin001')" href="javascript:void(0);" class="bshare-kaixin001" href="javascript:void(0);"></a>
                             <a title="分享到天涯" onclick="shareTo('tianya')" href="javascript:void(0);" class="bshare-tianya" href="javascript:void(0);"></a>
-                           <!--  <a title="分享到百度空间" onclick="shareTo('baiduhi')" href="javascript:void(0);" class="bshare-baiduhi" href="javascript:void(0);"></a> -->
                             <a title="分享到朋友网" onclick="shareTo('qqxiaoyou')" href="javascript:void(0);" class="bshare-qqxiaoyou" href="javascript:void(0);"></a>
                             <a title="分享到淘江湖" onclick="shareTo('taojianghu')" href="javascript:void(0);" class="bshare-taojianghu" href="javascript:void(0);"></a>
                             <a title="分享到飞信" onclick="shareTo('feixin')" href="javascript:void(0);" class="bshare-feixin" href="javascript:void(0);"></a>
-                            <!-- <a title="分享到Facebook" onclick="shareTo('facebook')" href="javascript:void(0);" class="bshare-facebook" href="javascript:void(0);"></a>
-                            <a title="分享到电子邮件" onclick="shareTo('email')" href="javascript:void(0);" class="bshare-email" href="javascript:void(0);"></a> -->
                         </div>
                         <div class="clear"></div>
                         <div id="cart_show"></div>
@@ -690,11 +685,8 @@ function shareTo(site){
   var e = encodeURIComponent, s = screen, d = document, wd = 640, hg = 480, u = d.location;
   var uuid = '';
   var img =$(".jqzoom").attr("src");
-
   var ctxt = $(".summary .title>p").text();
-  
-var url = "http://api.bshare.cn/share/"+site+"?url="+e("https://www.mayihaitao.com")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
+  var url = "http://api.bshare.cn/share/"+site+"?url="+e("https://www.mayihaitao.com")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
   window.open(url, 'bshare', ['toolbar=0,status=0,resizable=1,width='+ wd +',height='+ hg +',left='+ (s.width - wd) / 2+ ',top='+ (s.height - hg) / 2]);
-
 }
 </script>
