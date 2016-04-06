@@ -108,20 +108,8 @@
                     }
                 }
             });
-
-            $(this).attr("disabled","true").css("background-color","#ccc");
-            var interval = window.setInterval(function(){
-                num = num - 1;
-                $(".idcode .btn").attr("value",num+ "秒后重新发送");
-                if (num < 1) {
-                    $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
-                    clearInterval(interval);
-                    $(".idcode .btn").attr("value","发送短信验证码");
-                    num = 60;
-                };
-            },1000);
         }else{
-            $(".idcode .btn").parent().find("p").text("请填写手机号");
+            $(".idcode .btn").parent().find("p").text("请填写验证码");
             $(".idcode .btn").parent().find("p").css("display","block");
         }
     });
