@@ -96,24 +96,26 @@
                 data: {m_send: 'm_send', mobile: mob},
                 dataType: 'json',
                 success: function(datainfo){
-                    layer.alert(datainfo.message, {
-                         closeBtn: 0
-                    });
-                    num = datainfo.data?datainfo.data:num;
+                    if(datainfo.status_code!=200) {
+                        layer.alert(datainfo.message, {
+                            closeBtn: 0
+                        });
+                    }else{
+                        num = datainfo.data ? datainfo.data : num;
+                        $(this).attr("disabled","true").css("background-color","#ccc");
+                        var interval = window.setInterval(function(){
+                            num = num - 1;
+                            $(".idcode .btn").attr("value",num+ "秒后重新发送");
+                            if (num < 1) {
+                                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                                clearInterval(interval);
+                                $(".idcode .btn").attr("value","发送短信验证码");
+                                num = 60;
+                            };
+                        },1000);
+                    }
                 }
             });
-
-            $(this).attr("disabled","true").css("background-color","#ccc");
-            var interval = window.setInterval(function(){
-                num = num - 1;
-                $(".idcode .btn").attr("value",num+ "秒后重新发送");
-                if (num < 1) {
-                    $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
-                    clearInterval(interval);
-                    $(".idcode .btn").attr("value","发送短信验证码");
-                    num = 60;
-                };
-            },1000);
         }else{
             layer.alert('请填写手机号', {
                 closeBtn: 0
