@@ -23,42 +23,6 @@ if ($connect_config['ucenter_connect'])
 }
 
 
-if(!empty($_POST['user'])&&$_POST['is_check']=='check'){
-    if(preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $_POST['user'])){
-        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
-        //验证用户名唯一
-        $sql="select * from ".MEMBER." where user = '".$_POST['user']."'";
-        $db->query($sql);
-        if($db->num_rows()){
-            echo Return_data(array(
-                'status_code' => '300',
-                'message' => '该用户已存在！',
-                'data' => null
-            ));die;
-        }else{
-            echo Return_data(array(
-                'status_code' => '200',
-                'message' => '用户名可用！',
-                'data' => null
-            ));die;
-        }
-    }else{
-        echo Return_data(array(
-            'status_code' => '300',
-            'message' => '请填正确的用户名！',
-            'data' => null
-        ));die;
-    }
-    die;
-}else if($_POST['is_check']=='check'){
-    echo Return_data(array(
-        'status_code' => '300',
-        'message' => '请填写用户名！',
-        'data' => null
-    ));
-    die;
-}
-
 if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
     if(preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
         $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
@@ -141,6 +105,33 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['p
 	}
 }else if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['ph']!=1){
     echo $_SESSION['mon_yzm']['lnum'];die;
+}
+
+//检测验证码
+if(!empty($_POST['smsvode'])&&$_POST['check_sms']=='check'){
+    if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
+        if($_SESSION['mon_yzm']['ytime']<time()){
+            echo Return_data(array(
+                'status_code' => '300',
+                'message' => "验证码已失效!",
+                'data' => null
+            ));
+        }else{
+            session_unset($_SESSION['mon_yzm']);
+            echo Return_data(array(
+                'status_code' => '200',
+                'message' => "验证码正确!",
+                'data' => null
+            ));
+        }
+    }else{
+        echo Return_data(array(
+            'status_code' => '200',
+            'message' => "请填写正确的验证码!",
+            'data' => null
+        ));
+    }
+    die;
 }
 
 if($buid)
@@ -313,7 +304,8 @@ function valid_mobile($str)
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
-	$user = addslashes($_POST['user']);
+//	$user = addslashes($_POST['user']);
+    $user = 'mayi'.$_POST['password'];
 	$pass = $_POST['password'];
 //	$email = $_POST['email'];
 	$mobile = $_POST['mobile'];
@@ -328,11 +320,11 @@ function doreg($guid=NULL)
 	
 	$db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
 
-	//验证用户名唯一
+	/*//验证用户名唯一
 	$sql="select * from ".MEMBER." where user = '$user'";
     $db->query($sql);
     if($db->num_rows())
-		die('<script>alert("该用户名已经存在！");history.go(-1);</script>;');
+		die('<script>alert("该用户名已经存在！");history.go(-1);</script>;');*/
 
 	//验证手机号唯一
 	$sql="select * from ".MEMBER." where mobile = '$mobile'";
@@ -381,6 +373,23 @@ function doreg($guid=NULL)
 	 }
 	 else
 		 die('<script>alert("系统繁忙，请稍后注册!");history.go(-1);</script>;');
+}
+
+/* =================================================自定义方法======================================================== */
+
+/**
+ * 数据格式验证
+ */
+function Check_date($data = null, $keyval = null){
+    'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
+		'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
+		'smsvode' => '/^[0-9]{6}$/',
+		'password' => '/^[A-Za-z0-9]{6,10}$/',
+    $res = null;
+    switch($keyval){
+        case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
+        case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
+    }
 }
 
 //短信发送
