@@ -102,7 +102,7 @@
                         });
                     }else{
                         num = datainfo.data ? datainfo.data : num;
-                        $(this).attr("disabled","true").css("background-color","#ccc");
+                        $(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
                         var interval = window.setInterval(function(){
                             num = num - 1;
                             $(".idcode .btn").attr("value",num+ "秒后重新发送");

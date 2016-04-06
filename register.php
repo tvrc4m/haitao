@@ -381,14 +381,16 @@ function doreg($guid=NULL)
  * 数据格式验证
  */
 function Check_date($data = null, $keyval = null){
-    'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
+    /*'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
 		'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
 		'smsvode' => '/^[0-9]{6}$/',
-		'password' => '/^[A-Za-z0-9]{6,10}$/',
+		'password' => '/^[A-Za-z0-9]{6,10}$/',*/
     $res = null;
     switch($keyval){
         case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
-        case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
+        case 'mobile' : $res = preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $data);  break;
+        case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
+        case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
     }
 }
 
