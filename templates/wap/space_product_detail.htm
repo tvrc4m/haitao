@@ -81,8 +81,15 @@ function distribute_goods(id){
 </header>
 <div class="shoping-fixed">
     <div class="c-wh bgw">
-        <div class="addcart">
-            <a class="incar" href="javascript:buy()">加入购物车</a>
+        <div class="addcart clearfix">
+            <a class="cart" href="javascript:void(0);">
+                <span class="cart-num-cont">
+                    <span class="cart-num"></span>
+                    <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+                </span>
+            </a>
+            <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
+            <a class="incar incar_c" href="javascript:buy()">加入购物车</a>
         </div>
     </div>
 </div>
@@ -101,10 +108,19 @@ function distribute_goods(id){
         <!-- <img src="<{if $de.pic}><{$de.pic}><{else}>image/default/nopic.gif<{/if}>"/> -->
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
-                <div id="pname"><{$de.name}></div>
+            <div>
+                <div id="pname"><span class="pname_img"><img src="../../../image/wap/state1.png"> 日本</span><{$de.name}></div>
+                <div class="col">
+                    <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
+                        <div id="collect" class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
+                        <div style="font-size: .7em">收藏</div>
+                    </a>
+                </div>
+            </div>
                 <div id="price">
-                    <span class="price_moneys"><{$config.money}>  <{$de.price|number_format:2}></span>
-                   <!--  <span class="price_dels"><{$config.money}>  <{$list.market_price|number_format:2}></span> -->
+                    <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></span>
+                    <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num"><{$de.market_price|number_format:2}></span></span>
+                    <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
                    <!--  <span class="price_zhes"><i></i>9.5折</span> -->
                 </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
@@ -122,7 +138,12 @@ function distribute_goods(id){
 			</dl>
 		</div>
 	<{/if}>
-
+    <div class="c-wh bgw" style="margin-bottom: 0">
+        <div class="select_style select_guanshui clearfix">
+            <div><span>邮费：</span><span>满88包邮</span></div>
+            <div><span>关税：</span><span class="select_guanshui_ic">若订单关税50元则免征，关税收取规则</span></div>
+        </div>
+    </div>
     <div class="c-wh bgw" style="margin-bottom: 0">
         <div class="select_style clearfix">
             <{if $de.rest==0 && !$de.offertime}>
@@ -149,36 +170,50 @@ function distribute_goods(id){
             <{/if}>
         </div>
     </div>
-
+    <div style="height:0px;border-top:1px solid #ff5c5c;"></div>
+    <div class="c-wh bgw clearfix">
+        <div class="select_style clearfix">
+            <dl class="clearfix select_style_xiangqing">
+                <dt class="select_style_title select_style_titleg">蚂蚁说</dt>
+                <dd class="mati_say_content">
+                <img src="<{if $com.wap_logo}><{$com.wap_logo}><{else}>templates/wap/images/user.png<{/if}>" class="slogote">
+                <p class="mayi_say">消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书</p></dd>
+            </dl>
+        </div>
+    </div>
+    <div style="height:0px;border-top:1px solid #ccc;"></div>
+    <div class="c-wh bgw clearfix">
+        <div class="select_style clearfix">
+            <dl class="clearfix select_style_xiangqing">
+                <dt class="select_style_title select_style_titleg">蚂蚁推荐</dt>
+                <dd class="mati_say_content">
+                <div class="shop_t clearfix">
+                    <ul class="shoplist">
+                    <{insert name="label" type="product" o=4 temp="product_list_li_5" limit=3}>
+                    </ul>
+                </div>
+                </dd>
+            </dl>
+        </div>
+    </div>
+     <div style="height:0px;border-top:1px solid #ccc;"></div>
     <div class="clearfix"></div>
     <div class="c-wh bgw c-wh-commit clearfix">
+        <div class="c-wh-commit-gao clearfix">
+            <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
+        </div>
         <img src="../../../image/wap/wap_haitao_zhengpin.jpg" alt="品牌服务承诺" title="品牌服务承诺">
-
-            <!-- <div class="commit-left clearfix">
-                <div class="commit-left-img"><img src="../../../image/wap/mayi_wap_icon20.png"></div>
-                <div class="commit-left-text"><ul><li>品牌</li><li>服务承诺</li></ul></div>
-            </div>
-            <div class="commit-rifht clearfix">
-                <div class="space_zhifu space_zhifu_b space_zhifu_t clearfix">
-                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
-                    <dd>正品保障</dd>
-                </div>
-                <div class="space_zhifu space_zhifu_b clearfix">
-                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
-                    <dd>假一赔五</dd>
-                </div>
-                <div class="space_zhifu space_zhifu_t clearfix">
-                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
-                    <dd>24小时发货</dd>
-                </div>
-                <div class="space_zhifu clearfix">
-                    <img src="../../../image/wap/wap_haitao_icon17.png" alt="">
-                    <dd><9天无理由退货</dd>
-                </div>
-            </div>
-            <div class="commit-rifht-icon"></div> -->
-     
+        <!-- <div class="commit-rifht-icon"></div> -->    
     </div>
+    <div class="c-wh bgw clearfix">
+        <div class="select_style clearfix">
+            <dl class="clearfix select_style_xiangqing">
+                <dt class="select_style_title select_style_titleg">购物流程</dt>
+                <dd><img src="../../../image/wap/wap_haitao_qs.jpg"></dd>
+            </dl>
+        </div>
+    </div>
+    <div style="height:10px;background-color:#efefef;width:100%;"></div>
     <div class="c-wh bgw c-wh-dianpu">
         <div class="clearfix"></div>
 
@@ -187,41 +222,64 @@ function distribute_goods(id){
                 <a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"> <img src="<{if $com.wap_logo}><{$com.wap_logo}><{else}>templates/wap/images/user.png<{/if}>" class="slogo"/></a>
             </li>
             <li class="ub-f1 sinfo">
-                <p><strong><{$com.company}></strong></p>
-                <p><font color="#525252"><{$com.area}></font></p>
+                <p><a href="shop.php?uid=<{$smarty.get.uid}>"><strong><{$com.company}></strong></a></p>
+                <p><a href="shop.php?uid=<{$smarty.get.uid}>"><font color="#525252"><{$com.area}></font></a></p>
             </li>
            <!--  <li class="goshop"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>">进入店铺
             </a></li> -->
             <li class="iconfont fas"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><font class="dianpu-on"></font></a></li>
         </ul>
-       <!--  <ul class="ub t-bla ub-ac uinn-pFS1">
+        <ul class="ub t-bla ub-ac uinn-pFS1">
             <li class="ub-f2">
-                <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
-                <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
-                <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num">9.3</span></p>
+                <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num"><{$score.a|number_format:1}></span></p>
+                <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.c|number_format:1}></span></p>
+                <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.b|number_format:1}></span></p>
             </li>
-        </ul> -->
+        </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
             <li class="ub-kefu_first"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;"><i class="kefu_icon1"></i>联系客服</a></li>
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
     </div>
+    <!-- <div class="bottom_jixu">
+        <img src="../../../image/wap/wap_haitao_datu2.png">
+    </div> -->
     <div class="c-wh bgw clearfix">
-        <div class="select_style clearfix">
-            <dl class="clearfix select_style_xiangqing">
+        <div class="clearfix">
+            <div class="nav-box">
+                <ul class="nav-wrapper">
+                    <li class="active">详情介绍</li>
+                    <li>商品参数</li>
+                    <li>常见问题</li>
+                </ul>
+            </div>
+            <div class="wap_pdetail j_tab pdetail_show">
+                <{$de.detail}>
+            </div>
+            <div class="wap_pdetail j_tab">
+                <{$de.detail}>
+            </div>
+            <div class="wap_pdetail j_tab">
+                <{insert name="label" type="product" o=4 temp="product_list_li_4" limit=0}>
+            </div>          
+            <!-- <dl class="clearfix select_style_xiangqing">
                 <dt class="select_style_title"><i></i>商品详情</dt>
                 <dd class="wap_pdetail">
                      <{$de.detail}>
                 </dd>
-            </dl>
+            </dl> -->
         </div>
     </div>
-    <div style="height:50px" class="hidden_jianxi"></div>
+    <div class="qg_bottom">
+        <img src="../../../image/wap/wap_haitao_qg.jpg">
+    </div>
+   <!--  <div style="height:50px" class="hidden_jianxi"></div> -->
     <input name="id" type="hidden" value="<{$de.id}>" />
     <input name="sid" id="sid" type="hidden" value="0" />
     <input name="sku" id="sku" type="hidden" value="0" />
 </div>
 </form>
+<script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
 <script type="text/javascript">
     window.jsVersion = "7b3d28d5da";
     require.config({
@@ -237,8 +295,6 @@ function distribute_goods(id){
     });
     require(['pages/hj_index'], function (hjIndex) {
         hjIndex.hjSlide("#hj_slide",4000);
-    //              hjIndex.cashEvent("#cash_event");
-    //              hjIndex.ajaxLoadPage(".load_links");
     });
 
     window.addEventListener('load', function() {
@@ -256,6 +312,9 @@ function distribute_goods(id){
     if(imgIndex==1){
         dot.html("");
     }
+    var monNum=Number($(".price_moneys .price_moneys_num").html()),delNum=Number($(".price_dels .price_dels_num").html());
+    var chaNum=(delNum-monNum).toFixed(2);
+    $(".price_chas .price_chas_num").html(chaNum);
 </script>
 <script>
     function collect_goods(id){
