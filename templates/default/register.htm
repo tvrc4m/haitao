@@ -53,7 +53,7 @@
                 <div class="idcode">
                     <input class="text" tabindex="3" name="smsvode" id="smsvode" maxlength="6" autocomplete="off" placeholder="短信验证码"/>
                     <input class="btn" type="button" value="发送短信验证码" />
-                    <p class="registerNotice1" style="display: none;"><span class="tipcon">请重新获取短信验证码</span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
+                    <p class="registerNotice1" style="display: none;"><span class="tipcon"></span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                 <div>
                     <dl>
@@ -97,7 +97,7 @@
                 dataType: 'json',
                 success: function(datainfo){
                     if(datainfo.status_code!=200) {
-                        $(".idcode .btn").parent().find("p").text(datainfo.message);
+                        $(".idcode .btn").parent().find("p .tipcon").text(datainfo.message);
                         $(".idcode .btn").parent().find("p").css("display","block");
                     }else{
                         num = datainfo.data ? datainfo.data : num;
@@ -112,13 +112,13 @@
                                 num = 60;
                             };
                         },1000);
-                        $(".idcode .btn").parent().find("p").text("短信发送成功，请注意查收！");
+                        $(".idcode .btn").parent().find("p .tipcon").text("短信发送成功，请注意查收！");
                         $(".idcode .btn").parent().find("p").css("display","block");
                     }
                 }
             });
         }else{
-            $(".idcode .btn").parent().find("p").text("请填写手机号");
+            $(".idcode .btn").parent().find("p .tipcon").text("请填写手机号");
             $(".idcode .btn").parent().find("p").css("display","block");
         }
     });
