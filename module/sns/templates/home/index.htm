@@ -111,7 +111,7 @@ $(function(){
         	<{if $smarty.get.act!='product'}>
             <div class="body-side">
             	<div class="visitors">
-					<h4><em>最近访客</em></h4>   
+					<h4><em>最近访客</em></h4>
 					<ul class="visitlist clearfix">
                     	<{foreach item=list key=nums from=$visitors}>
                         <li class="clearfix">
@@ -120,7 +120,7 @@ $(function(){
                             </p>
                             <div class="visitor_pic_rt">
                                 <p class="visitor_name"><a target="_blank" href="home.php?uid=<{$list.userid}>"><{$list.user}></a></p>
-                                <p class="visitor_time"><{$list.time|date_format:"%m月 %d日"}></p>
+                                <p class="visitor_time"><{$list.dtime}></p>
                             </div>  
                         </li>
                         <{foreachelse}>
