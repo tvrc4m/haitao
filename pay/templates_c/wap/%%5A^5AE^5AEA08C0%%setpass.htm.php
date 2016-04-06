@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.20, created on 2016-04-06 14:51:54
+=======
 <?php /* Smarty version 2.6.20, created on 2016-03-25 13:15:20
+>>>>>>> 6d2338a2bad278a4965d2d7e30b7c69042960b53
          compiled from setpass.htm */ ?>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
