@@ -87,13 +87,15 @@ function collect_goods(id){
                 <dt class="drop-img">
                 <a title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><img src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>" /></a>
                 </dt>
-                <dd class="drop-cmt"><{if $list.content}><{$list.content}><{else}>分享了商品<{/if}></dd>
+                <!-- <dd class="drop-cmt"><{if $list.content}><{$list.content}><{else}>分享了商品<{/if}></dd>
                 <dd class="drop-ops">
                     <span class="collect">
                         <a href="javascript:collect_goods('<{$list.pid}>');"><i></i>收藏</a>
                         <strong> <{$list.collectnum}> </strong>
                     </span>
-                </dd>
+                </dd> -->
+                <a class="p-name" href="">好奇Huggies金装纸尿裤男S64P</a>
+                <p class="p-price"><strong>¥118.00</strong></p>
             </dl>
         </div>
         <{/foreach}>

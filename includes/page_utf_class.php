@@ -93,7 +93,7 @@ class Page
             $prePage  = "<a class='prePage' href='".$this->url."?firstRow=$preRow&totalRows=$this->totalRows$this->parameter'>上一页</a>";
         }
 		if($this->nowPage>5)
-			$theFirst = " <a href='".$this->url."?firstRow=0&totalRows=$this->totalRows$this->parameter'>1...</a>";
+			$theFirst = " <a href='".$this->url."?firstRow=0&totalRows=$this->totalRows$this->parameter'>首页</a>";
         
    		if($this->nowPage<$this->totalPages)
 		{

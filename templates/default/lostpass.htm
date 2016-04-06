@@ -30,15 +30,6 @@
         </div>
         <div class="form lostpass1">
             <form id="lostpass" name="lostpass" action="lostpass.php" method="post">
-                <!-- <div>
-                    <dl>
-                        <dt><img src="image/default/icon2.png"></dt>
-                        <dd>
-                            <input type="text" class="text" maxlength="16" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
-                        </dd>
-                    </dl>
-                    <span></span>
-                </div> -->
                 <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
                 <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
                 <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
@@ -49,11 +40,12 @@
                             <input class="text" id="mobile" name="mobile" tabindex="3" maxlength="11" autocomplete="off" placeholder="手机号"/>
                         </dd>
                     </dl>
-                    <span></span>
+                    <p class="registerNotice1" style="display: none;"><span class="tipcon"></span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                 <div class="idcode">
-                    <input class="text" tabindex="2" autocomplete="off" maxlength="6" name="smsvode" placeholder="短信验证码"/>
+                    <input class="text" tabindex="2" autocomplete="off" maxlength="6" name="smsvode" id="smsvode" placeholder="短信验证码"/>
                     <input class="btn" type="button" value="发送短信验证码" />
+                    <p class="registerNotice1" style="display: none;"><span class="tipcon"></span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                  <div>
                     <dl>
@@ -62,7 +54,7 @@
                             <input class="text" type="password" name="password" maxlength="12" id="password" tabindex="2" autocomplete="off" placeholder="新密码"/>
                         </dd>
                     </dl>
-                    <span></span>
+                    <p class="registerNotice1" style="display: none;"><span class="tipcon"></span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                 
                 <{if $smarty.get.erry=="-2"}>
@@ -95,30 +87,33 @@
                 data: {m_send: 'm_send', mobile: mob},
                 dataType: 'json',
                 success: function(datainfo){
-                    layer.alert(datainfo.message, {
-                        closeBtn: 0
-                    });
-                    num = datainfo.data?datainfo.data:num;
+                    if(datainfo.status_code==200) {
+                        num = datainfo.data ? datainfo.data : num;
+                        $(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
+                        var interval = window.setInterval(function(){
+                            num = num - 1;
+                            $(".idcode .btn").attr("value",num+ "秒后重新发送");
+                            if (num < 1) {
+                                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                                clearInterval(interval);
+                                $(".idcode .btn").attr("value","发送短信验证码");
+                                num = 60;
+                            };
+                        },1000);
+                        $(".idcode .btn").parent().find("p").text("短信发送成功，请注意查收！");
+                        $(".idcode .btn").parent().find("p").css("display","block");
+                    }else{
+                        layer.alert(datainfo.message, {
+                            closeBtn: 0
+                        });
+                    }
                 }
             });
-
-            $(this).attr("disabled","true").css("background-color","#ccc");
-            var interval = window.setInterval(function(){
-                num = num - 1;
-                $(".idcode .btn").attr("value",num+ "秒后重新发送");
-                if (num < 1) {
-                    $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
-                    clearInterval(interval);
-                    $(".idcode .btn").attr("value","发送短信验证码");
-                    num = 60;
-                };
-            },1000);
         }else{
-            layer.alert('请填写手机号', {
-                closeBtn: 0
-            });
+            $(".idcode .btn").parent().find("p").text("请填写验证码");
+            $(".idcode .btn").parent().find("p").css("display","block");
         }
-    })
+    });
 </script>
 </body>
 </html>

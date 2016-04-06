@@ -22,102 +22,75 @@ if ($connect_config['ucenter_connect'])
 	}
 }
 
-//发送验证码
-if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
-	if(!empty($_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
-		$number = rand(100000,999999);
-		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
-			if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
-				$vser['yzm'] = $number;
-				$vser['ytime'] = time()+60*10;
-				$vser['ltime'] = time()+60;
-				$_SESSION['mon_yzm'] = $vser;
-			}
-			echo Return_data(array(
-					'status_code' => '200',
-					'message' => '短信发送成功，请注意查收',
-					'data' => null
-			));
-		}else{
-			echo Return_data(array(
-					'status_code' => '300',
-					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
-					'data' => $_SESSION['mon_yzm']['ltime']-time()
-			));
-		}
-		 die;
-	}
-}
-
-if(!empty($_POST['user'])&&$_POST['is_check']=='check'){
-    if(preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $_POST['user'])){
-        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
-        //验证用户名唯一
-        $sql="select * from ".MEMBER." where user = '".$_POST['user']."'";
-        $db->query($sql);
-        if($db->num_rows()){
-            echo Return_data(array(
-                'status_code' => '300',
-                'message' => '该用户已存在！',
-                'data' => null
-            ));die;
-        }else{
-            echo Return_data(array(
-                'status_code' => '200',
-                'message' => '用户名可用！',
-                'data' => null
-            ));die;
-        }
-    }else{
-        echo Return_data(array(
-            'status_code' => '300',
-            'message' => '请填正确的用户名！',
-            'data' => null
-        ));die;
-    }
-    die;
-}else if($_POST['is_check']=='check'){
-    echo Return_data(array(
-        'status_code' => '300',
-        'message' => '请填写用户名！',
-        'data' => null
-    ));
-    die;
-}
-
+//验证手机号
 if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
-    if(preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
-        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
-        //验证用户名唯一
-        $sql="select * from ".MEMBER." where mobile = '".$_POST['mobile']."'";
-        $db->query($sql);
-        if($db->num_rows()){
+    if(Check_data($_POST['mobile'], 'mobile')){
+        if(Check_only($_POST['mobile'], 'mobile', MEMBER)){
+            die(Return_data(array('status_code' => '300', 'message' => '该手机号已存在！', 'data' => null )));
+        }else{
+            $_SESSION['mon_yzm']['ph'] = 1;
+            die(Return_data(array('status_code' => '200', 'message' => '手机号可用！', 'data' => null )));
+        }
+    }else{
+        die(Return_data(array('status_code' => '300', 'message' => '请填正确的手机号！', 'data' => null )));
+    }
+}
+
+//发送验证码
+if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['ph']==1){
+    if(Check_data($_POST['mobile'], 'mobile')){
+        if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
+            if($_SESSION['mon_yzm']['lasttime']<=time()){
+                $_SESSION['mon_yzm']['lnum'] = 1;
+            }
+            if(empty($_SESSION['mon_yzm']['lnum'])||$_SESSION['mon_yzm']['lnum']<=3) {
+                $number = rand(100000,999999);
+                if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
+                    $vser['yzm'] = $number;
+                    if(date('i',time()-$_SESSION['mon_yzm']['ltime'])<5){
+                        $vser['lnum'] =  $_SESSION['mon_yzm']['lnum']+1;
+                    }
+                    $vser['ytime'] = time() + 60 * 10;
+                    $vser['ltime'] = time() + 60;
+                    $vser['lasttime'] = time() + 60 * 60;
+                    $_SESSION['mon_yzm'] = $vser;
+                    die(Return_data(array('status_code' => '200', 'message' => '短信发送成功，请注意查收', 'data' => null )));
+                }
+            }else{
+                die(Return_data(array('status_code' => '300', 'message' => sprintf('操作过于频繁，%s后再试！',date('i分s秒', $_SESSION['mon_yzm']['lasttime']-time())), 'data' => $_SESSION['mon_yzm']['ltime']-time() )));
+            }
+        }else{
+            die(Return_data(array('status_code' => '300', 'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()), 'data' => $_SESSION['mon_yzm']['ltime']-time() )));
+        }
+    }
+}else if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['ph']!=1){
+    die(Return_data(array('status_code' => '300', 'message' => '请先确认手机后在发短信', 'data' => null )));
+}
+
+//检测验证码
+if(!empty($_POST['smsvode'])&&$_POST['check_sms']=='check'){
+    if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
+        if($_SESSION['mon_yzm']['ytime']<time()){
             echo Return_data(array(
                 'status_code' => '300',
-                'message' => '该手机号已存在！',
+                'message' => "验证码已失效!",
                 'data' => null
-            ));die;
+            ));
         }else{
+            session_unset($_SESSION['mon_yzm']);
             echo Return_data(array(
                 'status_code' => '200',
-                'message' => '手机号可用！',
+                'message' => "验证码正确!",
                 'data' => null
-            ));die;
+            ));
         }
     }else{
         echo Return_data(array(
-            'status_code' => '300',
-            'message' => '请填正确的手机号！',
+            'status_code' => '200',
+            'message' => "请填写正确的验证码!",
             'data' => null
-        ));die;
+        ));
     }
-    die;
-}else if($_POST['check_mobile']=='check'){
-    echo Return_data(array(
-        'status_code' => '300',
-        'message' => '请填写手机号！',
-        'data' => null
-    ));
     die;
 }
 
@@ -291,7 +264,8 @@ function valid_mobile($str)
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
-	$user = addslashes($_POST['user']);
+//	$user = addslashes($_POST['user']);
+    $user = 'mayi'.$_POST['password'];
 	$pass = $_POST['password'];
 //	$email = $_POST['email'];
 	$mobile = $_POST['mobile'];
@@ -306,11 +280,11 @@ function doreg($guid=NULL)
 	
 	$db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
 
-	//验证用户名唯一
+	/*//验证用户名唯一
 	$sql="select * from ".MEMBER." where user = '$user'";
     $db->query($sql);
     if($db->num_rows())
-		die('<script>alert("该用户名已经存在！");history.go(-1);</script>;');
+		die('<script>alert("该用户名已经存在！");history.go(-1);</script>;');*/
 
 	//验证手机号唯一
 	$sql="select * from ".MEMBER." where mobile = '$mobile'";
@@ -359,6 +333,31 @@ function doreg($guid=NULL)
 	 }
 	 else
 		 die('<script>alert("系统繁忙，请稍后注册!");history.go(-1);</script>;');
+}
+
+/* =================================================自定义方法======================================================== */
+/**
+ * 验证唯一
+ */
+function Check_only($data = null, $key = null, $table = null){
+    global $db;
+    $sql="select * from ".$table." where $key = '$data'";
+    $db->query($sql);
+    return $db->num_rows();
+}
+
+/**
+ * 数据格式验证
+ */
+function Check_data($data = null, $keyval = null){
+    $res = null;
+    switch($keyval){
+        case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
+        case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
+        case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
+        case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
+    }
+    return $res;
 }
 
 //短信发送

@@ -9,11 +9,10 @@ table{border-collapse:collapse;}
 .header .search .i-search{width:455px;}
 .header .search .text{width:430px;}
 
-.cart-wrap{background: #f5f5f5;overflow:hidden;}
 .cart{margin:20px auto 50px;border:1px solid #cdcdcd;background:#fff;}
 .cart .cart-hd{height:20px;padding: 20px 0;margin: 0 25px 10px;border-bottom:1px solid #e0e0e0;}
-.cart-wrap form{padding: 0 25px;}
-.cart-wrap form thead{border:1px solid #e4e4e4;background: #f5f5f5;}
+.bgcolor form{padding: 0 25px;}
+.bgcolor form thead{border:1px solid #e4e4e4;background: #f5f5f5;}
 .cart .seg-entry{height:15px;}
 .cart .event-entry{border:1px solid #D8D8D8;}
 .cart .item-entry{border:1px solid #D8D8D8;border-top: 0;}

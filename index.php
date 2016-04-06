@@ -51,10 +51,8 @@ if(empty($true_prefix)&&!empty($original_prefix))
 	header("Location: ".$config['weburl']);exit();
 }
 
-
 if($true_prefix!=$original_prefix&&empty($dpid)&&empty($dcid)&&empty($dir)&&!empty($config['baseurl'])&&empty($mlang))
 {
-
 
 	if($config['opensuburl'])
 	{
@@ -81,6 +79,7 @@ if($true_prefix!=$original_prefix&&empty($dpid)&&empty($dcid)&&empty($dir)&&!emp
 		exit();
 	}
 	else
+	
 	{
 		header("Location: ".$config['weburl']);
 		exit();
