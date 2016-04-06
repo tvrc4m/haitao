@@ -108,10 +108,12 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['p
 			if(empty($_SESSION['mon_yzm']['lnum'])||$_SESSION['mon_yzm']['lnum']<=3) {
 				if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
 					$vser['yzm'] = $number;
+                    if(date('i',time()-$_SESSION['mon_yzm']['ltime'])<5){
+                        $vser['lnum'] =  $_SESSION['mon_yzm']['lnum']+1;
+                    }
 					$vser['ytime'] = time() + 60 * 10;
 					$vser['ltime'] = time() + 60;
 					$vser['lasttime'] = time() + 60 * 60;
-                    $vser['lnum'] =  $_SESSION['mon_yzm']['lnum']+1;
 					$_SESSION['mon_yzm'] = $vser;
 					echo Return_data(array(
 						'status_code' => '200',
