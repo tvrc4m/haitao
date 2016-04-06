@@ -72,7 +72,7 @@ if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
                 'data' => null
             ));die;
         }else{
-			$ph = 1;
+			$_SESSION['mon_yzm']['ph'] = 1;
             echo Return_data(array(
                 'status_code' => '200',
                 'message' => '手机号可用！',
@@ -98,18 +98,21 @@ if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
 
 //发送验证码
 
-if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
+if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['ph']==1){
 	if(!empty($_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
 		$number = rand(100000,999999);
 		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
-			if($lnum<=3) {
+                    if($_SESSION['mon_yzm']['lasttime']<=time()){
+                        $_SESSION['mon_yzm']['lnum'] = 1;
+                    }
+			if(empty($_SESSION['mon_yzm']['lnum'])||$_SESSION['mon_yzm']['lnum']<=3) {
 				if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
 					$vser['yzm'] = $number;
 					$vser['ytime'] = time() + 60 * 10;
 					$vser['ltime'] = time() + 60;
 					$vser['lasttime'] = time() + 60 * 60;
+                    $vser['lnum'] =  $_SESSION['mon_yzm']['lnum']+1;
 					$_SESSION['mon_yzm'] = $vser;
-					$lnum = isset($lnum) ? $lnum+1 : $lnum = 1;
 					echo Return_data(array(
 						'status_code' => '200',
 						'message' => '短信发送成功，请注意查收',
@@ -119,10 +122,10 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 			}else{
 				echo Return_data(array(
 					'status_code' => '300',
-					//'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
-					'message' => date('Y/m/d', $_SESSION['mon_yzm']['lasttime']-time()),
+					'message' => sprintf('由于您获取验证码过于频繁，请在%s后再次申请短信验证码，谢谢配合！',date('i分s秒', $_SESSION['mon_yzm']['lasttime']-time())),
 					'data' => $_SESSION['mon_yzm']['ltime']-time()
 				));
+                die;
 			}
 
 		}else{
@@ -134,12 +137,8 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
 		}
 		die;
 	}
-}else if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$ph!=1){
-	echo Return_data(array(
-		'status_code' => '300',
-		'message' => '该手机号已存在！',
-		'data' => null
-	));die;
+}else if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['ph']!=1){
+    echo $_SESSION['mon_yzm']['lnum'];die;
 }
 
 if($buid)
