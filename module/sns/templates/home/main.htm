@@ -92,13 +92,15 @@ function collect_goods(id){
                 	<div class="pic">
                     <a title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><img width="226" height="210" src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>" /></a>
                     </div>
-                	<div class="content"><{if $list.content}><{$list.content}><{else}>分享了商品<{/if}></div>
+                    <a class="p-name" href="">好奇Huggies金装纸尿裤男S64P</a>
+                    <p class="p-price"><strong>¥118.00</strong></p>
+                	<!-- <div class="content"><{if $list.content}><{$list.content}><{else}>分享了商品<{/if}></div>
                     <div class="func">
                         <span class="collect">
                             <a href="javascript:collect_goods('<{$list.pid}>');"><i></i>收藏</a>
                             <strong> <{$list.collectnum}> </strong>
                         </span>
-                    </div>
+                    </div> -->
                 </div>
             </li>
             <{/foreach}>
