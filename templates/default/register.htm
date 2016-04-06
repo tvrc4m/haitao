@@ -117,9 +117,8 @@
                 }
             });
         }else{
-            layer.alert('请填写手机号', {
-                closeBtn: 0
-            });
+            $(".idcode .btn").parent().find("p").text("请填写手机号");
+            $(".idcode .btn").parent().find("p").css("display","block")
         }
     });
 </script> 
