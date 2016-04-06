@@ -104,7 +104,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .visitor_pic{background-color:#FFFFFF;border:1px solid #E2E2E2;border-radius:4px 4px 4px 4px;height:60px;width:60px;float: left;}
 .visitor_pic_rt{float: right;}
 .visitor_pic img{border-radius:4px 4px 4px 4px;}
-.visitor_name{display:block;height:22px;line-height:22px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:60px;font-size:14px;}
+.visitor_name{display:block;height:25px;line-height:25px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:80px;font-size:14px;margin-top: 5px;}
 .visitor_name a{color: #999;}
 .visitor_time{color:#999999;font-size:14px;line-height:18px;}
 .body-main .main-widget{padding-top:8px;width: 950px;margin-right: auto;margin-left: auto;}

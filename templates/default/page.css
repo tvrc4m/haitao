@@ -239,7 +239,7 @@ input:-webkit-autofill,
 .login .lostpass1 form div .fault{background: url(../../image/default/false.png);}*/
 .login .form .registerNotice1{color: #666;line-height: 20px; border: 1px solid #ffbdbf;background: #fffafa;height: 22px;width: auto;padding: 0 6px 0 6px;text-align: center;position: absolute;z-index: 3;left: 10px;top: -32px;}
 .login .rownotice img{top: 21px;left: 20px;margin: 0;}
-.login .form.register{margin-top:30px; }
+.login .form.register{margin-top:60px; }
 .login .register form div{position: relative;}
 .login .register form div .correct{background: url(../../image/default/true.png);}
 .login .register form div .fault{background: url(../../image/default/false.png);}
