@@ -97,9 +97,8 @@
                 dataType: 'json',
                 success: function(datainfo){
                     if(datainfo.status_code!=200) {
-                        layer.alert(datainfo.message, {
-                            closeBtn: 0
-                        });
+                        $(".idcode .btn").parent().find("p").text(datainfo.message);
+                        $(".idcode .btn").parent().find("p").css("display","block");
                     }else{
                         num = datainfo.data ? datainfo.data : num;
                         $(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
@@ -107,12 +106,14 @@
                             num = num - 1;
                             $(".idcode .btn").attr("value",num+ "秒后重新发送");
                             if (num < 1) {
-                                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                                $(".idcode .btn").attr("disabled",false).css("background-color","#ff5c5d");
                                 clearInterval(interval);
                                 $(".idcode .btn").attr("value","发送短信验证码");
                                 num = 60;
                             };
                         },1000);
+                        $(".idcode .btn").parent().find("p").text("短信发送成功，请注意查收！");
+                        $(".idcode .btn").parent().find("p").css("display","block");
                     }
                 }
             });
