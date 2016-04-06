@@ -36,7 +36,7 @@ function showUser()
 		}
 		else
 		{
-			$new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/$config[regname]'>免费注册</a>";
+			$new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/$config[regname]'>注册</a>";
 		}
 		if($_GET['m'] == 'index')
 		{

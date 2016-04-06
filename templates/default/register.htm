@@ -39,7 +39,7 @@
                             <input type="text" class="text" maxlength="16" autocomplete="off" name="user" tabindex="1" placeholder="用户名" id="user">
                         </dd>
                     </dl>
-                    <span></span>
+                    <p class="registerNotice1 nameuser" style="display: block;"><span class="tipcon">长度为4-16个字符，建议使用字母加数字或中文</span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                 <div>
                     <dl>
@@ -48,12 +48,12 @@
                             <input class="text" name="mobile" id="mobile" tabindex="2" maxlength="11" autocomplete="off" placeholder="手机号"/>
                         </dd>
                     </dl>
-                    <span></span>
+                    <p class="registerNotice1 phoneNum" style="display: block;"><span class="tipcon">请输入正确的手机号码，且为11位纯数字格式</span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                 <div class="idcode">
                     <input class="text" tabindex="3" name="smsvode" maxlength="6" autocomplete="off" placeholder="短信验证码"/>
-
                     <input class="btn" type="button" value="发送短信验证码" />
+                    <p class="registerNotice1 phonecode" style="display: block;"><span class="tipcon">请重新获取短信验证码</span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                 <div>
                     <dl>
@@ -62,7 +62,7 @@
                             <input class="text" type="password" name="password" id="password" maxlength="10" tabindex="4" autocomplete="off" placeholder="设置密码"/>
                         </dd>
                     </dl>
-                    <span></span>
+                    <p class="registerNotice1 password" style="display: block;"><span class="tipcon">长度为6-10个字符，建议使用字母加数字组合</span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
                 <{if $smarty.get.erry=="-2"}>
                 <font color="red" class="clearfix"><{$lang.passerr}></font>
