@@ -24,12 +24,6 @@ class Sms
     public static function send($mob = null,$content = null)
     {
 
-<<<<<<< HEAD
-=======
-    public static function send($mob = null,$content = null)
-    {
-
->>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
         global $config;
         include_once($config['webroot']."/config/sms_config.php");
 
@@ -40,21 +34,12 @@ class Sms
 
         $content=isset($_POST['con'])?$_POST['con']:$content;
         $url="http://sms-api.luosimao.com/v1/send.json";
-<<<<<<< HEAD
         return self::curl_post($url,$password,array('mobile' => $mob, 'message' =>$content.$sigin));
 
     }
     public static function curl_post($url,$api_key,$parameter){
         $ch = curl_init();
-        // 设置传输选项
-=======
-        return Self::curl_post($url,$password,array('mobile' => $mob, 'message' =>$content.$sigin));
-
-    }
-    private static function curl_post($url,$api_key,$parameter){
-        $ch = curl_init();
         // 璁剧疆浼犺緭閫夐」
->>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -65,22 +50,6 @@ class Sms
 
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $parameter);
-<<<<<<< HEAD
-        // 执行一个curl会话
-        $res = curl_exec($ch);
-        // 关闭curl会话
-        curl_close($ch);
-        if (empty($res)) {
-            return '发送失败';
-        }
-        else
-        {
-
-            return $res;
-
-        }
-    }
-=======
         // 鎵ц涓�涓猚url浼氳瘽
         $res = curl_exec($ch);
         // 鍏抽棴curl浼氳瘽
@@ -90,11 +59,11 @@ class Sms
         }
         else
         {
+
             return $res;
+
         }
     }
-
->>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
 	/*public static function send($mob, $content)
 	{
 		$sms_config = Yf_Registry::get('sms_config');
