@@ -32,7 +32,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 /**************space_product_detail*******************/
 #pro_detail img{width:100%;}
 #pro_detail #pname{min-height: 2.15rem;line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;padding-right: 40px;}
-#pro_detail #price{font-family: 'microsoft yahei';font-size:0.6rem;color:#dd3030;border-bottom: 1px dashed #b9b9b9;height: 50px;line-height: 50px;}
+#pro_detail #price{font-family: 'microsoft yahei';font-size:0.6rem;color:#ff5c5c;border-bottom: 1px dashed #b9b9b9;height: 50px;line-height: 50px;}
 #pro_detail #price span{color:#535353;}
 #pro_detail #price span.price_moneys_num{color: #ff5c5c;}
 #pro_detail #price .price_moneys{font-size: 0.9rem;color: #ff5c5c;margin-right: 0.5rem;}
@@ -41,7 +41,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 #pro_detail #price .price_zhes i{display: inline-block;position: absolute;left: -6px;bottom: 0px;width:0px;height: 0px;border-width:6px;border-style: solid;border-color: transparent transparent #ff5c5c transparent;}
 #pro_detail .fas{font-size: 1.5em;color:#000}
 #pro_detail .slogo{width:4em;height:4em;border-radius:2em}
-#pro_detail .slogote{width:4em;height:4em;border-radius:2em;float: left;}
+#pro_detail .slogote{width:2.5rem;height:2.5rem;border-radius:50%;float: left;}
 #pro_detail .sinfo{padding-left:.5em;color:#000;font-size: 0.6rem;line-height: 1rem;}
 .chats{margin: 5px 0;}
 .chats a{font-size: 14px;font-weight: bold;color: #FF6600;}
@@ -123,13 +123,13 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .uinput input, .uinput textarea {margin: 0px;border: 0px;width: 100%;height:44px;-webkit-appearance: none;padding: .4em 0;line-height: 1.2em;background: none;text-decoration: none;font-size: 1em;}
 .select{width: 100%;height:44px;border:none}
 
-.select_style{position:relative;background:#f5f5f5;padding: 0 0.5rem;}
+.select_style{position:relative;background:#fff;padding: 0 0.5rem;}
 .select_guanshui{font-size: 0.6rem;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px dashed #b9b9b9;line-height: 1rem;}
-.select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:50px;}
-.select_style dl.select_style_num{line-height: 28px;padding: 10px 0;}
+.select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:35px;}
+.select_style dl.select_style_num{line-height: 28px;padding: 10px 0;border-bottom: 1px dashed #b9b9b9;}
 .select_style dl.select_style_xiangqing{border-bottom: none;margin-bottom: 0px;}
 .select_style dt{color:#6D6D6D;font-family:simsun;float:left;display: inline-block;font-size: 0.6rem;}
-.select_style dt.select_style_title{width: 100%;border-bottom: 1px dashed #b9b9b9;margin-bottom: 0.5rem;font-size: 18px;height: 2rem;line-height: 2rem;}
+.select_style dt.select_style_title{width: 100%;border-bottom: 1px dashed #b9b9b9;margin-bottom: 0.5rem;font-size: 0.8rem;height: 2rem;line-height: 2rem;}
 .select_style dt.select_style_titleg{color: #ff5c5c;}
 .select_style dt i{display: inline-block;width: 25px;height: 25px; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;margin-top: -5px;}
 .select_style dd{color:#404040;}
@@ -141,6 +141,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .select_style ul{clear:both;display:block;overflow: hidden;}
 /*.select_style ul.shoplist{border-bottom: 1px dashed #b9b9b9;}*/
 .select_style li{background-color:#FFFFFF;float:left;line-height:20px;margin:0 4px 6px 0;padding:1px;position:relative;vertical-align:middle;display: inline-block;}
+.select_style li.ut-s{font-size: 0.7rem;}
 .select_style li.shopli{margin: 0;padding: 0;}
 .select_style li a{background-color:#FFFFFF;border:1px solid #E2E1E3;color:#000000;display:block;min-width:10px;padding:5px 10px;text-align:center;text-decoration:none;white-space:nowrap;width:auto!important;cursor:pointer;color:#404040;}
 .select_style li.shopli a{border:none;padding: 0;}

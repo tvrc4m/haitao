@@ -113,7 +113,7 @@ function distribute_goods(id){
                 <div class="col">
                     <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
                         <div id="collect" class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
-                        <div style="font-size: .7em">收藏</div>
+                        <div style="font-size: .6rem; color:#000;">收藏</div>
                     </a>
                 </div>
             </div>
@@ -139,9 +139,11 @@ function distribute_goods(id){
 		</div>
 	<{/if}>
     <div class="c-wh bgw" style="margin-bottom: 0">
-        <div class="select_style select_guanshui clearfix">
-            <div><span>邮费：</span><span>满88包邮</span></div>
-            <div><span>关税：</span><span class="select_guanshui_ic">若订单关税50元则免征，关税收取规则</span></div>
+        <div class="select_style clearfix">
+            <div class="select_guanshui clearfix">
+                <div><span>邮费：</span><span>满88包邮</span></div>
+                <div><span>关税：</span><span class="select_guanshui_ic">若订单关税50元则免征，关税收取规则</span></div>
+            </div>
         </div>
     </div>
     <div class="c-wh bgw" style="margin-bottom: 0">
@@ -176,7 +178,7 @@ function distribute_goods(id){
             <dl class="clearfix select_style_xiangqing">
                 <dt class="select_style_title select_style_titleg">蚂蚁说</dt>
                 <dd class="mati_say_content">
-                <img src="<{if $com.wap_logo}><{$com.wap_logo}><{else}>templates/wap/images/user.png<{/if}>" class="slogote">
+                <img src="../../../image/wap/wap_haitao_user1.png" class="slogote">
                 <p class="mayi_say">消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书</p></dd>
             </dl>
         </div>
@@ -213,7 +215,7 @@ function distribute_goods(id){
             </dl>
         </div>
     </div>
-    <div style="height:10px;background-color:#efefef;width:100%;"></div>
+    <div style="height:10px;background-color:#f5f5f5;width:100%;"></div>
     <div class="c-wh bgw c-wh-dianpu">
         <div class="clearfix"></div>
 
