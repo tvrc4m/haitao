@@ -10,6 +10,7 @@
 <!-- Default Theme -->
 <link rel="stylesheet" href="<{$config.weburl}>/script/owl-carousel/owl.theme.css">
 <script src="<{$config.weburl}>/script/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="http://www.zhangxinxu.com/study/js/mini/jquery.scrollLoading-min.js"></script>
 <section id="J_search" class="in-search cc-search showoff">
     <div class="main95">
        <!--  <div class="s_left"></div> -->
@@ -37,7 +38,7 @@
         <div class="cates">
             <ul class="cateul">
             <{foreach item=cList name=cat key=num from=$categorys}>
-            <{if $smarty.foreach.cat.iteration lt 6}>
+            <{if $smarty.foreach.cat.iteration lt 5}>
             <li class="mm_flt">
                 <a href="<{$config.weburl}>/?m=product&s=list&id=<{$cList.catid}>" data-refresh-ajax="true">
                     <img src="<{if $cList.pic}><{$cList.pic}><{else}><{$config.weburl}>/image/wap/cate<{$cList.catid}>.png<{/if}>" class="cateimg"/>
