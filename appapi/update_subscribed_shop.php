@@ -16,7 +16,6 @@ if(isset($_POST['shopId']) && !empty($_POST['shopId'])){
     echo json_encode($re);
     exit;
 }
-
 $where = " and shopid = ".$shopid ;
 if(!empty($_POST['subscribeId'])){
     $subscribeid = $_POST['subscribeId'];

@@ -80,12 +80,11 @@ if($count!=0)
 $sql="select avg(item1) as a,avg(item2) as b,avg(item3) as c,avg(item4) as d from ".UCOMMENT." where byid='$shopid'";
 $db->query($sql);
 $u=$db->fetchRow();
-
 $re['asdiscribe']=number_format($u['a'],1);//描述相符
 $re['attitude']=number_format($u['b'],1);//服务态度
 $re['sendspeed']=number_format($u['c'],1);//发货速度
 $re['lospeed']=number_format($u['d'],1);//物流速度
-
+$re['result']=0;
 echo json_encode($re);
 return 0;
 ?>
