@@ -58,7 +58,7 @@ if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['p
                     die(Return_data(array('status_code' => '200', 'message' => '短信发送成功，请注意查收', 'data' => null )));
                 }
             }else{
-                die(Return_data(array('status_code' => '300', 'message' => sprintf('操作过于频繁，%s后再试！',date('i分s秒', $_SESSION['mon_yzm']['lasttime']-time())), 'data' => $_SESSION['mon_yzm']['ltime']-time() )));
+               die(Return_data(array('status_code' => '300', 'message' => sprintf('操作过于频繁，%s后再试！',date('i分s秒', $_SESSION['mon_yzm']['lasttime']-time())), 'data' => $_SESSION['mon_yzm']['ltime']-time() )));
             }
         }else{
             die(Return_data(array('status_code' => '300', 'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()), 'data' => $_SESSION['mon_yzm']['ltime']-time() )));
@@ -99,8 +99,6 @@ if(!empty($_POST['mobile']))
 
 	//手机验证码
 	if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
-        var_dump($_SESSION['mon_yzm']['yzm']);
-        var_dump($_POST['smsvode']);
 		if($_SESSION['mon_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
 		}else{
@@ -145,24 +143,14 @@ if(!empty($_POST['mobile']))
 			die('<script>alert("您的IP已注册！");history.go(-1);</script>;');
 		}
 	}
-	$user = trim($_POST['user']);
+
 	$pass = trim($_POST['password']);
 	$time = time();
-
-	if(valid_mobile($user))
-	{
-		$_POST["mobile"] = $mobile = $user;
-		$_POST["user"] = $user = "M".$mobile;
-		if(!is_repeat($user))
-		{
-			$_POST["user"] = $user = $user.substr(md5($time),-5);
-		}
-	}
 
 	//定义所有正则
 	$str_check = array( 'mobile', 'smsvode', 'password');
 	foreach($str_check as $key => $val){
-        if(empty($_POST[$val])||Check_data($_POST[$val], $val)){
+        if(empty($_POST[$val])||!Check_data($_POST[$val], $val)){
 			die('<script>alert("请填写正确格式的数据");history.go(-1);</script>;');
 		}
 	}
@@ -191,7 +179,7 @@ else
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
-    $user = 'mayi'.$_POST['password'];
+    $user = 'mayi'.$_POST['mobile'];
 	$pass = $_POST['password'];
 	$mobile = $_POST['mobile'];
 	$mobile_verify = $mobile&&$config['user_reg']==3 ? "1":"0";
@@ -264,7 +252,6 @@ function Check_sms($data = null){
         if($_SESSION['mon_yzm']['ytime']<time()){
             die(Return_data(array('status_code' => '300', 'message' => "验证码已失效!", 'data' => null )));
         }else{
-            session_unset($_SESSION['mon_yzm']);
             die(Return_data(array('status_code' => '200', 'message' => "验证码正确!", 'data' => null )));
         }
     }else{
