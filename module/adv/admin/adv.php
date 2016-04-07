@@ -23,14 +23,17 @@
 			//添加
 			if($_POST["act"]=='save')
 			{
-				$sql="insert into ".ADVSCON." (group_id,url,`type`,isopen,con,picName , `stime`,`etime`,name,province,city,area,street,width,height,catid)
-		  values ('$_POST[group_id]','$_POST[url]','1','$_POST[isopen]','$_POST[con]','$_POST[pic]',$_POST[stime],$_POST[etime],'$_POST[name]','$_SESSION[province]','$_SESSION[city]','$_SESSION[area]','$_SESSION[street]','$_POST[width]','$_POST[height]','$_POST[catid]')";
+				/*$sql="insert into ".ADVSCON." (group_id,url,`type`,isopen,con,picName , `stime`,`etime`,name,province,city,area,street,width,height,catid)
+		  values ('$_POST[group_id]','$_POST[url]','1','$_POST[isopen]','$_POST[con]','$_POST[pic]',$_POST[stime],$_POST[etime],'$_POST[name]','$_SESSION[province]','$_SESSION[city]','$_SESSION[area]','$_SESSION[street]','$_POST[width]','$_POST[height]','$_POST[catid]')";*/
+		        $sql="insert into ".ADVSCON." (group_id,url,`type`,isopen,con,picName , `stime`,`etime`,name,province,city,area,street,width,height,catid)
+		  values ('$_POST[group_id]','$_POST[url]','1','$_POST[isopen]','$_POST[con]','$_POST[pic]',$_POST[stime],$_POST[etime],'$_POST[name]','','','','','$_POST[width]','$_POST[height]','$_POST[catid]')";
 		  
 				$db->query($sql);
 			}
 			//修改
 			if($_POST["act"]=='edit' and is_numeric($_POST['id']))
 			{
+				/*$sql="UPDATE ".ADVSCON." SET url='$_POST[url]',picName='$_POST[pic]',catid='$_POST[catid]',group_id='$_POST[group_id]',isopen='$_POST[isopen]',stime=$_POST[stime],etime=$_POST[etime],con='$_POST[con]',name='$_POST[name]',width='$_POST[width]',height='$_POST[height]' WHERE ID=$_POST[id]";*/
 				$sql="UPDATE ".ADVSCON." SET url='$_POST[url]',picName='$_POST[pic]',catid='$_POST[catid]',group_id='$_POST[group_id]',isopen='$_POST[isopen]',stime=$_POST[stime],etime=$_POST[etime],con='$_POST[con]',name='$_POST[name]',width='$_POST[width]',height='$_POST[height]' WHERE ID=$_POST[id]";
 				$db->query($sql);
 				unset($_GET['editid']);
@@ -139,6 +142,9 @@
 		{
 			$s.=" and a.name like '%$_GET[name]%' ";
 		}
+        /**
+         * 2016.03.30
+         *
 		if($_SESSION['province'])
 		{
 			$s.=" and a.province = '$_SESSION[province]' ";
@@ -155,6 +161,8 @@
 		{
 			$s.=" and a.street = '$_SESSION[street]' ";
 		}
+        */
+
 		include_once("$config[webroot]/includes/page_utf_class.php");
 		$sql="select a.*,b.name as title,b.ad_type from ".ADVSCON." a left join ".ADVS." b on a.group_id=b.id where 1 $s order by id desc";
 	
@@ -235,7 +243,7 @@
 		foreach($de['list'] as $key=>$val)
 		{
 			unset($s);
-			if($_SESSION['province'])
+			/*if($_SESSION['province'])
 			{
 				$s.=" and province = '$_SESSION[province]' ";
 			}
@@ -250,7 +258,7 @@
 			if($_SESSION['street'])
 			{
 				$s.=" and street = '$_SESSION[street]' ";
-			}
+			}*/
 			$sql="select count(*) as num , sum(shownum) as shownum from ".ADVSCON." WHERE group_id='".$val['ID']."' $s";
 			$db->query($sql);
 			$sss=$db->fetchRow();
