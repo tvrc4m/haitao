@@ -18,12 +18,12 @@ $jj(function(){
 	})
 
  	// 幻灯片效果
-	$jj("#owl-demo").owlCarousel({
-	  navigation : false, // Show next and prev buttons
-	  slideSpeed : 200,
-	  singleItem:true,
-	  autoPlay:2000,
-	});
+	// $jj("#owl-demo").owlCarousel({
+	//   navigation : false, // Show next and prev buttons
+	//   slideSpeed : 200,
+	//   singleItem:true,
+	//   autoPlay:2000,
+	// });
 
 
 	// js获取屏幕宽度，自动调节相应模块的宽高比例

@@ -1,5 +1,5 @@
 @charset "utf-8";
-.submit{border:1px solid #F57403;background-color:#F57403;color:#FFF;line-height:22px;height:32px;padding:7px 10px 7px 12px;display:inline-block;*display:inline;text-align:center;vertical-align:middle;font-weight:700;border-radius:5px;*zoom:1;*overflow:visible;}
+.submit{border:1px solid #F57403;background-color:#ff5c5c;color:#FFF;line-height:22px;height:32px;padding:7px 10px 7px 12px;display:inline-block;*display:inline;text-align:center;vertical-align:middle;font-weight:700;border-radius:5px;*zoom:1;*overflow:visible;}
 .submit:hover{background-color:#FB8318;}
 .text{border-color:#AAAAAA #DDDDDD #DDDDDD #AAAAAA;border-style:solid;border-width:1px;font-family:Tahoma;padding:4px 5px 5px;width:170px;}
 .form-error{color:#F00;}
@@ -9,19 +9,26 @@
 
 
 .payment .title{margin-bottom:15px;border-bottom:solid 1px #ddd;height:55px;}
-.payment .title p{font-size:12px;margin-top:4px;}
+.payment .title h3{padding-left: 10px;}
+.payment .title p{font-size:12px;margin-top:4px;padding-right: 10px;padding-left: 10px;}
 .payment .title h2{font-size:14px;}
 .payment .title span{font-size:12px;font-weight:normal;float:right;}
-.payment .title span strong{font-size:12px;color:#53A000;margin:0 5px;}
-
+.payment .title span strong{font-size:12px;color:#ff5c5c;margin:0 5px;}
+i.fanhui_icon {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: url(../../../../image/wap/wap_haitao_icon10.png) 5.8% no-repeat;
+    background-size: 50%;
+}
 
 .tips{background-color:#FFFDDD;border:1px solid #F8F3D6;color:#666666;line-height:20px;  padding: 3px 20px 3px 25px;position: relative;margin: -10px 10px 20px;}
 .tips span{background:url(../image/tips.png) no-repeat;display:inline-block;height:18px;margin-left:-21px;padding-right:5px;vertical-align:middle;width:16px;}
 
 .pay ul li{margin:5px 0 2px 0px;width:160px;position:relative;border:2px solid #FFF;background:#FFF;text-align:center;border:2px solid #EEE;}
 
-.pay ul li.checked{border:2px solid #DF0001;}
-.pay ul li.checked i{background:url(../image/checked.png) no-repeat;bottom:0;display:block;height:12px;margin:0;overflow:hidden;position:absolute;right:0;width:12px;}
+.pay ul li.checked{border:2px solid #ff5c5c;}
+.pay ul li.checked i{background:url(../../../../image/wap/wap_haitao_icon21.png);background-size: contain;bottom:0;display:block;height:15px;margin:0;overflow:hidden;position:absolute;right:0;width:15px;}
 
 .hidden {display: none;}
 .s_logo{background:#fff;float:left;margin: 5px 1%;width:98%;}
