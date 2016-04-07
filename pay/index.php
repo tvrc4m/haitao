@@ -1,17 +1,12 @@
 <?php
-
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 //==========================================
 include_once("module/payment/includes/plugin_pay_class.php");
-
-
 $act=$_GET['act']?$_GET['act']:NULL;
 $op=$_GET['op']?$_GET['op']:NULL;
 $pay=new pay();
-
 $de=$pay->get_member_info($buid);
-
 $tpl->assign("de",$de);
 
 $sql="select con_group,con_title,con_id from ".WEBCON." where type=1 limit 0,4";

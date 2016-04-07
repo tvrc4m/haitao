@@ -20,7 +20,6 @@ class dba {
 	function dba($h,$u,$p,$db,$port=NULL)
 	{
 		$port=empty($port)?"3306":$port;
-		
 		$this->Link_ID=mysql_connect("$h:$port",$u,$p) or die("Can not connect mysql server<br>不能连接数据库，请刷新或稍后再试..."); 
 		if($this->version() > '4.1')
 		{
