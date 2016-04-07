@@ -107,7 +107,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .visitor_name{display:block;height:25px;line-height:25px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:80px;font-size:14px;margin-top: 5px;}
 .visitor_name a{color: #999;}
 .visitor_time{color:#999999;font-size:14px;line-height:18px;}
-.body-main .main-widget{padding-top:8px;width: 950px;margin-right: auto;margin-left: auto;}
+.body-main .main-widget{padding-top:8px;width: 950px;margin-right: auto;margin-left: auto;padding-bottom: 40px;}
 .body-main .main-widget h3{border-bottom:1px solid #999;position:relative;}
 .body-main .main-widget h3 span a{color:#555555;cursor:pointer;font-size: 16px;background: url(home/mayi_home_icon4.png) no-repeat 16px -116px;padding-left: 40px;}
 .body-main .main-widget h3 span a:hover{color:#FC7435;}
