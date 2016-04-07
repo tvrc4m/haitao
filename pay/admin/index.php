@@ -1,5 +1,4 @@
 <?php
-
 include_once("../includes/global.php");
 //================================================
 if(!empty($_POST["user"]))

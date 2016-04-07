@@ -20,8 +20,8 @@ $mem['product'][1][1]=array(
 	array(
 		'module_config.php,1,product,模块设置',
 		'product_cat.php,1,product,分类管理',
-		'brand.php,0,brand,品牌管理',
-		'brand_cat.php,0,brand,品牌分类管理',
+		'brand.php,1,brand,品牌管理',
+		'brand_cat.php,1,brand,品牌分类管理',
 		'property.php,1,product,类型管理',
 		'spec.php,1,product,规格管理',
 	),	

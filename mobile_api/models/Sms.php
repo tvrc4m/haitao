@@ -21,7 +21,6 @@ class Sms
 			return $re;
 		}
 	}
-
     public static function send($mob = null,$content = null)
     {
 
@@ -35,10 +34,10 @@ class Sms
 
         $content=isset($_POST['con'])?$_POST['con']:$content;
         $url="http://sms-api.luosimao.com/v1/send.json";
-        return Self::curl_post($url,$password,array('mobile' => $mob, 'message' =>$content.$sigin));
+        return self::curl_post($url,$password,array('mobile' => $mob, 'message' =>$content.$sigin));
 
     }
-    private static function curl_post($url,$api_key,$parameter){
+    public static function curl_post($url,$api_key,$parameter){
         $ch = curl_init();
         // 设置传输选项
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -60,10 +59,11 @@ class Sms
         }
         else
         {
+
             return $res;
+
         }
     }
-
 	/*public static function send($mob, $content)
 	{
 		$sms_config = Yf_Registry::get('sms_config');

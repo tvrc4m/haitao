@@ -56,10 +56,10 @@ class User_CommentModel extends User_Comment
 			$cs +=$value['item3'];
 			$ds +=$value['item4'];
 		}
-		$as = round($as/$totals,2);
-		$bs = round($bs/$totals,2);
-		$cs = round($cs/$totals,2);
-		$ds = round($ds/$totals,2);
+		$as = round(($totals==0?0:$as/$totals),2);
+		$bs = round(($totals==0?0:$bs/$totals),2);
+		$cs = round(($totals==0?0:$cs/$totals),2);
+		$ds = round(($totals==0?0:$ds/$totals),2);
 		fb($as);
 		fb($bs);
 		fb($cs);
@@ -78,10 +78,10 @@ class User_CommentModel extends User_Comment
 			$c +=$value['item3'];
 			$d +=$value['item4'];
 		}
-		$a = round($a/$total,2);
-		$b = round($b/$total,2);
-		$c = round($c/$total,2);
-		$d = round($d/$total,2);
+		$a = round(($total==0?0:$a/$total),2);
+		$b = round(($total==0?0:$b/$total),2);
+		$c = round(($total==0?0:$c/$total),2);
+		$d = round(($total==0?0:$d/$total),2);
 
 
 
@@ -91,10 +91,10 @@ class User_CommentModel extends User_Comment
 		$score['c'] = $c > 0 ? $c : 5;
 		$score['d'] = $d > 0 ? $d : 5;
 
-		$score['aw'] = round(($score['a']-$as)/$as*100,2);
-		$score['bw'] = round(($score['b']-$bs)/$bs*100,2);
-		$score['cw'] = round(($score['c']-$cs)/$cs*100,2);
-		$score['dw'] = round(($score['d']-$ds)/$ds*100,2);
+		$score['aw'] = round(($as==0?0:($score['a']-$as)/$as)*100,2);
+		$score['bw'] = round(($bs==0?0:($score['b']-$bs)/$bs)*100,2);
+		$score['cw'] = round(($cs==0?0:($score['c']-$cs)/$cs)*100,2);
+		$score['dw'] = round(($ds==0?0:($score['d']-$ds)/$ds)*100,2);
 
 		return $score;
 	}

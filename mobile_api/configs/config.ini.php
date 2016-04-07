@@ -357,7 +357,7 @@ if (file_exists(ROOT_PATH . '/config/web_config.php'))
 	require_once ROOT_PATH . '/config/web_config.php';
 }
 
-// Yf_Registry::set('config', $config);
+ Yf_Registry::set('config', $config);
 
 // if (file_exists(ROOT_PATH . '/config/sms_config.php'))
 // {

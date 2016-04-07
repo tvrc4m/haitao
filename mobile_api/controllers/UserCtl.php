@@ -70,42 +70,42 @@ class UserCtl extends Yf_AppController
 	 *
 	 * @access public
 	 */
-public function regCode()
-{
-
-    $mobile = request_string('mobile');
-
-    $data = array();
-
-    $data['user_code'] = rand(1000, 9999);
-
-    $config_cache = Yf_Registry::get('config_cache');
-
-    if (!file_exists($config_cache['default']['cacheDir']))
+    public function regCode()
     {
-        mkdir($config_cache['default']['cacheDir']);
+
+        $mobile = request_string('mobile');
+
+        $data = array();
+
+        $data['user_code'] = rand(1000, 9999);
+
+        $config_cache = Yf_Registry::get('config_cache');
+
+        if (!file_exists($config_cache['default']['cacheDir']))
+        {
+            mkdir($config_cache['default']['cacheDir']);
+        }
+        $Cache_Lite = new Cache_Lite_Output($config_cache['default']);
+
+        $Cache_Lite->save($data['user_code'], $mobile);
+
+        //发送短消息
+        $contents = '您的验证码是：' . $data['user_code'] . '。请不要把验证码泄露给其他人。如非本人操作，可不用理会！';
+
+        $result = json_decode(Sms::send($mobile, $contents),true);
+        if ($result['error']==0&&$result['msg']=='ok')
+        {
+            $msg = 'success';
+            $status = 200;
+        }
+        else
+        {
+            $msg = '失败';
+            $status = 250;
+        }
+
+        $this->data->addBody(-140, $data, $msg, $status);
     }
-    $Cache_Lite = new Cache_Lite_Output($config_cache['default']);
-
-    $Cache_Lite->save($data['user_code'], $mobile);
-
-    //发送短消息
-    $contents = '您的验证码是：' . $data['user_code'] . '。请不要把验证码泄露给其他人。如非本人操作，可不用理会！';
-
-    $result = json_decode(Sms::send($mobile, $contents),true);
-    if ($result['error']==0&&$result['msg']=='ok')
-    {
-        $msg = 'success';
-        $status = 200;
-    }
-    else
-    {
-        $msg = '失败';
-        $status = 250;
-    }
-
-    $this->data->addBody(-140, $data, $msg, $status);
-}
 
 
 	public function register()
@@ -142,7 +142,7 @@ public function regCode()
 		*/
 
 		//
-		$user_code                      = request_string('user_code');
+		$user_code                      = (int)request_string('user_code');
 
 		$data = array();
 		$data['user']                   = request_string('user_account');
@@ -150,7 +150,7 @@ public function regCode()
 		if (request_string('user_passwd'))
 		{
 			$data['password']               = md5(request_string('user_passwd'));
-			
+           
 
 			$config_cache = Yf_Registry::get('config_cache');
 			$Cache_Lite = new Cache_Lite_Output($config_cache['default']);
