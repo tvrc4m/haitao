@@ -78,6 +78,7 @@ if($config['temp'] != "wap")
 	$sql="select user,logo,b.pic from ".MEMBER." a left join ".MEMBERGRADE." b on a.grade_id = b.id where userid = '$buid' ";
 	$db->query($sql);
 	$member = $db->fetchRow();
+
 	$tpl->assign("member",$member);
 
 	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '1' ";
