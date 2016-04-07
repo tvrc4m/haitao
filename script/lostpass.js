@@ -72,9 +72,9 @@ $(document).ready(function(){
                 });
             }else if(flag&&focusid == "#smsvode"){
                 $.ajax({
-                    url: 'register.php',
+                    url: 'lostpass.php',
                     type: 'post',
-                    data: {mobile: thisval, check_mobile: 'check'},
+                    data: {smsvode: thisval, check_sms: 'check'},
                     dataType: 'json',
                     success: function(datainfo){
                         if(datainfo.status_code!=200) {
