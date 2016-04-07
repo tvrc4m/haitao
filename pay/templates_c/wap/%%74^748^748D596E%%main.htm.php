@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-03-25 13:15:39
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-25 13:40:30
->>>>>>> 7312265edf19ae6214b40415a77164f944fcc85e
-=======
-<?php /* Smarty version 2.6.20, created on 2016-03-31 09:30:42
->>>>>>> 4741dc70199675e6b1ede86d304d73c7832c9beb
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 35, false),)), $this); ?>
