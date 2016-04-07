@@ -17,6 +17,10 @@ $jj(function(){
 		$jj(".cc-search-show").addClass("cc-search-hide").removeClass("cc-search-show")
 	})
 
+	$jj(function(){
+		$jj(".scrollLoading").scrollLoading();
+	})
+
  	// 幻灯片效果
 	// $jj("#owl-demo").owlCarousel({
 	//   navigation : false, // Show next and prev buttons
@@ -27,20 +31,20 @@ $jj(function(){
 
 
 	// js获取屏幕宽度，自动调节相应模块的宽高比例
- 	var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
-	if(w <=540)
-	{
-		var rate = w/540;
-		var h = 67*100*rate/100;
-		var h1 = 224*100*rate/100;
-		$jj(".index_icon1").height(h+"px")
-		$jj(".shopli").find("img").height(h1+"px")
-	}
-	else
-	{
-		$jj(".index_icon1").height("60px")
-		$jj(".shopli").find("img").height("224px")
-	}
+ // 	var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
+	// if(w <=540)
+	// {
+	// 	var rate = w/540;
+	// 	var h = 67*100*rate/100;
+	// 	var h1 = 224*100*rate/100;
+	// 	$jj(".index_icon1").height(h+"px")
+	// 	$jj(".shopli").find("img").height(h1+"px")
+	// }
+	// else
+	// {
+	// 	$jj(".index_icon1").height("60px")
+	// 	$jj(".shopli").find("img").height("224px")
+	// }
 
 	function getPositionError(error) {
       //  HTML5 定位失败时，调用百度地图定位   
