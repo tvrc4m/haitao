@@ -17,10 +17,6 @@ $jj(function(){
 		$jj(".cc-search-show").addClass("cc-search-hide").removeClass("cc-search-show")
 	})
 
-	$jj(function(){
-		$jj(".scrollLoading").scrollLoading();
-	})
-
  	// 幻灯片效果
 	$jj("#owl-demo").owlCarousel({
 	  navigation : false, // Show next and prev buttons
