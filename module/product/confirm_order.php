@@ -189,7 +189,7 @@ else
 			
 						$detail = addslashes($detail);
 				
-						$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values ('$order_id','$val[product_id]','$val[spec_id]','$sell_userid','$sell_userid','$val[catid]','$val[type]','".addslashes($val[pname])."','".addslashes($val[subhead])."','$val[brand]','$val[price]','0','$val[pic]','".time()."','$detail','$val[spec_name]','$val[setmealname]')";
+						$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values ('$order_id','$val[product_id]','$val[spec_id]','$sell_userid','$sell_userid','$val[catid]','$val[type]','".addslashes($val[pname])."','".addslashes($val[subhead])."','".addslashes($val[brand])."','$val[price]','0','$val[pic]','".time()."','".addslashes($detail)."','".addslashes($val[spec_name])."','".addslashes($val[setmealname])."')";
 						$db->query($sql);
 					}
 					if($value["giftlist"])
