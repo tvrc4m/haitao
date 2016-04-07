@@ -134,7 +134,7 @@ class cart
 		$sql="select 
 		a.*,a.price * a.quantity as sumprice,a.quantity as num,b.weight,b.cubage,
 		b.subhead,b.brand,b.type,b.promotion_id,b.ship_free_id,b.is_shelves,b.status,b.market_price,b.price as pprice,b.stock as amount,b.name as pname,b.pic,b.catid,b.id as pid,b.freight_id as freight,b.freight_type,b.is_invoice,
-		c.setmeal as setmealname,c.spec_name,c.stock,c.price as sprice,b.skuid as sku from
+		c.setmeal as setmealname,c.spec_name,c.stock,c.price as sprice,b.skuid from
 		".CART." a left join 
 		".PRODUCT." b on a.product_id = b.id left join 
 		".SETMEAL." c on a.spec_id = c.id 
