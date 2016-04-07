@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 13:29:08
+<?php /* Smarty version 2.6.20, created on 2016-04-07 14:56:37
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -139,4 +139,4 @@ $(".pay li").bind("click",function(){
 	$("#payment_type").val(data.id);
 	$(this).addClass("checked").siblings().removeClass("checked");
 });
-</script>
+</script>

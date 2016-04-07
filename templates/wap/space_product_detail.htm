@@ -112,8 +112,10 @@ function distribute_goods(id){
                 <div id="pname"><span class="pname_img"><img src="../../../image/wap/state1.png"> 日本</span><{$de.name}></div>
                 <div class="col">
                     <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
-                        <div id="collect" class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
-                        <div style="font-size: .6rem; color:#000;">收藏</div>
+                        <div class="col_ttt">
+                            <div id="collect" class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
+                            <div style="font-size: .6rem; color:#000;">收藏</div>
+                        </div>  
                     </a>
                 </div>
             </div>
@@ -143,7 +145,7 @@ function distribute_goods(id){
             <div class="select_guanshui clearfix">
                 <div><span>邮费：</span><span>满88包邮</span></div>
                 <div class="select_duty_context">
-                    <div><span>关税：</span><span class="select_guanshui_ic">若订单关税50元则免征，关税收取规则</span></div>
+                    <div><span>关税：</span><span class="select_guanshui_ic">若订单关税≤50元则免征，关税收取规则</span></div>
                     <div class="select_duty">
                         <i></i>
                         <p>关税应纳税额=应税进（出）口货物数量*单位完税价格*适用税率 </p>
@@ -193,7 +195,7 @@ function distribute_goods(id){
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
-                <dt class="select_style_title select_style_titleg">蚂蚁推荐</dt>
+                <dt class="select_style_title select_style_titleg"><span>蚂蚁推荐</span><a href="javascript:void(0);" class="select_style_titler">韩束</a></dt>
                 <dd class="mati_say_content">
                 <div class="shop_t clearfix">
                     <ul class="shoplist">
@@ -231,7 +233,7 @@ function distribute_goods(id){
             </li>
             <li class="ub-f1 sinfo">
                 <p><a href="shop.php?uid=<{$smarty.get.uid}>"><strong><{$com.company}></strong></a></p>
-                <p><a href="shop.php?uid=<{$smarty.get.uid}>"><font color="#525252"><{$com.area}></font></a></p>
+                <p><a href="shop.php?uid=<{$smarty.get.uid}>"><font color="#999"><{$com.area}></font></a></p>
             </li>
            <!--  <li class="goshop"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>">进入店铺
             </a></li> -->
@@ -325,7 +327,14 @@ function distribute_goods(id){
     $(".price_chas .price_chas_num").html(chaNum);
 </script>
 <script>
+    $(function(){
+        var liTd=$("ul[genre*=property]").find("li").size();
+        if(liTd==1){
+            $("ul[genre*=property] li").eq(0).find("a").addClass("checked");
+        }
+    })
     function collect_goods(id){
+
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
@@ -340,15 +349,21 @@ function distribute_goods(id){
         {
             if(originalRequest>1){
                 $("#collect").addClass("collect");
+               
                 alert('成功添加至我的收藏夹!');
             }
             else if (originalRequest>0)
+               
                 alert('该内容已经在你的收藏中心，请勿重复添加！');
             else
+               
                 alert('参数传递错误，无法完成操作!');
         }
     }
+    function altto(co){
+        $(".collect_box_content").html(co);
 
+    }
     function distribute_goods(id){
         var url = '<{$config.weburl}>/module/distribution/add.php';
         var uname='<{$smarty.cookies.USER}>';
