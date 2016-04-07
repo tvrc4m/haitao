@@ -71,16 +71,14 @@ if($cat_pro)
 	/*echo '<pre>';
 	print_r($cat_pro);*/
 	$tpl->assign("categorys",$cat_pro);
-
 }
 if($config['temp'] != "wap")
 {
 	$sql="select user,logo,b.pic from ".MEMBER." a left join ".MEMBERGRADE." b on a.grade_id = b.id where userid = '$buid' ";
 	$db->query($sql);
 	$member = $db->fetchRow();
-
 	$tpl->assign("member",$member);
-
+	
 	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '1' ";
 	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '3' ";
 	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '4' and buyer_comment='0' and seller_comment = '0' ";	
@@ -114,9 +112,9 @@ $cominfo=$shop->get_shop_info($buid);
 $tpl->assign("cominfo",$cominfo);
 
 $tpl->assign("cat_pro",$cat_pro);
-
 $tpl->assign("current","index");
 include_once("footer.php");
+
 //=============================================
 $out=tplfetch("product_index.htm",NULL);
 ?>
