@@ -47,7 +47,6 @@ function load_modules($modules_dir = '')
         </tr>
         <?php
 	$payments = load_modules('../module/payment/admin/payment');
-        //var_dump($payments);
 	$coun_num = count($payments);
 	for($i=0;$i<$coun_num;$i++)
 	{
