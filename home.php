@@ -14,7 +14,7 @@
 
 	$tpl -> template_dir = $config['webroot'] . "/module/sns/templates/home/";
 	$tpl -> compile_dir     = $config["webroot"] . "/templates_c/".$config['temp']."/home/";
-	
+
 	$tpl->assign("member",$home->Member($uid));
 	$tpl->assign("count",$home->AllCount($uid));
 	$tpl->assign("userid",$userid=$home->UserId());
@@ -51,9 +51,13 @@
 			break;
 		}
 	}
-	
+
 	//访客
-	$tpl->assign("visitors",$home->Visitors($uid));
+    $visitors = $home->Visitors($uid);
+    foreach($visitors as $key => $val){
+        $visitors[$key]['dtime'] = date('m月 d日', intval($val[time]));
+    }
+	$tpl->assign("visitors",$visitors);
 	
 	$tpl->assign("title",'看TA怎么淘到好宝贝');
 	include_once("footer.php");

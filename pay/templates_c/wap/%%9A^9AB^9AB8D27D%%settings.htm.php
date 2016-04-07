@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 11:46:27
+<?php /* Smarty version 2.6.20, created on 2016-04-06 14:51:27
          compiled from settings.htm */ ?>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>

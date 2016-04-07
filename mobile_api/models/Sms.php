@@ -24,6 +24,12 @@ class Sms
     public static function send($mob = null,$content = null)
     {
 
+<<<<<<< HEAD
+=======
+    public static function send($mob = null,$content = null)
+    {
+
+>>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
         global $config;
         include_once($config['webroot']."/config/sms_config.php");
 
@@ -34,12 +40,21 @@ class Sms
 
         $content=isset($_POST['con'])?$_POST['con']:$content;
         $url="http://sms-api.luosimao.com/v1/send.json";
+<<<<<<< HEAD
         return self::curl_post($url,$password,array('mobile' => $mob, 'message' =>$content.$sigin));
 
     }
     public static function curl_post($url,$api_key,$parameter){
         $ch = curl_init();
         // ÉèÖÃ´«ÊäÑ¡Ïî
+=======
+        return Self::curl_post($url,$password,array('mobile' => $mob, 'message' =>$content.$sigin));
+
+    }
+    private static function curl_post($url,$api_key,$parameter){
+        $ch = curl_init();
+        // è®¾ç½®ä¼ è¾“é€‰é¡¹
+>>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -50,6 +65,7 @@ class Sms
 
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $parameter);
+<<<<<<< HEAD
         // Ö´ÐÐÒ»¸öcurl»á»°
         $res = curl_exec($ch);
         // ¹Ø±Õcurl»á»°
@@ -64,6 +80,21 @@ class Sms
 
         }
     }
+=======
+        // æ‰§è¡Œä¸€ä¸ªcurlä¼šè¯
+        $res = curl_exec($ch);
+        // å…³é—­curlä¼šè¯
+        curl_close($ch);
+        if (empty($res)) {
+            return 'å‘é€å¤±è´¥';
+        }
+        else
+        {
+            return $res;
+        }
+    }
+
+>>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
 	/*public static function send($mob, $content)
 	{
 		$sms_config = Yf_Registry::get('sms_config');

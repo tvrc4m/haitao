@@ -22,61 +22,75 @@ if ($connect_config['ucenter_connect'])
 	}
 }
 
-//发送验证码
-if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'){
-	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
-		$number = range(1,6);
-		shuffle($number);
-		foreach($number as $value){
-			$num .= $value;
-		}
-		if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
-			if ($a=Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $num, 10)) == 1) {
-				$vser['yzm'] = $num;
-				$vser['ytime'] = time()+60*10;
-				$vser['ltime'] = time()+60;
-				$_SESSION['mon_yzm'] = $vser;
-			}
-			echo Return_data([
-					'status_code' => '200',
-					'message' => '短信发送成功，请注意查收',
-					'data' => null
-			]);
-		}else{
-			echo Return_data([
-					'status_code' => '300',
-					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()),
-					'data' => $_SESSION['mon_yzm']['ltime']-time()
-			]);
-		}
-		 die;
-	}
+//验证手机号
+if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
+    if(Check_data($_POST['mobile'], 'mobile')){
+        if(Check_only($_POST['mobile'], 'mobile', MEMBER)){
+            die(Return_data(array('status_code' => '300', 'message' => '该手机号已存在！', 'data' => null )));
+        }else{
+            $_SESSION['mon_yzm']['ph'] = 1;
+            die(Return_data(array('status_code' => '200', 'message' => '手机号可用！', 'data' => null )));
+        }
+    }else{
+        die(Return_data(array('status_code' => '300', 'message' => '请填正确的手机号！', 'data' => null )));
+    }
 }
 
+//发送验证码
+if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['ph']==1){
+    if(Check_data($_POST['mobile'], 'mobile')){
+        if(empty($_SESSION['mon_yzm'])||$_SESSION['mon_yzm']['ltime']<time()) {
+            if($_SESSION['mon_yzm']['lasttime']<=time()){
+                $_SESSION['mon_yzm']['lnum'] = 1;
+            }
+            if(empty($_SESSION['mon_yzm']['lnum'])||$_SESSION['mon_yzm']['lnum']<=3) {
+                $number = rand(100000,999999);
+                if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
+
+                    if(date('i',time()-$_SESSION['mon_yzm']['ltime'])<5){
+                        $vser['lnum'] =  $_SESSION['mon_yzm']['lnum']+1;
+                    }
+                    $vser['yzm'] = $number;
+                    $vser['ytime'] = time() + 60 * 10;
+                    $vser['ltime'] = time() + 60;
+                    $vser['lasttime'] = time() + 60 * 60;
+                    $_SESSION['mon_yzm'] = $vser;
+                    die(Return_data(array('status_code' => '200', 'message' => '短信发送成功，请注意查收', 'data' => null )));
+                }
+            }else{
+               die(Return_data(array('status_code' => '300', 'message' => sprintf('操作过于频繁，%s后再试！',date('i分s秒', $_SESSION['mon_yzm']['lasttime']-time())), 'data' => $_SESSION['mon_yzm']['ltime']-time() )));
+            }
+        }else{
+            die(Return_data(array('status_code' => '300', 'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['mon_yzm']['ltime']-time()), 'data' => $_SESSION['mon_yzm']['ltime']-time() )));
+        }
+    }
+}else if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['mon_yzm']['ph']!=1){
+    die(Return_data(array('status_code' => '300', 'message' => '请先确认手机后在发短信', 'data' => null )));
+}
+
+//检测验证码
+if(!empty($_POST['smsvode'])&&$_POST['check_sms']=='check'){
+    Check_sms($_POST['smsvode']);
+}
+
+//已经登录
 if($buid)
-{	//已经登录
+{
 	msg('main.php');
 }
+
 if(is_array($stop_reg))
 {
 	stop_ip($stop_reg);
 	unset($stop_reg);
 }
-//----------------------------------------------------
-//if(!empty($_POST['user'])&&strtolower($_POST['yzm'])==strtolower($_SESSION['auth']))
-if(!empty($_POST['user']))
-{
 
+if(!empty($_POST['mobile']))
+{
 	if($config['closetype']==2)
 	{	//关闭注册
 		die('access dined!');
 	}
-	//暂不使用本地验证码
-	/*if($config['user_reg_verf'])
-	{	//验证码不对
-		if(trim($_POST['ckyzwt'])!=trim($_SESSION['YZWT']))
-			 die("Verification question error...");
-	}*/
 
 	//蚂蚁海淘注册协议
 	if(!isset($_POST['agreement'])&&$_POST['agreement']!='yes'){
@@ -84,10 +98,12 @@ if(!empty($_POST['user']))
 	}
 
 	//手机验证码
-	if(!empty($_POST['smsvode'])&&$_POST['smsvode']===$_SESSION['mon_yzm']['yzm']){
+	if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['mon_yzm']['yzm']){
 		if($_SESSION['mon_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
-		}
+		}else{
+            session_unset($_SESSION['mon_yzm']);
+        }
 	}else{
 		die('<script>alert("请填写正确的验证码!");history.go(-1);</script>;');
 	}
@@ -100,7 +116,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
+			die('<script>alert("您的IP已注册！");history.go(-1);</script>;');
 		}
 	}
 
@@ -111,7 +127,7 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num >= $config['regfloodctrl'])
 		{
-			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
+			die('<script>alert("您的IP已注册！");history.go(-1);</script>;');
 		}	
 	}
 	
@@ -124,58 +140,21 @@ if(!empty($_POST['user']))
 		$num = $db -> num_rows();
 		if($num > 0)
 		{
-			die('<script>alert("Your IP has been registered...");history.go(-1);</script>;');
+			die('<script>alert("您的IP已注册！");history.go(-1);</script>;');
 		}
 	}
-	$user = trim($_POST['user']);
+
 	$pass = trim($_POST['password']);
 	$time = time();
 
-	//暂时不用确认密码
-	/*if (isset($_POST['re_password']))
-	{
-		$re_pass = trim($_POST['re_password']);
-
-		if ($pass != $re_pass)
-		{
-			die('<script>alert("两次输入密码不一致!");history.go(-1);</script>;');
-		}
-	}*/
-
-	if(valid_mobile($user))
-	{
-		$_POST["mobile"] = $mobile = $user;
-		$_POST["user"] = $user = "M".$mobile;
-		if(!is_repeat($user))
-		{
-			$_POST["user"] = $user = $user.substr(md5($time),-5);
-		}
-	}
-
 	//定义所有正则
-	$str_check = [
-		'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
-		'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
-		'smsvode' => '/^[0-9]{6}$/',
-		'password' => '/^[A-Za-z0-9]{6,10}$/',
-	];
+	$str_check = array( 'mobile', 'smsvode', 'password');
 	foreach($str_check as $key => $val){
-		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
+        if(empty($_POST[$val])||!Check_data($_POST[$val], $val)){
 			die('<script>alert("请填写正确格式的数据");history.go(-1);</script>;');
 		}
 	}
 
-	//暂时不用邮箱
-	/*if(valid_email($user))
-	{
-		$_POST["email"] = $email = $user;
-		$user = explode("@",$email);
-		$_POST["user"] = $user = $user[0];
-		if(!is_repeat($user))
-		{
-			$_POST["user"] = $user = $user.substr(md5($time),-5);
-		}
-	}*/
 	if($config['openbbs']==2)
 	{	//关联UCHENTER
 		include_once('uc_client/client.php');
@@ -187,7 +166,6 @@ if(!empty($_POST['user']))
 	}
 	else
 		doreg();
-	var_dump($_POST);
 }
 else
 {
@@ -197,36 +175,13 @@ else
 	}
 }
 
-//用户名唯一
-function is_repeat($str)
-{
-	global $db;
-	$sql = "select * from ".MEMBER." where user = '$str'";
-	$db -> query($sql);
-	$num = $db->num_rows();
-	return $num > 0 ? false : true;
-}
-
-//手机号码正则表达试
-function valid_mobile($str)
-{                 
- 	return ( ! preg_match("/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/",$str))?FALSE:TRUE;
-}
-
-//邮箱正则表达式	暂不使用
-/*function valid_email($str)
-{
-	return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
-}*/
-
+//数据入库
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
-	$user = addslashes($_POST['user']);
+    $user = 'mayi'.$_POST['mobile'];
 	$pass = $_POST['password'];
-//	$email = $_POST['email'];
 	$mobile = $_POST['mobile'];
-//	$email_verify = $email&&$config['user_reg']==2 ? "1":"0";
 	$mobile_verify = $mobile&&$config['user_reg']==3 ? "1":"0";
 	
 	$ip = getip();
@@ -237,17 +192,10 @@ function doreg($guid=NULL)
 	
 	$db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
 
-	//验证用户名唯一
-	$sql="select * from ".MEMBER." where user = '$user'";
-    $db->query($sql);
-    if($db->num_rows())
-		die('<script>alert("User name is have");history.go(-1);</script>;');
-
 	//验证手机号唯一
-	$sql="select * from ".MEMBER." where mobile = '$mobile'";
-    $db->query($sql);
-    if($db->num_rows())
-		die('<script>alert("User mobile is have");history.go(-1);</script>;');
+    if(Check_only($mobile, 'mobile', MEMBER)>0){
+        die('<script>alert("该手机号已经存在！");history.go(-1);</script>;');
+    }
 
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
@@ -289,13 +237,56 @@ function doreg($guid=NULL)
 		}
 	 }
 	 else
-		 die('<script>alert("Can not register...!");history.go(-1);</script>;');
+		 die('<script>alert("系统繁忙，请稍后注册!");history.go(-1);</script>;');
+}
+
+/* =================================================自定义方法======================================================== */
+
+
+/**
+ * 检测验证码
+ */
+function Check_sms($data = null){
+
+    if(!empty($data)&&$data==$_SESSION['mon_yzm']['yzm']){
+        if($_SESSION['mon_yzm']['ytime']<time()){
+            die(Return_data(array('status_code' => '300', 'message' => "验证码已失效!", 'data' => null )));
+        }else{
+            die(Return_data(array('status_code' => '200', 'message' => "验证码正确!", 'data' => null )));
+        }
+    }else{
+        die(Return_data(array('status_code' => '300', 'message' => "请填写正确的验证码!", 'data' => null )));
+    }
+}
+
+/**
+ * 验证唯一
+ */
+function Check_only($data = null, $key = null, $table = null){
+    global $db;
+    $sql="select * from ".$table." where $key = '$data'";
+    $db->query($sql);
+    return $db->num_rows();
+}
+
+/**
+ * 数据格式验证
+ */
+function Check_data($data = null, $keyval = null){
+    $res = null;
+    switch($keyval){
+        case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
+        case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
+        case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
+        case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
+    }
+    return $res;
 }
 
 //短信发送
 function Send_msg($mob = null, $con = null)
 {
-		include_once("$config[webroot]/module/sms/includes/plugin_sms_class.php");
+		include_once("{$config[webroot]}/module/sms/includes/plugin_sms_class.php");
 		$sms = new sms();
 		$str = $sms->send($mob, $con);
 		$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);
@@ -310,9 +301,9 @@ function Send_msg($mob = null, $con = null)
 //格式数据返回
 function Return_data($data = null, $type = 'json'){
 	if($type == 'json'){
-		return json_encode($data);
+		return json_encode($data, JSON_UNESCAPED_UNICODE);
 	}
 }
-include_once("footer.php");	
+include_once("footer.php");
 $tpl->display("register.htm");
 ?>

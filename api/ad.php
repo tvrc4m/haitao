@@ -44,6 +44,7 @@ if(!$cache->begin(array($id,'','',$_GET['catid']),3600*0))
 	$db->query("update ".ADVSCON." set shownum = shownum + 1 where group_id='$id'");//广告展示次数加
 	$db->query("select ad_type,width,height,id from ".ADVS." where ID='$id'");
 	$ad_re=$db->fetchRow();
+
 	if(empty($ad_re['id']))
 	{
 		$sql="insert into ".ADVS." (id,ad_type,width,height) values ('$id','1','100','100')";
@@ -132,8 +133,12 @@ function jside($re,$ar,$type)
 	if($type=='1')
 		$js="$(window).load(function(){\$(\"#slider_".$ar['id']."\").flexslider({directionNav:false})});";
 	else
-		$js="$(window).load(function(){\$(\"#slider_".$ar['id']."\").flexslider({controlNav:false,slideshowSpeed:9000})});";
-	$str="document.write('<div class=\"slide\" id=\"slider_".$ar['id']."\"><ul class=\"slides\">".implode("",$ssp)."</ul></div>');".$js;
+	/*田晓宝更改开始，首页的滚动banner返回数据格式调整*/
+	// 	$js="$(window).load(function(){\$(\"#slider_".$ar['id']."\").flexslider({controlNav:false,slideshowSpeed:9000})});";
+	// $str="document.write('<div class=\"slide\" id=\"slider_".$ar['id']."\"><ul class=\"slides\">".implode("",$ssp)."</ul></div>');".$js;
+	$js="$(window).load(function(){\$(\".flexslider\").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true})});";
+	$str="document.write('<div class=\"flexslider\" id=\"slider_".$ar['id']."\"><ul class=\"slides clearfix\">".implode("",$ssp)."</ul></div>');".$js;
+	/*田晓宝更改结束*/
 	return $str;
 }
 

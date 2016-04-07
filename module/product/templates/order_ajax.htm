@@ -1,17 +1,18 @@
 <form action="" method="post">
-    <div id="step-2" class="step">
-        <h3>确认订单信息</h3>
+    <div id="step-2" class="step clearfix">
+        <h3>确认商品信息</h3>
         <table width="100%" cellpadding="0" cellspacing="0">
-            <tr>
-                <th class="first">产品</th>
+            <tr class="thead">
+                <th>商品信息</th>
                 <th width="150">单价(元)</th>
                 <th width="120">数量</th>
                 <th width="190">优惠方式(元)</th>
-                <th width="140">小计(元)</th>
+                <th class="last" width="140">小计(元)</th>
             </tr> 
 			
             <{foreach item=list from=$cart}>
 			<{if $list.invalid_count != $list.prolist|@count}>
+            <tr class="seg-entry"></tr>
             <tr class="shop">
                 <td colspan="8">
                 店铺:&nbsp;<a target="_blank" href="shop.php?uid=<{$list.seller_id}>"><{$list.company}></a>
@@ -59,6 +60,7 @@
 					</tr>
 				<{/foreach}>
 			<{/if}>
+            <tr class="seg-entry"></tr>
             <tr class="other">
             	<td colspan="2" rowspan="2" class="msg">
                 <p>补充说明: <input placeholder="选填，可告诉卖家您的特殊要求" name="msg_<{$list.seller_id}>"></p>
@@ -164,7 +166,7 @@
             </tr>
 			<{/if}>
             <{/foreach}>
-            <tr class="sum">
+            <!-- <tr class="sum">
             	<td colspan="4">
                 <input type="hidden" name="act" value="order" />
                 <input type="hidden" name="hidden_consignee_id" id="hidden_consignee_id" value="<{if $consignee_id}><{$consignee_id}><{else}><{$consignee.0.id}><{/if}>" />
@@ -173,9 +175,13 @@
                 <td class="price">
                 <b><{$config.money}> <span id="s_sumprice"></span></b>
                 </td>
-            </tr>
-		</table>      
+            </tr> -->
+            <input type="hidden" name="act" value="order" />
+            <input type="hidden" name="hidden_consignee_id" id="hidden_consignee_id" value="<{if $consignee_id}><{$consignee_id}><{else}><{$consignee.0.id}><{/if}>" />
+            <tr class="seg-entry"></tr>
+		</table>
    		<input type="submit" value="" class="order_submit">
+        <div class="order_sum">实付款&nbsp&nbsp<b><{$config.money}> <span id="s_sumprice"></span></b></div>
    </div>
 </form>
 <script>

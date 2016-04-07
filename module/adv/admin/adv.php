@@ -2,7 +2,7 @@
 	if($_GET['operation']=="add" or $_GET['operation']=="edit")
 	{
 		if($_POST['act'])
-		{	
+		{
 			unset($_GET['operation']);
 			unset($_GET['s']);
 			unset($_GET['m']);
@@ -142,10 +142,14 @@
 		{
 			$s.=" and a.name like '%$_GET[name]%' ";
 		}
+<<<<<<< HEAD
         /**
          * 2016.03.30
          *
 		if($_SESSION['province'])
+=======
+		/*if($_SESSION['province'])
+>>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
 		{
 			$s.=" and a.province = '$_SESSION[province]' ";
 		}
@@ -160,9 +164,13 @@
 		if($_SESSION['street'])
 		{
 			$s.=" and a.street = '$_SESSION[street]' ";
+<<<<<<< HEAD
 		}
         */
 
+=======
+		}*/
+>>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
 		include_once("$config[webroot]/includes/page_utf_class.php");
 		$sql="select a.*,b.name as title,b.ad_type from ".ADVSCON." a left join ".ADVS." b on a.group_id=b.id where 1 $s order by id desc";
 	
@@ -241,7 +249,7 @@
 		$db->query($sql);
 		$de['list']=$db->getRows();
 		foreach($de['list'] as $key=>$val)
-		{
+        {
 			unset($s);
 			/*if($_SESSION['province'])
 			{

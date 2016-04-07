@@ -27,7 +27,7 @@ function collect_goods(id){
     <div class="info clearfix">
         <div class="info-left">
             <div class="basic-info">
-                <h2 class="name"><div class="nick"><{$member.name}></div></h2>
+                <h2 class="name"><div class="nick"><{if $member.name }><{$member.name}><{else}><{$member.user}><{/if}></div></h2>
                 <span class="realy-info">
                     <span class="credit">买家信用</span>
                     <img class="points" align="absmiddle" title="<{$member.buyerpoints}>个买家信用积分" src="image/points/<{$member.buyerpointsimg}>">
@@ -87,13 +87,15 @@ function collect_goods(id){
                 <dt class="drop-img">
                 <a title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><img src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>" /></a>
                 </dt>
-                <dd class="drop-cmt"><{if $list.content}><{$list.content}><{else}>分享了商品<{/if}></dd>
+                <!-- <dd class="drop-cmt"><{if $list.content}><{$list.content}><{else}>分享了商品<{/if}></dd>
                 <dd class="drop-ops">
                     <span class="collect">
                         <a href="javascript:collect_goods('<{$list.pid}>');"><i></i>收藏</a>
                         <strong> <{$list.collectnum}> </strong>
                     </span>
-                </dd>
+                </dd> -->
+                <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><{$list.pname}></a>
+                <p class="p-price"><strong>¥<{$list.price}></strong></p>
             </dl>
         </div>
         <{/foreach}>

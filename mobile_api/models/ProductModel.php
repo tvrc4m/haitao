@@ -308,7 +308,11 @@ class ProductModel extends Product
 		$data  = array();
 		$data['page']      = $page;	  	//当前页			
 		$data['total']	   = $total;	//总记录数
+<<<<<<< HEAD
 		$data['totalsize'] = ceil_r($Trows);		//总页数
+=======
+		$data['totalsize'] = ceil($total / $rows);		//总页数
+>>>>>>> 3434106cc0fd910bc375158586e3234c4fd2ff1c
 		$data['records']   = count($goods_rows);	//本页记录数
 		$data['items']     = array_values($goods_rows);  //内容
 		return $data;

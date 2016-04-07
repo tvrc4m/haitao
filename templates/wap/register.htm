@@ -64,7 +64,7 @@
 <form action="register.php" method="post">
  <ul>
     <li class="user_names">
-        <input  class="text" name="user" type="text" id="user" placeholder="设置您的昵称" value="" />
+        <input  class="text" name="user" type="text" id="user" placeholder="设置您的用户名" value="" />
         <div id="tishi"></div>
          <div class="inp_close"><i></i></div>
     </li>
@@ -81,7 +81,7 @@
     </li>
     <li class="spe_del">
         <input type="checkbox" name="agreement" value="yes" checked>
-        <span>注册即接受<a class="spe_del_xieyi" href="#javascript:void(0);">《蚂蚁海淘使用协议》</a></span>
+        <span>注册即接受<a class="spe_del_xieyi" href="<{$config.weburl}>/agreement.php">《蚂蚁海淘使用协议》</a></span>
     </li>
     <li>
         <input name="action" type="hidden" value="submit">

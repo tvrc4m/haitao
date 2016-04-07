@@ -163,7 +163,7 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
                 </form>
             </div>
             <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i></a></div>
+                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
                 <div class="cart_list">
                 </div>
             </div>
@@ -201,7 +201,7 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
                 </dl>
                 <!--menu end-->
                 <!--nav start-->
-                <ul class="nav ml20 newclear">
+                <ul class="nav ml20 newclear">            
                     <{foreach item=list key=num from=$menus name=nav}>
                     <li <{if $list.identifier==$current}>class="current"<{/if}>>
                     <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
@@ -372,7 +372,7 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
 <!--footer start-->
     <div class="newfooter">
         <div class="m_b_commitment">
-            <div class="w"><img src="../../../uploadfile/adv/2016/b_commitment.png" alt="品质保证 全球直供 优质品牌 售后保障"></div>
+            <div class="w"><img src="/image/default/b_commitment.png" alt="品质保证 全球直供 优质品牌 售后保障"></div>
         </div>
         <div class="foot">
             <div class="w">
@@ -419,6 +419,10 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
                 </ul>
                 <div style="clear:both;"></div>
             </div>
+        </div>
+        <div class="footer">
+            <p class="copytight">© 2015-2016 蚂蚁在线(北京)科技有限公司 |  京ICP备15039996号-4<br>
+    地址：北京市朝阳区东大桥路甲8号尚都国际中心A座1815 | 电话:400-010-1977</p>
         </div>
     </div>
     <!--footer end-->

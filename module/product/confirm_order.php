@@ -1,4 +1,5 @@
 <?php
+
 if(empty($buid))
 {
 	if (isset($_SERVER['HTTP_REFERER']))
@@ -45,6 +46,8 @@ else
 		$addr = $orderadder -> get_orderadderlist();
 	}
 	$tpl -> assign("consignee",$addr);
+	//echo '<pre>';
+	//var_dump($addr);
 	//============================读出购物车的数据
 	if($_GET['id']&&is_numeric($_GET['id']))
 	{
@@ -70,6 +73,7 @@ else
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
 	//=============================提交订单
+
 	if($_POST['act']=='order')
 	{  
 		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']); 
@@ -178,9 +182,9 @@ else
 					foreach($val['prolist'] as $key=>$val)
 					{    
 						$val['spec_id'] = $val['spec_id']?$val['spec_id']:"0"; 
-						$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`pcatid`,`name`,`pic`,`price`,`num`,`time`,`setmeal`,`is_tg`,`spec_name`,`spec_value`) 
+						$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`pcatid`,`name`,`pic`,`price`,`num`,`time`,`setmeal`,`is_tg`,`spec_name`,`spec_value`,`skuid`)
 						VALUES 
-						($order_id,$buid,$val[product_id],$val[catid],'$val[pname]','".$val['pic']."','".$val['price']."','".$val['quantity']."','".time()."','$val[spec_id]','$val[is_tg]','$val[spec_name]','$val[setmealname]')"; 
+						($order_id,$buid,$val[product_id],$val[catid],'$val[pname]','".$val['pic']."','".$val['price']."','".$val['quantity']."','".time()."','$val[spec_id]','$val[is_tg]','$val[spec_name]','$val[setmealname]','$val[sku]')";
 						$db->query($sql);
 						
 						$sql="select detail from ".PRODETAIL." where proid='$val[product_id]'";
