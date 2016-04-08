@@ -80,14 +80,14 @@ function distribute_goods(id){
 <div class="shoping-fixed">
     <div class="c-wh bgw">
         <div class="addcart clearfix">
-            <a class="cart" href="javascript:void(0);">
+            <a class="cart" href="/?m=product&s=cart">
                 <span class="cart-num-cont">
                     <span class="cart-num"></span>
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
-            <a class="incar incar_c" href="javascript:buy()">加入购物车</a>
+            <a class="incar incar_c" href="javascript:void(0)">加入购物车</a>
         </div>
     </div>
 </div>
@@ -107,7 +107,7 @@ function distribute_goods(id){
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
             <div>
-                <div id="pname"><span class="pname_img"><{if $de.img }><img src="<{$de.img}>"><{/if}> <{$de.title}></span><{$de.name}></div>
+                <div id="pname"><span class="pname_img"><{if $de.img }><img src="<{$de.img}>">&nbsp;&nbsp;<{/if}><{$de.title}></span><{if $de.img }>&nbsp;&nbsp;<{/if}><{$de.name}></div>
                 <div class="col">
                     <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
                         <div class="col_ttt">
@@ -156,7 +156,7 @@ function distribute_goods(id){
         <div class="select_style clearfix">
             <{if $de.rest==0 && !$de.offertime}>
             <dl class="clearfix select_style_num">
-                <dt>数量</dt>
+                <dt class="select_style_shu">数量</dt>
                 <dd class="stock">
                     <a href="javascript:void(0);" id="low_num">-</a>
                     <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
@@ -178,7 +178,7 @@ function distribute_goods(id){
             <{/if}>
         </div>
     </div>
-    <div style="height:0px;border-top:1px solid #ff5c5c;"></div>
+    <!-- <div style="height:0px;border-top:1px solid #ff5c5c;"></div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
@@ -188,7 +188,7 @@ function distribute_goods(id){
                 <p class="mayi_say">消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书</p></dd>
             </dl>
         </div>
-    </div>
+    </div> -->
     <div style="height:0px;border-top:1px solid #ccc;"></div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
@@ -447,6 +447,9 @@ function distribute_goods(id){
             }
         }
     }
+    $(".incar_c").click(function(){
+        buy();
+    })
     function buy()
     {
         var B = false;
