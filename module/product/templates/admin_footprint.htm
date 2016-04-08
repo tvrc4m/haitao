@@ -1,7 +1,8 @@
 <script src="script/my_lightbox.js" language="javascript"></script>
 <div class="path">
     <div>
-    	<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span>	我的足迹 
+        <span class="shop"></span>
+    	<a href="main.php?cg_u_type=1">我的首页</a> <span>&gt;</span>	我的足迹 
     </div>
 </div>
 <div class="main">
@@ -32,11 +33,11 @@
                             </a> 
                             <a class="delete" href="<{$config.weburl}>/main.php?m=product&s=admin_footprint&id=<{$slist.id}>"><i></i>删除</a>
                             </div>
-                            <div class="p-pname"><{$slist.name}></div>
                             <div class="p-pirce">
                             	<span><{$config.money}></span>
                             	<b><{$slist.price}></b>
                             </div>
+                            <div class="p-pname"><{$slist.name}></div>
                         </div>
 					</div>
                     <{/foreach}>

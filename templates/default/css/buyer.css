@@ -100,7 +100,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 #main{/*background:url(../../../image/default/user_admin/buyer_header.jpg) repeat-x center top;*/}
 #nav{padding-left: 0px;}
 .business_handle div.nav_left{border-bottom: none;}
-.nav_left ul.nav_left_ul li{padding-left: 55px;background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat 30px 17px;}
+/*.nav_left ul.nav_left_ul li{padding-left: 55px;background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat 30px 17px;}*/
 .layout{font-size:1.2em;line-height:20px;margin:20px auto 20px;/*background:url(../../../image/default/user_admin/bg.png) repeat-y left top #FFFFFF;border:1px solid #D5E5F5;border-radius:5px 5px 5px 5px;*/overflow:hidden;width:1212px;min-height: 800px;}
 
 .layout .left_con{float:left;overflow:hidden;width:200px;border: 1px solid #ccc;padding-bottom: 75px;background-color: #fff;}
@@ -108,7 +108,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .layout .left_con .user dd{height:102px;left:19px;position:absolute;top:20px;width:102px;z-index:9;}
 .layout .left_con .user dd .pic{background-color:#FFFFFF;border:1px solid #C9E0E7;border-radius:5px 5px 5px 5px;display:block ;height:100px;position:relative;width:100px;z-index:2;}
 .layout .left_con h3{font-size:14px;font-weight:700;line-height:40px;}
-.layout .left_con li{clear:left;overflow:hidden;height: 40px;line-height: 40px;}
+.layout .left_con li{clear:left;overflow:hidden;/*height: 40px;line-height: 40px;*/}
 .layout .left_con li a{color:#455E65;}
 
 .business_intro{border-bottom:1px solid #D5E5F5;box-shadow:0 1px 0 #FFFFFF;margin:10px auto;padding-bottom:10px;width:120px;font-size:12px;}
@@ -119,7 +119,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 
 .business_handle{/*margin:10px auto 20px;*/width:100%;}
 .business_handle h3{margin-left:16px;}
-.business_handle div{clear:left;overflow:hidden;/*padding:6px 12px;*/padding-left: 55px;border-bottom: 1px dashed #ccc;background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat 30px 17px;}
+/*.business_handle div{clear:left;overflow:hidden;/*padding:6px 12px;padding-left: 55px;border-bottom: 1px dashed #ccc;background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat 30px 17px;}*/
 .business_handle div.active,.business_handle ul li.active{background:url(../../../image/default/user_admin/mayi_icon1.png) no-repeat 30px 12px;background-color:#ff5c5c;color:#fff;/*box-shadow:0 2px 1px rgba(213, 229, 245, 0.7);*/}
 .business_handle ul li.active a{color: #fff;}
 .business_handle div a{color:#455E65;/*float:left;*/line-height:40px;font-size:14px;font-weight: bold;}
@@ -143,7 +143,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .business_handle dl{overflow:hidden;}
 .business_handle dl dt{clear:left;background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat 30px 17px;/*margin:0 12px;*/overflow:hidden;/*padding:6px 0;*/height: 40px;line-height: 40px;padding-left: 55px;border-bottom: 1px dashed #ccc;}
 .business_handle dl a{color:#455E65;/*float:left;*/height: 40px;line-height: 40px;font-size:14px;font-weight: bold;}
-.business_handle dl dd,.business_handle ul li{background: url(../../../image/default/user_admin/mayi_icon7.png) no-repeat 40px 17px; clear:both;overflow:hidden;/*padding:6px 0 6px 48px;*/height: 40px;line-height: 40px;padding-left: 70px;border-bottom: 1px dashed #ccc;}
+/*.business_handle dl dd,.business_handle ul li{background: url(../../../image/default/user_admin/mayi_icon7.png) no-repeat 40px 17px; clear:both;overflow:hidden;/*padding:6px 0 6px 48px;height: 40px;line-height: 40px;*/padding-left: 70px;border-bottom: 1px dashed #ccc;}*/
 .business_handle dl dd.active{background-color:#FFFFFF;box-shadow:0 2px 1px rgba(213, 229, 245, 0.7);}
 .business_handle dl dd a,.business_handle ul li a{color: #999;}
 
@@ -620,6 +620,14 @@ td.al i{color:#000;font-size:11px;}
 /*txb添加*/
 #main{background-color: #f5f5f5;overflow: hidden;}
 input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;height: 40px;border-radius: 5px;}
+.nav_left_ul li, .father dt{border-bottom: 1px dashed #ccc}
+.dn{display: none;}
+/*左侧导航*/
+.nav_left_ul .child span {background: url(../../../image/default/user_admin/mayi_icon7.png) no-repeat;display: inline-block;width: 25px;height: 10px;margin-left: 30px;}
+.nav_left_ul .father dt span{background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat;display: inline-block;width: 25px;height: 10px;margin-left: 30px;}
+.nav_left_ul .father ul li{padding-left: 20px;}
+.left_con .selfinfo li{line-height: 40px;padding-left: 55px;}
+.left_con .selfinfo li.normal{background: url(../../../image/default/user_admin/mayi_icon7.png) no-repeat 30px 17px;}
 /*收货地址*/
 .acpt_add input.submit{width: 302px;}
 .main .acpt_add dl.foot .submit{width: 202px;}
