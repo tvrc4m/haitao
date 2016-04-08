@@ -38,10 +38,11 @@ $(function(){
     <div>
         <span class="shop"></span>
     	<{if $cg_u_type==1}>
-    		<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span>
+    		<a href="main.php?cg_u_type=1">我的首页</a> <span>&gt;</span>
         <{else}>
     		<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span>
         <{/if}> 
+        <a href="main.php?m=message&s=admin_message_list_inbox">信息</a> <span>&gt;</span>
         <{if $smarty.get.s=='admin_message_list_outbox'}><{$lang.outbox}>
         <{elseif $smarty.get.s=='admin_message_list_savebox'}><{$lang.savebox}>
         <{elseif $smarty.get.s=='admin_message_list_delbox'}><{$lang.delbox}>
