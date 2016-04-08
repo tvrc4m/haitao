@@ -23,7 +23,9 @@ if($config['temp']=='wap')
 		$db->query($sql);
 		$de = $db->getRows();
 	}
+
     $tpl->assign("de",$de);
+  
 	$tpl->assign("config",$config);
 	$page='help.htm';
 }

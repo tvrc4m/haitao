@@ -69,8 +69,6 @@ function distribute_goods(id){
                 alert('参数传递错误，无法完成操作!');
         }
     }
-
-
 </script>
 <header>
     <div class="nav-w">
@@ -82,14 +80,14 @@ function distribute_goods(id){
 <div class="shoping-fixed">
     <div class="c-wh bgw">
         <div class="addcart clearfix">
-            <a class="cart" href="javascript:void(0);">
+            <a class="cart" href="/?m=product&s=cart">
                 <span class="cart-num-cont">
                     <span class="cart-num"></span>
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
-            <a class="incar incar_c" href="javascript:buy()">加入购物车</a>
+            <a class="incar incar_c" href="javascript:void(0)">加入购物车</a>
         </div>
     </div>
 </div>
@@ -109,7 +107,7 @@ function distribute_goods(id){
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
             <div>
-                <div id="pname"><span class="pname_img"><img src="../../../image/wap/state1.png"> 日本</span><{$de.name}></div>
+                <div id="pname"><span class="pname_img"><{if $de.img }><img src="<{$de.img}>">&nbsp;&nbsp;<{/if}><{$de.title}></span><{if $de.img }>&nbsp;&nbsp;<{/if}><{$de.name}></div>
                 <div class="col">
                     <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
                         <div class="col_ttt">
@@ -158,7 +156,7 @@ function distribute_goods(id){
         <div class="select_style clearfix">
             <{if $de.rest==0 && !$de.offertime}>
             <dl class="clearfix select_style_num">
-                <dt>数量</dt>
+                <dt class="select_style_shu">数量</dt>
                 <dd class="stock">
                     <a href="javascript:void(0);" id="low_num">-</a>
                     <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
@@ -171,16 +169,16 @@ function distribute_goods(id){
             <{/if}>
             <{if $de.porperty}>
                 <ul class="ub t-bla ub-ac">
-                    <li class="ub-f1 ut-s">选择商品规格</li>
+                    <li class="ub-f1 ut-s">选择商品规格：</li>
                     <li class="iconfont fas"></li>
                 </ul>
                 <{foreach item=list from=$de.extfiled.d}>
-                <{$list}>
+                    <{$list}>
                 <{/foreach}>
             <{/if}>
         </div>
     </div>
-    <div style="height:0px;border-top:1px solid #ff5c5c;"></div>
+    <!-- <div style="height:0px;border-top:1px solid #ff5c5c;"></div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
@@ -190,16 +188,37 @@ function distribute_goods(id){
                 <p class="mayi_say">消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书</p></dd>
             </dl>
         </div>
-    </div>
+    </div> -->
     <div style="height:0px;border-top:1px solid #ccc;"></div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
-                <dt class="select_style_title select_style_titleg"><span>蚂蚁推荐</span><a href="javascript:void(0);" class="select_style_titler">韩束</a></dt>
+                <dt class="select_style_title select_style_titleg"><span>你可能更喜欢</span><a href="<{$config.weburl}>/cat.php" class="select_style_titler">更多</a></dt>
                 <dd class="mati_say_content">
                 <div class="shop_t clearfix">
                     <ul class="shoplist">
-                    <{insert name="label" type="product" o=4 temp="product_list_li_5" limit=3}>
+                        <{foreach item=list key=num from=$relation}>
+                            <li class="shopli clearfix">
+                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
+                                    <div class="shopli_top_img">
+                                        <img src="<{$list.pic}>"/>
+                                    </div>
+                                    <div class="shopli_bottom clearfix">
+                                        <div class="shopli_bottom_message">
+                                            <p class="shopli_bottom_text"><{$list.name|truncate:18:""}></p>
+                                        </div>
+                                        <div class="shopli_bottom_rob clearfix">
+                                            <div class="al shopli_bottom_money">
+                                                <span class="money"><{$config.money}><{$list.price}></span>
+                                                <span class="money money_del"><{$config.money}><{$list.market_price}></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        <{foreachelse}>
+                            暂无推荐！
+                        <{/foreach}>
                     </ul>
                 </div>
                 </dd>
@@ -212,7 +231,7 @@ function distribute_goods(id){
         <div class="c-wh-commit-gao clearfix">
             <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
         </div>
-        <img src="../../../image/wap/wap_haitao_zhengpin.jpg" alt="品牌服务承诺" title="品牌服务承诺">
+        <img src="../../../image/wap/wap_haitao_fuwuc.jpg" alt="品牌服务承诺" title="品牌服务承诺">
         <!-- <div class="commit-rifht-icon"></div> -->    
     </div>
     <div class="c-wh bgw clearfix">
@@ -247,7 +266,7 @@ function distribute_goods(id){
             </li>
         </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
-            <li class="ub-kefu_first"><a href="tel:4000101977" ><i class="kefu_icon1"></i>联系客服</a></li>
+            <li class="ub-kefu_first"><a href="tel:4000101977"><i class="kefu_icon1"></i>联系客服</a></li>
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
     </div>
@@ -327,20 +346,52 @@ function distribute_goods(id){
     $(".price_chas .price_chas_num").html(chaNum);
 </script>
 <script>
+    function collect_altr(cla){
+        $(cla).append("<div class='am-dialog-mask'></div>"+
+                   "<div class='collect_box_out'>"+
+                       "<div class='collect_box'>"+
+                            "<div class='collect_box_content'></div>"+
+                            "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
+                            "<div class='collect_box_hid'>+</div>"+
+                        "</div>"+
+                   "</div>")
+        $(".am-dialog-mask").addClass("am-dialog-mask-test");
+        $(".collect_box_out").addClass('collect_box_out_test');
+        $(".collect_box_hid").on("click",function(){
+            removeco();
+        })
+        $(".collect_box_btn a").on("click",function(){
+            removeco();
+        })
+    }
+    function altto(co){
+        $(".collect_box_content").html(co);
+    }
+    function removeco(){
+        $(".am-dialog-mask").removeClass("am-dialog-mask-test");
+        $(".collect_box_out").removeClass('collect_box_out_test');
+        $(".am-dialog-mask").remove();
+        $(".collect_box_out").remove();
+    }
     $(function(){
-        var liTd=$("ul[genre*=property]").find("li").size();
-        if(liTd==1){
-            $("ul[genre*=property] li").eq(0).find("a").addClass("checked");
-        }
+        $("ul[genre*=property]").each(function(index){
+            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked");   
+        })      
     })
     function collect_goods(id){
-
+        collect_altr(".col")
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
-            alert('请先登录！');
-            window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
+            altto('请先登录！');
+            // alert('请先登录！');
+            $(".collect_box_hid").on("click",function(){
+               removeco();
+            })
+            $(".collect_box_btn a").on("click",function(){
+                window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
+            })
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -349,42 +400,56 @@ function distribute_goods(id){
         {
             if(originalRequest>1){
                 $("#collect").addClass("collect");
+                altto('成功添加至我的收藏夹!');
                
-                alert('成功添加至我的收藏夹!');
             }
-            else if (originalRequest>0)
-               
-                alert('该内容已经在你的收藏中心，请勿重复添加！');
-            else
-               
-                alert('参数传递错误，无法完成操作!');
+            else if (originalRequest>0){
+                altto('该内容已经在你的收藏中心<br>请勿重复添加！');
+                
+            }
+            else{
+                altto('参数传递错误<br>无法完成操作!');
+                
+            } 
         }
     }
-    function altto(co){
-        $(".collect_box_content").html(co);
-
-    }
     function distribute_goods(id){
+        collect_altr(".nav-e")
         var url = '<{$config.weburl}>/module/distribution/add.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
-            alert('<{$lang.no_logo}>');
-            window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
+            altto('请先登录！');
+            // alert('<{$lang.no_logo}>');
+            $(".collect_box_hid").on("click",function(){
+               removeco();
+            })
+            $(".collect_box_btn a").on("click",function(){  
+                window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
+            }) 
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
         $.post(url, pars,showResponse);
         function showResponse(originalRequest)
         {
-            if(originalRequest>1)
-                alert('成功添加至我的分销!');
-            else if (originalRequest>0)
-                alert('该内容已经在你的分销中心，请勿重复添加！');
-            else
-                alert('参数传递错误，无法完成操作!');
+            if(originalRequest>1){
+                altto('成功添加至我的分销!');
+                
+            }
+            else if (originalRequest>0){
+                altto('该内容已经在你的分销中心<br>请勿重复添加！');
+               
+            }
+            else{
+                altto('参数传递错误<br>无法完成操作!');
+              
+            }
         }
     }
+    $(".incar_c").click(function(){
+        buy();
+    })
     function buy()
     {
         var B = false;

@@ -35,7 +35,7 @@ if($_GET['order_id'])
 {
 	if($_GET['act']=='edit_price')
 	{
-		$tpl->assign("de",$de = $order->orderdetail($_GET['order_id']));	
+		$tpl->assign("de",$de = $order->orderdetail($_GET['order_id']));
 	}
 	$output=tplfetch("admin_virtual_sellorder.htm",$flag,true);
 }
