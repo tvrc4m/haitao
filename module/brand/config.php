@@ -5,7 +5,7 @@
 		'',
 		array(
 			'brand.php,1,brand,品牌管理',
-			'brand_cat.php,0,brand,品牌分类管理',
+			'brand_cat.php,1,brand,品牌分类管理',
 		)
 	);
 

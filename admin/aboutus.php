@@ -61,7 +61,7 @@
 		$db->query($sql);
 		$de['list'] =$db->getRows();
 	}
-	
+
 	$tpl->assign("de",$de);
 	$tpl->display("admin_aboutus.htm");
 

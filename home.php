@@ -62,12 +62,12 @@
 	$tpl->assign("title",'看TA怎么淘到好宝贝');
 	include_once("footer.php");
 	if(empty($output))
-	{
-		$tpl->assign("output",$tpl->fetch($page));
-	}
-	else
-	{
-		$tpl->assign("output",$output);
+    {
+        $tpl->assign("output",$tpl->fetch($page));
+    }
+    else
+    {
+        $tpl->assign("output",$output);
 	}
 	
 	$tpl ->display("index.htm");

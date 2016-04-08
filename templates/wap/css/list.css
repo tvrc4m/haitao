@@ -19,7 +19,7 @@
 .itemsNull{margin:20px 0 15px;}
 .filter{margin:0px auto 10px;}
 .filter ul{display:-webkit-box;border-top:1px solid #ff5c5c;border-bottom:1px solid #ccc;}
-.filter li{width:100%;display:block;text-align:center;height:1.75rem;line-height:1.75rem;-webkit-box-flex:1;}
+.filter li{width:100%;display:block;text-align:center;height:35px;line-height:35px;-webkit-box-flex:1;}
 .filter li a{display:inline-block;width:100%;border-right:none;font-size: 0.6rem;}
 .filter li:first-child a{}
 .filter li:last-child a{}
