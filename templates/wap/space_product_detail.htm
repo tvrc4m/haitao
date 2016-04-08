@@ -69,8 +69,6 @@ function distribute_goods(id){
                 alert('参数传递错误，无法完成操作!');
         }
     }
-
-
 </script>
 <header>
     <div class="nav-w">
@@ -171,7 +169,7 @@ function distribute_goods(id){
             <{/if}>
             <{if $de.porperty}>
                 <ul class="ub t-bla ub-ac">
-                    <li class="ub-f1 ut-s">选择商品规格</li>
+                    <li class="ub-f1 ut-s">选择商品规格：</li>
                     <li class="iconfont fas"></li>
                 </ul>
                 <{foreach item=list from=$de.extfiled.d}>
@@ -212,7 +210,7 @@ function distribute_goods(id){
         <div class="c-wh-commit-gao clearfix">
             <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
         </div>
-        <img src="../../../image/wap/wap_haitao_zhengpin.jpg" alt="品牌服务承诺" title="品牌服务承诺">
+        <img src="../../../image/wap/wap_haitao_fuwuc.jpg" alt="品牌服务承诺" title="品牌服务承诺">
         <!-- <div class="commit-rifht-icon"></div> -->    
     </div>
     <div class="c-wh bgw clearfix">
@@ -327,19 +325,52 @@ function distribute_goods(id){
     $(".price_chas .price_chas_num").html(chaNum);
 </script>
 <script>
+    function collect_altr(cla){
+        $(cla).append("<div class='am-dialog-mask'></div>"+
+                   "<div class='collect_box_out'>"+
+                       "<div class='collect_box'>"+
+                            "<div class='collect_box_content'></div>"+
+                            "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
+                            "<div class='collect_box_hid'>+</div>"+
+                        "</div>"+
+                   "</div>")
+        $(".am-dialog-mask").addClass("am-dialog-mask-test");
+        $(".collect_box_out").addClass('collect_box_out_test');
+        $(".collect_box_hid").on("click",function(){
+            removeco();
+        })
+        $(".collect_box_btn a").on("click",function(){
+            removeco();
+        })
+    }
+    function altto(co){
+        $(".collect_box_content").html(co);
+    }
+    function removeco(){
+        $(".am-dialog-mask").removeClass("am-dialog-mask-test");
+        $(".collect_box_out").removeClass('collect_box_out_test');
+        $(".am-dialog-mask").remove();
+        $(".collect_box_out").remove();
+    }
     $(function(){
         $("ul[genre*=property]").each(function(index){
             $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked");   
         })      
     })
     function collect_goods(id){
-
+        collect_altr(".col")
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
-            alert('请先登录！');
-            window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
+            altto('请先登录！');
+            // alert('请先登录！');
+            $(".collect_box_hid").on("click",function(){
+               removeco();
+            })
+            $(".collect_box_btn a").on("click",function(){
+                window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
+            })
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -348,40 +379,51 @@ function distribute_goods(id){
         {
             if(originalRequest>1){
                 $("#collect").addClass("collect");
+                altto('成功添加至我的收藏夹!');
                
-                alert('成功添加至我的收藏夹!');
             }
-            else if (originalRequest>0)
-               
-                alert('该内容已经在你的收藏中心，请勿重复添加！');
-            else
-               
-                alert('参数传递错误，无法完成操作!');
+            else if (originalRequest>0){
+                altto('该内容已经在你的收藏中心<br>请勿重复添加！');
+                
+            }
+            else{
+                altto('参数传递错误<br>无法完成操作!');
+                
+            } 
         }
     }
-    function altto(co){
-        $(".collect_box_content").html(co);
-
-    }
     function distribute_goods(id){
+        collect_altr(".nav-e")
         var url = '<{$config.weburl}>/module/distribution/add.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
-            alert('<{$lang.no_logo}>');
-            window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
+            altto('请先登录！');
+            // alert('<{$lang.no_logo}>');
+            $(".collect_box_hid").on("click",function(){
+               removeco();
+            })
+            $(".collect_box_btn a").on("click",function(){  
+                window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
+            }) 
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
         $.post(url, pars,showResponse);
         function showResponse(originalRequest)
         {
-            if(originalRequest>1)
-                alert('成功添加至我的分销!');
-            else if (originalRequest>0)
-                alert('该内容已经在你的分销中心，请勿重复添加！');
-            else
-                alert('参数传递错误，无法完成操作!');
+            if(originalRequest>1){
+                altto('成功添加至我的分销!');
+                
+            }
+            else if (originalRequest>0){
+                altto('该内容已经在你的分销中心<br>请勿重复添加！');
+               
+            }
+            else{
+                altto('参数传递错误<br>无法完成操作!');
+              
+            }
         }
     }
     function buy()

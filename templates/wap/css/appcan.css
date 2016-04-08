@@ -76,11 +76,11 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
     75%  {-webkit-transform:scale(1.3);}
     100% {-webkit-transform:scale(1);}
 }
-.collect_box{margin: auto;max-width: 320px;background: #FFF;border-radius: 8px;padding: 25px 0 0;}
+.collect_box{margin: auto;max-width: 320px;background: #FFF;border-radius: 8px;padding: 25px 0 0;box-shadow: 0px 0px 10px #ccc;-webkit-box-shadow: 0px 0px 10px #ccc;}
 .collect_box_content{padding: 25px 10px 20px;font-size: 0.7rem;line-height: 1.5;}
 .collect_box_btn{padding-bottom: 25px;font-size: 0.7rem;}
-.collect_box_btn a{display: inline-block; width: 40%;height: 30px;line-height: 30px;background-color: #ff5c5c;color: #fff;border-radius: 5px;}
-.collect_box_hid{position: absolute;right: 4px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px; }
+.collect_box_btn a{display: inline-block; width: 40%;height: 30px;line-height: 30px;background-color: #ff5c5c;color: #fff;border-radius: 5px;text-align: center;}
+.collect_box_hid{position: absolute;right: 4px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
 .col_ttt{padding: 0.1rem 0.5rem;}
 /***space_index***/
 .hidden{display:none !important}
@@ -157,7 +157,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .select_style dt{color:#6D6D6D;font-family:simsun;float:left;display: inline-block;font-size: 0.6rem;}
 .select_style dt.select_style_title{width: 100%;border-bottom: 1px dashed #b9b9b9;margin-bottom: 0.5rem;font-size: 0.8rem;height: 2rem;line-height: 2rem;}
 .select_style dt.select_style_titleg{color: #ff5c5c;position: relative;z-index: 99;}
-.select_style dt a.select_style_titler{color: #5c5c5c;float: right;padding-right: 20px;background: url(../../../image/wap/wap_haitao_icon19.png) no-repeat center right;background-size: 20%;}
+.select_style dt a.select_style_titler{color: #5c5c5c;float: right;padding-right: 15px;background: url(../../../image/wap/wap_haitao_icon19.png) no-repeat center right;background-size: 20%;}
 .select_style dt i{display: inline-block;width: 25px;height: 25px; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;margin-top: -5px;}
 .select_style dd{color:#404040;}
 .select_style dd.mati_say_content{position: relative;}
