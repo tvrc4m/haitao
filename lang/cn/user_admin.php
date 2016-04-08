@@ -431,7 +431,7 @@
   'submitted_certification_and_audit'=>'提交企业认证并通过审核',
   'published_at_least_five_more_products'=>'发布至少5个以上产品',
   'now'=>'现在开始',
-  'my_mall'=>'我的商城',
+  'my_mall'=>'我的首页',
   'personal_information'=>'个人资料',
   'change_password'=>'修改密码',
   'change_email'=>'修改电子邮件',
