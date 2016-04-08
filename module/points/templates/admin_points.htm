@@ -1,5 +1,6 @@
 <div class="path">
     <div>
+        <span class="shop"></span>
     	<{if $cg_u_type==1}>
     		<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span>
         <{else}>
@@ -13,16 +14,17 @@
         <div class="hd">
             <ul class="tabs">
                 <li class="active"><a href="main.php?m=points&s=admin_points">积分明细</a></li>
+                <li class="normal"><a href="main.php?m=points&s=admin_points_order">已兑换的商品</a></li>
                 <li class="fr">我的积分:<{$points|number_format}></li>
 			</ul>
         </div>
-        <table class="table-list-style">
+        <table class="table-list-style integral">
             <thead>
             <tr>
                 <th width="10"></th>
                 <th class="tl" width="100">积分变更</th>
                 <th class="tl">操作</th>
-                <th class="tl" width="140">添加时间</th>
+                <th class="tl" width="140" style="border-right:1px solid #ccc;">添加时间</th>
             </tr>
             </thead>
             <tbody>

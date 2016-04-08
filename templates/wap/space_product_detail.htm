@@ -195,7 +195,7 @@ function distribute_goods(id){
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
-                <dt class="select_style_title select_style_titleg"><span>蚂蚁推荐</span><a href="javascript:void(0);" class="select_style_titler">韩束</a></dt>
+                <dt class="select_style_title select_style_titleg"><span>你可能更喜欢</span><a href="<{$config.weburl}>/cat.php" class="select_style_titler">更多</a></dt>
                 <dd class="mati_say_content">
                 <div class="shop_t clearfix">
                     <ul class="shoplist">
@@ -268,7 +268,7 @@ function distribute_goods(id){
             </li>
         </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
-            <li class="ub-kefu_first"><a href="javascript:void(0);" onclick="return chat_win_init({'id':<{$com.shop_id}>, 'name':'<{$com.company}>', 'logo':'<{if $com.logo eq ''}><{$com.plogo}><{else}><{$com.logo}><{/if}>'});return false;"><i class="kefu_icon1"></i>联系客服</a></li>
+            <li class="ub-kefu_first"><a href="tel:4000101977"><i class="kefu_icon1"></i>联系客服</a></li>
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
     </div>
@@ -349,10 +349,9 @@ function distribute_goods(id){
 </script>
 <script>
     $(function(){
-        var liTd=$("ul[genre*=property]").find("li").size();
-        if(liTd==1){
-            $("ul[genre*=property] li").eq(0).find("a").addClass("checked");
-        }
+        $("ul[genre*=property]").each(function(index){
+            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked");   
+        })      
     })
     function collect_goods(id){
 

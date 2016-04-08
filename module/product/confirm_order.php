@@ -70,7 +70,7 @@ else
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
 	//=============================提交订单
-	if($_POST['act']=='order')
+	if($_POST['act']=='order' && $_COOKIE['identity']=='true')
 	{  
 		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']); 
 		//----------循环店铺,生成多个订单
@@ -189,7 +189,7 @@ else
 			
 						$detail = addslashes($detail);
 				
-						$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values ('$order_id','$val[product_id]','$val[spec_id]','$sell_userid','$sell_userid','$val[catid]','$val[type]','".addslashes($val[pname])."','".addslashes($val[subhead])."','$val[brand]','$val[price]','0','$val[pic]','".time()."','$detail','$val[spec_name]','$val[setmealname]')";
+						$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values ('$order_id','$val[product_id]','$val[spec_id]','$sell_userid','$sell_userid','$val[catid]','$val[type]','".addslashes($val[pname])."','".addslashes($val[subhead])."','".addslashes($val[brand])."','$val[price]','0','$val[pic]','".time()."','".addslashes($detail)."','".addslashes($val[spec_name])."','".addslashes($val[setmealname])."')";
 						$db->query($sql);
 					}
 					if($value["giftlist"])
@@ -255,6 +255,9 @@ else
 		//msg($config['weburl']."/main.php?cg_u_type=1&m=product&s=admin_buyorder");//订单提交成功
 	//	msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$inorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
 		msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
+		die;
+	}else{
+		msg($config['pay_url']."/?act=edit&op=name");//实名认证
 		die;
 	}
 }

@@ -75,8 +75,9 @@ $(function(){
 </script>
 <div class="path">
     <div>
+        <span class="shop"></span>
     	<{if $cg_u_type==1}>
-    		<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span>
+    		<a href="main.php?cg_u_type=1">我的首页</a> <span>&gt;</span>
         <{else}>
     		<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span>
         <{/if}>
@@ -96,18 +97,18 @@ $(function(){
             </ul>
         </div>
         <{if $smarty.get.type=='add' or $smarty.get.type=='edit'}>
-        <div class="form-style">
+        <div class="form-style acpt_add ">
             <form id="form" name="form" action="" method="post">
             <input type="hidden" value="<{$de.id}>" name="edid">
             <input type="hidden" value="<{if $de.id}>edit<{else}>add<{/if}>" name="submit">
            <input type="hidden" name="ty" value="<{if $smarty.get.url}>pro<{/if}>" />
             <dl>
-                <dt><em>*</em>收货人：</dt>
-                <dd><input maxlength="30" name="name" value="<{$de.name}>" class="text w150"> <div id="form-error" class="form-error"></div></dd>
+                <dt>收货人</dt>
+                <dd><input maxlength="30" name="name" value="<{$de.name}>" class="text w284"> <em></em><div id="form-error" class="form-error"></div></dd>
             </dl>
             
             <dl>
-                <dt><em>*</em>所在区域：</dt>
+                <dt>所在区域</dt>
                 <dd>
                 <input type="hidden" name="t" id="t" value="<{$de.area}>" />
                 <input type="hidden" name="province" id="id_1" value="<{$de.provinceid}>" />
@@ -128,38 +129,39 @@ $(function(){
                 	<div id="form-error" class="form-error"></div>
                 </div>
                 </dd>
+                <em></em>
             </dl>
             <dl>
-                <dt><em>*</em>街道地址：</dt>
+                <dt>街道地址</dt>
                 <dd>
-                	<input type="text" value="<{$de.address}>" name="address" id="address" class="w300 text"><div id="form-error" class="form-error"></div>
+                	<input type="text" value="<{$de.address}>" name="address" id="address" class="w284 text"><em></em><div id="form-error" class="form-error"></div>
                     <p class="hint">不必重复填写所在地区</p>
                	</dd>
             </dl>
             <dl>
-                <dt>邮政编码：</dt>
-                <dd><input type="text" name="zip"  id="zip" maxlength="6" class="w80 text" value="<{$de.zip}>" ><div id="form-error" class="form-error"></div></dd>
+                <dt>邮政编码</dt>
+                <dd><input type="text" name="zip"  id="zip" maxlength="6" class="w284 text" value="<{$de.zip}>" ><em></em><div id="form-error" class="form-error"></div></dd>
             </dl>
             <dl>
-                <dt>电话号码：</dt>
-                <dd><input type="text" name="tel" id="tel" class="w150 text" value="<{$de.tel}>"><div id="form-error" class="form-error"></div></dd>
+                <dt>电话号码</dt>
+                <dd><input type="text" name="tel" id="tel" class="w284 text" value="<{$de.tel}>"><div id="form-error" class="form-error"></div></dd>
             </dl>
             <dl>
-                <dt><em>*</em>手机号码：</dt>
-                <dd><input type="text" name="mobile" id="mobile" maxlength="18" class="w150 text" value="<{$de.mobile}>"><div id="form-error" class="form-error"></div></dd>
+                <dt>手机号码</dt>
+                <dd><input type="text" name="mobile" id="mobile" maxlength="18" class="w284 text" value="<{$de.mobile}>"><em></em><div id="form-error" class="form-error"></div></dd>
             </dl>
             <dl>
-                <dt>默认地址：</dt>
-                <dd><input type="checkbox" <{if $de.default==2}>checked="checked"<{/if}> name="default" value="1" /></dd>
+                <dt>默认地址</dt>
+                <dd><input type="checkbox" class="default" <{if $de.default==2}>checked="checked"<{/if}> name="default" value="1" /></dd>
             </dl>
-            <dl class="foot">
+            <dl class="">
                 <dt>&nbsp;</dt>
                 <dd><input type="submit" value="提交" class="submit"></dd>
             </dl>
             </form>
         </div>  
         <{else}>
-        <table class="table-list-style">
+        <table class="table-list-style table-list-add">
             <thead>
             <tr>
                 <th width="10"></th>
@@ -177,8 +179,7 @@ $(function(){
                 <td class="tl"><{$list.name}></td>
                 <td class="tl"><{$list.area}><{$list.address}></td>
                 <td class="tl"><{$list.zip}></td>
-                <td class="tl"><{$list.tel}><br />
-                <{$list.mobile}></td>
+                <td class="tl"><{$list.mobile}></td>
                 <td><a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&id=<{$list.id}>&type=edit" >修改</a> <a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&edid=<{$list.id}>">删除</a></td>
             </tr>
             <{foreachelse}>
