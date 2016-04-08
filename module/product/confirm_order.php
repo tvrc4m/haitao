@@ -69,6 +69,16 @@ else
 
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
+	//实名认证
+/*	if(!empty($_COOKIE['dist_id'])){
+		$sql = 'select identity_verify from pay_member where userid='.$_COOKIE['dist_id'];
+		$db->query($sql);
+		$aa = $db->getRows();
+
+		echo $sql;
+		var_dump($aa);
+	}*/
+
 	//=============================提交订单
 	if($_POST['act']=='order')
 	{  
