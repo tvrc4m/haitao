@@ -764,11 +764,13 @@ if(!empty($order_rows['items']))
 		if(is_array($order_rows['items'])){
 			foreach ($order_rows['items'] as $k => $value) 
 			{
-				foreach ($value['product'] as $ke => $val) 
-				{
-					if($val['status'] < 0  || $val['status'] >3)
+				if(is_array($value['product'])){
+					foreach ($value['product'] as $ke => $val)
 					{
-						$order_rows['items'][$k]['isret'] = '1';
+						if($val['status'] < 0  || $val['status'] >3)
+						{
+							$order_rows['items'][$k]['isret'] = '1';
+						}
 					}
 				}
 			}
