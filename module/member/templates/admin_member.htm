@@ -21,6 +21,7 @@ $(function(){
 </script>
 <div class="path">
     <div>
+        <span class="shop"></span>
     	<{if $cg_u_type==1}>
     		<a href="main.php?cg_u_type=1"><{$lang.my_mall}></a> <span>&gt;</span>
         <{else}>
@@ -46,16 +47,16 @@ $(function(){
             <form action="" method="post">
             <input type="hidden" value="password" name="submit">
             <dl>
-                <dt><em>*</em><{$lang.your_password}></dt>
-                <dd><input name="oldpass" type="password" id="oldpass" class="text w150" /></dd>
+                <dt><{$lang.your_password}></dt>
+                <dd><input name="oldpass" type="password" id="oldpass" class="text w184" /><em></em></dd>
             </dl>
             <dl>
-                <dt><em>*</em><{$lang.new_pass}></dt>
-                <dd><input name="newpass" type="password" id="newpass" class="password w150" /></dd>
+                <dt><{$lang.new_pass}></dt>
+                <dd><input name="newpass" type="password" id="newpass" class="password w184" /><em></em></dd>
             </dl>
             <dl>
-                <dt><em>*</em><{$lang.con_pass}></dt>
-                <dd><input name="renewpass" type="password" id="renewpass" class="password w150" /></dd>
+                <dt><{$lang.con_pass}></dt>
+                <dd><input name="renewpass" type="password" id="renewpass" class="password w184" /><em></em></dd>
             </dl>
             <dl class="foot">
                 <dt>&nbsp;</dt>
@@ -68,14 +69,15 @@ $(function(){
             <form action="" method="post">
             <input type="hidden" value="email" name="submit">
            	<dl>
-                <dt><em>*</em>邮箱</dt>
-                <dd><input name="email" id="email" type="text" class="text w300" /></dd>
+                <dt>邮箱</dt>
+                <dd><input name="email" id="email" type="text" class="text w184" /><em></em></dd>
             </dl>
             <dl>
-                <dt><em>*</em>邮件验证码</dt>
+                <dt>邮件验证码</dt>
                 <dd>
-                <input name="yzm" type="text" class="text w150" />
+                <input name="yzm" type="text" class="text w75" />
                <input type="button" class="send" value="获取邮件验证码" />
+               <em></em>
                 </dd>
             </dl>
             <dl class="foot">
@@ -147,14 +149,15 @@ $(function(){
             <form action="" method="post">
             <input type="hidden" value="mobile" name="submit">
             <dl>
-                <dt><em>*</em>手机</dt>
-                <dd><input name="mobile" id="mobile" type="text" class="text w300" /></dd>
+                <dt>手机</dt>
+                <dd><input name="mobile" id="mobile" type="text" class="text w184" /><em></em></dd>
             </dl>
             <dl>
-                <dt><em>*</em>短信验证码</dt>
+                <dt>短信验证码</dt>
                 <dd>
-                <input name="yzm" type="text" class="text w150" />
-               <input type="button" class="send" value="获取短信验证码" />
+                <input name="yzm" type="text" class="text w75" />
+                <input type="button" class="send" value="获取短信验证码" />
+                <em></em>
                 </dd>
             </dl>
             <dl class="foot">
@@ -225,9 +228,9 @@ $(function(){
         <div class="form-style">
             <form action="" method="post" name="form" id="form">
             <input type="hidden" value="edit" name="submit">
-            <h5>亲爱的<{$smarty.cookies.USER}>，填写真实的资料，有助于好友找到你哦。</h5>
+            <h5>亲爱的<span><{$smarty.cookies.USER}></span>，填写真实的资料，有助于好友找到你哦。</h5>
             <dl>
-                <dt>用户名</dt>
+                <dt>用户名：</dt>
                 <dd><{$de.user}></dd>
             </dl>
             <{if $de.email}>
@@ -247,13 +250,13 @@ $(function(){
                 <dd>
                 <p class="pic" style=" width:120px; height:120px; "><img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>" height="120" width="120" /></p>
 				
-                <p><input class="text w300" name="logo" type="text" id="logo" value="<{$de.logo}>"> <a class="upload-button" href="javascript:uploadfile('LOGO','logo',120,120,'member')"><{$lang.upload}></a></p>
+                <p><input class="text w184" name="logo" type="text" id="logo" value="<{$de.logo}>"> <a class="upload-button" href="javascript:uploadfile('LOGO','logo',120,120,'member')"><{$lang.upload}></a></p>
                 </dd>
             </dl>
             
             <dl>
-                <dt><em>*</em>昵称：</dt>
-                <dd><input name='name' type='text' id="name" value="<{$de.name}>" dataType="Require" msg="<{$lang.ar_con_user}>" class="text w150"><div class="form-error"></span></div>
+                <dt>昵称：</dt>
+                <dd><input name='name' type='text' id="name" value="<{$de.name}>" dataType="Require" msg="<{$lang.ar_con_user}>" class="text w184"><em></em><div class="form-error"></span></div>
             </dl>
             <dl>
                 <dt>性别：</dt>
@@ -287,7 +290,7 @@ $(function(){
             </dl>
             <dl>
                 <dt>QQ：</dt>
-                <dd><input name="qq" type="text" value="<{$de.qq}>" class="text w200"></dd>
+                <dd><input name="qq" type="text" value="<{$de.qq}>" class="text w184"></dd>
             </dl>
             <{if $wechat_connect_flag}>
             <dl>
@@ -297,7 +300,7 @@ $(function(){
             <{/if}>
             <dl>
                 <dt>旺旺：</dt>
-                <dd><input name="ww" type="text" value="<{$de.ww}>" class="text w200"></dd>
+                <dd><input name="ww" type="text" value="<{$de.ww}>" class="text w184"></dd>
             </dl>
             <dl class="foot">
                 <dt>&nbsp;</dt>

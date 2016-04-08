@@ -1,6 +1,7 @@
 <div class="path">
     <div>
-    	<a href="main.php">卖家家中心</a> <span>&gt;</span> 
+        <span class="shop"></span>
+    	<a href="main.php">买家中心</a> <span>&gt;</span> 
 		已兑换的商品 
     </div>
 </div>
@@ -8,6 +9,7 @@
 	<div class="wrap">
         <div class="hd">
             <ul class="tabs">
+                <li class="active"><a href="main.php?m=points&s=admin_points">积分明细</a></li>
                 <li class="<{if $smarty.get.type}>normal<{else}>active<{/if}>"><a href="main.php?m=points&s=admin_points_order">已兑换的商品</a></li>
                 <{if $smarty.get.type=='show'}>
                 <li class="active"><a href="#">订单详情</a></li>
@@ -130,14 +132,14 @@
         </table>
         <{/if}>
         <{else}>
-        <table class="table-list-style">
+        <table class="table-list-style exchange">
         	<thead>
             <tr>
             	<th width="10"></th>
 				<th width="150" class="tl">订单编号</th>
             	<th class="tl">商品名称</th>
             	<th width="160">下单日期</th>
-            	<th width="150">订单状态</th>
+            	<th width="150" style="border-right:1px solid #ccc;">订单状态</th>
             </tr>
             </thead>
             <tbody>

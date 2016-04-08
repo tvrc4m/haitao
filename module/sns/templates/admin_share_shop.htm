@@ -33,11 +33,12 @@ $(function(){
 </script>
 <div class="path">
     <div>
+        <span class="shop"></span>
     	<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span> 
         收藏店铺
     </div>
 </div>
-<div class="main">
+<div class="main share_shop">
 	<div class="wrap">
         <div class="hd">
             <ul class="tabs">
@@ -56,6 +57,12 @@ $(function(){
                 </div>-->
             </ul>
         </div>
+        <div class="delete">
+            <input type="checkbox" class="checkall"></td>
+            <label for="del" class="btn2">全选</label>
+            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
+            <div class="pagination"><{$re.page}></div>
+        </div>
         <table class="table-list-style">
             <thead>
             <tr>
@@ -64,7 +71,7 @@ $(function(){
                 <th class="tl">店铺</th>
                 <th width="150">收藏时间</th>
                 <th width="90">收藏人气</th>
-                <th width="90">操作</th>
+                <th width="90" class="br">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -75,7 +82,7 @@ $(function(){
                 <td class="tl"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a><p><{$slist.area}></p><p><{$slist.user}></p></td>
                 <td><{$slist.addtime|date_format}></td>
                 <td><{$slist.shop_collect}></td>
-                <td>
+                <td class="br">
                 <p><a href="main.php?m=sns&s=admin_share_shop&type=del&id=<{$slist.id}>">删除</a></p>
                 </td>
             </tr>
@@ -86,17 +93,17 @@ $(function(){
                 </td>
             </tr>
             <{/foreach}>
-            </tbody>
-            <tfoot>
+            <!--  <tfoot>
             <tr>
-            	<td class="tc"><input type="checkbox" class="checkall"></td>
+                <td class="tc"><input type="checkbox" class="checkall"></td>
                 <td colspan="20">
                 <label for="del" class="btn2">全选</label>
                 <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
                 <div class="pagination"><{$re.page}></div>
                 </td>
             </tr>
-            </tfoot>
+            </tfoot> -->
+            </tbody>
         </table>
      </div>   
 </div>
