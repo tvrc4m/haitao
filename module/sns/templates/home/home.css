@@ -109,7 +109,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .visitor_time{color:#999999;font-size:14px;line-height:18px;}
 .body-main .main-widget{padding-top:8px;width: 950px;margin-right: auto;margin-left: auto;padding-bottom: 40px;}
 .body-main .main-widget h3{border-bottom:1px solid #999;position:relative;}
-.body-main .main-widget h3 span a{color:#555555;cursor:pointer;font-size: 16px;background: url(home/mayi_home_icon4.png) no-repeat 16px -116px;padding-left: 40px;}
+.body-main .main-widget h3 span a{color:#555555;cursor:pointer;font-size: 16px;background: url(home/ic_arr_right.png) no-repeat 16px;padding-left: 40px;}
 .body-main .main-widget h3 span a:hover{color:#FC7435;}
 .body-main .main-widget h3 .read-more{color:#999999;float:right;font-size:14px;font-weight:normal;line-height:30px;margin-top:6px;}
 .body-main .main-widget h3 span{/*border-bottom:3px solid #9ECBE7;*/display:inline-block;height:39px;line-height:38px;margin-bottom:-2px;position:relative;vertical-align:middle;color:#555555;font-size:14px;}
@@ -126,12 +126,12 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .body-main .item-bd li .sitem .func .collect{border:1px solid #FC8E5B;float:left;line-height:18px;}
 .body-main .item-bd li .sitem .func .collect a{background-color:#FC8E5B;color:#FFFFFF;display:inline-block;padding:0 4px;}
 .body-main .item-bd li .sitem .func .collect a i{background:url(home/heart.gif) -5px -4px no-repeat;display:inline-block;height:12px;margin-right:4px;vertical-align:middle;width:12px;}
-.body-main .item-bd li .sitem .func .collect strong{background-color:#FFFFFF;color:#FF6600;display:inline-block;font-family:Tahoma,Geneva,sans-serif;font-weight:600;padding:0 4px;}
-.sns-item{border-bottom:1px solid #F3F3F3;clear:both;overflow:hidden;padding-bottom:12px;padding-top:22px;width: 885px;margin-right: auto;margin-left: auto;border:1px solid #ccc;padding-left: 20px;padding-right: 20px;padding-bottom: 20px;background-color: #f5f5f5;}*/
+.body-main .item-bd li .sitem .func .collect strong{background-color:#FFFFFF;color:#FF6600;display:inline-block;font-family:Tahoma,Geneva,sans-serif;font-weight:600;padding:0 4px;}*/
+.sns-item{margin-bottom: 10px;border-bottom:1px solid #F3F3F3;clear:both;overflow:hidden;padding-bottom:12px;padding-top:22px;width: 885px;margin-right: auto;margin-left: auto;border:1px solid #ccc;padding-left: 20px;padding-right: 20px;padding-bottom: 20px;background-color: #f5f5f5;}
 .sns-item .sns-wrap a, .sns-item .sns-wrap a:hover{color:#006A92;}
 .sns-item .sns-wrap{font-size:14px;}
 .sns-item .sns-wrap p{width:100%;margin-top:12px;display:inline-block;word-break:break-all;word-wrap:break-word;}
-.sns-item .sns-wrap p a{display:inline;float:left;margin:0 3px 0 0;font-size: 16px;color: #ff5c5c;padding-left: 25px;background: url(home/mayi_home_icon4.png) no-repeat 1px -21px;}
+.sns-item .sns-wrap p a{display:inline;float:left;margin:0 3px 0 0;font-size: 16px;color: #ff5c5c;padding-left: 25px;background: url(home/ic_person.png) no-repeat 1px;}
 .sns-item .sns-text{line-height:1.5;margin-bottom:20px;font-size: 14px;margin-top: 15px;}
 .sns-item .sns-title{color:#646464;line-height:23px;overflow:hidden;word-break:break-all;word-wrap:break-word;}
 .sns-item .sns-img{margin:7px 0;}
@@ -141,7 +141,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .sns-item .quote-wrap{background:#F8F8F8;border:1px solid #F0F0F0;border-radius:3px;font-size:12px;overflow:hidden;padding:7px 10px 10px;margin-bottom:10px;}
 .sns-item .quote-wrap .sns-img img.large{max-width:470px;}
 .sns-item .sns-extra{color:#AAAAAA;font-size:12px;height:18px;}
-.sns-item .sns-extra .sns-time{float:left;margin-right:25px;color:#999;font-size: 14px;padding-left: 25px;background: url(home/mayi_home_icon4.png) no-repeat 1px 3px;}
+.sns-item .sns-extra .sns-time{float:left;margin-right:25px;color:#999;font-size: 14px;padding-left: 25px;background: url(home/ic-rili.png) no-repeat 1px;}
 .sns-item .sns-extra .sns-action{float:right;}
 .sns-item .sns-extra .sns-action .sns-action-forward{background: url(home/mayi_home_icon4.png) no-repeat 2px -47px;}
 .sns-item .sns-extra .sns-action .sns-action-comment{background: url(home/mayi_home_icon4.png) no-repeat 2px -71px;}
