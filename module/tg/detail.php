@@ -5,7 +5,7 @@ $id=$_GET["id"]*1;
 user_read_rec($buid,$id,1);//记录会员查看商品
 //-----------------------------------
 $prodetail=new product();
-$prode=$prodetail->detail($id); 
+$prode=$prodetail->detail($id);
 $tpl->assign("detail",$prode);
 $ar1=array('[catname]','[title]');
 $ar2=array($cat,$re['downname']);

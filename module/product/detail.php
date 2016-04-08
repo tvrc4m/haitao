@@ -79,6 +79,7 @@ $tpl->assign("shop_user",$ress['user']);
 
 $prodetail=new product();
 $prode=$prodetail->detail($id);
+$relation = $prodetail->relation_detail($id);
 
 if (isset($_REQUEST['dist_id']))
 {
@@ -90,6 +91,8 @@ if (isset($_REQUEST['dist_id']))
 		$PluginManager->trigger('analyse', $shop_id, $id, $prode['name']);
 	}
 }
+
+
 
 //-----------------------------------
 $sql="select isbuy,ext_table from ".PCAT." where catid='$prode[catid]'";
