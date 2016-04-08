@@ -18,7 +18,7 @@ class home
 	{	
 		if(is_numeric($uid))
 		{
-			$sql="select userid,name,sex,area,logo,buyerpoints from ".MEMBER." WHERE userid='$uid'";
+			$sql="select userid,`name`,`user`,sex,area,logo,buyerpoints from ".MEMBER." WHERE userid='$uid'";
 			$this ->db ->query($sql);
 			$member=$this ->db->fetchRow();
 			if($member)
@@ -71,7 +71,7 @@ class home
 	//分享的宝贝
 	function ShareGoods($uid)
 	{	
-		$sql="select a.pid,image,pname,content,collectnum from ".SPRO." a left join ".SPROINFO." b on a.pid = b.pid where uid=$uid and isshare=1 order by a.addtime desc limit 0,3";
+		$sql="select a.pid,image,pname,b.price,content,collectnum from ".SPRO." a left join ".SPROINFO." b on a.pid = b.pid where uid=$uid and isshare=1 order by a.addtime desc limit 0,3";
 		$this->db->query($sql);
 		$re=$this->db->getRows();
 		return $re;

@@ -304,11 +304,11 @@ class ProductModel extends Product
 
 		//取得影响行数
 		$total = $this->getFoundRows();
-
+        $Trows = $rows == 0 ? 0 :$total / $rows;
 		$data  = array();
 		$data['page']      = $page;	  	//当前页			
 		$data['total']	   = $total;	//总记录数
-		$data['totalsize'] = ceil($total / $rows);		//总页数
+		$data['totalsize'] = ceil_r($Trows);		//总页数
 		$data['records']   = count($goods_rows);	//本页记录数
 		$data['items']     = array_values($goods_rows);  //内容
 		return $data;

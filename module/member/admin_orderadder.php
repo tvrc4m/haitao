@@ -5,7 +5,9 @@ $orderadder=new orderadder();
 //--增加收货地址
 
 if($_POST["submit"]=='add')
-{   
+{
+    if(!preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/',$_POST['mobile']))
+        die('<script>alert("请填写正确手机号！");history.go(-1);</script>;');
 	$flag=$orderadder->add_orderadder();
 	if(is_numeric($_POST['i']) and $_POST['ty']=='tg')
 	{
@@ -23,6 +25,8 @@ if($_POST["submit"]=='add')
 //--修改收货地址
 if($_POST['submit']=='edit')
 {
+    if(!preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/',$_POST['mobile']))
+        die('<script>alert("请填写正确手机号！");history.go(-1);</script>;');
 	$flag=$orderadder->edit_orderadder($_POST['edid']); 
 	if(is_numeric($_POST['i']) and $_POST['ty']=='tg')
 	{

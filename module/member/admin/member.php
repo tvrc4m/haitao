@@ -42,7 +42,7 @@ function del_user($ar)
 	}
 }
 
-if($_SESSION['province'])
+/*if($_SESSION['province'])
 	$scl.=" and provinceid='".getdistrictid($_SESSION['province'])."'";
 if($_SESSION['city'])
 	$scl.=" and cityid='".getdistrictid($_SESSION['city'])."'";
@@ -50,7 +50,7 @@ if($_SESSION['area'])
 	$scl.=" and areaid='".getdistrictid($_SESSION['area'])."'";	
 if($_SESSION['street'])
 	$scl.=" and streetid='".getdistrictid($_SESSION['street'])."'";
-		
+		*/
 if(!empty($_GET['type']) and !empty($_GET['name']))
 	$scl.=" and a.".$_GET['type']." like '%".trim($_GET['name'])."%'";
 

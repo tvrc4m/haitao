@@ -90,7 +90,7 @@ else
 			$detail = addslashes($detail);
 
 			$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values 
-			('$order_id','$id','$sid','$sell_userid','$sell_userid','$re[catid]','0','$re[name]','$re[subhead]','$re[brand]','$org_price','0','$re[pic]','".time()."','$detail','$re[spec_name]','$re[setmeal]')";
+			('$order_id','$id','$sid','$sell_userid','$sell_userid','$re[catid]','0','".addslashes($re[name])."','".addslashes($re[subhead])."','".addslashes($re[brand])."','$org_price','0','$re[pic]','".time()."','".addslashes($detail)."','".addslashes($re[spec_name])."','".addslashes($re[setmeal])."')";
 			$db->query($sql);
 
 			$post['action']='add';//填加流水

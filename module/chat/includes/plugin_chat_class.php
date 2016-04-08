@@ -135,7 +135,7 @@ EOT;
 <link rel="stylesheet" href="./templates/wap/css/chat.css">
 <script src="{$config['weburl']}/script/jquery.cookie.js" type="text/javascript"></script>
 <script src="{$config['weburl']}/script/my_lightbox.js" type="text/javascript"></script>
-<script type="text/javascript" src="{$config['weburl']}/script/chat.js"></script>
+<!--<script type="text/javascript" src="{$config['weburl']}/script/chat.js"></script>-->
 
 <!--<dl id="chat_icon" class="msg_notice_icon"></dl>-->
 

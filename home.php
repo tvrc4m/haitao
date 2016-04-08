@@ -14,7 +14,7 @@
 
 	$tpl -> template_dir = $config['webroot'] . "/module/sns/templates/home/";
 	$tpl -> compile_dir     = $config["webroot"] . "/templates_c/".$config['temp']."/home/";
-	
+
 	$tpl->assign("member",$home->Member($uid));
 	$tpl->assign("count",$home->AllCount($uid));
 	$tpl->assign("userid",$userid=$home->UserId());

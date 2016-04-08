@@ -10,19 +10,6 @@ if(!empty($_GET['msg']))
 	$page="reset_pass.htm";
 }
 
-/*if(!empty($_POST['resetpass'])&&!empty($_POST['newpass'])&&!empty($_GET['md5']))
-{
-	echo 1;
-	//重设密码
-	if($_POST['newpass']!=$_POST['newpass1'])
-		msg("lostpass.php?msg=1&userid=$_GET[userid]&md5=$_GET[md5]");
-	else
-	{
-		$db->query("update ".MEMBER." set password='".md5($_POST['newpass'])."'
-		           where userid='$_GET[userid]' and password='$_GET[md5]'");
-		msg("lostpass.php?msg=2");
-	}
-}*/
 if(!empty($_GET['md5'])&&!empty($_GET['userid']))
 {
 	//调出重设密码的模板
@@ -33,111 +20,72 @@ if(!empty($_GET['md5'])&&!empty($_GET['userid']))
 		$page='reset_pass.htm';
 }
 
+//验证手机号
 if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
-
-	//$str = '/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/';
-	if(preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
-		//验证用户名唯一
-		$sql="select * from ".MEMBER." where mobile = '".$_POST['mobile']."'";
-		$db->query($sql);
-		if($db->num_rows()){
-			$_SESSION['lost_yzm']['ph'] = 1;
-			echo Return_data(array(
-				'status_code' => '200',
-				'message' => '该手机号已存在！',
-				'data' => null
-			));die;
-		}else{
-			echo Return_data(array(
-				'status_code' => '300',
-				'message' => '手机号不存在！',
-				'data' => null
-			));die;
-		}
-	}else{
-		echo Return_data(array(
-			'status_code' => '300',
-			'message' => '请填正确的手机号！',
-			'data' => null
-		));die;
-	}
-	die;
+	if(Check_data($_POST['mobile'], 'mobile')){
+        if(Check_only($_POST['mobile'], 'mobile', MEMBER)){
+            $_SESSION['lost_yzm']['ph'] = 1;
+            die(Return_data(array('status_code' => '200', 'message' => '该手机号已存在！', 'data' => null )));
+        }else{
+            die(Return_data(array('status_code' => '300', 'message' => '手机号不存在！', 'data' => null )));
+        }
+    }else{
+        die(Return_data(array('status_code' => '300', 'message' => '请填正确的手机号！', 'data' => null )));
+    }
 }else if($_POST['check_mobile']=='check'){
-	echo Return_data(array(
-		'status_code' => '300',
-		'message' => '请填写手机号！',
-		'data' => null
-	));
-	die;
+	die(Return_data(array('status_code' => '300', 'message' => '请填写手机号！', 'data' => null )));
 }
 
 //发送验证码
 if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['lost_yzm']['ph']==1){
-	if(!empty($mob=$_POST['mobile'])&&preg_match('/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/', $_POST['mobile'])){
-		if(empty($_SESSION['lost_yzm'])||$_SESSION['lost_yzm']['ltime']<time()) {
-			if($_SESSION['lost_yzm']['lasttime']<=time()){
-				$_SESSION['lost_yzm']['lnum'] = 1;
-			}
-			$number = rand(100000,999999);
-			if(empty($_SESSION['lost_yzm']['lnum'])||$_SESSION['lost_yzm']['lnum']<=3) {
-				if (Send_msg($mob, sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
-					$vser['yzm'] = $number;
+    if(Check_data($_POST['mobile'], 'mobile')){
+        if(empty($_SESSION['lost_yzm'])||$_SESSION['lost_yzm']['ltime']<time()) {
+            if($_SESSION['lost_yzm']['lasttime']<=time()){
+                $_SESSION['lost_yzm']['lnum'] = 1;
+            }
+            if(empty($_SESSION['lost_yzm']['lnum'])||$_SESSION['lost_yzm']['lnum']<=3) {
+                $number = rand(100000,999999);
+                if (Send_msg($_POST['mobile'], sprintf('您本次注册蚂蚁海淘的验证码是%s有效期为%s分钟', $number, 10)) == 1) {
+
                     if(date('i',time()-$_SESSION['lost_yzm']['ltime'])<5){
-                        $vser['lnum'] = $_SESSION['lost_yzm']['lnum'] + 1;
+                        $vser['lnum'] =  $_SESSION['lost_yzm']['lnum']+1;
                     }
-					$vser['ytime'] = time() + 60 * 10;
-					$vser['ltime'] = time() + 60;
-					$vser['lasttime'] = time() + 60 * 60;
-					$_SESSION['lost_yzm'] = $vser;
-				}
-				echo Return_data(array(
-					'status_code' => '200',
-					'message' => '短信发送成功，请注意查收',
-					'data' => null
-				));
-                die;
-			}else{
-				echo Return_data(array(
-					'status_code' => '300',
-					'message' => sprintf('由于您获取验证码过于频繁，请在%s后再次申请短信验证码，谢谢配合！',date('i分s秒', $_SESSION['lost_yzm']['lasttime']-time())),
-					'data' => $_SESSION['lost_yzm']['ltime']-time()
-				));
-				die;
-			}
-		}else{
-			echo Return_data(array(
-					'status_code' => '300',
-					'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['lost_yzm']['ltime']-time()),
-					'data' => $_SESSION['lost_yzm']['ltime']-time()
-			));
-		}
-		die;
-	}
+                    $vser['yzm'] = $number;
+                    $vser['ytime'] = time() + 60 * 10;
+                    $vser['ltime'] = time() + 60;
+                    $vser['lasttime'] = time() + 60 * 60;
+                    $_SESSION['lost_yzm'] = $vser;
+                    die(Return_data(array('status_code' => '200', 'message' => '短信发送成功，请注意查收', 'data' => null )));
+                }
+            }else{
+                die(Return_data(array('status_code' => '300', 'message' => sprintf('操作过于频繁，%s后再试！',date('i分s秒', $_SESSION['lost_yzm']['lasttime']-time())), 'data' => $_SESSION['lost_yzm']['ltime']-time() )));
+            }
+        }else{
+            die(Return_data(array('status_code' => '300', 'message' => sprintf('请在%s秒后再次申请短信验证码',$_SESSION['lost_yzm']['ltime']-time()), 'data' => $_SESSION['lost_yzm']['ltime']-time() )));
+        }
+    }
 }else if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['lost_yzm']['ph']!=1){
-	die;
+    die(Return_data(array('status_code' => '300', 'message' => '请先确认手机后在发短信', 'data' => null )));
 }
 
+//检测验证码
+if(!empty($_POST['smsvode'])&&$_POST['check_sms']=='check'){
+    Check_sms($_POST['smsvode']);
+}
 
-//var_dump($_POST); die;
 //找回密码页
 if(!empty($_POST["action"])&&$_POST["action"]=="com")
 {//根据用户名和密码确定是哪一个公司在找回密码
 
 	//定义所有正则
-	$str_check = [
-			//'user' => '/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u',
-			'mobile' => '/^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/',
-			'smsvode' => '/^[0-9]{6}$/',
-			'password' => '/^[A-Za-z0-9]{6,10}$/',
-	];
-	foreach($str_check as $key => $val){
-		if(empty($_POST[$key])||!preg_match($val, $_POST[$key])){
-			die('<script>alert("请填写正确格式的数据!");history.go(-1);</script>;');
-		}
-	}
+    $str_check = array( 'mobile', 'smsvode', 'password');
+    foreach($str_check as $key => $val){
+        if(empty($_POST[$val])||!Check_data($_POST[$val], $val)){
+            die('<script>alert("请填写正确格式的数据");history.go(-1);</script>;');
+        }
+    }
 
 	//手机验证码
-
 	if(!empty($_POST['smsvode'])&&$_POST['smsvode']==$_SESSION['lost_yzm']['yzm']){
 		if($_SESSION['lost_yzm']['ytime']<time()){
 			die('<script>alert("验证码已失效!");history.go(-1);</script>;');
@@ -158,43 +106,58 @@ if(!empty($_POST["action"])&&$_POST["action"]=="com")
 	}
 	else
 	{
-		/*$md5=md5(time().rand(0,100));
-		$md5='lock'.substr($md5,5,strlen($md5));
-		$db->query("update ".MEMBER." SET password='$md5' where userid='$re[userid]'");*/
-		//var_dump($re); die;
 		$userid = $re['userid'];
-		$re = $db->query("update ".MEMBER." set password='".md5($_POST['password'])."'
-		           where userid='$userid'");
+		$re = $db->query("update ".MEMBER." set password='".md5($_POST['password'])."' where userid='$userid'");
 
 		if($re){
 			msg('login.php','密码修改成功！');
 		}else{
 			msg('lostpass.php','系统繁忙，请稍后修改！');
 		}
-		/*$mail_temp=get_mail_template('find_pwd');
-
-		$link=$config['weburl']."/lostpass.php?md5=$md5&userid=$re[userid]";
-		$link="<a target='_blank' href='".$link."'>".$link."</a>";
-		
-		$con=$mail_temp['message'];
-		$title=$mail_temp['title'];
-		$user=$re['user'];
-		$time=date("Y-m-d H:i:s");
-		
-		$logo='<img height="24" src="'.$config['weburl'].'/image/logo.gif"  style="border:none;margin:0;">';
-	
-		$ar1=array('[time]','[logo]','[member_name]','[weburl_name]','[link]','[weburl_email]','[weburl_tel]','[weburl_url]','[weburl_desc]','[weburl_desc]');
-		$ar2=array($time,$logo,$user,$config['company'],$link,$config['email'],$config['owntel'],$config['weburl'],$config['description']);
-		$con=str_replace($ar1,$ar2,$con);
-	
-		$ar3=array('[member_name]','[weburl_name]');
-		$ar4=array($user,$config['company']);
-		$title=str_replace($ar3,$ar4,$title);
-		send_mail($re["email"],$re["user"], $title,$con);
-		$tpl->assign("email",$re["email"]);*/
 	}
-	//$tpl->assign('p_email',$re["email"]);
 	$page="lostpass_steptwo.htm";
+}
+
+/* =================================================自定义方法======================================================== */
+
+/**
+ * 检测验证码
+ */
+function Check_sms($data = null){
+
+    if(!empty($data)&&$data==$_SESSION['mon_yzm']['yzm']){
+        if($_SESSION['mon_yzm']['ytime']<time()){
+            die(Return_data(array('status_code' => '300', 'message' => "验证码已失效!", 'data' => null )));
+        }else{
+            die(Return_data(array('status_code' => '200', 'message' => "验证码正确!", 'data' => null )));
+        }
+    }else{
+        die(Return_data(array('status_code' => '300', 'message' => "请填写正确的验证码!", 'data' => null )));
+    }
+}
+
+/**
+ * 验证唯一
+ */
+function Check_only($data = null, $key = null, $table = null){
+	global $db;
+	$sql="select * from ".$table." where $key = '$data'";
+	$db->query($sql);
+	return $db->num_rows();
+}
+
+/**
+ * 数据格式验证
+ */
+function Check_data($data = null, $keyval = null){
+	$res = null;
+	switch($keyval){
+		case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
+		case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
+		case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
+		case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
+	}
+	return $res;
 }
 
 //短信发送

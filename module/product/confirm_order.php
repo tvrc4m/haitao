@@ -1,5 +1,4 @@
 <?php
-
 if(empty($buid))
 {
 	if (isset($_SERVER['HTTP_REFERER']))
@@ -46,8 +45,6 @@ else
 		$addr = $orderadder -> get_orderadderlist();
 	}
 	$tpl -> assign("consignee",$addr);
-	//echo '<pre>';
-	//var_dump($addr);
 	//============================读出购物车的数据
 	if($_GET['id']&&is_numeric($_GET['id']))
 	{
@@ -73,7 +70,6 @@ else
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
 	//=============================提交订单
-
 	if($_POST['act']=='order')
 	{  
 		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']); 
@@ -171,20 +167,20 @@ else
 					$dist_user_id = $val['dist_user_id'];
 
 					/***生成买家订单****/
-					$sql = "INSERT INTO ".ORDER." (`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($buid,$order_id,'0',$sell_userid,'$re[name]','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
+					$sql = "INSERT INTO ".ORDER." (`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($buid,$order_id,'0',$sell_userid,'".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
 					$db->query($sql);
 					
 					/***生成卖家订单****/
-					$sql = "INSERT INTO ".ORDER."	(`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($sell_userid,$order_id,'$buid','0','$re[name]','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
+					$sql = "INSERT INTO ".ORDER."	(`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($sell_userid,$order_id,'$buid','0','".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
 					$db->query($sql);
 					
                                         
 					foreach($val['prolist'] as $key=>$val)
-					{    
+					{
 						$val['spec_id'] = $val['spec_id']?$val['spec_id']:"0"; 
 						$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`pcatid`,`name`,`pic`,`price`,`num`,`time`,`setmeal`,`is_tg`,`spec_name`,`spec_value`,`skuid`)
 						VALUES 
-						($order_id,$buid,$val[product_id],$val[catid],'$val[pname]','".$val['pic']."','".$val['price']."','".$val['quantity']."','".time()."','$val[spec_id]','$val[is_tg]','$val[spec_name]','$val[setmealname]','$val[sku]')";
+						($order_id,$buid,$val[product_id],$val[catid],'".addslashes($val[pname])."','".$val['pic']."','".$val['price']."','".$val['quantity']."','".time()."','$val[spec_id]','$val[is_tg]','$val[spec_name]','$val[setmealname]','$val[skuid]')";
 						$db->query($sql);
 						
 						$sql="select detail from ".PRODETAIL." where proid='$val[product_id]'";
@@ -193,7 +189,7 @@ else
 			
 						$detail = addslashes($detail);
 				
-						$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values ('$order_id','$val[product_id]','$val[spec_id]','$sell_userid','$sell_userid','$val[catid]','$val[type]','$val[pname]','$val[subhead]','$val[brand]','$val[price]','0','$val[pic]','".time()."','$detail','$val[spec_name]','$val[setmealname]')";
+						$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values ('$order_id','$val[product_id]','$val[spec_id]','$sell_userid','$sell_userid','$val[catid]','$val[type]','".addslashes($val[pname])."','".addslashes($val[subhead])."','".addslashes($val[brand])."','$val[price]','0','$val[pic]','".time()."','".addslashes($detail)."','".addslashes($val[spec_name])."','".addslashes($val[setmealname])."')";
 						$db->query($sql);
 					}
 					if($value["giftlist"])
@@ -202,7 +198,7 @@ else
 						{
 							$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`name`,`pic`,`price`,`num`,`time`,`is_gift`) 
 							VALUES 
-							($order_id,$buid,$va[pid],'$va[pname]','".$va['pic']."','".$va['price']."',1,'".time()."',1)"; 
+							($order_id,$buid,$va[pid],'".addslashes($va[pname])."','".$va['pic']."','".$va['price']."',1,'".time()."',1)";
 							$db->query($sql);
 						}
 					}
