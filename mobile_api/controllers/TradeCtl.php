@@ -36,6 +36,7 @@ class TradeCtl extends Yf_AppController
         {
             $sumprice = 0;
             //获取店铺名称
+			if(is_array($data)){
             foreach ($data as $key => $value)
             {
                 $ShopModel = new ShopModel();
@@ -47,7 +48,7 @@ class TradeCtl extends Yf_AppController
                 //获取单个店铺商品及商品总价格、平邮、快递、EMS、总邮费
                 $cart_list = $Product_CartModel->getCartList($user_id, $value['seller_id']);//cart表
                 //fb($cart_list);
-
+			if(is_array($cart_list)){
                 foreach ($cart_list as $ke => $va) {
                     $cart_list[$ke]['sumprice'] = $cart_list[$ke]['price']*$cart_list[$ke]['quantity']*1;
                     $cart_list[$ke]['num'] = $cart_list[$ke]['quantity'];
@@ -91,8 +92,10 @@ class TradeCtl extends Yf_AppController
                     }
 
                 }
+			}
 			$cart_pro_rows[$value['seller_id']]=$cart_list;
 		}
+			}
 
 		//fb($cart_pro_rows);
 		$sumprice = array();
@@ -743,7 +746,8 @@ if(!empty($order_rows['items']))
 			//获取订单商品信息
 			$Product_OrderProModel = new Product_OrderProModel();
 			$good_rows         = $Product_OrderProModel->getOrderProByOid($value['order_id']);
-			foreach ($good_rows as $rowkey => $rowvalue) 
+		if(is_array($good_rows)){
+			foreach ($good_rows as $rowkey => $rowvalue)
 			{
 				
 				$ProductModel   = new ProductModel();
@@ -751,22 +755,26 @@ if(!empty($order_rows['items']))
 				$good_rows[$rowkey]['is_invoice'] = $product[$rowvalue['pid']]['is_invoice'];
 
 			}
+		}
 
 			$order_rows['items'][$k]['isret'] = '0';//用于判断返修、退货
 			$order_rows['items'][$k]['product'] = $good_rows;
 
 		}
-
+		if(is_array($order_rows['items'])){
 			foreach ($order_rows['items'] as $k => $value) 
 			{
-				foreach ($value['product'] as $ke => $val) 
-				{
-					if($val['status'] < 0  || $val['status'] >3)
+				if(is_array($value['product'])){
+					foreach ($value['product'] as $ke => $val)
 					{
-						$order_rows['items'][$k]['isret'] = '1';
+						if($val['status'] < 0  || $val['status'] >3)
+						{
+							$order_rows['items'][$k]['isret'] = '1';
+						}
 					}
 				}
 			}
+		}
 		if($status == '4')  //返修、退货
 		{
 			foreach ($order_rows['items'] as $key => $value) 
