@@ -6,17 +6,42 @@ $sctiptName = array_pop($script_tmp);
 @include_once("auth.php");
 
 //====================================
-if(!empty($_POST['title']))
+if(!empty($_POST['title'])&&!empty($_FILES))
 {
 	include('../lib/allchar.php');
-	$ar=explode(',',$_POST['title']);
+    $file = $_FILES['img'];
+    $uploaddir = "../uploadfile/national/";//设置文件保存目录
+    $type=array("jpg","gif","jpeg","png");//设置允许上传文件的类型
+    $fileext = substr(strrchr($file[name], '.'), 1);
+    if(!in_array(strtolower($fileext), $type)){
+        echo "<script>alert('图片格式不支持！');</script>";
+    }
+    if($file[size]>721200){
+        echo "<script>alert('图片格太大！');</script>";
+    }
+    $dir = $uploaddir.md5($file[name]).'.'.$fileext;
+    if(move_uploaded_file($file[tmp_name], $dir)){
+        $img = '/uploadfile/national/'.md5($file[name]).'.'.$fileext;
+        $title = trim($_POST[title]);
+        $char = c($title);
+        $sql="insert into ".NATIONAL." (title,char_index,img) value ('$title','$char','$img') ";
+        if($db->query($sql)){
+            echo "<script>alert('上传成功！');</script>";
+        }else{
+            echo "<script>alert('系统忙，请稍后上传！');</script>";
+        }
+    }else{
+        echo "<script>alert('上传失败，请重新上传！');</script>";
+    }
+	/*$ar=explode(',',$_POST['title']);
 	foreach($ar as $v)
 	{
 		$v=trim($v);
 		$char=c($v);		
 		$sql="insert into ".NATIONAL." (title,char_index) value ('$v','$char') ";
 		$db->query($sql);
-	}
+	}*/
+
 }
 if(empty($_GET['deltag'])&&!is_array($_GET['id']))
 {
@@ -72,14 +97,15 @@ function checkall()
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="2"  align="left">
-		  <form action="" method="get">
+		  <form action="" method="get" >
             <input name="name" type="text" id="name" value="<?php if(!empty($_GET['name'])) echo $_GET['name'];?>" >
             <input class="btn" type="submit" name="submit" id="submit" value="<?php echo lang_show('search');?>">
 		  </form>
 		  </td>
           <td  colspan="2" align="left" >
-		  <form name="form1" method="post" action="">
-            <input style="color:#999999;" onClick="this.value='';this.style.color='#000000';$('#tsubmit').val(1);" name="title" type="text" value="填加词，多个词用英文,号分隔。如：上海远丰,B2Bbuilder" size="60">
+		  <form name="form1" method="post" action="" enctype="multipart/form-data">
+            <input type="file" name="img">
+            <input style="width:244px; height:20px" name="title" type="text" size="12">
 			<input id="tsubmit" name="tsubmit" type="hidden" value="">
             <input class="btn" type="submit" name="submit" value="<?php echo lang_show('submit');?>">
           </form>
@@ -100,7 +126,9 @@ function checkall()
         ?>
         <tr>
           <td align="left" >
-          <input type="checkbox" class="checkbox" name="id[]" value="<?php echo $v['id'];?>"></td><td><?php echo $v['title'];?></td>
+          <input type="checkbox" class="checkbox" name="id[]" value="<?php echo $v['id'];?>"></td><td><?php echo $v['title'];?>
+                <img style="width:50px; height:20px; margin-left:20px; padding-top:5px;" src="<?php echo $v[img]?>" alt="图片" width="20" height="10">
+            </td>
           <td align="left" ><?php echo $v['nums'];?></td>
           <td  align="left" ><a href="national_pavilions.php?id=<?php echo $v['id'];?>" onClick="return confirm('<?php echo lang_show('are_you_sure');?>');"><?php echo $delimg;?></a></td>
         </tr>

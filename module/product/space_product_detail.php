@@ -28,20 +28,18 @@ if ($config['bw'] == "weixin")
 		{
 			$strTmp .= $_SERVER['REQUEST_URI'];
 		}
-
-
 		$_SESSION['appid'] = WxPayConf_pub::APPID;
-
-
 		$str_tmp = "jsapi_ticket=".$_SESSION['ticket']."&noncestr=".$_SESSION['noncestr']."&timestamp=".$_SESSION['tmpTime']."&url=".$strTmp;
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
 }
 
-
 //====================================产品详情
 
 $tpl->assign("de",$prode);
+$tpl->assign("relation",$relation);
+
+
 $score = $shop->score();
 foreach ($score as $key => $value) {
 	$score[$key] = $value?$value:0;

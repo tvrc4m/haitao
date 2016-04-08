@@ -107,7 +107,7 @@ function distribute_goods(id){
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
             <div>
-                <div id="pname"><span class="pname_img"><img src="../../../image/wap/state1.png"> 日本</span><{$de.name}></div>
+                <div id="pname"><span class="pname_img"><{if $de.img }><img src="<{$de.img}>"><{/if}> <{$de.title}></span><{$de.name}></div>
                 <div class="col">
                     <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
                         <div class="col_ttt">
@@ -173,7 +173,7 @@ function distribute_goods(id){
                     <li class="iconfont fas"></li>
                 </ul>
                 <{foreach item=list from=$de.extfiled.d}>
-                <{$list}>
+                    <{$list}>
                 <{/foreach}>
             <{/if}>
         </div>
@@ -197,7 +197,28 @@ function distribute_goods(id){
                 <dd class="mati_say_content">
                 <div class="shop_t clearfix">
                     <ul class="shoplist">
-                    <{insert name="label" type="product" o=4 temp="product_list_li_5" limit=3}>
+                        <{foreach item=list key=num from=$relation}>
+                            <li class="shopli clearfix">
+                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
+                                    <div class="shopli_top_img">
+                                        <img src="<{$list.pic}>"/>
+                                    </div>
+                                    <div class="shopli_bottom clearfix">
+                                        <div class="shopli_bottom_message">
+                                            <p class="shopli_bottom_text"><{$list.name|truncate:18:""}></p>
+                                        </div>
+                                        <div class="shopli_bottom_rob clearfix">
+                                            <div class="al shopli_bottom_money">
+                                                <span class="money"><{$config.money}><{$list.price}></span>
+                                                <span class="money money_del"><{$config.money}><{$list.market_price}></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        <{foreachelse}>
+                            暂无推荐！
+                        <{/foreach}>
                     </ul>
                 </div>
                 </dd>

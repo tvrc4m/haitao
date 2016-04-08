@@ -38,6 +38,7 @@ if($buid)
 	$sql="select company from ".SHOP." where userid='$buid'";
 	$db->query($sql);
 	$de=$db->fetchRow();
+
 	$tpl->assign("com",$de);
 }
 

@@ -477,7 +477,19 @@ class product
 		$addfield = new AddField('product');
 		$addfield->delete_con($id,$ext_table);
 	}
-	
+
+    function relation_detail($id){
+        $sql = "select id,`name`,market_price,price,pic from ".PRODUCT." where catid = (select catid from ".PRODUCT."  where id =  $id) and id <>$id order by clicks desc limit 3";
+        $this->db->query($sql);
+        $relation =$this->db->getRows();
+        if(empty($relation)){
+            $sql = "select id,name,market_price,price,pic from ".PRODUCT." where id <> $id order by clicks desc limit 3";
+            $this->db->query($sql);
+            $relation =$this->db->getRows();
+        }
+        return $relation;
+    }
+
 	function detail($pid)
 	{
 		global $buid,$config;
@@ -573,6 +585,16 @@ class product
 		//=======产品类型========================================
 		$ptype=explode('|',$config['ptype']);
 		$prod["ptype"]=$ptype[$prod['type']];
+
+
+
+        if($prod[national] > 0 ){
+            $sql = "select title,img from ".NATIONAL." where id = 1";
+            $this->db->query($sql);
+            $nat = $this->db->fetchRow();
+            $prod = array_merge($nat, $prod);
+        }
+        //var_dump($prod);die;
 		return $prod;
 	}
 	
