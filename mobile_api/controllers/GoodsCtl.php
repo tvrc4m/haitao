@@ -70,6 +70,7 @@ class GoodsCtl extends Yf_AppController
 				$pro[$pkey]['stock'] = $val['stock'];	
 			}fb($pro);fb($keys);
 			$keys = array_unique($keys);
+			$kv = array();
 			foreach ($keys as $k => $v)
 			{
 				foreach ($pro as $ks => $vs) 
@@ -78,13 +79,15 @@ class GoodsCtl extends Yf_AppController
 				}
 
 			}
-			foreach ($kv as $k => $v) {
-				$kv[$k] = array_values(array_unique($v));
-				array_unshift($kv[$k], $k);
-			}
-			foreach ($kv as $k => $v) 
-			{
-				$kvs[] = $v;
+			if(is_array($kv)){
+				foreach ($kv as $k => $v) {
+					$kv[$k] = array_values(array_unique($v));
+					array_unshift($kv[$k], $k);
+				}
+				foreach ($kv as $k => $v)
+				{
+					$kvs[] = $v;
+				}
 			}
 			$goods_rows[$value]['spec_name']  = $kvs;
 			$goods_rows[$value]['porperty']   = $pro;			
@@ -102,7 +105,7 @@ class GoodsCtl extends Yf_AppController
 			$good_row[$key]['shop']['userid'] = $shop_row[$value['member_id']]['userid'];
 			$good_row[$key]['shop']['company'] = $shop_row[$value['member_id']]['company'];
 			$good_row[$key]['shop']['logo'] = $shop_row[$value['member_id']]['logo'];
-			$good_row[$key]['shop']['tel'] = $shop_row[$value]['member_id']['tel'];
+			$good_row[$key]['shop']['tel'] = $shop_row[$value['member_id']]['tel'];
  		}
 
 		foreach ($good_row as $key => $value) 

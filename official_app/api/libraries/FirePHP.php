@@ -734,7 +734,7 @@ class FirePHP {
      * @return true Return TRUE if message was added to headers, FALSE otherwise
      * @throws Exception
      */
-    public function fb($Object)
+    public functio n fb($Object)
     {
         if($this instanceof FirePHP_Insight && method_exists($this, '_logUpgradeClientMessage')) {
             if(!FirePHP_Insight::$upgradeClientMessageLogged) {    // avoid infinite recursion as _logUpgradeClientMessage() logs a message
