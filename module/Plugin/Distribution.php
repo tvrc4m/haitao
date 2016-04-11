@@ -52,11 +52,11 @@ class Plugin_Distribution implements Yf_Plugin_Interface
 		if (isset($_GET['dist_id']) && intval($_GET['dist_id']))
 		{
 			//实名认证
-			$sql = 'select identity_verify from pay_member where userid='.$_GET['dist_id'];
+		/*	$sql = 'select identity_verify from pay_member where userid='.$_GET['dist_id'];
 			$db->query($sql);
-			$identity_verify = $db->fetch_row();
+			$identity_verify = $db->fetch_row();*/
 			setcookie("dist_id", intval($_GET ['dist_id']), time()+60*60*24*3, "/");
-			setcookie("identity", $identity_verify[0], time()+60*60*24*3, "/");
+			//setcookie("identity", $identity_verify[0], time()+60*60*24*3, "/");
 		}
 
 		if (!Yf_Registry::isRegistered('distribution'))

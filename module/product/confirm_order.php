@@ -70,7 +70,7 @@ else
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
 	//=============================提交订单
-	if($_POST['act']=='order' && $_COOKIE['identity']=='true')
+	if($_POST['act']=='order')
 	{  
 		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']); 
 		//----------循环店铺,生成多个订单
