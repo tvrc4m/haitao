@@ -341,13 +341,13 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
                     <div id="nav" class="nav_left">
                         <ul class="nav_left_ul">
                             <{foreach item=list name=name key=num from=$menu}>
-                            <li class="child <{if $cmenu==$num}>first_test<{/if}>"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
+                            <li class="child"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
                             <{/foreach}>
 
                             <{foreach name=name item=list from=$submenu.sub}>
                                 <{if $list.action|truncate:1:''=='?'}>
                                  <{assign var="gets" value=$list.action|explode:"&"}>
-                                    <li class="child <{ if $smarty.get.action==$list.action or in_array($smarty.get.type,$gets) or in_array($smarty.get.s,$gets) }>active<{else}>first_test<{/if}>"><span></span><a href="<{$list.action}>"><{$list.name}></a></li>
+                                    <li class="child"><span></span><a href="<{$list.action}>"><{$list.name}></a></li>
                                 <{else}>
                                     <li class="father ">
                                     <dt><span></span><a href="javascript:void(0)"><{$list.name}></a></dt>
