@@ -87,7 +87,6 @@ class GoodsFavoritesCtl extends Yf_AppController
 		$field_row_info['likenum'] 	 = 1;			//喜欢人数暂缺
 		$field_row_info['likemember']= $user_id;	//喜欢过的用户id 暂缺
 		$field_row_info['collectnum']= 1;			//收藏人数暂缺 product表没查到
-
 		//定义商品列表 $field_row
 		$field_row = array();  
 		$field_row['pid'] 			= $goods_id;
