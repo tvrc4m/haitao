@@ -9,18 +9,19 @@
 
 .item dd .p-name{max-height:36px;margin-bottom:8px;}
 .item dd .p-detail{font-size:12px;color:#ABABAB;margin-top:3px;}
+.p-price-numss{float: right;color: #535353;}
 .item dd .p-action{margin-top:5px;font-size:12px;}
 .item dd .p-action a{color:#2366A8;}
 .item .top{background-color:#fff;border-bottom:1px solid #ff5c5c;height:28px;line-height:28px;padding-top:2px;}
 .item .top a{/*background:url(../../../image/wap/shop.png) no-repeat scroll 15px 0;*//*background-size:15px 14px;*/color:#1F1F1F;padding-left:10px;}
 .item .bottom{height:30px;line-height:30px;background-color:#FFF;border-top:1px solid #b9b9b9;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:0 18px;font-size:12px;} 
-.item .bottom strong{color:#F00;font-size:14px;}
+.item .bottom strong{color:#ff5c5c;font-size:14px;}
 .item .bottom span:last-child{float:right;}
 .item .bottom span a{color:#2366A8;}
 .itemsNull{margin:20px 0 15px;}
 .select{cursor:pointer;}
-.select em{ /*background:url(../../../image/wap/down.png);background-position:center center;background-repeat:no-repeat;background-size:contain;*/display:inline-block;height:10px;width:10px;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);-ms-transform:rotate(-135deg);-o-transform:rotate(-135deg);-moz-transform:rotate(-135deg);border-top: 2px solid #fff;border-left: 2px solid #fff;background: inherit;vertical-align: 4px;}
-.select em.up{background-image:url(../../../image/wap/up.png);}
+.select em{display:inline-block;height:8px;width:8px;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);-ms-transform:rotate(-135deg);-o-transform:rotate(-135deg);-moz-transform:rotate(-135deg);border-top: 2px solid #fff;border-left: 2px solid #fff;background: inherit;vertical-align: 4px;}
+.select em.up{transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);-moz-transform:rotate(45deg);vertical-align: -2px;color: #fff;}
 .i-select{width:150px;position:absolute;top:50px;left:50%;margin-left:-75px;text-align:center;-webkit-transform:translateZ(0);}
 .i-select:after{content:' ';position:absolute;left:50%;top:-8px;margin-left:-1px;width:0;height:0;border:transparent 4px solid;border-bottom-color:#333;}
 .i-select ul{background-color:#333333;border-radius:8px 8px 8px 8px;overflow:hidden;}
