@@ -368,7 +368,7 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
                 </div>
             <{/if}>
         </div>
-        <div class="<{if $smarty.get.s != ''}>right_con<{else}>right_con_index<{/if}>"><{$output}></div>
+        <div class="<{if $smarty.get.s != ''}>right_con <{$smarty.get.s}><{else}>right_con_index<{/if}>"><{$output}></div>
 	</div>
     <{/if}>
 </div>
