@@ -665,4 +665,9 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 /*分享商品*/
 .table-list-style.share-pro .pic_model ul li{border:1px solid #ccc;}
 .table-list-style.share-pro .pic_model dt a{white-space: nowrap;text-overflow:ellipsis;overflow: hidden;width: 100%;}
-
+/*好友*/
+.admin_friends .groupMan{width: 200px;background:#fff;float: left;margin-left:11px;border: 1px solid #ccc;border-top: none;}
+.admin_friends .groupMan p{height: 35px;line-height: 35px;text-align:center;font-size: 16px;color: #ff5c5c;border-top: 3px solid #ff5c5c; border-bottom: 1px dashed #ccc;}
+.admin_friends .groupMan .zuu{display: inline-block;line-height: 40px;width: 170px;}
+.admin_friends .groupMan .zu1{margin-left: 20px;float: right;}
+.admin_friends .groupMan .addgroup{padding: 10px;border-top:1px dashed #ccc;margin-top: 50px;}

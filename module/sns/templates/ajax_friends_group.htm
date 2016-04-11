@@ -40,11 +40,9 @@
 <script>
     $(function(){
         $(".nick1").hover(function(){
-            var index = $(this).index();
-            $(".nick1").find('a').eq(index).css('display','inline');
+            $(this).find('a').css('display','inline');
         },function(){
-            var index = $(this).index();
-            $(".nick1").find('a').eq(index).css('display','none');
+            $(this).find('a').css("display","none");
         });
 
     })
