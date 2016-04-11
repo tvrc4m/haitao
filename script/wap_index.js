@@ -81,19 +81,19 @@ $jj(function(){
 
 
 	// 先HTML5定位，定位不到再百度地图定位
-	if(!$jj.cookie("lng")  || !$jj.cookie("lat"))
-	{
-		var position_option = {enableHighAccuracy: true,maximumAge: 30000,timeout: 20000};
-        navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError, position_option);
-	}
-	else
-	{
-	    var t_lng = $jj.cookie("lng")
-	    var t_lat = $jj.cookie("lat")
+	// if(!$jj.cookie("lng")  || !$jj.cookie("lat"))
+	// {
+	// 	var position_option = {enableHighAccuracy: true,maximumAge: 30000,timeout: 20000};
+ //        navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError, position_option);
+	// }
+	// else
+	// {
+	//     var t_lng = $jj.cookie("lng")
+	//     var t_lat = $jj.cookie("lat")
 
-	    $jj.post("ajax_back_end.php",{"act":"reposition","lng":$jj.cookie("lng"),"lat":$jj.cookie("lat")},function(){})
+	//     $jj.post("ajax_back_end.php",{"act":"reposition","lng":$jj.cookie("lng"),"lat":$jj.cookie("lat")},function(){})
 	    
-	}
+	// }
 
 	// 首页附近的店铺异步获取信息
 	function getHtmlSecond()
