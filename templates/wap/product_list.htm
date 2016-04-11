@@ -74,9 +74,9 @@ $(document).scroll(function(){
     var h = $(document).scrollTop();
     if(h > 50)
     {
-        $(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
-        $("#J_search").eq(0).css({"margin-top":"50px"});
-        $(".filter").eq(0).css({"margin-top":"50px"})
+        $(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"});
+        $(".filter").css({"position":"fixed","top":"50px","width":"100%","z-index":"9999"})
+        $(".itemSearchList").eq(0).css({"margin-top":"100px"})
     }
 })
 $(".list").click(function(){

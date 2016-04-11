@@ -142,6 +142,7 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
             var data_value = $(this).attr("data-value");
             ckeckbox("input[data-value='"+data_value+"']",false);
         }
+        
         $(this).parent().removeClass("cart-checkbox-checked");
         $(this).parent().parent().parent().removeClass("checked");
     }
@@ -174,7 +175,6 @@ function count()
         price = Number(price);
         count = count + price;
         num ++;
-        console.log(count)
         $(this).parent().parent().parent().addClass("checked");
     });
     $(".subtotal").html(count.toFixed(2));

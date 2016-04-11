@@ -663,7 +663,7 @@ $('.share a').click(function(){
         }
         var specs = new Array();
         <{foreach item=list key=num from=$de.porperty}>
-            specs.push(new spec(<{$list.id}>, ['<{$list.property_value_id|replace:",":"','"}>'], <{$list.price}>, <{$list.stock}>));
+            specs.push(new spec('<{$list.id}>', ['<{$list.property_value_id|replace:",":"','"}>'], '<{$list.price}>', '<{$list.stock}>'));
             var specQty = <{$de.extfiled.d|@count}>;
             var defSpec = <{$de.porperty.0.id}>;
         <{foreachelse}>

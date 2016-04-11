@@ -70,7 +70,7 @@ else
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
 	//=============================提交订单
-	if($_POST['act']=='order' && $_COOKIE['identity']=='true')
+	if($_POST['act']=='order')
 	{  
 		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']); 
 		//----------循环店铺,生成多个订单
@@ -254,9 +254,9 @@ else
 		unset($_SESSION['dist_user_id']);
 		//msg($config['weburl']."/main.php?cg_u_type=1&m=product&s=admin_buyorder");//订单提交成功
 	//	msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$inorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
+		if($_COOKIE['identity']=='true')
 		msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
-		die;
-	}else{
+		else
 		msg($config['pay_url']."/?act=edit&op=name");//实名认证
 		die;
 	}

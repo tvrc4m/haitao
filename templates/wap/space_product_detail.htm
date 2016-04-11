@@ -1,78 +1,12 @@
 <link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
-<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <style>
-	.wap_pdetail p{
-		line-height:1.2;
-	}
+	.wap_pdetail p{line-height:1.2;}
 </style>
 </head>
 <body class="um-vp bc-bg" ontouchstart>
-<script>
-$(document).ready(function(){
-    $("#low_num").click(
-        function()
-        {
-            var num=$('#nums').val()*1;
-            if(num>1)
-                $('#nums').val(num-1)
-            check_nums()
-        }
-    );
-    $("#add_num").click(
-        function()
-        {
-            var num=$('#nums').val()*1;
-            if(num<$('#stock').html())
-                $('#nums').val(num+1)
-            check_nums()
-        }
-    );
-});
-function check_nums()
-{
-    var v=document.getElementById('nums').value*1;
-    var stock = $('#stock').html()*1;
-    var maxbuy = "<{$de.maxbuy}>"
-
-    if(maxbuy > 0 && maxbuy<stock)
-    {
-        stock = maxbuy;
-    }
-    if(!v)
-        document.getElementById('nums').value=1;
-    if(v>stock)
-    {
-        document.getElementById('nums').value=stock;
-        return false;
-    }
-}
-
-function distribute_goods(id){
-        var url = '<{$config.weburl}>/module/distribution/add.php';
-        var uname='<{$smarty.cookies.USER}>';
-        if(uname=='')
-        {
-            alert('请先登录！');
-            window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-            return false;
-        }
-        var pars = 'pid='+id+'&uname='+uname;
-        $.post(url, pars,showResponse);
-        function showResponse(originalRequest)
-        {
-            if(originalRequest>1)
-                alert('成功添加至我的分销!');
-            else if (originalRequest>0)
-                alert('该内容已经在你的分销中心，请勿重复添加！');
-            else
-                alert('参数传递错误，无法完成操作!');
-        }
-    }
-</script>
 <header>
     <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span>商品详情</span></section>
         <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
     </div>
@@ -87,7 +21,7 @@ function distribute_goods(id){
                 </span>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
-            <a class="incar incar_c" href="javascript:void(0)">加入购物车</a>
+            <a class="incar incar_c add-cart" href="javascript:void(0)">加入购物车</a>
         </div>
     </div>
 </div>
@@ -121,7 +55,6 @@ function distribute_goods(id){
                     <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></span>
                     <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num"><{$de.market_price|number_format:2}></span></span>
                     <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
-                   <!--  <span class="price_zhes"><i></i>9.5折</span> -->
                 </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
@@ -217,7 +150,7 @@ function distribute_goods(id){
                                 </a>
                             </li>
                         <{foreachelse}>
-                            暂无推荐！
+                            <li class="shopli_kong">暂无推荐！</li>
                         <{/foreach}>
                     </ul>
                 </div>
@@ -225,20 +158,19 @@ function distribute_goods(id){
             </dl>
         </div>
     </div>
-     <div style="height:0px;border-top:1px solid #ccc;"></div>
+    <div style="height:0px;border-top:1px solid #ccc;"></div>
     <div class="clearfix"></div>
     <div class="c-wh bgw c-wh-commit clearfix">
         <div class="c-wh-commit-gao clearfix">
             <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
         </div>
-        <img src="../../../image/wap/wap_haitao_fuwuc.jpg" alt="品牌服务承诺" title="品牌服务承诺">
-        <!-- <div class="commit-rifht-icon"></div> -->    
+        <img src="../../../image/wap/wap_haitao_fuwuc.jpg" alt="品牌服务承诺">
     </div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
                 <dt class="select_style_title select_style_titleg">购物流程</dt>
-                <dd><img src="../../../image/wap/wap_haitao_qs.jpg"></dd>
+                <dd><img src="../../../image/wap/wap_haitao_qs.jpg" alt="购物流程"></dd>
             </dl>
         </div>
     </div>
@@ -254,8 +186,6 @@ function distribute_goods(id){
                 <p><a href="shop.php?uid=<{$smarty.get.uid}>"><strong><{$com.company}></strong></a></p>
                 <p><a href="shop.php?uid=<{$smarty.get.uid}>"><font color="#999"><{$com.area}></font></a></p>
             </li>
-           <!--  <li class="goshop"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>">进入店铺
-            </a></li> -->
             <li class="iconfont fas"><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><font class="dianpu-on"></font></a></li>
         </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1">
@@ -270,9 +200,6 @@ function distribute_goods(id){
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
     </div>
-    <!-- <div class="bottom_jixu">
-        <img src="../../../image/wap/wap_haitao_datu2.png">
-    </div> -->
     <div class="c-wh bgw clearfix">
         <div class="clearfix">
             <div class="nav-box">
@@ -291,12 +218,6 @@ function distribute_goods(id){
             <div class="wap_pdetail j_tab">
                 <{insert name="label" type="product" o=4 temp="product_list_li_4" limit=0}>
             </div>          
-            <!-- <dl class="clearfix select_style_xiangqing">
-                <dt class="select_style_title"><i></i>商品详情</dt>
-                <dd class="wap_pdetail">
-                     <{$de.detail}>
-                </dd>
-            </dl> -->
         </div>
     </div>
     <div class="qg_bottom">
@@ -308,6 +229,8 @@ function distribute_goods(id){
     <input name="sku" id="sku" type="hidden" value="0" />
 </div>
 </form>
+<script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
+<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
 <script type="text/javascript">
     window.jsVersion = "7b3d28d5da";
@@ -344,6 +267,68 @@ function distribute_goods(id){
     var monNum=Number($(".price_moneys .price_moneys_num").html()),delNum=Number($(".price_dels .price_dels_num").html());
     var chaNum=(delNum-monNum).toFixed(2);
     $(".price_chas .price_chas_num").html(chaNum);
+</script>
+<script>
+$(document).ready(function(){
+    $("#low_num").click(
+        function()
+        {
+            var num=$('#nums').val()*1;
+            if(num>1)
+                $('#nums').val(num-1)
+            check_nums()
+        }
+    );
+    $("#add_num").click(
+        function()
+        {
+            var num=$('#nums').val()*1;
+            if(num<$('#stock').html())
+                $('#nums').val(num+1)
+            check_nums()
+        }
+    );
+});
+function check_nums()
+{
+    var v=document.getElementById('nums').value*1;
+    var stock = $('#stock').html()*1;
+    var maxbuy = "<{$de.maxbuy}>"
+
+    if(maxbuy > 0 && maxbuy<stock)
+    {
+        stock = maxbuy;
+    }
+    if(!v)
+        document.getElementById('nums').value=1;
+    if(v>stock)
+    {
+        document.getElementById('nums').value=stock;
+        return false;
+    }
+}
+
+// function distribute_goods(id){
+//         var url = '<{$config.weburl}>/module/distribution/add.php';
+//         var uname='<{$smarty.cookies.USER}>';
+//         if(uname=='')
+//         {
+//             alert('请先登录！');
+//             window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
+//             return false;
+//         }
+//         var pars = 'pid='+id+'&uname='+uname;
+//         $.post(url, pars,showResponse);
+//         function showResponse(originalRequest)
+//         {
+//             if(originalRequest>1)
+//                 alert('成功添加至我的分销!');
+//             else if (originalRequest>0)
+//                 alert('该内容已经在你的分销中心，请勿重复添加！');
+//             else
+//                 alert('参数传递错误，无法完成操作!');
+//         }
+//     }
 </script>
 <script>
     function collect_altr(cla){
@@ -555,7 +540,7 @@ function distribute_goods(id){
     }
     var specs = new Array();
     <{foreach item=list key=num from=$de.porperty}>
-    specs.push(new spec(<{$list.id}>, ['<{$list.property_value_id|replace:",":"','"}>'], <{$list.price}>, <{$list.stock}>, <{$list.sku}>));
+    specs.push(new spec('<{$list.id}>', ['<{$list.property_value_id|replace:",":"','"}>'], '<{$list.price}>', '<{$list.stock}>', '<{$list.sku}>'));
     var specQty = <{$de.extfiled.d|@count}>;
     var defSpec = <{$de.porperty.0.id}>;
     <{foreachelse}>

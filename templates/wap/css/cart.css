@@ -36,8 +36,8 @@
 
 .cart-checkbox{position:relative;display:inline-block;height:15px;line-height:15px;overflow:hidden;_overflow:;}
 .cart-checkbox input{position:absolute;z-index:0;left:-20px;_left:0;top:-20px;_top:0;}
-.cart-checkbox em{position:relative;z-index:1;float:left;height:15px;background:url(../../../image/default/cart/checkbox.png) 0 1px no-repeat;_background:none;overflow:hidden;cursor:pointer;padding-left:25px;}
-.cart-checkbox-checked em{background-position:0 -20px;}
+.cart-checkbox em{position:relative;z-index:1;float:left;height:15px;background:url(../../../image/wap/wap_haitao_icon23.png) no-repeat;background-size: contain;_background:none; overflow:hidden;cursor:pointer;padding-left:25px;}
+.cart-checkbox-checked em{background:url(../../../image/wap/wap_haitao_icon24.png) no-repeat;background-size: contain;}
 .cart-con thead th{position:relative;font-weight:normal;line-height:30px;height:30px;color:#666;}
 .cart-con thead th .cart-checkbox{position:absolute;left:10px;top:8px;width:80px;}
 .cart-con tbody th,.cart-con td{text-align:center;border-collapse:separate;empty-cells:show;}
