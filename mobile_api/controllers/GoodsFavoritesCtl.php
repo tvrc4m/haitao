@@ -76,6 +76,7 @@ class GoodsFavoritesCtl extends Yf_AppController
 		$ProductModel = new Product();
 		$productData  = $ProductModel->getProduct($goods_id);
 		//定义商品info列表:$field_row_info
+		if(isset($productData[$goods_id])){
 		$field_row_info = array();  
 		$field_row_info['pid'] 		 = $goods_id;
 		$field_row_info['pname'] 	 = $productData[$goods_id]['name'];
@@ -87,6 +88,7 @@ class GoodsFavoritesCtl extends Yf_AppController
 		$field_row_info['likenum'] 	 = 1;			//喜欢人数暂缺
 		$field_row_info['likemember']= $user_id;	//喜欢过的用户id 暂缺
 		$field_row_info['collectnum']= 1;			//收藏人数暂缺 product表没查到
+		}
 		//定义商品列表 $field_row
 		$field_row = array();  
 		$field_row['pid'] 			= $goods_id;
@@ -128,7 +130,7 @@ class GoodsFavoritesCtl extends Yf_AppController
 			$collectnum_new = $collectnum_old+1;
 			$collectResul = $ProductInfoModel->editShareproductInfoSingleField($goods_id, $field_name, $collectnum_new, $collectnum_old);
 			
-			if(!$collectResul)
+			if(!$collectResul&&!empty($arr))
 			{
 				$msg    = 'failure';
 				$status = 250;

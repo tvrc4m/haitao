@@ -37,6 +37,7 @@ if ($config['bw'] == "weixin")
 //====================================产品详情
 
 $tpl->assign("de",$prode);
+
 $tpl->assign("relation",$relation);
 
 

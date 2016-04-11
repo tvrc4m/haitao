@@ -42,58 +42,58 @@ $jj(function(){
 		$jj(".shopli").find("img").height("224px")
 	}
 
-	function getPositionError(error) {
-      //  HTML5 定位失败时，调用百度地图定位   
-        var geolocation = new BMap.Geolocation();
-        geolocation.getCurrentPosition(function(r){
-            if(this.getStatus() == BMAP_STATUS_SUCCESS){
-                var mk = new BMap.Marker(r.point);
-                var pt = r.point;
+	// function getPositionError(error) {
+ //      //  HTML5 定位失败时，调用百度地图定位   
+ //        var geolocation = new BMap.Geolocation();
+ //        geolocation.getCurrentPosition(function(r){
+ //            if(this.getStatus() == BMAP_STATUS_SUCCESS){
+ //                var mk = new BMap.Marker(r.point);
+ //                var pt = r.point;
 
-                $jj.cookie("lng",pt.lng,{expires:7});
-                $jj.cookie("lat",pt.lat,{expires:7});
+ //                $jj.cookie("lng",pt.lng,{expires:7});
+ //                $jj.cookie("lat",pt.lat,{expires:7});
 
-                $jj.post("ajax_back_end.php",{"act":"reposition","lng":pt.lng,"lat":pt.lat},function(){})
+ //                $jj.post("ajax_back_end.php",{"act":"reposition","lng":pt.lng,"lat":pt.lat},function(){})
                               
-            }
-        },{enableHighAccuracy: true});
+ //            }
+ //        },{enableHighAccuracy: true});
 
-    }
+ //    }
 
-    function getPositionSuccess( position ){
-		var lat = position.coords.latitude;
-		var lng = position.coords.longitude;
+ //    function getPositionSuccess( position ){
+	// 	var lat = position.coords.latitude;
+	// 	var lng = position.coords.longitude;
 
-		var ggPoint = new BMap.Point(lng,lat);
+	// 	var ggPoint = new BMap.Point(lng,lat);
 
-		//转换成百度地图坐标
-		var trunback = function (point){
+	// 	//转换成百度地图坐标
+	// 	var trunback = function (point){
 
-		     $jj.cookie("lng",point.lng,{expires:7});
-		     $jj.cookie("lat",point.lat,{expires:7});
+	// 	     $jj.cookie("lng",point.lng,{expires:7});
+	// 	     $jj.cookie("lat",point.lat,{expires:7});
 
-		     $jj.post("ajax_back_end.php",{"act":"reposition","lng":point.lng,"lat":point.lat},function(){})
-		}
+	// 	     $jj.post("ajax_back_end.php",{"act":"reposition","lng":point.lng,"lat":point.lat},function(){})
+	// 	}
 
-		BMap.Convertor.translate(ggPoint,0,trunback);     
-    }
+	// 	BMap.Convertor.translate(ggPoint,0,trunback);     
+ //    }
 
 
 
 	// 先HTML5定位，定位不到再百度地图定位
-	if(!$jj.cookie("lng")  || !$jj.cookie("lat"))
-	{
-		var position_option = {enableHighAccuracy: true,maximumAge: 30000,timeout: 20000};
-        navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError, position_option);
-	}
-	else
-	{
-	    var t_lng = $jj.cookie("lng")
-	    var t_lat = $jj.cookie("lat")
+	// if(!$jj.cookie("lng")  || !$jj.cookie("lat"))
+	// {
+	// 	var position_option = {enableHighAccuracy: true,maximumAge: 30000,timeout: 20000};
+ //        navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError, position_option);
+	// }
+	// else
+	// {
+	//     var t_lng = $jj.cookie("lng")
+	//     var t_lat = $jj.cookie("lat")
 
-	    $jj.post("ajax_back_end.php",{"act":"reposition","lng":$jj.cookie("lng"),"lat":$jj.cookie("lat")},function(){})
+	//     $jj.post("ajax_back_end.php",{"act":"reposition","lng":$jj.cookie("lng"),"lat":$jj.cookie("lat")},function(){})
 	    
-	}
+	// }
 
 	// 首页附近的店铺异步获取信息
 	function getHtmlSecond()
