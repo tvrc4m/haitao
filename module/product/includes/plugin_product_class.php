@@ -586,10 +586,8 @@ class product
 		$ptype=explode('|',$config['ptype']);
 		$prod["ptype"]=$ptype[$prod['type']];
 
-
-
         if($prod[national] > 0 ){
-            $sql = "select title,img from ".NATIONAL." where id = 1";
+            $sql = "select * from mallbuilder_national_pavilions a left join mallbuilder_product b on a.id = b.national  where b.id = ".$prod[id];
             $this->db->query($sql);
             $nat = $this->db->fetchRow();
             $prod = array_merge($nat, $prod);

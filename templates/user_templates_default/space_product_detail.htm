@@ -133,7 +133,9 @@ function buy()
                         </div>
                         <ul id="jqzoom" class="clearfix">
                             <{foreach item=pic key=num from=$de.pic_more}>
+                                <{if $num < 4}>
                             <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>_60X60.jpg" big="<{$pic}>" height="60" width="60" class="jqzoom-img"></li>
+                                <{/if}>
                             <{/foreach}>
                         </ul>
                     </div>
@@ -661,7 +663,7 @@ $('.share a').click(function(){
         }
         var specs = new Array();
         <{foreach item=list key=num from=$de.porperty}>
-            specs.push(new spec(<{$list.id}>, ['<{$list.property_value_id|replace:",":"','"}>'], <{$list.price}>, <{$list.stock}>));
+            specs.push(new spec('<{$list.id}>', ['<{$list.property_value_id|replace:",":"','"}>'], '<{$list.price}>', '<{$list.stock}>'));
             var specQty = <{$de.extfiled.d|@count}>;
             var defSpec = <{$de.porperty.0.id}>;
         <{foreachelse}>

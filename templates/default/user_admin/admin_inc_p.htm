@@ -341,35 +341,34 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
                     <div id="nav" class="nav_left">
                         <ul class="nav_left_ul">
                             <{foreach item=list name=name key=num from=$menu}>
-                            <li class="child"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
+                            <li class="child <{if $cmenu==$num}>first_test<{/if}>"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
                             <{/foreach}>
 
                             <{foreach name=name item=list from=$submenu.sub}>
                                 <{if $list.action|truncate:1:''=='?'}>
                                  <{assign var="gets" value=$list.action|explode:"&"}>
-                                    <li class="child"><span></span><a href="<{$list.action}>"><{$list.name}></a></li>
+                                    <li class="child <{ if $smarty.get.action==$list.action or in_array($smarty.get.type,$gets) or in_array($smarty.get.s,$gets) }>active<{else}>first_test<{/if}>"><span></span><a href="<{$list.action}>"><{$list.name}></a></li>
                                 <{else}>
-                                    <li class="father">
+                                    <li class="father ">
                                     <dt><span></span><a href="javascript:void(0)"><{$list.name}></a></dt>
                                         <ul class="">
                                         <{foreach item=slist key=akey from=$list.action}>
                                         <{if $slist}>
                                         <{assign var="gets" value=$akey|explode:"&"}>
-                                            <li class="child"><span></span><a href="<{if $akey|truncate:1:''=='?' or $akey|truncate:4:''=='http'}><{$akey}><{else}>?action=<{$akey}><{/if}>"><{$slist}></a>
+                                            <li class="child "><span></span><a href="<{if $akey|truncate:1:''=='?' or $akey|truncate:4:''=='http'}><{$akey}><{else}>?action=<{$akey}><{/if}>"><{$slist}></a>
                                             </li>
                                         <{/if}>
-                                        
                                         <{/foreach}>
                                         </ul>
                                     </li>
                                 <{/if}>   
                             <{/foreach}>
                         </ul>
-                    </div>                    
+                    </div>
                 </div>
             <{/if}>
         </div>
-        <div class="right_con"><{$output}></div>
+        <div class="<{if $smarty.get.s != ''}>right_con<{else}>right_con_index<{/if}>"><{$output}></div>
 	</div>
     <{/if}>
 </div>

@@ -14,7 +14,7 @@
             <div class="haitao_user_ri">
 	            <dl class="haitao_user2">
 	                <dt>
-	                	<a title="编辑用户信息" href="main.php?m=member&s=admin_member"><{$cominfo.name}></a>&nbsp;(<{$smarty.cookies.USER}>)
+	                	<a title="编辑用户信息" href="main.php?m=member&s=admin_member"><{$cominfo.name}></a>&nbsp;亲爱的<span><{$smarty.cookies.USER}></span>，欢迎您！
 	                </dt>
 	                <dd class="qd">
 	                    <a href="main.php?m=member&s=admin_member&type=email" class="qd_icon1"><{if $cominfo.email&&$cominfo.email_verify==1}>已认证<{else}>未认证<{/if}></a>

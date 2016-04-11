@@ -540,7 +540,7 @@ function check_nums()
     }
     var specs = new Array();
     <{foreach item=list key=num from=$de.porperty}>
-    specs.push(new spec('<{$list.id}>', ['<{$list.property_value_id|replace:",":"','"}>'],'<{$list.price}>', '<{$list.stock}>', '<{$list.sku}>'));
+    specs.push(new spec('<{$list.id}>', ['<{$list.property_value_id|replace:",":"','"}>'], '<{$list.price}>', '<{$list.stock}>', '<{$list.sku}>'));
     var specQty = <{$de.extfiled.d|@count}>;
     var defSpec = <{$de.porperty.0.id}>;
     <{foreachelse}>
