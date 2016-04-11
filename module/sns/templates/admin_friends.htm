@@ -161,16 +161,16 @@ $(function(){
                                 });
                             });
 
-                            $(function(){
-                                $(".zuu").hover(function(){
-                                    var index = $(this).index();
-                                   $(".zuu dd").find('span').eq(index).css('display','inline');
-                                },function(){
-                                    var index = $(this).index();
-                                    $(".zuu dd").find('span').eq(index).css('display','none');
-                                });
+                            // $(function(){
+                            //     $(".zuu").hover(function(){
+                            //         var index = $(this).index();
+                            //        $(".zuu dd").find('span').eq(index).css('display','inline');
+                            //     },function(){
+                            //         var index = $(this).index();
+                            //         $(".zuu dd").find('span').eq(index).css('display','none');
+                            //     });
 
-                            })
+                            // })
                             $(function(){
                                 $(".nick1").hover(function(){
                                    if($(this).find('a').css("display") =="none"){
@@ -280,22 +280,21 @@ $(function(){
 
 </div>
 
-<div style="width: 200px;background:#fff;float: left;border:1px solid #ccc;margin-left:11px;">
-<div style="width: 70%;height: auto;margin-left: 26px;margin-top: 15px;">
-    <p class="hua" style="height: 35px;line-height: 35px;width: 80px">
-        <a href="#" fid="0" class="hua">全部好友(<{$cou}>)</a></p>
+<div class="groupMan">
+<p class="hua">全部好友(<{$cou}>)</p>
+<div style="text-align:center;">
     <dl>
         <{foreach item=list from=$gronmame}>
     <span class="zuu">
         <dd class="group hua" fid="<{$list.group_id}>">
         <a href="#"><{$list.name}>(<{$list.group_id|get_num}>)</a>
-        <span class="zu1" style="display:none">
+        <span class="zu1" >
         <a  href="javascript:alertWin('修改分组','',300,180,'main.php?m=sns&s=admin_friends_group&ope=upda&editid=<{$list.group_id}>'); "><img src="<{$config.weburl}>/image/default/edi.png" alt="修改"></a>
         <a  onclick="return confirm('确定删除吗');" href="<{$config.weburl}>/main.php?m=sns&s=admin_friends_group&delid=<{$list.group_id}>"><img src="<{$config.weburl}>/image/default/del.png" alt="删除"></a>
    </span>
     </dd></span>
         <{/foreach}>
-    <dd  class="group hua"><a class="adds" href="#">+添加分组</a></dd>
+    <dd  class="addgroup"><a class="adds" href="#">+添加分组</a></dd>
     </dl>
 </div>
 </div>
