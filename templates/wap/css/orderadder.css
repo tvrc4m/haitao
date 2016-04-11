@@ -17,6 +17,6 @@ input[type="text"]{background:#FFFFFF;border:0 none;border-radius:0 0 0 0;font-w
 #d_2{padding:0 10px 10px;}
 .orderadder{padding:0 15px;}
 select{width:100%;margin-top:10px;height:30px;line-height:30px;}
-input[type="submit"]{height:32px;font-size:12px;line-height:32px;border-radius:5px 5px 5px 5px;width:100%;display:block;background:#D63638;color:#FFFFFF!important;border:1px solid #D63638;text-align:center;margin:15px auto;}
+input[type="submit"]{height:32px;font-size:12px;line-height:32px;border-radius:5px 5px 5px 5px;width:100%;display:block;background:#ff5c5c;color:#FFFFFF!important;border:1px solid #ff5c5c;text-align:center;margin:15px auto;}
 .form-error{color:#F00;padding:0 10px;}
 .taoplus{display: none!important}
