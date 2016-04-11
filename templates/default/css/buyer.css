@@ -147,7 +147,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .business_handle dl dd.active{background-color:#FFFFFF;box-shadow:0 2px 1px rgba(213, 229, 245, 0.7);}
 .business_handle dl dd a,.business_handle ul li a{color: #999;}
 
-.layout .right_con{float:right;width:1000px;border: 1px solid #ccc;background-color: #fff;min-height: 854px;}
+.layout .right_con{float:right;width:1000px;border: 1px solid #ccc;background-color: #fff;min-height: 857px;}
 .layout .right_con_index{float:right;width:1000px;min-height: 854px;}
 .wrap_buyer{clear:both;margin:0;/*padding:14px;*/}
 .layout .right_con_index .layout_l{background-color: #fff;}
