@@ -2,20 +2,25 @@
 /* CSS Document */
 .m{margin:0 auto 10px;overflow:hidden;padding:18px 5px 0 0;text-align:center;}
 .m a{width: 30%;float: left;height: 84px;margin-bottom: 10px;margin-left: 3%;position: relative;display: inline-block;font-size: 12px;}
-.m dt{width:90%;height:39px;border:1px solid #E1E1E1;border-radius:5px 5px 5px 5px; background-color: #F2F2F2;color: #DC181F;  padding-top: 20px;font-size: 30px;}
+.m dt{width:90%;height:39px;border:1px solid #b9b9b9;border-radius:5px 5px 5px 5px; background-color: #F2F2F2;color: #DC181F;  padding-top: 20px;font-size: 30px;}
 .m dd{background:#EEE;padding-top:2px;width:90%;height:20px;line-height:20px;}
-.info{box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);border-radius:5px 5px 5px 5px;height:68px;overflow:hidden;padding-left:78px;margin:0;background:-webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#EFEFEF));}
+.info{border-bottom: 1px solid #b9b9b9;overflow:hidden;margin:0;padding: 15px 0px;}
 .info ul{display:-webkit-box;}
-.info ul li{-webkit-box-flex:1;text-align:center;position:relative;font-size:12px;}
-.info ul li a{display:block;padding-top:14px;height:46px;color:#666666;}
+.info ul li{-webkit-box-flex:1;text-align:center;font-size:12px;}
+.info ul li a{display:block;color:#666666;border-right: 1px solid #b9b9b9;}
+.info ul li:last-of-type a{border-right: none;}
 .info ul li strong{display:block;color:#444 !important;font-size:16px;font-weight:bold;}
 .info ul li a.color strong{color:#666 !important;}
-.user{height:70px;overflow:hidden;background: url(../images/user_main.jpg) no-repeat;background-size: contain;position: relative;}
-.user dt{float:left;padding:4px;margin:0 10px 0 23px;position:relative;text-align:center;background:#FFF;border-radius:5px 5px 5px 5px;}
-.user dd{color:#676767;font-weight:bold;font-size:16px;padding-top:6px;}
-.duser{position: absolute;margin-top: -30px;margin-left: 4%;}
-.duser dt img{border-radius: 30;}
-.duser dd{text-align: center;}
+.duser{background-color: #f97677;overflow:hidden;text-align: center;padding: 0.8rem 0;}
+.duser-user dt{padding:4px;margin:0 auto;position:relative;text-align:center;background:#FFF;border-radius:50%;display: inline-block;}
+.duser-user dd{color:#fff;font-size:14px;padding-top:10px;text-align: center;padding-bottom: 6px;}
+.duser-user dt img{border-radius: 50%;}
+.duser-auth{display: inline-block;padding: 8px 20px;background-color: #fff;border-radius: 15px;}
+.duser-auth li{display: inline-block;}
+.duser-auth li.duser-auth-line{width: 1px;height: 18px;background-color:#b9b9b9;margin: 0px 10px 0px 8px;vertical-align: bottom;}
+.duser-auth li a{color: #ff5c5c;display: inline-block;font-size: 14px;letter-spacing: 2px;padding-left: 35px;}
+.duser-auth li a.duser-auth-mob{background: url(../../../image/wap/wap_haitao_icon25.png) left no-repeat;background-size: contain;}
+.duser-auth li a.duser-auth-ema{background: url(../../../image/wap/wap_haitao_icon25.png) left no-repeat;background-size: contain;}
 
 /*** bruce 2015-01-17 ****/
 .v_ul li{clear: both;width: 100%;overflow: hidden;color: #fff;margin-bottom: 3px;}
