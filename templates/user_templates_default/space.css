@@ -211,7 +211,7 @@ html[xmlns] .clearfix{display:block;}
 .item-info .right{display:inline;float:left;padding:30px 0px 20px 25px;width: 560px;}
 .item-info .left .gallery{margin-bottom:18px;overflow:hidden;width:350px;}
 .item-info .left .main-pic{position:relative;margin-bottom:15px;z-index:1;background:#f7f7f7;height:348px;overflow:hidden;width:348px;border:1px solid #ccc;}
-.item-info .left ul li{display:inline;float:left;text-align: center;vertical-align: middle; margin-right:7px;width:78px;height:78px;border:1px solid #fff;-webkit-transition-property:border-color;-moz-transition-property:border-color;-o-transition-property:border-color;transition-property:border-color;-webkit-transition-duration:.2s;-moz-transition-duration:.2s;-o-transition-duration:.2s;transition-duration:.2s;overflow:hidden;}
+.item-info .left ul li{display:inline;float:left;text-align: center;vertical-align: middle; margin-right:7px;width:58px;height:58px;border:1px solid #ccc;padding:10px;-webkit-transition-property:border-color;-moz-transition-property:border-color;-o-transition-property:border-color;transition-property:border-color;-webkit-transition-duration:.2s;-moz-transition-duration:.2s;-o-transition-duration:.2s;transition-duration:.2s;overflow:hidden;}
 .item-info .left ul li.hover{border-color:#f40;}
 .item-info .right .wrap{position:relative;z-index:22;}
 .item-info .right .title{padding:10px 0 30px;}
@@ -237,7 +237,7 @@ html[xmlns] .clearfix{display:block;}
 .buy_box{margin:20px 0 18px;position:relative;z-index:6;padding:1px;}
 .select_style{position:relative;background:#FFFFFF;}
 .select_style dl{padding-bottom:6px;float:left;height: auto;overflow: visible;}
-.select_style dt{color:#6D6D6D;font-family:simsun;float:left;width:60px;line-height:24px;display: inline-block;font-size: 14px;}
+.select_style dt{color:#6D6D6D;font-family:Microsoft YaHei;float:left;width:60px;line-height:24px;display: inline-block;font-size: 14px;}
 .select_style dd{color:#404040;float:left;width:410px;}
 .select_style ul{clear:both;display:block;overflow: hidden;}
 .select_style li{background-color:#FFFFFF;float:left;line-height:20px;margin:0 4px 6px 0;padding:1px;position:relative;vertical-align:middle;display: inline-block;}
@@ -309,6 +309,7 @@ html[xmlns] .clearfix{display:block;}
 .layout .attributes{margin-bottom:10px;padding:10px;border-bottom:solid 1px #eee;}
 .layout .attributes ul{padding:0 15px 10px;}
 .layout .attributes li{display:inline;float:left;width:206px;height:24px;margin-right:20px;overflow:hidden;text-indent:5px;line-height:24px;white-space:nowrap;text-overflow:ellipsis;}
+.layout .description{margin-bottom: 30px;}
 .layout .description p{margin:1.12em 0;}
 .reviews-hd-fore1{border:1px solid #d7d7d7;padding:15px 30px;background-color:#f6f6f6;}
 .reviews-hd-fore1 .score{width:auto;border:none;margin:0;padding:0;float:left;}

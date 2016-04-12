@@ -134,8 +134,8 @@
 .itemSearchResult li img{-webkit-transform:none;-moz-transform:none;-o-transform:none;transform:none;-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;transition:all .4s ease-out;}
 .itemSearchResult li:hover img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 /*.itemSearchResult li:hover{border:1px solid #DDDDDD;box-shadow:0 0 8px #DDDDDD;position:relative;}*/
-.itemSearchResult .p-img{display:block;height:200px;width:200px;padding: 0;margin: 20px auto;}
-.itemSearchResult .p-name{display:block;height:40px;line-height:20px;margin:0 20px;font-size: 12px;}
+.itemSearchResult .p-img{display:block;height:200px;width:200px;padding: 0;margin: 30px auto;}
+.itemSearchResult .p-name{display:block;height:20px;line-height:20px;margin:0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .itemSearchResult .p-price{margin-left:20px;}
 .itemSearchResult .p-price strong{font-size:24px;font-weight: normal;}
 .itemSearchResult .p-option{line-height: 16px;margin: 8px 20px 0;}
