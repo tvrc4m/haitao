@@ -5,6 +5,7 @@ var tips_password="<i></i>请填写密码, 最小长度为 "+pwlength+" 个字�
 var tips_re_password="<i></i>再输一次密码";
 var tips_mobile="<i></i>请填写正确手机号码！";
 var tips_yzm="";
+var tips_smsvode="";
 var tips_ckyzwt="";
 var tips_email="<i></i>请输入您常用的电子邮箱，以方便日后找回密码。";
 var error="<i></i>不能为空";
@@ -366,6 +367,36 @@ function check_re_password(obj){
 	}
 }
 function check_yzm(obj){
+	var val=obj.val();
+	var div=obj.parent().next().children("div");
+	var url = 'ajax_back_end.php';
+	var sj = new Date();
+	var pars = 'shuiji=' + sj+'&yzm='+val;
+	if(!val){
+		obj.addClass('red');
+		div.attr('class','error').html(error);return false;
+	}
+	else 
+	{
+		$.get(url, pars, function(originalRequest){
+			if(originalRequest>0)
+			{	
+				obj.addClass('red');
+				div.attr('class','error').html(error_yzm);
+				flag1=false;
+			}
+			else
+			{
+				obj.removeClass('red');
+				div.attr('class','true').html(right);
+				flag1=true;
+			}
+			return flag1;
+		});
+		return flag1;
+	}
+}
+function check_smsvode(obj){
 	var val=obj.val();
 	var div=obj.parent().next().children("div");
 	var url = 'ajax_back_end.php';
