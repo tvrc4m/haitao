@@ -187,7 +187,72 @@ if(isset($tpl))
 {
 	$cmenu=!empty($cmenu)?$cmenu:'main';
 	$smenu=!empty($cmenu)?($cmenu=='friend'||$cmenu=='inquire'?'main':$cmenu):'main';
-	$tpl->assign("submenu",$menu[$smenu]);
+    $menus = $menu[$smenu];
+	foreach($menus['sub'] as $key => $val){
+		if(is_string($val['action'])){
+			if(strlen($val['action'])>5){
+				$data = explode("&", $val['action']);
+                foreach($data as $k => $val){
+                    $data[$k] = explode('=', $val);
+                }
+				//var_dump($data);
+				foreach($data as $key => $val) {
+					if (in_array('s', $val)) {
+						$newdata[] = $val;
+					}
+                }
+			}
+		}else{
+            foreach($val['action'] as $ke =>$va){
+                if(!empty($va)){
+                    $adata = explode("&", $ke);
+                    foreach($adata as $k => $v){
+                        $adata[$k] = explode('=', $v);
+                    }
+
+                    foreach($adata as $kk => $vaa) {
+                        if (in_array('s', $vaa)) {
+                            $newadata[] = $vaa[1];
+                        }
+                    }
+                }
+            }
+        }
+	}
+
+    $i = 0;
+    $y = 0;
+    foreach($menus['sub'] as $k => $v){
+        if(is_string($v['action'])){
+            $menus['sub'][$k]['newaction'] = $newdata[$i][1];
+            $i++;
+        }else{
+            foreach($menus['sub'][$k]['action'] as $kk => $vaa){
+               if(!empty($vaa)){
+                   $menus['sub'][$k]['action'][$kk] = array('name' =>$vaa,'url' => $newadata[$y] ,'ke' => $kk);
+                   $y++;
+               }
+            }
+        }
+    }
+
+    foreach($menu as $key => $val){
+        $bdata[$key] = explode("&", $val['action']);
+        //$bdata
+
+        foreach($bdata[$key] as $k => $v){
+           $bdata[$key] = explode('=', $v);
+        }
+    }
+
+    foreach($menu as $key => $val){
+        if($key=='main') {
+            $menu[$key]['newaction'] = 'main';
+        }else{
+            $menu[$key]['newaction'] = $bdata[$key][1];
+        }
+    }
+    $tpl->assign("submenu",$menus);
 	$tpl->assign("menu",$menu);
 	$tpl->assign("cmenu",$cmenu);
 }
