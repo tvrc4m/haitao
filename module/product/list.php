@@ -96,7 +96,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 		foreach ($res['matches'] as $matches)
 		{
 			$matches['attrs']['id'] = $matches['id'];
-			$prol[]                 = $matches['attrs'];
+			$prol[] = $matches['attrs'];
 		}
 		
 	}
@@ -246,7 +246,13 @@ else
 //--------------------------------------------------
 	$db->query($sql);
 	$prol=$db->getRows();
-
+	foreach($prol as $key => $val){
+		$sql = "select count(id) as num from mallbuilder_product_comment where pid = ".$val[id];
+		$db->query($sql);
+        $res = $db->fetchRow();
+        $prol[$key]['con'] = $res ? $res : 0;
+	}
+	//var_dump($prol);
 	fb($prol);
 
 
