@@ -280,6 +280,9 @@
   'week'=>'星期',
   'month'=>'月',
   'adv_buy'=>'广告购买',
+  'identity_iden'=>'姓名和身份证不能为空！',
+  'identity_correct'=>'请填写正确身份证号！',
+  'identity_error'=>'姓名和身份证不一致！',
 ); 
   $lang = array_merge($lang, $_LANG_FRONT); 
 ?>

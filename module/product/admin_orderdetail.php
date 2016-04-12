@@ -7,6 +7,9 @@ $order=new order();
 if(!empty($_GET['id'])&&is_numeric($_GET['id']))
 {
 	$tpl->assign("de",$de = $order->orderdetail($_GET['id']));
+    if($de["invoice_no"]){
+        $tpl->assign("logistics_sigin",md5($logistics_config['logistic_api_sceret']."|~".$de["invoice_no"]));
+    }
 }
 
 //==================================
