@@ -4,23 +4,36 @@
 .m a{width: 30%;float: left;height: 84px;margin-bottom: 10px;margin-left: 3%;position: relative;display: inline-block;font-size: 12px;}
 .m dt{width:90%;height:39px;border:1px solid #b9b9b9;border-radius:5px 5px 5px 5px; background-color: #F2F2F2;color: #DC181F;  padding-top: 20px;font-size: 30px;}
 .m dd{background:#EEE;padding-top:2px;width:90%;height:20px;line-height:20px;}
-.info{border-bottom: 1px solid #b9b9b9;overflow:hidden;margin:0;padding: 15px 0px;}
+.info{border-bottom: 1px solid #b9b9b9;overflow:hidden;margin:0;padding: 15px 0px;background-color: #fff;}
 .info ul{display:-webkit-box;}
-.info ul li{-webkit-box-flex:1;text-align:center;font-size:12px;}
+.info ul li{-webkit-box-flex:1;text-align:center;font-size:0.6rem;}
 .info ul li a{display:block;color:#666666;border-right: 1px solid #b9b9b9;}
 .info ul li:last-of-type a{border-right: none;}
-.info ul li strong{display:block;color:#444 !important;font-size:16px;font-weight:bold;}
-.info ul li a.color strong{color:#666 !important;}
+.info ul li strong{display:block;color:#535353 !important;font-size:0.7rem;font-weight:normal;margin-bottom: 5px;}
+.info ul li a.color strong{color:#ff5c5c !important;}
 .duser{background-color: #f97677;overflow:hidden;text-align: center;padding: 0.8rem 0;}
 .duser-user dt{padding:4px;margin:0 auto;position:relative;text-align:center;background:#FFF;border-radius:50%;display: inline-block;}
-.duser-user dd{color:#fff;font-size:14px;padding-top:10px;text-align: center;padding-bottom: 6px;}
+.duser-user dd{color:#fff;font-size:0.6rem;padding-top:10px;text-align: center;padding-bottom: 6px;}
 .duser-user dt img{border-radius: 50%;}
 .duser-auth{display: inline-block;padding: 8px 20px;background-color: #fff;border-radius: 15px;}
 .duser-auth li{display: inline-block;}
 .duser-auth li.duser-auth-line{width: 1px;height: 18px;background-color:#b9b9b9;margin: 0px 10px 0px 8px;vertical-align: bottom;}
-.duser-auth li a{color: #ff5c5c;display: inline-block;font-size: 14px;letter-spacing: 2px;padding-left: 35px;}
-.duser-auth li a.duser-auth-mob{background: url(../../../image/wap/wap_haitao_icon25.png) left no-repeat;background-size: contain;}
-.duser-auth li a.duser-auth-ema{background: url(../../../image/wap/wap_haitao_icon25.png) left no-repeat;background-size: contain;}
+.duser-auth li a{color: #ff5c5c;display: inline-block;font-size: 0.6rem;letter-spacing: 2px;padding-left: 1.25rem;}
+.duser-auth li a.duser-auth-mob{background: url(../../../image/wap/wap_haitao_icon38.png) center left no-repeat;background-size: 29%;padding-left: 0.8rem;}
+.duser-auth li a.duser-auth-mob-j{color: #999;background: url(../../../image/wap/wap_haitao_icon37.png) center left no-repeat;background-size: 29%;}
+.duser-auth li a.duser-auth-ema{background: url(../../../image/wap/wap_haitao_icon40.png) center left no-repeat;background-size: 34%;}
+.duser-auth li a.duser-auth-ema-j{color: #999;background: url(../../../image/wap/wap_haitao_icon39.png) center left no-repeat;background-size: 34%;}
+.m_fore{padding: 0px 0.5rem 0.8rem;background-color: #fff;}
+.m_fore ul li{border-bottom: 1px dashed #b9b9b9;height: 2.5rem;line-height: 2.5rem;}
+.m_fore ul li a span{padding-left: 30px;}
+.m_fore ul li a{float: left;font-size: 0.7rem;width: 100%;height: 2.5rem;}
+.m_fore ul li a:after{content: "";float: right;background: url(../../../image/wap/wap_haitao_icon18.png) center right no-repeat;background-size: 58%;width: 0.9rem;height: 2.5rem;margin-right: 0.3rem;}
+.m_fore ul li a span.fore_a{background: url(../../../image/wap/wap_haitao_icon28.png) left no-repeat;background-size: contain;}
+.m_fore ul li a span.fore_b{background: url(../../../image/wap/wap_haitao_icon27.png) left no-repeat;background-size: contain;}
+.m_fore ul li a span.fore_c{background: url(../../../image/wap/wap_haitao_icon26.png) left no-repeat;background-size: contain;}
+.m_tuichu{text-align: center;padding: 0.75rem 0px;border-bottom: 1px solid #b9b9b9;border-top: 1px solid #b9b9b9;}
+.m_tuichu a{font-size: 0.7rem;color: #ff5c5c;width: 100%;}
+.m_btn{background-color: #fff;padding-bottom: 20px;}
 
 /*** bruce 2015-01-17 ****/
 .v_ul li{clear: both;width: 100%;overflow: hidden;color: #fff;margin-bottom: 3px;}

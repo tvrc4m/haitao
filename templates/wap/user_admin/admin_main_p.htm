@@ -14,39 +14,32 @@
         <dd><{$cominfo.user}></dd>
     </dl>
     <ul class="duser-auth">
-        <li><a href="javascript:void(0);" class="duser-auth-mob">未认证</a></li>
+        <li><a href="javascript:void(0);" class="duser-auth-mob duser-auth-mob-j">未认证</a></li>
         <li class="duser-auth-line"></li>
-        <li><a href="javascript:void(0);" class="duser-auth-ema">已认证</a></li>
+        <li><a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已认证</a></li>
     </ul>
     </div>   
 </section>
 <section>
 	<div class="info clearfix">
         <ul>
+            <li><a <{if $shop_count.0}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder"><strong><{$shop_count.0}></strong>全部订单</a></li>
             <li><a <{if $shop_count.0}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=1"><strong><{$shop_count.0}></strong>待付款</a></li>
             <li><a <{if $shop_count.1}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=2"><strong><{$shop_count.1}></strong>待发货</a></li>
             <li><a <{if $shop_count.2}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=3"><strong><{$shop_count.2}></strong>待收货</a></li>
-            <li><a <{if $shop_count.3}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=4"><strong><{$shop_count.3}></strong>待评价</a></li>
+           <!--  <li><a <{if $shop_count.3}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=4"><strong><{$shop_count.3}></strong>待评价</a></li> -->
         </ul>
     </div>
 </section>
-<section class="m clearfix">
-	<a href="main.php?m=product&s=admin_buyorder"><dl class="fore1"><dt class="iconfont">&#xe632;</dt><dd>全部订单</dd></dl></a>
-	<a href="main.php?m=sns&s=admin_share_shop"><dl class="fore2"><dt class="iconfont">&#xe617;</dt><dd>我的收藏</dd></dl></a>
-    <a href="main.php?m=voucher&s=admin_buyvoucher"><dl class="fore9"><dt class="iconfont">&#xe630;</dt><dd>优惠券</dd></dl></a>
-    <a href="main.php?m=member&s=admin_buyer_card"><dl class="fore10"><dt class="iconfont">&#xe62c;</dt><dd>会员卡</dd></dl></a>
-	<a href="index.php?m=product&s=cart"><dl class="fore4"><dt class="iconfont">&#xe62b;</dt><dd>购物车</dd></dl></a>
-	<a href="main.php?m=member&s=admin_orderadder"><dl class="fore5"><dt class="iconfont">&#xe62d;</dt><dd>收货地址</dd></dl></a>
-	<a href="<{$config.pay_url}>"><dl class="fore10"><dt class="iconfont">&#xe62a;</dt><dd><{$config.pay_name}></dd></dl></a>
-	<{if $cominfo.shop_type eq 1}>
-	<a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><dl class="fore10"><dt class="iconfont">&#xe633;</dt><dd>分销中心</dd></dl></a>
-	<a href="<{$config.weburl}>/main.php?m=shop&s=admin_step&shop_type=2&cg_u_type=2"><dl class="fore10"><dt class="iconfont">&#xe634;</dt><dd>申请开店</dd></dl></a>
-	<{else}>
-        <{if $cominfo.shop_type eq 3}>
-        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><dl class="fore10"><dt class="iconfont">&#xe633;</dt><dd>分销中心</dd></dl></a>
-        <{/if}>
-        <a href="<{if $cominfo.shop_type gt 1}><{$config.weburl}>/main.php?cg_u_type=2&st=1<{else}><{$config.weburl}>/main.php?m=shop&s=admin_step&shop_type=2&cg_u_type=2<{/if}>"><dl class="fore10"><dt class="iconfont">&#xe628;</dt><dd>卖家中心</dd></dl></a>
-	<{/if}>
+<section class="m_fore clearfix">
+    <ul>
+        <li><a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><span class="fore_a">分销中心</span></a></li>
+        <li><a href="main.php?m=member&s=admin_orderadder"><span class="fore_b">收货地址</span></a></li>
+        <li><a href="main.php?m=sns&s=admin_share_shop"><span class="fore_b">我的收藏</span></a></li>
+    </ul>   
+</section>
+<section class="m_btn">
+    <div class="m_tuichu"><a href="http://haitao.com/main.php?action=logout">退出登录</a></div>
 </section>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.11.2.min.js"></script>
 <script>
