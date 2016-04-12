@@ -286,6 +286,7 @@ function Check_data($data = null, $keyval = null){
 //短信发送
 function Send_msg($mob = null, $con = null)
 {
+		global $config;
 		include_once("{$config[webroot]}/module/sms/includes/plugin_sms_class.php");
 		$sms = new sms();
 		$str = $sms->send($mob, $con);
@@ -301,7 +302,7 @@ function Send_msg($mob = null, $con = null)
 //格式数据返回
 function Return_data($data = null, $type = 'json'){
 	if($type == 'json'){
-		return json_encode($data, JSON_UNESCAPED_UNICODE);
+		return json_encode($data);
 	}
 }
 include_once("footer.php");
