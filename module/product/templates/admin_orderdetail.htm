@@ -131,7 +131,7 @@
             <{/if}>
         </dl>
         <{if $de.logistics_name&&$de.invoice_no&&$logistics_config.logistics_connect==1}>
-        <dl><script src="<{$config.weburl}>/api/logistic.php?com=<{$de.logistics_name}>&nu=<{$de.invoice_no}>"></script></dl>
+        <dl><script src="<{$config.weburl}>/api/logistic.php?com=<{$de.logistics_name}>&nu=<{$de.invoice_no}>&sigin=<{$logistics_sigin}>"></script></dl>
         <{/if}>
     <{/if}>
 
