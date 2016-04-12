@@ -252,18 +252,21 @@ html[xmlns] .clearfix{display:block;}
 .select_style .stock em{float:left;line-height:28px;margin-left:8px;}
 .choose_result{border-bottom:none;color:#E4393C;float:left;line-height:30px;padding-left:60px;display:none;}
 .choose_btn{padding:10px 0 0 60px;}
-.choose_btn a{float:left;cursor:pointer;display:block;height:41px;width:136px;background:url(img/buy.png) no-repeat;}
-.choose_btn .add-cart{margin-left:10px;width:182px;background-position:right 0;}
-.choose_btn .add-cart:hover{background-position:right bottom;}
-.choose_btn .btn-buy:hover{background-position:0 bottom;}
+.choose_btn a{float:left;cursor:pointer;display:block;height:41px;width:136px;font-size: 16px;text-align: center;line-height: 40px;border-radius: 3px;}
+.choose_btn .btn-buy{background: #ffa23e;color: #fff;}
+.choose_btn .add-cart{margin-left:10px;width:162px;background: #ff5c5c;color: #fff;}
+.choose_btn .add-cart span{background: url(../../image/default/cart/add-cart.png) no-repeat;display: inline-block;width: 16px;height: 16px;vertical-align: middle;margin-right: 10px;}
+.choose_btn .add-cart:hover{background:#ed4f4f;}
+.choose_btn .btn-buy:hover{background:#ec9a42;}
 .jqzoom-img{vertical-align: middle;}
 .social{padding-top:25px;position:relative;z-index:5;margin-left: 60px;}
-.social li{float:left;position:relative;margin-right:42px;_display:inline}
+.social li{float:left;position:relative;display:inline}
 .social a{display:inline-block;vertical-align:middle;margin-right:15px;background:0;height:auto;padding-left:20px;position:relative;font-size: 14px;}
 .social a i{background:url(img/ico.gif) no-repeat;display:inline-block;width:13px;height:12px;position:absolute;}
 .social .like i{background-position:0 -309px;top:5px;left:0;} 
 .social .fav i{background-position:-14px -309px;top:4px;left:0;} 
 .social .share i{background-position:-31px -309px;top:5px;left:0;} 
+.social .ercode span{margin-right: 4px;}
 @keyframes icon-jump{0%{margin-top:0}100%{margin-top:4px}}@-o-keyframes icon-jump{0%{margin-top:0}100%{margin-top:4px}}@-moz-keyframes icon-jump{0%{margin-top:0}100%{margin-top:4px}}@-webkit-keyframes icon-jump{0%{margin-top:0}100%{margin-top:4px}}
 .social a:hover i{animation:icon-jump .2s;-o-animation:icon-jump .2s;-moz-animation:icon-jump .2s;-webkit-animation:icon-jump .2s;}
 .bshare-custom{padding-top:10px;}
@@ -404,7 +407,7 @@ html[xmlns] .clearfix{display:block;}
 .shop-rate dd{line-height:14px;font-size:12px;margin-top:5px;}
 .shop-rate dd b{color:#f40;font-weight:500;}
 .shop-info-fd a{display:inline;float:left;margin-right:9px;width:86px;height:30px;text-align:center;color:#fff !important;line-height:30px;-webkit-border-radius:2px;-moz-border-radius:2px;-ms-border-radius:2px;-o-border-radius:2px;border-radius:2px;background:#ff5c5c;}
-.shop-info-fd a:hover{opacity: 0.8;}
+.shop-info-fd a:hover{background: #ed4f4f;}
 .shop-info-fd a.fr{margin-right: 0px;}
 .shop-info-fd{padding: 0px 9px;}
 .pine{border:1px solid #ccc;border-top: none; margin-left:1px;width:198px;margin-bottom: 20px;}
