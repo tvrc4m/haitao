@@ -11,17 +11,36 @@
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/real.css" rel="stylesheet" type="text/css" />
 <section class="real form_d">
+    <{if $erry}>
+    <script>
+        $('.form-error').offset();
+        function closefunc()
+        {
+            $('.form-error').remove();
+        }
+        setTimeout(closefunc,2000);
+    </script>
+    <div class="form-error">
+        <{if $erry=="-1"}>
+        <{$lang.identity_iden}>
+        <{elseif $erry=="-2"}>
+        <{$lang.identity_correct}>
+        <{elseif $erry=="-3"}>
+        <{$lang.identity_error}>
+        <{/if}>
+    </div>
+    <{/if}>
 <form id="real" name="real" action="real.php" method="post">
     <ul>
         <li class="user_names">
-            <input type="text" name="users" id="users" placeholder="真实姓名" value=""/>
+            <input type="text" name="users" id="users" placeholder="真实姓名" value="<{$users}>"/>
         </li>
         <li class="user_names">
-            <input type="text" name="real" id="real" placeholder="身份证号"/>
+            <input type="text" name="real" id="real" placeholder="身份证号" value="<{$real}>"/>
         </li>
         <li>
             <input name="action" type="hidden" value="submit" />
-            <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
+            <input name="forward" type="hidden" id="forward" value="<{$forward}>" />
             <input type="submit" value="实名认证" onclick="">
         </li>
     </ul>
