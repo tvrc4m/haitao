@@ -106,6 +106,7 @@ if ($distribution_open_flag)
 	$date_str = date("Y-m-d");
 
 	$sql = 'SELECT sum(distribution_analyse_shop_num) num FROM ' . DISTRIBUTION_ANALYSE_SHOP . ' WHERE user_id=' . $buid . ' AND distribution_analyse_shop_date="' . $date_str . '" GROUP BY user_id';
+
 	$db->query($sql);
 	$click_num = intval($db->fetchField('num'));
 	$admin->tpl->assign("click_num", $click_num);
@@ -113,11 +114,11 @@ if ($distribution_open_flag)
 	//7日订单
 	$time = time() - 3600 * 24 * 7;
 	$order_num = $distribution->getDistributionOrderNum($buid, $time);
-	$admin->tpl->assign("order_num", $order_num/2);
+	$admin->tpl->assign("order_num", $order_num);
 
 	//7日营业额
 	$order_amout = $distribution->getDistributionOrderAmount($buid, $time);
-	$admin->tpl->assign("order_amout", $order_amout/2);
+	$admin->tpl->assign("order_amout", $order_amout);
 }
 
 if($_SESSION['USER_TYPE']==1)

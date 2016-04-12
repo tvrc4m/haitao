@@ -162,9 +162,10 @@ em{font-style:normal;}
 
 /*--导航--*/
 .detailnav{height:20px;line-height:20px;margin:20px 0 10px;overflow:hidden;padding:0 0 4px 0;vertical-align:baseline;}
-.detailnav strong{display:inline;margin-right:5px;font-weight:bold;line-height:20px;}
+.detailnav strong{display:inline;margin-right:5px;font-weight:bold;line-height:20px;vertical-align: middle;}
 .detailnav strong a{font-size:18px;font-family:"microsoft yahei";}
 .detailnav span a{border: 1px solid #d0d0d0;padding: 0 5px;}
+.detailnav span b{display: inline-block;width: 16px;height: 16px;background: url(../../../image/default/gt.png);vertical-align: middle;}
 /*.detailnav span{font-family:"宋体";}*/
 
 
@@ -216,7 +217,8 @@ em{font-style:normal;}
 /*--分页--*/
 .page{margin-top:20px;float:right;}
 .page a, .page b{border:1px solid #CCCCCC;float:left;font-family:arial;font-size:14px;height:20px;line-height:20px;margin-left:2px;overflow:hidden;padding:3px 10px;border-radius:3px 3px 3px 3px;text-decoration:none;}
-.page b{color:#CC0000;background:#FFE3E3;border-color:#CC0000;}
+/*.page b{color:#CC0000;background:#FFE3E3;border-color:#CC0000;}*/
+.page b{background:#e4e4e4;}
 
 
 /*--找回密码--*/
