@@ -100,7 +100,7 @@ class Page
 			$nextRow   = ($this->nowPage) * $this->listRows;
 			$theEndRow = ($this->totalPages-1) * $this->listRows;
 			$nextPage  = " <a class='nextPage' href='".$this->url."?firstRow=$nextRow&totalRows=$this->totalRows$this->parameter'>下一页</a>";
-			$theEnd    = " <a href='".$this->url."?firstRow=$theEndRow&totalRows=$this->totalRows$this->parameter'>..$this->totalPages</a>";
+			$theEnd    = " <a href='".$this->url."?firstRow=$theEndRow&totalRows=$this->totalRows$this->parameter'>末页</a>";
         }
 
         //list pages
