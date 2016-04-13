@@ -95,32 +95,31 @@
             var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
             if(str.test(mob)) {
                 $.ajax({
-                    url: 'register.php',
+                    url: 'lostpass.php',
                     type: 'post',
                     data: {m_send: 'm_send', mobile: mob},
                     dataType: 'json',
                     success: function(datainfo){
-                        layer.alert(datainfo.message, {
-                            closeBtn: 0
-                        });
-                        num = datainfo.data?datainfo.data:num;
+                        if(datainfo.status_code==200) {
+                            num = datainfo.data ? datainfo.data : num;
+                            $("#gain_ma").attr("disabled","true").css("background-color","#ccc");
+                            var interval = window.setInterval(function(){
+                                num = num - 1;
+                                $("#gain_ma").val(num+ "秒后重新发送");
+                                if (num < 1) {
+                                    $("#gain_ma").attr("disabled","").css("background-color","#ff5c5d");
+                                    clearInterval(interval);
+                                    $("#gain_ma").val("发送短信验证码");
+                                    num = 60;
+                                };
+                            },1000);
+                            $("#gain_ma").parent().parent().find("p .tipcon").text("短信发送成功，请注意查收！");
+                            $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
+                        }else{
+                            $("#gain_ma").parent().parent().find("p .tipcon").text(datainfo.message);
+                            $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
+                        }
                     }
-                });
-
-                $(this).attr("disabled","true").css("background-color","#ccc");
-                var interval = window.setInterval(function(){
-                    num = num - 1;
-                    $("#gain_ma").attr("value",num+ "秒后重新发送");
-                    if (num < 1) {
-                        $("#gain_ma").attr("disabled","").css("background-color","#ff5c5c");
-                        clearInterval(interval);
-                        $("#gain_ma").attr("value","发送短信验证码");
-                        num = 60;
-                    };
-                },1000);
-            }else{
-                layer.alert('请填写手机号', {
-                    closeBtn: 0
                 });
             }
         });
