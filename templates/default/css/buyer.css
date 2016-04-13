@@ -101,7 +101,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 #nav{padding-left: 0px;}
 .business_handle div.nav_left{border-bottom: none;}
 /*.nav_left ul.nav_left_ul li{padding-left: 55px;background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat 30px 17px;}*/
-.layout{font-size:1.2em;line-height:20px;margin:20px auto 20px;/*background:url(../../../image/default/user_admin/bg.png) repeat-y left top #FFFFFF;border:1px solid #D5E5F5;border-radius:5px 5px 5px 5px;*/overflow:hidden;width:1212px;min-height: 800px;}
+.layout{font-size:1.2em;line-height:20px;margin:20px auto 20px;/*background:url(../../../image/default/user_admin/bg.png) repeat-y left top #FFFFFF;border:1px solid #D5E5F5;border-radius:5px 5px 5px 5px;*/overflow:hidden;width:1212px;/*min-height: 800px;*/}
 
 .layout .left_con{float:left;overflow:hidden;width:200px;border: 1px solid #ccc;padding-bottom: 75px;background-color: #fff;}
 .layout .left_con dl.user{height:130px;margin:0 auto;position:relative;width:140px;z-index:1;}
@@ -147,7 +147,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .business_handle dl dd.active{background-color:#FFFFFF;box-shadow:0 2px 1px rgba(213, 229, 245, 0.7);}
 .business_handle dl dd a,.business_handle ul li a{color: #999;}
 
-.layout .right_con{float:right;width:1000px;border: 1px solid #ccc;background-color: #fff;min-height: 857px;}
+.layout .right_con{float:right;width:1000px;border: 1px solid #ccc;background-color: #fff;min-height: 651px;}
 .layout .right_con_index{float:right;width:1000px;min-height: 854px;}
 .wrap_buyer{clear:both;margin:0;/*padding:14px;*/}
 .layout .right_con_index .layout_l{background-color: #fff;}
@@ -155,7 +155,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .layout .right_con_index .layout_r .right_module{background-color: #fff;}
 .layout .right_con_index .layout_l .weibo{padding: 30px 30px 0;}
 .layout .right_con.admin_friends{border: none;background: none;}
-.layout .admin_friends .middle{width: 785px;float: left; background:#fff;border: 1px solid #ccc;min-height: 857px;}
+.layout .admin_friends .middle{width: 785px;float: left; background:#fff;border: 1px solid #ccc;min-height: 651px;}
 /*--会员信息--*/
 .member_info{border-radius:5px 5px 5px 5px;height: 186px;border-bottom: 1px dashed #ccc;}
 .member_info dl dt{display:inline-block;line-height:24px;width: 100%;margin-bottom: 10px;}
@@ -674,7 +674,7 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .table-list-style.share-pro .pic_model strong{font-weight: normal;font-size:18px;color:#ff5c5c;line-height:25px;}
 .table-list-style.share-pro .pic_model strong em{font-size: 18px;font-weight: normal;}
 .admin_share_product .delete{padding: 10px;margin-top: 10px;border: 1px solid #ccc;}
-.btn2{cursor: pointer;}
+.btn2{cursor: pointer;padding: 0 5px;}
 /*好友*/
 .admin_friends .groupMan{width: 200px;background:#fff;float: left;margin-left:11px;border: 1px solid #ccc;border-top: none;}
 .admin_friends .groupMan p{height: 35px;line-height: 35px;text-align:center;font-size: 16px;color: #ff5c5c;border-top: 3px solid #ff5c5c; border-bottom: 1px dashed #ccc;}
@@ -688,3 +688,14 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .friend_list li.bt{border-bottom: 1px solid #ccc;}
 .friend_list li .friend_img{height: 60px;width: 60px;}
 .friend_list li.bt #gz_statu{display: inline-block;float: right;line-height: 60px;margin-right: 20px;}
+/*信息*/
+.table-list-style.info tbody tr{border-bottom: 1px solid #ccc;}
+.admin_message_list_inbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
+.admin_message_list_inbox .delete .checkall{margin-left: 0;}
+.admin_message_list_outbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
+.admin_message_list_outbox .delete .checkall{margin-left: 0;}
+.delete .checkall{margin-top: -3px;vertical-align: middle;margin-left: 10px;}
+/*商品问答*/
+.admin_consult .table-list-style th{border-bottom:1px solid #ccc;}
+.admin_consult .table-list-style tbody td{text-align: left;border-bottom:1px solid #ccc;}
+.admin_consult .table-list-style tbody td a{color: #ff5c5c;}

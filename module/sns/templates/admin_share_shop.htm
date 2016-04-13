@@ -44,6 +44,7 @@ $(function(){
             <ul class="tabs">
                 <li class="normal"><a href="main.php?m=sns&s=admin_share_product">收藏商品</a></li>
                 <li class="active"><a href="main.php?m=sns&s=admin_share_shop">收藏店铺</a></li>
+                <li class="normal"><a href="main.php?m=product&s=admin_footprint">我的足迹</a></li>
                 <!--<div class="search">
                     <div class="i-search ld">
                     <form method="get">
@@ -56,6 +57,12 @@ $(function(){
                     </div>
                 </div>-->
             </ul>
+        </div>
+        <div class="delete">
+            <input type="checkbox" class="checkall" id="checkall"></td>
+            <label for="checkall" class="btn2">全选</label>
+            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
+            <div class="pagination"><{$re.page}></div>
         </div>
         <table class="table-list-style">
             <thead>
@@ -99,11 +106,5 @@ $(function(){
             </tfoot> -->
             </tbody>
         </table>
-        <div class="delete">
-            <input type="checkbox" class="checkall" id="checkall"></td>
-            <label for="checkall" class="btn2">全选</label>
-            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
-            <div class="pagination"><{$re.page}></div>
-        </div>
      </div>   
 </div>
