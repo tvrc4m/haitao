@@ -305,7 +305,7 @@ else
 }
 
 $tpl->assign("province",GetDistrict1());
-
+	$data = $_SERVER['HTTP_REFERER'];
 //------------------------------------------------------
 $url=implode('&',convert($_GET));
 $tpl->assign("url",$url);
