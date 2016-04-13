@@ -101,7 +101,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 #nav{padding-left: 0px;}
 .business_handle div.nav_left{border-bottom: none;}
 /*.nav_left ul.nav_left_ul li{padding-left: 55px;background: url(../../../image/default/user_admin/mayi_icon3.png) no-repeat 30px 17px;}*/
-.layout{font-size:1.2em;line-height:20px;margin:20px auto 20px;/*background:url(../../../image/default/user_admin/bg.png) repeat-y left top #FFFFFF;border:1px solid #D5E5F5;border-radius:5px 5px 5px 5px;*/overflow:hidden;width:1212px;min-height: 800px;}
+.layout{font-size:1.2em;line-height:20px;margin:20px auto 20px;/*background:url(../../../image/default/user_admin/bg.png) repeat-y left top #FFFFFF;border:1px solid #D5E5F5;border-radius:5px 5px 5px 5px;*/overflow:hidden;width:1212px;/*min-height: 800px;*/}
 
 .layout .left_con{float:left;overflow:hidden;width:200px;border: 1px solid #ccc;padding-bottom: 75px;background-color: #fff;}
 .layout .left_con dl.user{height:130px;margin:0 auto;position:relative;width:140px;z-index:1;}
@@ -147,7 +147,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .business_handle dl dd.active{background-color:#FFFFFF;box-shadow:0 2px 1px rgba(213, 229, 245, 0.7);}
 .business_handle dl dd a,.business_handle ul li a{color: #999;}
 
-.layout .right_con{float:right;width:1000px;border: 1px solid #ccc;background-color: #fff;min-height: 857px;}
+.layout .right_con{float:right;width:1000px;border: 1px solid #ccc;background-color: #fff;min-height: 651px;}
 .layout .right_con_index{float:right;width:1000px;min-height: 854px;}
 .wrap_buyer{clear:both;margin:0;/*padding:14px;*/}
 .layout .right_con_index .layout_l{background-color: #fff;}
@@ -155,7 +155,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .layout .right_con_index .layout_r .right_module{background-color: #fff;}
 .layout .right_con_index .layout_l .weibo{padding: 30px 30px 0;}
 .layout .right_con.admin_friends{border: none;background: none;}
-.layout .admin_friends .middle{width: 785px;float: left; background:#fff;border: 1px solid #ccc;min-height: 857px;}
+.layout .admin_friends .middle{width: 785px;float: left; background:#fff;border: 1px solid #ccc;min-height: 651px;}
 /*--会员信息--*/
 .member_info{border-radius:5px 5px 5px 5px;height: 186px;border-bottom: 1px dashed #ccc;}
 .member_info dl dt{display:inline-block;line-height:24px;width: 100%;margin-bottom: 10px;}
@@ -403,7 +403,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 
 .verify{margin-left:10px;color:#F00;}
 /* 好友*/
-.friend_list li{border:1px solid #FFFFFF;float:left;line-height:20px;margin-right:5px;padding:8px 0;width:230px;}
+.friend_list li{float:left;line-height:20px;margin-right:5px;padding:8px 0;width:230px;}
 .friend_list li .friend_img{border:1px solid #E7EFF8;border-radius:5px 5px 5px 5px;float:left;height:100px;padding:1px;width:100px;}
 .friend_list li dl{float:right;width:116px;}
 .friend_list li dl dt{margin:0 0 4px;text-align:left;}
@@ -422,7 +422,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .pic_model dl dd.picture{background-color:#FFFFFF;/*border:1px solid #E7E7E7;*/height:150px;left:0;position:absolute;top:0;width:150px;}
 .pic_model dl dd.picture .handle{display:none;}
 .pic_model dl dd.picture:hover .handle{background:rgba(0, 0, 0, 0.5);display:block;height:30px;left:0;position:absolute;top:120px;width:150px;z-index:99;}
-.pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/share.png) no-repeat 0 0;display:block;float:right;height:13px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:13px;}
+.pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/del.png) no-repeat 0 0;display:block;float:right;height:16px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:16px;}
 .pic_model dl dd .price{color:#555555;font-family:Tahoma;font-size:12px;font-weight:700;color:#FF6600;}
 .pic_model dl dd.share em{color:#FF6600;margin-right:2px;}
 .pic_model dl dd a.sharep{background:url(../../../image/default/user_admin/share.png) no-repeat right;display:block;float:right;height:14px;margin:3px 6px 0 0;overflow:hidden;text-indent:999%;width:14px;}
@@ -491,7 +491,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .order tbody td.product .desc{display:inline;float:left;width:270px;overflow:hidden;word-wrap:break-word;text-align:left;}
 .order tbody td.product .desc p{color:#808080;}
 .order .button{margin-bottom:8px;border-radius:2px;cursor:pointer;padding:5px 12px;text-align:center;display:inline-block;font-size:12px;}
-.order .button-pay{background-color:#FF4400;color:#FFF;font-weight:700;}
+.order .button-pay{background-color:#ff5c5c;color:#FFF;font-weight:700;}
 .order .button-pay:hover{color:#FFF!important;}
 .order .button-rate{background-color:#FFFFFF;color:#3C3C3C;;border:1px solid #D9D9D9;}
 .order .button-confirm{background-color:#66b6ff;color:#FFF;font-weight:700;}
@@ -664,11 +664,44 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .share_shop .delete{padding: 10px;margin-top: 10px;border: 1px solid #ccc;}
 .br{border-right: 1px solid #e4e4e4;}
 /*分享商品*/
-.table-list-style.share-pro .pic_model ul li{border:1px solid #ccc;}
+.table-list-style.share-pro .pic_model ul li{border:1px solid #ccc;position: relative;}
 .table-list-style.share-pro .pic_model dt a{white-space: nowrap;text-overflow:ellipsis;overflow: hidden;width: 100%;}
+.table-list-style.share-pro .pro-checkbox input{position: absolute;z-index: 0;left: 10px;top:12px;}
+.table-list-style.share-pro .pro-checkbox em{position: relative;z-index: 1;float: left;height: 15px;background: url(../../../image/default/cart/checkbox.png) 0 1px no-repeat;cursor: pointer;padding-left: 14px;}
+.table-list-style.share-pro .pro-checkbox.pro-checkbox-checked em{background-position:0 -20px;}
+.table-list-style.share-pro .pic_model dl{padding: 170px 0 0;}
+.table-list-style.share-pro .pic_model .picture{top:10px;}
+.table-list-style.share-pro .pic_model strong{font-weight: normal;font-size:18px;color:#ff5c5c;line-height:25px;}
+.table-list-style.share-pro .pic_model strong em{font-size: 18px;font-weight: normal;}
+.admin_share_product .delete{padding: 10px;margin-top: 10px;border: 1px solid #ccc;}
+.btn2{cursor: pointer;padding: 0 5px;}
 /*好友*/
 .admin_friends .groupMan{width: 200px;background:#fff;float: left;margin-left:11px;border: 1px solid #ccc;border-top: none;}
 .admin_friends .groupMan p{height: 35px;line-height: 35px;text-align:center;font-size: 16px;color: #ff5c5c;border-top: 3px solid #ff5c5c; border-bottom: 1px dashed #ccc;}
 .admin_friends .groupMan .zuu{display: inline-block;line-height: 40px;width: 170px;}
 .admin_friends .groupMan .zu1{margin-left: 20px;float: right;}
 .admin_friends .groupMan .addgroup{padding: 10px;border-top:1px dashed #ccc;margin-top: 50px;}
+/*好友 关注我的*/
+.attme{display: inline-block;float: left;line-height: 60px;margin-left: 150px}
+.attme .credit{margin-top: 20px;}
+.friend_list li{width: 100%;padding: 20px 0;}
+.friend_list li.bt{border-bottom: 1px solid #ccc;}
+.friend_list li .friend_img{height: 60px;width: 60px;}
+.friend_list li.bt #gz_statu{display: inline-block;float: right;line-height: 60px;margin-right: 20px;}
+/*信息*/
+.table-list-style.info tbody tr{border-bottom: 1px solid #ccc;}
+.admin_message_list_inbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
+.admin_message_list_inbox .delete .checkall{margin-left: 0;}
+.admin_message_list_outbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
+.admin_message_list_outbox .delete .checkall{margin-left: 0;}
+.delete .checkall{margin-top: -3px;vertical-align: middle;margin-left: 10px;}
+/*商品问答*/
+.admin_consult .table-list-style th{border-bottom:1px solid #ccc;}
+.admin_consult .table-list-style tbody td{text-align: left;border-bottom:1px solid #ccc;}
+.admin_consult .table-list-style tbody td a{color: #ff5c5c;}
+/**/
+.admin_footprint .team-list .item-box{padding: 10px;width: 180px;}
+.admin_footprint .team-list .p-pirce{font-size: 18px;}
+.admin_footprint .team-list .p-pirce span{margin-right: 0;color: #ff5c5c;}
+.admin_footprint .team-list .p-pirce b{font-family: "微软雅黑";color: #ff5c5c;font-weight:normal;}
+.admin_footprint .team-list .p-pname{white-space: nowrap;text-overflow:ellipsis;}
