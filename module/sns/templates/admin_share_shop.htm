@@ -34,7 +34,7 @@ $(function(){
 <div class="path">
     <div>
         <span class="shop"></span>
-    	<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span> 
+    	<a href="main.php?cg_u_type=1">买家中心</a> <span>&gt;</span> 
         收藏店铺
     </div>
 </div>
@@ -56,12 +56,6 @@ $(function(){
                     </div>
                 </div>-->
             </ul>
-        </div>
-        <div class="delete">
-            <input type="checkbox" class="checkall"></td>
-            <label for="del" class="btn2">全选</label>
-            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
-            <div class="pagination"><{$re.page}></div>
         </div>
         <table class="table-list-style">
             <thead>
@@ -105,5 +99,11 @@ $(function(){
             </tfoot> -->
             </tbody>
         </table>
+        <div class="delete">
+            <input type="checkbox" class="checkall" id="checkall"></td>
+            <label for="checkall" class="btn2">全选</label>
+            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
+            <div class="pagination"><{$re.page}></div>
+        </div>
      </div>   
 </div>

@@ -422,7 +422,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .pic_model dl dd.picture{background-color:#FFFFFF;/*border:1px solid #E7E7E7;*/height:150px;left:0;position:absolute;top:0;width:150px;}
 .pic_model dl dd.picture .handle{display:none;}
 .pic_model dl dd.picture:hover .handle{background:rgba(0, 0, 0, 0.5);display:block;height:30px;left:0;position:absolute;top:120px;width:150px;z-index:99;}
-.pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/share.png) no-repeat 0 0;display:block;float:right;height:13px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:13px;}
+.pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/del.png) no-repeat 0 0;display:block;float:right;height:16px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:16px;}
 .pic_model dl dd .price{color:#555555;font-family:Tahoma;font-size:12px;font-weight:700;color:#FF6600;}
 .pic_model dl dd.share em{color:#FF6600;margin-right:2px;}
 .pic_model dl dd a.sharep{background:url(../../../image/default/user_admin/share.png) no-repeat right;display:block;float:right;height:14px;margin:3px 6px 0 0;overflow:hidden;text-indent:999%;width:14px;}
@@ -491,7 +491,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .order tbody td.product .desc{display:inline;float:left;width:270px;overflow:hidden;word-wrap:break-word;text-align:left;}
 .order tbody td.product .desc p{color:#808080;}
 .order .button{margin-bottom:8px;border-radius:2px;cursor:pointer;padding:5px 12px;text-align:center;display:inline-block;font-size:12px;}
-.order .button-pay{background-color:#FF4400;color:#FFF;font-weight:700;}
+.order .button-pay{background-color:#ff5c5c;color:#FFF;font-weight:700;}
 .order .button-pay:hover{color:#FFF!important;}
 .order .button-rate{background-color:#FFFFFF;color:#3C3C3C;;border:1px solid #D9D9D9;}
 .order .button-confirm{background-color:#66b6ff;color:#FFF;font-weight:700;}
@@ -664,8 +664,17 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .share_shop .delete{padding: 10px;margin-top: 10px;border: 1px solid #ccc;}
 .br{border-right: 1px solid #e4e4e4;}
 /*分享商品*/
-.table-list-style.share-pro .pic_model ul li{border:1px solid #ccc;}
+.table-list-style.share-pro .pic_model ul li{border:1px solid #ccc;position: relative;}
 .table-list-style.share-pro .pic_model dt a{white-space: nowrap;text-overflow:ellipsis;overflow: hidden;width: 100%;}
+.table-list-style.share-pro .pro-checkbox input{position: absolute;z-index: 0;left: 10px;top:12px;}
+.table-list-style.share-pro .pro-checkbox em{position: relative;z-index: 1;float: left;height: 15px;background: url(../../../image/default/cart/checkbox.png) 0 1px no-repeat;cursor: pointer;padding-left: 14px;}
+.table-list-style.share-pro .pro-checkbox.pro-checkbox-checked em{background-position:0 -20px;}
+.table-list-style.share-pro .pic_model dl{padding: 170px 0 0;}
+.table-list-style.share-pro .pic_model .picture{top:10px;}
+.table-list-style.share-pro .pic_model strong{font-weight: normal;font-size:18px;color:#ff5c5c;line-height:25px;}
+.table-list-style.share-pro .pic_model strong em{font-size: 18px;font-weight: normal;}
+.admin_share_product .delete{padding: 10px;margin-top: 10px;border: 1px solid #ccc;}
+.btn2{cursor: pointer;}
 /*好友*/
 .admin_friends .groupMan{width: 200px;background:#fff;float: left;margin-left:11px;border: 1px solid #ccc;border-top: none;}
 .admin_friends .groupMan p{height: 35px;line-height: 35px;text-align:center;font-size: 16px;color: #ff5c5c;border-top: 3px solid #ff5c5c; border-bottom: 1px dashed #ccc;}
