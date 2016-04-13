@@ -342,9 +342,9 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
                         <ul class="nav_left_ul">
                             <{foreach item=list name=name key=num from=$menu}>
                                 <{if $list.name == '信息'}>
-                                    <li class="child <{if $smarty.get.s == $list.newaction || $smarty.get.s == 'admin_message_list_outbox'}>first_test<{elseif $smarty.get.cg_u_type == 1 && $list.name == '首页'}>first_test<{elseif $smarty.get.action == 'main' && $list.name == '首页'}>first_test<{/if}>"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
+                                    <li class="child <{if $smarty.get.s == $list.newaction || $smarty.get.s == 'admin_message_list_outbox'}>first_test<{elseif $smarty.get.cg_u_type == 1 && $list.name == '买家中心'}>first_test<{elseif $smarty.get.action == 'main' && $list.name == '买家中心'}>first_test<{/if}>"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
                                 <{else}>
-                                    <li class="child <{if $smarty.get.s == $list.newaction}>first_test<{elseif $smarty.get.cg_u_type == 1 && $list.name == '首页'}>first_test<{elseif $smarty.get.action == 'main' && $list.name == '首页'}>first_test<{/if}>"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
+                                    <li class="child <{if $smarty.get.s == $list.newaction}>first_test<{elseif $smarty.get.cg_u_type == 1 && $list.name == '买家中心'}>first_test<{elseif $smarty.get.action == 'main' && $list.name == '买家中心'}>first_test<{/if}>"><span></span><a  href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><{$list.name}></a></li>
                                 <{/if}>
                             <{/foreach}>
                             <{foreach name=name item=list from=$submenu.sub}>
