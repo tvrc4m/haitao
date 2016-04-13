@@ -38,6 +38,7 @@ header{width:100%;}
 .nav-c{text-align:center;-webkit-box-flex:1;-ms-box-flex:1;-moz-box-flex:1;-o-box-flex:1;}
 .nav-e{min-width:50px;padding-right: 0.5rem;}
 i.home_icon{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_icon9.png) right no-repeat;background-size: 50%;}
+i.xia_icon{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_icon30.png) right no-repeat;background-size: 50%;}
 i.home_icon2{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_icon9.png) left no-repeat;background-size: 50%;}
 i.fanhui_icon{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_icon10.png) 5.8% no-repeat;background-size: 50%;}
 .nav-s a{display:inline-block;width:50px;height:34px;line-height:34px;}

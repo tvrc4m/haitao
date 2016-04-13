@@ -1,13 +1,12 @@
 <link href="<{$config.weburl}>/templates/<{$config.temp}>/css/new_page.css" type="text/css" rel="stylesheet"/>
 <link href="<{$config.weburl}>/templates/<{$config.temp}>/css/list.css" rel="stylesheet" type="text/css" />
-<!-- <header>
+<header>
 	<div class="nav-w">
-    	<section class="nav-s"><{if $smarty.get.is_dist}><a onclick="location.href='main.php?cg_u_type=2'"><nav>分销中心</nav></a><{else}><a href="<{$config.weburl}>"><nav>首页</nav></a><{/if}></section>
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><font>&#xe60d</font></section>
-    	<section class="nav-c"><span>发现商品</span></section>
-		<section class="nav-e"><{if $cat}><a class="list" href="javascript:void(0)"><nav>分类</nav></a><{/if}></section>
+        <section class="nav-s iconfont"><a onclick="history.go(-1)"><i class="fanhui_icon"></i></a></section>
+        <section class="nav-c"><span>发现商品</span></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
-</header> -->
+</header>
 <section class="filter clearfix">
 	<ul class="clearfix">
     	<{assign var=s value=$smarty.get.orderby}>
@@ -16,8 +15,7 @@
 		<li <{if $s==2}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=2"><span>人气</span></a></li>
         <li <{if $s==1}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=1"><span>销量</span></a></li>
         <li <{if $s==3}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=3"><span>信用</span></a></li>
-        <li <{if $s==5}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=5"><span>总价</span></a></li>
-		
+        <li <{if $s==5}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=5"><span>总价</span></a></li>		
     </ul>
 </section>
 <section class="itemSearchList">
@@ -27,6 +25,7 @@
         <ul class="shoplist">
         <{foreach item=list key=num from=$info.list}>
             <li class="shopli clearfix">
+                <span class="pname_img"><img src="../../../image/wap/state1.png"></span>
                 <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
                     <div class="shopli_top_img">
                         <img height="125" width="125" src="<{$list.pic}>" alt="<{$list.pname}>"/>
@@ -40,7 +39,8 @@
                                 <p class="money"><{$config.money}><{$list.price}></p>
                                 <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                             </div>
-                            <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_bottom_zhuanxiang">专享抢购</a>
+                            <{if $smarty.get.is_dist eq 1}><a href="javascript:distribute_goods('<{$de.id}>');" class="shopli_bottom_zhuanxiang">加入分销</a><{else}><a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_bottom_zhuanxiang">专享抢购</a><{/if}>
+                           <!-- <span class="pname_img"><{if $de.img }><img src="../../../image/wap/state1.png"><{/if}></span> -->
                         </div>  
                     </div>
                 </a>
