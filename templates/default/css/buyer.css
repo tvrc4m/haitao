@@ -403,7 +403,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 
 .verify{margin-left:10px;color:#F00;}
 /* 好友*/
-.friend_list li{border:1px solid #FFFFFF;float:left;line-height:20px;margin-right:5px;padding:8px 0;width:230px;}
+.friend_list li{float:left;line-height:20px;margin-right:5px;padding:8px 0;width:230px;}
 .friend_list li .friend_img{border:1px solid #E7EFF8;border-radius:5px 5px 5px 5px;float:left;height:100px;padding:1px;width:100px;}
 .friend_list li dl{float:right;width:116px;}
 .friend_list li dl dt{margin:0 0 4px;text-align:left;}
@@ -672,3 +672,10 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .admin_friends .groupMan .zuu{display: inline-block;line-height: 40px;width: 170px;}
 .admin_friends .groupMan .zu1{margin-left: 20px;float: right;}
 .admin_friends .groupMan .addgroup{padding: 10px;border-top:1px dashed #ccc;margin-top: 50px;}
+/*好友 关注我的*/
+.attme{display: inline-block;float: left;line-height: 60px;margin-left: 150px}
+.attme .credit{margin-top: 20px;}
+.friend_list li{width: 100%;padding: 20px 0;}
+.friend_list li.bt{border-bottom: 1px solid #ccc;}
+.friend_list li .friend_img{height: 60px;width: 60px;}
+.friend_list li.bt #gz_statu{display: inline-block;float: right;line-height: 60px;margin-right: 20px;}
