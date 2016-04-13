@@ -29,8 +29,8 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .form_z li input[name="yzm"]{box-shadow: 0px 0px 3px #b9b9b9;float: left; background-color: #fff!important; width: 55%;font-size: .7rem;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
 	background: 0 0;border: none;border-radius: .2rem;margin-top: .8rem;padding-left: 9%;}
 .spe_del{margin-top: .5rem;line-height: 1rem;font-size: .6rem;overflow: hidden;text-align: center;}
-.gain_ma{box-shadow: 0px 0px 3px #b9b9b9;background-color: #ddd;width: 40%;float: right;font-size: .7rem;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
-	background: 0 0;border: none;border-radius: .2rem;margin-top: .8rem;}
+.gain_ma{box-shadow: 0px 0px 3px #b9b9b9;width: 40%;float: right;font-size: .7rem;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
+	background: 0 0;border: none;background-color: #ff5c5c;border-radius: .2rem;margin-top: .8rem;color: #fff;}
 .gain_ma_test{background-color: #ff5c5d;color: #fff;}
 a.spe_del_xieyi{color:#ff5c5d;text-decoration: underline;}
 .user_names{position: relative;}
