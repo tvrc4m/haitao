@@ -23,12 +23,12 @@ $(function(){
     <div>
         <span class="shop"></span>
     	<{if $cg_u_type==1}>
-    		<a href="main.php?cg_u_type=1"><{$lang.my_mall}></a> <span>&gt;</span>
+    		<a href="main.php?cg_u_type=1">买家中心</a> <span>&gt;</span>
         <{else}>
     		<a href="main.php?cg_u_type=2"><{$lang.seller_center}></a> <span>&gt;</span>
         <{/if}>
         <a href="main.php?m=member&s=admin_member"><{$lang.personal_information}></a> <span>&gt;</span>
-        <{if $smarty.get.type=='password'}><{$lang.change_password}><{elseif $smarty.get.type=='mail'}><{$lang.change_email}><{else}><{$lang.basic_information}><{/if}>
+        <{if $smarty.get.type=='password'}><{$lang.change_password}><{elseif $smarty.get.type=='email'}>修改邮箱<{elseif $smarty.get.type=='mobile'}>修改手机<{elseif $smarty.get.type=='certification'}>实名认证<{/if}>
     </div>
 </div>
 <div class="main">
@@ -39,6 +39,7 @@ $(function(){
                 <li class="<{if $smarty.get.type=='password'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=password">修改密码</a></li>
                 <li class="<{if $smarty.get.type=='email'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=email">修改邮箱</a></li>
                 <li class="<{if $smarty.get.type=='mobile'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=mobile">修改手机</a></li>
+                <li class="<{if $smarty.get.type=='certification'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=certification">实名认证</a></li>
             </ul>
         </div>
         <{if $smarty.get.type=='password'}>
@@ -62,6 +63,36 @@ $(function(){
                 <dd><input type="submit" value="<{$lang.submit}>" class="submit"></dd>
             </dl>
             </form>
+        </div>  
+        <{elseif $smarty.get.type=='certification'}>
+            <div class="form-style">
+            <form action="" method="post">
+            <input type="hidden" value="password" name="submit">
+            <dl>
+                <dt>真实姓名</dt>
+                <dd><input name="name" id="name" class="text w184" /><em></em></dd>
+            </dl>
+            <dl>
+                <dt>身份证号码</dt>
+                <dd><input name="id" id="id" maxlength="18" class="text w184" /><em></em></dd>
+            </dl>
+            <dl class="foot">
+                <dt>&nbsp;</dt>
+                <dd><input type="submit" value="<{$lang.submit}>" class="submit"></dd>
+            </dl>
+            </form>
+             <script>
+            $("#id").blur(function(){
+                var val = $("#id").val();
+                var patrn = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+                if(!val){
+                    alert("请输入身份证号！");return false;
+                }
+                else if(!patrn.test(val)){  
+                    alert("请填写有效的身份证号码！");return false;
+                }
+            });
+            </script>
         </div>  
         <{elseif $smarty.get.type=='email'}>
         <div class="form-style">
