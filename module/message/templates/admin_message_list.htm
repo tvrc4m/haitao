@@ -58,6 +58,12 @@ $(function(){
                 <li class="<{if $smarty.get.s=='admin_message_list_outbox'}>active<{else}>normal<{/if}>"><a href="main.php?m=message&s=admin_message_list_outbox"><{$lang.outbox}></a></li>
             </ul>
         </div>
+        <div class="delete">
+            <input type="checkbox" class="checkall" id="checkall"></td>
+            <label for="checkall" class="btn2">全选</label>
+            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
+            <div class="pagination"><{$re.page}></div>
+        </div>
         <table class="table-list-style info">
             <thead>
             <tr>
@@ -112,7 +118,7 @@ $(function(){
             </tr>
             <{/foreach}>
             </tbody>
-            <tfoot>
+           <!--  <tfoot>
             <tr>
                 <td class="tc"><input type="checkbox" class="checkall" id="del"></td>
                 <td colspan="20">
@@ -121,7 +127,7 @@ $(function(){
                 <div class="pagination"><{$re.page}></div>
                 </td>
             </tr>
-            </tfoot>
+            </tfoot> -->
         </table>
      </div>   
 </div>

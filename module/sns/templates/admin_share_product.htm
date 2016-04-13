@@ -9,6 +9,11 @@ $(function(){
                 $(this).attr('checked', _self.checked);
             }
         });
+        if(this.checked){
+            $(".pro-checkbox").addClass("pro-checkbox-checked");
+        }else{
+            $(".pro-checkbox").removeClass("pro-checkbox-checked");
+        }
         $('.checkall').attr('checked', this.checked);
     });
 	 
@@ -29,12 +34,25 @@ $(function(){
 		}
 		return false;
 	});
+
+    $(".pro-checkbox input[type='checkbox']").click(function(){
+        var flag = $(this).attr("checked");
+        if(flag == true)
+        {
+            $(this).parent().addClass("pro-checkbox-checked");
+        }
+        else
+        {
+            $(this).parent().removeClass("pro-checkbox-checked");
+            $(this).parent().parent().parent().removeClass("checked");
+        }
+    });
 });
 </script>
 <div class="path">
     <div>
         <span class="shop"></span>
-    	<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span> 
+    	<a href="main.php?cg_u_type=1">买家中心</a> <span>&gt;</span> 
         收藏商品
     </div>
 </div>
@@ -44,6 +62,7 @@ $(function(){
             <ul class="tabs">
                 <li class="active"><a href="main.php?m=sns&s=admin_share_product">收藏商品</a></li>
                 <li class="normal"><a href="main.php?m=sns&s=admin_share_shop">收藏店铺</a></li>
+                <li class="normal"><a href="main.php?m=product&s=admin_footprint">我的足迹</a></li>
                 <!--<div class="search">
                     <div class="i-search ld">
                     <form method="get">
@@ -57,22 +76,32 @@ $(function(){
                 </div>-->
             </ul>
         </div>
+        <div class="delete">
+            <input type="checkbox" class="checkall" id="checkall"></td>
+            <label for="checkall" class="btn2">全选</label>
+            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
+            <div class="pagination"><{$re.page}></div>
+        </div>
+        <!-- <hr style="border: none;border-top: 1px solid #ccc;"> -->
         <table class="table-list-style share-pro">
             <tr>
                 <td colspan="20" class="pic_model">
                     <ul>
                     <{foreach item=list key=num from=$re.list}>
                     	<li>
-                        <dl>
-                            <dt>
-                           <input type="checkbox" value="<{$list.id}>" class="checkitem" name="chk[]">
-                            <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>"><{$list.pname}></a></dt>
-                            <dd class="picture">
-                                <div><a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>"><img width="150" height="150" src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>"></a></div>
-                                <div class="handle"><a href="main.php?m=sns&s=admin_share_product&type=del&id=<{$list.id}>">删除</a></div>
-                            </dd>
-                            <dd>价格：<em class="price"><{$list.price}></em> 元</dd>
-                        </dl>
+                            <label class="pro-checkbox">
+                                <input type="checkbox" value="<{$list.id}>" class="checkitem" name="chk[]">
+                                <em></em>
+                            </label>
+                            <dl>
+                                <strong>¥<em class="price"><{$list.price}></em></strong>
+                                <dt>
+                                <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>"><{$list.pname}></a></dt>
+                                <dd class="picture">
+                                    <div><a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>"><img width="150" height="150" src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>"></a></div>
+                                    <div class="handle"><a href="main.php?m=sns&s=admin_share_product&type=del&id=<{$list.id}>">删除</a></div>
+                                </dd>
+                            </dl>
                         </li>
                     <{/foreach}>
                     </ul>
@@ -86,17 +115,17 @@ $(function(){
             </tr>
             <{/if}>
             </tbody>
-            <tfoot>
+            <!-- <tfoot>
             <tr>
             	<td width="2"></td>
             	<td>
-                <input type="checkbox" class="checkall">
-                <label for="del" class="btn2">全选</label>
+                <input type="checkbox" class="checkall" id="checkall">
+                <label for="checkall" class="btn2">全选</label>
                 <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
                 <div class="pagination"><{$re.page}></div>
                 </td>
             </tr>
-            </tfoot>
+            </tfoot> -->
         </table>
      </div>   
 </div>
