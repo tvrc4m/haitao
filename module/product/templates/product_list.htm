@@ -10,9 +10,10 @@
         <{foreach item=list key=key from=$catname}>
         
         <{if $key==0 && !$smarty.get.key}>
-        <strong><a href="<{$config.weburl}>?m=product&s=list&id=<{$list}>"><{$list|getName}></a></strong><span>
-        <{else}><b></b><a href="<{$config.weburl}>?m=product&s=list&id=<{$list}>"><{$list|getName}>&nbsp×</a>
-         <!-- <a href="<{$config.weburl}>?m=product&s=list&id=<{$list}>"><{$list|getName}></a> -->
+        <strong><a href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}></a></strong><span>
+        <{else}><b></b><a href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}>&nbsp</a><a
+            href="<{$config.weburl}>?m=product&s=list&id=<{$list.oid}>">×</a>
+          <!--<a href="<{$config.weburl}>?m=product&s=list&id=<{$list}>">ds<{$list|getName}></a>-->
         <{/if}>
         
         <{foreachelse}>
@@ -21,15 +22,15 @@
         <strong><a href="index.php">首页</a></strong><span>
          > <a href="<{$config.weburl}>?m=product&s=list">全部商品</a>
         <{/if}>
-        
         <{/foreach}>
-        
+
         <{if $smarty.get.key}>
          > "<{$smarty.get.key}>"
         <{/if}>
         
         <{if $smarty.get.brand}>
-         <b></b> <a href="<{$config.weburl}>?m=product&s=list&<{$url}>"><{$smarty.get.brand}></a>
+         <b></b> <a href="<{$config.weburl}>?m=product&s=list&<{$url}>"><{$smarty.get.brand}></a><a
+            href="<{$config.weburl}>?m=product&s=list&id=<{$smarty.get.id}>">×</a>
         <{/if}>
         
         </span>
