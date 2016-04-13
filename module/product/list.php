@@ -131,7 +131,14 @@ else
 		if(strlen($id)>4)
 			$catname[]=substr($id,0,-2);
 		$catname[]=$id;
-		$tpl->assign("catname",$catname);
+        foreach($catname as $key => $val){
+            if($key > 0){
+                $newname[$key] = array('id' => $catname[$key], 'oid' => $catname[$key-1]);
+            }else{
+                $newname[$key] = array('id' => $catname[$key], 'oid' => $catname[$key]);
+            }
+        }
+		$tpl->assign("catname",$newname);
 		$cat=readCat($id);
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
@@ -305,7 +312,7 @@ else
 }
 
 $tpl->assign("province",GetDistrict1());
-	$data = $_SERVER['HTTP_REFERER'];
+
 //------------------------------------------------------
 $url=implode('&',convert($_GET));
 $tpl->assign("url",$url);
