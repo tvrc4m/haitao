@@ -361,7 +361,7 @@ class pay
                 "_input_charset"  => 'UTF-8',   					//字符集，默认为GBK
                 "seller_email"    => $configs['seller_email'],    	//卖家邮箱，必填
                 "return_url"      => $configs['return_url'],       	//同步返回
-                "notify_url"      => $config['weburl']."/module/payment/lib/alipay/notify_url.php",       	//异步返回
+                "notify_url"      => $configs['notify_url'],       	//异步返回
                 "out_trade_no"    => $id,     						//商品外部交易号，必填（保证唯一性）
                 "subject"         => $config['company'],  			//商品名称，必填
                 "body"            => $config['company'],     		//商品描述，必填

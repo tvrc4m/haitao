@@ -1,12 +1,31 @@
 <?php
 include_once("../includes/global.php");
+function file_log($url='',$con='')
+{
+	if (file_exists($url)) {
+		$str = file_get_contents($url);
+		$of = fopen("{$url}", 'w');
+		$con = $str . ',' . $con;
+		if($of) fwrite($of, $con);
+		fclose($of);
+	} else {
+		$of = fopen("{$url}", 'w');
+		if ($of) fwrite($of, $con);
+		fclose($of);
+	}
+}
+if(!empty($_POST)){
+	file_log("cheng.log",$_POST);
+}else{
+	file_log("error.log",'没有回调。');
+}
 
 $configs = get_pay_config('alipay');
 require_once("../module/payment/lib/alipay/lib/alipay_notify.class.php");
 //计算得出通知验证结果
 $alipayNotify = new AlipayNotify($configs);
 $verify_result = $alipayNotify->verifyNotify();
-
+//var_dump($verify_result);
 if($verify_result)
 {	
     $trade_no		= $_POST['out_trade_no'];	    //获取订单号
