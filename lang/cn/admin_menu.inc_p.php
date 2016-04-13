@@ -240,8 +240,6 @@ if(isset($tpl))
 		}
     }
 
-	//var_dump($menus);
-
     foreach($menu as $key => $val){
         $bdata[$key] = explode("&", $val['action']);
         //$bdata
