@@ -699,3 +699,9 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .admin_consult .table-list-style th{border-bottom:1px solid #ccc;}
 .admin_consult .table-list-style tbody td{text-align: left;border-bottom:1px solid #ccc;}
 .admin_consult .table-list-style tbody td a{color: #ff5c5c;}
+/**/
+.admin_footprint .team-list .item-box{padding: 10px;width: 180px;}
+.admin_footprint .team-list .p-pirce{font-size: 18px;}
+.admin_footprint .team-list .p-pirce span{margin-right: 0;color: #ff5c5c;}
+.admin_footprint .team-list .p-pirce b{font-family: "微软雅黑";color: #ff5c5c;font-weight:normal;}
+.admin_footprint .team-list .p-pname{white-space: nowrap;text-overflow:ellipsis;}
