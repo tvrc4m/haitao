@@ -119,6 +119,12 @@
 
             html_form("buy", ' 提交佣金结算申请 ', html, 500);
         });
+        var dlSize=$(".dis_dl_tr dl").size();
+        console.log(dlSize)
+        if(dlSize==3){
+          $(".dis_dl dl.dis_dl_bottom").css({"width": "33.33%"});
+          $(".dis_dl dl.dis_dl_bottom").eq(2).css({"border-right": "1px solid #b9b9b9"});
+        }
     });
 </script>
 

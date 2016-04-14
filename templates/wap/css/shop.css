@@ -42,7 +42,7 @@
 .filter li:first-child a{border-radius:5px 0 0 5px;}
 .filter li:last-child a{border-radius:0 5px 5px 0;border-right:1px solid #BDC0C2;}
 .filter li.current a{background:#DB181E;color:#FFF;border-color:#DB1A1F;}
-
+.nav-c{margin-left: 0;}
 .leftcate{position:absolute;right:0;top:0;width:100%;z-index:999;background:#FFF;}
 .leftcate h2{background:#F5F5F5;border-bottom:1px solid #BCBFC6;color:#AAAAAA;font-size:12px;height:32px;line-height:32px;padding:10px 16px;font-size:14px;}
 .leftcate h2 a{border:1px solid #D93438;border-radius:5px 5px 5px 5px;width:60px;height:32px;float:right;background:#D93438;color:#FFF;text-align:center;font-weight:normal;font-size:12px;}

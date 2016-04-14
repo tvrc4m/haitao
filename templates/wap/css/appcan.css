@@ -241,7 +241,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .shopli_bottom_message p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .shopli_top_img{border:1px solid #e0e0e0;}
 #pro_detail .pname_img{font-size: 0.7rem;/*margin-right: 0.5rem;*/color: #ff5c5c;}
-#pro_detail .pname_img img{width: 1rem;vertical-align: -2px;}
+#pro_detail .pname_img img{width: 1rem;vertical-align: 0px;}
 .shopli_kong{text-align: center;font-size: 0.7rem;}
 
 .addcart .cart{float: left; background: url(../../../image/wap/cart-gwc.png) no-repeat;position: relative;width: 32px;height:30px;background-size: cover;margin-top: 10px;margin-left: 20px;}
