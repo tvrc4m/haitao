@@ -85,6 +85,7 @@ function product($ar)
         //==================================================
         $tpl->assign("config",$config);
         $tpl->assign("pro",$re);
+        //var_dump($re);
 
 
     }

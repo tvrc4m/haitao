@@ -42,11 +42,7 @@ $tpl->assign("cg_u_type",$_SESSION['USER_TYPE']);
 
 //-------店铺信息不存在，但是却进入的是卖家的后台，需要申请开店
 
-if ($_GET['action']=='logout')
-{
-
-}
-else
+if ($_GET['action']!='logout')
 {
 	if($is_company==1&&$_SESSION['USER_TYPE']==2&&$_GET['s']!='admin_step'&&$_GET['action']!='msg')
 	{

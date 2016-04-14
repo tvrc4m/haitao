@@ -1,6 +1,6 @@
 <div class="path">
     <div>
-    	<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span>已买到的商品 
+    	<a href="main.php?cg_u_type=1">买家中心</a> <span>&gt;</span>已买到的商品 
     </div>
 </div>
 
@@ -15,7 +15,7 @@
 			</ul>
         </div>
         
-        <div class="searchbar">
+        <!-- <div class="searchbar">
         <form action="main.php" method="get">
         <input type="hidden" name="m" value="product" />
         <input type="hidden" name="s" value="admin_buyorder" />
@@ -169,17 +169,17 @@
 			});
 		});
 		</script>
-        </div>
+        </div> -->
         <table class="table-list-style order">
         	<thead>
-                <tr>
+                <tr style="border:1px solid #ccc;">
                     <th width="*">商品</th>
                     <th width="80">单价(元)</th>
                     <th width="80">数量</th>
                     <th width="100">商品操作</th>
                     <th width="120">实付款(元)</th>
                     <th width="120">交易状态</th>
-                    <th width="120">交易操作</th>
+                    <th width="120" style="border-right:1px solid #ccc;">交易操作</th>
                 </tr>
             </thead>
             <{foreach item=buylist from=$blist.list}>

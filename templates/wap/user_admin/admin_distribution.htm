@@ -5,85 +5,91 @@
 	<section class="nav-s iconfont"><a href="<{$config.weburl}>/main.php"><i class="fanhui_icon"></i></a></section>
 		<section class="nav-c">
             <span class="select">
-                分佣明细
+              分佣明细
             </span>
             <div style="display:none;" class="i-select">
                 <ul>
-                    <li key="" class="sub-line"><a href="main.php?m=product&s=admin_buyorder">分销首页</a></li>
-                  
+                    <li key="" class="sub-line"><a href="main.php?m=product&s=admin_buyorder">分销首页</a></li>                 
                 </ul>
             </div>
         </section>
-        <section class="nav-e"></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 
-<section>
+<section class="dis_container">
     <div class="dis_num">
-        <div class="dis_dl">
-
+        <div class="dis_dl clearfix">
+            <h3>佣金明细</h3>
             <dl>
-                <dt>总佣金</dt>
-                <dd><{$dist_user_row.distribution_user_amount|string_format:"%.2f"}></dd>
+                <dt><{$dist_user_row.distribution_user_amount|string_format:"%.2f"}></dt>
+                <dd>总佣金</dd>
             </dl>
             <dl>
-                <dt>已结算佣金</dt>
-                <dd><{$dist_user_row.distribution_user_settlement_amount|string_format:"%.2f"}></dd>
+                <dt><{$dist_user_row.distribution_user_settlement_amount|string_format:"%.2f"}></dt>
+                <dd>已结算佣金</dd>
             </dl>
-            <dl>
-                <dt>未结算佣金</dt>
-                <dd>
-                    <a id="pay_dist">
-                        <{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}>
-                    </a>
-                </dd>
+            <dl class="dis_dl3">
+                <dt>
+                  <a id="pay_dist">
+                    <{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}>
+                  </a>
+                </dt>
+                <dd>未结算佣金</dd>
             </dl>
 
-
+          <h3>成交量明细</h3>
            <dl>
-               <dt>本店成交</dt>
-               <dd><{$dist_user_row.distribution_shop_amount_0|string_format:"%.2f"}></dd>
+               <dt><{$dist_user_row.distribution_shop_amount_0|string_format:"%.2f"}></dt>
+               <dd>本店成交</dd>
            </dl>
             <dl>
-               <dt>一级成交</dt>
-               <dd><{$dist_user_row.distribution_shop_amount_1|string_format:"%.2f"}></dd>
+               <dt><{$dist_user_row.distribution_shop_amount_1|string_format:"%.2f"}></dt>
+               <dd>一级成交</dd>
            </dl>
-            <dl>
-               <dt>二级成交</dt>
-               <dd><{$dist_user_row.distribution_shop_amount_2|string_format:"%.2f"}></dd>
+            <dl class="dis_dl3">
+               <dt><{$dist_user_row.distribution_shop_amount_2|string_format:"%.2f"}></dt>
+               <dd>二级成交</dd>
            </dl>
             
              <{if $distribution_visit_flag}>
+             <h3>分享明细</h3>
             <dl>
-               <dt>本店分享</dt>
-               <dd><{$dist_user_row.distribution_click_amount_0|string_format:"%.2f"}></dd>
+               <dt><{$dist_user_row.distribution_click_amount_0|string_format:"%.2f"}></dt>
+               <dd>本店分享</dd>
            </dl>
             <dl>
-               <dt>一级分享</dt>
-               <dd><{$dist_user_row.distribution_click_amount_1|string_format:"%.2f"}></dd>
+               <dt><{$dist_user_row.distribution_click_amount_1|string_format:"%.2f"}></dt>
+               <dd>一级分享</dd>
            </dl>
-            <dl>
-               <dt>二级分享</dt>
-               <dd><{$dist_user_row.distribution_click_amount_2|string_format:"%.2f"}></dd>
+            <dl class="dis_dl3">
+               <dt><{$dist_user_row.distribution_click_amount_2|string_format:"%.2f"}></dt>
+               <dd>二级分享</dd>
            </dl>
             <{/if}>
        </div>
 
-        <div class="dis_dl">
-            <dl>
-                <dt>分销级数</dt>
-                <dd>一级 / <{$dist_user_total_row.level_1.num|intval}></dd>
-                <dd>二级 / <{$dist_user_total_row.level_2.num|intval}></dd>
+        <div class="dis_dl dis_dl_tr clearfix">
+            <h3>分销佣金明细</h3>
+            <dl class="dis_dl_bottom">
+                <dt>分销级</dt>
+                <dd class="dis_dl_bottom_dd1">一级分销</dd>
+                <dd>二级分销</dd>
             </dl>
-            <dl>
+            <dl class="dis_dl_bottom">
+                <dt>人数</dt>
+                <dd class="dis_dl_bottom_dd1"><{$dist_user_total_row.level_1.num|intval}></dd>
+                <dd><{$dist_user_total_row.level_2.num|intval}></dd>
+            </dl>
+            <dl class="dis_dl_bottom">
                 <dt>成交佣金</dt>
-                <dd><{$dist_user_total_row.level_1.shop_amount|string_format:"%.2f"}></dd>
+                <dd class="dis_dl_bottom_dd1"><{$dist_user_total_row.level_1.shop_amount|string_format:"%.2f"}></dd>
                 <dd><{$dist_user_total_row.level_2.shop_amount|string_format:"%.2f"}></dd>
             </dl>
             <{if $distribution_visit_flag}>
-            <dl>
+            <dl class="dis_dl_bottom">
                 <dt>分享佣金</dt>
-                <dd><{$dist_user_total_row.level_1.click_amount|string_format:"%.2f"}></dd>
+                <dd class="dis_dl_bottom_dd1"><{$dist_user_total_row.level_1.click_amount|string_format:"%.2f"}></dd>
                 <dd><{$dist_user_total_row.level_2.click_amount|string_format:"%.2f"}></dd>
             </dl>
             <{/if}>
