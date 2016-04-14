@@ -1,7 +1,7 @@
 <?php
 $menu=array(
 	'main'=>array(
-			'name'=>'首页',
+			'name'=>'买家中心',
 			'action'=>'main',
 			'sub'=>array(
 				array(
@@ -239,8 +239,6 @@ if(isset($tpl))
 			}
 		}
     }
-
-	//var_dump($menus);
 
     foreach($menu as $key => $val){
         $bdata[$key] = explode("&", $val['action']);
