@@ -6,7 +6,7 @@ else
 
 if(!empty($_GET['forward'])&&strpos($_GET['forward'],'script')>0)
     header("Location:login.php");
-
+setcookie('old_url',$_SERVER[HTTP_REFERER]);
 if(!empty($post["action"])&&$post["action"]=="submit")
 {
     include_once("includes/global.php");
@@ -111,8 +111,10 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                 else
                     login($re['userid'],$re['user']);
 
-                $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
-                msg($forward);
+                /*$forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+                msg($forward);*/
+                msg($_COOKIE['old_url']);
+                setcookie("old_url");
             }
         }
         else
