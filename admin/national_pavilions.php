@@ -1,43 +1,33 @@
 <?php
-include_once("../includes/global.php"); 
+include_once("../includes/global.php");
 include_once("../includes/page_utf_class.php");
+include_once("../includes/smarty_config.php");
 $script_tmp = explode('/', $_SERVER['SCRIPT_NAME']);
 $sctiptName = array_pop($script_tmp);
 @include_once("auth.php");
-
+if(isset($_GET['natadd'])&&$_GET['natadd']=='add'){
+    $tpl->display('newadd.htm');
+    die;
+}
 //====================================
-if(!empty($_POST['title'])&&!empty($_FILES))
+if(!empty($_POST['title']))
 {
-	include('../lib/allchar.php');
-    $file = $_FILES['img'];
-    $uploaddir = "../uploadfile/national/";//设置文件保存目录
-    $type=array("jpg","gif","jpeg","png");//设置允许上传文件的类型
-    $fileext = substr(strrchr($file[name], '.'), 1);
-    if(!in_array(strtolower($fileext), $type)){
-        echo "<script>alert('图片格式不支持！');</script>";
-    }
-    if($file[size]>721200){
-        echo "<script>alert('图片格太大！');</script>";
-    }
-    $dir = $uploaddir.md5($file[name]).'.'.$fileext;
-    if(move_uploaded_file($file[tmp_name], $dir)){
-        $img = '/uploadfile/national/'.md5($file[name]).'.'.$fileext;
-        $title = trim($_POST[title]);
-        $char = c($title);
-        $sql="insert into ".NATIONAL." (title,char_index,img) value ('$title','$char','$img') ";
-        if($db->query($sql)){
-            echo "<script>alert('上传成功！');</script>";
-        }else{
-            echo "<script>alert('系统忙，请稍后上传！');</script>";
-        }
+    $img = trim($_POST['img']);
+    $title = trim($_POST['title']);
+   // echo $char = c($title);
+    $sql="insert into ".NATIONAL." (title,char_index,img) value ('$title','$char','$img') ";
+
+    if($db->query($sql)){
+        echo "<script>alert('上传成功！');</script>";
     }else{
-        echo "<script>alert('上传失败，请重新上传！');</script>";
+        echo "<script>alert('系统忙，请稍后上传！');</script>";
     }
+
 	/*$ar=explode(',',$_POST['title']);
 	foreach($ar as $v)
 	{
 		$v=trim($v);
-		$char=c($v);		
+		$char=c($v);
 		$sql="insert into ".NATIONAL." (title,char_index) value ('$v','$char') ";
 		$db->query($sql);
 	}*/
@@ -77,6 +67,11 @@ $re=$db->getRows();
 <TITLE><?php echo lang_show('admin_system');?></TITLE>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <link href="main.css" rel="stylesheet" type="text/css" />
+    <style>
+        .newadd {list-style: none; float:left; margin-left: -1400px; margin-top: 8px;}
+        .newaddli {float: left; padding: 5px 10px;}
+        .dela {text-decoration: none; color: #5F718B;}
+    </style>
 </head>
 <body>
 <script type="text/javascript">
@@ -93,6 +88,11 @@ function checkall()
 </script>
 <div class="bigbox">
 	<div class="bigboxhead">热门国家馆</div>
+	<ul class="newadd">
+        <li class="newaddli"><a class="dela" href="/admin/national_pavilions.php?natadd=add">新增国家馆</a></li>
+        <li class="newaddli"><a class="dela" href="">国家馆列表</a></li>
+    </ul>
+
 	<div class="bigboxbody">
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
