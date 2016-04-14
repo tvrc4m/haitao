@@ -116,6 +116,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 	$prolist['page']  = $page->prompt();
 	$prolist['count'] = $res['total'];
 	$tpl->assign("info", $prolist);
+
 	unset($prolist);
 }
 else
@@ -240,15 +241,14 @@ else
 	$page->url=$config['weburl'].'/';
 	$page->listRows=16;
 	if(empty($cat['ext_field_cat']))
-		$sql="SELECT a.id,a.name as pname,a.price,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
+		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
-		$sql="SELECT a.id,a.name as pname,a.price,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1 $ext_sql $scl";
+		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1 $ext_sql $scl";
 	if(!$page->__get('totalRows'))
 	{
 		$db->query($sql);
 		$page->totalRows =$db->num_rows();
 	}
-
 	$sql.=" limit ".$page->firstRow.",".$page->listRows;
 //--------------------------------------------------
 	$db->query($sql);
@@ -259,7 +259,14 @@ else
         $res = $db->fetchRow();
         $prol[$key]['con'] = $res ? $res : 0;
 	}
-	//var_dump($prol);
+
+	foreach($prol as $key => $val){
+		$sql = "select title,char_index,img from mallbuilder_national_pavilions where id = ".$val['national'];
+		$db->query($sql);
+		$res = $db->fetchRow();
+		$prol[$key]['nat'] = $res ? $res : "";
+	}
+
 	fb($prol);
 
 
@@ -308,6 +315,8 @@ else
 	$prolist['page']=$page->prompt();
 	$prolist['count']=$page->totalRows;
 	$tpl->assign("info",$prolist);
+	//echo '<pre>';
+	//var_export($prolist);//die;
 	unset($prolist);
 }
 

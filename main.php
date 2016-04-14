@@ -191,14 +191,16 @@ switch ($action)
 					$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '2' ";
 					$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '3' ";
 					$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '4' and buyer_comment='0' and seller_comment = '0' ";
+					$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' ";
 
 					foreach($sqls as $val)
 					{
 						$db->query($val);
-						$count[] = $db->num_rows();
+                        $count[] = $db->num_rows();
 					}
 
 					$admin->tpl->assign("shop_count",$count);
+
 					$page="user_admin/admin_main_p.htm";
 				}
 				else
@@ -262,7 +264,15 @@ switch ($action)
 		}
 	}
 }
+
+//身份证认证
+$sql = "select identity_verify from pay_member where userid = $buid";
+$db -> query($sql);
+$num = $db -> fetchRow();
+$num = $num['identity_verify'] == 'true' ? 1 : 0 ;
+
 $tpl->assign("lang",$lang);
+$tpl->assign("verify",$num);
 $tpl -> assign("menus",$nav_menu);
 include_once("footer.php");
 if(!empty($nohead))
