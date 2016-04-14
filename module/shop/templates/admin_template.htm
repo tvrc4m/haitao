@@ -16,16 +16,18 @@
         <div class="templet">
         <{foreach item=list key=num from=$templist.list}>
         <{if $de.template==$list.temp_file||($de.template==''&&$list.temp_file=='user_templates_default')}>
+        <div class="theme">
             <div class="nonce"> <a target="_blank" href="shop.php?uid=<{$buid}>&template=<{$list.temp_file}>"><img width="200" height="200" src="templates/<{$list.temp_file}>/img/temp.jpg"></a></div>
             <div class="txt">
                 <p><{$lang.store_name}><span><{$de.company}></span></p>
                 <p><{$lang.shop_template_name}><b><{$list.name}></b></p>
                 <p>模版风格：<b><{$list.style}></b></p>
             </div>
+        </div>
         <{/if}>
         <{/foreach}>
         </div>
-        <h5 style=" font-size:12px; "><{$lang.available_topics}></h5>
+        <!-- <h5 style=" font-size:12px; "><{$lang.available_topics}></h5> -->
         <div class="motif">
             <ul>
                 <{foreach item=list key=num from=$templist.list}>
