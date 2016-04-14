@@ -32,7 +32,7 @@
         <div class="t_slide pos_re" id="hj_slide">
             <ul class="clearfix slides">
             <{foreach item=pic key=num from=$de.pic_more}>
-                <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>" big="<{$pic}>" width="320" height="320" class="jqzoom-img"></li>
+                <li class="<{if $num==0}>hover<{/if}>"><img class="jqzoom-img scrollLoading" data-url="<{$pic}>" src="../../../image/wap/wap_haitao_touming.png" big="<{$pic}>" width="320" height="320"></li>
             <{/foreach}>
             </ul>
             <div class='dot'></div>
@@ -76,11 +76,7 @@
             <div class="select_guanshui clearfix">
                 <div><span>邮费：</span><span>满88包邮</span></div>
                 <div class="select_duty_context">
-                    <div><span>关税：</span><span class="select_guanshui_ic">若订单关税≤50元则免征，关税收取规则</span></div>
-                    <div class="select_duty">
-                        <i></i>
-                        <p>关税应纳税额=应税进（出）口货物数量*单位完税价格*适用税率 </p>
-                    </div>
+                    <div><span>关税：</span><span class="select_guanshui_ic">根据海关总署要求计算所得的跨境电商综合税</span></div>
                 </div>
             </div>
         </div>
@@ -158,13 +154,13 @@
             </dl>
         </div>
     </div>
-    <div style="height:0px;border-top:1px solid #ccc;"></div>
+    <!-- <div style="height:0px;border-top:1px solid #ccc;"></div> -->
     <div class="clearfix"></div>
     <div class="c-wh bgw c-wh-commit clearfix">
-        <div class="c-wh-commit-gao clearfix">
+        <!-- <div class="c-wh-commit-gao clearfix">
             <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
-        </div>
-        <img src="../../../image/wap/wap_haitao_fuwuc.jpg" alt="品牌服务承诺">
+        </div> -->
+        <img src="../../../image/wap/wap_haitao_logo5.jpg" alt="品牌服务承诺">
     </div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
@@ -220,7 +216,18 @@
             </div>          
         </div>
     </div>
+    <div class="notice_container">
+        <h3>消费者告知书</h3>
+        <div>尊敬的客户：</div>
+        <p>您好！</p>
+        <p>在您选购境外商品前，麻烦您仔细阅读此文，同意本文所告知内容后再进行下单购买：</p>
+        <p>1、您在本（公司）网站上购买的境外商品为产地直销商品，仅限个人自用不得进行销售，商品本身可能无中文标签，您可以产看网站的翻译或在线联系我们的客服。</p>
+        <p>2、您购买的境外商品适用的品质、健康、标识等项目适用标准或与我国标准有所不同，所以在使用过程中由此可能产生的危害或损失以及其他风险，将由您个人承担。</p>
+        <p class="notice_container_test">谢谢</p>
+        <p>蚂蚁在线（北京）科技有限公司</p>
+    </div>
     <div class="qg_bottom">
+        <!-- <img src="../../../image/wap/wap_haitao_shu.jpg"> -->
         <img src="../../../image/wap/wap_haitao_qg.jpg">
     </div>
    <!--  <div style="height:50px" class="hidden_jianxi"></div> -->
@@ -232,6 +239,7 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript">
     window.jsVersion = "7b3d28d5da";
     require.config({
@@ -358,9 +366,13 @@ function check_nums()
         $(".collect_box_out").remove();
     }
     $(function(){
-        $("ul[genre*=property]").each(function(index){
-            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked");   
-        })      
+        $("dl ul[genre*=property]").each(function(index){
+            // var a=$(this).find("li").size();
+            // if(a==1){
+            //     $(this).find("li").eq(0).find("a").addClass("checked"); 
+            // }
+            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
+        })    
     })
     function collect_goods(id){
         collect_altr(".col")
@@ -434,25 +446,9 @@ function check_nums()
     $(".incar_c").click(function(){
         buy();
     })
-    function buy()
-    {
-        var B = false;
-        $('ul[genre="property"]').each(function(){
-            if(!$(this).find('a').hasClass('checked')){
-                B = true;
-            }
-        });
-        if (goodsspec.getSpec() == null || B)
-        {
-            alert('请选择相关规格');
-        }
-        else
-        {
-            $("#form").submit();
-            return !B;
-        }
+    function buy(){
+        $("#form").submit();
     }
-
     /* spec对象 */
     function spec(id, spec, price, stock, code)
     {
@@ -506,6 +502,7 @@ function check_nums()
         $(obj).parents('li').siblings().find('a').removeClass("checked");
 
         var spec = goodsspec.getSpec();
+         console.log(goodsspec.getSpec())
         var sign = 't';
         $('ul[genre="property"]').each(function(){
             if(!$(this).find('a').hasClass('checked')){
