@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>国家馆</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="admin.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../script/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="../script/jquery.validation.min.js"></script>
+    <script src="../script/my_lightbox.js" language="javascript"></script>
+    <script language="javascript" src="../script/Calendar.js"></script>
+    <script language="javascript">
+        var weburl="";
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="flow">
+        <div class="itemtitle">
+            <h3>添加国家馆</h3>
+            <ul>
+                <li ><a href="/admin/national_pavilions.php?natadd=add"><span>新增国家馆</span></a></li>
+
+                <li ><a href="/admin/national_pavilions.php"><span>国家馆列表</span></a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="h35"></div>
+
+    <form name="form" id="form" method="post"  action="/admin/national_pavilions.php">
+        <table class="table table1">
+            <tbody>
+            <tr>
+                <td width="100">国家馆名称</td>
+                <td>
+                    <input name="title" id="name" type="text" class="w350" value=""><div id="form-error" class="form-error"></div>
+                </td>
+            </tr>
+            <tr id="tr1" >
+                <td>图片</td>
+                <td>
+                    <input name="img" class="w350" type="text" id="pic" value="" />
+                    [<a href="javascript:uploadfile('国家馆LOGO','pic','','','adv')">上传</a>]
+                    [<a href="javascript:preview('pic');">预览</a>]
+                    [<a onclick="javascript:$('#pic').val('');" href="#">删除</a>]
+                    <div id="form-error" class="form-error"></div>
+                </td>
+            </tr>
+            <tr id="tr2" class="hidden">
+                <td>文本</td>
+                <td>
+                    <textarea class="w343" name="con"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="submit" type="submit" value="提交">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<script>
+    $('#form').submit(function(){
+        var title = $('#name').val().trim();
+        var pic = $('#pic').val().trim();
+        if(title == ''){
+            alert('请填写国家馆名称');
+            return false;
+        }
+        if(pic == ''){
+            alert('请上传图片');
+            return false;
+        }
+    });
+
+</script>
+</body>
+</html>
