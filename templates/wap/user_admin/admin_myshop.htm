@@ -123,13 +123,13 @@ function msgs(id,msg)
                 <input type="hidden" name="street" id="id_4" value="<{$de.streetid}>" />
                 <{if $de.area}><input disabled type="text" value="<{$de.area}>" style="width:80%;"/><a class="upload-button" href="javascript:sd();"><img src="image/default/user_admin/edit.png" width="18"/> 编辑</a><{/if}>
                 <div id="d_2" <{if $de.area}>class="hidden"<{/if}>>
-                <select id="select_1" onChange="district(this);" style="width:95%;margin-bottom:15px;border:1px solid #b9b9b9;border-radius:4px;" class="select1">
+                <select id="select_1" onChange="district(this);" style="width:95%;margin-bottom:15px;" class="select1 select-common">
                 <option value="">所在地区（必填）</option>
                 <{$prov}>
                 </select>
-                <select id="select_2" onChange="district(this);" class="hidden select1" style="width:90%;margin-bottom:15px;"></select>
-                <select id="select_3" onChange="district(this);" class="hidden select1" style="width:90%;margin-bottom:15px;"></select>
-                <select id="select_4" onChange="district(this);" class="hidden select1" style="width:90%;margin-bottom:15px;"></select>			
+                <select id="select_2" onChange="district(this);" class="hidden select-common" style="width:90%;margin-bottom:15px;"></select>
+                <select id="select_3" onChange="district(this);" class="hidden select-common" style="width:90%;margin-bottom:15px;"></select>
+                <select id="select_4" onChange="district(this);" class="hidden select-common" style="width:90%;margin-bottom:15px;"></select>			
                 </div>
           		</p>
                </div>
@@ -154,67 +154,5 @@ function msgs(id,msg)
             <p class="shop_step_title" style="width:95%;"><input type="submit" value="提交设置" class="submit" /></p>
         
             </form>
-        </div>  
-        
+        </div>          
    </div>
-<script type="text/javascript">
-	// var map = new BMap.Map("allmap");
-
-	// map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
-
-	// var lng = "<{$de.lng}>";
-	// var lat = "<{$de.lat}>";
-
-	// lng = lng ? lng : 116.404;
-	// lat = lat ? lat : 39.915;
-
-	// var myGeo = new BMap.Geocoder();
-	// map.centerAndZoom(new BMap.Point(lng, lat), 16);
-	// var npoint = new BMap.Point(lng,lat)
-	// var marker = new BMap.Marker(npoint);  // 创建标注
-	// 	map.addOverlay(marker);              // 将标注添加到地图中
-	// 	map.panTo(npoint); 
-
-	// $("select#select_1").change(function(){
-	// 	str = $("select#select_1").find("option:selected").text()
-	// 	myGeo.getPoint(str, function(point){
-	// 	if(point) {
-	// 			map.centerAndZoom(point, 16);
-	// 		}
-	// 	})
-	// })
-	// $("select#select_2").change(function(){
-	// 	str += $("select#select_2").find("option:selected").text()
-	// 	myGeo.getPoint(str, function(point){
-	// 	if(point) {
-	// 			map.centerAndZoom(point, 16);
-	// 		}
-	// 	})
- //    	})
-	// $("select#select_3").change(function(){
-	// 	str += $("select#select_3").find("option:selected").text()
-	// 	myGeo.getPoint(str, function(point){
-	// 	if(point) {
-	// 			map.centerAndZoom(point, 16);
-	// 		}
-	// 	})
-	// })
-	// $("select#select_4").change(function(){
-	// 	str += $("select#select_4").find("option:selected").text()
-	// 	myGeo.getPoint(str, function(point){
-	// 	if(point) {
-	// 			map.centerAndZoom(point, 16);
-	// 		}
-	// 	})
-	// })
-	// function showInfo(e){
-	// 	$("#lng").val(e.point.lng)
-	// 	$("#lat").val(e.point.lat)
-	// 	map.clearOverlays(); 
-	// 	var new_point = new BMap.Point(e.point.lng,e.point.lat)
-	// 	var marker = new BMap.Marker(new_point);  // 创建标注
-	// 	map.addOverlay(marker);              // 将标注添加到地图中
-	// 	map.panTo(new_point); 
-	// }
-	// map.addEventListener("click", showInfo);
-</script>
