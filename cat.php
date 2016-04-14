@@ -42,7 +42,6 @@ foreach($re as $key=>$v)
 	$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,4";
 	$db->query($sql);
 	$sre=$db->getRows();
-
 	foreach($sre as $skey=>$sv)
 	{
 		$s=$sv["catid"]."00";
@@ -56,13 +55,14 @@ foreach($re as $key=>$v)
 			$db->query($sql);
 			$sre[$skey]["brand"]=$db->getRows();
 		}
+        $sre[$skey]['pid'] = $v['catid'];
 	}
 	$re[$key]["scat"]=$sre;
 }
 $tpl->assign("config",$config);
 $tpl->assign("cat",$re);
 //echo "<pre>";
-//var_export($re);
+//var_export($re);die;
 $config['title']=$de['title'];
 $config['keyword']=$de['keywords'];
 $config['description']=$de['description'];

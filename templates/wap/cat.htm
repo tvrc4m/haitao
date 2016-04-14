@@ -26,7 +26,7 @@
 <div class="cat-container">
 	<{foreach item=list key=num from=$cat}>
 		<{foreach item=lists key=numk from=$list.scat}>
-			<div class="cat-container-list">
+			<div class="cat-container-list" pid="a<{$lists.pid}>">
 				<h2><{$lists.cat}></h2>
 				<ul class="clearfix">
 					<{foreach item=slist key=numk from=$lists.scat}>

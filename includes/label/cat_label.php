@@ -29,20 +29,19 @@ function cat($ar)
 		$sql="select catid,cat,pic from ".PCAT." $sql WHERE $str and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc , catid limit 0,13";
 		$db->query($sql);
 		$re=$db->getRows();
-
 		foreach($re as $key=>$v)
 		{
 			$s=$v['catid']."00";
 			$b=$v['catid']."99";
 			$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,4";
+
 			$db->query($sql);
 			$sre=$db->getRows();
-
 			foreach($sre as $skey=>$sv)
 			{
 				$s=$sv["catid"]."00";
 				$b=$sv["catid"]."99";
-				$sql="select catid,cat,pic from ".PCAT." where `isindex` = 1 and catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,12";
+				$sql="select catid,cat from ".PCAT." where `isindex` = 1 and catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,12";
 				$db->query($sql);
 				$sre[$skey]["scat"]=$db->getRows();
 				if($sv['brand'])
@@ -56,8 +55,6 @@ function cat($ar)
 		}	
 		$tpl->assign("config",$config);
 		$tpl->assign("cat",$re);
-		/*echo '<pre>';
-		var_export($sre);*/
 	}
 	return $tpl->fetch($ar['temp'].'.htm',$flag);
 }
