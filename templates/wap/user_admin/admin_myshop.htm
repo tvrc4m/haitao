@@ -123,13 +123,15 @@ function msgs(id,msg)
                 <input type="hidden" name="street" id="id_4" value="<{$de.streetid}>" />
                 <{if $de.area}><input disabled type="text" value="<{$de.area}>" style="width:80%;"/><a class="upload-button" href="javascript:sd();"><img src="image/default/user_admin/edit.png" width="18"/> 编辑</a><{/if}>
                 <div id="d_2" <{if $de.area}>class="hidden"<{/if}>>
-                <select id="select_1" onChange="district(this);" style="width:95%;margin-bottom:15px;" class="select1 select-common">
-                <option value="">所在地区（必填）</option>
-                <{$prov}>
-                </select>
-                <select id="select_2" onChange="district(this);" class="hidden select-common" style="width:90%;margin-bottom:15px;"></select>
-                <select id="select_3" onChange="district(this);" class="hidden select-common" style="width:90%;margin-bottom:15px;"></select>
-                <select id="select_4" onChange="district(this);" class="hidden select-common" style="width:90%;margin-bottom:15px;"></select>			
+	                <select id="select_1" onChange="district(this);" style="width:95%;margin-bottom:15px;" class="select1 select-common">
+	                <option value="">所在地区（必填）</option>
+	                <img src="/image/wap/wap_haitao_icon42.png">
+	                <{$prov}>
+	                </select>
+	                <select id="select_2" onChange="district(this);" class="hidden select-common select2" style="width:90%;margin-bottom:15px;"></select>
+	                <select id="select_3" onChange="district(this);" class="hidden select-common select3" style="width:90%;margin-bottom:15px;"></select>
+	                <select id="select_4" onChange="district(this);" class="hidden select-common select4" style="width:90%;margin-bottom:15px;"></select>
+	                <div class="select_icon"></div>			
                 </div>
           		</p>
                </div>

@@ -118,8 +118,12 @@ select.icon6{background: #fff url(../../../image/wap/wap_haitao_icon36.png) 0.7r
 .wrap select,.select1 {width: 100%;color: #909090;font: 0.7rem "Microsoft Yahei";-webkit-appearance: button;border: 0;padding: 0.7rem 0;margin: 0;outline: 0;border-radius: 0;padding-left:0.5rem;}
 #d_2{position: relative;}
 .wrap .select-common{border:1px solid #b9b9b9;border-radius:4px;}
-.wrap .select1{background: #fff url(../../../image/wap/wap_haitao_icon36.png) 0.7rem center no-repeat;background-size: 0.9rem;padding-left:2.3rem;}
-#d_2:after{position: absolute;right: 1.4rem;top: 0.8rem; content: "";width: 1rem;height: 1rem;display: inline-block; background:url(../../../image/wap/wap_haitao_icon42.png) center right no-repeat;background-size: 0.9rem;}
+.wrap .select1{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:2.3rem;}
+.wrap .select2{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;margin-left: 5%}
+.wrap .select3{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;margin-left: 5%}
+.wrap .select4{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;margin-left: 5%}
+
+.select_icon{position: absolute;left: 0.8rem;top:0.7rem;width: 0.9rem;height: 1.2rem;display: inline-block; background:url(../../../image/wap/wap_haitao_icon36.png) center right no-repeat;background-size: contain;}
 .wrap select{width: 90%;font:12px;}
 .mobile_shop_step0{width: 98%;margin: 0 auto;border: 0;}
 
