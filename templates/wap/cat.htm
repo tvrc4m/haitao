@@ -9,20 +9,15 @@
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/help.css" rel="stylesheet" type="text/css" />
 <section>
-<ul class="cat-banner clearfix">
-	<!-- <{foreach item=list from=$cat}>
-	<li><a href="<{if $list.count>0}>cat.php?id=<{else}>index.php?m=product&s=list&id=<{/if}><{$list.catid}>"><{$list.cat}></a></li>
-	<{/foreach}> -->
-	<!--<li class="current"><a href="javascript:void(0);">母婴产品</a></li>
-	<li><a href="javascript:void(0);">美妆个护</a></li>
-	<li><a href="javascript:void(0);">日用百货</a></li>
-	<li><a href="javascript:void(0);">食品保健</a></li>-->
-	<{foreach item=list key=num from=$cat}>
-		<{if $num < 4 }>
-		<li class="<{if $num == 0 }>current<{/if}>"><a href="javascript:void(0);"  ><{$list.cat}></a></li>
-		<{/if}>
-	<{/foreach}>
-</ul>
+	<div class="cat-banner-out">
+		<ul class="cat-banner clearfix">
+			<{foreach item=list key=num from=$cat}>
+				<{if $num < 4 }>
+				<li class="<{if $num == 0 }>current<{/if}>"><a href="javascript:void(0);"  ><{$list.cat}></a></li>
+				<{/if}>
+			<{/foreach}>
+		</ul>
+	</div>
 <div class="cat-container">
 	<{foreach item=list key=num from=$cat}>
 		<{foreach item=lists key=numk from=$list.scat}>
@@ -48,8 +43,8 @@ $(function(){
 		var h = $(document).scrollTop();
 		if(h > 50)
 		{
-			$(".cat-banner").css({"position":"fixed","top":"51px","width":"100%","z-index":"9999"})
-			$(".cat-container").eq(0).css({"margin-top":"50px"})
+			$(".cat-banner-out").css({"position":"fixed","top":"50px","width":"100%","z-index":"9999","background-color":"#fff","margin-top":"0px"})
+			$(".cat-container").eq(0).css({"margin-top":"65px"})
 		}
 	})
 	$(".cat-container div").hide();

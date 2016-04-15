@@ -15,17 +15,19 @@
     <div class="c-wh bgw">
         <div class="addcart clearfix">
             <a class="cart" href="/?m=product&s=cart">
-                <span class="cart-num-cont">
+                <span class="cart-num-cont" id='cart_num'>
                     <span class="cart-num"></span>
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
+            <{if $de.is_virtual neq 1}>
             <a class="incar incar_c add-cart" href="javascript:void(0)">加入购物车</a>
+            <{/if}>
         </div>
     </div>
 </div>
-<form id="form" name="form" action="<{$config.weburl}>/?m=product&s=cart<{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
+<form id="form" onsubmit="return buy()" name="form" action="<{$config.weburl}>/?m=product&s=<{if $de.is_virtual}>confirm_virtual_order<{else}>confirm_order<{/if}><{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
 <input name="dist_user_id" type="hidden" value="<{$smarty.get.shop_id}>" />
 <div class="ub ub-ver" id="pro_detail">
     <div class="c-wh bgw">
@@ -53,12 +55,13 @@
             </div>
                 <div id="price">
                     <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></span>
-                    <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num"><{$de.market_price|number_format:2}></span></span>
+                    <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>
                     <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
                 </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
         </div>
+        <div id="cart_show" style="display:none;"></div>
     </div>
 	<{if $de.activity_list}>
 		<div class="c-wh bgw">
@@ -128,7 +131,7 @@
                     <ul class="shoplist">
                         <{foreach item=list key=num from=$relation}>
                             <li class="shopli clearfix">
-                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
+                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_top_as">
                                     <div class="shopli_top_img shopli_top_imgs">
                                         <img src="<{$list.pic}>"/>
                                     </div>
@@ -224,6 +227,12 @@
     <input name="id" type="hidden" value="<{$de.id}>" />
     <input name="sid" id="sid" type="hidden" value="0" />
     <input name="sku" id="sku" type="hidden" value="0" />
+    <{if $de.is_virtual}>
+    <input name="is_virtual" type="hidden" value="1" />
+    <{if $de.discounts}>
+    <input name="discounts" type="hidden" value="<{$de.discounts}>" />
+    <{/if}>
+    <{/if}>
 </div>
 </form>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
@@ -305,27 +314,6 @@ function check_nums()
         return false;
     }
 }
-// function distribute_goods(id){
-//         var url = '<{$config.weburl}>/module/distribution/add.php';
-//         var uname='<{$smarty.cookies.USER}>';
-//         if(uname=='')
-//         {
-//             alert('请先登录！');
-//             window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-//             return false;
-//         }
-//         var pars = 'pid='+id+'&uname='+uname;
-//         $.post(url, pars,showResponse);
-//         function showResponse(originalRequest)
-//         {
-//             if(originalRequest>1)
-//                 alert('成功添加至我的分销!');
-//             else if (originalRequest>0)
-//                 alert('该内容已经在你的分销中心，请勿重复添加！');
-//             else
-//                 alert('参数传递错误，无法完成操作!');
-//         }
-//     }
 </script>
 <script>
     function collect_altr(cla){
@@ -426,7 +414,7 @@ function check_nums()
             else if (originalRequest>0){
                 altto('该内容已经在你的分销中心<br>请勿重复添加！');
                
-            }
+            }  
             else{
                 altto('参数传递错误<br>无法完成操作!');
               
@@ -434,10 +422,35 @@ function check_nums()
         }
     }
     $(".incar_c").click(function(){
-        buy();
+        if ('<{$com.company}>' == '<{$smarty.cookies.USER}>的小店') {
+            alert('不能购买自己店铺的商品！');
+            return;
+        }
+        flag = buy();
+        if (flag) {
+            var price = $('#price').html();
+            var num = $('#nums').val();
+            $("#cart_num").text(parseInt($('#nums').val())+parseInt($('#cart_num').text()));
+            var sid = $('#sid').val();
+            var pid = '<{$smarty.get.id}>';
+            console.log(sid)
+            var dist_user_id = '<{$smarty.get.shop_id}>';
+            $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
+            return false;
+        }
     })
     function buy(){
-        $("#form").submit();
+        var flag = false;
+        if (goodsspec.getSpec() == null || flag)
+        {
+            alert('请选择相关规格');
+            return !flag;
+        }
+        else
+        {
+            return !flag;
+        }
+       // $("#form").submit();
     }
     /* spec对象 */
     function spec(id, spec, price, stock, code)

@@ -239,7 +239,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .shopli_bottom_rob{padding-left:5px;padding-right: 5px;}
 .shopli_bottom_message{padding-left:5px;padding-right: 5px;}
 .shopli_bottom_message p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-.shopli_top_img{border:1px solid #e0e0e0;}
+.shopli_top_img{border:1px solid #b9b9b9;}
 #pro_detail .pname_img{font-size: 0.7rem;/*margin-right: 0.5rem;*/color: #ff5c5c;}
 #pro_detail .pname_img img{width: 1rem;vertical-align: 0px;}
 .shopli_kong{text-align: center;font-size: 0.7rem;}
