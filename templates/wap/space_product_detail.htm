@@ -15,24 +15,26 @@
     <div class="c-wh bgw">
         <div class="addcart clearfix">
             <a class="cart" href="/?m=product&s=cart">
-                <span class="cart-num-cont">
+                <span class="cart-num-cont" id='cart_num'>
                     <span class="cart-num"></span>
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
+            <{if $de.is_virtual neq 1}>
             <a class="incar incar_c add-cart" href="javascript:void(0)">加入购物车</a>
+            <{/if}>
         </div>
     </div>
 </div>
-<form id="form" name="form" action="<{$config.weburl}>/?m=product&s=cart<{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
+<form id="form" onsubmit="return buy()" name="form" action="<{$config.weburl}>/?m=product&s=<{if $de.is_virtual}>confirm_virtual_order<{else}>confirm_order<{/if}><{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
 <input name="dist_user_id" type="hidden" value="<{$smarty.get.shop_id}>" />
 <div class="ub ub-ver" id="pro_detail">
     <div class="c-wh bgw">
         <div class="t_slide pos_re" id="hj_slide">
             <ul class="clearfix slides">
             <{foreach item=pic key=num from=$de.pic_more}>
-                <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>" big="<{$pic}>" width="320" height="320" class="jqzoom-img"></li>
+                <li class="<{if $num==0}>hover<{/if}>"><img class="jqzoom-img scrollLoading" data-url="<{$pic}>" src="../../../image/wap/wap_haitao_touming.png" big="<{$pic}>" width="320" height="320"></li>
             <{/foreach}>
             </ul>
             <div class='dot'></div>
@@ -53,12 +55,13 @@
             </div>
                 <div id="price">
                     <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></span>
-                    <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num"><{$de.market_price|number_format:2}></span></span>
+                    <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>
                     <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
                 </div>
                 <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
         </div>
+        <div id="cart_show" style="display:none;"></div>
     </div>
 	<{if $de.activity_list}>
 		<div class="c-wh bgw">
@@ -76,11 +79,7 @@
             <div class="select_guanshui clearfix">
                 <div><span>邮费：</span><span>满88包邮</span></div>
                 <div class="select_duty_context">
-                    <div><span>关税：</span><span class="select_guanshui_ic">若订单关税≤50元则免征，关税收取规则</span></div>
-                    <div class="select_duty">
-                        <i></i>
-                        <p>关税应纳税额=应税进（出）口货物数量*单位完税价格*适用税率 </p>
-                    </div>
+                    <div><span>关税：</span><span class="select_guanshui_ic">根据海关总署要求计算所得的跨境电商综合税</span></div>
                 </div>
             </div>
         </div>
@@ -132,8 +131,8 @@
                     <ul class="shoplist">
                         <{foreach item=list key=num from=$relation}>
                             <li class="shopli clearfix">
-                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
-                                    <div class="shopli_top_img">
+                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_top_as">
+                                    <div class="shopli_top_img shopli_top_imgs">
                                         <img src="<{$list.pic}>"/>
                                     </div>
                                     <div class="shopli_bottom clearfix">
@@ -158,13 +157,13 @@
             </dl>
         </div>
     </div>
-    <div style="height:0px;border-top:1px solid #ccc;"></div>
+    <!-- <div style="height:0px;border-top:1px solid #ccc;"></div> -->
     <div class="clearfix"></div>
     <div class="c-wh bgw c-wh-commit clearfix">
-        <div class="c-wh-commit-gao clearfix">
+        <!-- <div class="c-wh-commit-gao clearfix">
             <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
-        </div>
-        <img src="../../../image/wap/wap_haitao_fuwuc.jpg" alt="品牌服务承诺">
+        </div> -->
+        <img src="../../../image/wap/wap_haitao_logo5.jpg" alt="品牌服务承诺">
     </div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
@@ -221,17 +220,25 @@
         </div>
     </div>
     <div class="qg_bottom">
+        <img src="../../../image/wap/wap_haitao_shu.jpg">
         <img src="../../../image/wap/wap_haitao_qg.jpg">
     </div>
    <!--  <div style="height:50px" class="hidden_jianxi"></div> -->
     <input name="id" type="hidden" value="<{$de.id}>" />
     <input name="sid" id="sid" type="hidden" value="0" />
     <input name="sku" id="sku" type="hidden" value="0" />
+    <{if $de.is_virtual}>
+    <input name="is_virtual" type="hidden" value="1" />
+    <{if $de.discounts}>
+    <input name="discounts" type="hidden" value="<{$de.discounts}>" />
+    <{/if}>
+    <{/if}>
 </div>
 </form>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript">
     window.jsVersion = "7b3d28d5da";
     require.config({
@@ -307,27 +314,6 @@ function check_nums()
         return false;
     }
 }
-// function distribute_goods(id){
-//         var url = '<{$config.weburl}>/module/distribution/add.php';
-//         var uname='<{$smarty.cookies.USER}>';
-//         if(uname=='')
-//         {
-//             alert('请先登录！');
-//             window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-//             return false;
-//         }
-//         var pars = 'pid='+id+'&uname='+uname;
-//         $.post(url, pars,showResponse);
-//         function showResponse(originalRequest)
-//         {
-//             if(originalRequest>1)
-//                 alert('成功添加至我的分销!');
-//             else if (originalRequest>0)
-//                 alert('该内容已经在你的分销中心，请勿重复添加！');
-//             else
-//                 alert('参数传递错误，无法完成操作!');
-//         }
-//     }
 </script>
 <script>
     function collect_altr(cla){
@@ -358,9 +344,13 @@ function check_nums()
         $(".collect_box_out").remove();
     }
     $(function(){
-        $("ul[genre*=property]").each(function(index){
-            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked");   
-        })      
+        $("dl ul[genre*=property]").each(function(index){
+            // var a=$(this).find("li").size();
+            // if(a==1){
+            //     $(this).find("li").eq(0).find("a").addClass("checked"); 
+            // }
+            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
+        })    
     })
     function collect_goods(id){
         collect_altr(".col")
@@ -424,7 +414,7 @@ function check_nums()
             else if (originalRequest>0){
                 altto('该内容已经在你的分销中心<br>请勿重复添加！');
                
-            }
+            }  
             else{
                 altto('参数传递错误<br>无法完成操作!');
               
@@ -432,27 +422,36 @@ function check_nums()
         }
     }
     $(".incar_c").click(function(){
-        buy();
+        if ('<{$com.company}>' == '<{$smarty.cookies.USER}>的小店') {
+            alert('不能购买自己店铺的商品！');
+            return;
+        }
+        flag = buy();
+        if (flag) {
+            var price = $('#price').html();
+            var num = $('#nums').val();
+            $("#cart_num").text(parseInt($('#nums').val())+parseInt($('#cart_num').text()));
+            var sid = $('#sid').val();
+            var pid = '<{$smarty.get.id}>';
+            console.log(sid)
+            var dist_user_id = '<{$smarty.get.shop_id}>';
+            $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
+            return false;
+        }
     })
-    function buy()
-    {
-        var B = false;
-        $('ul[genre="property"]').each(function(){
-            if(!$(this).find('a').hasClass('checked')){
-                B = true;
-            }
-        });
-        if (goodsspec.getSpec() == null || B)
+    function buy(){
+        var flag = false;
+        if (goodsspec.getSpec() == null || flag)
         {
             alert('请选择相关规格');
+            return !flag;
         }
         else
         {
-            $("#form").submit();
-            return !B;
+            return !flag;
         }
+       // $("#form").submit();
     }
-
     /* spec对象 */
     function spec(id, spec, price, stock, code)
     {
@@ -506,6 +505,7 @@ function check_nums()
         $(obj).parents('li').siblings().find('a').removeClass("checked");
 
         var spec = goodsspec.getSpec();
+         console.log(goodsspec.getSpec())
         var sign = 't';
         $('ul[genre="property"]').each(function(){
             if(!$(this).find('a').hasClass('checked')){

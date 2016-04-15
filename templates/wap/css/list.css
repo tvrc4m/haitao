@@ -1,6 +1,6 @@
 @charset "utf-8";
 .clear{ clear:both; height:0px; line-height:0px; margin:0px; padding:0px;}
-.itemSearchList{padding:0 0.4rem;}
+.itemSearchList{padding:0 0.5rem;}
 .itemSearchList dl{background:#FFF;border-radius:4px;border:1px solid #E0E1E1;margin-top:4px;padding:3px;position:relative;overflow: hidden;}
 .itemSearchList dt{width:80px;height:80px;float:left;}
 .itemSearchList dd{margin-left:90px;line-height:18px;font-size:14px;}
@@ -17,13 +17,12 @@
 .itemSearchList dd .p-price {font-size:12px;}
 .itemSearchList dd .p-detail{font-size:12px;color:#ABABAB;margin-top:3px;}
 .itemsNull{margin:20px 0 15px;}
-.filter{margin:0px auto 10px;}
-.filter ul{display:-webkit-box;border-top:1px solid #ff5c5c;border-bottom:1px solid #ccc;background-color: #eee;}
+.filter{margin:10px auto 10px;padding: 0px 0.5rem;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.filter-fixed{position:fixed;top:50px;width:100%;z-index:9999;background-color:#fff;margin-top: 0px;}
+.filter ul{display:-webkit-box;background-color: #fff;border-top: 2px solid #7753ff;}
 .filter li{width:100%;display:block;text-align:center;height:40px;line-height:40px;-webkit-box-flex:1;}
 .filter li a{display:inline-block;width:100%;border-right:none;font-size: 0.6rem;}
-.filter li:first-child a{}
-.filter li:last-child a{}
-.filter li.current a{background:#ff5c5c;color:#FFF;border-color:#f50;}
+.filter li.current a{background:#7753ff;color:#FFF;}
 .handle a{background:url(../../../image/wap/del.png) center no-repeat;position:absolute;right:10px;bottom:0;display:block;height:40px;min-height:40px;overflow:hidden;padding:0;text-indent:-9876px;top:auto;width:40px;z-index:100;}
 .color{color:#999;font-size:12px;}
 .leftcate{position:absolute;right:0;top:0;width:100%;z-index:999;background:#FFF;}

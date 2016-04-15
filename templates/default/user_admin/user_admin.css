@@ -649,8 +649,11 @@ input[readonly]{
 .main .wrap .hd ul li.search-box .btn2{height:25px;}
 /*表单*/
 input.submit{border:0 none;border-radius:4px 4px 4px 4px;color:#fff;cursor:pointer;font-weight:700;height:40px;line-height:40px;width:300px;font-size: 16px;background:#ff5c5c;}
-.btn2{border-radius:4px 4px 4px 4px;color:#fff;display:inline-block;height:20px;line-height:19px;padding-left:10px;padding-right:10px;text-align:center;background: #ff5c5c;border: none;}
-.btn2:hover{color: #fff;}
+.btn4{border-radius:4px 4px 4px 4px;color:#fff;display:inline-block;height:20px;line-height:19px;padding-left:10px;padding-right:10px;text-align:center;background: #ff5c5c;border: none;}
+.btn4:hover{color: #fff;}
+.btn2{cursor: pointer;padding: 0 5px;}
+.delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
+.delete .checkall{vertical-align: middle;margin-top: -3px;}
 .menu li{border: none;}
 .menu li.selected{background: #ff5c5c;}
 
