@@ -4,22 +4,24 @@
 	$val=$_POST?$_POST:$_GET;
 	include_once("../../includes/plugin_pay_class.php");
 	include_once("../../../../includes/global.php");
-	 
+	//sign 签名
+	//notify_id 支付成功通知校验ID判断在支付宝是否支付成功
+	//out_trade_no 订单id
+	//trade_no支付宝交易号
 	$sign=$val['sign'];
-	$tradeno=$val['out_trade_no'];//站内流水ID
+	$tradeno=$val['out_trade_no'] v;//站内流水ID
 	$payflowid=$val['trade_no'];//支付宝交易号
 	$total_fee=$val['total_fee'];
 	$extra_common_param=$val['extra_common_param'];
 
 	if($val['trade_status']=='TRADE_SUCCESS'){
 		echo "success";
-		set_result($tradeno,$payflowid,$total_fee,"支付宝",$extra_common_param);
+		set_result($tradeno,$payflowid,$total_fee,"支付宝",$tradeno);
 	}
-
 	function set_result($tradeno,$payflowid,$total_fee,$type,$extra_common_param)
 	{
 		global $db,$config;
-		//验证一下是不是被异步处理了。
+		/*//验证一下是不是被异步处理了。
 		$sql="select * from ".RECORD." where id='$tradeno'";
 		$db->query($sql);
 		$re=$db->fetchRow();
@@ -34,7 +36,7 @@
 			$db->query($sql);
 			
 			$sql="update ".MEMBER." set cash=cash+$total_fee where pay_id ='$userid'";
-			$db->query($sql);
+			$db->query($sql);*/
 			
 			if($extra_common_param)
 			{
@@ -78,23 +80,23 @@
 				
 			}
 			msg("?m=payment&s=record&mold=1");
-		}
+/*		}
 		else
 		{
 			if($extra_common_param)
 			{
 				$order_id = $extra_common_param;
-				//----------------当前流水详情	
+				//----------------当前流水详情
 				$sql="select * from ".RECORD." where order_id='$order_id' and pay_uid='$userid'";
 				$db->query($sql);
 				$de=$db->fetchRow();
-				
+
 				$url=$de['return_url']."&order_id=$order_id&price=".($de['price']*-1)."&extra_param=$de[extra_param]&statu=1&auth=".md5($config['authkey']);
 				file_get_contents($url);
 				msg($url);
 			}
 			else
 				msg("?m=payment&s=record&mold=1");
-		}
+		}*/
 	}
 ?>

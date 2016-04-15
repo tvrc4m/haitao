@@ -20,8 +20,5 @@
 		$jq("#form").attr("action","/?m=product&s=confirm_order");
         $jq("#form").submit();
     });
-    $jq(".select_guanshui_ic").click(function(){ 	
-    	var select_duty=$jq(".select_duty")
-    	select_duty.slideToggle();
-    })
+    $jq(".scrollLoading").scrollLoading();
  })

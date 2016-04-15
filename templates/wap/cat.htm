@@ -39,51 +39,6 @@
 			</div>
 		<{/foreach}>
 	<{/foreach}>
-	<!--<div class="cat-container-list">
-		<h2>进口奶粉</h2>
-		<ul class="clearfix">
-			<li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li>
-		</ul>
-	</div>
-	<div class="cat-container-list">
-		<h2>进口奶粉</h2>
-		<ul class="clearfix">
-			<li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li><li><a href="javascript:void(0);">
-				<img src="http://haitao.com/image/wap/cate1001.png" alt="日本龙妮佳">
-				<p>日本龙妮佳</p></a>
-			</li>
-		</ul>
-	</div>-->
 </div>
 </section>
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
@@ -97,8 +52,27 @@ $(function(){
 			$(".cat-container").eq(0).css({"margin-top":"50px"})
 		}
 	})
+	$(".cat-container div").hide();
+	$(".cat-container div[pid=a1000]").show();
 	$(".cat-banner li").click(function(){
+		var liSize=$(this).index();
 		$(this).addClass("current").siblings().removeClass("current");
+		if(liSize==0){
+			$(".cat-container div[pid=a1000]").show();
+			$(".cat-container div[pid!=a1000]").hide()
+		}
+		if(liSize==1){
+			$(".cat-container div[pid=a1001]").show();
+			$(".cat-container div[pid!=a1001]").hide();
+		}
+		if(liSize==2){
+			$(".cat-container div[pid=a1002]").show();
+			$(".cat-container div[pid!=a1002]").hide()
+		}
+		if(liSize==3){
+			$(".cat-container div[pid=a1003]").show();
+			$(".cat-container div[pid!=a1003]").hide()
+		}
 	})
 })	
 </script>
