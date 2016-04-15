@@ -5,12 +5,35 @@ include_once("../includes/smarty_config.php");
 $script_tmp = explode('/', $_SERVER['SCRIPT_NAME']);
 $sctiptName = array_pop($script_tmp);
 @include_once("auth.php");
-if(isset($_GET['natadd'])&&$_GET['natadd']=='add'){
-    $tpl->display('newadd.htm');
+if((isset($_GET['natadd'])&&$_GET['natadd']=='add')||(isset($_GET['up'])&&$_GET['up']=='upd')){
+    if($_GET['up']=='upd'){
+        $id = $_GET[id];
+        $sql="select title,img from ".NATIONAL." where id = $id";
+        $db -> query($sql);
+        $res = $db->fetchRow();
+        $tpl -> assign('natoins', $res);
+        //var_dump($res);die;
+    }
+
+    $tpl->display('national.htm');
     die;
 }
+
+if(isset($_POST['upd'])&&$_POST['upd'] == 'yes'){
+    $id = $_GET['id'];
+    $img = trim($_POST['img']);
+    $title = trim($_POST['title']);
+    $sql = "update ".NATIONAL." set title='$title', img='$img' where id=$id";
+    if($db->query($sql)){
+        echo "<script>alert('修改成功！');location.href='/admin/national_pavilions.php';</script>";
+    }else{
+        echo "<script>alert('系统忙，请稍后重试！'); location.href='/admin/national_pavilions.php';</script>";
+    }
+    die;
+}
+
 //====================================
-if(!empty($_POST['title']))
+if(!empty($_POST['title'])&&$_POST['add'] == 'yes')
 {
     $img = trim($_POST['img']);
     $title = trim($_POST['title']);
@@ -102,14 +125,6 @@ function checkall()
             <input class="btn" type="submit" name="submit" id="submit" value="<?php echo lang_show('search');?>">
 		  </form>
 		  </td>
-          <td  colspan="2" align="left" >
-		  <form name="form1" method="post" action="" enctype="multipart/form-data">
-            <input type="file" name="img">
-            <input style="width:244px; height:20px" name="title" type="text" size="12">
-			<input id="tsubmit" name="tsubmit" type="hidden" value="">
-            <input class="btn" type="submit" name="submit" value="<?php echo lang_show('submit');?>">
-          </form>
-          </td>
         </tr>
 		<form name="iplockset" action="" method="GET">
         <tr class="theader">
@@ -130,7 +145,10 @@ function checkall()
                 <img style="width:50px; height:20px; margin-left:20px; padding-top:5px;" src="<?php echo $v[img]?>" alt="图片" width="20" height="10">
             </td>
           <td align="left" ><?php echo $v['nums'];?></td>
-          <td  align="left" ><a href="national_pavilions.php?id=<?php echo $v['id'];?>" onClick="return confirm('<?php echo lang_show('are_you_sure');?>');"><?php echo $delimg;?></a></td>
+          <td  align="left" >
+              <a href="national_pavilions.php?id=<?php echo $v['id'];?>&up=upd" );"><img src="../image/admin/edit.png" alt=""></a>
+             &nbsp;&nbsp; <a href="national_pavilions.php?id=<?php echo $v['id'];?>" onClick="return confirm('<?php echo lang_show('are_you_sure');?>');"><?php echo $delimg;?></a>
+          </td>
         </tr>
         <?php
         }

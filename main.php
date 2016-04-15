@@ -111,7 +111,6 @@ if ($distribution_open_flag)
 	$time = time() - 3600 * 24 * 7;
 	$order_num = $distribution->getDistributionOrderNum($buid, $time);
 	$admin->tpl->assign("order_num", $order_num);
-
 	//7日营业额
 	$order_amout = $distribution->getDistributionOrderAmount($buid, $time);
 	$admin->tpl->assign("order_amout", $order_amout);
