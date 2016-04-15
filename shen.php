@@ -1,42 +1,4 @@
 <?php
-include_once("includes/global.php");
-include_once("includes/smarty_config.php");
-include_once("footer.php");
-if(!empty($_POST['action'])){
-    if(!empty($_SERVER['HTTP_REFERER']))
-    setcookie('old_url',$_SERVER['HTTP_REFERER']);
-    if(!empty($_GET["action"]))
-        $post=$_GET;
-    else
-        $post=$_POST;
-    $partner_id = '20160100136';
-    $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
-    $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
-    if(empty($post[users])) $erry = -1;else $users = $post[users];
-    if(empty($post[real])) $erry = -2;else $real = $post[real];
-    if(!empty($post[users])&&!empty($post[real])){
-
-        $type = validation_filter_id_card($post[real]);
-        if($type){
-            $sigin = md5($post['users']."|~".$post['real']."|~".$partner_id."|~".$secret);
-            // 判断type为正确身份证再跳转验证身份证真假
-            $tokens = aes($url,array ("card_id" =>$post['users'],"realname"=>$post['real'],"partner_id"=>$partner_id,"sigin"=>$sigin));
-            if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
-                msg($_COOKIE['old_url']);
-                setcookie("old_url");
-            }else{
-                $erry = -3;
-            }
-            $users = $post[users];
-            $real = $post[real];
-        }else{
-            $erry = -2;
-        }
-    }else{
-        $erry = -1;
-    }
-    $forward = true;
-}
 function validation_filter_id_card($id_card) {
     if(!preg_match('/^\d{17}(\d|x)$/i',$id_card) &&  !preg_match('/^\d{15}$/i',$id_card))
         return false;
@@ -106,10 +68,19 @@ function aes($url='',$post_data=''){
     curl_close($ch);
     return json_decode($list,true);
 }
-//-1真实姓名不能为空！-2身份证号不能为空！-3请填写正确身份证号！-4姓名和身份证不一致！
-$tpl->assign('users',$users);
-$tpl->assign('real',$real);
-$tpl->assign('forward',$forward);
-$tpl->assign('erry',$erry);
-$tpl->display('real.htm');
+
+$card_id = '130429198702155219';//身份号
+$realname = '张飞';//身份证姓名
+$partner_id = '20160100136';
+$secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
+$url = "https://m.mayizaixian.cn/apis/api/check_card_info";
+$sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
+//身份号格式证验证
+$type = validation_filter_id_card($card_id);
+var_dump($type);
+// 判断type为正确身份证再跳转验证身份证真假
+$tokens = aes($url,array ("card_id" => $card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
+var_dump($tokens);
+
 ?>
+<a href="http://haitao.com/real.php">121321</a>

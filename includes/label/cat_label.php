@@ -33,7 +33,7 @@ function cat($ar)
 		{
 			$s=$v['catid']."00";
 			$b=$v['catid']."99";
-			$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,4";
+			$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,6";
 
 			$db->query($sql);
 			$sre=$db->getRows();
