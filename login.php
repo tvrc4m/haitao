@@ -6,6 +6,7 @@ else
 
 if(!empty($_GET['forward'])&&strpos($_GET['forward'],'script')>0)
     header("Location:login.php");
+if(!empty($_SERVER['HTTP_REFERER']))
 setcookie('old_url',$_SERVER['HTTP_REFERER']);
 if(!empty($post["action"])&&$post["action"]=="submit")
 {

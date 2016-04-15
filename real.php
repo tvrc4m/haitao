@@ -3,6 +3,7 @@ include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("footer.php");
 if(!empty($_POST['action'])){
+    if(!empty($_SERVER['HTTP_REFERER']))
     setcookie('old_url',$_SERVER['HTTP_REFERER']);
     if(!empty($_GET["action"]))
         $post=$_GET;
