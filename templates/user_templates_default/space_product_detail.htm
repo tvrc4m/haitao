@@ -639,7 +639,7 @@ $('.share a').click(function(){
             if (spec != null && sign == 't')
             {
                 $('#stock').html(spec.stock);
-                $('#price').html(spec.price.toFixed(2));
+                $('#price').html(parseFloat(spec.price).toFixed(2));
                 $('#sid').val(spec.id);
 
                 if(parseInt(spec.stock) == 0)
