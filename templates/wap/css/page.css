@@ -6,7 +6,7 @@ ul,ol,li{list-style:none;}
 em,i{font-style:normal;}
 img{border:0;}
 input,img{vertical-align:middle;}
-body{color:#000;font:400 14px/18px arial;background:#EEE;}
+body{color:#535353;font:400 14px/18px arial;background:#f5f5f5;}
 a,a:visited{color:#000;text-decoration:none;}
 .clearfix:after{display:block;content:'';clear:both;visibility:hidden;}
 .hidden{display:none;}
@@ -32,7 +32,7 @@ a,a:visited{color:#000;text-decoration:none;}
 #y_menu_icon{vertical-align: middle; float: right; width: 25px; height: 18.33px; background-repeat: no-repeat; background-image: url(../../../image/wap/wap_haitao_icon3.png);margin-top: 16px;background-size: contain;}
 .head{}
 header{width:100%;}
-.nav-w{background-color:#ff5c5c;border-bottom:1px #d9d9d9 solid;width:100%;font-size:12px;/*padding:5px 0 10px;*/height:50px;line-height:50px;display:-webkit-box;left:0;position:fixed;top:0;z-index:1999;}
+.nav-w{background-color:#ff5c5c;width:100%;font-size:12px;/*padding:5px 0 10px;*/height:50px;line-height:50px;display:-webkit-box;left:0;position:fixed;top:0;z-index:1999;}
 .nav-w a{color:#666;}
 .nav-s{min-width:75px;padding-left:0.5rem;}
 .nav-c{text-align:center;-webkit-box-flex:1;-ms-box-flex:1;-moz-box-flex:1;-o-box-flex:1;}
