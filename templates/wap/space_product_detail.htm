@@ -354,6 +354,10 @@ function check_nums()
     })
     function collect_goods(id){
         collect_altr(".col")
+        if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
+            altto('不能收藏自己店铺的商品！');
+            return;
+        }
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
@@ -422,8 +426,10 @@ function check_nums()
         }
     }
     $(".incar_c").click(function(){
-        if ('<{$com.company}>' == '<{$smarty.cookies.USER}>的小店') {
-            alert('不能购买自己店铺的商品！');
+        
+        if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
+            collect_altr(".addcart")
+            altto('不能购买自己店铺的商品！');
             return;
         }
         flag = buy();
@@ -452,6 +458,16 @@ function check_nums()
         }
        // $("#form").submit();
     }
+     $(".btn-buy").click(function(){
+        if('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
+            collect_altr(".addcart")
+            console.log('<{$com.company}>' == '<{$smarty.cookies.USER}>')
+            altto('不能购买自己店铺的商品！');
+            return;
+        }
+        $("#form").attr("action","/?m=product&s=confirm_order");
+        $("#form").submit();
+    });
     /* spec对象 */
     function spec(id, spec, price, stock, code)
     {

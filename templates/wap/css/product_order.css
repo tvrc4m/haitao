@@ -53,3 +53,28 @@ span.p-price strong{font-size:20px;}
 .v_order_juan{float: left;}
 .fr-gong{margin-right: 20px;}
 .v_order{display: block;clear: both;overflow: hidden;;height: 2.5rem;line-height: 2.5rem;font-size: 0.7rem;width: 100%;padding: 0px 10px;border-bottom: 1px dashed #ccc;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.am-dialog-mask{position: fixed;top: 0;left: 0;z-index: 2000;width: 100%;height: 100%;background: rgba(0,0,0,.5);display: none;}
+.am-dialog-mask-test {display: block;}
+.price-btns-context{text-align: center; opacity: 0;transform:scale(1);-webkit-transform:scale(1);padding: 0 20px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
+.price-btns-context_test{animation: myfirst .1s linear ;-webkit-animation: myfirst .1s linear ;opacity: 1;}
+@-webkit-keyframes myfirst {
+    0%   {-webkit-transform:scale(2);}
+    25%  {-webkit-transform:scale(1.8);}
+    50%  {-webkit-transform:scale(1.6);}
+    75%  {-webkit-transform:scale(1.3);}
+    100% {-webkit-transform:scale(1);}
+}
+@-webkit-keyframes myfirst {
+    0%   {-webkit-transform:scale(2);}
+    25%  {-webkit-transform:scale(1.8);}
+    50%  {-webkit-transform:scale(1.6);}
+    75%  {-webkit-transform:scale(1.3);}
+    100% {-webkit-transform:scale(1);}
+}
+.price-btns-context-top{background-color: #fff;border-top-left-radius: 5px;border-top-right-radius: 5px;}
+.price-btns-context-top .context-top-list{width: 50%;float: left;border: none;padding: 0;text-align: center;padding: 20px 0;}
+.price-btns-context-top .context-top-list img{margin-bottom: 10px;}
+.price-btns-context-top .context-top-list p{color: #999;font-size: 14px;}
+.price-btns-context-bot a{display: inline-block;width: 100%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;letter-spacing: 1px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;}
+.price-btns-context-top>p{padding: 30px 0;letter-spacing: 1px;font-size: 0.6rem;}
+.detate-btns-context-bot a{display: inline-block;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;width:100%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;letter-spacing: 1px;}

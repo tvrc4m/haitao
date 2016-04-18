@@ -30,6 +30,7 @@
 .m_fore ul li a:after{content: "";float: right;background: url(../../../image/wap/wap_haitao_icon18.png) center right no-repeat;background-size: 58%;width: 0.9rem;height: 2.5rem;margin-right: 0.3rem;}
 .m_fore ul li a span.fore_a{background: url(../../../image/wap/wap_haitao_icon28.png) left no-repeat;background-size: contain;}
 .m_fore ul li a span.fore_b{background: url(../../../image/wap/wap_haitao_icon27.png) left no-repeat;background-size: contain;}
+.m_fore ul li a span.fore_d{background: url(../../../image/wap/wap_haitao_icon60.png) left no-repeat;background-size: contain;}
 .m_fore ul li a span.fore_c{background: url(../../../image/wap/wap_haitao_icon26.png) left no-repeat;background-size: contain;}
 .m_tuichu{text-align: center;padding: 0.75rem 0px;border-bottom: 1px solid #b9b9b9;border-top: 1px solid #b9b9b9;}
 .m_tuichu a{font-size: 0.7rem;color: #ff5c5c;width: 100%;}

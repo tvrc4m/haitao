@@ -256,13 +256,17 @@ else
 	//	msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$inorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
 		if($_COOKIE['identity']=='true')
 		msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
+		else if($config['temp']=='wap')
+		msg($config['web_url']."/real.php");//wap实名认证
 		else
 		msg($config['pay_url']."/?act=edit&op=name");//实名认证
 		die;
 	}
 }
 //=================================================
+
 $tpl->assign("config",$config);
+$tpl->assign("verify",$_COOKIE['identity']);
 $tpl->assign("cart",$cartlist['cart']);
 $tpl->assign("sumprice",$cartlist['sumprice']);
 include_once("footer.php");
