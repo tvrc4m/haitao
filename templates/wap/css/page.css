@@ -229,3 +229,16 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .da_list div.shop{display: none;}
 .da_list div.list_current{display: block;}
 .da_list_test {position: fixed;top: 50px;left: 0;z-index: 999999999999;}
+/*帮助中心样式*/
+.help_container{padding: 0.5rem 0.5rem 1rem;}
+.help_list>li>a{display: inline-block;width: 100%;padding: 0.5rem 0; font-size: 0.6rem;color: #535353;border-bottom: 1px dashed #b9b9b9; }
+.help_list>li>a>i{float: right;width: 10px;height: 10px;border-left:1px solid #999;border-bottom:1px solid #999;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);margin-right: 5px; }
+.help_list>li>a>i.current{transform:rotate(-45deg);-webkit-transform:rotate(-45deg);}
+.help_list ul>li>a{display: inline-block;width: 100%;padding: 0.5rem 0; font-size: 0.6rem;color: #535353;border-bottom: 1px dashed #b9b9b9;text-indent: 2em; }
+.help_list ul{display: none;}
+.help_list ul.hide{display:block;}
+.help_container .con{margin-top: 0;padding: 0;line-height: 1.9;font-size: 0.6rem;}
+/*.con p.MsoNormal{font-size: 0.6rem;}
+.con p.MsoNormal:nth-of-type(odd){color: #ff0066;font-size: 0.7rem;padding: 0.6rem 0 0.5rem}
+.con p.MsoNormal:nth-of-type(even){color: #535353;line-height: 1.7;text-indent: 2em;}
+.con p.MsoNormal span{color: #535353;text-indent:normal;}*/
