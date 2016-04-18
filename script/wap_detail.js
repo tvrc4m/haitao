@@ -16,9 +16,9 @@
         $jq(this).addClass("active").siblings().removeClass("active");
         $jq(".j_tab").eq(liLength).addClass("pdetail_show").siblings().removeClass("pdetail_show");
     })
-    $jq(".btn-buy").click(function(){
-		$jq("#form").attr("action","/?m=product&s=confirm_order");
-        $jq("#form").submit();
-    });
+  //   $jq(".btn-buy").click(function(){
+		// $jq("#form").attr("action","/?m=product&s=confirm_order");
+  //       $jq("#form").submit();
+  //   });
     $jq(".scrollLoading").scrollLoading();
  })

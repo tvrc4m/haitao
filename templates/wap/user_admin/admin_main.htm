@@ -37,14 +37,14 @@ function gotoMenu(url)
         </div>
     </section>
 </div>
-<div class="xiaoke">
-    <div class="xiaoke_header">
-        <div class="header_left iconfont"><a href="<{$config.weburl}>"><i class="fanhui_icon"></i></a></div>
-        <div class="header_font">
-            <a href="#">分销中心</a>
-        </div>
-        <div class="header_left iconfont" style="margin-top:15px;" onclick="show_help();"><font>&#xe627</font></div>
+<header>
+    <div class="nav-w">
+        <section class="nav-s" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
+        <section class="nav-c"><span>分销中心</span></section>
+        <section class="nav-e"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></section>      
     </div>
+</header>
+<div class="xiaoke">
     <section>
         <div class="xiaoke_centent">
             <div class="centent_topnum clearfix">
@@ -132,7 +132,7 @@ function gotoMenu(url)
                     </dl>
                     <dl class="cen_shop cen_shop7 clearfix">
                         <a href="<{$config.weburl}>/pay">
-                            <dt>资金中心</dt>
+                            <dt>蚂蚁钱包</dt>
                             <dd></dd>
                         </a>
                     </dl>
