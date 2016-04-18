@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 13:15:39
+<?php /* Smarty version 2.6.20, created on 2016-04-18 15:19:12
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 35, false),)), $this); ?>
@@ -16,10 +16,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
             </span>
             <a class="btn" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=payment&s=recharge">充 值</a>
-            <a class="btn" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=withdraw">提 现</a>
             <a class="btn1" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=transfer">转 账</a>
+/?m=payment&s=withdraw">提 现</a>
+            <!-- <a class="btn1" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=transfer">转 账</a> -->
         </div>
     </div>
 </div>
