@@ -261,15 +261,14 @@ $(function(){
     //     alert(1)
     //     collect_confirm(".choose_btn_inner")
     // });
-    <{if $verify }>
-        $('#submitToPay').click(function(){
-            collect_confirm(".choose_btn_inner")
-        });
-    <{else}>
+    if("<?=$verify?>")
         $('#submitToPay').click(function(){
             collect_form();
         });
-    <{/if}>                                          
+    else
+        $('#submitToPay').click(function(){
+            collect_confirm(".choose_btn_inner")
+        });
 });
 </script>  
 </form>
