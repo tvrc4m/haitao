@@ -573,7 +573,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 //===========================================
 if($buid)
 {
-    header("Location:main.php");
+    header("Location:main.php?cg_u_type=1");
     exit();
 }
 
