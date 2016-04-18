@@ -8,8 +8,15 @@
 	//notify_id 支付成功通知校验ID判断在支付宝是否支付成功
 	//out_trade_no 订单id
 	//trade_no支付宝交易号
+/*
+ * 1、判断师傅支付成功了
+ * 2、订单流水记录
+ * 3、更新订单信息
+ * */
+/*验证前面
+ * */
 	$sign=$val['sign'];
-	$tradeno=$val['out_trade_no'] v;//站内流水ID
+	$tradeno=$val['out_trade_no'];//站内流水ID
 	$payflowid=$val['trade_no'];//支付宝交易号
 	$total_fee=$val['total_fee'];
 	$extra_common_param=$val['extra_common_param'];
@@ -42,12 +49,12 @@
 			{
 				$order_id = $extra_common_param;
 				
-				//----------------当前流水详情	
+			/*	//----------------当前流水详情
 				$sql="select * from ".RECORD." where order_id='$order_id' and pay_uid='$userid'";
 		
 				$db->query($sql);
 				$de=$db->fetchRow();
-			
+			*/
 				//-------------减少账户金额
 				if($de['price']<0) $de['price']*=-1;
 				

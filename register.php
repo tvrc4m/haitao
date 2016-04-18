@@ -8,6 +8,11 @@ if($reg_config)
 	$config = array_merge($config,$reg_config);
 }
 
+if(isset($_GET['connect_id'])&&$_GET['connect_id']=='6'){
+	$tpl->display("user_bind.htm");
+	die;
+}
+
 include_once("config/connect_config.php");//connect
 if ($connect_config['ucenter_connect'])
 {

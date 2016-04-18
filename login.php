@@ -80,7 +80,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     login($re['userid'],$re['user']);
             }
             echo uc_user_synlogin($uid);
-            $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php";
+            $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
             msg($forward);
         }
         else

@@ -41,61 +41,6 @@ $jj(function(){
 		$jj(".index_icon1").height("60px")
 		$jj(".shopli").find("img").height("224px")
 	}
-
-	// function getPositionError(error) {
- //      //  HTML5 定位失败时，调用百度地图定位   
- //        var geolocation = new BMap.Geolocation();
- //        geolocation.getCurrentPosition(function(r){
- //            if(this.getStatus() == BMAP_STATUS_SUCCESS){
- //                var mk = new BMap.Marker(r.point);
- //                var pt = r.point;
-
- //                $jj.cookie("lng",pt.lng,{expires:7});
- //                $jj.cookie("lat",pt.lat,{expires:7});
-
- //                $jj.post("ajax_back_end.php",{"act":"reposition","lng":pt.lng,"lat":pt.lat},function(){})
-                              
- //            }
- //        },{enableHighAccuracy: true});
-
- //    }
-
- //    function getPositionSuccess( position ){
-	// 	var lat = position.coords.latitude;
-	// 	var lng = position.coords.longitude;
-
-	// 	var ggPoint = new BMap.Point(lng,lat);
-
-	// 	//转换成百度地图坐标
-	// 	var trunback = function (point){
-
-	// 	     $jj.cookie("lng",point.lng,{expires:7});
-	// 	     $jj.cookie("lat",point.lat,{expires:7});
-
-	// 	     $jj.post("ajax_back_end.php",{"act":"reposition","lng":point.lng,"lat":point.lat},function(){})
-	// 	}
-
-	// 	BMap.Convertor.translate(ggPoint,0,trunback);     
- //    }
-
-
-
-	// 先HTML5定位，定位不到再百度地图定位
-	// if(!$jj.cookie("lng")  || !$jj.cookie("lat"))
-	// {
-	// 	var position_option = {enableHighAccuracy: true,maximumAge: 30000,timeout: 20000};
- //        navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError, position_option);
-	// }
-	// else
-	// {
-	//     var t_lng = $jj.cookie("lng")
-	//     var t_lat = $jj.cookie("lat")
-
-	//     $jj.post("ajax_back_end.php",{"act":"reposition","lng":$jj.cookie("lng"),"lat":$jj.cookie("lat")},function(){})
-	    
-	// }
-
-	// 首页附近的店铺异步获取信息
 	function getHtmlSecond()
 	{
 		$jj.post("ajax_back_end.php",{"act":"getNearInfo"},function(data){
@@ -115,21 +60,35 @@ $jj(function(){
 		getHtmlSecond();
 	}
 });
-
+$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
 $jj(document).scroll(function(){
 	var h = $jj(document).scrollTop();
 	if(h > 50)
 	{
 		$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
-		$jj("#J_search").eq(0).css({"margin-top":"50px"});
+		$jj(".m_main-v1s").eq(0).css({"margin-top":"50px"});
 		$jj(".filter").eq(0).css({"margin-top":"50px"})
 	}
 })
-
-// $(function(){
-// 	$(".guanggao_kong").each(function(index){
-// 		$(".guanggao_kong").eq(index).append("<div class='g_wei'>"+
-// 	        	"<a href='javascript:void(0)'><img src='image/wap/mayi_wap_guanggao1.jpg'></a>"+
-// 	        "</div>")
-// 	})		
+$jj(function(){
+	var daHeight=$jj(".da_banner").offset().top-50;
+	$jj(".da_banner li").click(function(){
+		$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
+		$jj(window).scrollTop(daHeight-0.001);
+		var liSize=$jj(this).index();
+		$jj(this).addClass("current").siblings().removeClass("current");
+		$jj(".da_list>div").eq(liSize).addClass("list_current").siblings().removeClass("list_current");
+	})	
+ 	$jj(window).scroll(function(){
+        var wScrotop=$jj(window).scrollTop();
+        if(wScrotop>=daHeight){
+            $jj(".da_banner").addClass("da_list_test");
+        }
+        else{
+            $jj(".da_banner").removeClass("da_list_test");
+        }
+    })
+ })
+// $jj(function(){
+// 	$jj(".scrollLoading").scrollLoading();
 // })

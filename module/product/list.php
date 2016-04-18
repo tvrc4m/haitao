@@ -116,7 +116,6 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 	$prolist['page']  = $page->prompt();
 	$prolist['count'] = $res['total'];
 	$tpl->assign("info", $prolist);
-
 	unset($prolist);
 }
 else
@@ -315,8 +314,6 @@ else
 	$prolist['page']=$page->prompt();
 	$prolist['count']=$page->totalRows;
 	$tpl->assign("info",$prolist);
-	//echo '<pre>';
-	//var_export($prolist);//die;
 	unset($prolist);
 }
 

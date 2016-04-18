@@ -17,7 +17,7 @@
 <div class="container">
     <div class="flow">
         <div class="itemtitle">
-            <h3>添加国家馆</h3>
+            <h3>国家馆管理</h3>
             <ul>
                 <li ><a href="/admin/national_pavilions.php?natadd=add"><span>新增国家馆</span></a></li>
 
@@ -28,7 +28,43 @@
     </div>
 
     <div class="h35"></div>
-
+    <{if $smarty.get.up == 'upd'}>
+    <form name="form" id="form" method="post"  action="/admin/national_pavilions.php?id=<{$smarty.get.id}>">
+        <table class="table table1">
+            <tbody>
+            <tr>
+                <td width="100">国家11馆名称</td>
+                <td>
+                    <input name="title" id="name" type="text" class="w350" value="<{$natoins.title}>"><div id="form-error" class="form-error"></div>
+                </td>
+            </tr>
+            <tr id="tr1" >
+                <td>图片</td>
+                <td>
+                    <input name="img" class="w350" type="text" id="pic" value="<{$natoins.img}>" />
+                    [<a href="javascript:uploadfile('国家馆LOGO','pic','','','adv')">上传</a>]
+                    [<a href="javascript:preview('pic');">预览</a>]
+                    [<a onclick="javascript:$('#pic').val('');" href="#">删除</a>]
+                    <div id="form-error" class="form-error"></div>
+                </td>
+            </tr>
+            <tr id="tr2" class="hidden">
+                <td>文本</td>
+                <td>
+                    <textarea class="w343" name="con"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="hidden" name="upd" value="yes">
+                    <input class="submit" type="submit" value="提交">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    <{else}>
     <form name="form" id="form" method="post"  action="/admin/national_pavilions.php">
         <table class="table table1">
             <tbody>
@@ -57,12 +93,14 @@
             <tr>
                 <td></td>
                 <td>
+                    <input type="hidden" name="add" value="yes">
                     <input class="submit" type="submit" value="提交">
                 </td>
             </tr>
             </tbody>
         </table>
     </form>
+    <{/if}>
 </div>
 <script>
     $('#form').submit(function(){
