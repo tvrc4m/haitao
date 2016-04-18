@@ -45,7 +45,7 @@
 .collect_box_btn a{display: inline-block!important; width: 40%!important;height: 30px!important;line-height: 30px!important;background-color: #ff5c5c;color: #fff;border-radius: 5px;text-align: center;}
 .collect_box_hid{position: absolute;right: 22px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
 .col_ttt{padding: 0.1rem 0.5rem;}
-.am-dialog-mask{position: fixed;top: 0;left: 0;z-index: 2000;width: 100%;height: 100%;background: rgba(0,0,0,.5);display: none;}
+.am-dialog-mask{position: fixed;top: 0;left: 0;z-index: 2000;width: 100%;height: 100%;background-color: rgba(0,0,0,.5);display: none;}
 .am-dialog-mask-test {display: block;}
 .price-btns-context{text-align: center; opacity: 0;transform:scale(1);-webkit-transform:scale(1);padding: 0 20px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
 .price-btns-context_test{animation: myfirst .1s linear ;-webkit-animation: myfirst .1s linear ;opacity: 1;}
