@@ -222,7 +222,28 @@ function roundAmount(n)
   return   t  
 }
 $(function(){
-     function collect_confirm(cla){
+    function collect_form(){
+        $('#form').validate({
+            errorPlacement: function(error, element){
+                Width=document.body.clientWidth/2-60;
+                Height=document.body.clientHeight/2;
+                $('.form-error').offset({top:Height,left:Width});
+                $('.form-error').html(error);
+            },      
+            rules : {
+                hidden_consignee_id:{
+                    required:true
+                },
+            },
+            messages : {
+                hidden_consignee_id:{
+                    required:'请设置收货地址'
+                },
+            },
+        });
+        $('#form').submit();
+    }
+    function collect_confirm(cla){
         $(cla).append("<div class='am-dialog-mask'></div>"+
                 "<div class='price-btns-context'>"+
                     "<div class='price-btns-context-top clearfix'>"+
@@ -233,30 +254,22 @@ $(function(){
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".price-btns-context").addClass('price-btns-context_test');
         $(".detate-btns-context-bot a:first-child").bind("click",function(){
-            $('#form').validate({
-                errorPlacement: function(error, element){
-                    Width=document.body.clientWidth/2-60;
-                    Height=document.body.clientHeight/2;
-                    $('.form-error').offset({top:Height,left:Width});
-                    $('.form-error').html(error);
-                },      
-                rules : {
-                    hidden_consignee_id:{
-                        required:true
-                    },
-                },
-                messages : {
-                    hidden_consignee_id:{
-                        required:'请设置收货地址'
-                    },
-                },
-            });
-            $('#form').submit();
+           collect_form();
         })
     }
-    $('#submitToPay').click(function(){
-        collect_confirm(".choose_btn_inner")
-    });                                           
+    //  $('#submitToPay').click(function(){
+    //     alert(1)
+    //     collect_confirm(".choose_btn_inner")
+    // });
+    <{if $verify }>
+        $('#submitToPay').click(function(){
+            collect_confirm(".choose_btn_inner")
+        });
+    <{else}>
+        $('#submitToPay').click(function(){
+            collect_form();
+        });
+    <{/if}>                                          
 });
 </script>  
 </form>
