@@ -256,18 +256,15 @@ $(function(){
         $(".detate-btns-context-bot a:first-child").bind("click",function(){
            collect_form();
         })
-    }
-
-    if(<{$verify}>){
-        $('#submitToPay').click(function(){
+    }   
+    $('#submitToPay').click(function(){
+        if(<{$verify}>){
             collect_form();
-        });
-    }else{
-        $('#submitToPay').click(function(){
+        }else{
             collect_confirm(".choose_btn_inner")
-        });
-    }
-
+        }
+    });   
+})
 </script>  
 </form>
 <{else}>
