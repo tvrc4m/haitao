@@ -72,7 +72,6 @@ $jj(document).scroll(function(){
 })
 $jj(function(){
 	var daHeight=$jj(".da_banner").offset().top-50;
-	console.log(daHeight);
 	$jj(".da_banner li").click(function(){
 		$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
 		$jj(window).scrollTop(daHeight-0.001);
