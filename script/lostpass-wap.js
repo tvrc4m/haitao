@@ -22,7 +22,7 @@ $(function(){
         $(this).focus(function(){
             $("form").find('dl').removeClass("focus");
             $(this).parents('dl').addClass("focus");
-            $(this).parentsUntil("form").find("p").css("display","none");
+            // $(this).parentsUntil("form").find("p").css("display","none");
         });
     });
 });
@@ -46,12 +46,18 @@ $(document).ready(function(){
             if(!flag){
                 if(focusid == "#mobile"){
                     tip.find(".tipcon").text("请输入正确的手机号码，且为11位纯数字格式");
+                    tip.find(".tipcon").css({"color":"#ff5c5c","margin-top":"10px"});
+                    tip.find(".tipcon").parent().css({"margin-top":"10px"});
                 }
                 if(focusid == "#smsvode"){
                     tip.find(".tipcon").text("请输入正确的验证码，且为6位纯数字格式");
+                    tip.find(".tipcon").css({"color":"#ff5c5c"});
+                    tip.find(".tipcon").parent().css({"margin-top":"10px"});
                 }
                 if(focusid == "#password"){
                     tip.find(".tipcon").text("长度为6-10个字符，建议使用字母加数字组合");
+                    tip.find(".tipcon").css({"color":"#ff5c5c"});
+                    tip.find(".tipcon").parent().css({"margin-top":"10px"});
                 }
                 tip.css("display","block");
             }
