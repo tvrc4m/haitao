@@ -55,7 +55,7 @@ em{font-style:normal;}
 .m1 .mc ul{padding:4px 2px 0;overflow:hidden;}
 .m1 .mc li{line-height:24px;padding-left:9px;background:url(../image/dot.png) 0 11px no-repeat;}
 
-.block{background-color:#fff;border:1px solid #ddd;margin-bottom:10px;}
+.block{background-color:#fff;border:1px solid #ddd;margin-bottom:10px;min-height: 516px;}
 .block.account{height:108px;}
 .block .balance{float:left;padding:20px;width:496px;}
 .block .balance p{font-weight:bold;font-size:14px;line-height:18px;margin-bottom:25px;}

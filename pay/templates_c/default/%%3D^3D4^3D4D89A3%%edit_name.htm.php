@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-08 11:09:11
+<?php /* Smarty version 2.6.20, created on 2016-04-18 14:58:34
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -86,7 +86,7 @@ function IdentityCodeValid() {
     <div class="tips"><span></span>温馨提示：您的实名认证信息被拒绝,请重新上传认证资料。</div>
     <?php endif; ?>
     <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
-    <ol class="fn-clear step2">
+   <!--  <ol class="fn-clear step2">
         <li class="fore1">
             <em class="icon">
                 <i></i>
@@ -110,7 +110,7 @@ function IdentityCodeValid() {
             </em>
             <span>成功</span>
         </li>
-    </ol>
+    </ol> -->
     <?php endif; ?>
     <div class="form">
     <form method="post" id="form" onsubmit="return IdentityCodeValid();">
