@@ -11,6 +11,9 @@ if(!empty($_POST['action'])){
         $post=$_POST;
     $partner_id = '20160100136';
     $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
+    $card_id = !empty($post['real']) ? $post['real'] : '';
+    $realname = !empty($post['users']) ? $post['users'] : '';
+
     $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
     if(empty($post[users])) $erry = -1;else $users = $post[users];
     if(empty($post[real])) $erry = -2;else $real = $post[real];
@@ -18,10 +21,12 @@ if(!empty($_POST['action'])){
 
         $type = validation_filter_id_card($post[real]);
         if($type){
-            $sigin = md5($post['users']."|~".$post['real']."|~".$partner_id."|~".$secret);
+	    $sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
             // 判断type为正确身份证再跳转验证身份证真假
-            $tokens = aes($url,array ("card_id" =>$post['users'],"realname"=>$post['real'],"partner_id"=>$partner_id,"sigin"=>$sigin));
-            if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
+            $tokens = aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
+	    if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
+            $sql = "update pay_member set identity_verify=true where userid=".$_COOKIE['dist_id'];
+            $db -> query($sql);
                 msg($_COOKIE['old_url']);
                 setcookie("old_url");
             }else{
