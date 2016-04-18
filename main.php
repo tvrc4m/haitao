@@ -35,11 +35,12 @@ if($flag=='false'){
 
 if(empty($_SESSION['USER_TYPE']))
 	$_SESSION['USER_TYPE']=$is_company;
-if($_GET['cg_u_type'])
+if($_GET['cg_u_type']&&isset($_GET['cg_u_type']))
 	$_SESSION['USER_TYPE']=$_GET['cg_u_type']*1;
+else
+	msg($config['weburl']."/main.php?m=product&s=admin_buyorder&status=1&dist_id=".$buid);
 
 $tpl->assign("cg_u_type",$_SESSION['USER_TYPE']);
-
 //-------店铺信息不存在，但是却进入的是卖家的后台，需要申请开店
 
 if ($_GET['action']!='logout')
