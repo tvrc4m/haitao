@@ -222,6 +222,7 @@ function doreg($guid=NULL)
 				$re=$db->query($sql);	
 			}
 			//-------------绑定一键连接
+
 			if(!empty($_REQUEST['connect_id']))
 			{
 				$sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";
