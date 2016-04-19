@@ -132,7 +132,7 @@ else
 			$catname[]=substr($id,0,-2);
 		$catname[]=$id;
         foreach($catname as $key_f => $val){
-            if($key > 0){
+            if($key_f > 0){
                 $newname[$key_f] = array('id' => $catname[$key_f], 'oid' => $catname[$key_f-1]);
             }else{
                 $newname[$key_f] = array('id' => $catname[$key_f], 'oid' => $catname[$key_f]);
