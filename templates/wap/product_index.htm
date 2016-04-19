@@ -73,27 +73,27 @@
         <div class="da_list da_list_t">
             <div class="shop clearfix list_current">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=40}>
+                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=40}>
+                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=40}>
+                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=40}>
+                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=40}>
+                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
         </div>      
@@ -126,6 +126,17 @@
     </div>
     <div class="suggest" style="display: block;">
     </div>
+</section>
+<section class="addcarts">
+    <a class="carts" href="/?m=product&s=cart">
+        <span class="cart-num-conts" id='cart_num'>
+            <span class="cart-num"></span>
+            <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+        </span>
+    </a>
+</section>
+<section class="addtop">
+    <a class="top" href="javascript:void(0);"></a>
 </section>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.4.4.min.js"></script>

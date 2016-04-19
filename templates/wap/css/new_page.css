@@ -842,7 +842,7 @@ ins,a
 	font-size: 0.6rem;
 	margin: 0 auto;
 	margin-top:7px;
-	border-radius:0.125rem;
+	border-radius:5px;
 	text-indent: 0.5rem;
 	outline:0;
 }
@@ -1006,4 +1006,10 @@ ins,a
 .flag_l s{width: 11px;border: 2px solid #fff;border-radius: 8;height: 11px;margin: 0 auto;display: inline-block;background: #1A8527;}
 #wlocate{float: left;}
 .reload{float: right;margin-right: 6px;}
-
+.shop_over{width: 4rem;height: 4rem;font-size: 0.7rem; position: absolute;top: 20%;left: 50%;margin-left: -2rem; line-height: 4rem;text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
+@media screen and (min-width: 600px) and (max-width: 800px) { 
+    .shop_over{top: 25%;}
+}
+@media screen and  (height: 960px) {
+  	.shop_over{top: 25%;}
+}
