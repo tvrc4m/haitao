@@ -119,14 +119,14 @@
         <div class="typ">好评率：<span><{$list.favorablerate|number_format:2}>%</span></div>
         <div class="col" style="padding: 0 10px">
             <a onclick="javascript:getfavshop()">
-                <div class="iconfont_min">&#xe615;</div>
+                <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
                 <div class="nav-c" style="font-size: .7em">收藏</div>
             </a>
         </div>
         <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}>
         <div class="col" style="padding: 0 10px">
             <a href="javascript:distribute_goods('<{$de.id}>');" style="color:8b8b8b">
-                <div class="iconfont_min">&#xe663;</div>
+                <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe663;</div>
                 <div style="font-size: .7em">加入分销</div>
             </a>
         </div>
@@ -184,7 +184,7 @@
                                     <p class="money"><{$config.money}><{$list.price}></p>
                                     <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                                 </div>
-                                <a href="javascript:distribute_goods('<{$de.id}>');" class="shopli_bottom_zhuanxiang">加入分销</a>
+                                <a href="javascript:distribute_goods('<{$de.id}>');" class="shopli_bottom_zhuanxiang">专享抢购</a>
                                <!-- <span class="pname_img"><{if $de.img }><img src="../../../image/wap/state1.png"><{/if}></span> -->
                             </div>  
                         </div>

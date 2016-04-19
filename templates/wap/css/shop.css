@@ -6,6 +6,7 @@
 .shopinfo-banner-content .typ span{color: #ff5c5c;}
 .shopinfo-banner-content .header_topleft {width: 4rem;height: 4rem;position: absolute;left: 1rem;top: -2.2rem;}
 .col {background-color: #fff;color: #535353;top: 0.5rem;right: 0;position: absolute;border-left: 1px solid #b9b9b9;text-align: center;}
+.iconfont_min{color: #999;}
 .shopinfo-banner-content .header_topleft img {width: 4rem;height: 4rem;border-radius: 50%;}
 .pname_img{position: absolute;top: 0;left: 1.2rem;width: 1.5rem;height: 0.75rem;}
 .pname_img img{width: 100%;height: 100%!important;}
@@ -29,6 +30,7 @@
 .search input[type="submit"]{border:solid 1px #DB181E;border-radius:0 5px 5px 0;margin-left:-5px;background:url(../../../image/wap/submit.png) no-repeat;width:34px;height:36px;}
 .plist ul li p.shopli_bottom_text{padding: 10px 0;}
 .plist ul li p{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;}
+.plist ul li p.money_del{color: #999;text-decoration: line-through;}
 .plist ul li p.al-one{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .plist ul li p.al{padding-bottom: 15px;}
 .plist ul li div.p-pic{background-color:#FFFFFF;background-repeat:no-repeat;height:145px;overflow:hidden;width:145px;}

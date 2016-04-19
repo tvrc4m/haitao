@@ -93,6 +93,10 @@
         $("#gain_ma").click(function(){
             var mob = $('#mobile').val();
             var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
+            if(mob == ""){
+                $("#gain_ma").parent().parent().find("p .tipcon").text("请输入手机号");
+                $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
+            }
             if(str.test(mob)) {
                 $.ajax({
                     url: 'lostpass.php',

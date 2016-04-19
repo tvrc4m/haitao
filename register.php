@@ -8,7 +8,7 @@ if($reg_config)
 	$config = array_merge($config,$reg_config);
 }
 
-if(isset($_GET['connect_id'])&&$_GET['connect_id']=='6'){
+if(isset($_GET['connect_id'])&&!empty($_GET['connect_id'])){
 	$tpl->display("user_bind.htm");
 	die;
 }
@@ -222,6 +222,7 @@ function doreg($guid=NULL)
 				$re=$db->query($sql);	
 			}
 			//-------------绑定一键连接
+
 			if(!empty($_REQUEST['connect_id']))
 			{
 				$sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";

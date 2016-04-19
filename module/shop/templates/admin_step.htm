@@ -41,7 +41,7 @@ function searchBlur(e){
 <div class="header">
     <h1>
     	<a href="<{$config.weburl}>" title="<{$config.company}>">
-        <img title="<{$config.company}>" alt="<{$config.company}>" src="<{if $config.logo}><{$config.logo}><{else}><{$config.weburl}>/image/logo.gif<{/if}>" />
+        <img title="<{$config.company}>" alt="<{$config.company}>" src="image/default/Logo.png" />
         </a>
         <i>卖家中心</i>
 	</h1>
@@ -90,11 +90,92 @@ function searchBlur(e){
     	</div>
     </div>
 </div>
-<div id="footer">
-  <p><{$web_con}></p>
-  <{$bt}><br>
-</div>
+<!--footer start-->
+    <div class="newfooter">
+        <div class="m_b_commitment">
+            <div class="w"><img src="/image/default/b_commitment.png" alt="品质保证 全球直供 优质品牌 售后保障"></div>
+        </div>
+        <div class="foot">
+            <div class="w">
+                <i class="icon_b_logo fl"></i>
+                <ul class="fl">
+                    <{insert name="label" type="ftlink" temp="ftlink_list"}>
+                    <li>
+                        <span>关注我们</span>
+                        <div class="attention">
+                            <a href="" title="" class="weibo">
+                                <div class="dia-wb fn-hide">
+                                    <img src="../../../image/default/Logo1.png" />
+                                    <span>新浪微博</span>
+                                    <span>mayihaitao_wb</span>
+                                    <span class="focus">立即关注</span>
+                                    <span class="arr"></span>
+                                </div>
+                            </a>
+                            
+                            <a href="" title="" class="weixin">
+                                <div class="dia-wx fn-hide">
+                                    <img style="width:100%;" src="../../../image/default/code.jpg" />
+                                    <span>微信公众号</span>
+                                    <span>mayihaitao_wx</span>
+                                    <span class="arr"></span>
+                                </div>
+                            </a>
+                           
+                            <div class="qq">
+                                <div class="dia-qq fn-hide">
+                                    <p>客服QQ：</p>
+                                    <a href=""><img src="../../../image/default/qq2.png" />3033872410</a>
+                                    <a href=""><img src="../../../image/default/qq2.png" />3361232531</a>
+                                    <a href=""><img src="../../../image/default/qq2.png" />3269255163</a>
+                                   <!--  <hr>
+                                    <p>官方交流技术群：</p>
+                                    <a href=""><img src="../../../image/default/qun.png" />123456</a>
+                                    <a href=""><img src="../../../image/default/qun.png" />123456</a> -->
+                                    <span class="arr"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <p class="copytight">© 2015-2016 蚂蚁在线(北京)科技有限公司 |  京ICP备15039996号-4<br>
+    地址：北京市朝阳区东大桥路甲8号尚都国际中心A座1815 | 电话:400-010-1977</p>
+        </div>
+    </div>
+    <!--footer end-->
+    <script type="text/javascript">
+    $(".weibo").bind("mouseenter mouseleave",function(){
+       $(".dia-wb").toggleClass("fn-hide");
+    });
+    $(".weixin").bind("mouseenter mouseleave",function(){
+       $(".dia-wx").toggleClass("fn-hide");
+    });
+    $(".qq").bind("mouseenter",function(){
+       $(".dia-qq").removeClass("fn-hide");
+    });
+    $(".qq").bind("mouseleave",function(){
+        if(!($(".dia-qq").hasClass("fn-hide")))
+       $(".dia-qq").addClass("fn-hide");
+    });
+    $(".nav_left_ul li").bind("click",function(event){
+        if($(this).find("ul")){
+            $(this).find("ul").toggleClass("dn");
+        }
+        else{
+        }
+        event.stopPropagation();
+    });
+</script>    
+<!-- <div id="footer">
+    <p><{$web_con}></p>
+    <{$bt}><br>
+</div> -->
+
+<{$chat_html}>
 </body>
 </html>
-
 

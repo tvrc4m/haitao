@@ -390,7 +390,7 @@ class pay
             //**req_data详细信息**
             $notify_url = $configs['notify_url'];//服务器异步通知页面路径//需http://格式的完整路径，不允许加?id=123这类自定义参数
             $call_back_url = $configs['return_url'];//页面跳转同步通知页面路径//需http://格式的完整路径，不允许加?id=123这类自定义参数
-            $merchant_url = $config['web_url']."/main.php?m=product&s=admin_buyorder&status=1";//操作中断返回地址//用户付款中途退出返回商户的地址。需http://格式的完整路径，不允许加?id=123这类自定义参数
+            $merchant_url = $config['web_url']."/main.php";//操作中断返回地址//用户付款中途退出返回商户的地址。需http://格式的完整路径，不允许加?id=123这类自定义参数
 
             $seller_email = $configs['wap_alipay_seller_email'];//卖家支付宝帐户//必填
 

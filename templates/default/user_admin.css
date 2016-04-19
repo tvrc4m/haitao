@@ -581,6 +581,7 @@ html[xmlns] .clearfix{display:block;}
 /* 选择店铺*/
 .wrap_shadow{background-color:#F9FAFC;border-radius:4px 4px 4px 4px;padding:4px;}
 .wrap_all{background-color:#FFFFFF;border:1px solid #C4D5E0;border-radius:4px 4px 4px 4px;}
+.wrap_all em{vertical-align: bottom;}
 .chart{height:70px;margin:20px auto 0;overflow:hidden;position:relative;width:876px;}
 .chart .bg_a1{background:url(../../image/default/user_admin/chart.gif) no-repeat 0 0;}
 .chart .bg_a2{background:url(../../image/default/user_admin/chart.gif) no-repeat 0 -70px;}

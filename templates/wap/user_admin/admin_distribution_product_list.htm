@@ -24,13 +24,13 @@
 				价格：<span class="price-tests"><{$config.money}><{$list.price|number_format:2}></span> 
 				</span>
 				<span class="complateMoney">
-				<!-- <{if $list.is_dist}>佣金: <b class="price-tests"><{$config.money}><{$list.commission_product_price_0|number_format:2}></b><{/if}> -->
-					佣金: <b class="price-tests"><{$config.money}>1.00</b>
+					<{if $list.is_dist}>佣金: <span class="price-tests"><{$config.money}><{$list.commission_product_price_0|number_format:2}></span><{/if}>
 				</span>
 			</p>
-			<div>
-				<span class="price-delate"><a href="?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list" onClick="return confirm('<{$lang.sure_del}>');">删除</a></span>
-				<span class="price-fenxiang price">分享</span>
+			<div class="price-btns">
+				<!-- <span class="price-delate"><a href="?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list" onClick="return confirm('<{$lang.sure_del}>');">删除</a></span> -->
+				<span class="price-delate"><a href="javascript:void(0);">删除</a></span> 
+				<{if $list.is_dist}><span class="price-fenxiang price">分享</span><{/if}>
 			</div>
             <!-- <p class="p-name color">		 
 			 <span class="complateMoney">
@@ -41,18 +41,52 @@
 			<div class="clear"></div> -->
         </dd>
     </dl>
-          <{foreachelse}>
+   <{foreachelse}>
 <div class="itemsNull">
     <h3>没有搜索到相关宝贝</h3>
 </div>
     <{/foreach}>
 </section>
-
-	
-	
-
-
-
-
-
-
+<script type="text/javascript">
+	function collect_altr(cla){
+        $(cla).append("<div class='am-dialog-mask'></div>"+
+				"<div class='price-btns-context'>"+
+					"<div class='price-btns-context-top clearfix'>"+
+						"<div class='context-top-list'>"+
+							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon59.png'>"+
+							"<p>微信好友</p>"+
+						"</div>"+
+						"<div class='context-top-list'>"+
+							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon58.png'>"+
+							"<p>朋友圈</p>"+
+						"</div>"+
+					"</div>"+
+					"<div class='price-btns-context-bot'><a href='javascript:void(0);'>分享</a></div>"+
+				"</div>")
+        $(".am-dialog-mask").addClass("am-dialog-mask-test");
+        $(".price-btns-context").addClass('price-btns-context_test');
+    }
+    function collect_confirm(cla){
+        $(cla).append("<div class='am-dialog-mask'></div>"+
+				"<div class='price-btns-context'>"+
+					"<div class='price-btns-context-top clearfix'>"+
+						"<p>确信删除</P>"+
+					"</div>"+
+					"<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
+				"</div>")
+        $(".am-dialog-mask").addClass("am-dialog-mask-test");
+        $(".price-btns-context").addClass('price-btns-context_test');
+        $(".detate-btns-context-bot a:first-child").bind("click",function(){
+	    	location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
+	    })
+	    $(".detate-btns-context-bot a:last-child").bind("click",function(){
+	    	location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
+	    })
+    }
+    $(".price-fenxiang").bind("click",function(){
+    	collect_altr(".price-btns");
+    })
+    $(".price-delate").bind("click",function(){
+    	collect_confirm(".price-btns");
+    })
+</script>
