@@ -96,7 +96,7 @@
                             num = num - 1;
                             $(".idcode .btn").attr("value",num+ "秒后重新发送");
                             if (num < 1) {
-                                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                                $(".idcode .btn").attr("disabled",false).css("background-color","#ff5c5d");
                                 clearInterval(interval);
                                 $(".idcode .btn").attr("value","发送短信验证码");
                                 num = 60;
