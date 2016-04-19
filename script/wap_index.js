@@ -74,7 +74,7 @@ $jj(function(){
 	var daHeight=$jj(".da_banner").offset().top-50;
 	$jj(".da_banner li").click(function(){
 		$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
-		$jj(window).scrollTop(daHeight-0.001);
+		$jj(window).scrollTop(daHeight+0.01);
 		var liSize=$jj(this).index();
 		$jj(this).addClass("current").siblings().removeClass("current");
 		$jj(".da_list>div").eq(liSize).addClass("list_current").siblings().removeClass("list_current");

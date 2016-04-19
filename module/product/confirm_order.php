@@ -205,7 +205,7 @@ else
 					
 					$post['action']='add';//填加流水
 					$post['type']=2;//担保接口
-					$post['seller_email'] = $sell_userid;//卖家账号
+					$post['seller_email'] = "Myzx168@163.com";//卖家账号
 					$post['buyer_email'] = $buid;//卖家账号
 					$post['order_id'] = $order_id;//外部订单号
 					$post['price'] = $product_price*1 + $logistics_price*1;//订单总价，单价元
@@ -238,7 +238,7 @@ else
 
 		$post['action']='add';//填加流水
 		$post['type']=2;//担保接口
-		$post['seller_email'] = "admin@systerm.com";//卖家账号
+		$post['seller_email'] = "Myzx168@163.com";//卖家账号
 		$post['buyer_email'] = $buid;//卖家账号
 		$post['order_id'] = $uorder;//外部订单号
 		$post['price'] = $uprice;//订单总价，单价元
