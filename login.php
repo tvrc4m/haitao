@@ -87,7 +87,6 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         }
         else
         {
-            var_dump($_POST);die;
             header("Location: login.php?erry=-1&connect_id=".$post['connect_id'].'&user='.$_POST['user']);//没
             exit();
         }

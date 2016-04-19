@@ -33,7 +33,7 @@ if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
         if(Check_only($_POST['mobile'], 'mobile', MEMBER)){
             die(Return_data(array('status_code' => '300', 'message' => '该手机号已存在！', 'data' => null )));
         }else{
-            echo $_SESSION['mon_yzm']['ph'] = 1;
+            $_SESSION['mon_yzm']['ph'] = 1;
             die(Return_data(array('status_code' => '200', 'message' => '手机号可用！', 'data' => null )));
         }
     }else{
@@ -222,12 +222,10 @@ function doreg($guid=NULL)
 				$re=$db->query($sql);	
 			}
 			//-------------绑定一键连接
-			var_dump($_REQUEST['connect_id']);
-
 			if(!empty($_REQUEST['connect_id']))
 			{
 				$sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";
-				var_dump($db->query($sql)); die;
+				$db->query($sql);
 			}
 			//---------------设置加密的cookie
 			bsetcookie("USERID","$userid\t$user",NULL,"/",$config['baseurl']);
