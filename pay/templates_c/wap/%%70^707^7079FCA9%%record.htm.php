@@ -1,14 +1,35 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-19 17:54:30
+<?php /* Smarty version 2.6.20, created on 2016-04-19 21:05:02
          compiled from record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 60, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 77, false),)), $this); ?>
+<div class="block fn-clear">
+    <div class="balance account">
+        <p>
+        账户余额
+        <!--<a target="_blank" href="">百度金融火热抢购中！</a>-->
+        </p>
+        <div>
+            <span class="wallet">
+                <em><strong><?php echo $this->_tpl_vars['de']['cash']; ?>
+</strong></em>
+                <span> 元</span>
+            </span>
+            <a class="btn" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=recharge">充 值</a>
+            <a class="btn" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=withdraw">提 现</a>
+            <!-- <a class="btn1" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=transfer">转 账</a> -->
+        </div>
+    </div>
+</div>
 <div class="block fn-clear">
 	<div class="record">
-        <h2>
+        <!-- <h2>
             <?php if ($_GET['mold'] == 1): ?>充值记录<?php elseif ($_GET['mold'] == 2): ?>提现记录<?php else: ?>交易记录<?php endif; ?>
             <span>可用余额<strong><?php echo $this->_tpl_vars['de']['cash']; ?>
 </strong>元</span>
-        </h2>
+        </h2> -->
         <div style="height:15px;background-color:#ededed;"></div>
          <p>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
@@ -128,7 +149,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 ?m=payment&s=pay&tradeNo=<?php echo $this->_tpl_vars['list']['order_id']; ?>
 ">付款</a>
                 <?php else: ?>
-                <a target="_blank" href="<?php if ($this->_tpl_vars['list']['return_url']): ?><?php echo $this->_tpl_vars['list']['return_url']; ?>
+                <a href="<?php if ($this->_tpl_vars['list']['return_url']): ?><?php echo $this->_tpl_vars['list']['return_url']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['config']['weburl']; ?>
 ?m=payment&s=detail&tradeNo=<?php echo $this->_tpl_vars['list']['flow_id']; ?>
 <?php endif; ?>">详情</a>

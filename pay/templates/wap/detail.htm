@@ -1,6 +1,18 @@
 <div class="block fn-clear">
+      <div class="balance account">
+        <div>
+            <span class="wallet">
+                  <span>账户余额</span>
+                <em><strong class="srt"><{$de.cash}></strong></em>
+                <span> 元</span>
+            </span>
+            <a class="btn btns" href="<{$config.weburl}>/?m=payment&s=withdraw">提 现</a>
+        </div>
+    </div>
+</div>
+<div class="block fn-clear">
 	<div class="i-block">
-		<h2>记录详情</h2>
+		<h2>账单详情</h2>
         <dl class="detail">
             <dt><{$re.note}></dt>
             <{if $re.real_name||$re.seller_email}>
@@ -21,7 +33,20 @@
             <{if $re.con}><dd><span>备注：</span><{$re.con}></dd><{/if}>
             <{if $re.censor}><dd><span>操作者：</span><{$re.censor}></dd><{/if}>
             <{if $re.check_time}><dd><span>操作时间：</span><{$re.check_time|date_format:"%Y-%m-%d&nbsp;%H:%M:%S"}></dd><{/if}>
-            <{/if}>
+             <{/if}>
+            <dd><span>备注：</span>提款</dd>
+            <!-- <{if $re.mold==8}>
+            <dd><span>提现银行：</span><{$re.bank}></dd>
+            <dd><span>银行卡号：</span><{$re.cardno}></dd>
+            <dd><span>开户人：</span><{$re.cardname}></dd>
+            <dd><span>提现金额：</span><{$re.amount}></dd>
+            <dd><span>服务费：</span><{$re.fee}></dd>
+            <dd><span>到账时间：</span><{$re.supportTimeName}></dd>
+            <{if $re.bankflow}><dd><span>回执流水号：</span><{$re.bankflow}></dd><{/if}>
+            <{if $re.con}><dd><span>备注：</span><{$re.con}></dd><{/if}>
+            <{if $re.censor}><dd><span>操作者：</span><{$re.censor}></dd><{/if}>
+            <{if $re.check_time}><dd><span>操作时间：</span><{$re.check_time|date_format:"%Y-%m-%d&nbsp;%H:%M:%S"}></dd><{/if}>
+            <{/if}> -->
         </dl>
 	</div>
 </div>

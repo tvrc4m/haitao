@@ -1,5 +1,5 @@
 @charset "utf-8";
-html{background-color:#ededed;color:#535353;}
+html{background-color:#f1f1f1;color:#535353;}
 body{margin:0;padding:0;font:12px/1.5 arial,'宋体';,"Microsoft Yahei";}
 html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,a,em,font,img,strong,b,dl,dt,dd,ol,ul,li,form,textarea,input{margin:0;padding:0;}
 ol,ul,li{list-style:none outside none;}
@@ -54,7 +54,7 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .banner .img-cover{position:absolute;top:0;left:0;z-index:100;width:100px;height:98px;}
 .banner .info{float:left;display:inline;margin-left:10px;padding-right: 20px;}
 .banner .user_info{margin-top:12px;line-height:22px;font-size:14px;color:#333;}
-.banner .user_info p:nth-of-type(2){color: #ff5c5c;} 
+.banner .user_info p:nth-of-type(2){color: #ff5c5c;margin: 3px 0;} 
 .banner .user_info p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .banner .user_account{margin-top:5px;}
 .banner .user_account em{color:#F98D00;font-size:14px;margin:0 5px 0 2px;}
@@ -75,13 +75,15 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 
 .block{background-color:#fff;}
 .block.account{height:108px;}
-.block .balance{float:left;padding:20px 0 20px 2%;width:98%;}
+.block .balance{float:left;padding:20px 0 30px 2%;width:98%;}
 .block .balance p{font-size:14px;line-height:18px;}
 .block .balance p a{color:red;font-weight:normal;margin-left:20px;background:url(../image/hot.jpg) 118px 1px no-repeat;padding-right:42px;text-decoration:none;font-size:12px;}
 .block .balance .wallet{display:inline-block;height:30px;line-height:30px;font-size:14px;color:#666;margin-right:10px;zoom:1;vertical-align:middle;}
 .block .balance .wallet em{color:#ff6500;font-family:'Microsoft YaHei';font-size:14px;}
 .block .balance .wallet em strong{font-size:20px;font-weight:normal;line-height:normal;}
+.block .balance .wallet em strong.srt{padding: 0 5px;}
 .block .balance .btn{width:50px;height:30px;display:inline-block;*display:inline;border:none;background:url(../image/btn.png) 0 -217px no-repeat;color:#666;font-size:14px;margin-left:3px;text-decoration:none;text-align:center;zoom:1;line-height:30px;}
+.block .balance .btns{float: right;margin-right: 20px;background: none; background-color: #ff5c5c;color: #fff;width: 65px;}
 .block .balance .btn:hover{background-position:0 -278px;}
 .block .balance .btn:active{background-position:0 -340px;}
 .block .balance .btn1{width:60px;height:30px;display:inline-block;background:url(../image/btn.png) 0 0 no-repeat;border:none;color:#fff;font-size:14px;text-decoration:none;text-align:center;line-height:30px;margin-left:3px;zoom:1;}
@@ -102,10 +104,10 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .block .record td.minus{color:#F37800;}
 .block .record td div{color:#888;margin-top:5px;}
 
-.i-block{padding:20px 0;}
-.block h2{/*margin-bottom:15px;*/font-size:14px;/*border-bottom:solid 1px #ddd;*/height:50px;line-height: 50px;}
+.i-block{/*padding:20px 0;*/background-color: rgba(228, 228, 228, 1);}
+.block h2{/*margin-bottom:15px;*/font-size:14px;/*border-bottom:solid 1px #ddd;*/height:50px;line-height: 50px;text-align: center;}
 .block h2 span{font-size:12px;font-weight:normal;float:right;padding-right: 0.5rem;}
-.block h2 span strong{color:#53A000;margin:0 5px;}
+.block h2 span strong{color:#ff5c5c;margin:0 5px;}
 .block h2 span a{color:#136EC2;margin-left:3px;}
 
 .filter{background-color:#f4faff;padding:20px 10px;border:1px solid #d8eafa;margin-bottom:20px;}
@@ -121,9 +123,9 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .none span{float:left;font-family:"Microsoft YaHei","黑体";font-size:18px;margin-top:38px;}
 
 
-.detail{margin:30px auto 20px;line-height:22px;border-right:1px solid #D2D2D2;border-top:1px solid #D2D2D2;color:#333;}
-.detail dt{display:block;font-size:14px;font-weight:bold;padding:8px 10px;}
-.detail dt,.detail dd{border-left:1px solid #D2D2D2;border-bottom:1px solid #D2D2D2;}
+.detail{/*margin:30px auto 20px;*/line-height:22px;border-right:1px solid #D2D2D2;border-top:1px solid #D2D2D2;color:#333;}
+.detail dt{display:block;font-size:14px;font-weight:bold;padding:8px 10px;text-align: center;}
+.detail dt,.detail dd{border-left:1px solid #D2D2D2;border-bottom:1px solid #D2D2D2;background-color: #fff;}
 .detail dd span{border-right:1px solid #D2D2D2;padding:6px 5px;width:90px;display:inline-block; margin-right:10px;text-align:right;}
 .block .record p a.pay_sgo{color: #555;font-size: 14px;}
 
@@ -138,7 +140,7 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 /*.container p{padding-left: 8px;}*/
 .container p.m1{margin-top: 10px;margin-bottom: 3px;}
 .container p.m2 input{margin-top: 20px;border-radius: 5px;background: #5170EC;color: #fff;padding-left: 3px;}
-h2{padding-left: 0.5rem;}
+h2{font-weight: normal;}
 .duser-auth {
     display: inline-block;
 }
