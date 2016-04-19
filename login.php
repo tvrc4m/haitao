@@ -115,8 +115,8 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                 else
                     login($re['userid'],$re['user']);
 
-                /*$forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
-                msg($forward);*/
+                $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+                msg($forward);
                 msg($_COOKIE['old_url']);
                 setcookie("old_url");
             }

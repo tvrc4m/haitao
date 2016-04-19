@@ -222,12 +222,11 @@ function doreg($guid=NULL)
 				$re=$db->query($sql);	
 			}
 			//-------------绑定一键连接
-			var_dump($_REQUEST['connect_id']);
 
 			if(!empty($_REQUEST['connect_id']))
 			{
 				$sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";
-				var_dump($db->query($sql)); die;
+				$db->query($sql);
 			}
 			//---------------设置加密的cookie
 			bsetcookie("USERID","$userid\t$user",NULL,"/",$config['baseurl']);
