@@ -131,11 +131,11 @@ else
 		if(strlen($id)>4)
 			$catname[]=substr($id,0,-2);
 		$catname[]=$id;
-        foreach($catname as $key => $val){
-            if($key > 0){
-                $newname[$key] = array('id' => $catname[$key], 'oid' => $catname[$key-1]);
+        foreach($catname as $key_f => $val){
+            if($key_f > 0){
+                $newname[$key_f] = array('id' => $catname[$key_f], 'oid' => $catname[$key_f-1]);
             }else{
-                $newname[$key] = array('id' => $catname[$key], 'oid' => $catname[$key]);
+                $newname[$key_f] = array('id' => $catname[$key_f], 'oid' => $catname[$key_f]);
             }
         }
 		$tpl->assign("catname",$newname);

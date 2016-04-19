@@ -26,7 +26,7 @@
 				<ul class="clearfix">
 					<{foreach item=slist key=numk from=$lists.scat}>
 						<li class="cat-list-current"><a href="<{$config.weburl}>/?m=product&s=list&id=<{$slist.catid}>">
-							<img src="<{$slist.pic|default:'/image/wap/cate1001.png'}>" alt="<{$slist.cat}>">
+							<img src="<{$slist.wpic|default:'/image/wap/cate1001.png'}>" alt="<{$slist.cat}>">
 							<p><{$slist.cat}></p></a>
 						</li>
 					<{/foreach}>

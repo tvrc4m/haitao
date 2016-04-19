@@ -33,7 +33,7 @@ if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
         if(Check_only($_POST['mobile'], 'mobile', MEMBER)){
             die(Return_data(array('status_code' => '300', 'message' => '该手机号已存在！', 'data' => null )));
         }else{
-            echo $_SESSION['mon_yzm']['ph'] = 1;
+            $_SESSION['mon_yzm']['ph'] = 1;
             die(Return_data(array('status_code' => '200', 'message' => '手机号可用！', 'data' => null )));
         }
     }else{
