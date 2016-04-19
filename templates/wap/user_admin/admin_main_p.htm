@@ -18,7 +18,7 @@
         <li class="duser-auth-line"></li>
         <li>
             <{if $verify }>
-                <a href="<{$config.weburl}>" class="duser-auth-ema duser-auth-ema-j">已认证</a>
+                <a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已认证</a>
             <{else}>
                 <a href="<{$config.weburl}>/real.php" class="duser-auth-ema ">未认证</a>
             <{/if}>
@@ -40,12 +40,13 @@
 <section class="m_fore clearfix">
     <ul>
         <li><a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><span class="fore_a">分销中心</span></a></li>
+        <li><a href="<{$config.weburl}>/pay"><span class="fore_d">蚂蚁钱包</span></a></li>
         <li><a href="main.php?m=member&s=admin_orderadder"><span class="fore_b">收货地址</span></a></li>
-        <li><a href="main.php?m=sns&s=admin_share_shop"><span class="fore_b">我的收藏</span></a></li>
+        <li><a href="main.php?m=sns&s=admin_share_shop"><span class="fore_c">我的收藏</span></a></li>
     </ul>   
 </section>
 <section class="m_btn">
-    <div class="m_tuichu"><a href="http://haitao.com/main.php?action=logout">退出登录</a></div>
+    <div class="m_tuichu"><a href="<{$config.weburl}>/main.php?action=logout">退出登录</a></div>
 </section>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.11.2.min.js"></script>
 <script>

@@ -88,7 +88,7 @@ if(!$reg_config)
         </tr>
         <tr>
           <td align="left" >Email</td>
-          <td align="left" ><input class="text" name="email" type="text" id="email" value="admin@systerm.com" size="10">
+          <td align="left" ><input class="text" name="email" type="text" id="email" value="Myzx168@163.com" size="10">
             <span class="bz">暂时不可以修改，默认admin@systerm.com</span><br /></td>
         </tr>
         <tr>

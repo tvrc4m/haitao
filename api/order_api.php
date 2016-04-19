@@ -66,13 +66,13 @@ function sub_order($id){
         $list['goods_order'][0]['goods_attributes_list'][$i]['num']=$orlist['orpro'][$i]['num'];
     }
     $order = json_encode($list);file_log($config['webroot']."/api/list.log",$order);
-    $tokens = ses_curl("http://121.40.31.77:8015/Service/Get_Aes.aspx",array ("time" => $time,"pass" => $pass));//获取验证token
+    $tokens = ses_curl("http://121.40.31.77:80/Service/Get_Aes.aspx",array ("time" => $time,"pass" => $pass));//获取验证token
     if(is_array($tokens)){
         if($tokens['status']==0){
             $token = $tokens['aes'];
         }
     }
-    $type = ses_curl("http://121.40.31.77:8015/Service/Send_Goods_Order.aspx",array ("time" => $time,"pass" => $pass,"token" => $token,"order" => $order));
+    $type = ses_curl("http://121.40.31.77:80/Service/Send_Goods_Order.aspx",array ("time" => $time,"pass" => $pass,"token" => $token,"order" => $order));
     unset($list);
     unset($order);
     if($type['status']==0){

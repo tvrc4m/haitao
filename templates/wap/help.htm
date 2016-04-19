@@ -3,19 +3,58 @@
 	<div class="nav-w">
     	<section class="nav-s"><a href="javascript:history.back();"><i class="fanhui_icon"></i></a></section>
     	<section class="nav-c"><span>帮助中心</span></section>
-    	<section class="nav-e"><a href="<{$config.weburl}>/main.php"><nav>我的商城</nav></a></section>
+    	<section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/help.css" rel="stylesheet" type="text/css" />
-<section>
+<section class="help_container">
 <{if !$smarty.get.id}>
-<ul>
-    <{foreach item=list from=$de}>
-    <li><a href="help.php?<{if $smarty.get.type}>id<{else}>type<{/if}>=<{$list.id}>"><{$list.title}></a></li>
-    <{/foreach}>
+<ul class="help_list">
+    <li >
+    	<a href="javascript:void(0);">蚂蚁保障<i></i></a>
+    	<ul>
+    		<li><a href="help.php?id=4">常见问题</a></li>
+		    <li><a href="help.php?id=2">正品保障</a></li>
+		    <li><a href="help.php?id=3">无忧退货</a></li>
+    	</ul>
+    </li>
+	<li>
+		<a href="javascript:void(0);">新手指南<i></i></a>
+		<ul>
+    		<li><a href="help.php?id=5">购物流程</a></li>
+        	<li><a href="help.php?id=6">支付方式</a></li>
+        	<li><a href="help.php?id=7">账户管理</a></li>
+    	</ul>
+	</li>
+    <li>
+    	<a href="javascript:void(0);">物流派送<i></i></a>
+    	<ul>
+    		<li><a href="help.php?id=8">配送方式</a></li>
+	        <li><a href="help.php?id=9">验货签收</a></li>
+	        <li><a href="help.php?id=10">联系客服</a></li>
+    	</ul>
+    </li>
+    <li>
+    	<a href="javascript:void(0);">售后服务<i></i></a>
+    	<ul>
+    		 <li><a href="help.php?id=11">退货政策</a></li>
+	        <li><a href="help.php?id=12">退货流程</a></li>
+	        <li><a href="help.php?id=13">退款说明</a></li>
+    	</ul>
+    </li>
 </ul>    
 <{else}>
 	<div class="con"><{$de.con_desc}></div>
 <{/if}>    
 </section>
 <{include file="footer.htm"}>
+<script type="text/javascript">
+	var outLi=$(".help_list>li");
+	outLi.on("click",function(){
+		var _this=$(this);
+		_this.find("ul").toggle();
+		_this.find("i").toggleClass("current");
+		_this.siblings().find("ul").hide();
+		_this.siblings().find("i").removeClass("current");
+	})
+</script>

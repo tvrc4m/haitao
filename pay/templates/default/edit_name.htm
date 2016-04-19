@@ -84,7 +84,7 @@ function IdentityCodeValid() {
     <div class="tips"><span></span>温馨提示：您的实名认证信息被拒绝,请重新上传认证资料。</div>
     <{/if}>
     <{if $de.identity_verify!='true'}>
-    <ol class="fn-clear step2">
+   <!--  <ol class="fn-clear step2">
         <li class="fore1">
             <em class="icon">
                 <i></i>
@@ -108,7 +108,7 @@ function IdentityCodeValid() {
             </em>
             <span>成功</span>
         </li>
-    </ol>
+    </ol> -->
     <{/if}>
     <div class="form">
     <form method="post" id="form" onsubmit="return IdentityCodeValid();">

@@ -84,7 +84,7 @@ function gotourl(url)
 	<{if $smarty.get.time}>
 	var time=<{$smarty.get.time}>;
 	<{/if}>
-	// setTimeout("gotourl1('"+url+"')",time);//设定超时时间
+	setTimeout("gotourl1('"+url+"')",time);//设定超时时间
 }
 function gotourl1(url)
 {

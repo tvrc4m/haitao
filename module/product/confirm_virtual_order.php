@@ -123,7 +123,7 @@ else
 
 		$post['action']='add';//填加流水
 		$post['type']=2;//担保接口
-		$post['seller_email'] = "admin@systerm.com";//卖家账号
+		$post['seller_email'] = "Myzx168@163.com";//卖家账号
 		$post['buyer_email'] = $buid;//卖家账号
 		$post['order_id'] = $uorder;//外部订单号
 		$post['price'] = $uproduct_price;//订单总价，单价元
