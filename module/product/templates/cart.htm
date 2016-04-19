@@ -235,7 +235,13 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
 		{
 			var data_value = $(this).attr("data-value");
 			ckeckbox("input[data-value='"+data_value+"']",true);
-		}	
+		}else{
+            var a = $(this).parent().parent().parent().nextUntil("tr.seg-entry").length+$(this).parent().parent().parent().prevUntil("tr.seg-entry").length;
+            var b = $(this).parent().parent().parent().nextUntil("tr.seg-entry").find("label.cart-checkbox-checked").length+$(this).parent().parent().parent().prevUntil("tr.seg-entry").find("label.cart-checkbox-checked").length;
+            if(a-b==1){
+                $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th label").addClass("cart-checkbox-checked");
+            }
+        }
 		$(this).parent().addClass("cart-checkbox-checked");
 	}
 	else
@@ -248,9 +254,13 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
 		{
 			var data_value = $(this).attr("data-value");
 			ckeckbox("input[data-value='"+data_value+"']",false);
-		}
+		}else{
+            $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th label").removeClass("cart-checkbox-checked");
+            $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th input").prop("checked","");
+        }
 		$(this).parent().removeClass("cart-checkbox-checked");
 		$(this).parent().parent().parent().removeClass("checked");
+
 	}
 	count();
 });

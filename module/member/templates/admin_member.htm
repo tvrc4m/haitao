@@ -124,13 +124,13 @@ $(function(){
 					return flag;
 				}
 			})
-			var delayTime = 10;
+			var delayTime = 60;
 			function countDown()
 			{
 				delayTime--;
 				$(".send").val(delayTime + '秒后重新获取');
 				if (delayTime == 0) {
-					delayTime = 10;
+					delayTime = 60;
 					$(".send").val(msg);
 					$(".send").removeAttr("disabled");
 					$("#email").removeAttr("disabled");
@@ -204,13 +204,13 @@ $(function(){
 					return flag;
 				}
 			})
-			var delayTime = 10;
+			var delayTime = 60;
 			function countDown()
 			{
 				delayTime--;
 				$(".send").val(delayTime + '秒后重新获取');
 				if (delayTime == 0) {
-					delayTime = 10;
+					delayTime = 60;
 					$(".send").val(msg);
 					$(".send").removeAttr("disabled");
 					$("#mobile").removeAttr("disabled");
