@@ -52,12 +52,9 @@ function cat($ar)
 				}
 			}			
 			$re[$key]["scat"]=$sre;
-			//var_dump($sre);
 		}	
 		$tpl->assign("config",$config);
 		$tpl->assign("cat",$re);
-		//echo "<pre>";
-		//var_export($re);die;
 	}
 	return $tpl->fetch($ar['temp'].'.htm',$flag);
 }

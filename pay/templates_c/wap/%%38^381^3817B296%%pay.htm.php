@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-07 14:56:37
+<?php /* Smarty version 2.6.20, created on 2016-04-18 23:26:31
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -54,9 +54,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <h3><?php echo $this->_tpl_vars['re']['note']; ?>
 </h3>
             <p>
-            收款方： <?php if ($this->_tpl_vars['re']['real_name']): ?><?php echo $this->_tpl_vars['re']['real_name']; ?>
+            收款方： Myzx168@163.com<!--<?php if ($this->_tpl_vars['re']['real_name']): ?><?php echo $this->_tpl_vars['re']['real_name']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['re']['seller_email']; ?>
-<?php endif; ?>
+<?php endif; ?>-->
             <span><strong><?php echo ((is_array($_tmp=$this->_tpl_vars['re']['price'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2) : number_format($_tmp, 2)); ?>
 </strong>元</span>
             </p>

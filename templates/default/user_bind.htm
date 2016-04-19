@@ -10,7 +10,7 @@
 <link href="<{$config.weburl}>/templates/default/page.css" rel="stylesheet" type="text/css" />
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/lostpass.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/bind.js" type="text/javascript"></script>
 </head>
 <body class="login">
 <div>
@@ -29,10 +29,10 @@
         </div>
         <div class="content">
         	<div class="top">
-        		<a href="">已有蚂蚁账号</a><a class="cur" href="<{$config.regname}>?connect_id=<{$smarty.get.connect_id}>">没有蚂蚁账号</a>
+        		<a href="login.php?connect_id=<{$smarty.get.connect_id}>">已有蚂蚁账号</a><a class="cur" href="<{$config.regname}>?connect_id=<{$smarty.get.connect_id}>">没有蚂蚁账号</a>
         	</div>
         	<div class="middle">
-	        	<form id="register" name="register" action="" method="post">
+	        	<form id="register" name="register" action="register.php" method="post">
 	                <div>
 	                    <dl>
 	                        <dt><img src="image/default/icon6.png"></dt>
@@ -84,7 +84,7 @@
         var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
         if(str.test(mob)) {
             $.ajax({
-                url: 'lostpass.php',
+                url: 'register.php',
                 type: 'post',
                 data: {m_send: 'm_send', mobile: mob},
                 dataType: 'json',
@@ -96,7 +96,7 @@
                             num = num - 1;
                             $(".idcode .btn").attr("value",num+ "秒后重新发送");
                             if (num < 1) {
-                                $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
+                                $(".idcode .btn").attr("disabled",false).css("background-color","#ff5c5d");
                                 clearInterval(interval);
                                 $(".idcode .btn").attr("value","发送短信验证码");
                                 num = 60;

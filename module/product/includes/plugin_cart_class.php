@@ -439,7 +439,8 @@ class cart
 		{
 			if(!empty($re['id']))
 			{
-				$sql = "update ".CART." set quantity = quantity + $quantity where id = '$re[id]'";	
+				//$sql = "update ".CART." set quantity = quantity + $quantity where id = '$re[id]'"; 商品订单提交累加去掉，改为根据提交数量生成订单
+				$sql = "update ".CART." set quantity = $quantity where id = '$re[id]'";
 				$this->db->query($sql);	
 				return $re['id'];
 			}
