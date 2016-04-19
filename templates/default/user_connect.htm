@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -68,6 +67,7 @@
 	                <div class="item login-btn">
 	                    <input name="action" type="hidden" value="submit" />
 	                    <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
+                        <input name="connect_id" type="hidden" id="connect_id" value="<{$smarty.get.connect_id}>" />
 	                    <input type="submit" tabindex="4" value="登录" onclick="return do_login();">
 	                </div>
 	            </form>
