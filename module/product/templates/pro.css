@@ -146,7 +146,9 @@
 .itemSearchResult .page{margin-top:0; margin-right:50px; }
 .itemSearchResult .flpage{width: 995px;padding: 16px 0;}
 .itemSearchResult li:hover .p-shop{display:block;}
-.itemsNull{background:url(../../../image/default/null.png) no-repeat 40px 20px #FFF3E8;border:1px solid #F4D9BF;color:#666666;height:85px;line-height:20px;margin:10px 0;padding:20px 40px 10px 150px;}
+.itemsNull{border:1px solid #ccc;color:#666666;line-height:20px;padding:20px 110px;background-color: #dcdddd;}
+.itemsNull .left{float: left;width: 120px;}
+.itemsNull .right{float: left;margin: 20px 0 0 40px;width: auto;}
 .itemsNull h3{font-size:14px;margin:16px 0 10px;}
 .itemsNull span{margin-right:10px;}
 .hotProduct{float:right;width:202px;background-color: #fff;}

@@ -81,7 +81,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .head .info-right .follow-widget{height:28px;overflow:hidden;padding-left:30px;}
 .head .info-right .follow-widget a{  82px;background:url(home/attention.gif)  no-repeat;display:block;height:26px;margin-right:4px;text-indent:-999em;width:}
 .head  .info{height:145px;border-bottom: 1px dashed #ccc;}
-.head .nav{border-bottom:2px solid #ccc;border-color:#ccc;height:35px;width:950px;margin-top: 60px;margin-left: auto;margin-right: auto;margin-bottom: 100px;}
+.head .nav{border-bottom:2px solid #ccc;border-color:#ccc;height:35px;width:950px;margin-top: 60px;margin-left: auto;margin-right: auto;margin-bottom: 30px;}
 .head .nav ul li{float:left;font-size:14px;height:35px;line-height: 35px;width: 145px;text-align: center;padding:0 1px;}
 .head .nav ul li.first{border-top-left-radius:4px;}
 .head .nav ul li.last{border-right-width:1px;border-top-right-radius:4px;}
@@ -154,7 +154,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .forward p{clear:both;padding-top:3px;}
 .forward .error{ color:#FF0000;font-size:12px;line-height:24px;height:24px;}
 .ftextarea{border:1px solid #D5E5F5;font-size:12px;height:40px;overflow:auto;resize:none;width:98%;word-wrap:break-word;} 
-.sns-next{padding-top:20px;padding-bottom: 40px;}
+.sns-next{padding-top:20px;}
 .sns-next a{background:url(../../../../image/default/user_admin/mayi_mores.png) no-repeat 58% 24px;background-color:#ff5c5c;color:#fff;display:block;height:60px;line-height:60px;text-align:center;width:925px;font-size: 16px;margin-left: auto;margin-right: auto;}
 /*.sns-next a:hover{background-color:#E4E4E4;}*/
 /*.sns-next a i{background: url(home/mayi_home_icon4.png) no-repeat 0px -94px;display: inline-block;width: 20px;height: 20px;margin-left: 13px;vertical-align: -4px;}*/
