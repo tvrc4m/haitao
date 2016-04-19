@@ -81,13 +81,13 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                 else
                     login($re['userid'],$re['user']);
             }
-            echo uc_user_synlogin($uid);
+            uc_user_synlogin($uid);
             $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
             msg($forward);
         }
         else
         {
-            var_dump($_POST);die;
+
             header("Location: login.php?erry=-1&connect_id=".$post['connect_id'].'&user='.$_POST['user']);//没
             exit();
         }
@@ -585,4 +585,5 @@ if(!empty($_GET['connect_id']))
     $tpl->display("user_connect.htm");
 else
     $tpl->display("login.htm");
+
 ?>
