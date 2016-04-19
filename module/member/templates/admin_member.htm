@@ -39,7 +39,6 @@ $(function(){
                 <li class="<{if $smarty.get.type=='password'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=password">修改密码</a></li>
                 <li class="<{if $smarty.get.type=='email'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=email">修改邮箱</a></li>
                 <li class="<{if $smarty.get.type=='mobile'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=mobile">修改手机</a></li>
-                <li class="<{if $smarty.get.type=='certification'}>active<{else}>normal<{/if}>"><a href="main.php?m=member&s=admin_member&type=certification">实名认证</a></li>
             </ul>
         </div>
         <{if $smarty.get.type=='password'}>
@@ -63,36 +62,6 @@ $(function(){
                 <dd><input type="submit" value="<{$lang.submit}>" class="submit"></dd>
             </dl>
             </form>
-        </div>  
-        <{elseif $smarty.get.type=='certification'}>
-            <div class="form-style">
-            <form action="" method="post">
-            <input type="hidden" value="password" name="submit">
-            <dl>
-                <dt>真实姓名</dt>
-                <dd><input name="name" id="name" class="text w184" /><em></em></dd>
-            </dl>
-            <dl>
-                <dt>身份证号码</dt>
-                <dd><input name="id" id="id" maxlength="18" class="text w184" /><em></em></dd>
-            </dl>
-            <dl class="foot">
-                <dt>&nbsp;</dt>
-                <dd><input type="submit" value="<{$lang.submit}>" class="submit"></dd>
-            </dl>
-            </form>
-             <script>
-            $("#id").blur(function(){
-                var val = $("#id").val();
-                var patrn = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
-                if(!val){
-                    alert("请输入身份证号！");return false;
-                }
-                else if(!patrn.test(val)){  
-                    alert("请填写有效的身份证号码！");return false;
-                }
-            });
-            </script>
         </div>  
         <{elseif $smarty.get.type=='email'}>
         <div class="form-style">
@@ -155,13 +124,13 @@ $(function(){
 					return flag;
 				}
 			})
-			var delayTime = 10;
+			var delayTime = 60;
 			function countDown()
 			{
 				delayTime--;
 				$(".send").val(delayTime + '秒后重新获取');
 				if (delayTime == 0) {
-					delayTime = 10;
+					delayTime = 60;
 					$(".send").val(msg);
 					$(".send").removeAttr("disabled");
 					$("#email").removeAttr("disabled");
@@ -235,13 +204,13 @@ $(function(){
 					return flag;
 				}
 			})
-			var delayTime = 10;
+			var delayTime = 60;
 			function countDown()
 			{
 				delayTime--;
 				$(".send").val(delayTime + '秒后重新获取');
 				if (delayTime == 0) {
-					delayTime = 10;
+					delayTime = 60;
 					$(".send").val(msg);
 					$(".send").removeAttr("disabled");
 					$("#mobile").removeAttr("disabled");
@@ -328,10 +297,6 @@ $(function(){
                 <dd><{if $wechat_connect_row.userid}>已经绑定 <{$wechat_connect_row.nickname}><{else}><a href="<{$wechat_url}>" target="_blank">未绑定，点击进行绑定</a><{/if}></dd>
             </dl>
             <{/if}>
-            <dl>
-                <dt>旺旺：</dt>
-                <dd><input name="ww" type="text" value="<{$de.ww}>" class="text w184"></dd>
-            </dl>
             <dl class="foot">
                 <dt>&nbsp;</dt>
                 <dd><input type="submit" value="<{$lang.submit}>" class="submit"></dd>

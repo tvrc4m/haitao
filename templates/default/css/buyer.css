@@ -317,6 +317,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .right_module_content .addicon{font-size: 14px;color: #fff;width: 70px;height: 30px;line-height: 28px;text-align: center;cursor:pointer;display:inline-block;overflow:hidden;vertical-align:middle;}
 .right_module_content .addicon:hover{background:-moz-linear-gradient(center top ,#FFB847 0%,#FFA210 100%) repeat 0 0;text-decoration:none;border-color:#FFCE82;color:#FFF;} 
 .right_module_content span{background-color: #ff8800;color: #fff;width: 70px;height: 30px;line-height: 28px;text-align: center; border-radius:5px;border:1px #FFF solid;display:inline-block;cursor:pointer;white-space:nowrap;}
+.right_module_content span.alforcus{cursor: default;background: #999;}
 .right_module_content span em{margin-right:2px;vertical-align:-2px;color:#FFF;font:bold 16px Arial;height:16px;text-decoration:none;margin-right: 10px;}
 .right_module_content .addicon:hover em{color:#FFF;}
 .right_module .con{clear:both;line-height:22px;}
