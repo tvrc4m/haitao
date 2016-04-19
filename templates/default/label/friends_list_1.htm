@@ -23,7 +23,7 @@ $(function(){
 			if(originalRequest>1)
 			{	
 				$(".friends dl").eq(index).find('a[class="addicon"]').remove();
-				$(".friends dl").eq(index).find('p[class="name"]').after('成功添加');
+				$(".friends dl").eq(index).find('p[class="name"]').after('<span class="alforcus">已关注</span>');
 			}
 			else if (originalRequest>0)
 			{

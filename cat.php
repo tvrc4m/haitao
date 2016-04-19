@@ -46,7 +46,7 @@ foreach($re as $key=>$v)
 	{
 		$s=$sv["catid"]."00";
 		$b=$sv["catid"]."99";
-		$sql="select catid,cat,pic from ".PCAT." where `isindex` = 1 and catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,12";
+		$sql="select catid,cat,wpic from ".PCAT." where `isindex` = 1 and catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,12";
 		$db->query($sql);
 		$sre[$skey]["scat"]=$db->getRows();
 		if($sv['brand'])
@@ -61,11 +61,14 @@ foreach($re as $key=>$v)
 }
 $tpl->assign("config",$config);
 $tpl->assign("cat",$re);
-//echo "<pre>";
-//var_export($re);die;
+
+/*echo "<pre>";
+var_export($re);die;*/
+
 $config['title']=$de['title'];
 $config['keyword']=$de['keywords'];
 $config['description']=$de['description'];
+
 //======================================================================
 include_once("footer.php");
 $tpl->display("cat.htm");

@@ -78,7 +78,7 @@ html[xmlns] .clearfix{display:block;}
 .nav_bg .collection{width:124px;height:40px;line-height:40px;background:url(img/collection.png) no-repeat #FF494B;float:right;}
 /* --------------- */
 #left{width:208px;float:left;}
-/*.user{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;}*/
+.user{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;}
 .user_photo{width:206px;}
 .user_photo h2{color:#3D3F3E;font-size:14px;margin:13px 0 10px 0;padding-left:15px;}
 .user_photo p{margin-top:6px;}
@@ -134,6 +134,9 @@ html[xmlns] .clearfix{display:block;}
 /* --------------- */
 .module_special .info{padding:0 5px;}
 .module_special .info p{font-size:14px;line-height:26px;margin-top:20px;}
+.module_special .search{float: none; width: auto;min-height: auto;overflow: hidden;position: static;}
+.module_special .search .button{height: 20px;position: static;width: 60px;font-size: 12px;vertical-align: top;}
+.module_special .filter{margin: 15px 0;}
 /* --------------- */
 .search{border:1px solid #DDD;}
 .search h4{border-bottom:1px solid #E0E0E0;height:25px;color:#737373;line-height:25px;padding:5px 0 5px 12px;}
@@ -192,12 +195,12 @@ html[xmlns] .clearfix{display:block;}
 #footer a{color:#666666;text-decoration:none;}
 #footer em{padding:0 10px;}
 /* 幻灯片 */
-.flexslider{width:1212px;overflow:hidden;background:#FFFFFF;position:relative;clear:both;margin:15px auto;padding:0;}
+.flexslider{width:1212px;overflow:hidden;background:#FFFFFF;position:relative;clear:both;margin:15px auto;padding:0;height: auto !important;}
 .slides:after{clear:both;content:".";display:block;height:0;line-height:0;visibility:hidden;}
 .slides li{position:relative;}
 .slides img{display:block;max-width:100%;}
 .flex-control-nav{bottom:30px;right:30px;position:absolute;text-align:center;}
-.flex-control-nav li{display:inline-block;margin:0 0 0 9px;float:left;}
+.flex-control-nav li{display:inline-block;margin:0 0 0 9px;}
 .flex-control-nav li a{background-color:#EEEEEE;border-radius:5px 5px 5px 5px;cursor:pointer;display:block;height:10px;line-height:10px;text-indent:-9999px;width:10px;}
 .flex-control-nav li a.active{background-color:#FF6600;box-shadow:1px 1px 1px #CC3300 inset;cursor:default;}
 .flex-direction-nav li a{background-color:transparent;cursor:pointer;display:block;margin:-8px 0 0;opacity:0.3;position:absolute;text-indent:-9999px;top:45%;}
