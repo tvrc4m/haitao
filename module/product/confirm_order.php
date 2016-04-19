@@ -264,7 +264,6 @@ else
 	}
 }
 //=================================================
-
 $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
 $tpl->assign("cart",$cartlist['cart']);

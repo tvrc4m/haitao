@@ -58,3 +58,27 @@
 .m-cname{float: right;margin-right: 8%;padding-top: 8px;}
 .dprice{font-size: 14px;color:#FF1023;}
 .fsname{font-size: 14px;}
+.nav-e .cart {
+    float: right;
+    background: url(../../../image/wap/wap_haitao_icon61.png) no-repeat;
+    position: relative;
+    width: 24px;
+    height: 22.5px;
+    background-size: cover;
+    margin-top: 14px;
+    margin-right: 0.5rem;
+}
+.cart .cart-num-cont {
+    position: absolute;
+    top: -2px;
+    right: -12px;
+    color: #ff5c5c;
+    background: #fff;
+    border-radius: 50%;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    overflow: hidden;
+    font-size: 12px;
+}

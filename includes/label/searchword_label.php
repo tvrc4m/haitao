@@ -16,7 +16,6 @@ function searchword($ar)
 		$sql="SELECT * FROM ".SWORD." ORDER BY nums DESC LIMIT $limit";
 		$db->query($sql);
 		$sword=$db->getRows();
-
 		//==================================================	
 		$tpl->assign("config",$config);
 		$tpl->assign("sword",$sword);
