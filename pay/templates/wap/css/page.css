@@ -1,9 +1,9 @@
 @charset "utf-8";
-html{background-color:#fff;color:#4d4d4d;}
+html{background-color:#ededed;color:#535353;}
 body{margin:0;padding:0;font:12px/1.5 arial,'宋体';,"Microsoft Yahei";}
 html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,a,em,font,img,strong,b,dl,dt,dd,ol,ul,li,form,textarea,input{margin:0;padding:0;}
 ol,ul,li{list-style:none outside none;}
-a{text-decoration:none;color:#4D4D4D;cursor:pointer;}
+a{text-decoration:none;color:#535353;cursor:pointer;}
 a:hover{color:#08c;}
 em{font-style:normal;}
 .fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
@@ -47,19 +47,20 @@ header{width:100%;height:50px;}
 .nav-c span{display:block;height:50px;line-height:50px;padding:0 20px 0 0;font-size:18px;font-weight:bold;color:#fff;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
 i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(../../../../image/wap/wap_haitao_icon10.png) 5.8% no-repeat;background-size: 50%;}
 
-.banner{background:url(../image/banner.png);height:150px;}
+.banner{background:url(../image/wap_haitao_banner1.jpg);height:150px;}
 
-.banner .user{float:left;display:inline;margin:32px 0 0 75px;height:97px;position:relative;}
+.banner .user{float:left;display:inline;margin:32px 0 0 75px;height:97px;position:relative;background-color: rgba(15,15,15,.2);}
 .banner .img{float:left;width:76px;height:76px;padding:4px;margin:7px 0 0 12px;display:inline;overflow:hidden;position:relative;}
-.banner .img-cover{position:absolute;top:0;left:0;z-index:100;width:100px;height:98px;background:url(../image/img-cover.png) no-repeat;}
-.banner .info{float:left;display:inline;margin-left:10px;}
+.banner .img-cover{position:absolute;top:0;left:0;z-index:100;width:100px;height:98px;}
+.banner .info{float:left;display:inline;margin-left:10px;padding-right: 20px;}
 .banner .user_info{margin-top:12px;line-height:22px;font-size:14px;color:#333;}
+.banner .user_info p:nth-of-type(2){color: #ff5c5c;} 
 .banner .user_info p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .banner .user_account{margin-top:5px;}
 .banner .user_account em{color:#F98D00;font-size:14px;margin:0 5px 0 2px;}
 .banner .greeting{float:right;display:inline;margin:68px 20px 0 0;text-align:right;line-height:23px;font-size:16px;font-family:'Microsoft Yahei';color:#FFF;}
 
-.container{margin-top: 10px}
+/*.container{margin-top: 10px}*/
 .container .fn-left{width:150px;}
 .container .fn-right{width:800px;}
 .container .sidenav{border:1px solid #DDDDDD;padding:0 10px;}
@@ -72,12 +73,12 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .container .m .mc{margin-top:15px;}
 .container .m .mc a{display:inline;float:left;line-height:25px;margin-right:10px;}
 
-.block{background-color:#fff;border:1px solid #ddd;margin-bottom:10px;}
+.block{background-color:#fff;}
 .block.account{height:108px;}
 .block .balance{float:left;padding:20px 0 20px 2%;width:98%;}
-.block .balance p{font-weight:bold;font-size:14px;line-height:18px;}
+.block .balance p{font-size:14px;line-height:18px;}
 .block .balance p a{color:red;font-weight:normal;margin-left:20px;background:url(../image/hot.jpg) 118px 1px no-repeat;padding-right:42px;text-decoration:none;font-size:12px;}
-.block .balance .wallet{display:inline-block;height:30px;line-height:40px;font-size:14px;color:#666;margin-right:10px;zoom:1;vertical-align:middle;}
+.block .balance .wallet{display:inline-block;height:30px;line-height:30px;font-size:14px;color:#666;margin-right:10px;zoom:1;vertical-align:middle;}
 .block .balance .wallet em{color:#ff6500;font-family:'Microsoft YaHei';font-size:14px;}
 .block .balance .wallet em strong{font-size:20px;font-weight:normal;line-height:normal;}
 .block .balance .btn{width:50px;height:30px;display:inline-block;*display:inline;border:none;background:url(../image/btn.png) 0 -217px no-repeat;color:#666;font-size:14px;margin-left:3px;text-decoration:none;text-align:center;zoom:1;line-height:30px;}
@@ -89,20 +90,20 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .block .message{border-left:1px dashed #e5e5e5;height:76px;float:right;width:220px;padding:32px 0 0 30px;}
 .block .message p{font-size:14px;margin-bottom:18px;padding-left:25px;height:16px;line-height:16px;margin-top:14px;background:url(../image/icon1.png) left 2px no-repeat;}
 
-.block .record{padding:20px 0 0;}
-.block .record p{font-weight:bold;font-size:14px;line-height:18px;margin-bottom:25px;}
+/*.block .record{padding:20px 0 0;}*/
+.block .record p{font-weight:bold;font-size:14px;line-height:50px;height: 50px;}
 .block .record p a{color:#136EC2;font-weight:normal;margin-left:10px;text-decoration:none;font-size:12px;}
-.block .record th{background-color:#ededed;height:26px;line-height:16px;font-weight:bold;font-size: 14px;color:#666;padding:5px;}
+.block .record th{background-color:#ededed;height:26px;line-height:16px;font-weight:bold;font-size: 14px;color:#666;padding:10px 5px 10px 10px;}
 .block .record td{font-size:12px;vertical-align:middle;padding:15px 10px;border-bottom:1px solid #E6E6E6;text-align:center;color:#4D4D4D;}
 .block .record td p{margin: 5px 0 0}
-.block .record td a{color:#136EC2;}
+.block .record td a{color:#ff5c5c;}
 .block .record .al{text-align:left;}
-.block .record td.price{color:#53A000;font-weight:bold;}
+.block .record td.price{color:#535353;font-weight:bold;}
 .block .record td.minus{color:#F37800;}
 .block .record td div{color:#888;margin-top:5px;}
 
 .i-block{padding:20px 0;}
-.block h2{margin-bottom:15px;font-size:14px;border-bottom:solid 1px #ddd;height:35px;}
+.block h2{/*margin-bottom:15px;*/font-size:14px;/*border-bottom:solid 1px #ddd;*/height:50px;line-height: 50px;}
 .block h2 span{font-size:12px;font-weight:normal;float:right;padding-right: 0.5rem;}
 .block h2 span strong{color:#53A000;margin:0 5px;}
 .block h2 span a{color:#136EC2;margin-left:3px;}
@@ -124,7 +125,7 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .detail dt{display:block;font-size:14px;font-weight:bold;padding:8px 10px;}
 .detail dt,.detail dd{border-left:1px solid #D2D2D2;border-bottom:1px solid #D2D2D2;}
 .detail dd span{border-right:1px solid #D2D2D2;padding:6px 5px;width:90px;display:inline-block; margin-right:10px;text-align:right;}
-
+.block .record p a.pay_sgo{color: #555;font-size: 14px;}
 
 
 .footer{color:#A0A0A0;height:144px;background:#eee;padding-top:30px;text-align: center;}
@@ -134,8 +135,40 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 
 .tips{background:#F3F37E;padding: 3px;padding-left: 8px;}
 .container input{height: 25px;line-height: 32px;border:1px solid #ccc;}
-.container p{padding-left: 8px;}
+/*.container p{padding-left: 8px;}*/
 .container p.m1{margin-top: 10px;margin-bottom: 3px;}
 .container p.m2 input{margin-top: 20px;border-radius: 5px;background: #5170EC;color: #fff;padding-left: 3px;}
 h2{padding-left: 0.5rem;}
-.banner .user{}
+.duser-auth {
+    display: inline-block;
+}
+.duser-auth li {
+    display: inline-block;
+}
+.duser-auth li a.duser-auth-mob {
+    background: url(../image/pay_haitao_icon3.png) center left no-repeat;
+    background-size: contain;
+    padding-left: 25px;
+}
+.duser-auth li a.duser-auth-mob-j {
+    color: #999;
+    background: url(../image/pay_haitao_icon4.png) center left no-repeat;
+    background-size: contain;
+}
+.duser-auth li a {
+    color: #ff5c5c;
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    padding-left: 1.25rem;
+}
+
+.duser-auth li a.duser-auth-ema {
+    background: url(../image/pay_haitao_icon1.png) center left no-repeat;
+    background-size: 25%;
+}
+.duser-auth li a.duser-auth-ema-j {
+    color: #999;
+    background: url(../image/pay_haitao_icon2.png) center left no-repeat;
+    background-size: 25%;
+}

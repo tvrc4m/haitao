@@ -150,7 +150,9 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 
 .select_style{position:relative;background:#fff;padding: 0 0.5rem;}
 .select_guanshui{font-size: 0.6rem;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px dashed #b9b9b9;line-height: 1rem;}
+.select_guanshui var{color:#ff5c5c;}
 .select_duty_context{position: relative;}
+.select_one{margin-right: 15px;text-align: right;display: inline-block;width: 1.8rem;}
 .select_duty{position: absolute;top: 1.5rem;right: 0px;z-index: 88;width: 90%;background-color: #ccc;padding: 5px 10px;border-radius:6px;display: none;}
 .select_duty i{display: inline-block;width: 10px; height:10px;background-color: #ccc;transform:rotate(135deg);-webkit-transform:rotate(135deg); position: absolute;top: -5px;right:2.15rem;}
 .select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:35px;}
@@ -163,7 +165,12 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .select_style dt i{display: inline-block;width: 25px;height: 25px; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;margin-top: -5px;}
 .select_style dd{color:#404040;}
 .select_style dd.mati_say_content{position: relative;}
-
+.select_guanshui_ic{padding-right: 22px;background: url(../../../image/wap/wap_haitao_icon65.png) right no-repeat;background-size: contain;margin-right: 20px;}
+.select_guanshui_ip{padding-left: 22px;background: url(../../../image/wap/wap_haitao_icon64.png) left no-repeat;background-size: contain;color: #3f7b06;}
+.select_guanshui_hid{position: absolute;top: 30px;left: 9%;padding:5px 10px;z-index: 199;
+    background-color: #ff5c5c;border-radius: 5px;color: #fff;font-size: 12px;display: none;}
+.select_guanshui_hid_test{display:block;}
+.select_guanshui_hid i{width: 10px; height:10px;background-color:#ff5c5c;display: inline-block;-webkit-transform:rotate(-135deg);transform:rotate(-135deg);position: absolute;left: 60%;top: -4px;}
 .mayi_say{line-height: 0.8rem;font-size: 0.6rem;padding-left: 3.1rem;padding-bottom: 0.8rem;}
 .select_style dt.select_style_shu{color: #535353;}
 .select_style dd.stock{/*margin-top: 11px;*/margin-left: 0.5rem;float: left;}

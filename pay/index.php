@@ -58,6 +58,13 @@ switch($act)
 		break;
 	}
 }
+//身份证认证
+$sql = "select identity_verify from pay_member where pay_id = $buid";
+$db -> query($sql);
+$num = $db -> fetchRow();
+$num = $num['identity_verify'] == 'true' ? 1 : 0 ;
+
+$tpl->assign("verify",$num);
 $tpl->assign("output",$output);
 include_once("footer.php");
 $tpl->display("index.htm");

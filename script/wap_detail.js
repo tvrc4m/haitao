@@ -16,6 +16,9 @@
         $jq(this).addClass("active").siblings().removeClass("active");
         $jq(".j_tab").eq(liLength).addClass("pdetail_show").siblings().removeClass("pdetail_show");
     })
+    $jq(".select_guanshui_ic").on("click",function(){
+        $jq(".select_guanshui_hid").toggleClass("select_guanshui_hid_test");
+    })
   //   $jq(".btn-buy").click(function(){
 		// $jq("#form").attr("action","/?m=product&s=confirm_order");
   //       $jq("#form").submit();
