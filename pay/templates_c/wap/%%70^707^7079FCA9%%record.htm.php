@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-07 15:16:00
+<?php /* Smarty version 2.6.20, created on 2016-04-19 17:54:30
          compiled from record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 53, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 60, false),)), $this); ?>
 <div class="block fn-clear">
 	<div class="record">
         <h2>
@@ -9,6 +9,17 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
             <span>可用余额<strong><?php echo $this->_tpl_vars['de']['cash']; ?>
 </strong>元</span>
         </h2>
+        <div style="height:15px;background-color:#ededed;"></div>
+         <p>
+            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+">收支明细</a>
+            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=record&mold=0" <?php if ($_GET['mold'] == 0): ?>class="pay_sgo"<?php endif; ?> >交易记录</a>
+            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=record&mold=1" <?php if ($_GET['mold'] == 1): ?>class="pay_sgo"<?php endif; ?> >充值记录</a>
+            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=record&mold=2" <?php if ($_GET['mold'] == 2): ?>class="pay_sgo"<?php endif; ?> >提现记录</a>
+        </p>
     	<?php if (! $_GET['mold']): ?>
    		<div class="filter">
     	<div class="date"></div>
@@ -144,14 +155,19 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
                 </td>
             </tr>
             <?php endif; unset($_from); ?>
-            <?php if ($this->_tpl_vars['re']['page'] && $this->_tpl_vars['re']['page'] != '   '): ?>
+           <!--  <?php if ($this->_tpl_vars['re']['page'] && $this->_tpl_vars['re']['page'] != '   '): ?>
             <tr>
                 <td colspan="99">
                 <div class="page"><?php echo $this->_tpl_vars['re']['page']; ?>
 </div>
                 </td>
-            </tr>
+            </tr> -->
             <?php endif; ?>
+            <tr>
+                <td colspan="99">
+                    <a href="javascript:void(0);" class="m_jiazai next"><i></i>点击加载更多</a>
+                </td>
+            </tr> 
         </table>
     </div>
 </div>

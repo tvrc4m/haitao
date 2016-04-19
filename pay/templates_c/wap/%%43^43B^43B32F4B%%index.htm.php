@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-07 14:56:37
+<?php /* Smarty version 2.6.20, created on 2016-04-19 19:08:22
          compiled from index.htm */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));
@@ -21,17 +21,27 @@ unset($_smarty_tpl_vars);
         <div class="img-cover"></div>
         <div class="info">
         	<div class="user_info">
-            <p>个人账户：</p>
-            <p><?php echo $this->_tpl_vars['de']['email']; ?>
-
-                <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=settings"><span class="iconfont edit_icon" style="color: #0579C6">&#xe624;</span></a>
-                <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=setpass"><span class="iconfont edit_icon">&#xe625;</span></a>
-            </p>
+                <p>个人账户：</p>
+                <p><?php echo $this->_tpl_vars['de']['email']; ?>
+</p>
+                <p>
+                   <ul class="duser-auth">
+                         <li>
+                            <?php if ($this->_tpl_vars['verify']): ?>
+                                <a href="javascript:void(0);" class="duser-auth-mob duser-auth-mob-j">已认证</a>
+                            <?php else: ?>
+                                <a href="https://www.mayihaitao.com/real.php" class="duser-auth-mob">未认证</a>
+                            <?php endif; ?>
+                        </li>
+                        <li>
+                            <!-- <a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已设置</a> -->
+                            <a href="javascript:void(0);" class="duser-auth-ema">未设置</a>
+                        </li>
+                    </ul>
+                </p>
             </div>
-            <div class="user_account"><em><?php echo $this->_tpl_vars['de']['cash']; ?>
-</em>元</div>
+          <!--   <div class="user_account"><em><?php echo $this->_tpl_vars['de']['cash']; ?>
+</em>元</div> -->
         </div>
     </div>
 </section>
