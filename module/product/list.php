@@ -238,7 +238,7 @@ else
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=16;
+	$page->listRows=20;
 	if(empty($cat['ext_field_cat']))
 		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
@@ -252,6 +252,7 @@ else
 //--------------------------------------------------
 	$db->query($sql);
 	$prol=$db->getRows();
+
 	foreach($prol as $key => $val){
 		$sql = "select count(id) as num from mallbuilder_product_comment where pid = ".$val[id];
 		$db->query($sql);
@@ -267,8 +268,6 @@ else
 	}
 
 	fb($prol);
-
-
 
 	if ($distribution_open_flag)
 	{
@@ -310,9 +309,11 @@ else
 		}
 	}
 
-	$prolist['list']=$prol;
-	$prolist['page']=$page->prompt();
-	$prolist['count']=$page->totalRows;
+	$prolist['list'] = $prol;
+	$prolist['page'] = $page->prompt();
+	$prolist['count'] = $page->totalRows;
+	/*echo "<pre>";
+	var_export($prolist);*/
 	$tpl->assign("info",$prolist);
 	unset($prolist);
 }
@@ -322,18 +323,20 @@ $tpl->assign("province",GetDistrict1());
 //------------------------------------------------------
 $url=implode('&',convert($_GET));
 $tpl->assign("url",$url);
+
 //----------------------------SEO
 $config['title']=str_replace('[catname]',$cat['cat'],$config['title2']);
 $config['keyword']=str_replace('[catname]',$cat['cat'],$config['keyword2']);
 $config['description']=str_replace('[catname]',$cat['cat'],$config['description2']);
+
 //=====================================================
 if($cat['templates'])
 {
 	$tpl -> template_dir = $config['webroot'] . "/templates/".$cat['templates']."/";
 	$tpl -> compile_dir  = $config["webroot"] . "/templates_c/".$cat['templates']."/";
 }
+
 $tpl->assign("current","product");
 include_once("footer.php");
-
 $out=tplfetch("product_list.htm");
 ?>

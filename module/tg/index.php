@@ -94,7 +94,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=16;
+	$page->listRows = 16;
 
 	if(!$page->__get('totalRows'))
 	{
@@ -123,7 +123,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 	{
 		$next="<a class='nextPage' href='$page->url?firstRow=".($page->nowPage) * ($page->listRows)."&totalRows=$page->totalRows$page->parameter'>下一页</a>";
 	}
-	$prolist['pages']="<span><i>$page->nowPage</i> / $page->totalPages</span>".$pre.$next;
+	$prolist['pages'] = "<span><i>$page->nowPage</i> / $page->totalPages</span>".$pre.$next;
 
 	$tpl->assign("tg",$prolist);
 	unset($prolist);
