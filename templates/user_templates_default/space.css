@@ -78,7 +78,7 @@ html[xmlns] .clearfix{display:block;}
 .nav_bg .collection{width:124px;height:40px;line-height:40px;background:url(img/collection.png) no-repeat #FF494B;float:right;}
 /* --------------- */
 #left{width:208px;float:left;}
-.user{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;}
+.user-shop{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;}
 .user_photo{width:206px;}
 .user_photo h2{color:#3D3F3E;font-size:14px;margin:13px 0 10px 0;padding-left:15px;}
 .user_photo p{margin-top:6px;}
