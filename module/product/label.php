@@ -92,9 +92,7 @@ function product($ar)
         //var_dump($re);
         $tpl->assign("config",$config);
         $tpl->assign("pro",$re);
-
-
-
+        $tpl->assign("ar",json_encode($ar));
     }
 
     return $tpl->fetch($ar['temp'].'.htm',$flag);
