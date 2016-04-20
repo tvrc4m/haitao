@@ -20,26 +20,6 @@ $(function(){
         $('.itemSearchResult').show();
         $('#leftmask').remove();
     });
-    function distribute_goods(id){
-        var url = '<{$config.weburl}>/module/distribution/add.php';
-        var uname='<{$smarty.cookies.USER}>';
-        if(uname=='')
-        {
-            alert('<{$lang.no_logo}>');
-            window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
-            return false;
-        }
-        var pars = 'pid='+id+'&uname='+uname;
-        $.post(url, pars,showResponse);
-        function showResponse(originalRequest)
-        {
-            if(originalRequest>1)
-                alert('成功添加至我的分销!');
-            else if (originalRequest>0)
-                alert('该内容已经在你的分销中心，请勿重复添加！');
-            else
-                alert('参数传递错误，无法完成操作!');
-        }
-    }
+   
     $(".scrollLoading").scrollLoading();
 })
