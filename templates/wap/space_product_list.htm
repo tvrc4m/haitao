@@ -51,7 +51,7 @@
         <{foreach item=list key=key from=$info.list}>
             <li class="shopli <{if $key%2}>even<{/if}>">
                 <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
-                <div class="p-pic"><img src="<{$list.pic}>_220X220.jpg" width="145" height="145" alt="<{$list.pname}>" /></div>
+                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" width="145" height="145" alt="<{$list.pname}>" /></div>
                 <div class="p-name"><{$list.pname}></div> 
                 </a>
                 <div class="p-price"><strong><{$config.money}> <{$list.price}></strong></div>
@@ -67,7 +67,7 @@
         <{foreach item=list key=key from=$dist_pro}>
         <li class="shopli <{if $key%2}>even<{/if}>">
             <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$com.shop_id}>">
-                <div class="p-pic"><img src="<{$list.pic}>_220X220.jpg" width="145" height="145" alt="<{$list.pname}>" /></div>
+                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" width="145" height="145" alt="<{$list.pname}>" /></div>
                 <div class="p-name"><{$list.pname}></div>
             </a>
             <div class="p-price"><strong><{$config.money}> <{$list.price}></strong></div>
@@ -96,17 +96,21 @@
     </div>
 </section>
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script>
-$("#list").click(function(){
-	window.scroll(0,0);
- 	$('.leftcate').show();
-	$('.itemSearchResult').hide();
-	$('.main').append('<div id="leftmask"></div>')
-	$('#leftmask')[0].style.height =$(".main").height()+20;
-});
-$('.remove').click(function(){
- 	$('.leftcate').hide();
- 	$('.itemSearchResult').show();
-	$('#leftmask').remove();
-});
+$(function(){
+    $("#list").click(function(){
+        window.scroll(0,0);
+        $('.leftcate').show();
+        $('.itemSearchResult').hide();
+        $('.main').append('<div id="leftmask"></div>')
+        $('#leftmask')[0].style.height =$(".main").height()+20;
+    });
+    $('.remove').click(function(){
+        $('.leftcate').hide();
+        $('.itemSearchResult').show();
+        $('#leftmask').remove();
+    });
+    $(".scrollLoading").scrollLoading();
+})
 </script>

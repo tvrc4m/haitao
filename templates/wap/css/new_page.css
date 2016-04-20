@@ -997,7 +997,7 @@ ins,a
 /*.guanggao_kong{margin-bottom: 6.75rem!important;}*/
 .g_wei{width: 100%;position: absolute;left: 0px;margin-top: 0.5rem;}
 .g_wei img{width: 100%;}
-.m_jiazai{text-align: center;padding: 0px;width: 100%;display: inline-block;height: 1.75rem;line-height:1.75rem;border-radius: 0.25rem;font-size: 0.6rem;color: #b4b4b4;background-color: #fff;margin-bottom: 1rem;margin-top: 1rem;border: 1px solid #b9b9b9;}
+.m_jiazai{text-align: center;padding: 0px;width: 100%;display: inline-block;height: 1.75rem;line-height:1.75rem;border-radius: 0.25rem;font-size: 0.6rem;color: #b4b4b4;background-color: #fff;/*margin-bottom: 1rem;margin-top: 1rem;border: 1px solid #b9b9b9;*/}
 .m_jiazai i{display: inline-block;width: 0.9rem;height: 0.55rem; background: url(../../../image/wap/wap_haitao_icon11.png) no-repeat 0 0;background-size:cover;margin-right: 0.5rem;vertical-align: middle;}
 /*** 附近的店铺 ****/
 .locate_self{width: 100%;height: auto;overflow: hidden;margin: 10px 0;}
