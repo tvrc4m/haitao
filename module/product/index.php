@@ -12,26 +12,27 @@ if($cat_pro)
 	foreach($cat_pro as $key=>$v)
 	{
 		//--------类别名--------------
-		$sql="select brand,cat,catid,pic from ".PCAT." where catid='$v[catid]'";
+		$sql="select brand,cat,catid,pic,wpic from ".PCAT." where catid='$v[catid]'";
 		$db->query($sql);
 		$cata=$db->fetchRow();
 
 		$cat_pro[$key]['name'] = $v['name']?$v['name']:$cata['cat'];
 		$cat_pro[$key]['pic'] = $cata['pic'];
+		$cat_pro[$key]['wpic'] = $cata['wpic'];
 
 			//--------类别下面的子分类------
 		$s=$v['catid']."00";
 		$b=$v['catid']."99";
 		$limit=$config['temp']!='wap'?"16":"7";
 		
-		$sql="select cat,catid from ".PCAT." where catid>$s and catid<$b order by nums asc,char_index asc limit 0,$limit";
+		$sql="select cat,catid,pic,wpic from ".PCAT." where catid>$s and catid<$b order by nums asc,char_index asc limit 0,$limit";
 		$db->query($sql);
 		$cat_pro[$key]['sub_cat']=$db->getRows();
 
 		if($v['tab'])
 		{
 			$array=implode(',',$v['tab']);
-			$sql="select cat,catid from ".PCAT." where catid in ($array) order by nums asc,char_index asc limit 0,6";
+			$sql="select cat,catid,pic,wpic from ".PCAT." where catid in ($array) order by nums asc,char_index asc limit 0,6";
 			$db->query($sql);
 			$cat_pro[$key]['scat']=$db->getRows();
 		}
@@ -69,7 +70,7 @@ if($cat_pro)
 		}
 	}
 	/*echo '<pre>';
-	print_r($cat_pro);*/
+	print_r($cat_pro);die;*/
 	$tpl->assign("categorys",$cat_pro);
 }
 if($config['temp'] != "wap")
@@ -90,6 +91,12 @@ if($config['temp'] != "wap")
 	$tpl->assign("count",$count);
 
 }
+
+    //调用公告
+    $sql = "select title,content,url from mallbuilder_announcement where status = 1 order by displayorder desc limit 5";
+    $db->query($sql);
+    $annoub = $db->getRows();
+    $tpl->assign("annoub",$annoub);
 //----------------------------
 include_once("config/connect_config.php");//connect
 $config = array_merge($config,$connect_config);

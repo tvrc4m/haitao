@@ -64,6 +64,7 @@ $jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
 $jj(document).scroll(function(){
 	var h = $jj(document).scrollTop();
 	var wHeight=$jj(window).height();
+	console.log(wHeight)
 	if(h>wHeight){
 		$jj(".addtop").show()
 		$jj(".addtop").click(function(){
@@ -80,7 +81,7 @@ $jj(document).scroll(function(){
 	}
 })
 $jj(function(){
-	var daHeight=$jj(".da_banner").offset().top+71;
+	var daHeight=$jj(".da_banner").offset().top;
 	$jj(".da_banner li").click(function(){
 		$jj(".da_banner").addClass("da_list_test");
 		$jj(window).scrollTop(daHeight);
@@ -98,6 +99,3 @@ $jj(function(){
         }
     })
  })
-// $jj(function(){
-// 	$jj(".scrollLoading").scrollLoading();
-// })
