@@ -258,7 +258,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .cart .cart-num-cont {position: absolute;top: -2px;right: -12px;color: #fff;background: #ff5c5c;border-radius: 50%;
     text-align: center;width: 18px;height: 18px;line-height: 18px;overflow: hidden;}
 
-.nav-c {text-align: center;-webkit-box-flex: 1;-ms-box-flex: 1;-moz-box-flex: 1;-o-box-flex: 1;margin-left: -60px;}
+.nav-c {text-align: center;-webkit-box-flex: 1;-ms-box-flex: 1;-moz-box-flex: 1;-o-box-flex: 1;/*margin-left: -60px;*/}
 .notice_container h3{text-align: center;border-bottom: 1px solid #ff5c5c;font-size: 0.8rem;color: #ff5c5c;padding-bottom: 5px;margin-bottom: 15px;}
 .notice_container{font-size: 0.7rem;padding:20px 10px;color: #000;font-family: SimHei;}
 .notice_container p{text-indent: 2em;line-height: 1.5;}
