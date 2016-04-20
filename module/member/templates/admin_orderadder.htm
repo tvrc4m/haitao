@@ -7,10 +7,15 @@
 <{else}>
 	<{assign var=area value=0}>
 <{/if}>
+$.validator.addMethod("isMobile", function(value, element) {
+    var length = value.length;
+    var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+    return this.optional(element) || (length == 11 && mobile.test(value));
+}, "请正确填写您的手机号码");
 $(function(){
 	$('#form').validate({
 		errorPlacement: function(error, element){
-			element.next('.form-error').append(error);
+			element.nextAll('.form-error').append(error);
 		},      
 		rules : {
 			name:{
@@ -27,7 +32,7 @@ $(function(){
 			},
 			mobile:{
 				required:true,
-				digits:true
+                isMobile:true
 			}<{if !$de.area}>
             ,
 			select_1:{
@@ -56,7 +61,7 @@ $(function(){
 			},
 			mobile:{
 				required:'请填写手机号',
-				digits:'请填写正确手机号'
+                isMobile:"请填写正确的手机号"
 			}<{if !$de.area}>
             ,
 			select_1:{
@@ -104,7 +109,7 @@ $(function(){
            <input type="hidden" name="ty" value="<{if $smarty.get.url}>pro<{/if}>" />
             <dl>
                 <dt>收货人</dt>
-                <dd><input maxlength="30" name="name" value="<{$de.name}>" class="text w284"> <em></em><div id="form-error" class="form-error"></div></dd>
+                <dd><input maxlength="30" name="name" id="name" dataType="required" value="<{$de.name}>" class="text w284"> <em></em><div class="form-error"></div></dd>
             </dl>
             
             <dl>
