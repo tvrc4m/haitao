@@ -17,7 +17,8 @@
         <i class="cate-guang-img"></i>
         <ul>
             <{foreach item=list key=num from=$annoub}>
-                <li><a href="<{$list.url}>"><{$list.title}></a></li>
+                <li><a href="<{if $list.url}><{$list.url}><{else}><{$config.weburl}>/?m=announcement&s=detail&id=<{$list.id}><{/if}>"><{$list.title}></a></li>
+                <!--<li><a href="<{$list.url}>"><{$list.title}></a></li>-->
                 <!--<li>日本馆开馆了，对面的美眉看过来</li>-->
             <{/foreach}>
         </ul>
