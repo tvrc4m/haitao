@@ -127,10 +127,10 @@
 .filter .list .current .product{background-position:left -74px;}
 .filter .list .current .shop{background-position:1px -85px;}
 
-.itemSearchResult{float:left;width:997px;}
+.itemSearchResult{float:left;}
 .itemSearchResult .p-info{padding-bottom: 20px;}
-.itemSearchResult .border_left{border-left: 1px solid #ddd;}
-.itemSearchResult li{background-color: #fff;float:left;display:inline;text-align:left;width:228px;padding:0 10px;border-bottom:1px solid #ddd;border-right: 1px solid #ddd;position: relative;}
+.itemSearchResult .border_left{border-left: 1px solid #ddd;margin-top: 20px;}
+.itemSearchResult li{background-color: #fff;float:left;display:inline;text-align:left;width:221px;padding:0 10px;border-bottom:1px solid #ddd;border-right: 1px solid #ddd;border-top:1px solid #ddd;position: relative;margin-bottom: -1px;}
 .itemSearchResult li .fix{position: absolute;top: 0;left: 0;width: 30px;height: 30px;padding: 10px;background: #c0c;font-size: 14px;color: #fff;line-height: 15px;}
 .itemSearchResult li img{-webkit-transform:none;-moz-transform:none;-o-transform:none;transform:none;-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;transition:all .4s ease-out;}
 .itemSearchResult li:hover .p-img img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
@@ -150,7 +150,7 @@
 .itemSearchResult .page{margin-top:0; margin-right:50px; }
 .itemSearchResult .flpage{width: 995px;padding: 16px 0;}
 .itemSearchResult li:hover .p-shop{display:block;}
-.itemsNull{border:1px solid #ccc;color:#666666;line-height:20px;padding:20px 110px;background-color: #dcdddd;}
+.itemsNull{color:#666666;line-height:20px;padding:20px 110px;}
 .itemsNull .left{float: left;width: 120px;}
 .itemsNull .right{float: left;margin: 20px 0 0 40px;width: auto;}
 .itemsNull h3{font-size:14px;margin:16px 0 10px;}
