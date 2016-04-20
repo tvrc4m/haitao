@@ -318,6 +318,12 @@ else
 	unset($prolist);
 }
 
+//获取当前页的类名
+$sql = "select cat from mallbuilder_product_cat where catid=". $_GET['id'];
+$db->query($sql);
+$res = $db->fetchRow();
+
+$tpl->assign("catname",$res);
 $tpl->assign("province",GetDistrict1());
 
 //------------------------------------------------------
