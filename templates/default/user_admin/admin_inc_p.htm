@@ -252,6 +252,16 @@ function select_word(v)
 $(".m_menu").bind("mouseenter mouseleave",function(){
     $(".m_menu dd").toggleClass("hidden");
 });
+// 收缩展开效果
+$(document).ready(function(){
+    $(".father dt span").click(function(){
+        $(this).toggleClass("hou");
+        var sidebar_ul = $(this).parent().next("ul");
+        sidebar_ul.slideToggle("slow",function(){
+                sidebar_ul.css("display");
+         });
+    });
+});
 </script>
 <!-- <div id="shortcut">
     <div class="w">
