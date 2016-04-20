@@ -101,18 +101,3 @@ $jj(function(){
 // $jj(function(){
 // 	$jj(".scrollLoading").scrollLoading();
 // })
-// 滑动加载更多
-// var stop=true; 
-// $jj(window).scroll(function(){ 
-//     totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()); 
-//     if($jj(document).height() <= totalheight){ 
-//         if(stop==true){ 
-//             stop=false; 
-//             $jj.post("/module/product/index.php", {start:1, n:50},function(data){
-//             console.log(data);
-//                 // $jj("#Loading").before(txt); 
-//                 stop=true; 
-//             }); 
-//         } 
-//     } 
-// });
