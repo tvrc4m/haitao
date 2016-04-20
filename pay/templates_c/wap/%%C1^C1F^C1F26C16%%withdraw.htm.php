@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-19 20:29:32
+<?php /* Smarty version 2.6.20, created on 2016-04-20 09:13:09
          compiled from withdraw.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 40, false),)), $this); ?>
@@ -6,10 +6,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
 	<div class="i-block">
-    	 <h2>提取到银行卡<!-- <span><a class="withdraw" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=record&mold=2">提取记录</a></span> --></h2>
+    	 <h2>提取到银行卡<span><a class="withdraw" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=record&mold=2">提取记录</a></span></h2>
     </div>
-    <div style="background-color:#ededed;height:15px;"></div>
+    <div style="background-color:#ededed;height:10px;"></div>
 	<div class="form">
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     <input type="hidden" name="act" value="withdraw" />
@@ -28,7 +28,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
         </dl>
     	
         </fieldset>
-        <div style="background-color:#ededed;height:15px;"></div>
+        <div style="background-color:#ededed;height:10px;"></div>
         <fieldset id="amount">
         <dl>
         	<dt>金额</dt>

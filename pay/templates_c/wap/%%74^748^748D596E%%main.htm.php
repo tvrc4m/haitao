@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-19 21:06:19
+<?php /* Smarty version 2.6.20, created on 2016-04-20 09:26:29
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 36, false),)), $this); ?>
@@ -23,7 +23,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
         </div>
     </div>
 </div>
-<div style="height:15px;background-color:#ededed;"></div>
+<div style="height:10px;background-color:#ededed;"></div>
 <div class="block">
 	<div class="record">
         <p>
@@ -39,7 +39,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
     	<table width="100%" cellpadding="0" cellspacing="0">
         	<tr>
                 <th class="al">名称 | 交易号</td>
-                <th width="20%">金额(元)</th>
+                <th width="25%">金额(元)</th>
                 <th width="25%">状态</th>
                 <!--<th width="15%">操作</th>-->
             </tr>
