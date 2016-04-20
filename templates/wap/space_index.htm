@@ -46,8 +46,9 @@
             })
             return false;
         }
-        var shopid='<{$smarty.get.uid}>';
-        var shopname="<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
+
+        var shopid = '<{$smarty.get.uid}>';
+        var shopname = "<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
         var pars = 'uname='+uname+'&shopid='+shopid+'&shopname='+shopname;
         $.post(url, pars,showResponse);
         function showResponse(originalRequest)
