@@ -161,9 +161,9 @@ h2{font-weight: normal;}
 .duser-auth li a {
     color: #ff5c5c;
     display: inline-block;
-    font-size: 0.6rem;
+    font-size: 12px;
     letter-spacing: 2px;
-    padding-left: 1.25rem;
+    padding-left: 25px;
 }
 
 .duser-auth li a.duser-auth-ema {
@@ -174,4 +174,25 @@ h2{font-weight: normal;}
     color: #999;
     background: url(../image/pay_haitao_icon2.png) center left no-repeat;
     background-size: 25%;
+}
+i.home_icon {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: url(../image/pay_haitao_icon5.png) right no-repeat;
+    background-size: 50%;
+}
+.nav-e a {
+    color: #666666;
+    display: inline-block;
+    width: 75px;
+    height: 50px;
+    text-align: right;
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+.nav-e {
+    min-width: 60px;
+    padding-right: 0.5rem;
 }

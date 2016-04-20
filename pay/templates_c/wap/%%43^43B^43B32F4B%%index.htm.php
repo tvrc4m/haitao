@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-20 08:53:37
+<?php /* Smarty version 2.6.20, created on 2016-04-20 19:27:03
          compiled from index.htm */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));
@@ -10,8 +10,8 @@ unset($_smarty_tpl_vars);
         <section class="nav-s iconfont"><a onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></a></section>
         <section class="nav-c"><span><?php echo $this->_tpl_vars['config']['company']; ?>
 </span></section>
-        <section class="nav-e"><?php if ($_GET['m']): ?><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-"><nav style="color: #fff">首页</nav></a><?php else: ?><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+        <section class="nav-e"><?php if ($_GET['m']): ?><a id="list" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+"><i class="home_icon"></i></a><?php else: ?><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
 /main.php?cg_u_type=1"><nav style="color: #fff">买家中心</nav></a><?php endif; ?></section>
     </div>
 </header>

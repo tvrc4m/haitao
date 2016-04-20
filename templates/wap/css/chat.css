@@ -68,7 +68,7 @@
     padding-top:1em;
 }
 .content_box{height:100%;position: relative;}
-.content{width:100%;margin-right:10px;position:absolute;bottom: 50px;}
+.content{width:100%;margin-right:10px;}
 .content1{width:100%;margin-top:40px;bottom: 50px;}
 .lchat{float:left;margin-bottom:.3em;width:100%;}
 .lchat dt{float:left;margin-right:.65em}
@@ -287,4 +287,7 @@
 .t-gra-infor2 i.offline { background-color: #EEE; border-color: #777;}
 
 .closeBtn{background-image:url(../../../image/default/close.png);background-repeat:no-repeat;background-position:center;width:30px;cursor:pointer;float:right;height:26px;}
-
+.news{padding: 0 15px;}
+.news h1{font-size: 18px; color:#000;font-weight: bold;margin: 10px 0;}
+.news .summary{font-size: 12px;color: #999;margin-bottom: 15px;}
+.content p{text-indent: 2em;font-size: 14px;color: #535353;line-height: 1.9;margin-bottom: 10px;}

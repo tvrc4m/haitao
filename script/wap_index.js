@@ -59,28 +59,29 @@ $jj(function(){
 	{
 		getHtmlSecond();
 	}
-});
-$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
-$jj(document).scroll(function(){
-	var h = $jj(document).scrollTop();
-	var wHeight=$jj(window).height();
-	if(h>wHeight){
-		$jj(".addtop").show()
-		$jj(".addtop").click(function(){
-			$jj(window).scrollTop(0);
-		})
-	}else{
-		$jj(".addtop").hide()
-	}
-	if(h > 50)
-	{
-		$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
-		$jj(".m_main-v1s").eq(0).css({"margin-top":"50px"});
-		$jj(".filter").eq(0).css({"margin-top":"50px"})
-	}
-})
-$jj(function(){
+
+	$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
+	$jj(document).scroll(function(){
+		var h = $jj(document).scrollTop();
+		var wHeight=$jj(window).height();
+		if(h>wHeight){
+			$jj(".addtop").show()
+			$jj(".addtop").click(function(){
+				$jj(window).scrollTop(0);
+			})
+		}else{
+			$jj(".addtop").hide()
+		}
+		if(h > 50)
+		{
+			$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
+			$jj(".m_main-v1s").eq(0).css({"margin-top":"50px"});
+			$jj(".filter").eq(0).css({"margin-top":"50px"})
+		}
+	})
+
 	var daHeight=$jj(".da_banner").offset().top;
+	console.log(daHeight)
 	$jj(".da_banner li").click(function(){
 		$jj(".da_banner").addClass("da_list_test");
 		$jj(window).scrollTop(daHeight);
@@ -97,4 +98,5 @@ $jj(function(){
             $jj(".da_banner").removeClass("da_list_test");
         }
     })
- })
+
+});
