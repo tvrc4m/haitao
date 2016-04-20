@@ -25,7 +25,11 @@
 </section>
 <section>
     <div class="cate-guangimg clearfix">
-       <div class="cate-guangimg-left"><a href="<{$config.weburl}>/?m=product&s=list&id=1002&dist_id=42"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_gg0.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></div>
+
+       <div class="cate-guangimg-left">
+           <script src='<{$config.weburl}>/api/ad.php?id=32&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
+       </div>
+
        <div class="cate-guangimg-right">
            <ul class="clearfix">
                <{foreach item=list key=num from=$categorys}>
