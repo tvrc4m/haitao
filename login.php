@@ -8,7 +8,6 @@ if(!empty($_GET['forward'])&&strpos($_GET['forward'],'script')>0)
     header("Location:login.php");
 if(!empty($_SERVER['HTTP_REFERER']))
 setcookie('old_url',$_SERVER['HTTP_REFERER']);
-
 if(!empty($post["action"])&&$post["action"]=="submit")
 {
     include_once("includes/global.php");
@@ -22,7 +21,6 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         header("Location: login.php?erry=-3");
         exit();
     } */
-
     $config = array_merge($config,$reg_config);
     if($config['openbbs']==2)
     {
@@ -362,7 +360,7 @@ if($config['sina_connect']==1)//sina
         if($cre['userid'])
         {
             login($cre['userid'],NULL);
-            $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php";
+            $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
             msg($forward);
         }
         else
@@ -374,7 +372,6 @@ if($config['sina_connect']==1)//sina
     $code_url = $o->getAuthorizeURL( WB_CALLBACK_URL );
     $tpl->assign("sina_login_url",$code_url);
 }
-
 if(!empty($_GET['code'])&&$config['qq_connect']==1&&$_GET['type']!='sina'&&$_GET['connect_type']!='weixin')//QQ
 {
     //-----------------
@@ -419,7 +416,7 @@ if(!empty($_GET['code'])&&$config['qq_connect']==1&&$_GET['type']!='sina'&&$_GET
     if($cre['userid'])
     {
         login($cre['userid'],NULL);
-        $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php";
+        $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
         msg($forward);
     }
     else
@@ -530,7 +527,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
             if($cre['userid'])
             {
                 login($cre['userid'],NULL);
-                $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php";
+                $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                 msg($forward);
             }
             else
@@ -584,5 +581,4 @@ if(!empty($_GET['connect_id']))
     $tpl->display("user_connect.htm");
 else
     $tpl->display("login.htm");
-
 ?>
