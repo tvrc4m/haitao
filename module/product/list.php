@@ -252,7 +252,6 @@ else
 //--------------------------------------------------
 	$db->query($sql);
 	$prol=$db->getRows();
-
 	foreach($prol as $key => $val){
 		$sql = "select count(id) as num from mallbuilder_product_comment where pid = ".$val[id];
 		$db->query($sql);
@@ -309,11 +308,9 @@ else
 		}
 	}
 
-	$prolist['list'] = $prol;
-	$prolist['page'] = $page->prompt();
-	$prolist['count'] = $page->totalRows;
-	/*echo "<pre>";
-	var_export($prolist);*/
+	$prolist['list']=$prol;
+	$prolist['page']=$page->prompt();
+	$prolist['count']=$page->totalRows;
 	$tpl->assign("info",$prolist);
 	unset($prolist);
 }
@@ -329,19 +326,16 @@ $tpl->assign("province",GetDistrict1());
 //------------------------------------------------------
 $url=implode('&',convert($_GET));
 $tpl->assign("url",$url);
-
 //----------------------------SEO
 $config['title']=str_replace('[catname]',$cat['cat'],$config['title2']);
 $config['keyword']=str_replace('[catname]',$cat['cat'],$config['keyword2']);
 $config['description']=str_replace('[catname]',$cat['cat'],$config['description2']);
-
 //=====================================================
 if($cat['templates'])
 {
 	$tpl -> template_dir = $config['webroot'] . "/templates/".$cat['templates']."/";
 	$tpl -> compile_dir  = $config["webroot"] . "/templates_c/".$cat['templates']."/";
 }
-
 $tpl->assign("current","product");
 include_once("footer.php");
 $out=tplfetch("product_list.htm");
