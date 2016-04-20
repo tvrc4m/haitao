@@ -200,12 +200,12 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
     left: 14px;
 }
 /*主页样式*/
-.cate-guang{width: 100%;background-color: #fff;border-bottom: 2px solid #ff5c5c; position: relative;
+.cate-guang{width: 100%;background-color: #fff;position: relative;
     display: inline-block;vertical-align: middle;height: 40px;overflow: hidden;}
 .cate-guang-img{position: relative;top: 10px;right: -18px; width: 20px;height: 20px; background:url(../../../image/wap/wap_haitao_icon57.png) center no-repeat;background-size:contain;display: inline-block;}
 .cate-guang ul{position: absolute;left: 0;top: 0;width: 100%;padding-left: 1.5rem;}
-.cate-guang ul li{position: relative;height: 40px;line-height: 42px;font-size: 13px;margin-left: 1rem;}
-.cate-guangimg{padding: 0.8rem 0.5rem;}
+.cate-guang ul li{position: relative;height: 40px;line-height: 40px;font-size: 13px;margin-left: 1rem;}
+.cate-guangimg{padding: 0.5rem 0.5rem;border-top: 2px solid #ff5c5c;}
 .cate-guangimg .cate-guangimg-left{float: left;width: 33.33%;}
 .cate-guangimg .cate-guangimg-left img{width: 100%;}
 .cate-guangimg .cate-guangimg-right{float: left;width: 66.66%;}
@@ -216,11 +216,11 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .cate-guanglist ul li a{width: 100%;display: inline-block;border: 1px solid #f1f1f1;}
 .cate-guanglist ul li:nth-child(n+5) a{border-top: none;}
 .cate-guanglist ul li img{width: 100%;}
-.m_main-v4{padding: 0 0.5rem;margin-top: 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 0.8rem;}
+.m_main-v4{padding: 0 0.5rem;margin-top: 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 0.5rem;}
 .w100s{width: 100%}
 .w100s img{width: 100%;}
 .da_banner {border-top: 2px solid #7753ff;background-color: #fff;margin-bottom:10px;}
-.da_banner ul li{width: 20%;float: left;box-sizing: border-box;height: 40px;line-height: 40px;text-align: center;}
+.da_banner ul li{width: 25%;float: left;box-sizing: border-box;height: 40px;line-height: 40px;text-align: center;}
 .da_banner ul li a {display: block;height: 40px;line-height: 40px;font-size: 0.6rem;}
 .da_banner ul li.current {background-color: #7753ff;}
 .da_banner ul li.current a {color: #fff;}
