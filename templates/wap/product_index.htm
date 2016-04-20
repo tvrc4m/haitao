@@ -103,8 +103,7 @@
 
 <section class="m_main-v9">
     <div class="m m2">
-        <a href="javascript:void()" class="m_jiazai next" id="more-msg" ><i></i>点击加载更多</a>
-        <!--<a href="<{$config.weburl}>/cat.php" class="m_jiazai next"><i></i>点击加载更多</a>-->
+        <a href="javascript:void(0);" class="m_jiazai next" id="more-msg" ></a>
     </div>
 </section>
 
@@ -186,16 +185,33 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
     }
     eval('var ar =<{$ar}>;');
     var i = 1;
-    $('#more-msg').on('click',function(){
-        $.ajax({
-            url: "<{$config.weburl}>/module/ajax/wapajax.php",
-            type: "post",
-            data: {ar:ar,num:i},
-            success: function(msg){
-                alert(msg);
-            }
-        });
-        i++;
+    var stop=true; 
+    $jj(window).scroll(function(){
+        totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()); 
+        if($jj(document).height() <= totalheight+108){ 
+            $("#more-msg").html("下拉加载更多");
+            if(stop==true){ 
+                stop=false; 
+                 $.ajax({
+                    url: "<{$config.weburl}>/module/ajax/wapajax.php",
+                    type: "post",
+                    data: {ar:ar,num:i},
+                    success: function(msg){
+                        $(".m_jiazai next").html("");
+                        $(".shop .shoplist").append(msg);
+                        if(msg==""){
+                            $("#more-msg").html("商品已加载完毕");
+                        }
+                        stop=true;
+                    }
+                });
+                i++;
+            } 
+        } 
+        if(i>=5){
+            stop=false;
+            $("#more-msg").html("商品已加载完毕"); 
+        }
     });
 </script>
 </div>
