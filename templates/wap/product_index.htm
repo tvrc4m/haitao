@@ -44,7 +44,7 @@
                 <{if $num < 1002}>
                 <{foreach item=lists key=nums from=$list.scat}>
                     <{if $nums < 4 }>
-                   <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="<{$lists.wpic}>" src="<{$lists.wpic}>" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="<{$lists.cat}>"></a></li>
+                   <li><a href="<{$config.weburl}>/?m=product&s=list&id=<{$lists.catid}>&dist_id=<{$lists.displayorder}>"><img class="scrollLoading" data-url="<{$lists.wpic}>" src="<{$lists.wpic}>" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="<{$lists.cat}>"></a></li>
                     <{/if}>
                    <!--<li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl2.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>-->
                 <{/foreach}>
@@ -70,33 +70,27 @@
                 <li><a href="javascript:void(0);">美妆个护</a></li>
                 <li><a href="javascript:void(0);">日用百货</a></li>
                 <li><a href="javascript:void(0);">食品保健</a></li>
-                <li><a href="javascript:void(0);">日本馆</a></li>
             </ul>
         </div>
         <div class="da_list da_list_t">
             <div class="shop clearfix list_current">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1000 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1001 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1002 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
-                </ul>
-            </div>
-            <div class="shop clearfix">
-                <ul class="shoplist">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1003 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
         </div>      
