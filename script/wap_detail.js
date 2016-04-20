@@ -10,13 +10,13 @@
             $jq(".nav-box").removeClass("nav-wrapper-test");
         }
     })
-    $jq(".nav-box ul li").on("tap",function(){
+    $jq(".nav-box ul li").click(function(){
     	$jq(window).scrollTop(dScrotop);
         var liLength=$jq(this).index();
         $jq(this).addClass("active").siblings().removeClass("active");
         $jq(".j_tab").eq(liLength).addClass("pdetail_show").siblings().removeClass("pdetail_show");
     })
-    $jq(".select_guanshui_ic").on("click",function(){
+    $jq(".select_guanshui_ic").click(function(){
         $jq(".select_guanshui_hid").toggleClass("select_guanshui_hid_test");
     })
   //   $jq(".btn-buy").click(function(){
