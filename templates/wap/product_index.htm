@@ -103,8 +103,7 @@
 
 <section class="m_main-v9">
     <div class="m m2">
-        <a href="javascript:void()" class="m_jiazai next" id="more-msg" ><i></i>点击加载更多</a>
-        <!--<a href="<{$config.weburl}>/cat.php" class="m_jiazai next"><i></i>点击加载更多</a>-->
+        <a href="javascript:void(0);" class="m_jiazai next" id="more-msg" >下拉加载更多</a>
     </div>
 </section>
 
@@ -175,7 +174,6 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
             _slideObj.animate({height:slideH},800);
         }, 800);
     }, false);
-    
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
     for(var i=0;i<imgIndex;i++){
         dot.append("<span></span>")
@@ -184,17 +182,42 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
     if(imgIndex==1){
         dot.html("");
     }
-    eval('var ar =<{$ar}>;');
-    $('#more-msg').on('click',function(){
-        $.ajax({
-            url: "<{$config.weburl}>/module/ajax/wapajax.php",
-            type: "post",
-            data: ar,
-            success: function(msg){
-                alert(msg);
+    $jj(function(){
+        eval('var ar =<{$ar}>;');
+        var i = 1;
+        var stop=true; 
+        $jj(window).scroll(function(){
+            console.log(i)
+            if(i>=5){
+                stop=false;
             }
+            totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()) + parseFloat($jj("footer").height()); 
+            if($jj(document).height() <= totalheight){ 
+                if(stop==true){ 
+                    $jj("#more-msg").html("正在加载中.....");
+                    stop=false; 
+                     $jj.ajax({
+                        url: "<{$config.weburl}>/module/ajax/wapajax.php",
+                        type: "post",
+                        data: {ar:ar,num:i},
+                        success: function(msg){
+                            $jj(".shop .shoplist").append(msg);
+                            console.log(i)
+                            $jj("#more-msg").html("下拉加载更多");
+                            if(i>=5){
+                                $jj("#more-msg").html("商品已加载完毕");
+                            }
+                            if(msg==""){
+                                $jj("#more-msg").html("商品已加载完毕");
+                            }
+                            stop=true;
+                        }
+                    });
+                    i++;
+                } 
+            } 
         });
-    });
+    }) 
 </script>
 </div>
 

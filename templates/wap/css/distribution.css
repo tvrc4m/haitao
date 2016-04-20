@@ -10,8 +10,8 @@
 .dis_dl dl.dis_dl_bottom{border:none;padding: 0;width: 25%;}
 .dis_dl dl.dis_dl_bottom:nth-of-type(1){border-left: 1px solid #b9b9b9;}
 .dis_dl dl.dis_dl_bottom:nth-of-type(4){border-right: 1px solid #b9b9b9;}
-.dis_dl dl.dis_dl_bottom dt{font-size: 0.6rem;border-bottom: 1px dashed #b9b9b9;border-top: 1px solid #b9b9b9;}
-.dis_dl dl.dis_dl_bottom dd{font-size: 0.6rem;}
+.dis_dl dl.dis_dl_bottom dt{font-size: 0.6rem;border-bottom: 1px dashed #b9b9b9;border-top: 1px solid #b9b9b9;height: 40px;line-height: 40px;}
+.dis_dl dl.dis_dl_bottom dd{font-size: 0.6rem;height: 40px;line-height: 40px;}
 .dis_dl dl.dis_dl_bottom dd:nth-of-type(2){border-bottom: 1px solid #b9b9b9;}
 .dis_dl dl.dis_dl_bottom dd.dis_dl_bottom_dd1{border-bottom: 1px dashed #b9b9b9;}
 .dis_dl_tr{margin-bottom: 20px;}
