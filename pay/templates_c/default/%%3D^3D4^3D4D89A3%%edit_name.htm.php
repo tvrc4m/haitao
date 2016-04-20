@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-19 21:04:26
+<?php /* Smarty version 2.6.20, created on 2016-04-20 18:28:09
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -67,7 +67,9 @@ function IdentityCodeValid() {
             }
         }
     }
-    if(!pass) alert(tip);
+    if(!pass){
+        $("#identity_card").nextAll(".form-error").html('<label for="identity_card" generated="true" class="error">'+tip+'</label>');
+    }
     return pass;
 }
 </script>
@@ -75,7 +77,7 @@ function IdentityCodeValid() {
 	<div class="i-block">
     	 <h2>实名认证</h2>
     </div>
-    
+<!--     
     <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>
     <div class="tips"><span></span>温馨提示：您的实名认证认证成功。</div>
     <?php endif; ?>
@@ -84,7 +86,7 @@ function IdentityCodeValid() {
     <?php endif; ?>
     <?php if ($this->_tpl_vars['de']['identity_verify'] == 'refused' && $this->_tpl_vars['de']['identity_card'] && $this->_tpl_vars['de']['real_name']): ?>
     <div class="tips"><span></span>温馨提示：您的实名认证信息被拒绝,请重新上传认证资料。</div>
-    <?php endif; ?>
+    <?php endif; ?> -->
     <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
    <!--  <ol class="fn-clear step2">
         <li class="fore1">
@@ -133,7 +135,7 @@ function IdentityCodeValid() {
         <dl>
             <dt>身份证号码：</dt>
             <dd><input type="text" class="text" name="identity_card" id="identity_card" value="<?php echo $this->_tpl_vars['de']['identity_card']; ?>
-" <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>readonly<?php endif; ?> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
+" maxlength="18" <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>readonly<?php endif; ?> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
         </dl>
         </fieldset>
         <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
@@ -144,5 +146,4 @@ function IdentityCodeValid() {
         <?php endif; ?>
     </form>
     </div>
-
 </div>

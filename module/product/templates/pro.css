@@ -147,8 +147,8 @@
 .itemSearchResult .p-option .fl{background: url(../../../image/default/icon-com.png) no-repeat;}
 .itemSearchResult .p-option .fr{background: url(../../../image/default/icon-cart.png) no-repeat;}
 .itemSearchResult .p-shop{background:#F5F5F5;border-color:#DDDDDD;border-right:1px solid #DDDDDD;border-style:none solid solid;border-width:0 1px 1px;bottom:-20px;box-shadow:0 2px 4px #DDDDDD;display:none;height:25px;left:-1px;line-height:25px;position:absolute;text-align:center;width:100%;z-index:3;}
-.itemSearchResult .page{margin-top:0; margin-right:50px; }
-.itemSearchResult .flpage{width: 995px;padding: 16px 0;}
+.itemSearchResult .page{margin-top:0;}
+.itemSearchResult .flpage{width: 995px;padding: 16px 0;text-align: center;}
 .itemSearchResult li:hover .p-shop{display:block;}
 .itemsNull{color:#666666;line-height:20px;padding:20px 110px;}
 .itemsNull .left{float: left;width: 120px;}

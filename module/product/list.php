@@ -238,7 +238,7 @@ else
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=16;
+	$page->listRows=20;
 	if(empty($cat['ext_field_cat']))
 		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
@@ -267,8 +267,6 @@ else
 	}
 
 	fb($prol);
-
-
 
 	if ($distribution_open_flag)
 	{
@@ -317,6 +315,14 @@ else
 	unset($prolist);
 }
 
+//获取当前页的类名
+if(!empty($_GET['id'])) {
+    $sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
+    $db->query($sql);
+    $res = $db->fetchRow();
+}
+
+$tpl->assign("catname",$res);
 $tpl->assign("province",GetDistrict1());
 
 //------------------------------------------------------
@@ -334,6 +340,5 @@ if($cat['templates'])
 }
 $tpl->assign("current","product");
 include_once("footer.php");
-
 $out=tplfetch("product_list.htm");
 ?>

@@ -136,8 +136,12 @@
                 <li <{if ($num+1)%5==0}>class="mr0 w222"<{/if}> >
                     <div class="p-info">
                         <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
-                        <p class="p-country"><span><img src="image/default/america.jpg"></span><a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a></p>
-                        <p class="p-price"><strong><{$config.money}><{$list.price}></strong><s>¥118</s></p>
+                        <p class="p-country"><span>
+                            <{if $list.nat}>
+                                <img src="<{$list.nat.img}>">
+                            <{/if}>
+                        </span><a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a></p>
+                        <p class="p-price"><strong><{$config.money}><{$list.price}></strong><s>¥<{$list.market_price}></s></p>
                         <p class="p-option clearfix"><a class="fl" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.con.num}></a><a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="fr">加入购物车</a></p>
                         <!-- <div class="p-shop"><a href="shop.php?uid=<{$list.userid}>"><{$list.company}></a></div> -->
                     </div>
@@ -147,7 +151,7 @@
             </ul>
             <{if $info.page}>
             <div class="flpage clearfix">
-                <div class="page"><{$info.page}></div>
+                <div class="page clearfix"><{$info.page}></div>
             </div>
             <{/if}>
         </div>

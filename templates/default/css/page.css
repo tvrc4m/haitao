@@ -216,8 +216,8 @@ em{font-style:normal;}
 .flex-direction-nav li a.next { background-position:0 0; right:21px; }
 .flex-direction-nav {position: relative;top:150px;}*/
 /*--分页--*/
-.page{margin-top:20px;float:right;}
-.page a, .page b{border:1px solid #CCCCCC;float:left;font-family:arial;font-size:14px;height:20px;line-height:20px;margin-left:2px;overflow:hidden;padding:3px 10px;border-radius:3px 3px 3px 3px;text-decoration:none;}
+.page{margin-top:20px;}
+.page a, .page b{border:1px solid #CCCCCC;font-family:arial;font-size:14px;height:20px;line-height:20px;margin-left:2px;overflow:hidden;padding:3px 10px;border-radius:3px 3px 3px 3px;text-decoration:none;display: inline-block;}
 /*.page b{color:#CC0000;background:#FFE3E3;border-color:#CC0000;}*/
 .page b{background:#e4e4e4;}
 
