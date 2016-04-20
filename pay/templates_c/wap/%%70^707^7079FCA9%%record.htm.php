@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-19 21:05:02
+<?php /* Smarty version 2.6.20, created on 2016-04-20 09:27:08
          compiled from record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 77, false),)), $this); ?>
@@ -30,7 +30,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
             <span>可用余额<strong><?php echo $this->_tpl_vars['de']['cash']; ?>
 </strong>元</span>
         </h2> -->
-        <div style="height:15px;background-color:#ededed;"></div>
+        <div style="height:10px;background-color:#ededed;"></div>
          <p>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 ">收支明细</a>
@@ -87,7 +87,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
             <tr>
                 <th class="al">名称 | 交易号</td>
                 <?php if (! $_GET['mold']): ?><th class="al" width="15%">对方</th><?php endif; ?>
-                <th width="20%">金额(元)</th>
+                <th width="25%">金额(元)</th>
                 <th width="25%">状态</th>
                 <!--<th width="60">操作</th>-->
             </tr>

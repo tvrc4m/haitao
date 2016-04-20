@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-19 19:08:22
+<?php /* Smarty version 2.6.20, created on 2016-04-20 08:53:37
          compiled from index.htm */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));
@@ -35,7 +35,8 @@ unset($_smarty_tpl_vars);
                         </li>
                         <li>
                             <!-- <a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已设置</a> -->
-                            <a href="javascript:void(0);" class="duser-auth-ema">未设置</a>
+                            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=setpass" class="duser-auth-ema">未设置</a>
                         </li>
                     </ul>
                 </p>
