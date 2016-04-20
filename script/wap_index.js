@@ -80,10 +80,10 @@ $jj(document).scroll(function(){
 	}
 })
 $jj(function(){
-	var daHeight=$jj(".da_banner").offset().top-50;
+	var daHeight=$jj(".da_banner").offset().top+71;
 	$jj(".da_banner li").click(function(){
 		$jj(".da_banner").addClass("da_list_test");
-		$jj(window).scrollTop(daHeight-0.9);
+		$jj(window).scrollTop(daHeight);
 		var liSize=$jj(this).index();
 		$jj(this).addClass("current").siblings().removeClass("current");
 		$jj(".da_list>div").eq(liSize).addClass("list_current").siblings().removeClass("list_current");
