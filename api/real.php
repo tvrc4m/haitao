@@ -32,7 +32,7 @@ class real{
         $verify_number = $verify_number_list[$mod];
         return $verify_number;
     }
-// 将15位身份证升级到18位
+    // 将15位身份证升级到18位
     function idcard_15to18($idcard) {
         if (strlen($idcard) != 15) {
             return false;
@@ -47,7 +47,7 @@ class real{
         $idcard = $idcard . idcard_verify_number($idcard);
         return $idcard;
     }
-// 18位身份证校验码有效性检查
+    // 18位身份证校验码有效性检查
     function idcard_checksum18($idcard) {
         if (strlen($idcard) != 18) {
             return false;
@@ -59,7 +59,7 @@ class real{
             return true;
         }
     }
-//验证身份证真假接口
+    //验证身份证真假接口
     function aes($url='',$post_data=''){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -74,7 +74,14 @@ class real{
 include_once("includes/global.php");
 $post = $_POST?$_POST:$_GET;
 
+$real = new real();
+if($config['temp']=='wap'){
 
+}
+if($config['temp'=='default']){
+
+}
+function 
 if(!empty($post)){
     $partner_id = '20160100136';
     $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';

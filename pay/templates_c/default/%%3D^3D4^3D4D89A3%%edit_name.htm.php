@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-04-21 09:34:40
-=======
-<?php /* Smarty version 2.6.20, created on 2016-04-21 10:12:13
->>>>>>> ef00ede77f4c356fdfc36c0be8f899ccedd7b7d5
+<?php /* Smarty version 2.6.20, created on 2016-04-21 10:21:41
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -31,8 +27,6 @@ $(function(){
 	});
 });
 
-<<<<<<< HEAD
-=======
 function formSubmit() {
     $.ajax({
         type: "POST",
@@ -64,18 +58,14 @@ function formSubmit() {
         }
     });
 }
->>>>>>> ef00ede77f4c356fdfc36c0be8f899ccedd7b7d5
 </script>
 <div class="block">
 	<div class="i-block">
         <h2>实名认证</h2>
     </div>
+
     <div class="form">
-<<<<<<< HEAD
-    <form method="post" id="form" action="">
-=======
     <form method="post" id="form">
->>>>>>> ef00ede77f4c356fdfc36c0be8f899ccedd7b7d5
     <input type="hidden" value="name" name="act" />
         <fieldset>
         <dl class="email">
