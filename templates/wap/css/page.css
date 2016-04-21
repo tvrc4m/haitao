@@ -27,6 +27,7 @@ a,a:visited{color:#000;text-decoration:none;}
 
 /*头部样式*/
 .head{width: 100%;margin: 0px auto;text-align: center;height: 50px;line-height: 50px;background-color: #ff5c5c;padding: 0px 0.5rem;box-sizing: border-box;}
+.mains{width: 100%;margin: 0px auto;text-align: center;height: 50px;line-height: 50px;}
 .head a.logo_haitao{vertical-align: middle;display: inline-block; width: 120px;height: 23px;background: url(../../../image/wap/wap_haitao_logo1.png) center no-repeat;background-size: contain;margin-top: 13px;}
 .head a.user_icon{position: absolute;left: 0;top: 0;vertical-align: middle; float:left; width: 25px; height: 25px; background-repeat: no-repeat; background-image: url(../../../image/wap/wap_haitao_icon54.png);margin-top: 13px;background-size: contain;}
 #y_menu_icon{position: absolute;right: 0;top: 0;vertical-align: middle; float: right; width: 25px; height: 18.33px; background-repeat: no-repeat; background-image: url(../../../image/wap/wap_haitao_icon55.png);margin-top: 16px;background-size: contain;}
