@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-20 18:28:09
+<?php /* Smarty version 2.6.20, created on 2016-04-21 10:12:13
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -7,8 +7,8 @@ $(function(){
 	$('#form').validate({
 		errorPlacement: function(error, element){
 			element.nextAll('.form-error').append(error);
-		},      
-		rules : {
+		},
+		rules:{
 			real_name:{
 				required:true
 			},
@@ -16,7 +16,7 @@ $(function(){
 				required:true
 			}
 		},
-		messages : {
+		messages:{
 			real_name:{
 				required:'请输入真实姓名。'
 			},
@@ -27,95 +27,44 @@ $(function(){
 	});
 });
 
-function IdentityCodeValid() {
-    var code = $("#identity_card").val();
-    var city={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江 ",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北 ",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏 ",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外 "};
-    var tip = "";
-    var pass= true;
-
-    if(!code || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i.test(code)){
-        tip = "身份证号格式错误";
-        pass = false;
-    }
-
-    else if(!city[code.substr(0,2)]){
-        tip = "身份证地址编码错误，请输入正确的身份证号";
-        pass = false;
-    }
-    else{
-        //18位身份证需要验证最后一位校验位
-        if(code.length == 18){
-            code = code.split('');
-            //∑(ai×Wi)(mod 11)
-            //加权因子
-            var factor = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 ];
-            //校验位
-            var parity = [ 1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2 ];
-            var sum = 0;
-            var ai = 0;
-            var wi = 0;
-            for (var i = 0; i < 17; i++)
-            {
-                ai = code[i];
-                wi = factor[i];
-                sum += ai * wi;
-            }
-            var last = parity[sum % 11];
-            if(parity[sum % 11] != code[17]){
-                tip = "身份证校验位错误，请输入正确的身份证号";
-                pass =false;
+function formSubmit() {
+    $.ajax({
+        type: "POST",
+        url:ajaxCallUrl,
+        data:$('#form').serialize(),
+        async: false,
+        error: function(request) {
+        },
+        success: function(msg) {
+            //-1真实姓名不能为空！-2身份证号不能为空！-3请填写正确身份证号！-4姓名和身份证不一致！
+            switch(msg){
+                case -1:
+                    $("#real_name").nextAll(".form-error").html('<label for="real_name" generated="true" class="error">真实姓名不能为空！</label>');
+                    break;
+                case -2:
+                    $("#identity_card").nextAll(".form-error").html('<label for="identity_card" generated="true" class="error">身份证号不能为空！</label>');
+                    break;
+                case -3:
+                    $("#identity_card").nextAll(".form-error").html('<label for="identity_card" generated="true" class="error">请填写正确身份证号！</label>');
+                    break;
+                case -4:
+                    $("#identity_card").nextAll(".form-error").html('<label for="identity_card" generated="true" class="error">姓名和身份证不一致！</label>');
+                    break;
+                default:
+                    $("#real_name").attr("readonly","readonly");
+                    $("#identity_card").attr("readonly","readonly");
+                    $("#form dl:last").remove();
             }
         }
-    }
-    if(!pass){
-        $("#identity_card").nextAll(".form-error").html('<label for="identity_card" generated="true" class="error">'+tip+'</label>');
-    }
-    return pass;
+    });
 }
 </script>
 <div class="block">
 	<div class="i-block">
-    	 <h2>实名认证</h2>
+        <h2>实名认证</h2>
     </div>
-<!--     
-    <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>
-    <div class="tips"><span></span>温馨提示：您的实名认证认证成功。</div>
-    <?php endif; ?>
-    <?php if ($this->_tpl_vars['de']['identity_verify'] == 'false' && $this->_tpl_vars['de']['identity_card'] && $this->_tpl_vars['de']['real_name']): ?>
-    <div class="tips"><span></span>温馨提示：您的实名认证信息正在审核中。</div>
-    <?php endif; ?>
-    <?php if ($this->_tpl_vars['de']['identity_verify'] == 'refused' && $this->_tpl_vars['de']['identity_card'] && $this->_tpl_vars['de']['real_name']): ?>
-    <div class="tips"><span></span>温馨提示：您的实名认证信息被拒绝,请重新上传认证资料。</div>
-    <?php endif; ?> -->
-    <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
-   <!--  <ol class="fn-clear step2">
-        <li class="fore1">
-            <em class="icon">
-                <i></i>
-                <strong></strong>
-                <b>1</b>
-            </em>
-            <span>验证身份</span>
-        </li>
-        <li class="fore2">
-            <em class="icon">
-                <i></i>
-                <strong></strong>
-                <b>2</b>
-            </em>
-            <span>实名认证</span>
-        </li>
-        <li class="fore3">
-            <em class="icon">
-                <i></i>
-                <b>3</b>
-            </em>
-            <span>成功</span>
-        </li>
-    </ol> -->
-    <?php endif; ?>
     <div class="form">
-    <form method="post" id="form" onsubmit="return IdentityCodeValid();">
+    <form method="post" id="form">
     <input type="hidden" value="name" name="act" />
         <fieldset>
         <dl class="email">
@@ -141,7 +90,7 @@ function IdentityCodeValid() {
         <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
         <dl>
             <dt></dt>
-            <dd><input type="submit" class="submit" value="确 定" /></dd>
+            <dd><input type="submit" onclick="formSubmit();" class="submit" value="确 定" /></dd>
         </dl>
         <?php endif; ?>
     </form>
