@@ -8,12 +8,13 @@
 .w210{width:210px !important;}
 
 
-.payment .title{margin-bottom:15px;border-bottom:solid 1px #ddd;height:55px;}
+.payment .title{margin-bottom:15px;border-bottom:solid 1px #ddd;}
+.payment .title2{background-color: #fff;padding:10px 0;}
 .payment .title h3{padding-left: 10px;}
 .payment .title p{font-size:12px;margin-top:4px;padding-right: 10px;padding-left: 10px;}
 .payment .title h2{font-size:14px;}
 .payment .title span{font-size:12px;font-weight:normal;float:right;}
-.payment .title span strong{font-size:12px;color:#ff5c5c;margin:0 5px;}
+.payment .title span strong{font-size:16px;color:#ff5c5c;margin:0 5px;}
 i.fanhui_icon {
     display: inline-block;
     height: 50px;
@@ -25,7 +26,7 @@ i.fanhui_icon {
 .tips{background-color:#FFFDDD;border:1px solid #F8F3D6;color:#666666;line-height:20px;  padding: 3px 20px 3px 25px;position: relative;margin: -10px 10px 20px;}
 .tips span{background:url(../image/tips.png) no-repeat;display:inline-block;height:18px;margin-left:-21px;padding-right:5px;vertical-align:middle;width:16px;}
 
-.pay ul li{margin:5px 0 2px 0px;width:160px;position:relative;border:2px solid #FFF;background:#FFF;text-align:center;border:2px solid #EEE;}
+.pay ul li{background:#FFF;}
 
 .pay ul li.checked{border:2px solid #ff5c5c;}
 .pay ul li.checked i{background:url(../../../../image/wap/wap_haitao_icon21.png);background-size: contain;bottom:0;display:block;height:15px;margin:0;overflow:hidden;position:absolute;right:0;width:15px;}
@@ -48,13 +49,14 @@ i.fanhui_icon {
 .shop_step_title input[type='button']{width: 100%;height: 43px;margin-top: 15px;}
 
 .form{margin-bottom:25px;}
-.form fieldset{border:0 none;padding:0 5px 0 15px;}
-.form dl{padding:3px 0 12px 0px;border-bottom: 1px solid #f1f1f1;}
+.form fieldset{border:0 none;padding:0 10px 0 10px;}
+.form dl{padding:3px 0 12px 0px;background-color: #fff;}
+.form dl.btn_pay{text-align: center;}
 .tixian{text-align: center;margin-top: 7px;}
 .tixian span{color: #ff5c5c;}
 .form dl:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
-.form dt{font-size:14px;font-weight:normal;margin-top:3px;padding:1px 12px 1px 0;float: left;}
-.form dd .text{color:#000000;padding:5px 10px 4px;height:21px;line-height:21px;font-size:14px;margin-top: 3px;border: none;outline: none;}
+.form dt{font-size:14px;font-weight:normal;margin-top:3px;padding:1px 12px 1px 0;display: inline-block;}
+.form dd .text{color:#000000;padding:5px 10px 4px 0;height:21px;line-height:21px;font-size:14px;margin-top: 3px;border: none;outline: none;}
 .form dd p{line-height:24px;margin-right:10px;padding-top:5px;position:relative;white-space:nowrap;padding-left:20px;}
 .form dd p input[type="radio"]{position:absolute;left:0;}
 .form dd p span{ font-size:14px;}
@@ -78,7 +80,7 @@ ol li{float:left;text-align:center;color:#b4b4b4;width:110px;padding-right:200px
 ol li em{width:30px;height:27px;display:block;position:relative;margin:0 auto;font-weight:bold;color:#FFF;}
 ol li em strong{position:absolute;height:3px;background-color:#b9b9b9;left:34px;top:14px;display:block;line-height:1;overflow:hidden;width:320px;}
 ol li span{width:100%;text-align:center;height:20px;line-height:20px;display:block;margin-top:3px;text-shadow:0 1px 0 white;}
-ol li i{display:block;background:url(../image/icon5.png) -60px 0; no-repeat;width:30px;height:29px;}
+ol li i{display:block;background:url(../image/icon5.png) -60px 0 no-repeat;width:30px;height:29px;}
 ol li b{left:11px;line-height:14px;position:absolute;top:7px;}
 ol li.fore3{float:right;padding-right:0;}
 ol.step1 li.fore1 i{background-position:-30px 0;}
@@ -86,3 +88,14 @@ ol.step2 li.fore1 i{background-position:0 0;}
 ol.step2 li.fore2 i{background-position:-30px 0;}
 ol.step2 li.fore1 em strong{background-color:#FC9C27;}
 ol.step2 li.fore2 span{color:#F16F20;}
+.form_weixin{padding: 0 10px 20px;}
+.form_weixin_zhi{font-size: 16px;display: block;padding-bottom: 10px;border-bottom: 1px solid #f1f1f1;}
+a.form_weixin_btn{height:30px;line-height: 30px; cursor: pointer;color:#535353;font-size:14px;display:inline-block;padding-left: 40px;
+	background:url(../image/pay_haitao_icon8.png) left center no-repeat;background-size: contain;margin-top: 10px;margin-bottom: 10px;width: 100%;-webkit-box-sizing: border-box; box-sizing: border-box;}
+.form_weixin_btn i,.form_zhifu_btn i,.form_qianbao_btn i{width: 25px;height: 25px;background:url(../image/pay_haitao_icon7.png) center no-repeat;background-size: contain;float: right;margin-right: 10px;display: none;}
+.form_qianbao_btn i.formsh{display: inline-block;}
+.form_weixin_btns2{width: 94%;margin: 0 auto;height: 40px;line-height: 40px;background-color: #ff5c5c;color: #fff;text-align: center;border-radius: 5px;font-size: 14px;letter-spacing: 1px;}
+.form_zhifu_btn i.formsh{display: inline-block;}
+.form_qianbao_img{display: inline-block;width: 30px;height: 30px;margin-right: 10px;vertical-align: middle;}
+a.form_qianbao_btn{height:30px;line-height: 30px; cursor: pointer;color:#535353;font-size:14px;display:inline-block;margin-top: 10px;margin-bottom: 10px;width: 100%;-webkit-box-sizing: border-box; box-sizing: border-box;}
+a.form_zhifu_btn{height:30px;line-height: 30px; cursor: pointer;color:#535353;font-size:14px;display:inline-block;margin-top: 10px;margin-bottom: 10px;width: 100%;-webkit-box-sizing: border-box; box-sizing: border-box;}
