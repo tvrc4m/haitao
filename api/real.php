@@ -5,10 +5,10 @@ class real{
         if(!preg_match('/^\d{17}(\d|x)$/i',$id_card) &&  !preg_match('/^\d{15}$/i',$id_card))
             return false;
         if (strlen($id_card) == 18) {
-            return idcard_checksum18($id_card);
+            return self::idcard_checksum18($id_card);
         } elseif ((strlen($id_card) == 15)) {
-            $id_card = idcard_15to18($id_card);
-            return idcard_checksum18($id_card);
+            $id_card = self::idcard_15to18($id_card);
+            return self::idcard_checksum18($id_card);
         } else {
             return false;
         }
@@ -44,7 +44,7 @@ class real{
                 $idcard = substr($idcard, 0, 6) . '19' . substr($idcard, 6, 9);
             }
         }
-        $idcard = $idcard . idcard_verify_number($idcard);
+        $idcard = $idcard . self::idcard_verify_number($idcard);
         return $idcard;
     }
     // 18位身份证校验码有效性检查
@@ -53,7 +53,7 @@ class real{
             return false;
         }
         $idcard_base = substr($idcard, 0, 17);
-        if (idcard_verify_number($idcard_base) != strtoupper(substr($idcard, 17, 1))) {
+        if (self::idcard_verify_number($idcard_base) != strtoupper(substr($idcard, 17, 1))) {
             return false;
         } else {
             return true;
@@ -70,52 +70,56 @@ class real{
         curl_close($ch);
         return json_decode($list,true);
     }
+    /*
+ * 身份证认证
+ * users 身份证姓名
+ * real 身份证号
+ * */
+    function idcard_authentication($users='',$real=''){
+        $partner_id = '20160100136';
+        $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
+        $card_id = !empty($post['real']) ? $post['real'] : '';
+        $realname = !empty($post['users']) ? $post['users'] : '';
+        $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
+        if(empty($post[users])) $erry = -1;else $users = $post[users];
+        if(empty($post[real])) $erry = -2;else $real = $post[real];
+        if(!empty($post[users])&&!empty($post[real])){
+            $type = validation_filter_id_card($post[real]);
+            if($type){
+                $sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
+                // 判断type为正确身份证再跳转验证身份证真假
+                $tokens = aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
+                if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
+                    $sql = "update pay_member set identity_verify=true where userid=".$_COOKIE['dist_id'];
+                    $db -> query($sql);
+                    msg($_COOKIE['old_url']);
+                    setcookie("old_url");
+                }else{
+                    $erry = -3;
+                }
+                $users = $post[users];
+                $real = $post[real];
+            }else{
+                $erry = -2;
+            }
+        }else{
+            $erry = -1;
+        }
+    }
 }
 include_once("includes/global.php");
 $post = $_POST?$_POST:$_GET;
 
-$real = new real();
-if($config['temp']=='wap'){
 
+if($config['temp']=='wap'){
+die(11);
 }
 if($config['temp'=='default']){
-
+die(222);
 }
-function 
-if(!empty($post)){
-    $partner_id = '20160100136';
-    $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
-    $card_id = !empty($post['real']) ? $post['real'] : '';
-    $realname = !empty($post['users']) ? $post['users'] : '';
+var_dump($post);die;
 
-    $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
-    if(empty($post[users])) $erry = -1;else $users = $post[users];
-    if(empty($post[real])) $erry = -2;else $real = $post[real];
-    if(!empty($post[users])&&!empty($post[real])){
 
-        $type = validation_filter_id_card($post[real]);
-        if($type){
-	    $sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
-            // 判断type为正确身份证再跳转验证身份证真假
-            $tokens = aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
-	    if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
-            $sql = "update pay_member set identity_verify=true where userid=".$_COOKIE['dist_id'];
-            $db -> query($sql);
-                msg($_COOKIE['old_url']);
-                setcookie("old_url");
-            }else{
-                $erry = -3;
-            }
-            $users = $post[users];
-            $real = $post[real];
-        }else{
-            $erry = -2;
-        }
-    }else{
-        $erry = -1;
-    }
-    $forward = true;
-}
 
 //-1真实姓名不能为空！-2身份证号不能为空！-3请填写正确身份证号！-4姓名和身份证不一致！
 

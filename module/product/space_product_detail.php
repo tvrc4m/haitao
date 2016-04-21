@@ -1,6 +1,5 @@
 <?php
 //微信分享
-
 if ($config['bw'] == "weixin")
 {
 	include_once("pay/module/payment/lib/WxPayPubHelper/WxPay.pub.config.php");
@@ -38,8 +37,7 @@ if ($config['bw'] == "weixin")
 //====================================产品详情
 
 $tpl->assign("de",$prode);
-//echo "<pre>";
-//var_export($prode);die;
+
 $tpl->assign("relation",$relation);
 
 
