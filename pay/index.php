@@ -30,6 +30,8 @@ switch($act)
 			{
 				if($_POST['act']=='name')
 				{
+					include_once("../api/real.php");
+					//var_dump($config['webroot']);die;
 					$pay->edit_name($buid);
 					msg("index.php?act=edit&op=name",'修改成功');	
 				}
@@ -43,7 +45,7 @@ switch($act)
 	}
 	default:
 	{
-		$re=$pay->get_trade_record($buid);
+		$re=$pay->get_trade_record($buid,5);
 		$tpl->assign("re",$re);
 		if(!empty($_GET['m']))
 		{
@@ -58,11 +60,21 @@ switch($act)
 		break;
 	}
 }
+
 //身份证认证
 $sql = "select identity_verify from pay_member where pay_id = $buid";
 $db -> query($sql);
 $num = $db -> fetchRow();
 $num = $num['identity_verify'] == 'true' ? 1 : 0 ;
+
+//支付密码
+$sql = "select pay_pass from ".MEMBER." where pay_id=". $de['pay_id'];
+$db -> query($sql);
+if(!empty($db -> fetchField('pay_pass'))){
+    $tpl->assign("verify_pay", 'yes');
+}else{
+    $tpl->assign("verify_pay", 'no');
+}
 
 $tpl->assign("verify",$num);
 $tpl->assign("output",$output);

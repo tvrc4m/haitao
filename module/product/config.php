@@ -6,7 +6,7 @@ $shopconfig['menu'][3]=array(
 );
 
 //=====================管理员后台==================
-$mem['product'][1][1]=array(
+$mem['product'][1][0]=array(
 	'产品管理',
 	array(
 
@@ -26,10 +26,12 @@ $mem['product'][1][2]=array(
 		'spec.php,1,product,规格管理',
 	),	
 );
-$mem['business'][1][0]=array(
-	'',
-	array(
-		'user_order.php,1,product,订单管理',
-	)
-);
+	$mem['product'][1][1]=array(
+		'品牌管理',
+		array(
+			'brand.php,1,brand,品牌管理',
+			'brand_cat.php,1,brand,品牌分类管理',
+		)
+	);
+
 ?>
