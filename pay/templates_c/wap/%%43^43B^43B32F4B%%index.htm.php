@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-20 19:27:03
+<?php /* Smarty version 2.6.20, created on 2016-04-21 15:58:10
          compiled from index.htm */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));
@@ -34,9 +34,13 @@ unset($_smarty_tpl_vars);
                             <?php endif; ?>
                         </li>
                         <li>
-                            <!-- <a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已设置</a> -->
+                            <?php if ($this->_tpl_vars['de']['pay_pass']): ?>
+                            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=setpass" class="duser-auth-ema duser-auth-ema-j">已设置</a>
+                            <?php else: ?>
                             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=payment&s=setpass" class="duser-auth-ema">未设置</a>
+                            <?php endif; ?>
                         </li>
                     </ul>
                 </p>

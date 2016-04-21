@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 10:49:39
+<?php /* Smarty version 2.6.20, created on 2016-04-21 11:59:46
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -66,7 +66,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 
 		<?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
         <div class="form_weixin">
-            <span class="form_weixin_zhi">请选择支付方式</span>
+            <span class="form_weixin_zhi" style="margin-left:5px;">请选择支付方式</span>
             <a class="form_weixin_btn">微信支付<i></i></a>
             <div style="border-top:1px solid #f1f1f1;height:0;"></div>
         </div>
@@ -80,7 +80,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 " />
             <fieldset>
             <dl>
-                <dt>请选择支付方式</dt>
+                <dt style="margin-left:5px;">请选择支付方式</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
                     <!-- <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
@@ -109,11 +109,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <?php if ($this->_tpl_vars['account'] != 'false'): ?>
             <fieldset class="fieldset">  
             <dl class="free">
-                <dt>可用总额：</dt>
-                <dd><?php echo $this->_tpl_vars['de']['cash']; ?>
- 元</dd>
+                <dt></dt>
+                <dd>可用总额：<span class="free_price"><?php echo $this->_tpl_vars['de']['cash']; ?>
+</span> 元</dd>
             </dl> 
-            <dl>
+            <dl class="free2">
                 <dt>支付密码：</dt>
                 <dd><input type="password" class="text" name="password" value="" placeholder="填写支付密码" /></dd>
             </dl>
@@ -122,7 +122,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <input style="padding-top:4px;font-size:14px;letter-spacing:1px;" type="submit" class="submit" value="确定支付" />
+                <input style="padding-top:4px;font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
                 </dd>
             </dl>
         </form>   

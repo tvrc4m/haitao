@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-06 14:55:58
+<?php /* Smarty version 2.6.20, created on 2016-04-21 13:16:49
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -13,12 +13,12 @@
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     	<fieldset id="bank">
     	<dl>
-        	<dt>充值方式：</dt>
+        	<dt style="margin-left:5px;">充值方式：</dt>
             <dd class="pay">
                 <input type="hidden" name="payment_type" id="payment_type" value="<?php echo $this->_tpl_vars['pay']['1']['payment_type']; ?>
 " />
                 <ul class="fn-clear">
-                <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+               <!--  <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
                     <?php if ($this->_tpl_vars['list']['payment_type'] != 'account'): ?>
@@ -30,7 +30,11 @@
 .gif" /><i></i>
                     </li>
                     <?php endif; ?>
-                <?php endforeach; endif; unset($_from); ?>  
+                <?php endforeach; endif; unset($_from); ?>   -->
+                 <li>
+                    <a class="form_zhifu_btn" data-param="{'id':'account1'}"><img src="/pay/templates/wap/image/pay_haitao_icon10.png" class="form_qianbao_img">支付宝<i></i></a>
+                    <div style="border-top:1px solid #f1f1f1;height:0;"></div>
+                </li>
                 </ul>
             </dd>
         </dl>
@@ -38,7 +42,7 @@
         <fieldset class="d1 <?php if ($this->_tpl_vars['pay']['1']['payment_type'] == 'cards'): ?>fn-hide<?php endif; ?>">
         <dl>
         	<dt>付款金额：</dt>
-            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>Double<?php endif; ?>" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
+            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>Double<?php endif; ?>" placeholder="填写充值金额" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
         </dl>
 		</fieldset>
         <fieldset class="d2 <?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>fn-hide<?php endif; ?>">
@@ -62,7 +66,7 @@
 </div>	
 <script type="text/javascript">
 $(".pay li").bind("click",function(){
-	var data = $(this).children('img').attr('data-param');
+	var data = $(this).children('a').attr('data-param');
 	eval("data = "+data);
 	if(data.id=='cards')
 	{
@@ -79,7 +83,7 @@ $(".pay li").bind("click",function(){
 		$(".d2").addClass("fn-hide").siblings(".d1").removeClass("fn-hide");
 	}
 	$("#payment_type").val(data.id);
-	$(this).addClass("checked").siblings().removeClass("checked");
+	$(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
 });
 </script>
-
+

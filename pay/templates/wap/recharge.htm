@@ -9,17 +9,21 @@
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     	<fieldset id="bank">
     	<dl>
-        	<dt>充值方式：</dt>
+        	<dt style="margin-left:5px;">充值方式：</dt>
             <dd class="pay">
                 <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.1.payment_type}>" />
                 <ul class="fn-clear">
-                <{foreach item=list key=key from=$pay}>
+               <!--  <{foreach item=list key=key from=$pay}>
                     <{if $list.payment_type!='account'}>
                     <li <{if $key==1}>class="checked"<{/if}> >
                     <img title="<{$list.payment_name}>" alt="<{$list.payment_name}>" data-param="{'id':'<{$list.payment_type}>'}" src="image/payment/<{$list.payment_type}>.gif" /><i></i>
                     </li>
                     <{/if}>
-                <{/foreach}>  
+                <{/foreach}>   -->
+                 <li>
+                    <a class="form_zhifu_btn" data-param="{'id':'account1'}"><img src="/pay/templates/wap/image/pay_haitao_icon10.png" class="form_qianbao_img">支付宝<i></i></a>
+                    <div style="border-top:1px solid #f1f1f1;height:0;"></div>
+                </li>
                 </ul>
             </dd>
         </dl>
@@ -27,7 +31,7 @@
         <fieldset class="d1 <{if $pay.1.payment_type eq 'cards'}>fn-hide<{/if}>">
         <dl>
         	<dt>付款金额：</dt>
-            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<{if $pay.1.payment_type neq 'cards'}>Double<{/if}>" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
+            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<{if $pay.1.payment_type neq 'cards'}>Double<{/if}>" placeholder="填写充值金额" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
         </dl>
 		</fieldset>
         <fieldset class="d2 <{if $pay.1.payment_type neq 'cards'}>fn-hide<{/if}>">
@@ -51,7 +55,7 @@
 </div>	
 <script type="text/javascript">
 $(".pay li").bind("click",function(){
-	var data = $(this).children('img').attr('data-param');
+	var data = $(this).children('a').attr('data-param');
 	eval("data = "+data);
 	if(data.id=='cards')
 	{
@@ -68,7 +72,7 @@ $(".pay li").bind("click",function(){
 		$(".d2").addClass("fn-hide").siblings(".d1").removeClass("fn-hide");
 	}
 	$("#payment_type").val(data.id);
-	$(this).addClass("checked").siblings().removeClass("checked");
+	$(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
 });
 </script>
 

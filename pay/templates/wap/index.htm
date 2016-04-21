@@ -24,8 +24,11 @@
                             <{/if}>
                         </li>
                         <li>
-                            <!-- <a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已设置</a> -->
+                            <{if $de.pay_pass}>
+                            <a href="<{$config.weburl}>/?m=payment&s=setpass" class="duser-auth-ema duser-auth-ema-j">已设置</a>
+                            <{else}>
                             <a href="<{$config.weburl}>/?m=payment&s=setpass" class="duser-auth-ema">未设置</a>
+                            <{/if}>
                         </li>
                     </ul>
                 </p>
