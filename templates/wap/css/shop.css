@@ -7,6 +7,9 @@
 .shopinfo-banner-content .header_topleft {width: 4rem;height: 4rem;position: absolute;left: 1rem;top: -2.2rem;}
 .col {background-color: #fff;color: #535353;top: 0.5rem;right: 0;position: absolute;border-left: 1px solid #b9b9b9;text-align: center;}
 .iconfont_min{color: #999;}
+.collect {
+    color: #ff5c5c;
+}
 .shopinfo-banner-content .header_topleft img {width: 4rem;height: 4rem;border-radius: 50%;}
 .pname_img{position: absolute;top: 0;left: 1.2rem;width: 1.5rem;height: 0.75rem;}
 .pname_img img{width: 100%;height: 100%!important;}
