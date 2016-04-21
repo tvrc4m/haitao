@@ -47,22 +47,22 @@
 </div>
     <{/foreach}>
 </section>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
 $(function(){
 	function collect_altr(cla){
         $(cla).append("<div class='am-dialog-mask'></div>"+
 				"<div class='price-btns-context'>"+
 					"<div class='price-btns-context-top clearfix'>"+
-						"<div class='context-top-list context-top-listb' data-name='frinds'>"+
-							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon59.png'>"+
+						"<div class='context-top-list context-top-listb' id='frinds'>"+
+							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon66.png'>"+
 							"<p>微信好友</p>"+
 						"</div>"+
-						"<div class='context-top-list' data-name='goods'>"+
+						"<div class='context-top-list' id='goods'>"+
 							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon58.png'>"+
-							"<p>朋友圈</p>"+
+							"<p style='margin-top:5px'>朋友圈</p>"+
 						"</div>"+
 					"</div>"+
-					"<div class='price-btns-context-bot'><a href='javascript:void(0);'>分享</a></div>"+
 				"</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".price-btns-context").addClass('price-btns-context_test');
@@ -90,9 +90,22 @@ $(function(){
     $(".price-delate").bind("click",function(){
     	collect_confirm(".price-btns");
     })
-    $(".context-top-list").live("click",function(){
-    	var dataName=$(this).attr("data-name");
-    	$(this).addClass("context-top-listb").siblings().removeClass("context-top-listb");
-    })
+
+  //   $("#frinds").live("click",function(){
+  //   	WeiXinShareBtn();
+  //   })
+
+  //   function WeiXinShareBtn() { 
+		// if (typeof WeixinJSBridge == "undefined") { 
+		// 	alert("请先通过微信搜索 蚂蚁海淘 添加蚂蚁海淘为好友，通过微信分享文章 "); 
+		// } else { 
+		// 	 WeixinJSBridge.invoke('shareTimeline', { 
+		// 		 "title": "蚂蚁海淘", 
+		// 		 "link": "https://www.mayihaitao.com", 
+		// 		 "desc": "蚂蚁海淘", 
+		// 		 "img_url": "http://www.36kr.com/assets/images/apple-touch-icon.png" 
+		// 	 }); 
+		// } 
+	 // }
 })	
 </script>

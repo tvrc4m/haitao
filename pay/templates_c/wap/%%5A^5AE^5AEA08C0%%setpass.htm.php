@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 16:38:31
+<?php /* Smarty version 2.6.20, created on 2016-04-21 17:04:44
          compiled from setpass.htm */ ?>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
@@ -27,7 +27,7 @@
                 </dl>
                 <dl>
                     <dt>确认新密码：</dt>
-                    <dd><input type="password" class="text"  tabindex="2" maxlength="10" autocomplete="off"  name="re_pass" id="re_pass" /></dd>
+                    <dd><input type="password" class="text"  tabindex="3" maxlength="10" autocomplete="off"  name="re_pass" id="re_pass" /></dd>
                 </dl>
                 <div class="form-error"></div>
                 <?php else: ?>
@@ -37,7 +37,7 @@
                 </dl>
                 <dl>
                     <dt>确认密码：</dt>
-                    <dd><input type="password" class="text"  tabindex="2" maxlength="10" autocomplete="off"  name="re_pass" id="re_pass" /></dd>
+                    <dd><input type="password" class="text"  tabindex="3" maxlength="10" autocomplete="off"  name="re_pass" id="re_pass" /></dd>
                 </dl>
                 <div class="form-error"></div>
                 <?php endif; ?>
@@ -106,19 +106,19 @@
             var pars = 'action=check_oldpass&pay_id=' + pay_id +'&pass='+oldpass;
             $.post(url, pars, function (result){
                 if(!result||result==0){
-                    $("#oldpass").siblings(".form-error").html("<label for='oldpass' generated='true' class='error'>原始密码错误，请重新输入</label>");
+                    $(".form-error").html("<label for='oldpass' generated='true' class='error'>原始密码错误，请重新输入</label>");
                     $("#oldpass").focus();
                     flag = false;
                 }else{
-                    $("#oldpass").siblings(".form-error").html("");
+                    $(".form-error").html("");
                 }
             })
         }
         if(flag){
             if(!$("#pass").val())
-                $("#pass").next().html("<label for='pass' generated='true' class='error'>请输入支付密码。</label>");
+                $(".form-error").html("<label for='pass' generated='true' class='error'>请输入支付密码。</label>");
             else if(!$("#pass").val())
-                $("#re_pass").next().html("<label for='re_pass' generated='true' class='error'>请确认支付密码。</label>");
+                $(".form-error").html("<label for='re_pass' generated='true' class='error'>请确认支付密码。</label>");
             else
                 $("#form").submit();
         }
