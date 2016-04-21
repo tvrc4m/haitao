@@ -7,7 +7,9 @@
 .w100{width:100px !important;}
 .w210{width:210px !important;}
 
-
+#bank dl{padding-left: 10px;}
+#amount dl{padding-left: 10px;}
+.form dl.otherss{padding-left: 10px;}
 .payment .title{margin-bottom:15px;border-bottom:solid 1px #ddd;}
 .payment .title2{background-color: #fff;padding:10px 0;}
 .payment .title h3{padding-left: 10px;}
@@ -54,6 +56,8 @@ i.fanhui_icon {
 .form .post_fie dl{padding-left: 10px;}
 .form dl{padding:3px 0 12px 0px;background-color: #fff;}
 .form .post_lis dl{padding:10px 0 10px 10px;border-bottom: 1px solid #f1f1f1;}
+.form .post_fie dl{padding:10px 0 10px 10px;border-bottom: 1px solid #f1f1f1;}
+.form-error{text-align: center;margin-top: 10px;}
 .form .post_fie .text{width: 145px;}
 .form dl.dfr{padding:10px 0 10px 0px;border-bottom: 1px solid #f1f1f1;}
 .form dl.dfr a{color: #136EC2;margin-right: 10px;}
@@ -62,7 +66,7 @@ i.fanhui_icon {
 .tixian{text-align: center;margin-top: 7px;}
 .tixian span{color: #ff5c5c;}
 .form dl:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
-.form dt{font-size:14px;font-weight:normal;margin-top:3px;padding:1px 12px 1px 0;float: left;}
+.form dt{font-size:14px;font-weight:normal;margin-top:3px;padding:1px 10px 1px 0;float: left;}
 .form dd .text{color:#000000;padding:5px 10px 4px 0;height:21px;line-height:21px;font-size:14px;margin-top: 3px;border: none;outline: none;}
 .form dd p{line-height:24px;margin-right:10px;padding-top:5px;position:relative;white-space:nowrap;padding-left:20px;}
 .form dd p input[type="radio"]{position:absolute;left:0;}

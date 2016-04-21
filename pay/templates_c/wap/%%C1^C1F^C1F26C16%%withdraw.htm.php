@@ -1,7 +1,8 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-20 09:13:09
+<?php /* Smarty version 2.6.20, created on 2016-04-21 13:49:08
          compiled from withdraw.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 40, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 41, false),)), $this); ?>
+<script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="script/Validator.js"></script>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
@@ -94,13 +95,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
         </dl> -->
         </fieldset>
         <fieldset id="other">
-        <dl>
+        <dl class="otherss">
         	<dt>说明</dt>
             <dd><input type="text" class="text w210" name="reason" id="reason" placeholder="可选" /></dd>
         </dl>
         </fieldset>
         <fieldset>
-            <dl>
+            <dl class="otherss">
                 <dt>密码</dt>
                 <dd><input type="password" class="text w210" name="pay_passwd" id="pay_passwd" placeholder="支付密码" /></dd>
             </dl>

@@ -1,7 +1,7 @@
 /**space_product_detail**/
 body{font-family: 'microsoft yahei' !important;color: #525252;font-size: 16px;}
 .up .uh, .up .uf, .pos_re {position: relative;}
-div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative;}
+div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 .bc-text-head {color: white;}
 .bc-head {background-color: #dd3030;}
 .uh, .uf {width: 100%;font-size: 1.2em;}
@@ -55,7 +55,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .choose_btn a{color:#525252;}
 .choose_btn .btn{margin: .25em;background-color: inherit !important;}
 .addcart{float: right;margin-bottom: 5px;width: 100%;height: 50px;}
-.incar{color: #000;/*background-color: #FF6600;padding: 7px 2%;*//*border-radius: .25em;*/width: 30%;float: right;text-align: center;font-size: 16px;}
+.incar{color: #000;width: 30%;float: right;text-align: center;font-size: 16px;}
 .incar_l{background-color: #ff5c5c;color: #fff!important;}
 .incar_c{background-color: #efefef;color: #ff5c5c;}
 .incar span{color:#fff;padding-right: 5px;}
@@ -79,11 +79,11 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
     75%  {-webkit-transform:scale(1.3);}
     100% {-webkit-transform:scale(1);}
 }
-.collect_box{margin: auto;max-width: 320px;background: #FFF;border-radius: 8px;padding: 25px 0 0;box-shadow: 0px 0px 10px #ccc;-webkit-box-shadow: 0px 0px 10px #ccc;}
+.collect_box{margin: auto;max-width: 320px;background: #FFF;border-radius: 8px;box-shadow: 0px 0px 10px #ccc;-webkit-box-shadow: 0px 0px 10px #ccc;}
 .collect_box_content{padding: 25px 10px 20px;font-size: 0.7rem;line-height: 1.5;}
 .collect_box_btn{padding-bottom: 25px;font-size: 0.7rem;}
 .collect_box_btn a{display: inline-block; width: 40%;height: 30px;line-height: 30px;background-color: #ff5c5c;color: #fff;border-radius: 5px;text-align: center;}
-.collect_box_hid{position: absolute;right: 8px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
+.collect_box_hid{position: absolute;right: 20px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
 .col_ttt{padding: 0.1rem 0.5rem;}
 /***space_index***/
 .hidden{display:none !important}
@@ -178,7 +178,6 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .select_style dd.stock_kucun{float: right;font-size: 0.6rem;}
 .select_style ul{clear:both;display:block;overflow: hidden;}
 .select_style ul.ub-ac{padding-top: 10px;border-top: 1px dashed #b9b9b9;}
-/*.select_style ul.shoplist{border-bottom: 1px dashed #b9b9b9;}*/
 .select_style li{background-color:#FFFFFF;float:left;line-height:20px;margin:0 4px 6px 0;padding:1px;position:relative;vertical-align:middle;display: inline-block;}
 .select_style li.ut-s{font-size: 0.7rem;margin: 0;}
 .select_style li.shopli{margin: 0;padding: 0;}
@@ -204,7 +203,6 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .j_tab{display: none;padding: 0 0.5rem;}
 .pdetail_show{display: block;}
 .c-wh-commit-gao a{float: right;font-size: 0.7rem;border-bottom: 1px solid #535353;}
-/*.commit-left .commit-left-img{width: 2.1rem;height: 2.1rem;float: left;margin-right: 0.4rem;}*/
 .commit-left .commit-left-text{float: left;padding-left: 50px;background:url(../../../image/wap/wap_haitao_icon14.png) no-repeat;background-size: contain;}
 .commit-left .commit-left-text ul li{font-size: 0.6rem;color: #fff;}
 .commit-left .commit-left-text ul li:first-child{margin-bottom: 0.25rem;}
