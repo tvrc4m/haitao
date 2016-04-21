@@ -247,13 +247,17 @@ function buy()
                         <div class="i-con">
                             <{if $de.brand || $de.extfiled.s}>
                             <div class="attributes clearfix">
+                                <h3><span></span>商品参数</h3>
                                 <ul class="clearfix">
                                     <li>品牌：<{$de.brand}></li>
                                     <{foreach item=list from=$de.extfiled.s}><{$list}><{/foreach}>
                                 </ul>
                             </div>
                             <{/if}>
-                            <div class="description"><{$de.detail}></div>
+                            <div class="description">
+                                <h3><span></span>商品详情</h3>
+                                <{$de.detail}>
+                            </div>
                             <div class="notice">
                                 <h3><span></span>消费者告知书</h3>
                                 <img src="/templates/user_templates_default/img/notice.png">
@@ -272,13 +276,13 @@ function buy()
         </div>
         <div class="sidebar clearfix">
             <div class="shop-info">
-                <a class="shop-info-bg" href="">供货商家</a>
+                <a class="shop-info-bg"><{$com.company}></a>
                 <div class="shop-info-wrap clearfix">
                     <div class="shop-info-hd">
-                        <dl>
+                        <!-- <dl>
                             <dt>店铺：</dt>
                             <dd><{$com.company}> <{if $chat_open_flag}>&nbsp; <a href="javascript:void(0);" onclick="return chat(<{$com.shop_id}>);"><span class="iconfont" style="color: #FF6600;font-size: 16px;">&#xe635;</span></a><{/if}></dd>
-                        </dl>
+                        </dl> -->
                         <dl>
                             <dt>信誉：</dt>
                             <dd><img align="absmiddle" src="image/points/<{$com.sellerpointsimg}>" /></dd>
