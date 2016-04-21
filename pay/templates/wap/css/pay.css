@@ -49,21 +49,22 @@ i.fanhui_icon {
 .shop_step_title input[type='button']{width: 100%;height: 43px;margin-top: 15px;}
 
 .form{margin-bottom:25px;}
-.form fieldset{border:0 none;padding:0 10px 0 10px;}
+.form fieldset{border:0 none;padding:0;}
 .form dl{padding:3px 0 12px 0px;background-color: #fff;}
 .form dl.btn_pay{text-align: center;}
 .tixian{text-align: center;margin-top: 7px;}
 .tixian span{color: #ff5c5c;}
 .form dl:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
-.form dt{font-size:14px;font-weight:normal;margin-top:3px;padding:1px 12px 1px 0;display: inline-block;}
+.form dt{font-size:14px;font-weight:normal;margin-top:3px;padding:1px 12px 1px 0;float: left;}
 .form dd .text{color:#000000;padding:5px 10px 4px 0;height:21px;line-height:21px;font-size:14px;margin-top: 3px;border: none;outline: none;}
 .form dd p{line-height:24px;margin-right:10px;padding-top:5px;position:relative;white-space:nowrap;padding-left:20px;}
 .form dd p input[type="radio"]{position:absolute;left:0;}
 .form dd p span{ font-size:14px;}
 .form dd p em{color:#B2B2B2;font-size:12px;margin-left:18px;}
 .form dd .submit{ margin:4px 0 0 0px;height: 44px;width: 94%;}
-.form dl.free{padding-bottom:10px;}
-.form dl.free dd{font-size:14px;line-height:30px;margin-right:10px;position:relative;}
+.form dl.free{padding-bottom:10px;text-align: center;}
+.form dl.free2{margin-left: 10px;}
+.form dl.free dd{font-size:12px;line-height:30px;position:relative;background-color: #f1f1f1;}
 .form dl.free dd .org{color:#FF9933;}
 .form dl.free dd .freeItem{font-size:12px;margin-left:10px;position:absolute;top:0;left:180px;cursor:pointer;}
 .form dl.free dd .freeItem.hover{top:-11px;left:169px;}
