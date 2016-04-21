@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-20 09:26:29
+<?php /* Smarty version 2.6.20, created on 2016-04-21 10:27:00
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 36, false),)), $this); ?>
@@ -29,8 +29,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
         <p>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 " class="pay_sgo">收支明细</a>
-            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=record">交易记录</a>
+            <!-- <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=record">交易记录</a> -->
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=payment&s=record&mold=1">充值记录</a>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
