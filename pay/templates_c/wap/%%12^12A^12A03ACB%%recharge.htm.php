@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 13:16:49
+<?php /* Smarty version 2.6.20, created on 2016-04-21 20:28:15
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -18,23 +18,19 @@
                 <input type="hidden" name="payment_type" id="payment_type" value="<?php echo $this->_tpl_vars['pay']['1']['payment_type']; ?>
 " />
                 <ul class="fn-clear">
-               <!--  <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+                <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
                     <?php if ($this->_tpl_vars['list']['payment_type'] != 'account'): ?>
-                    <li <?php if ($this->_tpl_vars['key'] == 1): ?>class="checked"<?php endif; ?> >
-                    <img title="<?php echo $this->_tpl_vars['list']['payment_name']; ?>
-" alt="<?php echo $this->_tpl_vars['list']['payment_name']; ?>
-" data-param="{'id':'<?php echo $this->_tpl_vars['list']['payment_type']; ?>
-'}" src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
-.gif" /><i></i>
+                    <li>
+                        <a class="form_zhifu_btn" data-param="{'id':'<?php echo $this->_tpl_vars['list']['payment_type']; ?>
+'}"><img src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
+.gif" class="form_qianbao_img"><?php echo $this->_tpl_vars['list']['payment_name']; ?>
+<i></i></a>
+                        <div style="border-top:1px solid #f1f1f1;height:0;"></div>
                     </li>
                     <?php endif; ?>
-                <?php endforeach; endif; unset($_from); ?>   -->
-                 <li>
-                    <a class="form_zhifu_btn" data-param="{'id':'account1'}"><img src="/pay/templates/wap/image/pay_haitao_icon10.png" class="form_qianbao_img">支付宝<i></i></a>
-                    <div style="border-top:1px solid #f1f1f1;height:0;"></div>
-                </li>
+                <?php endforeach; endif; unset($_from); ?>  
                 </ul>
             </dd>
         </dl>
