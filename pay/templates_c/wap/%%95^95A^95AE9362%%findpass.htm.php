@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 13:05:08
+<?php /* Smarty version 2.6.20, created on 2016-04-21 13:27:11
          compiled from findpass.htm */ ?>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
@@ -19,15 +19,16 @@
                     <dd>
                         <input style="float: left" type="text" class="text" name="pay_mobile" id="pay_mobile" readonly value="<?php echo $this->_tpl_vars['de']['pay_mobile']; ?>
 "/>
-                        <input type="button" class="button" onclick="getyzm()" value="获取验证码">
                     </dd>
                 </dl>
 
                 <dl class="oldpass">
                     <dt>验证码：</dt>
                     <dd>
-                        <input type="text" class="text" name="yzm" id="yzm" onblur="chk_yzm()"/>
+                        <input style="width:90px;" type="text" class="text" name="yzm" id="yzm" onblur="chk_yzm()"/>
+                        <input type="button" class="button" onclick="getyzm()" value="获取验证码">
                         <div class="form-error"></div>
+
                     </dd>
                 </dl>
                 <dl>

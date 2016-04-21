@@ -16,15 +16,16 @@
                     <dt>手机号：</dt>
                     <dd>
                         <input style="float: left" type="text" class="text" name="pay_mobile" id="pay_mobile" readonly value="<{$de.pay_mobile}>"/>
-                        <input type="button" class="button" onclick="getyzm()" value="获取验证码">
                     </dd>
                 </dl>
 
                 <dl class="oldpass">
                     <dt>验证码：</dt>
                     <dd>
-                        <input type="text" class="text" name="yzm" id="yzm" onblur="chk_yzm()"/>
+                        <input style="width:90px;" type="text" class="text" name="yzm" id="yzm" onblur="chk_yzm()"/>
+                        <input type="button" class="button" onclick="getyzm()" value="获取验证码">
                         <div class="form-error"></div>
+
                     </dd>
                 </dl>
                 <dl>
