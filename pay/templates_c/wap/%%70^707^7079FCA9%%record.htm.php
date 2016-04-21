@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-20 09:27:08
+<?php /* Smarty version 2.6.20, created on 2016-04-21 10:26:24
          compiled from record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 77, false),)), $this); ?>
@@ -34,8 +34,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
          <p>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 ">收支明细</a>
-            <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=record&mold=0" <?php if ($_GET['mold'] == 0): ?>class="pay_sgo"<?php endif; ?> >交易记录</a>
+            <!-- <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=record&mold=0" <?php if ($_GET['mold'] == 0): ?>class="pay_sgo"<?php endif; ?> >交易记录</a> -->
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=payment&s=record&mold=1" <?php if ($_GET['mold'] == 1): ?>class="pay_sgo"<?php endif; ?> >充值记录</a>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>

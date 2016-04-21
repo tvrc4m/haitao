@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-18 23:26:31
+<?php /* Smarty version 2.6.20, created on 2016-04-21 10:49:39
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -49,7 +49,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block fn-clear">
 	<div class="i-block payment">
-        <div class="title">
+        <div class="title title2">
        		<div>
             <h3><?php echo $this->_tpl_vars['re']['note']; ?>
 </h3>
@@ -66,10 +66,12 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 
 		<?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
         <div class="form_weixin">
-        <span>推荐支付：</span>
-        <a  style="text-align:center;line-height:45px;width:99.5%;height:45px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;display:inline-block" onclick="callpay()" >微信支付</a></div>
+            <span class="form_weixin_zhi">请选择支付方式</span>
+            <a class="form_weixin_btn">微信支付<i></i></a>
+            <div style="border-top:1px solid #f1f1f1;height:0;"></div>
+        </div>
+        <div class="form_weixin_btns2" onclick="callpay()" >确定支付</div>
         <?php endif; ?>
-
         <?php if ($this->_tpl_vars['re']['statu'] == 1): ?>
         <div class="form">
         <form method="post">
@@ -78,20 +80,28 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 " />
             <fieldset>
             <dl>
-                <dt>支付方式：</dt>
+                <dt>请选择支付方式</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
-                    <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+                    <!-- <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
-                         <li <?php if ($this->_tpl_vars['key'] == 0): ?>class="checked"<?php endif; ?> >
+                        <li <?php if ($this->_tpl_vars['key'] == 0): ?>class="checked"<?php endif; ?> >
                         <img title="<?php echo $this->_tpl_vars['list']['payment_name']; ?>
 " alt="<?php echo $this->_tpl_vars['list']['payment_name']; ?>
 " data-param="{'id':'<?php echo $this->_tpl_vars['list']['payment_type']; ?>
 '}" src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
 .gif" /><i></i>
                         </li>
-                    <?php endforeach; endif; unset($_from); ?>  
+                    <?php endforeach; endif; unset($_from); ?> -->  
+                        <li>           
+                            <a class="form_qianbao_btn" data-param="{'id':'account'}"><img src="/pay/templates/wap/image/pay_haitao_icon8.png" class="form_qianbao_img">蚂蚁宝钱包余额<i></i></a>
+                            <div style="border-top:1px solid #f1f1f1;height:0;"></div>
+                        </li>
+                        <li>
+                            <a class="form_zhifu_btn" data-param="{'id':'account1'}"><img src="/pay/templates/wap/image/pay_haitao_icon10.png" class="form_qianbao_img">支付宝<i></i></a>
+                            <div style="border-top:1px solid #f1f1f1;height:0;"></div>
+                        </li>
                     </ul>
                 </dd>
             </dl> 
@@ -105,14 +115,14 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             </dl> 
             <dl>
                 <dt>支付密码：</dt>
-                <dd><input type="password" class="text" name="password" value="" /></dd>
+                <dd><input type="password" class="text" name="password" value="" placeholder="填写支付密码" /></dd>
             </dl>
             </fieldset>
             <?php endif; ?>
-            <dl>
+            <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <input style="padding-top:4px;" type="submit" class="submit" value="确定支付" />
+                <input style="padding-top:4px;font-size:14px;letter-spacing:1px;" type="submit" class="submit" value="确定支付" />
                 </dd>
             </dl>
         </form>   
@@ -123,20 +133,23 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 </div>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
-$(".pay li").bind("click",function(){
-	var data = $(this).children('img').attr('data-param');
-	eval("data = "+data);
-	<?php if ($this->_tpl_vars['account'] != 'false'): ?>
-	if(data.id=='account')
-	{
-		$('.fieldset').show();
-	}
-	else
-	{
-		$('.fieldset').hide();
-	}
-	<?php endif; ?>
-	$("#payment_type").val(data.id);
-	$(this).addClass("checked").siblings().removeClass("checked");
-});
+$(function(){
+   $(".pay li").bind("click",function(){
+        var data = $(this).children('a').attr('data-param');
+        eval("data = "+data);
+        <?php if ($this->_tpl_vars['account'] != 'false'): ?>
+        if(data.id=='account')
+        {
+            $('.fieldset').show();
+        }
+        else
+        {
+            $('.fieldset').hide();
+        }
+        <?php endif; ?>
+        $("#payment_type").val(data.id);
+        $(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+    }); 
+})
+
 </script>
