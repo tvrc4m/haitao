@@ -27,7 +27,7 @@
         <fieldset class="d1 <{if $pay.1.payment_type eq 'cards'}>fn-hide<{/if}>">
         <dl>
         	<dt>付款金额：</dt>
-            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<{if $pay.1.payment_type neq 'cards'}>Double<{/if}>" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
+            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<{if $pay.1.payment_type neq 'cards'}>Double<{/if}>" placeholder="填写充值金额" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
         </dl>
 		</fieldset>
         <fieldset class="d2 <{if $pay.1.payment_type neq 'cards'}>fn-hide<{/if}>">

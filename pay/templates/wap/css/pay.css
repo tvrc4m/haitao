@@ -88,6 +88,7 @@ ol.step2 li.fore1 i{background-position:0 0;}
 ol.step2 li.fore2 i{background-position:-30px 0;}
 ol.step2 li.fore1 em strong{background-color:#FC9C27;}
 ol.step2 li.fore2 span{color:#F16F20;}
+.free_price{color: #ff5c5c;}
 .form_weixin{padding: 0 10px 20px;}
 .form_weixin_zhi{font-size: 16px;display: block;padding-bottom: 10px;border-bottom: 1px solid #f1f1f1;}
 a.form_weixin_btn{height:30px;line-height: 30px; cursor: pointer;color:#535353;font-size:14px;display:inline-block;padding-left: 40px;

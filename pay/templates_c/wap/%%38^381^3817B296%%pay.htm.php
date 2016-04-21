@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 10:49:39
+<?php /* Smarty version 2.6.20, created on 2016-04-21 11:36:16
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -110,8 +110,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <fieldset class="fieldset">  
             <dl class="free">
                 <dt>可用总额：</dt>
-                <dd><?php echo $this->_tpl_vars['de']['cash']; ?>
- 元</dd>
+                <dd><span class="free_price"><?php echo $this->_tpl_vars['de']['cash']; ?>
+</span> 元</dd>
             </dl> 
             <dl>
                 <dt>支付密码：</dt>
