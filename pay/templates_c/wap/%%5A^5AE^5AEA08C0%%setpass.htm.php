@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-06 14:51:54
+<?php /* Smarty version 2.6.20, created on 2016-04-21 12:07:20
          compiled from setpass.htm */ ?>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
@@ -40,7 +40,7 @@
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
     <div class="i-block">
-        <h2>支付密码</h2>
+        <h2 style="border-bottom:1px solid #f1f1f1;">设置支付密码</h2>
     </div>
     <?php if (! $this->_tpl_vars['de']['pay_pass']): ?>
     <div class="tips"><span></span>温馨提示：请先设置
@@ -49,28 +49,31 @@
     <div class="form">
         <form method="post" id="form">
             <input type="hidden" name="act" value="act" />
-            <fieldset>
+            <fieldset class="post_lis">
                 <?php if ($this->_tpl_vars['de']['pay_pass']): ?>
                 <dl class="oldpass">
-                    <dt>原始支付密码：</dt>
+                    <dt>旧支付密码：</dt>
                     <dd>
                         <input style="float: left" type="password" class="text" name="oldpass" id="oldpass" onblur="chk_oldpass()"/>
-                        <div class="findpass"><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=findpass">忘记密码？</a></div>
                         <div class="form-error" style="clear:both;"></div>
                     </dd>
                 </dl>
                 <?php endif; ?>
                 <dl>
-                    <dt>设置支付密码：</dt>
+                    <dt>新支付密码：</dt>
                     <dd><input type="password" class="text" name="pass" id="pass" /><div class="form-error"></div></dd>
                 </dl>
 
                 <dl>
-                    <dt>确认支付密码：</dt>
+                    <dt>确认新密码：</dt>
                     <dd><input type="password" class="text" name="re_pass" id="re_pass" /><div class="form-error"></div></dd>
                 </dl>
             </fieldset>
+            <dl class="dfr">
+                <dt></dt>
+                <dd><div class="findpass"><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=findpass">忘记密码？</a></div></dd>
+            </dl>
             <dl>
                 <dt></dt>
                 <dd>

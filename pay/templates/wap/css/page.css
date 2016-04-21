@@ -139,6 +139,7 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 
 .tips{background:#F3F37E;padding: 3px;padding-left: 8px;}
 .container input{height: 25px;line-height: 32px;}
+.container input.button{background-color: #ff5c5c;border: none;line-height: 25px;padding:0 5px;border-radius: 2px;color: #fff;font-size: 12px;}
 /*.container p{padding-left: 8px;}*/
 .container p.m1{margin-top: 10px;margin-bottom: 3px;}
 .container p.m2 input{margin-top: 20px;border-radius: 5px;background: #5170EC;color: #fff;padding-left: 3px;}

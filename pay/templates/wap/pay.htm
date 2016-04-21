@@ -50,7 +50,7 @@
 
 		<{if $config.bw eq "weixin"}>
         <div class="form_weixin">
-            <span class="form_weixin_zhi">请选择支付方式</span>
+            <span class="form_weixin_zhi" style="margin-left:5px;">请选择支付方式</span>
             <a class="form_weixin_btn">微信支付<i></i></a>
             <div style="border-top:1px solid #f1f1f1;height:0;"></div>
         </div>
@@ -63,7 +63,7 @@
         <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.0.payment_type}>" />
             <fieldset>
             <dl>
-                <dt>请选择支付方式</dt>
+                <dt style="margin-left:5px;">请选择支付方式</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
                     <!-- <{foreach item=list key=key from=$pay}>
@@ -98,7 +98,7 @@
             <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <input style="padding-top:4px;font-size:14px;letter-spacing:1px;" type="submit" class="submit" value="确定支付" />
+                <input style="padding-top:4px;font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
                 </dd>
             </dl>
         </form>   

@@ -50,7 +50,13 @@ i.fanhui_icon {
 
 .form{margin-bottom:25px;}
 .form fieldset{border:0 none;padding:0;}
+.form .post_fie dl{padding-left: 10px;}
 .form dl{padding:3px 0 12px 0px;background-color: #fff;}
+.form .post_lis dl{padding:10px 0 10px 10px;border-bottom: 1px solid #f1f1f1;}
+.form .post_fie .text{width: 145px;}
+.form dl.dfr{padding:10px 0 10px 0px;border-bottom: 1px solid #f1f1f1;}
+.form dl.dfr a{color: #136EC2;margin-right: 10px;}
+.findpass{float: right;}
 .form dl.btn_pay{text-align: center;}
 .tixian{text-align: center;margin-top: 7px;}
 .tixian span{color: #ff5c5c;}
@@ -61,7 +67,7 @@ i.fanhui_icon {
 .form dd p input[type="radio"]{position:absolute;left:0;}
 .form dd p span{ font-size:14px;}
 .form dd p em{color:#B2B2B2;font-size:12px;margin-left:18px;}
-.form dd .submit{ margin:4px 0 0 0px;height: 44px;width: 94%;}
+.form dd .submit{ margin:4px 0 0 0px;height: 44px;width: 94%;font-size: 14px;letter-spacing: 1px;}
 .form dl.free{padding-bottom:10px;text-align: center;}
 .form dl.free2{margin-left: 10px;}
 .form dl.free dd{font-size:12px;line-height:30px;position:relative;background-color: #f1f1f1;}
