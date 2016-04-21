@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 10:12:13
+<?php /* Smarty version 2.6.20, created on 2016-04-21 10:51:22
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -35,9 +35,9 @@ function formSubmit() {
         async: false,
         error: function(request) {
         },
-        success: function(msg) {
+        success: function(data) {
             //-1真实姓名不能为空！-2身份证号不能为空！-3请填写正确身份证号！-4姓名和身份证不一致！
-            switch(msg){
+            switch(data.erry){
                 case -1:
                     $("#real_name").nextAll(".form-error").html('<label for="real_name" generated="true" class="error">真实姓名不能为空！</label>');
                     break;
@@ -58,6 +58,10 @@ function formSubmit() {
         }
     });
 }
+window.onload=function(){
+    var refer = document.referrer;
+    $("input[name='url']").val(refer);
+}
 </script>
 <div class="block">
 	<div class="i-block">
@@ -66,6 +70,7 @@ function formSubmit() {
     <div class="form">
     <form method="post" id="form">
     <input type="hidden" value="name" name="act" />
+    <input type="hidden" value='' name="url">
         <fieldset>
         <dl class="email">
             <dt><?php echo $this->_tpl_vars['config']['company']; ?>

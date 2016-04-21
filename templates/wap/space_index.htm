@@ -122,17 +122,17 @@
         <div class="typ">好评率：<span><{$list.favorablerate|number_format:2}>%</span></div>
         <div class="col" style="padding: 0 10px">
             <a onclick="javascript:getfavshop()">
-                <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
+                <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
                 <div class="nav-c" style="font-size: .7em">收藏</div>
             </a>
         </div>
         <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}>
-        <div class="col" style="padding: 0 10px">
-            <a href="javascript:distribute_goods('<{$de.id}>');" style="color:8b8b8b">
-                <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe663;</div>
-                <div style="font-size: .7em">加入分销</div>
-            </a>
-        </div>
+            <div class="col" style="padding: 0 10px">
+                <a href="javascript:distribute_goods('<{$de.id}>');" style="color:8b8b8b">
+                    <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe663;</div>
+                    <div style="font-size: .7em">加入分销</div>
+                </a>
+            </div>
         <{/if}>
     </div>
 </section>
