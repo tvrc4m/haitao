@@ -22,7 +22,8 @@ i.fanhui_icon {
     background: url(../../../../image/wap/wap_haitao_icon10.png) 5.8% no-repeat;
     background-size: 50%;
 }
-
+.pay{padding-left: 10px;}
+.form .d1 dl,.form .d2 dl{padding-left: 10px;}
 .tips{background-color:#FFFDDD;border:1px solid #F8F3D6;color:#666666;line-height:20px;  padding: 3px 20px 3px 25px;position: relative;margin: -10px 10px 20px;}
 .tips span{background:url(../image/tips.png) no-repeat;display:inline-block;height:18px;margin-left:-21px;padding-right:5px;vertical-align:middle;width:16px;}
 
