@@ -120,7 +120,7 @@ html[xmlns] .clearfix{display:block;}
 .none_ico{background:url(img/ico.gif) no-repeat 0 -208px;}
 .link_ico{background:url(img/ico.gif) no-repeat 3px -276px;}
 .block_ico{background:url(img/ico.gif) no-repeat 0 -178px;}
-#right{float :right;width:920px;overflow:hidden }
+#right{float :right;width:980px;overflow:hidden }
 /* --------------- */ 
 .module_special{margin-bottom:15px;width:920px;}
 .module_special h2{border:1px solid #F34D51;background:#F34D51;height:36px;line-height:36px;color:#FFF;padding-left:10px;}
