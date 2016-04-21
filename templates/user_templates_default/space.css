@@ -78,7 +78,7 @@ html[xmlns] .clearfix{display:block;}
 .nav_bg .collection{width:124px;height:40px;line-height:40px;background:url(img/collection.png) no-repeat #FF494B;float:right;}
 /* --------------- */
 #left{width:208px;float:left;}
-.user-shop{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;}
+.user-shop{border:1px solid #DDDDDD;background-color:#F5F5F5;width:206px;margin-bottom:15px;line-height:20px;background-color: #fff;}
 .user_photo{width:206px;}
 .user_photo h2{color:#3D3F3E;font-size:14px;margin:13px 0 10px 0;padding-left:15px;}
 .user_photo p{margin-top:6px;}
@@ -103,7 +103,7 @@ html[xmlns] .clearfix{display:block;}
 .info_qrcode a:hover{background-color:#FFFFFF;color:#000000;padding-left:28px;text-decoration:none;}
 .info_qrcode:hover .qrcode{display:block;height:196px;right:-1px;z-index:1;}
 /* --------------- */
-.i-search{border:1px solid #DDDDDD;padding:15px 15px 10px 15px;background:#F5F5F5;width:176px;margin-bottom:15px;}
+.i-search{border:1px solid #DDDDDD;padding:15px 15px 10px 15px;background:#fff;width:176px;margin-bottom:15px;}
 .i-search h2{border-bottom:1px solid #DDD;padding-bottom:8px;margin-bottom:8px;}
 .i-search td{padding:5px 2px;}
 .i-search .text{border:1px solid #A5A5A5;padding:2px;height:16px;line-height:16px;background:#FFF;}
@@ -214,6 +214,7 @@ html[xmlns] .clearfix{display:block;}
 .item-info .right{display:inline;float:left;padding:30px 0px 0 30px;width: 555px;font-size: 14px;}
 .item-info .left .gallery{margin-bottom:18px;overflow:hidden;width:350px;}
 .item-info .left .main-pic{position:relative;margin-bottom:10px;z-index:1;background:#f7f7f7;height:348px;overflow:hidden;width:348px;border:1px solid #ccc;}
+.item-info .left .main-pic .fix{position: absolute;top: 0;left: 0;width: 30px;height: 30px;padding: 10px;background: #c0c;font-size: 14px;color: #fff;line-height: 15px;}
 .item-info .left ul li{display:inline;float:left;text-align: center;vertical-align: middle; margin-right:10px;width:58px;height:58px;border:1px solid #ccc;padding:10px;-webkit-transition-property:border-color;-moz-transition-property:border-color;-o-transition-property:border-color;transition-property:border-color;-webkit-transition-duration:.2s;-moz-transition-duration:.2s;-o-transition-duration:.2s;transition-duration:.2s;overflow:hidden;}
 .item-info .left ul li.hover{border-color:#f40;}
 .item-info .right .wrap{position:relative;z-index:22;}
@@ -302,10 +303,10 @@ html[xmlns] .clearfix{display:block;}
 .tabbar-wrap .search-fields{float:left;overflow:hidden;width:134px;height:24px;line-height:24px;vertical-align:middle;border:1px solid #C5C5C5;background:#FFF;border-right:none;}
 .tabbar-wrap .search-fields input{font-size:12px;height:20px;line-height:20px;vertical-align:middle;background-color:#FFF;margin:2px 0 0 5px;_margin:0 0 0 5px;border:none;width:120px;}
 .inner-wrap{height:44px;line-height:44px;padding:0;float:left;margin-bottom: 24px;width: 950px;margin-right: auto; border-bottom: 2px solid #ccc;margin-top: 20px;}
-.inner-wrap ul{height:44px;background:#f6f6f6;font-size:16px;display:inline-block;}
-.inner-wrap ul li{display:inline;float:left;width:126px;height:44px;line-height:16px;position:relative;}
+.inner-wrap ul{height:44px;font-size:16px;display:inline-block;}
+.inner-wrap ul li{display:inline;float:left;width:126px;height:44px;line-height:16px;position:relative;border-right: 1px solid #ccc;}
 .inner-wrap ul li a{display:block;color:#3C3C3C;outline:0;line-height:44px;text-align: center;font-weight: bold;}
-.inner-wrap ul li.cur a{background:#FFF;height:44px;/*color:#f40;*//*position:absolute;top:-1px;*/border-bottom:2px solid #ff5c5c;color: #ff5c5c;}
+.inner-wrap ul li.cur a{background:#FFF;height:44px;/*color:#f40;*//*position:absolute;top:-1px;*/border-bottom:2px solid #ff5c5c;color: #ff5c5c;background-color: #f5f5f5;}
 
 .layout{/*position:relative;*/}
 .layout .left{width:186px;float:left;border:1px solid #DDD;margin-bottom:15px;overflow:hidden;}
@@ -390,7 +391,7 @@ html[xmlns] .clearfix{display:block;}
 .record thead td b{cursor:pointer;color:#2658b4;font-weight:700;margin:0 4px;}
 .record thead td em{color:#f50;font-weight:700;font-family:verdana,arial;margin-left:5px;}
 .record thead td span{color:gray;margin-left:15px;}
-.record tbody th{height:60px;line-height: 60px;font-size: 18px; text-align:center;}
+.record tbody th{height:60px;line-height: 60px;font-size: 16px; text-align:center;}
 /*.record tbody .pl15{text-align:left;}*/
 .pl_nav{background-color: #f5f5f5;border:1px solid #ccc!important;}
 .record tbody td{border-bottom:1px solid #ccc;padding:10px 5px 10px 0;text-align:center;font-size: 14px;}
