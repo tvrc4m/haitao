@@ -39,6 +39,7 @@ $company["shop_keywords"] = $prode['keywords'].','.$shopconfig["homedes"];
 $company["shop_description"] = $prode['keywords'].','.$shopconfig["homekeyword"];
 $company["logo"] = $prode['pic'] ? $prode['pic'] : $config['weburl'] . "/image/default/nopic.gif";
 //====================================
+$tpl->assign("config",$config);
 $tpl->assign("com",$company);
 
 if(!empty($_GET['deid']))
