@@ -15,7 +15,7 @@
         <{if $key==0 && !$smarty.get.key}>
         <strong><a href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}></a></strong><span>
         <{else}><b></b><a href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}>&nbsp</a><a
-            href="<{$config.weburl}>?m=product&s=list&id=<{$list.oid}>">×</a>
+            style="border-left:none;" href="<{$config.weburl}>?m=product&s=list&id=<{$list.oid}>">×</a>
         <{/if}>
 
         <{foreachelse}>
@@ -40,7 +40,7 @@
 </div>
 
 <div class="w pd20">
-  <!--   <{if $brand || $catfile || $cat}>
+    <{if $brand || $catfile || $cat}>
     <div id="select">
     	<{if $cat }>
         <dl class="first">
@@ -84,11 +84,11 @@
         </dl>
         <{/foreach}>
     </div>
-    <{/if}> -->
+    <{/if}>
     <div class="itemSearchList clearfix">
     	<{if $info.list}>
         <div class="itemSearchResult clearfix">
-        <!-- <div class="filter clearfix">
+        <div class="filter clearfix">
             <div class="fore1 clearfix">
                 <div class="order">
                     <{assign var=s value=$smarty.get.orderby}>
@@ -130,7 +130,7 @@
                     });
                 </script>
             </div>
-        </div> -->
+        </div>
             <ul class="clearfix border_left">
                 <{foreach item=list key=num from=$info.list}>
                 <li <{if ($num+1)%5==0}>class="mr0 w222"<{/if}> >

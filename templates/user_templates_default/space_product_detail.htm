@@ -132,6 +132,7 @@ function buy()
                         <div class="main-pic">
                             <a target="_blank" href="<{$de.pic}>"><img class="jqzoom" height="350" width="350" alt="<{$de.pname}>" src="<{$de.pic}>" rel="<{$de.pic}>" title="<{$de.pname}>"></a>
                             <div class="fix">免税包邮</div>
+                            <div class="zoom-icon" id="J_ZoomIcon">ő</div>
                         </div>
                         <ul id="jqzoom" class="clearfix">
                             <{foreach item=pic key=num from=$de.pic_more}>
@@ -180,6 +181,11 @@ function buy()
                                     <{/if}>
                                     <{/if}>
                                     <div class="select_style clearfix">
+                                        <{if $de.porperty}>
+                                        <{foreach item=list from=$de.extfiled.d}>
+                                        <{$list}>
+                                        <{/foreach}>
+                                        <{/if}>
                                         <{if $de.rest==0}>
                                         <dl>
                                             <dt>数量</dt>
@@ -192,8 +198,8 @@ function buy()
                                         </dl>
                                         <{/if}>
                                     </div>
-                                    <div style="margin-top: 20px;"><span class="mr10">交易成功</span>1212 <span  class="ml10 mr10">累计评论</span>1212</div>
-                                    <div class="choose_result"></div>
+                                    <!-- <div style="margin-top: 20px;"><span class="mr10">交易成功</span>1212 <span  class="ml10 mr10">累计评论</span>1212</div> -->
+                                    <!-- <div class="choose_result"></div> -->
                                     <div class="choose_btn clearfix">
                                         <a href="javascript:void(0);" class="btn-buy">立即购买</a>
                                         <{if $de.is_virtual neq 1}>
@@ -239,8 +245,8 @@ function buy()
                 <div class="inner-wrap">
                     <ul class="clearfix">
                         <li class="cur"><a href="javascript:void(0);">商品详情</a></li>
-                        <li><a href="javascript:void(0);">累计评论</a></li>
-                        <li><a href="javascript:void(0);">成交记录</a></li>
+                        <li><a href="javascript:void(0);">累计评论&nbsp&nbsp1212</a></li>
+                        <li><a href="javascript:void(0);">成交记录&nbsp&nbsp1212</a></li>
                         <li><a href="javascript:void(0);">商品问答</a></li>
                     </ul>
                 </div>

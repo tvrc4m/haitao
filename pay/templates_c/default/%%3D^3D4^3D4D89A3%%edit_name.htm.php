@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 11:20:18
+<?php /* Smarty version 2.6.20, created on 2016-04-22 13:05:48
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -70,6 +70,7 @@ window.onload=function(){
 	<div class="i-block">
         <h2>实名认证</h2>
     </div>
+
     <div class="form">
     <form method="post" id="form">
     <input type="hidden" value="name" name="act" />

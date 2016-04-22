@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-04-22 11:35:28
          compiled from index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'index.htm', 55, false),)), $this); ?>
+=======
+<?php /* Smarty version 2.6.20, created on 2016-04-22 12:02:43
+         compiled from index.htm */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'index.htm', 57, false),)), $this); ?>
+>>>>>>> 025cfb2a10ef71ae4e3d490e741e9961804e9cc5
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -9,6 +16,7 @@ unset($_smarty_tpl_vars);
  ?>
 <div class="banner w">
 	<div class="user">
+<<<<<<< HEAD
     	<div class="img"><img height="72" src="<?php if ($this->_tpl_vars['de']['logo']): ?><?php echo $this->_tpl_vars['de']['logo']; ?>
 <?php else: ?>templates/default/image/avatar.png<?php endif; ?>"/></div>
         <div class="img-cover"></div>
@@ -16,10 +24,23 @@ unset($_smarty_tpl_vars);
         	<div class="user_info">
             <p>个人账户：</p>
             <p>
+=======
+    <div class="fn-clear wrap">
+    	<div class="img"><img height="72" src="<?php if ($this->_tpl_vars['de']['logo']): ?><?php echo $this->_tpl_vars['de']['logo']; ?>
+<?php else: ?>templates/default/image/avatar.png<?php endif; ?>"/></div>
+        <!-- <div class="img-cover"></div> -->
+        <div class="info">
+        	<div class="user_info">
+            <p>个人账户：<span><?php echo $this->_tpl_vars['de']['email']; ?>
+</span><a <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>class="current"<?php endif; ?> href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+?act=edit&op=name"></a></p>
+            <!-- <p>
+>>>>>>> 025cfb2a10ef71ae4e3d490e741e9961804e9cc5
                 <span><?php echo $this->_tpl_vars['de']['email']; ?>
 </span>
                 <a <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>class="current"<?php endif; ?> href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 ?act=edit&op=name"></a>
+<<<<<<< HEAD
             </p>
             </div>
             <div class="user_account">账户余额：<em><?php echo $this->_tpl_vars['de']['cash']; ?>
@@ -30,6 +51,19 @@ unset($_smarty_tpl_vars);
     	<span>您好，</span>
         <p>每一天，努力让梦想更近一些~</p>
     </div>
+=======
+            </p> -->
+            </div>
+            <div class="user_account">账户余1额：<em><?php echo $this->_tpl_vars['de']['cash']; ?>
+</em>元</div>
+        </div>
+    </div>
+    </div>
+    <!-- <div class="greeting">
+    	<span>您好，</span>
+        <p>每一天，努力让梦想更近一些~</p>
+    </div> -->
+>>>>>>> 025cfb2a10ef71ae4e3d490e741e9961804e9cc5
 </div>
 <div class="container w fn-clear">
 	<div class="fn-left">

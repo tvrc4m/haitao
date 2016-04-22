@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-04-22 11:35:28
+=======
+<?php /* Smarty version 2.6.20, created on 2016-04-22 12:01:01
+>>>>>>> 025cfb2a10ef71ae4e3d490e741e9961804e9cc5
          compiled from header.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,23 +16,41 @@
 </head>
 <body>
 <div class="top">
+<<<<<<< HEAD
 	<div class="w fn-clear">
 		<div class="top-a fn-clear">
+=======
+    <div class="nav">
+        <div class="top-a w fn-clear">
+>>>>>>> 025cfb2a10ef71ae4e3d490e741e9961804e9cc5
             <ul class="fn-left">
                 <li>你好, <?php if ($this->_tpl_vars['de']['real_name']): ?><?php echo $this->_tpl_vars['de']['real_name']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['de']['pay_email']; ?>
 <?php endif; ?></li>
                 <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
 /main.php?cg_u_type=1">买家中心</a></li>
+<<<<<<< HEAD
 			</ul>
+=======
+            </ul>
+>>>>>>> 025cfb2a10ef71ae4e3d490e741e9961804e9cc5
             <ul class="fn-right">
                 <li><a href="help.php">帮助中心</a></li>
             </ul>
         </div>
+<<<<<<< HEAD
 		<div class="top-b fn-clear">
         	<h2><a href="index.php"><img height="40" src="<?php if ($this->_tpl_vars['config']['logo']): ?><?php echo $this->_tpl_vars['config']['logo']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['config']['web_url']; ?>
 /image/logo.gif<?php endif; ?>" /></a></h2>
+=======
+    </div>
+	<div class="w fn-clear">
+		<div class="top-b fn-clear">
+        	<h2><a href="index.php"><img height="40" src="<?php if ($this->_tpl_vars['config']['logo']): ?><?php echo $this->_tpl_vars['config']['logo']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['config']['web_url']; ?>
+/image/default/Logo.png<?php endif; ?>" /></a></h2>
+>>>>>>> 025cfb2a10ef71ae4e3d490e741e9961804e9cc5
               	<ul class="nav">
             	<li <?php if (! $this->_tpl_vars['current']): ?>class="current"<?php endif; ?>>
                 	<a href="index.php">我的<?php echo $this->_tpl_vars['config']['company']; ?>
