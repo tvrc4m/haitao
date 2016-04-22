@@ -1,23 +1,25 @@
 <{include file="header.htm"}>
 <div class="banner w">
 	<div class="user">
+    <div class="fn-clear wrap">
     	<div class="img"><img height="72" src="<{if $de.logo}><{$de.logo}><{else}>templates/default/image/avatar.png<{/if}>"/></div>
-        <div class="img-cover"></div>
+        <!-- <div class="img-cover"></div> -->
         <div class="info">
         	<div class="user_info">
-            <p>个人账户：</p>
-            <p>
+            <p>个人账户：<span><{$de.email}></span><a <{if $de.identity_verify=='true'}>class="current"<{/if}> href="<{$config.weburl}>?act=edit&op=name"></a></p>
+            <!-- <p>
                 <span><{$de.email}></span>
                 <a <{if $de.identity_verify=='true'}>class="current"<{/if}> href="<{$config.weburl}>?act=edit&op=name"></a>
-            </p>
+            </p> -->
             </div>
-            <div class="user_account">账户余额：<em><{$de.cash}></em>元</div>
+            <div class="user_account">账户余1额：<em><{$de.cash}></em>元</div>
         </div>
     </div>
-    <div class="greeting">
+    </div>
+    <!-- <div class="greeting">
     	<span>您好，</span>
         <p>每一天，努力让梦想更近一些~</p>
-    </div>
+    </div> -->
 </div>
 <div class="container w fn-clear">
 	<div class="fn-left">

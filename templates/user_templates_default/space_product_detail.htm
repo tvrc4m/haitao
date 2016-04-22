@@ -132,6 +132,7 @@ function buy()
                         <div class="main-pic">
                             <a target="_blank" href="<{$de.pic}>"><img class="jqzoom" height="350" width="350" alt="<{$de.pname}>" src="<{$de.pic}>" rel="<{$de.pic}>" title="<{$de.pname}>"></a>
                             <div class="fix">免税包邮</div>
+                            <div class="zoom-icon" id="J_ZoomIcon">ő</div>
                         </div>
                         <ul id="jqzoom" class="clearfix">
                             <{foreach item=pic key=num from=$de.pic_more}>
@@ -145,14 +146,18 @@ function buy()
                 <div class="right">
                     <div class="wrap">
                         <div class="title">
-                            <p style="color:#144487;"><span><img src="image/default/america.jpg"></span>美国品牌&nbsp海外直采</p>
+                            <p style="color:#144487;">
+                                <{if $de.national_info }>
+                                    <span><img src="<{$de.national_info.img}>"></span><{$de.national_info.title}>品牌&nbsp海外直采
+                                <{/if}>
+                            </p>
                             <h3><{$de.name}></h3>
                             <{if $de.subhead}><p style="color:#ff5c5c;"><{$de.subhead}></p><{/if}>
                         </div>
                         <ul class="promo-meta clearfix">
                             <li>
                                 <span class="mr10">国内价</span>
-                                <s>¥123.00</s>
+                                <s><{$config.money}><{$de.market_price|number_format:2}></s>
                             </li>
                             <li>
                                 <span class="mr10" style="vertical-align:-6px;">蚂蚁价</span>
@@ -165,7 +170,7 @@ function buy()
                         </ul>
                         <ul class="promo-service">
                             <li><span class="mr10">该商品</span>由<strong>郑州保税仓</strong>发货  预计3-5天送达</li>
-                            <li><span class="mr10">进口税</span><b>好奇旗舰店</b>商家承担</li>
+                            <li><span class="mr10">进口税</span><b><{$de.member_name}></b>商家承担</li>
                             <li><span class="mr10">服&nbsp&nbsp&nbsp务</span>支持14天退换货&nbsp<em class="icon"></em><span style="color:#ff5c5c;">免运费</span> </li>
                         </ul>
                         <div class="buy_box clearfix">
@@ -180,6 +185,11 @@ function buy()
                                     <{/if}>
                                     <{/if}>
                                     <div class="select_style clearfix">
+                                        <{if $de.porperty}>
+                                        <{foreach item=list from=$de.extfiled.d}>
+                                        <{$list}>
+                                        <{/foreach}>
+                                        <{/if}>
                                         <{if $de.rest==0}>
                                         <dl>
                                             <dt>数量</dt>
@@ -192,8 +202,8 @@ function buy()
                                         </dl>
                                         <{/if}>
                                     </div>
-                                    <div style="margin-top: 20px;"><span class="mr10">交易成功</span>1212 <span  class="ml10 mr10">累计评论</span>1212</div>
-                                    <div class="choose_result"></div>
+                                    <!-- <div style="margin-top: 20px;"><span class="mr10">交易成功</span>1212 <span  class="ml10 mr10">累计评论</span>1212</div> -->
+                                    <!-- <div class="choose_result"></div> -->
                                     <div class="choose_btn clearfix">
                                         <a href="javascript:void(0);" class="btn-buy">立即购买</a>
                                         <{if $de.is_virtual neq 1}>
@@ -239,8 +249,8 @@ function buy()
                 <div class="inner-wrap">
                     <ul class="clearfix">
                         <li class="cur"><a href="javascript:void(0);">商品详情</a></li>
-                        <li><a href="javascript:void(0);">累计评论</a></li>
-                        <li><a href="javascript:void(0);">成交记录</a></li>
+                        <li><a href="javascript:void(0);">累计评论&nbsp&nbsp1212</a></li>
+                        <li><a href="javascript:void(0);">成交记录&nbsp&nbsp1212</a></li>
                         <li><a href="javascript:void(0);">商品问答</a></li>
                     </ul>
                 </div>
