@@ -23,6 +23,7 @@
          <form id="form" method="post" action="">
     <input type="hidden" id="act" name="act" />
     <ul class="cart-con">
+        <div class="bottom" style="border-bottom: none;"></div>
         <{foreach item=list from=$cart.cart}>
             <li class="cart-checkbox-first1">
                 <div>
@@ -128,7 +129,14 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
         {
             var data_value = $(this).attr("data-value");
             ckeckbox("input[data-value='"+data_value+"']",true);
-        }   
+        }else{
+            var a = $(this).parent().parent().parent().nextUntil(".bottom").length+$(this).parent().parent().parent().prevUntil(".bottom").length;
+            var b = $(this).parent().parent().parent().nextUntil(".bottom").find("label.cart-checkbox-checked").length+$(this).parent().parent().parent().prevUntil(".bottom").find("label.cart-checkbox-checked").length;
+            if(a-b==1){
+                $($(this).parent().parent().parent().prevUntil(".bottom",".cart-checkbox-first1")).find("label").addClass("cart-checkbox-checked");
+                $($(this).parent().parent().parent().prevUntil(".bottom",".cart-checkbox-first1")).find("input").attr("checked",true);
+            }
+        }
         $(this).parent().addClass("cart-checkbox-checked");
     }
     else
@@ -141,8 +149,10 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
         {
             var data_value = $(this).attr("data-value");
             ckeckbox("input[data-value='"+data_value+"']",false);
+        }else{
+            $($(this).parent().parent().parent().prevUntil(".bottom",".cart-checkbox-first1")).find("label").removeClass("cart-checkbox-checked");
+            $($(this).parent().parent().parent().prevUntil(".bottom",".cart-checkbox-first1")).find("input").attr("checked",false);
         }
-        
         $(this).parent().removeClass("cart-checkbox-checked");
         $(this).parent().parent().parent().removeClass("checked");
     }
