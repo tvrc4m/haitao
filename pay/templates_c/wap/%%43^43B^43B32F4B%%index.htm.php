@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.20, created on 2016-04-21 20:33:58
+=======
 <?php /* Smarty version 2.6.20, created on 2016-04-22 09:30:27
+>>>>>>> 6595eada087c6a45cc01cc715655447ee9d5825f
          compiled from index.htm */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));

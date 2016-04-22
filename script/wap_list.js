@@ -5,7 +5,7 @@ $(function(){
         {
             $(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"});
             $(".filter").css({"position":"fixed","top":"50px","width":"100%","z-index":"9999","background-color":"#fff","margin-top":"0px"})
-            $(".itemSearchList").eq(0).css({"margin-top":"100px"})
+            $(".itemSearchList").eq(0).css({"margin-top":"50px"})
         }
     })
     $(".list").click(function(){
