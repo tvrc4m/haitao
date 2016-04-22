@@ -179,6 +179,11 @@ function buy()
                                     <{/if}>
                                     <{/if}>
                                     <div class="select_style clearfix">
+                                        <{if $de.porperty}>
+                                        <{foreach item=list from=$de.extfiled.d}>
+                                        <{$list}>
+                                        <{/foreach}>
+                                        <{/if}>
                                         <{if $de.rest==0}>
                                         <dl>
                                             <dt>数量</dt>
