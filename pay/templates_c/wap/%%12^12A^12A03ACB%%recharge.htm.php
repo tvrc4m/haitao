@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 20:28:15
+<?php /* Smarty version 2.6.20, created on 2016-04-22 15:22:53
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -9,6 +9,7 @@
 <span><a class="withdraw" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=payment&s=record&mold=1">充值记录</a></span></h2>
     </div>
+    <div style="background-color:#ededed;height:10px;"></div>
 	<div class="form">
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     	<fieldset id="bank">
@@ -27,7 +28,6 @@
 '}"><img src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
 .gif" class="form_qianbao_img"><?php echo $this->_tpl_vars['list']['payment_name']; ?>
 <i></i></a>
-                        <div style="border-top:1px solid #f1f1f1;height:0;"></div>
                     </li>
                     <?php endif; ?>
                 <?php endforeach; endif; unset($_from); ?>  

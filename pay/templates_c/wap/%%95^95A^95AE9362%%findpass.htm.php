@@ -1,22 +1,25 @@
+<?php /* Smarty version 2.6.20, created on 2016-04-22 15:23:54
+         compiled from findpass.htm */ ?>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
     <div class="i-block">
         <h2>找回密码</h2>
     </div>
     <div style="background-color:#ededed;height:10px;"></div>
-    <{if !$de.pay_mobile}>
+    <?php if (! $this->_tpl_vars['de']['pay_mobile']): ?>
     <div class="tips"><span></span>温馨提示：请先设置
-        <{if !$de.pay_mobile}>手机号<{/if}>。</div>
-    <{/if}>
+        <?php if (! $this->_tpl_vars['de']['pay_mobile']): ?>手机号<?php endif; ?>。</div>
+    <?php endif; ?>
     <div class="form">
         <form method="post" id="form">
             <input type="hidden" name="act" value="act" />
             <fieldset class="post_fie">
-                <{if $de.pay_mobile}>
+                <?php if ($this->_tpl_vars['de']['pay_mobile']): ?>
                 <dl class="getyzm">
                     <dt>手机号：</dt>
                     <dd>
-                        <input style="float: left" type="text" class="text" name="pay_mobile" id="pay_mobile" readonly value="<{$de.pay_mobile}>"/>
+                        <input style="float: left" type="text" class="text" name="pay_mobile" id="pay_mobile" readonly value="<?php echo $this->_tpl_vars['de']['pay_mobile']; ?>
+"/>
                     </dd>
                 </dl>
                 <dl class="oldpass">
@@ -36,7 +39,7 @@
                     <dd><input type="password" class="text" tabindex="3" maxlength="10" autocomplete="off" name="re_pass" id="re_pass" /></dd>
                 </dl> 
                 <div class="form-error"></div>   
-                <{/if}>
+                <?php endif; ?>
             </fieldset>
             <dl>
                 <dt></dt>
@@ -85,8 +88,10 @@
 <script>
     function getyzm(){
         tiktok();
-        var val = "<{$de.pay_mobile}>";
-        var url = '<{$config.web_url}>/ajax_back_end.php';
+        var val = "<?php echo $this->_tpl_vars['de']['pay_mobile']; ?>
+";
+        var url = '<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/ajax_back_end.php';
         var sj = new Date();
         var pars = 'shuiji=' + sj +'&mobile='+val;
         $.post(url, pars, function (originalRequest){
@@ -112,7 +117,8 @@
         var flag = true;
         var yzm = $("#yzm").val();
         if(yzm){
-            var url = '<{$config.web_url}>/ajax_back_end.php';
+            var url = '<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/ajax_back_end.php';
             var sj = new Date();
             var pars = 'shuiji=' + sj+'&yzm='+yzm;
             $.get(url, pars, function(originalRequest){

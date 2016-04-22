@@ -1,9 +1,10 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-22 09:35:28
+<?php /* Smarty version 2.6.20, created on 2016-04-22 15:23:50
          compiled from setpass.htm */ ?>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
     <div class="i-block">
-        <h2 style="border-bottom:1px solid #f1f1f1;">设置支付密码</h2>
+        <h2>设置支付密码</h2>
+        <div style="background-color:#ededed;height:10px;"></div>
     </div>
     <?php if (! $this->_tpl_vars['de']['pay_pass']): ?>
     <div class="tips"><span></span>温馨提示：请先设置
