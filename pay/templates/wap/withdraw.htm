@@ -104,34 +104,34 @@ $('.freeItem').hover(function(){
 	$(this).removeClass("hover")
 });
 
-$(".time").find("input[type='radio']").click(function(){
-	var val = $("input[name='amount']").val();	
-	calculateFee(val);
-});
+// $(".time").find("input[type='radio']").click(function(){
+// 	var val = $("input[name='amount']").val();	
+// 	calculateFee(val);
+// });
 
-function calculateFee(val){
-	if(!val)
-	{
-		return false;	
-	}
-	var amount = parseFloat(val).toFixed(2);
-	if (amount <= 0) return;
-	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
-    console.log(data)
-	eval("data = "+data);
-	var i=data.min;
-	var a=data.max;
-	var r=data.rates/100;
-	var n=0;
-	if(r*amount<=i){ n=i; }
-	else if(r*amount>=a){ n=a; }
-	else{ n=r*amount; }
-	//n=Math.round(n);//小叶写的
-    var pn=new Number(n);//poy改的
-    n=pn.toFixed(2);//poy改的
-	$('#extraFee').html(n);
-	$('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
-}
+// function calculateFee(val){
+// 	if(!val)
+// 	{
+// 		return false;	
+// 	}
+// 	var amount = parseFloat(val).toFixed(2);
+// 	if (amount <= 0) return;
+// 	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
+//     console.log(data)
+// 	eval("data = "+data);
+// 	var i=data.min;
+// 	var a=data.max;
+// 	var r=data.rates/100;
+// 	var n=0;
+// 	if(r*amount<=i){ n=i; }
+// 	else if(r*amount>=a){ n=a; }
+// 	else{ n=r*amount; }
+// 	//n=Math.round(n);//小叶写的
+//     var pn=new Number(n);//poy改的
+//     n=pn.toFixed(2);//poy改的
+// 	$('#extraFee').html(n);
+// 	$('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
+// }
 // $(function(){
 //     var a=$("#amount").val();
 //     console.log(a)

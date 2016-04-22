@@ -183,24 +183,23 @@ $tpl->assign("working_time",$working_time);
 		$tpl->assign("com",$company);
 
 		//判断是否收藏商品
-		$user =  $_COOKIE['USER'];
-		$shopid =  $_GET['uid'];
+        if(!empty($_COOKIE['USER'])) {
+            $user =  $_COOKIE['USER'];
+            $shopid =  $_GET['uid'];
+            //获取 当前用户 userid
+            $sql = "select userid from " . MEMBER . " where user='" . $user . "'";
+            $db->query($sql);
+            $uid = $db->fetchField('userid');
 
-		//获取 当前用户 userid
-		$sql="select userid from ".MEMBER." where user='".$user."'";
-		$db->query($sql);
-		$uid=$db->fetchField('userid');
-
-		//判断 当前用户 是否 添加 共享 商铺
-		$sql="select id from ".SSHOP." where uid=".$uid." and shopid='".$shopid."'";
-		$db->query($sql);
-		if($db->num_rows()<=0)
-		{
-			$tpl->assign('sns_shop', 'no');
-		}else{
-			$tpl->assign('sns_shop', 'yes');
-		}
-
+            //判断 当前用户 是否 添加 共享 商铺
+            $sql = "select id from " . SSHOP . " where uid=" . $uid . " and shopid=" . $shopid ;
+            $db->query($sql);
+            if ($db->num_rows() <= 0) {
+                $tpl->assign('sns_shop', 'no');
+            } else {
+                $tpl->assign('sns_shop', 'yes');
+            }
+        }
 		include_once("footer.php");
 
 		//----------------------------------------------

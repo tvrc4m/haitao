@@ -7,9 +7,12 @@
 .w100{width:100px !important;}
 .w210{width:210px !important;}
 
-#bank dl{padding-left: 10px;}
-#amount dl{padding-left: 10px;}
-.form dl.otherss{padding-left: 10px;}
+#bank dl{padding-left: 10px;padding-top: 10px;padding-bottom: 10px;
+    border-bottom: 1px solid #f1f1f1;}
+#amount dl{padding-left: 10px;padding-top: 10px;padding-bottom: 10px;
+    border-bottom: 1px solid #f1f1f1;}
+.form dl.otherss{padding-left: 10px;padding-top: 10px;padding-bottom: 10px;
+    border-bottom: 1px solid #f1f1f1;}
 .payment .title{margin-bottom:15px;border-bottom:solid 1px #ddd;}
 .payment .title2{background-color: #fff;padding:10px 0;}
 .payment .title h3{padding-left: 10px;}

@@ -66,19 +66,12 @@
                 <dt style="margin-left:5px;">请选择支付方式</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
-                    <!-- <{foreach item=list key=key from=$pay}>
-                        <li <{if $key==0}>class="checked"<{/if}> >
-                        <img title="<{$list.payment_name}>" alt="<{$list.payment_name}>" data-param="{'id':'<{$list.payment_type}>'}" src="image/payment/<{$list.payment_type}>.gif" /><i></i>
-                        </li>
-                    <{/foreach}> -->  
+                    <{foreach item=list key=key from=$pay}>
                         <li>           
-                            <a class="form_qianbao_btn" data-param="{'id':'account'}"><img src="/pay/templates/wap/image/pay_haitao_icon8.png" class="form_qianbao_img">蚂蚁宝钱包余额<i></i></a>
+                            <a class="form_qianbao_btn" data-param="{'id':'<{$list.payment_type}>'}"><img src="image/payment/<{$list.payment_type}>.gif" class="form_qianbao_img"><{$list.payment_name}><i></i></a>
                             <div style="border-top:1px solid #f1f1f1;height:0;"></div>
                         </li>
-                        <li>
-                            <a class="form_zhifu_btn" data-param="{'id':'account1'}"><img src="/pay/templates/wap/image/pay_haitao_icon10.png" class="form_qianbao_img">支付宝<i></i></a>
-                            <div style="border-top:1px solid #f1f1f1;height:0;"></div>
-                        </li>
+                    <{/foreach}>  
                     </ul>
                 </dd>
             </dl> 
