@@ -240,6 +240,7 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
             var b = $(this).parent().parent().parent().nextUntil("tr.seg-entry").find("label.cart-checkbox-checked").length+$(this).parent().parent().parent().prevUntil("tr.seg-entry").find("label.cart-checkbox-checked").length;
             if(a-b==1){
                 $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th label").addClass("cart-checkbox-checked");
+                $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th input").prop("checked","checked");
             }
         }
 		$(this).parent().addClass("cart-checkbox-checked");

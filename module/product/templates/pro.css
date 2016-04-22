@@ -128,14 +128,14 @@
 .filter .list .current .shop{background-position:1px -85px;}
 
 .itemSearchResult{float:left;width: 1212px;}
-.itemSearchResult .p-info{padding-bottom: 20px;}
+.itemSearchResult .p-info{padding-bottom: 20px;padding-top: 25px;border: 1px solid #ddd;border-left: none;}
 .itemSearchResult .border_left{border-left: 1px solid #ddd;margin-top: 20px;}
-.itemSearchResult li{background-color: #fff;float:left;display:inline;text-align:left;width:221px;padding:0 10px;border-bottom:1px solid #ddd;border-right: 1px solid #ddd;border-top:1px solid #ddd;position: relative;margin-bottom: -1px;}
+.itemSearchResult li{background-color: #fff;float:left;display:inline;text-align:left;width:241px;position: relative;margin-bottom: -1px;}
 .itemSearchResult li .fix{position: absolute;top: 0;left: 0;width: 30px;height: 30px;padding: 10px;background: #c0c;font-size: 14px;color: #fff;line-height: 15px;}
 .itemSearchResult li img{-webkit-transform:none;-moz-transform:none;-o-transform:none;transform:none;-webkit-transition:all .4s ease-out;-moz-transition:all .4s ease-out;-o-transition:all .4s ease-out;transition:all .4s ease-out;}
 .itemSearchResult li:hover .p-img img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 /*.itemSearchResult li:hover{border:1px solid #DDDDDD;box-shadow:0 0 8px #DDDDDD;position:relative;}*/
-.itemSearchResult .p-img{display:block;height:200px;width:200px;padding: 0;margin: 25px auto;}
+.itemSearchResult .p-img{display:block;height:200px;width:200px;padding: 0;margin:0 auto 25px auto;}
 .itemSearchResult .p-name{display:block;height:20px;line-height:20px;margin:0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .itemSearchResult .p-country{padding-bottom: 10px;}
 .itemSearchResult .p-country span{display: inline-block;width: 30px;float: left; margin: 2px 5px 0 20px;}
