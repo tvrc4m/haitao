@@ -1,6 +1,6 @@
 <link href="<{$config.weburl}>/module/product/templates/pro.css" rel="stylesheet" type="text/css" />
 <div class="bgcolor">
-<div>
+<div style="position: relative;top: 0;left: 50%;margin-left: -960px;">
     <img src="image/default/banner_list.jpg">
 </div>
  <div class="w">
@@ -133,7 +133,7 @@
         </div>
             <ul class="clearfix border_left">
                 <{foreach item=list key=num from=$info.list}>
-                <li <{if ($num+1)%5==0}>class="mr0 w222"<{/if}> >
+                <li <{if ($num+1)%5==0}>class="mr0 w242"<{/if}> >
                     <div class="p-info">
                         <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
                         <p class="p-country"><span>
