@@ -1,13 +1,10 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-22 09:30:16
+<?php /* Smarty version 2.6.20, created on 2016-04-22 12:04:17
          compiled from footer.htm */ ?>
-<div class="footer fn-clear">
-    <div class="w">
-        <div class="links"><?php echo $this->_tpl_vars['web_con']; ?>
-</div>
-        <div class="copyright"><?php echo $this->_tpl_vars['bt']; ?>
-</div>
-    </div>
-</div>
+<div class="footer">
+            <p class="copytight">© 2015-2016 蚂蚁在线(北京)科技有限公司 |  京ICP备15039996号-4<br>
+            地址：北京市朝阳区东大桥路甲8号尚都国际中心A座1815 | 电话:400-010-1977
+            </p>
+        </div>
 <script type="text/javascript">
 $('.drop-down').hover(function(){					 
 	$(this).addClass("hover");

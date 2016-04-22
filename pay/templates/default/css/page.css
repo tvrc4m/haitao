@@ -107,7 +107,7 @@ em{font-style:normal;}
 .detail dt,.detail dd{border-left:1px solid #D2D2D2;border-bottom:1px solid #D2D2D2;}
 .detail dd span{border-right:1px solid #D2D2D2;padding:6px 5px;width:90px;display:inline-block;margin-right:10px;text-align:right;}
 
-.footer{color:#A0A0A0;height:144px;background:#eee;padding-top:30px;text-align: center;}
+.footer{color:#A0A0A0;height:64px;background:#eee;padding-top:30px;text-align: center;}
 .footer a{color:#A0A0A0;}
 .footer .links{padding:10px 0;}
 .footer .links em{padding:0 10px;}
