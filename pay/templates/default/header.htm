@@ -8,18 +8,20 @@
 </head>
 <body>
 <div class="top">
-	<div class="w fn-clear">
-		<div class="top-a fn-clear">
+    <div class="nav">
+        <div class="top-a w fn-clear">
             <ul class="fn-left">
                 <li>你好, <{if $de.real_name}><{$de.real_name}><{else}><{$de.pay_email}><{/if}></li>
                 <li><a href="<{$config.web_url}>/main.php?cg_u_type=1">买家中心</a></li>
-			</ul>
+            </ul>
             <ul class="fn-right">
                 <li><a href="help.php">帮助中心</a></li>
             </ul>
         </div>
+    </div>
+	<div class="w fn-clear">
 		<div class="top-b fn-clear">
-        	<h2><a href="index.php"><img height="40" src="<{if $config.logo}><{$config.logo}><{else}><{$config.web_url}>/image/logo.gif<{/if}>" /></a></h2>
+        	<h2><a href="index.php"><img height="40" src="<{if $config.logo}><{$config.logo}><{else}><{$config.web_url}>/image/default/Logo.png<{/if}>" /></a></h2>
               	<ul class="nav">
             	<li <{if !$current}>class="current"<{/if}>>
                 	<a href="index.php">我的<{$config.company}></a>
