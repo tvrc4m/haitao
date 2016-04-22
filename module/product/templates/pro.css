@@ -127,7 +127,7 @@
 .filter .list .current .product{background-position:left -74px;}
 .filter .list .current .shop{background-position:1px -85px;}
 
-.itemSearchResult{float:left;}
+.itemSearchResult{float:left;width: 1212px;}
 .itemSearchResult .p-info{padding-bottom: 20px;}
 .itemSearchResult .border_left{border-left: 1px solid #ddd;margin-top: 20px;}
 .itemSearchResult li{background-color: #fff;float:left;display:inline;text-align:left;width:221px;padding:0 10px;border-bottom:1px solid #ddd;border-right: 1px solid #ddd;border-top:1px solid #ddd;position: relative;margin-bottom: -1px;}
