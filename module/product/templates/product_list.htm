@@ -1,7 +1,10 @@
 <link href="<{$config.weburl}>/module/product/templates/pro.css" rel="stylesheet" type="text/css" />
 <div class="bgcolor">
 <div>
-    <img src="image/default/banner_list.jpg">
+    <{if $gid}>
+    <script src='<{$config.weburl}>/api/ad.php?id=<{$gid}>'></script>
+    <!--<img src="image/default/banner_list.jpg">-->
+    <{/if}>
 </div>
  <div class="w">
     <div class="detailnav">
