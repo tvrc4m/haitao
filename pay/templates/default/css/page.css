@@ -12,7 +12,7 @@ em{font-style:normal;}
 .fn-right{display:inline;float:right;}
 .fn-hide{display:none;}
 .w{width:960px;margin:0 auto;}
-.top{/*background:url(../image/nav.png) repeat-x;*/height:92px;margin-bottom:15px;}
+.top{height:92px;margin-bottom:15px;}
 .top>.nav{background-color: #e1e1e1;}
 .top-a{height:30px;line-height:30px;}
 .top-a .fn-left li{float:left;padding-right:14px;}
