@@ -138,6 +138,7 @@ else
                 $newname[$key_f] = array('id' => $catname[$key_f], 'oid' => $catname[$key_f]);
             }
         }
+
 		$tpl->assign("catname",$newname);
 		$cat=readCat($id);
 		//-----------------------------分类关连的品牌
@@ -178,6 +179,12 @@ else
 		//---------------------------------按分类搜索
 		$scl.=" and LOCATE('".intval(trim($_GET['id']))."',a.catid)=1 ";//按类别搜索
 	}
+	$ads = array('1000'=>'33','1001'=>'34','1002'=>'35','1003'=>'36');
+	if(array_key_exists($newname[0]['oid'],$ads))
+		$gid = $ads[$newname[0]['oid']];
+	elseif(!empty($_GET['national']))
+		$gid = 37;
+	$tpl->assign('gid',$gid);
 //------------------------------------------------------
 	include_once("config/module_product_config.php");
 	$tpl->assign("ptype",$ptype=explode('|',$module_product_config['ptype']));
@@ -211,7 +218,7 @@ else
 
 	if(!empty($_GET['is_dist']) and $_GET['is_dist']==1)
 		$scl.=" and a.is_dist=1 ";
-
+	if(!empty($_GET['national']))$scl.=" and a.national=".$_GET['national'];
 	if($orderby==1)
 		$scl.=" order by a.sales desc";
 	elseif($orderby==2)

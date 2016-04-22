@@ -5,6 +5,7 @@
 	<div class="i-block">
     	 <h2>充值到<{$config.company}><span><a class="withdraw" href="<{$config.weburl}>/?m=payment&s=record&mold=1">充值记录</a></span></h2>
     </div>
+    <div style="background-color:#ededed;height:10px;"></div>
 	<div class="form">
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     	<fieldset id="bank">
@@ -17,7 +18,6 @@
                     <{if $list.payment_type!='account'}>
                     <li>
                         <a class="form_zhifu_btn" data-param="{'id':'<{$list.payment_type}>'}"><img src="image/payment/<{$list.payment_type}>.gif" class="form_qianbao_img"><{$list.payment_name}><i></i></a>
-                        <div style="border-top:1px solid #f1f1f1;height:0;"></div>
                     </li>
                     <{/if}>
                 <{/foreach}>  

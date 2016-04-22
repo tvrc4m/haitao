@@ -117,6 +117,7 @@
         }
     });
 $(".cart-checkbox input[type='checkbox']").click(function(){
+
     var flag = $(this).attr("checked");
     var data_type = $(this).attr("data-type");
     if(flag == true)
@@ -138,6 +139,12 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
             }
         }
         $(this).parent().addClass("cart-checkbox-checked");
+        var d=$("#form ul li").find("label.cart-checkbox-checked").length;
+        console.log(d)
+        if(d>=0){
+            $("input[data-type='all']").parent().addClass("cart-checkbox-checked")
+            $("input[data-type='all']").parent().attr("checked",true);
+        }
     }
     else
     {
@@ -155,6 +162,11 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
         }
         $(this).parent().removeClass("cart-checkbox-checked");
         $(this).parent().parent().parent().removeClass("checked");
+        var c = $("#form ul li").find("label.cart-checkbox-checked").length;
+        if(c<=0){
+            $("input[type='checkbox']").parent().removeClass("cart-checkbox-checked")
+            $("input[type='checkbox']").parent().attr("checked",false);
+        }
     }
     count();
 });

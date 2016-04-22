@@ -1,7 +1,7 @@
 <?php
 include_once("includes/page_utf_class.php");
 $page = new Page;
-$page->listRows=5;
+$page->listRows=10;
 if($_GET['mold']==1)
 {
 	$s=" and (mold = '2' or mold = '1')";
@@ -31,7 +31,6 @@ if($_GET['status']&&is_numeric($_GET['status']))
 	$statu=$_GET['status']*1;
 	$s.=" and statu= '$statu' ";	
 }
-
 $sql="select * from ".RECORD." where pay_uid='$buid' and (isnull(`order_id`) or LEFT(`order_id`,1) != 'U') $s order by id desc ";
 if(!$page->__get('totalRows'))
 {
