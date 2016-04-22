@@ -146,14 +146,18 @@ function buy()
                 <div class="right">
                     <div class="wrap">
                         <div class="title">
-                            <p style="color:#144487;"><span><img src="image/default/america.jpg"></span>美国品牌&nbsp海外直采</p>
+                            <p style="color:#144487;">
+                                <{if $de.national_info }>
+                                    <span><img src="<{$de.national_info.img}>"></span><{$de.national_info.title}>品牌&nbsp海外直采
+                                <{/if}>
+                            </p>
                             <h3><{$de.name}></h3>
                             <{if $de.subhead}><p style="color:#ff5c5c;"><{$de.subhead}></p><{/if}>
                         </div>
                         <ul class="promo-meta clearfix">
                             <li>
                                 <span class="mr10">国内价</span>
-                                <s>¥123.00</s>
+                                <s><{$config.money}><{$de.market_price|number_format:2}></s>
                             </li>
                             <li>
                                 <span class="mr10" style="vertical-align:-6px;">蚂蚁价</span>
@@ -166,7 +170,7 @@ function buy()
                         </ul>
                         <ul class="promo-service">
                             <li><span class="mr10">该商品</span>由<strong>郑州保税仓</strong>发货  预计3-5天送达</li>
-                            <li><span class="mr10">进口税</span><b>好奇旗舰店</b>商家承担</li>
+                            <li><span class="mr10">进口税</span><b><{$de.member_name}></b>商家承担</li>
                             <li><span class="mr10">服&nbsp&nbsp&nbsp务</span>支持14天退换货&nbsp<em class="icon"></em><span style="color:#ff5c5c;">免运费</span> </li>
                         </ul>
                         <div class="buy_box clearfix">
