@@ -1,8 +1,8 @@
  var $jq = jQuery.noConflict();
  $jq(function(){
- 	var dScrotop=$jq(".nav-box").offset().top-50; 
+ 	var dScrotop=$jq(".nav-box").offset().top;
  	$jq(window).scroll(function(){
-        var wScrotop=$jq(window).scrollTop();
+        var wScrotop=$jq(document).scrollTop();
         if(wScrotop>=dScrotop){
             $jq(".nav-box").addClass("nav-wrapper-test");
         }
