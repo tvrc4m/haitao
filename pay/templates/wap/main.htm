@@ -109,8 +109,10 @@
             dataType: "json",
             success: function(msg){
                 //msg是返回的json数据  
-                var dataLength= msg.data.length;
-                // $(".record table tbody").append("")
+                // var dataLength= msg.data.length;
+                // for(var i=0;i<dataLength;i++){
+                //     $(".record table tbody").append("")
+                // }        
                 console.log(msg);
                 page+=5;
             }
