@@ -71,11 +71,12 @@ $num = $num['identity_verify'] == 'true' ? 1 : 0 ;
 //支付密码
 $sql = "select pay_pass from ".MEMBER." where pay_id=". $de['pay_id'];
 $db -> query($sql);
-if(!empty($db -> fetchField('pay_pass'))){
+$pp = $db -> fetchRow('pay_pass');
+/*if(!empty($pp)){
     $tpl->assign("verify_pay", 'yes');
 }else{
     $tpl->assign("verify_pay", 'no');
-}
+}*/
 
 $tpl->assign("verify",$num);
 $tpl->assign("output",$output);
