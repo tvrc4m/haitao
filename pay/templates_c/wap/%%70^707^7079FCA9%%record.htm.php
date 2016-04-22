@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-21 20:05:25
+<?php /* Smarty version 2.6.20, created on 2016-04-22 11:04:48
          compiled from record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 77, false),)), $this); ?>
@@ -182,13 +182,33 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
                 <div class="page"><?php echo $this->_tpl_vars['re']['page']; ?>
 </div>
                 </td>
-            </tr> -->
-            <?php endif; ?>
+            </tr>
+            <?php endif; ?>-->
             <tr>
                 <td colspan="99">
-                    <a href="javascript:void(0);" class="m_jiazai next"><i></i>点击加载更多</a>
+                    <a href="javascript:ajax_page();" class="m_jiazai next"><i></i>点击加载更多</a>
                 </td>
             </tr> 
         </table>
     </div>
 </div>
+<script>
+    var  page = 0 ;
+    function ajax_page(){
+        var ptype = 'record';
+        var mold = "<?php echo $_GET['mold']; ?>
+";
+        $.ajax({
+            url: "<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/"+"ajax_index.php",
+            type: 'get',
+            data: {ptype: ptype,mold:mold,page:page},
+            dataType: "json",
+            success: function(msg){
+                //msg是返回的json数据
+                alert(msg);
+                page+=5;
+            }
+        });
+    }
+</script>

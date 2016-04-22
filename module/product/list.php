@@ -319,8 +319,8 @@ else
 if(!empty($_GET['id'])) {
     $sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
     $db->query($sql);
-    $res = $db->fetchRow();
-    $tpl->assign("catname",$res);
+    $res = $db->fetchField('cat');
+    $tpl->assign("wapcatname",$res);
 }
 
 $tpl->assign("province",GetDistrict1());
