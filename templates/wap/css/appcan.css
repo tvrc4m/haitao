@@ -86,7 +86,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .collect_box_hid{position: absolute;right: 20px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
 .col_ttt{padding: 0.1rem 0.5rem;}
 /***space_index***/
-.hidden{display:none !important}
+.hidden{display:none !important;}
 .t-gra-50{color:#505050;}
 .t-gar-a0{color:#a0a0a0;}
 .uinn-esh{padding:0.3125em 0 0.9375em 0.5125em}

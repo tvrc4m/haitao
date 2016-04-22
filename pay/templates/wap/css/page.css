@@ -76,7 +76,7 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .block{background-color:#fff;}
 .block.account{height:108px;}
 .block .balance{float:left;padding:20px 0 20px 2%;width:98%;}
-.block .balance2{float:left;padding:20px 0 30px 2%;width:98%;}
+.block .balance2{float:left;padding:20px 0 30px 2%;width:98%;border-bottom:1px solid #f1f1f1;}
 .block .balance p{font-size:14px;line-height:18px;}
 .block .balance p a{color:red;font-weight:normal;margin-left:20px;background:url(../image/hot.jpg) 118px 1px no-repeat;padding-right:42px;text-decoration:none;font-size:12px;}
 .block .balance .wallet{display:inline-block;height:30px;line-height:30px;font-size:14px;color:#666;margin-right:10px;zoom:1;vertical-align:middle;}
