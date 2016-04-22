@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-04-21 20:33:58
-=======
-<?php /* Smarty version 2.6.20, created on 2016-04-22 09:30:27
->>>>>>> 6595eada087c6a45cc01cc715655447ee9d5825f
+<?php /* Smarty version 2.6.20, created on 2016-04-22 14:42:44
          compiled from header.htm */ ?>
 <?php echo '<?xml'; ?>
  version="1.0" encoding="utf-8"<?php echo '?>'; ?>
