@@ -108,8 +108,10 @@
             data: {type: 'payments',page:page},
             dataType: "json",
             success: function(msg){
-                //msg是返回的json数据
-                alert(msg);
+                //msg是返回的json数据  
+                var dataLength= msg.data.length;
+                // $(".record table tbody").append("")
+                console.log(msg);
                 page+=5;
             }
         });
