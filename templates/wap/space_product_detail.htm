@@ -171,9 +171,9 @@
         </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1">
             <li class="ub-f2">
-                <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num"><{$score.a|number_format:1}></span></p>
-                <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.c|number_format:1}></span></p>
-                <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.b|number_format:1}></span></p>
+                <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num"><{$score.aw|number_format:1}></span></p>
+                <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.cw|number_format:1}></span></p>
+                <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.bw|number_format:1}></span></p>
             </li>
         </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
@@ -195,7 +195,10 @@
                 <{$de.detail}>
             </div>
             <div class="wap_pdetail j_tab">
-                <{$de.detail}>
+                品牌：<{$de.brand}>
+                <{foreach item=list from=$de.extfiled.s}>
+                    <{$list}>
+                <{/foreach}>
             </div>
             <div class="wap_pdetail j_tab">
                 <{insert name="label" type="product" o=4 temp="product_list_li_4" limit=0}>

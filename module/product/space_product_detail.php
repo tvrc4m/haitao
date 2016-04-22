@@ -33,13 +33,17 @@ if ($config['bw'] == "weixin")
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
 }
-
+//====================================获取国家馆
+$sql = "select title,img from mallbuilder_national_pavilions where id = ".$prode['national'];
+$db->query($sql);
+$prode['national_info'] = $db->fetchRow();
 //====================================产品详情
 
 $tpl->assign("de",$prode);
 
+/*echo "<pre>";
+var_export($prode);*/
 $tpl->assign("relation",$relation);
-
 
 $score = $shop->score();
 foreach ($score as $key => $value) {
@@ -235,7 +239,6 @@ $tpl->assign("com",$company);
 if ($dist_user_row)
 {
 	$tpl->assign("dist_user_row", $dist_user_row);
-
 	$product_id = intval($_GET['id']);
 	$tpl->assign("is_distribution_product", $distribution->isDistributionProduct($product_id));
 }
