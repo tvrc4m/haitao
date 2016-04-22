@@ -136,13 +136,31 @@
                 <td colspan="99">
                 <div class="page"><{$re.page}></div>
                 </td>
-            </tr> -->
-            <{/if}>
+            </tr>
+            <{/if}>-->
             <tr>
                 <td colspan="99">
-                    <a href="javascript:void(0);" class="m_jiazai next"><i></i>点击加载更多</a>
+                    <a href="javascript:ajax_page();" class="m_jiazai next"><i></i>点击加载更多</a>
                 </td>
             </tr> 
         </table>
     </div>
 </div>
+<script>
+    var  page = 0 ;
+    function ajax_page(){
+        var ptype = 'record';
+        var mold = "<{$smarty.get.mold}>";
+        $.ajax({
+            url: "<{$config.weburl}>/"+"ajax_index.php",
+            type: 'get',
+            data: {ptype: ptype,mold:mold,page:page},
+            dataType: "json",
+            success: function(msg){
+                //msg是返回的json数据
+                alert(msg);
+                page+=5;
+            }
+        });
+    }
+</script>

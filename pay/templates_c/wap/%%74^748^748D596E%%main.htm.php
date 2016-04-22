@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-04-22 11:34:25
+=======
+<?php /* Smarty version 2.6.20, created on 2016-04-22 09:30:27
+>>>>>>> 6595eada087c6a45cc01cc715655447ee9d5825f
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 36, false),)), $this); ?>
@@ -132,9 +136,14 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
             data: {type: 'payments',page:page},
             dataType: "json",
             success: function(msg){
+<<<<<<< HEAD
                 //msg是返回的json数据  
                 var dataLength= msg.data.length;
                 console.log(msg);
+=======
+                //msg是返回的json数据
+                alert(msg);
+>>>>>>> 6595eada087c6a45cc01cc715655447ee9d5825f
                 page+=5;
             }
         });

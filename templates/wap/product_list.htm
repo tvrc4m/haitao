@@ -4,7 +4,7 @@
 	<div class="nav-w">
         <section class="nav-s iconfont"><a onclick="history.go(-1)"><i class="fanhui_icon"></i></a></section>
         <section class="nav-c">
-                <span><{if $smarty.get.is_dist eq 1}>发现商品<{else}><{$catname.cat}><{/if}></span>
+                <span><{if $smarty.get.is_dist eq 1}>发现商品<{else}><{$wapcatname}><{/if}></span>
         </section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
