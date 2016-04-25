@@ -130,9 +130,11 @@ $(".head a").bind("click",function () {
     $(".waitpay").css("display","none");
     $("#overlay").remove();
 });
-$(function(){
-  $('body').append('<div id="overlay"></div>');
-});
+function saveorder(){
+    $('body').append('<div id="overlay"></div>');
+    $(".waitpay").css("display","block");
+    return false;
+}
 </script>
 <{/if}>
 <{include file="../../../templates/default/footer.htm"}>
