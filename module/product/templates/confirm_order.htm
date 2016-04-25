@@ -105,8 +105,8 @@ weburl="<{$config.weburl}>";
         <p>付款完成前请不要关闭此窗口</p>
         <p>完成付款后请根据您的情况点击下面的按钮</p>
         <ul class="clearfix">
-            <li class="cur"><a href="">已完成付款</a></li>
-            <li><a href="">支付遇到问题</a></li>
+            <li class="cur"><a href="main.php?m=product&s=admin_buyorder&status=2">已完成付款</a></li>
+            <li><a href="main.php?m=product&s=admin_buyorder&status=1">支付遇到问题</a></li>
         </ul>
         <p class="repay">没有看到窗口?<a href="">重新付款</a></p>
     </div>
@@ -131,20 +131,19 @@ $(".head a").bind("click",function () {
     $("#overlay").remove();
 });
 
-function saveorder(){
+function saveorder(zf){
     $('body').append('<div id="overlay"></div>');
     $(".waitpay").css("display","block");
     $.ajax({
         type: "POST",
-        url:ajaxCallUrl,
         data:$('#saveorder').serialize(),
         async: false,
         error: function(request) {
         },
         success: function(data) {
+            window.open(data);
         }
     });
-    window.open("http://www.jb51.net");
     return false;
 }
 </script>
