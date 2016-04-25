@@ -11,7 +11,7 @@ a,a:visited{color:#000;text-decoration:none;}
 .clearfix:after{display:block;content:'';clear:both;visibility:hidden;}
 .hidden{display:none;}
 .red{color:#F00;}
-.org{color:#FF6600;}
+.org{color:#FF5c5c;}
 .m30{margin:30px auto;text-align:center;}
 /*********Lemons 20141226 字体*******/
 @font-face {

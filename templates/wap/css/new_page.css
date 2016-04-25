@@ -974,8 +974,8 @@ ins,a
 .shop .shoplist{width:100%}
 .shop .shopli{position: relative;float:left;width:50%;text-align:center;height: auto;overflow: hidden;background: #fff;border:1px solid #b9b9b9;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .shop .shopli:nth-of-type(even){border-left:none;}
-.shop .shopli:nth-of-type(1){border-bottom:none;}
-.shop .shopli:nth-of-type(2){border-bottom:none;}
+.shop .shopli:nth-of-type(n+3){border-top:none;}
+/*.shop .shopli:nth-of-type(2){border-bottom:none;}*/
 /*.itemSearchResult .shop .shopli{margin-right: 2.5%;}
 .itemSearchResult .shop .shopli:nth-of-type(even){margin-right: 0px;}*/
 .shop .shopli .shopli_bottom{padding: 0.5rem;}

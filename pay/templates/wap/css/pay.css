@@ -110,6 +110,7 @@ a.form_weixin_btn{height:30px;line-height: 30px; cursor: pointer;color:#535353;f
 	background:url(../image/pay_haitao_icon8.png) left center no-repeat;background-size: contain;margin-top: 10px;margin-bottom: 10px;width: 100%;-webkit-box-sizing: border-box; box-sizing: border-box;}
 .form_weixin_btn i,.form_zhifu_btn i,.form_qianbao_btn i{width: 25px;height: 25px;background:url(../image/pay_haitao_icon7.png) center no-repeat;background-size: contain;float: right;margin-right: 10px;display: none;}
 .form_qianbao_btn i.formsh{display: inline-block;}
+.form_weixin_btn i.formsh{display: inline-block;}
 .form_weixin_btns2{width: 94%;margin: 0 auto;height: 40px;line-height: 40px;background-color: #ff5c5c;color: #fff;text-align: center;border-radius: 5px;font-size: 14px;letter-spacing: 1px;}
 .form_zhifu_btn i.formsh{display: inline-block;}
 .form_qianbao_img{display: inline-block;width: 30px;height: 30px;margin-right: 10px;vertical-align: middle;}
