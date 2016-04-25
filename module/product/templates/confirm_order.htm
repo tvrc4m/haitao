@@ -146,6 +146,9 @@ function saveorder(zf){
     });
     return false;
 }
+$(".addAddr").parent().bind("click",function() {
+    window.location.href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&type=add";
+})
 </script>
 <{/if}>
 <{include file="../../../templates/default/footer.htm"}>

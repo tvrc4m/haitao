@@ -366,7 +366,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .main .form-style dl dt{color:#404040;float:left;line-height:23px;margin:0;padding:6px 6px 0 0;text-align:right;width:110px;} 
 .main .form-style dl dd em{background:url(../../../image/default/user_admin/required.gif) no-repeat;display:inline-block;height:8px;margin-left:10px;width:7px;}
 .main .form-style dl dd{float:left;padding:8px;width:580px;}
-.main .form-style dl dd .send{padding: 5px;background: #999;color: #fff;height: 27px;margin-top: -5px;vertical-align: top;cursor:pointer;}
+.main .form-style dl dd .send{padding: 5px;background: #ff5c5c;color: #fff;height: 27px;margin-top: -5px;vertical-align: top;cursor:pointer;}
 .main .form-style dl dd p{clear:both;}
 .main .form-style dl dd .hint{color:#BBBBBB;line-height:20px;}
 .main .form-style dl dd .pic{border:1px dashed #E7E7E7;padding:4px;clear:left;float:left;margin-bottom:5px;overflow:hidden;}
