@@ -49,12 +49,12 @@
                     </a>
                 </div>
             </div>
-                <div >
-                    <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
-                    <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>
-                    <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
-                </div>
-                <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
+            <div class="col-money">
+                <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
+                <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>
+                <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
+            </div>
+            <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
         </div>
         <div id="cart_show" style="display:none;"></div>
@@ -194,8 +194,8 @@
             <div class="wap_pdetail j_tab pdetail_show">
                 <{$de.detail}>
             </div>
-            <div class="wap_pdetail j_tab">
-                品牌：<{$de.brand}>
+            <div class="wap_pdetail j_tab pdetail_show2">
+                <span>品牌：<{$de.brand}></span>
                 <{foreach item=list from=$de.extfiled.s}>
                     <{$list}>
                 <{/foreach}>
