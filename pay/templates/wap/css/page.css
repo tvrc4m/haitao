@@ -165,7 +165,7 @@ h2{font-weight: normal;}
     display: inline-block;
     font-size: 12px;
     letter-spacing: 2px;
-    padding-left: 25px;
+    padding-left: 19px;
 }
 
 .duser-auth li a.duser-auth-ema {
@@ -175,7 +175,7 @@ h2{font-weight: normal;}
 .duser-auth li a.duser-auth-ema-j {
     color: #999;
     background: url(../image/pay_haitao_icon2.png) center left no-repeat;
-    background-size: 25%;
+    background-size:34%;
 }
 i.home_icon {
     display: inline-block;

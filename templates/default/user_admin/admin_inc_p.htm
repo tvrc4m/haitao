@@ -254,9 +254,9 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
 });
 // 收缩展开效果
 $(document).ready(function(){
-    $(".father dt span").click(function(){
-        $(this).toggleClass("hou");
-        var sidebar_ul = $(this).parent().next("ul");
+    $(".father dt").click(function(){
+        $(this).find("span").toggleClass("hou");
+        var sidebar_ul = $(this).next("ul");
         sidebar_ul.slideToggle("slow",function(){
                 sidebar_ul.css("display");
          });

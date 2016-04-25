@@ -130,9 +130,17 @@ $(".head a").bind("click",function () {
     $(".waitpay").css("display","none");
     $("#overlay").remove();
 });
+<<<<<<< HEAD
 /*$(function(){
   $('body').append('<div id="overlay"></div>');
 });*/
+=======
+function saveorder(){
+    $('body').append('<div id="overlay"></div>');
+    $(".waitpay").css("display","block");
+    return false;
+}
+>>>>>>> 8525d550a4a15bef1ed57fb391a8831654da2a8f
 </script>
 <{/if}>
 <{include file="../../../templates/default/footer.htm"}>
