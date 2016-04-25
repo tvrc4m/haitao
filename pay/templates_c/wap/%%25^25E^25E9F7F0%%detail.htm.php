@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 11:43:35
+<?php /* Smarty version 2.6.20, created on 2016-04-25 14:35:21
          compiled from detail.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'detail.htm', 22, false),array('modifier', 'date_format', 'detail.htm', 23, false),)), $this); ?>
@@ -20,8 +20,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 	<div class="i-block">
 		<h2>账单详情</h2>
         <dl class="detail">
-            <dt><?php echo $this->_tpl_vars['re']['note']; ?>
-</dt>
+            <dt></dt>
             <?php if ($this->_tpl_vars['re']['real_name'] || $this->_tpl_vars['re']['seller_email']): ?>
             <dd><span>收款方：</span><?php if ($this->_tpl_vars['re']['real_name']): ?><?php echo $this->_tpl_vars['re']['real_name']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['re']['seller_email']; ?>
@@ -57,7 +56,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <?php if ($this->_tpl_vars['re']['check_time']): ?><dd><span>操作时间：</span><?php echo ((is_array($_tmp=$this->_tpl_vars['re']['check_time'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d&nbsp;%H:%M:%S") : smarty_modifier_date_format($_tmp, "%Y-%m-%d&nbsp;%H:%M:%S")); ?>
 </dd><?php endif; ?>
              <?php endif; ?>
-            <dd><span>备注：</span>提款</dd>
         </dl>
 	</div>
 </div>

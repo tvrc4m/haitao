@@ -3,7 +3,7 @@
 .itemSearchList{padding:0.5rem 0.5rem;}
 .itemSearchList dl{background:#FFF;border:1px solid #E0E1E1;padding:0.4rem;position:relative;overflow: hidden;border-bottom: none;}
 .itemSearchList dl:last-of-type{border-bottom: 1px solid #b9b9b9;}
-.itemSearchList dt{width:3.5rem;height:3.5rem;float:left;border: 1px solid #b9b9b9;}
+.itemSearchList dt{width:3.5rem;height:3.5rem;float:left;border: 1px solid #f1f1f1;}
 .itemSearchList dt img{width:3.5rem;height:3.5rem;}
 .itemSearchList dd{margin-left:90px;line-height:18px;font-size:14px;}
 .itemSearchList dd .p-name{max-height:36px;margin-bottom:5px;}
