@@ -151,20 +151,20 @@
             }
         }
     }
-    // var page = 0;
-    // function more_info(){
-    //     var url = "<{$config.weburl}>/";
-    //     var id = "<{$smarty.get.id}>";
-    //     page = parseInt(parseInt(page) + 10);
-    //     $.ajax({
-    //         url: url,
-    //         type: 'get',
-    //         data: {id:id, page:page, m:"product", s:"ajax_list"},
-    //         success: function(msg){
-    //             alert(msg);
-    //         }
-    //     });
-    // }
+     var page = 0;
+     function more_info(){
+         var url = "<{$config.weburl}>/";
+         var id = "<{$smarty.get.id}>";
+         page = parseInt(parseInt(page) + 10);
+         $.ajax({
+             url: url,
+             type: 'get',
+             data: {id:id, page:page, m:"product", s:"ajax_list"},
+             success: function(msg){
+                 alert(msg);
+             }
+         });
+     }
     // $(function(){
     //     var page = 0;
     //     var url = "<{$config.weburl}>/";
