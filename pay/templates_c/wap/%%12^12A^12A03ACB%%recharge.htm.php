@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 18:12:25
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:49:58
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -14,7 +14,7 @@
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     	<fieldset id="bank">
     	<dl>
-        	<dt style="margin-left:5px;">充值方式：</dt>
+        	<dt style="margin-left:5px;">请选择充值方式：</dt>
             <dd class="pay">
                 <input type="hidden" name="payment_type" id="payment_type" value="<?php echo $this->_tpl_vars['pay']['1']['payment_type']; ?>
 " />
@@ -61,6 +61,9 @@
     </div>
 </div>	
 <script type="text/javascript">
+// $(function(){
+//     $(".pay li").eq(0).find("i").addClass("formsh");
+// })
 $(".pay li").bind("click",function(){
 	var data = $(this).children('a').attr('data-param');
 	eval("data = "+data);
