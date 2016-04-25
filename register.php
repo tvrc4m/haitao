@@ -207,10 +207,10 @@ function doreg($guid=NULL)
 	$userid=$db->lastid();
 	
 	if($userid)
-	{	
+	{
+
 		$sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
 		$re=$db->query($sql);
-		
 		if($re)
 		{
 			$post['userid'] = $userid;
@@ -247,7 +247,6 @@ function doreg($guid=NULL)
 }
 
 /* =================================================自定义方法======================================================== */
-
 
 /**
  * 检测验证码
