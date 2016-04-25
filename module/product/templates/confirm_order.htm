@@ -99,16 +99,16 @@ weburl="<{$config.weburl}>";
 </div>
 
 <div class="waitpay">
-    <p class="head"><span></span>等待付款<a>×</a></p>
+    <p class="head"><span></span>等待付款<a href="javascript:close()">×</a></p>
     <div class="content clearfix">
         <h2>请您在新打开的页面上完成付款</h2>
         <p>付款完成前请不要关闭此窗口</p>
         <p>完成付款后请根据您的情况点击下面的按钮</p>
         <ul class="clearfix">
-            <li class="cur"><a href="">已完成付款</a></li>
-            <li><a href="">支付遇到问题</a></li>
+            <li class="cur"><a href="main.php?m=product&s=admin_buyorder&status=2">已完成付款</a></li>
+            <li><a href="main.php?m=product&s=admin_buyorder&status=1">支付遇到问题</a></li>
         </ul>
-        <p class="repay">没有看到窗口?<a href="">重新付款</a></p>
+        <p class="repay">没有看到窗口?<a href="javascript:close()">重新付款</a></p>
     </div>
 </div>
 <script>
@@ -126,24 +126,24 @@ $(".step li:not(:last-child)").bind("click",function(){
     $('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax&id='+id+'<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
 });
 
-$(".head a").bind("click",function () {
+function close() {
     $(".waitpay").css("display","none");
     $("#overlay").remove();
-});
-function saveorder(){
+};
+
+function saveorder(zf){
     $('body').append('<div id="overlay"></div>');
     $(".waitpay").css("display","block");
     $.ajax({
         type: "POST",
-        url:ajaxCallUrl,
         data:$('#saveorder').serialize(),
         async: false,
         error: function(request) {
         },
         success: function(data) {
+            window.open(data);
         }
     });
-    window.open("http://www.jb51.net");
     return false;
 }
 </script>
