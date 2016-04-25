@@ -98,7 +98,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 			$matches['attrs']['id'] = $matches['id'];
 			$prol[] = $matches['attrs'];
 		}
-		
+
 	}
 
 
