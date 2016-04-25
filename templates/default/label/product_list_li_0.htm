@@ -1,5 +1,5 @@
 <{foreach item=list key=num from=$pro}>
-<li class="shopli <{if $num%2 !== 0}>even<{/if}> <{if $num%4 eq 3 && $num!==0 }>guanggao_kong<{/if}> clearfix">
+<li class="shopli <{if $num%4 eq 3 && $num!==0 }>guanggao_kong<{/if}> clearfix">
 	<span class="pname_img">
 		<{if $list.nationalurl.1 }>
         	<img src="<{$list.nationalurl.1}>" alt="<{$list.nationalurl.0}>">
