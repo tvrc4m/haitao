@@ -19,5 +19,11 @@
     $jq(".select_guanshui_ic").click(function(){
         $jq(".select_guanshui_hid").toggleClass("select_guanshui_hid_test");
     })
+    
+    var numLen=$jq(".cart-num-cont").text();
+    console.log(numLen)
+    if(numLen>99){
+        $jq(".cart").append("<span class='cart-num-conts'>...</span>");
+    }
     $jq(".scrollLoading").scrollLoading();
  })
