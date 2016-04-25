@@ -9,6 +9,7 @@
         <div class="hd">
             <ul class="tabs">
                 <li class="<{if !$smarty.get.status&&$smarty.get.rate!='1'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_buyorder">所有订单</a></li>
+                <li class="<{if $smarty.get.status=='2'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_buyorder&status=2">已付款</a></li>
                 <li class="<{if $smarty.get.status=='1'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_buyorder&status=1">待付款</a></li>
                 <li class="<{if $smarty.get.status=='3'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_buyorder&status=3">待收货</a></li>
                 <li class="<{if $smarty.get.rate=='1'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_buyorder&rate=1">待评论</a></li>
