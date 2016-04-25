@@ -122,7 +122,7 @@ $(function(){
         }
         <{/if}>
         $("#payment_type").val(data.id);
-        $(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+        $(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
         $(".btn_pay dd div").eq(liIndex).show().siblings().hide();
     }); 
 })

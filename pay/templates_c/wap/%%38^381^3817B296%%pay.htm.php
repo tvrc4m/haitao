@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 13:12:26
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:09:54
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -129,9 +129,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 $(function(){
-    // $(".form_weixin_btn").bind("click",function(){
-    //     $(this).find("i").toggleClass("formsh")
-    // })
    $(".pay li").bind("click",function(){
         var liIndex=$(this).index();
         console.log(liIndex)
@@ -148,7 +145,7 @@ $(function(){
         }
         <?php endif; ?>
         $("#payment_type").val(data.id);
-        $(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+        $(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
         $(".btn_pay dd div").eq(liIndex).show().siblings().hide();
     }); 
 })

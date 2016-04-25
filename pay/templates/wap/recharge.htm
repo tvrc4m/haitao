@@ -13,7 +13,7 @@
         	<dt style="margin-left:5px;">充值方式：</dt>
             <dd class="pay">
                 <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.1.payment_type}>" />
-                <ul class="fn-clear">
+                <ul class="fn-clear">  
                 <{foreach item=list key=key from=$pay}>
                     <{if $list.payment_type!='account'}>
                     <li>
@@ -69,7 +69,7 @@ $(".pay li").bind("click",function(){
 		$(".d2").addClass("fn-hide").siblings(".d1").removeClass("fn-hide");
 	}
 	$("#payment_type").val(data.id);
-	$(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+	$(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
 });
 </script>
 
