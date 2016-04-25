@@ -97,5 +97,6 @@ $jj(function(){
             $jj(".da_banner").removeClass("da_list_test");
         }
     })
-
+ 	 var liHeight=$jj(".cate-guangimg-right ul li").height()*2;
+ 	 $(".cate-guangimg-left img").css({"height":liHeight+"px"})
 });

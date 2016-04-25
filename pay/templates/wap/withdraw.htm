@@ -28,7 +28,7 @@
         <fieldset id="amount">
         <dl>
         	<dt>金额</dt>
-            <dd><input type="text" placeholder="免服务费" class="text w100" name="amount" id="amount" dataType="Require" onblur="calculateFee(this.value)" msg="请填写付款金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" onkeyup="value=value.replace(/[^\d.]/g,'')"/></dd>
+            <dd><input type="text" value="" placeholder="免服务费" class="text w100 text100" name="amount" id="amount" dataType="Require" onblur="calculateFee(this.value)" msg="请填写付款金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" onkeyup="value=value.replace(/[^\d.]/g,'')"/></dd>
         </dl>
         <!-- <dl>
         	<dt>到账时间：</dt>
@@ -109,35 +109,30 @@ $('.freeItem').hover(function(){
 // 	calculateFee(val);
 // });
 
-// function calculateFee(val){
-// 	if(!val)
-// 	{
-// 		return false;	
-// 	}
-// 	var amount = parseFloat(val).toFixed(2);
-// 	if (amount <= 0) return;
-// 	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
-//     console.log(data)
-// 	eval("data = "+data);
-// 	var i=data.min;
-// 	var a=data.max;
-// 	var r=data.rates/100;
-// 	var n=0;
-// 	if(r*amount<=i){ n=i; }
-// 	else if(r*amount>=a){ n=a; }
-// 	else{ n=r*amount; }
-// 	//n=Math.round(n);//小叶写的
-//     var pn=new Number(n);//poy改的
-//     n=pn.toFixed(2);//poy改的
-// 	$('#extraFee').html(n);
-// 	$('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
-// }
-// $(function(){
-//     var a=$("#amount").val();
-//     console.log(a)
-//     if(a<100){
-//         a=100;
-//     } 
-// })
-   
+function calculateFee(val){
+	if(!val)
+	{
+		return false;	
+	}
+	var amount = parseFloat(val).toFixed(2);
+	if (amount <= 0) return;
+	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
+    console.log(val)
+    if(val<100){
+        $(".text100").val("100")
+    }
+	// eval("data = "+data);
+	// var i=data.min;
+	// var a=data.max;
+	// var r=data.rates/100;
+	// var n=0;
+	// if(r*amount<=i){ n=i; }
+	// else if(r*amount>=a){ n=a; }
+	// else{ n=r*amount; }
+	// //n=Math.round(n);//小叶写的
+ //    var pn=new Number(n);//poy改的
+ //    n=pn.toFixed(2);//poy改的
+	// $('#extraFee').html(n);
+	// $('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
+}
 </script>

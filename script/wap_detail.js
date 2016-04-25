@@ -1,6 +1,6 @@
  var $jq = jQuery.noConflict();
  $jq(function(){
- 	var dScrotop=$jq(".nav-box").offset().top;
+ 	var dScrotop=$jq(".nav-box").offset().top-550;
  	$jq(window).scroll(function(){
         var wScrotop=$jq(document).scrollTop();
         if(wScrotop>=dScrotop){

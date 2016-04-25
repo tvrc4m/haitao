@@ -99,10 +99,12 @@
         if (wait == 0) {
             $(".button").val("获取验证码");
             $(".button").attr("disabled",false);
+            $(".button").css("background","#ff5c5c");
             wait = 60;
         } else {
             $(".button").val("再次发送(" + wait + ")");
             $(".button").attr("disabled",true);
+            $(".button").css("background","#ccc");
             wait--;
             setTimeout(function(){tiktok()},1000);
         }

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-22 16:42:37
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:00:26
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />

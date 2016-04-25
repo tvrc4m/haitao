@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 09:50:18
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:12:25
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -18,7 +18,7 @@
             <dd class="pay">
                 <input type="hidden" name="payment_type" id="payment_type" value="<?php echo $this->_tpl_vars['pay']['1']['payment_type']; ?>
 " />
-                <ul class="fn-clear">
+                <ul class="fn-clear">  
                 <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
@@ -79,7 +79,7 @@ $(".pay li").bind("click",function(){
 		$(".d2").addClass("fn-hide").siblings(".d1").removeClass("fn-hide");
 	}
 	$("#payment_type").val(data.id);
-	$(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+	$(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
 });
 </script>
 

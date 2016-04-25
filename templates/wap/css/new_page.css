@@ -975,12 +975,13 @@ ins,a
 .shop .shopli{position: relative;float:left;width:50%;text-align:center;height: auto;overflow: hidden;background: #fff;border:1px solid #b9b9b9;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .shop .shopli:nth-of-type(even){border-left:none;}
 .shop .shopli:nth-of-type(n+3){border-top:none;}
+/*.shop .shopli:nth-of-type(2){border-bottom:none;}*/
 /*.itemSearchResult .shop .shopli{margin-right: 2.5%;}
 .itemSearchResult .shop .shopli:nth-of-type(even){margin-right: 0px;}*/
 .shop .shopli .shopli_bottom{padding: 0.5rem;}
 .shopli_bottom_message{width:100%;font-size: 0.6rem;float: left;}
 .shopli_top_img{margin-bottom: 1px;margin: 1rem 0.5rem 0;padding-bottom: 10px; border-bottom: 1px dashed #b9b9b9;}
-.shopli_top_imgs{margin-bottom: 1px;padding: 0.5rem;margin: 0;border-bottom:1px solid #b9b9b9;}
+.shopli_top_imgs{margin-bottom: 1px;padding: 0.5rem;margin: 0;border-bottom:1px solid #efefef;}
 .select_style li a.shopli_top_as{border-radius: 0px!important;}
 /* .shopli_top_img img{width: 100%}*/
 .shopli_bottom_text{margin-bottom: 0.25rem;}

@@ -49,7 +49,7 @@ $(function(){
     </dl>
     <dl>
       <dt>佣金收益</dt>
-      <dd><{$list.user_commission_shop_amount|string_format:"%.2f"}></dd>
+      <dd class="distri-price"><{$list.user_commission_shop_amount|string_format:"%.2f"}></dd>
     </dl>
   </div>
   <{foreachelse}>
@@ -58,6 +58,6 @@ $(function(){
   </div>
   <{/foreach}>
   
-  <{$page}>
+<a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
   
    </section>

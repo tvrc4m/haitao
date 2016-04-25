@@ -210,6 +210,9 @@ $('.menu-items li').hover(function(){
 },function(){
     $(this).removeClass("hover");   
 });
+$(".m_gz").bind("mouseenter mouseleave",function(){
+    $(".m_gz .sjmy").toggleClass("fn-hide");
+});
 function get_search_word(k)
 {
     if(k!='')
