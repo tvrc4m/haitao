@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 18:58:28
+<?php /* Smarty version 2.6.20, created on 2016-04-25 19:00:41
          compiled from index.htm */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.htm", 'smarty_include_vars' => array()));
@@ -17,9 +17,8 @@ unset($_smarty_tpl_vars);
 </header>
 <section class="banner">
 	<div class="user cn-clear">
-    	<div class="img"><a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/settings.php?m=member&s=admin_member&cg_u_type=1"><img height="72" src="<?php if ($this->_tpl_vars['cominfo']['plogo']): ?><?php echo $this->_tpl_vars['cominfo']['plogo']; ?>
-<?php else: ?>templates/default/image/avatar.png<?php endif; ?>" /></a></div>
+    	<div class="img"><img height="72" src="<?php if ($this->_tpl_vars['cominfo']['plogo']): ?><?php echo $this->_tpl_vars['cominfo']['plogo']; ?>
+<?php else: ?>templates/default/image/avatar.png<?php endif; ?>" /></div>
         <div class="img-cover"></div>
         <div class="info">
         	<div class="user_info">
