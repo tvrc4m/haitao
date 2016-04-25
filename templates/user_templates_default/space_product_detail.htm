@@ -38,7 +38,8 @@ $(document).ready(function(){
                     var pid = '<{$smarty.get.id}>';
                     var dist_user_id = '<{$smarty.get.shop_id}>';
                     // $('#cart_show').fadeIn(500);
-                    // $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
+                    $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
+                    $('#cart_show').css("display","none");
                     // x = $(".buy_box").offset();
                     // $("#cart_show").offset({
                     //     top: x.top,
