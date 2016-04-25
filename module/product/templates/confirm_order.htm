@@ -99,10 +99,9 @@ weburl="<{$config.weburl}>";
 </div>
 
 <div class="waitpay">
-    <p class="head"><span></span>等待付款<a href="">×</a></p>
+    <p class="head"><span></span>等待付款<a>×</a></p>
     <div class="content clearfix">
-        <h2>请您在新打开的页面上完成付款</h3>
-        <p class="time">请在<span>31分33秒</span>内完成付款，否则订单将自动关闭</p>
+        <h2>请您在新打开的页面上完成付款</h2>
         <p>付款完成前请不要关闭此窗口</p>
         <p>完成付款后请根据您的情况点击下面的按钮</p>
         <ul class="clearfix">
@@ -127,19 +126,13 @@ $(".step li:not(:last-child)").bind("click",function(){
     $('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax&id='+id+'<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
 });
 
-function waitpay () {
-var num = 1800;
-var interval = window.setInterval(function(){
-    num = num - 1;
-    $(".idcode .btn").attr("value",num+ "秒后重新发送");
-    if (num < 1) {
-        $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
-        clearInterval(interval);
-        $(".idcode .btn").attr("value","发送短信验证码");
-        num = 60;
-    };
-},1000);
-}
+$(".head a").bind("click",function () {
+    $(".waitpay").css("display","none");
+    $("#overlay").remove();
+});
+$(function(){
+  $('body').append('<div id="overlay"></div>');
+});
 </script>
 <{/if}>
 <{include file="../../../templates/default/footer.htm"}>
