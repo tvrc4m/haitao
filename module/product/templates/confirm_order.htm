@@ -134,6 +134,17 @@ $(".head a").bind("click",function () {
 function saveorder(){
     $('body').append('<div id="overlay"></div>');
     $(".waitpay").css("display","block");
+    $.ajax({
+        type: "POST",
+        url:ajaxCallUrl,
+        data:$('#saveorder').serialize(),
+        async: false,
+        error: function(request) {
+        },
+        success: function(data) {
+        }
+    });
+    window.open("http://www.jb51.net");
     return false;
 }
 </script>
