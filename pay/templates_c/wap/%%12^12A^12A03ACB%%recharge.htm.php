@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 09:50:18
+<?php /* Smarty version 2.6.20, created on 2016-04-25 16:59:15
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -22,14 +22,14 @@
                 <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
-                    <?php if ($this->_tpl_vars['list']['payment_type'] != 'account'): ?>
+                    
                     <li>
                         <a class="form_zhifu_btn" data-param="{'id':'<?php echo $this->_tpl_vars['list']['payment_type']; ?>
 '}"><img src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
 .gif" class="form_qianbao_img"><?php echo $this->_tpl_vars['list']['payment_name']; ?>
 <i></i></a>
                     </li>
-                    <?php endif; ?>
+                   
                 <?php endforeach; endif; unset($_from); ?>  
                 </ul>
             </dd>
