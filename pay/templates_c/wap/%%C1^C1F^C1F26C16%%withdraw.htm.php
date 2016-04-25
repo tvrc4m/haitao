@@ -1,9 +1,14 @@
+<?php /* Smarty version 2.6.20, created on 2016-04-25 13:26:20
+         compiled from withdraw.htm */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 41, false),)), $this); ?>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="script/Validator.js"></script>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
 	<div class="i-block">
-    	 <h2>提取到银行卡<span><a class="withdraw" href="<{$config.weburl}>/?m=payment&s=record&mold=2">提取记录</a></span></h2>
+    	 <h2>提取到银行卡<span><a class="withdraw" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/?m=payment&s=record&mold=2">提取记录</a></span></h2>
     </div>
     <div style="background-color:#ededed;height:10px;"></div>
 	<div class="form">
@@ -33,15 +38,23 @@
         <!-- <dl>
         	<dt>到账时间：</dt>
             <dd class="time">
-            	<{foreach item=list key=key from=$fee}>
+            	<?php $_from = $this->_tpl_vars['fee']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
+?>
                 <p>
                     <label>
-                        <input type="radio" name="supportTime" value="<{$list.id}>" <{if !$key}>checked="checked"<{/if}> data-param="{'max':'<{$list.fee_max}>','min':'<{$list.fee_min}>','rates':'<{$list.fee_rates}>'}" />
-                        <span><{$list.name}></span>
-                        <em><{$list.fee_rates|number_format:2}>%服务费</em>
+                        <input type="radio" name="supportTime" value="<?php echo $this->_tpl_vars['list']['id']; ?>
+" <?php if (! $this->_tpl_vars['key']): ?>checked="checked"<?php endif; ?> data-param="{'max':'<?php echo $this->_tpl_vars['list']['fee_max']; ?>
+','min':'<?php echo $this->_tpl_vars['list']['fee_min']; ?>
+','rates':'<?php echo $this->_tpl_vars['list']['fee_rates']; ?>
+'}" />
+                        <span><?php echo $this->_tpl_vars['list']['name']; ?>
+</span>
+                        <em><?php echo ((is_array($_tmp=$this->_tpl_vars['list']['fee_rates'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2) : number_format($_tmp, 2)); ?>
+%服务费</em>
                     </label>
                 </p>
-                <{/foreach}>
+                <?php endforeach; endif; unset($_from); ?>
             </dd>
         </dl>
         <dl class="free">
@@ -59,14 +72,20 @@
                                 <th>服务费下限</th>
                                 <th>服务费上限</th>
                             </tr>
-            				<{foreach item=list key=key from=$fee}>
+            				<?php $_from = $this->_tpl_vars['fee']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
+?>
                             <tr>
-                            	<td><{$list.name}></td>
-                            	<td><{$list.fee_rates|number_format:2}>%</td>
-                            	<td><{$list.fee_min|number_format:2}>元/笔</td>
-                            	<td><{$list.fee_max|number_format:2}>元/笔</td>
+                            	<td><?php echo $this->_tpl_vars['list']['name']; ?>
+</td>
+                            	<td><?php echo ((is_array($_tmp=$this->_tpl_vars['list']['fee_rates'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2) : number_format($_tmp, 2)); ?>
+%</td>
+                            	<td><?php echo ((is_array($_tmp=$this->_tpl_vars['list']['fee_min'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2) : number_format($_tmp, 2)); ?>
+元/笔</td>
+                            	<td><?php echo ((is_array($_tmp=$this->_tpl_vars['list']['fee_max'])) ? $this->_run_mod_handler('number_format', true, $_tmp, 2) : number_format($_tmp, 2)); ?>
+元/笔</td>
                             </tr>
-               			 	<{/foreach}>
+               			 	<?php endforeach; endif; unset($_from); ?>
                         </table>
                     </div>
                 </div>
@@ -142,4 +161,4 @@ function calculateFee(val){
 //     })
    
 // }) 
-</script>
+</script>

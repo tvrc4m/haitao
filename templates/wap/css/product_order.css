@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-.cart-button{height:2.5rem;font-size:0.8rem;width: 5rem;margin-top: -1px; line-height:2.5rem;display:inline-block;background:#ff5c5c;color:#FFFFFF!important;text-align:center;float: right;}
+.cart-button{height:50px;font-size:0.8rem;width: 5rem;margin-top: -1px; line-height:50px;display:inline-block;background:#ff5c5c;color:#FFFFFF!important;text-align:center;float: right;}
 .order{padding:0px 0px;font-size:14px;}
 .p-price-he{color: #666;padding-left: 1rem;}
 .choose_btn{line-height: 50px;height: 50px;position: fixed;
@@ -34,7 +34,7 @@
 .item .top input[type="checkbox"]{margin:-1px 0 0 20px }
 .item .bottom{line-height:30px;background-color:#fff;border-top:1px solid #b9b9b9;text-align:right;font-size:0.7rem;} 
 .item .bottom .p-detail{color:#666;float:left;height: 2.5rem;line-height: 2.5rem;font-size: 0.7rem;width: 100%;padding: 0px 10px;border-bottom: 1px dashed #b9b9b9;box-sizing:border-box;-webkit-box-sizing:border-box;}
-.item .bottom strong{color:#F00;font-size:16px;}
+.item .bottom strong{color:#ff5c5c;font-size:16px;}
 .replenish{color:#666;float:left;height: 2.5rem;line-height: 2.5rem;font-size: 0.7rem;width: 100%;padding: 0px 10px;border-bottom: 1px dashed #b9b9b9;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .replenish-btn{border:none;outline: none;width: 9rem;
     font-size: 0.6rem;}

@@ -1,5 +1,5 @@
 @charset "utf-8";
-.submit{border:1px solid #F57403;background-color:#ff5c5c;color:#FFF;line-height:22px;height:32px;padding:7px 10px 7px 12px;display:inline-block;*display:inline;text-align:center;vertical-align:middle;font-weight:700;border-radius:5px;*zoom:1;*overflow:visible;}
+.submit{border:1px solid #F57403;background-color:#ff5c5c;color:#FFF;line-height:22px;height:32px;display:inline-block;*display:inline;text-align:center;vertical-align:middle;font-weight:700;border-radius:5px;*zoom:1;*overflow:visible;}
 .submit:hover{background-color:#FB8318;}
 .text{border-color:#AAAAAA #DDDDDD #DDDDDD #AAAAAA;border-style:solid;border-width:1px;font-family:Tahoma;padding:4px 5px 5px;width:170px;}
 .form-error{color:#F00;}
@@ -75,7 +75,7 @@ i.fanhui_icon {
 .form dd p input[type="radio"]{position:absolute;left:0;}
 .form dd p span{ font-size:14px;}
 .form dd p em{color:#B2B2B2;font-size:12px;margin-left:18px;}
-.form dd .submit{ margin:4px 0 0 0px;height: 44px;width: 94%;font-size: 14px;letter-spacing: 1px;}
+.form dd .submit{height: 40px;width: 94%;font-size: 14px;letter-spacing: 1px;line-height: 40px}
 .form dl.free{padding-bottom:10px;text-align: center;}
 .form dl.free2{margin-left: 10px;}
 .form dl.free dd{font-size:12px;line-height:30px;position:relative;background-color: #f1f1f1;}
@@ -110,7 +110,8 @@ a.form_weixin_btn{height:30px;line-height: 30px; cursor: pointer;color:#535353;f
 	background:url(../image/pay_haitao_icon8.png) left center no-repeat;background-size: contain;margin-top: 10px;margin-bottom: 10px;width: 100%;-webkit-box-sizing: border-box; box-sizing: border-box;}
 .form_weixin_btn i,.form_zhifu_btn i,.form_qianbao_btn i{width: 25px;height: 25px;background:url(../image/pay_haitao_icon7.png) center no-repeat;background-size: contain;float: right;margin-right: 10px;display: none;}
 .form_qianbao_btn i.formsh{display: inline-block;}
-.form_weixin_btns2{width: 94%;margin: 0 auto;height: 40px;line-height: 40px;background-color: #ff5c5c;color: #fff;text-align: center;border-radius: 5px;font-size: 14px;letter-spacing: 1px;}
+.form_weixin_btn i.formsh{display: inline-block;}
+.form_weixin_btns2{font-weight: 700; width: 94%;margin: 0 auto;height: 40px;line-height: 40px;background-color: #ff5c5c;color: #fff;text-align: center;border-radius: 5px;font-size: 14px;letter-spacing: 1px;}
 .form_zhifu_btn i.formsh{display: inline-block;}
 .form_qianbao_img{display: inline-block;width: 30px;height: 30px;margin-right: 10px;vertical-align: middle;}
 a.form_qianbao_btn{height:30px;line-height: 30px; cursor: pointer;color:#535353;font-size:14px;display:inline-block;margin-top: 10px;margin-bottom: 10px;width: 100%;-webkit-box-sizing: border-box; box-sizing: border-box;}

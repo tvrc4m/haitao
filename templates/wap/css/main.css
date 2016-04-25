@@ -12,7 +12,7 @@
 .info ul li strong{display:block;color:#535353 !important;font-size:0.7rem;font-weight:normal;margin-bottom: 5px;}
 .info ul li a.color strong{color:#ff5c5c !important;}
 .duser{background-color: #f97677;overflow:hidden;text-align: center;padding: 0.8rem 0;}
-.duser-user dt{padding:4px;margin:0 auto;position:relative;text-align:center;background:#FFF;border-radius:50%;display: inline-block;}
+.duser-user dt{margin:0 auto;position:relative;text-align:center;background:#FFF;border-radius:50%;display: inline-block;}
 .duser-user dd{color:#fff;font-size:0.6rem;padding-top:10px;text-align: center;padding-bottom: 6px;}
 .duser-user dt img{border-radius: 50%;}
 .duser-auth{display: inline-block;padding: 8px 20px;background-color: #fff;border-radius: 15px;}
