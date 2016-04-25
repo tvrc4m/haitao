@@ -171,11 +171,13 @@ $(function(){
 			{
 				delayTime--;
 				$(".send").val(delayTime + '秒后重新获取');
+                $(".send").css("background","#ccc");
 				if (delayTime == 0) {
 					delayTime = 60;
 					$(".send").val(msg);
 					$(".send").removeAttr("disabled");
 					$("#email").removeAttr("disabled");
+                    $(".send").css("background","#ff5c5c");
 					clearTimeout(t);
 				}
 				else
@@ -252,11 +254,13 @@ $(function(){
 			{
 				delayTime--;
 				$(".send").val(delayTime + '秒后重新获取');
+                $(".send").css("background","#ccc");
 				if (delayTime == 0) {
 					delayTime = 60;
 					$(".send").val(msg);
 					$(".send").removeAttr("disabled");
 					$("#mobile").removeAttr("disabled");
+                    $(".send").css("background","#ff5c5c");
 					clearTimeout(t);
 				}
 				else
