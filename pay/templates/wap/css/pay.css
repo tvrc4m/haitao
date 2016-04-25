@@ -1,5 +1,5 @@
 @charset "utf-8";
-.submit{border:1px solid #F57403;background-color:#ff5c5c;color:#FFF;line-height:22px;height:32px;padding:7px 10px 7px 12px;display:inline-block;*display:inline;text-align:center;vertical-align:middle;font-weight:700;border-radius:5px;*zoom:1;*overflow:visible;}
+.submit{border:1px solid #F57403;background-color:#ff5c5c;color:#FFF;line-height:22px;height:32px;display:inline-block;*display:inline;text-align:center;vertical-align:middle;font-weight:700;border-radius:5px;*zoom:1;*overflow:visible;}
 .submit:hover{background-color:#FB8318;}
 .text{border-color:#AAAAAA #DDDDDD #DDDDDD #AAAAAA;border-style:solid;border-width:1px;font-family:Tahoma;padding:4px 5px 5px;width:170px;}
 .form-error{color:#F00;}

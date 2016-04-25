@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 11:32:04
+<?php /* Smarty version 2.6.20, created on 2016-04-25 13:26:20
          compiled from withdraw.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 41, false),)), $this); ?>
@@ -128,35 +128,37 @@ $('.freeItem').hover(function(){
 // 	calculateFee(val);
 // });
 
-// function calculateFee(val){
-// 	if(!val)
-// 	{
-// 		return false;	
-// 	}
-// 	var amount = parseFloat(val).toFixed(2);
-// 	if (amount <= 0) return;
-// 	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
-//     console.log(data)
-// 	eval("data = "+data);
-// 	var i=data.min;
-// 	var a=data.max;
-// 	var r=data.rates/100;
-// 	var n=0;
-// 	if(r*amount<=i){ n=i; }
-// 	else if(r*amount>=a){ n=a; }
-// 	else{ n=r*amount; }
-// 	//n=Math.round(n);//小叶写的
-//     var pn=new Number(n);//poy改的
-//     n=pn.toFixed(2);//poy改的
-// 	$('#extraFee').html(n);
-// 	$('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
-// }
+function calculateFee(val){
+	if(!val)
+	{
+		return false;	
+	}
+	var amount = parseFloat(val).toFixed(2);
+	if (amount <= 0) return;
+	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
+    console.log(data)
+	// eval("data = "+data);
+	// var i=data.min;
+	// var a=data.max;
+	// var r=data.rates/100;
+	// var n=0;
+	// if(r*amount<=i){ n=i; }
+	// else if(r*amount>=a){ n=a; }
+	// else{ n=r*amount; }
+	// //n=Math.round(n);//小叶写的
+ //    var pn=new Number(n);//poy改的
+ //    n=pn.toFixed(2);//poy改的
+	// $('#extraFee').html(n);
+	// $('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
+}
 // $(function(){
-//     var a=$("#amount").val();
-//     console.log(a)
-//     if(a<100){
-//         a=100;
-//     } 
-// })
+//     $("#amount").bind("change",function(){
+//          var a=$("#amount").val();
+//         console.log(a)
+//         if(a<100){
+//             a=100;
+//         } 
+//     })
    
+// }) 
 </script>

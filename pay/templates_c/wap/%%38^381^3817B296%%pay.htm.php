@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 12:52:56
+<?php /* Smarty version 2.6.20, created on 2016-04-25 13:12:26
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -77,7 +77,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
                 <dd class="pay">
                     <ul class="fn-clear">
                     <li>
-                         <?php if ($this->_tpl_vars['config']['bw'] != 'weixin'): ?>
+                         <?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
                             <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a            
                         <?php endif; ?>
                     </li>
@@ -112,11 +112,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <?php if ($this->_tpl_vars['config']['bw'] != 'weixin'): ?>
+                <?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
                 <div class="form_weixin_btns2" onclick="callpay()" >确定支付</div>
                 <div style="display:none"><input style="font-size:14px;letter-spacing:1px;margin-left:-12px;padding:0;" type="submit" class="submit" value="确定支付" /></div>
                 <?php else: ?>
-                <input style="padding-top:4px;font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
+                <input style="font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
                 <?php endif; ?>
                 </dd>
             </dl>

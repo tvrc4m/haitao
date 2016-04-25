@@ -60,7 +60,7 @@
                 <dd class="pay">
                     <ul class="fn-clear">
                     <li>
-                         <{if $config.bw neq "weixin"}>
+                         <{if $config.bw eq "weixin"}>
                             <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a            
                         <{/if}>
                     </li>
@@ -89,11 +89,11 @@
             <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <{if $config.bw neq "weixin"}>
+                <{if $config.bw eq "weixin"}>
                 <div class="form_weixin_btns2" onclick="callpay()" >确定支付</div>
                 <div style="display:none"><input style="font-size:14px;letter-spacing:1px;margin-left:-12px;padding:0;" type="submit" class="submit" value="确定支付" /></div>
                 <{else}>
-                <input style="padding-top:4px;font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
+                <input style="font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
                 <{/if}>
                 </dd>
             </dl>
