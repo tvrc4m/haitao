@@ -183,5 +183,5 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .fl{ float:left}
 .feededitor textarea{height:60px;width:470px;}
 .feededitor .handle{font-size:1.2em;height:32px;line-height:32px;margin-top:10px;font-size:12px;}
-.feededitor .handle .button{background-color:#80B8D2;border:medium none;border-radius:4px 4px 4px 4px;color:#FFFFFF;cursor:pointer;display:block;float:right;font-size:1.4em;font-weight:700;height:32px;line-height:32px;width:60px;}
+.feededitor .handle .button{background-color:#ff5c5c;border:medium none;border-radius:4px 4px 4px 4px;color:#FFFFFF;cursor:pointer;display:block;float:right;font-size:1.4em;font-weight:700;height:32px;line-height:32px;width:60px;}
 textarea{background-color:#FBFBFB;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-image:none;border-style:solid;border-width:1px; box-shadow:2px 2px 1px 0 #E7E7E7 inset;font-family:Tahoma;line-height:18px;padding:1px 2px 3px 4px !important;}
