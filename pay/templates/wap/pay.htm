@@ -56,7 +56,7 @@
         <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.0.payment_type}>" />
             <fieldset>
             <dl>
-                <dt style="margin-left:5px;">请选择支付方式</dt>
+                <dt style="margin-left:5px;">请选择支付方式：</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
                     <li>
@@ -122,7 +122,7 @@ $(function(){
         }
         <{/if}>
         $("#payment_type").val(data.id);
-        $(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+        $(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
         $(".btn_pay dd div").eq(liIndex).show().siblings().hide();
     }); 
 })

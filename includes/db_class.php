@@ -11,11 +11,11 @@ class dba {
 	var $Query_ID;
 	var $Record;
 	var $Row;
-	var $Auto_free   = 0;
-	var $sql_flag=NULL;
-	var $memcache_obj=NULL;
-	var $is_cache=NULL;
-	var $cache_valid=FALSE;
+	var $Auto_free = 0;
+	var $sql_flag = NULL;
+	var $memcache_obj = NULL;
+	var $is_cache = NULL;
+	var $cache_valid = FALSE;
 	
 	function dba($h,$u,$p,$db,$port=NULL)
 	{

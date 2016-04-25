@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 13:26:20
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:25:16
          compiled from withdraw.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'withdraw.htm', 41, false),)), $this); ?>
@@ -33,7 +33,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
         <fieldset id="amount">
         <dl>
         	<dt>金额</dt>
-            <dd><input type="text" placeholder="免服务费" class="text w100" name="amount" id="amount" dataType="Require" onblur="calculateFee(this.value)" msg="请填写付款金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" onkeyup="value=value.replace(/[^\d.]/g,'')"/></dd>
+            <dd><input type="text" value="" placeholder="免服务费" class="text w100 text100" name="amount" id="amount" dataType="Require" onblur="calculateFee(this.value)" msg="请填写付款金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" onkeyup="value=value.replace(/[^\d.]/g,'')"/></dd>
         </dl>
         <!-- <dl>
         	<dt>到账时间：</dt>
@@ -136,7 +136,10 @@ function calculateFee(val){
 	var amount = parseFloat(val).toFixed(2);
 	if (amount <= 0) return;
 	var data = $(".time").find("input[type='radio']:checked").attr('data-param');
-    console.log(data)
+    console.log(val)
+    if(val<100){
+        $(".text100").val("100")
+    }
 	// eval("data = "+data);
 	// var i=data.min;
 	// var a=data.max;
@@ -151,14 +154,4 @@ function calculateFee(val){
 	// $('#extraFee').html(n);
 	// $('#amountTotal').html((parseFloat(n)+parseFloat(amount)).toFixed(2));
 }
-// $(function(){
-//     $("#amount").bind("change",function(){
-//          var a=$("#amount").val();
-//         console.log(a)
-//         if(a<100){
-//             a=100;
-//         } 
-//     })
-   
-// }) 
 </script>

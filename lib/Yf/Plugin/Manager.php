@@ -97,9 +97,7 @@ class Yf_Plugin_Manager
                 }
             }
         }
-
         #此处做些日志记录方面的东西
-
         return $result;
     }
 

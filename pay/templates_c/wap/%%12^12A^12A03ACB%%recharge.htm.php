@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 16:59:15
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:49:58
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -14,22 +14,22 @@
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     	<fieldset id="bank">
     	<dl>
-        	<dt style="margin-left:5px;">充值方式：</dt>
+        	<dt style="margin-left:5px;">请选择充值方式：</dt>
             <dd class="pay">
                 <input type="hidden" name="payment_type" id="payment_type" value="<?php echo $this->_tpl_vars['pay']['1']['payment_type']; ?>
 " />
-                <ul class="fn-clear">
+                <ul class="fn-clear">  
                 <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
-                    
+                    <?php if ($this->_tpl_vars['list']['payment_type'] != 'account'): ?>
                     <li>
                         <a class="form_zhifu_btn" data-param="{'id':'<?php echo $this->_tpl_vars['list']['payment_type']; ?>
 '}"><img src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
 .gif" class="form_qianbao_img"><?php echo $this->_tpl_vars['list']['payment_name']; ?>
 <i></i></a>
                     </li>
-                   
+                    <?php endif; ?>
                 <?php endforeach; endif; unset($_from); ?>  
                 </ul>
             </dd>
@@ -61,6 +61,9 @@
     </div>
 </div>	
 <script type="text/javascript">
+// $(function(){
+//     $(".pay li").eq(0).find("i").addClass("formsh");
+// })
 $(".pay li").bind("click",function(){
 	var data = $(this).children('a').attr('data-param');
 	eval("data = "+data);
@@ -79,7 +82,7 @@ $(".pay li").bind("click",function(){
 		$(".d2").addClass("fn-hide").siblings(".d1").removeClass("fn-hide");
 	}
 	$("#payment_type").val(data.id);
-	$(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+	$(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
 });
 </script>
 

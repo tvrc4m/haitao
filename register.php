@@ -207,10 +207,10 @@ function doreg($guid=NULL)
 	$userid=$db->lastid();
 	
 	if($userid)
-	{	
+	{
+
 		$sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
 		$re=$db->query($sql);
-		
 		if($re)
 		{
 			$post['userid'] = $userid;
@@ -232,9 +232,13 @@ function doreg($guid=NULL)
 			bsetcookie("USERID","$userid\t$user",NULL,"/",$config['baseurl']);
 			setcookie("USER",$user,NULL,"/",$config['baseurl']);
 
-			//
 			$PluginManager = Yf_Plugin_Manager::getInstance();
 			$PluginManager->trigger('reg_done', $userid, $user);
+
+            $sql="update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=".$userid;
+            $db->query($sql);
+            $sql="update ". MEMBER ." set mobile_verify = 1 where userid=".$userid;
+            $db->query($sql);
 
 			if($config['temp'] == 'wap')
 				header("Location: main.php?cg_u_type=1");
@@ -247,7 +251,6 @@ function doreg($guid=NULL)
 }
 
 /* =================================================自定义方法======================================================== */
-
 
 /**
  * 检测验证码

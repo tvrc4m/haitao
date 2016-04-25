@@ -138,7 +138,7 @@ class pay
 
             if($config['bw'] == 'weixin')
             {
-                $str = " and payment_type = 'wap_alipay' or payment_type = 'wx_pay'";
+                $str = " and payment_type = 'wx_pay'";
             }
             else
             {

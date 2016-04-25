@@ -10,10 +10,10 @@
     <form method="post" onSubmit="return Validator.Validate(this,3)">
     	<fieldset id="bank">
     	<dl>
-        	<dt style="margin-left:5px;">充值方式：</dt>
+        	<dt style="margin-left:5px;">请选择充值方式：</dt>
             <dd class="pay">
                 <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.1.payment_type}>" />
-                <ul class="fn-clear">
+                <ul class="fn-clear">  
                 <{foreach item=list key=key from=$pay}>
                     <{if $list.payment_type!='account'}>
                     <li>
@@ -51,6 +51,9 @@
     </div>
 </div>	
 <script type="text/javascript">
+// $(function(){
+//     $(".pay li").eq(0).find("i").addClass("formsh");
+// })
 $(".pay li").bind("click",function(){
 	var data = $(this).children('a').attr('data-param');
 	eval("data = "+data);
@@ -69,7 +72,7 @@ $(".pay li").bind("click",function(){
 		$(".d2").addClass("fn-hide").siblings(".d1").removeClass("fn-hide");
 	}
 	$("#payment_type").val(data.id);
-	$(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+	$(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
 });
 </script>
 
