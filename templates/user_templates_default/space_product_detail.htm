@@ -37,13 +37,14 @@ $(document).ready(function(){
                     var sid = $('#sid').val();
                     var pid = '<{$smarty.get.id}>';
                     var dist_user_id = '<{$smarty.get.shop_id}>';
-                    $('#cart_show').fadeIn(500);
+                    // $('#cart_show').fadeIn(500);
                     $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
-                    x = $(".buy_box").offset();
-                    $("#cart_show").offset({
-                        top: x.top,
-                        left: x.left
-                    });
+                    $('#cart_show').css("display","none");
+                    // x = $(".buy_box").offset();
+                    // $("#cart_show").offset({
+                    //     top: x.top,
+                    //     left: x.left
+                    // });
                     return false;
                 }
             });
@@ -171,7 +172,7 @@ function buy()
                         <ul class="promo-service">
                             <li><span class="mr10">该商品</span>由<strong>郑州保税仓</strong>发货  预计3-5天送达</li>
                             <li><span class="mr10">进口税</span><b><{$com.name}></b>商家承担</li>
-                            <li><span class="mr10">服&nbsp&nbsp&nbsp务</span>支持14天退换货&nbsp<em class="icon"></em><span style="color:#ff5c5c;">免运费</span> </li>
+                            <li><span class="mr10">服&nbsp&nbsp&nbsp务</span>支持14天退换货&nbsp<em class="help"><p class="registerNotice1"><span class="tipcon">只支持在物流中损坏的商品</span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p></em><em class="icon"></em><span style="color:#ff5c5c;">免运费</span> </li>
                         </ul>
                         <div class="buy_box clearfix">
                                 <form id="form" onsubmit="return buy()" action="<{$config.weburl}>/?m=product&s=<{if $de.is_virtual}>confirm_virtual_order<{else}>confirm_order<{/if}><{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">

@@ -43,7 +43,7 @@
 .form dl.free dd .freeItem.hover table{border-right:1px solid #C8C8C8;border-bottom:1px solid #C8C8C8;background:#FFF;border-collapse:collapse;border-spacing:0;width:100%;margin-top:5px;}
 .form dl.free dd .freeItem.hover th{border-left:1px solid #C8C8C8;border-top:1px solid #C8C8C8;padding:3px 5px;font-weight:normal;background:#E9E9E9;font-size:12px;vertical-align:baseline;text-align:left;line-height:20px;}
 .form dl.free dd .freeItem.hover td{border-left:1px solid #C8C8C8;border-top:1px solid #C8C8C8;padding:3px 5px;line-height:20px;}
-.form dl.getyzm .button{margin-left: 10px;padding: 5px 10px}
+.form dl.getyzm .button{margin-left: 10px;padding: 5px 10px;background: #ff5c5c;border: none;color: #fff;cursor: pointer}
 .form dl.oldpass dd{width:50%;}
 .form dl.oldpass .findpass{float: left;margin-left: 15px;}
 .form dl.oldpass .findpass a{color:#F57403;}
