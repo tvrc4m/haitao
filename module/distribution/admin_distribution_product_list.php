@@ -33,7 +33,6 @@ if ($config['bw'] == "weixin")
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
 }
-
 if(!empty($_GET['deid']))
 {
 	$product_id = intval($_GET['deid']);
