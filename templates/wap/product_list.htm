@@ -17,7 +17,7 @@
 		<li <{if $s==2}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=2"><span>人气</span></a></li>
         <li <{if $s==1}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=1"><span>销量</span></a></li>
         <li <{if $s==3}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=3"><span>信用</span></a></li>
-        <li <{if $s==5}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=5"><span>总价</span></a></li>		
+        <li <{if $s==5}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=5"><span>总价</span></a></li>
     </ul>
 </section>
 <section class="itemSearchList">
@@ -63,7 +63,7 @@
         <{/foreach}>
        </ul>
     </div> 
-    <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
+    <a href="javascript:more_info();" class="m_jiazai">下滑加载更多</a>
 </div>
 <{else}>
 <div class="itemsNull">
@@ -150,6 +150,20 @@
               
             }
         }
+    }
+    var page = 0;
+    function more_info(){
+        var url = "<{$config.weburl}>/";
+        var id = "<{$smarty.get.id}>";
+        page = parseInt(parseInt(page) + 10);
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: {id:id, page:page, m:"product", s:"ajax_list"},
+            success: function(msg){
+                alert(msg);
+            }
+        });
     }
 </script>
 
