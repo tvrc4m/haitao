@@ -60,7 +60,7 @@
                 <dd class="pay">
                     <ul class="fn-clear">
                     <li>
-                         <{if $config.bw eq "weixin"}>
+                         <{if $config.bw neq "weixin"}>
                             <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a            
                         <{/if}>
                     </li>
@@ -89,8 +89,9 @@
             <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <{if $config.bw eq "weixin"}>
+                <{if $config.bw neq "weixin"}>
                 <div class="form_weixin_btns2" onclick="callpay()" >确定支付</div>
+                <div style="display:none"><input style="font-size:14px;letter-spacing:1px;margin-left:-12px;padding:0;" type="submit" class="submit" value="确定支付" /></div>
                 <{else}>
                 <input style="padding-top:4px;font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
                 <{/if}>
@@ -109,6 +110,8 @@ $(function(){
     //     $(this).find("i").toggleClass("formsh")
     // })
    $(".pay li").bind("click",function(){
+        var liIndex=$(this).index();
+        console.log(liIndex)
         var data = $(this).children('a').attr('data-param');
         eval("data = "+data);
         <{if $account!='false'}>
@@ -123,6 +126,7 @@ $(function(){
         <{/if}>
         $("#payment_type").val(data.id);
         $(this).find("i").addClass("formsh").end().siblings().find("i").removeClass("formsh");
+        $(".btn_pay dd div").eq(liIndex).show().siblings().hide();
     }); 
 })
 
