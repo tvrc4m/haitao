@@ -50,8 +50,8 @@
                 </div>
             </div>
             <div class="col-money">
-                <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
-                <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>
+                <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>&nbsp;&nbsp;
+                <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>&nbsp;&nbsp;
                 <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
             </div>
             <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>

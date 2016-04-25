@@ -107,7 +107,7 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .block .record td div{color:#888;margin-top:5px;}
 
 .i-block{/*padding:20px 0;*/background-color:#fff;}
-.block h2{/*margin-bottom:15px;*/font-size:14px;/*border-bottom:solid 1px #ddd;*/height:50px;line-height: 50px;text-align: center;}
+.block h2{/*margin-bottom:15px;*/font-size:14px;/*border-bottom:solid 1px #ddd;*/height:40px;line-height: 40px;text-align: center;background-color: #f1f1f1;}
 .block h2 span{font-size:12px;font-weight:normal;float:right;padding-right: 0.5rem;}
 .block h2 span strong{color:#ff5c5c;margin:0 5px;}
 .block h2 span a{color:#ff5c5c;margin-left:3px;}
@@ -126,8 +126,8 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 
 
 .detail{/*margin:30px auto 20px;*/line-height:22px;border-right:1px solid #D2D2D2;border-top:1px solid #D2D2D2;color:#333;}
-.detail dt{display:block;font-size:14px;font-weight:bold;padding:8px 10px;text-align: center;}
 .detail dt,.detail dd{border-left:1px solid #D2D2D2;border-bottom:1px solid #D2D2D2;background-color: #fff;}
+.detail dt{display:block;font-size:14px;font-weight:bold;text-align: center;border: none;}
 .detail dd span{border-right:1px solid #D2D2D2;padding:6px 5px;width:90px;display:inline-block; margin-right:10px;text-align:right;}
 .block .record p a.pay_sgo{color: #555;font-size: 14px;}
 
