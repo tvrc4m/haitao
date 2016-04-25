@@ -1,6 +1,17 @@
 $(function(){
     $(document).scroll(function(){
         var h = $(document).scrollTop();
+        var wHeight=500;
+        console.log(h)
+        console.log(wHeight)
+        if(h>wHeight){
+            $(".addtop").show()
+            $(".addtop").click(function(){
+                $(window).scrollTop(0);
+            })
+        }else{
+            $(".addtop").hide()
+        }
         if(h > 50)
         {
             $(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"});

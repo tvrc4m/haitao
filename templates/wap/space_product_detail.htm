@@ -195,7 +195,10 @@
                 <{$de.detail}>
             </div>
             <div class="wap_pdetail j_tab">
-                <{$de.detail}>
+                品牌：<{$de.brand}>
+                <{foreach item=list from=$de.extfiled.s}>
+                    <{$list}>
+                <{/foreach}>
             </div>
             <div class="wap_pdetail j_tab">
                 <{insert name="label" type="product" o=4 temp="product_list_li_4" limit=0}>

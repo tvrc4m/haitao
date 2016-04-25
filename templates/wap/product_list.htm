@@ -21,6 +21,11 @@
     </ul>
 </section>
 <section class="itemSearchList">
+<section class="m_main-v44">
+    <div class="w100s">
+        <script src='<{$config.weburl}>/api/ad.php?id=38&catid=1'></script>
+    </div>
+</section>
 <{if $info.list}>
 <div class="itemSearchResult clearfix">
     <div class="shop clearfix">
@@ -58,9 +63,7 @@
         <{/foreach}>
        </ul>
     </div> 
-   <!--  <div class="page"><section><div class="cur"><span>一页只显示<{$info.count}>个商品</span></div></section></div>    -->
-   <!--  <{$info.page}> -->
-    <a href="<{$config.weburl}>/cat.php" class="m_jiazai"><i></i>点击加载更多</a>
+    <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 </div>
 <{else}>
 <div class="itemsNull">
@@ -77,6 +80,17 @@
     </ul>
     <{/if}>
 </div>
+</section>
+<section class="addcarts">
+    <a class="carts" href="/?m=product&s=cart">
+        <span class="cart-num-conts" id='cart_num'>
+            <span class="cart-num"></span>
+            <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+        </span>
+    </a>
+</section>
+<section class="addtop">
+    <a class="top" href="javascript:void(0);"></a>
 </section>
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>

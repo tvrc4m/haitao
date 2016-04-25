@@ -21,7 +21,7 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .user_rela{position: relative;}
 .inp_close {width: 1rem;height: 1rem;background: url(../../../image/wap/wap_haitao_icon1.png) no-repeat;display: none;position: absolute;right: 3%;top:24%;background-size: contain;}
 .inp_close_t{top: 48%;}
-#login{padding: 0 0.5rem;}
+.fordes{padding: 0 0.5rem;}
 #login table{width: 100%;}
 #login table input[name="user"]{box-shadow: 0px 0px 3px #b9b9b9;background-color: #fff!important;width: 100%;font-size: .7rem;padding-left: 18%;padding-right: 5%;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
 	background: 0 0;background: url(../../../image/wap/wap_haitao_icon6.png) 5.8% no-repeat;background-size: .85rem;border: none;border-radius: .2rem;}  

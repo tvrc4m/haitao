@@ -40,6 +40,7 @@ $prode['national_info'] = $db->fetchRow();
 //====================================产品详情
 
 $tpl->assign("de",$prode);
+
 /*echo "<pre>";
 var_export($prode);*/
 $tpl->assign("relation",$relation);
