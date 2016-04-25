@@ -232,9 +232,13 @@ function doreg($guid=NULL)
 			bsetcookie("USERID","$userid\t$user",NULL,"/",$config['baseurl']);
 			setcookie("USER",$user,NULL,"/",$config['baseurl']);
 
-			//
 			$PluginManager = Yf_Plugin_Manager::getInstance();
 			$PluginManager->trigger('reg_done', $userid, $user);
+
+            $sql="update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=".$userid;
+            $db->query($sql);
+            $sql="update ". MEMBER ." set mobile_verify = 1 where userid=".$userid;
+            $db->query($sql);
 
 			if($config['temp'] == 'wap')
 				header("Location: main.php?cg_u_type=1");

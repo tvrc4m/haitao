@@ -1,6 +1,6 @@
 <?php
-$id=!empty($_GET["id"])?$_GET["id"]*1:NULL;
-$key=!empty($_GET["key"])?trim($_GET["key"]):NULL;
+ $id=!empty($_GET["id"])?$_GET["id"]*1:NULL;
+ $key=!empty($_GET["key"])?trim($_GET["key"]):NULL;
 
 if (null == $key)
 {
@@ -245,7 +245,7 @@ else
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=20;
+	$page->listRows=10;
 	if(empty($cat['ext_field_cat']))
 		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
@@ -259,6 +259,7 @@ else
 //--------------------------------------------------
 	$db->query($sql);
 	$prol=$db->getRows();
+
 	foreach($prol as $key => $val){
 		$sql = "select count(id) as num from mallbuilder_product_comment where pid = ".$val[id];
 		$db->query($sql);
@@ -323,7 +324,7 @@ else
 }
 
 //获取当前页的类名
-if(!empty($_GET['id'])) {
+if(!empty($_GET['id'])){
     $sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
     $db->query($sql);
     $res = $db->fetchField('cat');

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-22 16:41:41
+<?php /* Smarty version 2.6.20, created on 2016-04-25 14:07:16
          compiled from settings.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <script src="script/my_lightbox.js" language="javascript"></script>
@@ -21,8 +21,16 @@
                 </dl>
                 <dl class="email">
                     <dt>手机号：</dt>
-                    <dd><input type="text" class="text" name="pay_mobile" id="pay_mobile" value="<?php echo $this->_tpl_vars['de']['pay_mobile']; ?>
-"/><div class="form-error"></div></dd>
+                    <dd>
+                        <?php if ($this->_tpl_vars['de']['pay_mobile']): ?>
+                            <?php echo $this->_tpl_vars['de']['pay_mobile']; ?>
+
+                        <?php else: ?>
+                            <input type="text" class="text" name="pay_mobile" id="pay_mobile" value="<?php echo $this->_tpl_vars['de']['pay_mobile']; ?>
+"/>
+                        <?php endif; ?>
+                        <div class="form-error"></div>
+                    </dd>
                 </dl>
                 <dl>
                     <dt>当前头像：</dt>

@@ -18,7 +18,7 @@
 	                </dt>
 	                <dd class="qd">
 	                    <a href="main.php?m=member&s=admin_member&type=email" class="qd_icon1"><{if $cominfo.email&&$cominfo.email_verify==1}>已认证<{else}>未认证<{/if}></a>
-	                    <a href="main.php?m=member&s=admin_member&type=mobile" class="qd_icon2"><{$cominfo.mobile}>---<{$cominfo.mobile_verify}><{if $cominfo.mobile&&$cominfo.mobile_verify==1}>已认证<{else}>未认证<{/if}></a>
+	                    <a href="main.php?m=member&s=admin_member&type=mobile" class="qd_icon2"><{if $cominfo.mobile&&$cominfo.mobile_verify==1}>已认证<{else}>未认证<{/if}></a>
 	                    <a target="_blank" href="<{$config.pay_url}>" class="qd_icon3"><{$config.pay_name}></a>
 	                    <a href="javascript:void(0)" class="qd_icon4"><{if $is_qd}>已签到<{else}>每日签到</a><{/if}>
 	                    <a href="main.php?m=points&s=admin_points" class="qd_icon5">积分明细</a></dd>

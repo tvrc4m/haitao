@@ -18,7 +18,14 @@
                 </dl>
                 <dl class="email">
                     <dt>手机号：</dt>
-                    <dd><input type="text" class="text" name="pay_mobile" id="pay_mobile" value="<{$de.pay_mobile}>"/><div class="form-error"></div></dd>
+                    <dd>
+                        <{if $de.pay_mobile}>
+                            <{$de.pay_mobile}>
+                        <{else}>
+                            <input type="text" class="text" name="pay_mobile" id="pay_mobile" value="<{$de.pay_mobile}>"/>
+                        <{/if}>
+                        <div class="form-error"></div>
+                    </dd>
                 </dl>
                 <dl>
                     <dt>当前头像：</dt>
