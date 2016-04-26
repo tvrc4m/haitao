@@ -66,7 +66,7 @@
                 </span>
                 <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
                 <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" width="125" height="125" alt="<{$list.pname}>" /></div>
-                <div class="p-name"><{$list.pname}></div> 
+                <div class="p-name"><{$list.pname}></div>
                 </a>
                 <div class="p-price">
                     <!-- <strong><{$config.money}> <{$list.price}></strong> -->
@@ -77,7 +77,7 @@
             </li>
         <{/foreach}>
     </ul>
-    <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
+    <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a>
     </div>
     <{if $dist_pro}>
     <div class="itemSearchResult plist ">
@@ -141,5 +141,25 @@ $(function(){
         $('#leftmask').remove();
     });
     $(".scrollLoading").scrollLoading();
-})
+});
+    var page = 0 ;
+    function more_info(){
+        var url = "http://haitao.com/shop.php";
+        var sort = "<{$smarty.get.sort}>";
+        var keyword = "<{$smarty.get.keyword}>";
+        var price1 = "<{$smarty.get.price1}>";
+        var price2 = "<{$smarty.get.price2}>";
+        var cat = "<{$smarty.get.cat}>";
+        var uid = "<{$smarty.get.uid}>";
+        var dist_id = "<{$smarty.get.dist_id}>";
+        page = page+10;
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: {sort:sort, keyword:keyword, price1:price1, price2:price2, cat:cat, uid:uid, sort:"price", dist_id:dist_id, action:"product_ajax_list", m:"product", page:page},
+            success: function(msg){
+                alert(msg);
+            }
+        });
+    }
 </script>

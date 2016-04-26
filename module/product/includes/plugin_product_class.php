@@ -722,7 +722,7 @@ class product
 		return $re;
 	}
 	
-	function shop_pro_list()
+	function shop_pro_list($begin = 0, $limit = 20)
 	{
 		global $config;
 		switch ($_GET['sort'])
@@ -799,7 +799,8 @@ class product
 		include_once($config['webroot']."/includes/page_utf_class.php");
 		$page = new Page;
 		$page->url='shop.php';
-		$page->listRows=20;
+		$page->firstRow = $begin;
+		$page->listRows = $limit;
 		if (!$page->__get('totalRows'))
 		{
 			$this->db->query($sql);

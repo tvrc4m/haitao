@@ -15,6 +15,25 @@ else
 }
 
 $page_str = true;
+
+if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
+	$res =  $distribution->getDistributionChildUser($buid, $level, $page_str, $_GET['page'], 10);
+	if($res){
+		echo json_encode(array(
+			'code' => 200,
+			'data' => $res,
+			'status' => 2
+		));
+	}else{
+		echo json_encode(array(
+			'code' => 300,
+			'data' => null,
+			'status' => 1
+		));
+	}
+	die;
+}
+
 $child_user_rows = $distribution->getDistributionChildUser($buid, $level, $page_str);
 
 $type = 'inbox';

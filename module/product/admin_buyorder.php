@@ -47,7 +47,27 @@ if(isset($_GET['flag'])&&isset($_GET['id']))
 
 //=======================================
 $status=isset($_GET['status'])?$_GET['status']:"";
+
+if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
+    $res =  $re->$order->buyorder($status);
+    if($res){
+        echo json_encode(array(
+            'code' => 200,
+            'data' => $res,
+            'status' => 2
+        ));
+    }else{
+        echo json_encode(array(
+            'code' => 300,
+            'data' => null,
+            'status' => 1
+        ));
+    }
+    die;
+}
+
 $tpl->assign("blist",$re=$order->buyorder($status));
+
 $order_status[2]="等待买家付款";
 $order_status[3]="买家已付款";
 $order_status[4]="卖家已发货";
