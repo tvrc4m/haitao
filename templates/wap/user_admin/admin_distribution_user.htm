@@ -57,7 +57,23 @@ $(function(){
     <h3>暂无下线</h3>
   </div>
   <{/foreach}>
-  
-<a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-  
+<a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a>
    </section>
+
+<script>
+    var page = 0 ;
+    function more_info(){
+        var url = "<{$config.weburl}>/main.php";
+        var level = "<{$smarty.get.level}>";
+        var dist_id = "<{$smarty.get.dist_id}>";
+        page = page+10;
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: {page:page, level:level, m:'distribution', s:'admin_distribution_user', dist_id:dist_id, ptype:'ajax'},
+            success: function(msg){
+                alert(msg);
+            }
+        });
+    }
+</script>

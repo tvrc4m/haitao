@@ -154,7 +154,7 @@ class distribution
 	 * @param int $level 下线等级
 	 * @return bool
 	 */
-	function getDistributionChildUser($buid, $level=null, &$page_str=null)
+	function getDistributionChildUser($buid, $level=null, &$page_str=null, $begin = 0, $limit = 10)
 	{
 		global $db;
 		global $config;
@@ -172,15 +172,13 @@ class distribution
 				$sql = $sql . ' AND user_relationship_level = ' . intval($level);
 			}
 		}
-
-
 		include_once("$config[webroot]/includes/page_utf_class.php");
-
 
 		if ($page_str)
 		{
 			$page           = new Page();
-			$page->listRows = 10;
+			$page->firstRow = $begin;
+			$page->listRows = $limit;
 
 			if (!$page->__get('totalRows'))
 			{
@@ -188,7 +186,7 @@ class distribution
 				$page->totalRows = $db->num_rows();
 			}
 
-			$sql .= "  LIMIT " . $page->firstRow . ", 10";
+			$sql .= "  LIMIT " . $page->firstRow . ",".$page->listRows;
 			$page_str = $page->prompt();
 		}
 
@@ -199,7 +197,6 @@ class distribution
 		{
 
 		}
-
 		return $re;
 	}
 
