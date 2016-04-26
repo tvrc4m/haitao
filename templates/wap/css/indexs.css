@@ -38,7 +38,7 @@
 .centent_cen .cen_shop a dd{text-align: center;margin-top:10px;font-size: 0.7rem;color: #535353;}
 .cententnoll{width: 100%;height: 60px;border-top: 1px solid #BEBEBE;border-bottom: 1px solid #BEBEBE;clear: both;padding: 2px 0px;margin-bottom: 80px}
 .centent_ten{border: 1px solid #b9b9b9;margin-top: 15px;width: 100%;}
-.centent_ten dl.cen_shop{padding: 0.5rem 0;border-bottom: 1px dashed #b9b9b9;}
+.centent_ten dl.cen_shop{padding: 15px 0;border-bottom: 1px dashed #b9b9b9;}
 .centent_ten dl.cen_shop a{display: inline-block;width: 100%;color: #535353;}
 .centent_ten dl.cen_shop:last-of-type{border-bottom: none;}
 .centent_ten .cen_shop dt{float: left;padding-left: 1.7rem;font-size: 0.65rem;}

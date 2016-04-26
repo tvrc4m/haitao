@@ -50,7 +50,7 @@ foreach($re['list'] as $key=>$val)
 	$re['list'][$key]['name']=$db->fetchRow();	
 	$re['list'][$key]['minus']=($val['price']<0)?"T":"F";	
 }
-$tpl->assign("re",$re);	
+$tpl->assign("re",$re);
 $tpl->assign("current","record");
 $tpl->assign("config",$config);
 $output=tplfetch("record.htm");

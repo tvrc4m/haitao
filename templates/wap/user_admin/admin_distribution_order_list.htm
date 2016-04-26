@@ -62,7 +62,7 @@ $(function(){
         <dt><img height="80" width="80" src="<{$psellist.pic}>"></dt>
         <dd>
             <p class="p-name"><{$psellist.name}></p>
-            <p class="p-price"><strong><{$config.money}><{$psellist.price}></strong> x <{$psellist.num}></p>
+            <p class="p-price"><strong><{$config.money}><{$psellist.price}></strong><span> x <{$psellist.num}></span></p>
 			<p class="p-commissin">佣金 <strong> <{$psellist.commission_product_price_0|number_format:2}> </strong> 元</p>
 			<p class="p-commissin">运费 <strong> <{$sellist.logistics_price|number_format:2}> </strong> 元</p>
         </dd>
@@ -104,6 +104,6 @@ $(function(){
 
    <{/foreach}>
 
-<{$slist.page}>
+<a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
 
 </section>

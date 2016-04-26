@@ -1,9 +1,33 @@
 <div class="block fn-clear">
+    <div class="balance account">
+        <p>
+        账户余额
+        <!--<a target="_blank" href="">百度金融火热抢购中！</a>-->
+        </p>
+        <div>
+            <span class="wallet">
+                <em><strong><{$de.cash}></strong></em>
+                <span> 元</span>
+            </span>
+            <a class="btn" href="<{$config.weburl}>/?m=payment&s=recharge">充 值</a>
+            <a class="btn" href="<{$config.weburl}>/?m=payment&s=withdraw">提 现</a>
+            <!-- <a class="btn1" href="<{$config.weburl}>/?m=payment&s=transfer">转 账</a> -->
+        </div>
+    </div>
+</div>
+<div class="block fn-clear">
 	<div class="record">
-        <h2>
+        <!-- <h2>
             <{if $smarty.get.mold==1}>充值记录<{elseif $smarty.get.mold==2}>提现记录<{else}>交易记录<{/if}>
             <span>可用余额<strong><{$de.cash}></strong>元</span>
-        </h2>
+        </h2> -->
+        <div style="height:10px;background-color:#ededed;"></div>
+         <p>
+            <a href="<{$config.weburl}>">收支明细</a>
+            <!-- <a href="<{$config.weburl}>/?m=payment&s=record&mold=0" <{if $smarty.get.mold==0}>class="pay_sgo"<{/if}> >交易记录</a> -->
+            <a href="<{$config.weburl}>/?m=payment&s=record&mold=1" <{if $smarty.get.mold==1}>class="pay_sgo"<{/if}> >充值记录</a>
+            <a href="<{$config.weburl}>/?m=payment&s=record&mold=2" <{if $smarty.get.mold==2}>class="pay_sgo"<{/if}> >提现记录</a>
+        </p>
     	<{if !$smarty.get.mold}>
    		<div class="filter">
     	<div class="date"></div>
@@ -32,12 +56,12 @@
             <tr>
                 <th class="al">名称 | 交易号</td>
                 <{if !$smarty.get.mold}><th class="al" width="15%">对方</th><{/if}>
-                <th width="20%">金额(元)</th>
+                <th width="25%">金额(元)</th>
                 <th width="25%">状态</th>
                 <!--<th width="60">操作</th>-->
             </tr>
             <{foreach item=list from=$re.list}>
-            <tr>
+            <tr class="trse">
                 <td class="al">
                 <{$list.note}>
                 <div>
@@ -84,7 +108,7 @@
                 <{if $list.statu==1&&$list.seller_email&&($list.mold==3||$list.mold==0)}>
                 <a href="<{$config.weburl}>?m=payment&s=pay&tradeNo=<{$list.order_id}>">付款</a>
                 <{else}>
-                <a target="_blank" href="<{if $list.return_url}><{$list.return_url}><{else}><{$config.weburl}>?m=payment&s=detail&tradeNo=<{$list.flow_id}><{/if}>">详情</a>
+                <a href="<{if $list.return_url}><{$list.return_url}><{else}><{$config.weburl}>?m=payment&s=detail&tradeNo=<{$list.flow_id}><{/if}>">详情</a>
                 <{/if}> </p>
                 </td>
             </tr>
@@ -107,13 +131,139 @@
                 </td>
             </tr>
             <{/foreach}>
-            <{if $re.page&&$re.page!='   '}>
+           <!--  <{if $re.page&&$re.page!='   '}>
             <tr>
                 <td colspan="99">
                 <div class="page"><{$re.page}></div>
                 </td>
             </tr>
-            <{/if}>
+            <{/if}>-->
+           <!--  <tr>
+                <td colspan="99">
+                    <a href="javascript:ajax_page();" class="m_jiazai next"><i></i>点击加载更多</a>
+                </td>
+            </tr>  -->
         </table>
+         <div style="width:100%;text-align:center;padding:10px 0;" class="tr-btn">
+            <a href="javascript:void(0);" class="m_jiazai next" id="more-msg">下拉加载更多</a>
+        </div>
     </div>
 </div>
+<script>
+$(function(){
+    var minL=$(".record table tbody tr.trse").size();
+    if(minL<5){
+        $(".tr-btn").hide();
+    }
+    var page = 0 ;
+    var stop=true; 
+    $(window).scroll(function(){
+        totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop()); 
+        if($(document).height() <= totalheight){ 
+            if(stop==true){ 
+                $("#more-msg").html("正在加载中.....");
+                stop=false; 
+                var ptype = 'record';
+                var mold = "<{$smarty.get.mold}>";
+                $.ajax({
+                    url: "<{$config.weburl}>/"+"ajax_index.php",
+                    type: 'get',
+                    data: {ptype: ptype,mold:mold,page:page},
+                    dataType: "json",
+                    success: function(msg){
+                            if(msg.status==2){
+                            var dataLength= msg.data.length; 
+                            for(var i=0;i<dataLength;i++){
+                                var timestamp3 = Number(msg.data[i].time);
+                                var newDate = new Date();
+                                newDate.setTime(timestamp3 * 1000);
+                                Date.prototype.format = function(format) {
+                                       var date = {
+                                              "M+": this.getMonth() + 1,
+                                              "d+": this.getDate()
+                                       };
+                                       if (/(y+)/i.test(format)) {
+                                              format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+                                       }
+                                       for (var k in date) {
+                                              if (new RegExp("(" + k + ")").test(format)) {
+                                                     format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                                                            ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+                                              }
+                                       }
+                                       return format;
+                                }
+                                var dataTime=(newDate.format('yyyy-MM-dd'));
+                                $(".record table tbody").append("<tr>"+
+                                "<td class='al'>"+
+                               ""+msg.data[i].note+""+
+                                "<div>"+
+                                    "交易号"+
+                                    "<{if $list.order_id&&$list.mold!=8}>"+
+                                        ""+msg.data[i].order_id+""+
+                                    "<{else}>"+
+                                        ""+msg.data[i].flow_id+""+
+                                    "<{/if}>"+
+                                "</div>"+
+                                "<br>"+
+                                "<br>"+
+                                "时间："+dataTime+""+
+                                "</td>"+
+                                "<{if !$smarty.get.mold}><td class='al'><{$list.name.real_name}></td><{/if}>"+
+                                "<td class='price<{if $list.minus=='T'}> minus<{/if}>'><{if $list.minus!='T'}>+<{/if}>"+msg.data[i].price+"</td>"+
+                                "<td <{if $list.is_refund=='true'}>rowspan="2"<{/if}>>"+
+                                "<{if $list.statu==1}><{if $list.mold==8}>进行中<{else}>等待付款<{/if}>"+
+                                "<{elseif $list.statu==2}>"+
+                                    "<{if $list.buyer_email==''}>"+
+                                        "已付款"+
+                                    "<{else}>"+
+                                        "等待发货"+
+                                    "<{/if}>"+
+                                "<{elseif $list.statu==3}>"+
+                                    "<{if $list.buyer_email==''}>"+
+                                        "等待确认收货"+
+                                    "<{else}>"+
+                                       "已发货"+
+                                    "<{/if}>"+
+                                "<{elseif $list.statu==4}>交易成功"+
+                                "<{elseif $list.statu==5}>"+
+                                    "<{if $list.buyer_email==''}>"+
+                                        "已审请退货"+
+                                    "<{else}>"+
+                                       "要求退货"+
+                                    "<{/if}>"+
+                                "<{elseif $list.statu==6}>"+
+                                    "已退货"+
+                                "<{else}>已取消"+
+                                "<{/if}>"+
+                                "<br>"+
+                                "<p <{if $list.is_refund=='true'}>rowspan="2"<{/if}>>"+
+                                "<{if $list.statu==1&&$list.seller_email&&($list.mold==3||$list.mold==0)}>"+
+                                "<a href='<{$config.weburl}>?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
+                               "<{else}>"+
+                                " <a href='<{if $list.return_url}><{$list.return_url}><{else}><{$config.weburl}>?m=payment&s=detail&tradeNo="+msg.data[i].flow_id+"<{/if}>'>详情</a>"+
+                                "<{/if}> </p>"+
+                                "</td>"+
+                            "</tr>"+
+                            "<{if $list.is_refund=='true'}>"+
+                            "<tr>"+
+                                "<td class='al'>退款</td>"+
+                                "<td></td>"+
+                                "<td class='price <{if $list.minus!='T'}> minus<{/if}>'>"+
+                                    "<{if $list.minus=='T'}>+<{else}>-<{/if}>"+msg.data[i].refund_amount+""+
+                                "</td>"+
+                            "</tr>"+
+                            "<{/if}>")
+                            } 
+                        stop=true;        
+                        page+=5;
+                        }else{
+                         $("#more-msg").html("已到最底部");
+                    }  
+                    }
+                });
+            } 
+        } 
+    });   
+})
+</script>

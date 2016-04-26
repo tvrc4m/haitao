@@ -7,6 +7,7 @@ $act=$_GET['act']?$_GET['act']:NULL;
 $op=$_GET['op']?$_GET['op']:NULL;
 $pay=new pay();
 $de=$pay->get_member_info($buid);
+$_SESSION['pay_id'] = $buid;
 $tpl->assign("de",$de);
 
 $sql="select con_group,con_title,con_id from ".WEBCON." where type=1 limit 0,4";
@@ -30,6 +31,8 @@ switch($act)
 			{
 				if($_POST['act']=='name')
 				{
+					include_once("../api/real.php");
+					//var_dump($config['webroot']);die;
 					$pay->edit_name($buid);
 					msg("index.php?act=edit&op=name",'修改成功');	
 				}
@@ -43,7 +46,7 @@ switch($act)
 	}
 	default:
 	{
-		$re=$pay->get_trade_record($buid);
+		$re=$pay->get_trade_record($buid,5);
 		$tpl->assign("re",$re);
 		if(!empty($_GET['m']))
 		{
@@ -58,6 +61,24 @@ switch($act)
 		break;
 	}
 }
+
+//身份证认证
+$sql = "select identity_verify from pay_member where pay_id = $buid";
+$db -> query($sql);
+$num = $db -> fetchRow();
+$num = $num['identity_verify'] == 'true' ? 1 : 0 ;
+
+//支付密码
+$sql = "select pay_pass from ".MEMBER." where pay_id=". $de['pay_id'];
+$db -> query($sql);
+$pp = $db -> fetchRow('pay_pass');
+/*if(!empty($pp)){
+    $tpl->assign("verify_pay", 'yes');
+}else{
+    $tpl->assign("verify_pay", 'no');
+}*/
+
+$tpl->assign("verify",$num);
 $tpl->assign("output",$output);
 include_once("footer.php");
 $tpl->display("index.htm");

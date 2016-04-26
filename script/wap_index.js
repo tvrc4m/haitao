@@ -59,31 +59,31 @@ $jj(function(){
 	{
 		getHtmlSecond();
 	}
-});
-$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
-$jj(document).scroll(function(){
-	var h = $jj(document).scrollTop();
-	var wHeight=$jj(window).height();
-	if(h>wHeight){
-		$jj(".addtop").show()
-		$jj(".addtop").click(function(){
-			$jj(window).scrollTop(0);
-		})
-	}else{
-		$jj(".addtop").hide()
-	}
-	if(h > 50)
-	{
-		$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
-		$jj(".m_main-v1s").eq(0).css({"margin-top":"50px"});
-		$jj(".filter").eq(0).css({"margin-top":"50px"})
-	}
-})
-$jj(function(){
-	var daHeight=$jj(".da_banner").offset().top-50;
+
+	$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
+	$jj(document).scroll(function(){
+		var h = $jj(document).scrollTop();
+		var wHeight=$jj(window).height();
+		if(h>wHeight){
+			$jj(".addtop").show()
+			$jj(".addtop").click(function(){
+				$jj(window).scrollTop(0);
+			})
+		}else{
+			$jj(".addtop").hide()
+		}
+		if(h > 50)
+		{
+			$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
+			$jj(".m_main-v1s").eq(0).css({"margin-top":"50px"});
+			$jj(".filter").eq(0).css({"margin-top":"50px"})
+		}
+	})
+
+	var daHeight=$jj(".da_banner").offset().top;
 	$jj(".da_banner li").click(function(){
 		$jj(".da_banner").addClass("da_list_test");
-		$jj(window).scrollTop(daHeight-0.9);
+		$jj(window).scrollTop(daHeight);
 		var liSize=$jj(this).index();
 		$jj(this).addClass("current").siblings().removeClass("current");
 		$jj(".da_list>div").eq(liSize).addClass("list_current").siblings().removeClass("list_current");
@@ -97,22 +97,6 @@ $jj(function(){
             $jj(".da_banner").removeClass("da_list_test");
         }
     })
- })
-// $jj(function(){
-// 	$jj(".scrollLoading").scrollLoading();
-// })
-// 滑动加载更多
-// var stop=true; 
-// $jj(window).scroll(function(){ 
-//     totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()); 
-//     if($jj(document).height() <= totalheight){ 
-//         if(stop==true){ 
-//             stop=false; 
-//             $jj.post("/module/product/index.php", {start:1, n:50},function(data){
-//             console.log(data);
-//                 // $jj("#Loading").before(txt); 
-//                 stop=true; 
-//             }); 
-//         } 
-//     } 
-// });
+ 	 var liHeight=$jj(".cate-guangimg-right ul li").height()*2;
+ 	 $(".cate-guangimg-left img").css({"height":liHeight+"px"})
+});

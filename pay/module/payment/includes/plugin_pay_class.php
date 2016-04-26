@@ -69,9 +69,9 @@ class pay
         return $de;
     }
 
-    function get_trade_record($id,$limit=5)
+    function get_trade_record($id,$limit=5, $begin = 0)
     {
-        $sql="select * from ".RECORD." where pay_uid='$id'  and LEFT(`order_id`,1) != 'U' order by id desc limit 0, $limit";
+        $sql="select * from ".RECORD." where pay_uid='$id'  and LEFT(`order_id`,1) != 'U' order by id desc limit $begin, $limit";
         $this->db->query($sql);
         $de=$this->db->getRows();
         foreach($de as $key=>$val)
@@ -138,7 +138,7 @@ class pay
 
             if($config['bw'] == 'weixin')
             {
-                $str = " and payment_type = 'wap_alipay' or payment_type = 'wx_pay'";
+                $str = " and payment_type = 'wx_pay'";
             }
             else
             {

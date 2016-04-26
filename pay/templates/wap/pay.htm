@@ -37,7 +37,7 @@
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block fn-clear">
 	<div class="i-block payment">
-        <div class="title">
+        <div class="title title2">
        		<div>
             <h3><{$re.note}></h3>
             <p>
@@ -48,12 +48,7 @@
         </div>
 
 
-		<{if $config.bw eq "weixin"}>
-        <div class="form_weixin">
-        <span>推荐支付：</span>
-        <a  style="text-align:center;line-height:45px;width:99.5%;height:45px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;display:inline-block" onclick="callpay()" >微信支付</a></div>
-        <{/if}>
-
+		
         <{if $re.statu==1}>
         <div class="form">
         <form method="post">
@@ -61,12 +56,18 @@
         <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.0.payment_type}>" />
             <fieldset>
             <dl>
-                <dt>支付方式：</dt>
+                <dt style="margin-left:5px;">请选择支付方式：</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
+                    <li>
+                         <{if $config.bw eq "weixin"}>
+                            <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a            
+                        <{/if}>
+                    </li>
                     <{foreach item=list key=key from=$pay}>
-                         <li <{if $key==0}>class="checked"<{/if}> >
-                        <img title="<{$list.payment_name}>" alt="<{$list.payment_name}>" data-param="{'id':'<{$list.payment_type}>'}" src="image/payment/<{$list.payment_type}>.gif" /><i></i>
+                        <li>           
+                            <a class="form_qianbao_btn" data-param="{'id':'<{$list.payment_type}>'}"><img src="image/payment/<{$list.payment_type}>.gif" class="form_qianbao_img"><{$list.payment_name}><i></i></a>
+                            <div style="border-top:1px solid #f1f1f1;height:0;"></div>
                         </li>
                     <{/foreach}>  
                     </ul>
@@ -76,19 +77,24 @@
             <{if $account!='false'}>
             <fieldset class="fieldset">  
             <dl class="free">
-                <dt>可用总额：</dt>
-                <dd><{$de.cash}> 元</dd>
+                <dt></dt>
+                <dd>可用总额：<span class="free_price"><{$de.cash}></span> 元</dd>
             </dl> 
-            <dl>
+            <dl class="free2">
                 <dt>支付密码：</dt>
-                <dd><input type="password" class="text" name="password" value="" /></dd>
+                <dd><input type="password" class="text" name="password" value="" placeholder="填写支付密码" /></dd>
             </dl>
             </fieldset>
             <{/if}>
-            <dl>
+            <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <input style="padding-top:4px;" type="submit" class="submit" value="确定支付" />
+                <{if $config.bw eq "weixin"}>
+                <div class="form_weixin_btns2" onclick="callpay()" >确定支付</div>
+                <div style="display:none"><input style="font-size:14px;letter-spacing:1px;margin-left:-12px;padding:0;" type="submit" class="submit" value="确定支付" /></div>
+                <{else}>
+                <input style="font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
+                <{/if}>
                 </dd>
             </dl>
         </form>   
@@ -99,20 +105,26 @@
 </div>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
-$(".pay li").bind("click",function(){
-	var data = $(this).children('img').attr('data-param');
-	eval("data = "+data);
-	<{if $account!='false'}>
-	if(data.id=='account')
-	{
-		$('.fieldset').show();
-	}
-	else
-	{
-		$('.fieldset').hide();
-	}
-	<{/if}>
-	$("#payment_type").val(data.id);
-	$(this).addClass("checked").siblings().removeClass("checked");
-});
+$(function(){
+   $(".pay li").bind("click",function(){
+        var liIndex=$(this).index();
+        console.log(liIndex)
+        var data = $(this).children('a').attr('data-param');
+        eval("data = "+data);
+        <{if $account!='false'}>
+        if(data.id=='account')
+        {
+            $('.fieldset').show();
+        }
+        else
+        {
+            $('.fieldset').hide();
+        }
+        <{/if}>
+        $("#payment_type").val(data.id);
+        $(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
+        $(".btn_pay dd div").eq(liIndex).show().siblings().hide();
+    }); 
+})
+
 </script>

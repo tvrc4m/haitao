@@ -29,6 +29,7 @@ while($v=$db->fetchRow())
 if(isset($li))
 	$tpl->assign("web_con",implode("<em>|</em>",$li));
 //------------------------------------------------------------------
+
 if(!empty($config['copyright']))
 {
 	//$config['copyright'].='<br />Powered by <a href="http://www.mall-builder.com">'.$config['version'].'</a>';

@@ -1,7 +1,7 @@
 /**space_product_detail**/
 body{font-family: 'microsoft yahei' !important;color: #525252;font-size: 16px;}
 .up .uh, .up .uf, .pos_re {position: relative;}
-div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative;}
+div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 .bc-text-head {color: white;}
 .bc-head {background-color: #dd3030;}
 .uh, .uf {width: 100%;font-size: 1.2em;}
@@ -34,7 +34,8 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 #pro_detail img{width:100%;}
 
 #pro_detail #pname{min-height: 2.15rem;line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;padding-right: 2.5rem;}
-#pro_detail #price{font-family: 'microsoft yahei';font-size:0.6rem;color:#ff5c5c;border-bottom: 1px dashed #b9b9b9;height: 50px;line-height: 50px;}
+#pro_detail #price{font-family: 'microsoft yahei';font-size:0.6rem;border-bottom: 1px dashed #b9b9b9;height: 50px;line-height: 50px;}
+#pro_detail span#price{border-bottom: none;}
 #pro_detail #price span{color:#535353;}
 #pro_detail #price span.price_moneys_num{color: #ff5c5c;}
 #pro_detail #price .price_moneys{font-size: 0.9rem;color: #ff5c5c;margin-right: 0.5rem;}
@@ -45,6 +46,9 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 #pro_detail .slogo{width:4em;height:4em;border-radius:2em}
 #pro_detail .slogote{width:2.5rem;height:2.5rem;border-radius:50%;float: left;}
 #pro_detail .sinfo{padding-left:.5em;color:#000;font-size: 0.6rem;line-height: 1rem;}
+.price_moneys{color: #ff5c5c;}
+.price_dels{color: #535353;text-decoration: line-through;}
+/*.price_chas{font-size: 0.7rem;}*/
 .chats{margin: 5px 0;}
 .chats a{font-size: 14px;font-weight: bold;color: #FF6600;}
 .chats a span{color: #FF6600;font-size: 16px;}
@@ -54,7 +58,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .choose_btn a{color:#525252;}
 .choose_btn .btn{margin: .25em;background-color: inherit !important;}
 .addcart{float: right;margin-bottom: 5px;width: 100%;height: 50px;}
-.incar{color: #000;/*background-color: #FF6600;padding: 7px 2%;*//*border-radius: .25em;*/width: 30%;float: right;text-align: center;font-size: 16px;}
+.incar{color: #000;width: 30%;float: right;text-align: center;font-size: 16px;}
 .incar_l{background-color: #ff5c5c;color: #fff!important;}
 .incar_c{background-color: #efefef;color: #ff5c5c;}
 .incar span{color:#fff;padding-right: 5px;}
@@ -62,6 +66,14 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .collect{color:#ff5c5c}
 .am-dialog-mask{position: fixed;top: 0;left: 0;z-index: 2000;width: 100%;height: 100%;background: rgba(0,0,0,.5);display: none;}
 .am-dialog-mask-test{display: block;}
+.col-money{border-bottom: 1px dashed #b9b9b9;font-size: 0.6rem;}
+.pdetail_show2 {width: 100%;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.pdetail_show2 span{    display: block;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 0px;font-size: 14px;width: 100%;}
+.pdetail_show2 li{    display: block;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 10px 0px;font-size: 14px;width: 100%;}
 .collect_box_out{text-align: center; opacity: 0;transform:scale(1);-webkit-transform:scale(1);padding: 0 20px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
 .collect_box_out_test{animation: myfirst .1s linear ;-webkit-animation: myfirst .1s linear ;opacity: 1;}
 @-webkit-keyframes myfirst {
@@ -78,14 +90,14 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
     75%  {-webkit-transform:scale(1.3);}
     100% {-webkit-transform:scale(1);}
 }
-.collect_box{margin: auto;max-width: 320px;background: #FFF;border-radius: 8px;padding: 25px 0 0;box-shadow: 0px 0px 10px #ccc;-webkit-box-shadow: 0px 0px 10px #ccc;}
+.collect_box{margin: auto;max-width: 320px;background: #FFF;border-radius: 8px;box-shadow: 0px 0px 10px #ccc;-webkit-box-shadow: 0px 0px 10px #ccc;}
 .collect_box_content{padding: 25px 10px 20px;font-size: 0.7rem;line-height: 1.5;}
 .collect_box_btn{padding-bottom: 25px;font-size: 0.7rem;}
 .collect_box_btn a{display: inline-block; width: 40%;height: 30px;line-height: 30px;background-color: #ff5c5c;color: #fff;border-radius: 5px;text-align: center;}
-.collect_box_hid{position: absolute;right: 4px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
+.collect_box_hid{position: absolute;right: 20px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
 .col_ttt{padding: 0.1rem 0.5rem;}
 /***space_index***/
-.hidden{display:none !important}
+.hidden{display:none !important;}
 .t-gra-50{color:#505050;}
 .t-gar-a0{color:#a0a0a0;}
 .uinn-esh{padding:0.3125em 0 0.9375em 0.5125em}
@@ -150,7 +162,9 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 
 .select_style{position:relative;background:#fff;padding: 0 0.5rem;}
 .select_guanshui{font-size: 0.6rem;padding-top: 10px;padding-bottom: 10px;border-bottom: 1px dashed #b9b9b9;line-height: 1rem;}
+.select_guanshui var{color:#ff5c5c;}
 .select_duty_context{position: relative;}
+.select_one{margin-right: 15px;text-align: right;display: inline-block;width: 1.9rem;}
 .select_duty{position: absolute;top: 1.5rem;right: 0px;z-index: 88;width: 90%;background-color: #ccc;padding: 5px 10px;border-radius:6px;display: none;}
 .select_duty i{display: inline-block;width: 10px; height:10px;background-color: #ccc;transform:rotate(135deg);-webkit-transform:rotate(135deg); position: absolute;top: -5px;right:2.15rem;}
 .select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:35px;}
@@ -163,14 +177,18 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .select_style dt i{display: inline-block;width: 25px;height: 25px; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;margin-top: -5px;}
 .select_style dd{color:#404040;}
 .select_style dd.mati_say_content{position: relative;}
-
+.select_guanshui_ic{padding-right: 22px;background: url(../../../image/wap/wap_haitao_icon65.png) right no-repeat;background-size: contain;margin-right: 20px;}
+.select_guanshui_ip{padding-left: 22px;background: url(../../../image/wap/wap_haitao_icon64.png) left no-repeat;background-size: contain;color: #3f7b06;}
+.select_guanshui_hid{position: absolute;top: 30px;left: 9%;padding:5px 10px;z-index: 199;
+    background-color: #ff5c5c;border-radius: 5px;color: #fff;font-size: 12px;display: none;}
+.select_guanshui_hid_test{display:block;}
+.select_guanshui_hid i{width: 10px; height:10px;background-color:#ff5c5c;display: inline-block;-webkit-transform:rotate(-135deg);transform:rotate(-135deg);position: absolute;left: 60%;top: -4px;}
 .mayi_say{line-height: 0.8rem;font-size: 0.6rem;padding-left: 3.1rem;padding-bottom: 0.8rem;}
 .select_style dt.select_style_shu{color: #535353;}
 .select_style dd.stock{/*margin-top: 11px;*/margin-left: 0.5rem;float: left;}
 .select_style dd.stock_kucun{float: right;font-size: 0.6rem;}
 .select_style ul{clear:both;display:block;overflow: hidden;}
 .select_style ul.ub-ac{padding-top: 10px;border-top: 1px dashed #b9b9b9;}
-/*.select_style ul.shoplist{border-bottom: 1px dashed #b9b9b9;}*/
 .select_style li{background-color:#FFFFFF;float:left;line-height:20px;margin:0 4px 6px 0;padding:1px;position:relative;vertical-align:middle;display: inline-block;}
 .select_style li.ut-s{font-size: 0.7rem;margin: 0;}
 .select_style li.shopli{margin: 0;padding: 0;}
@@ -196,7 +214,6 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .j_tab{display: none;padding: 0 0.5rem;}
 .pdetail_show{display: block;}
 .c-wh-commit-gao a{float: right;font-size: 0.7rem;border-bottom: 1px solid #535353;}
-/*.commit-left .commit-left-img{width: 2.1rem;height: 2.1rem;float: left;margin-right: 0.4rem;}*/
 .commit-left .commit-left-text{float: left;padding-left: 50px;background:url(../../../image/wap/wap_haitao_icon14.png) no-repeat;background-size: contain;}
 .commit-left .commit-left-text ul li{font-size: 0.6rem;color: #fff;}
 .commit-left .commit-left-text ul li:first-child{margin-bottom: 0.25rem;}
@@ -241,7 +258,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .shopli_bottom_rob{padding-left:5px;padding-right: 5px;}
 .shopli_bottom_message{padding-left:5px;padding-right: 5px;}
 .shopli_bottom_message p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-.shopli_top_img{border:1px solid #b9b9b9;}
+.shopli_top_img{border:1px solid #efefef;}
 #pro_detail .pname_img{font-size: 0.7rem;/*margin-right: 0.5rem;*/color: #ff5c5c;position: static!important;}
 #pro_detail .pname_img img{width: 1rem;vertical-align: 0px;height: auto!important;}
 .shopli_kong{text-align: center;font-size: 0.7rem;}
@@ -249,8 +266,10 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .addcart .cart{float: left; background: url(../../../image/wap/cart-gwc.png) no-repeat;position: relative;width: 32px;height:30px;background-size: cover;margin-top: 10px;margin-left: 20px;}
 .cart .cart-num-cont {position: absolute;top: -2px;right: -12px;color: #fff;background: #ff5c5c;border-radius: 50%;
     text-align: center;width: 18px;height: 18px;line-height: 18px;overflow: hidden;}
+.cart .cart-num-conts {position: absolute;top: -2px;right: -12px;color: #fff;background: #ff5c5c;border-radius: 50%;
+    text-align: center;width: 18px;height: 18px;line-height: 18px;overflow: hidden;z-index: 12}   
 
-.nav-c {text-align: center;-webkit-box-flex: 1;-ms-box-flex: 1;-moz-box-flex: 1;-o-box-flex: 1;margin-left: -60px;}
+.nav-c {text-align: center;-webkit-box-flex: 1;-ms-box-flex: 1;-moz-box-flex: 1;-o-box-flex: 1;/*margin-left: -60px;*/}
 .notice_container h3{text-align: center;border-bottom: 1px solid #ff5c5c;font-size: 0.8rem;color: #ff5c5c;padding-bottom: 5px;margin-bottom: 15px;}
 .notice_container{font-size: 0.7rem;padding:20px 10px;color: #000;font-family: SimHei;}
 .notice_container p{text-indent: 2em;line-height: 1.5;}

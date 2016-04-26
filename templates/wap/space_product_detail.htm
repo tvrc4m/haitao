@@ -1,7 +1,4 @@
 <link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
-<style>
-	.wap_pdetail p{line-height:1.2;}
-</style>
 </head>
 <body class="um-vp bc-bg" ontouchstart>
 <header>
@@ -22,7 +19,7 @@
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
             <{if $de.is_virtual neq 1}>
-            <a class="incar incar_c add-cart" href="javascript:void(0)">加入购物车</a>
+            <a class="incar incar_c " href="javascript:void(0)">加入购物车</a>
             <{/if}>
         </div>
     </div>
@@ -39,7 +36,6 @@
             </ul>
             <div class='dot'></div>
         </div>
-        <!-- <img src="<{if $de.pic}><{$de.pic}><{else}>image/default/nopic.gif<{/if}>"/> -->
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
             <div>
@@ -53,12 +49,12 @@
                     </a>
                 </div>
             </div>
-                <div id="price">
-                    <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></span>
-                    <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>
-                    <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
-                </div>
-                <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
+            <div class="col-money">
+                <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>&nbsp;&nbsp;
+                <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>&nbsp;&nbsp;
+                <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
+            </div>
+            <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
         </div>
         <div id="cart_show" style="display:none;"></div>
@@ -77,9 +73,11 @@
     <div class="c-wh bgw" style="margin-bottom: 0">
         <div class="select_style clearfix">
             <div class="select_guanshui clearfix">
-                <div><span>邮费：</span><span>满88包邮</span></div>
+                <div><span class="select_one">该商品</span><span>由<b>郑州保税仓</b>发货 预计3-5天送达</span></div>
+                <div><span class="select_one">进口税</span><span>由<a href="shop.php?uid=<{$smarty.get.uid}>"><var><{$com.company}></var></a>商家承担</span></div>
                 <div class="select_duty_context">
-                    <div><span>关税：</span><span class="select_guanshui_ic">根据海关总署要求计算所得的跨境电商综合税</span></div>
+                    <div><span class="select_one">服务</span><span class="select_guanshui_ic">支持14天退换货</span><span class="select_guanshui_ip">免运费</span></div>
+                    <div class="select_guanshui_hid"><i></i>只支持在物流中损坏的商品</div>
                 </div>
             </div>
         </div>
@@ -110,17 +108,6 @@
             <{/if}>
         </div>
     </div>
-    <!-- <div style="height:0px;border-top:1px solid #ff5c5c;"></div>
-    <div class="c-wh bgw clearfix">
-        <div class="select_style clearfix">
-            <dl class="clearfix select_style_xiangqing">
-                <dt class="select_style_title select_style_titleg">蚂蚁说</dt>
-                <dd class="mati_say_content">
-                <img src="../../../image/wap/wap_haitao_user1.png" class="slogote">
-                <p class="mayi_say">消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书消费者告知书</p></dd>
-            </dl>
-        </div>
-    </div> -->
     <div style="height:0px;border-top:1px solid #ccc;"></div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
@@ -133,7 +120,7 @@
                             <li class="shopli clearfix">
                                 <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_top_as">
                                     <div class="shopli_top_img shopli_top_imgs">
-                                        <img src="<{$list.pic}>"/>
+                                        <img class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;"/>
                                     </div>
                                     <div class="shopli_bottom clearfix">
                                         <div class="shopli_bottom_message">
@@ -157,29 +144,24 @@
             </dl>
         </div>
     </div>
-    <!-- <div style="height:0px;border-top:1px solid #ccc;"></div> -->
     <div class="clearfix"></div>
     <div class="c-wh bgw c-wh-commit clearfix">
-        <!-- <div class="c-wh-commit-gao clearfix">
-            <a href="<{$config.weburl}>/notice.php">消费者告知书</a>
-        </div> -->
-        <img src="../../../image/wap/wap_haitao_logo5.jpg" alt="品牌服务承诺">
+        <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_logo5.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="品牌服务承诺">
     </div>
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
                 <dt class="select_style_title select_style_titleg">购物流程</dt>
-                <dd><img src="../../../image/wap/wap_haitao_qs.jpg" alt="购物流程"></dd>
+                <dd><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_qs.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="购物流程"></dd>
             </dl>
         </div>
     </div>
     <div style="height:10px;background-color:#f5f5f5;width:100%;"></div>
     <div class="c-wh bgw c-wh-dianpu">
         <div class="clearfix"></div>
-
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-xinxi clearfix">
             <li class="ut-s">
-                <a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"> <img src="<{if $com.wap_logo}><{$com.wap_logo}><{else}>templates/wap/images/user.png<{/if}>" class="slogo"/></a>
+                <a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"> <img src="<{if $com.plogo}><{$com.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" class="slogo"/></a>
             </li>
             <li class="ub-f1 sinfo">
                 <p><a href="shop.php?uid=<{$smarty.get.uid}>"><strong><{$com.company}></strong></a></p>
@@ -189,9 +171,9 @@
         </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1">
             <li class="ub-f2">
-                <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num"><{$score.a|number_format:1}></span></p>
-                <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.c|number_format:1}></span></p>
-                <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.b|number_format:1}></span></p>
+                <p><span>描述相符&nbsp:&nbsp</span><span class="sinfo_num"><{$score.aw|number_format:1}></span></p>
+                <p class="ub-f2-test"><span>服务态度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.cw|number_format:1}></span></p>
+                <p class="ub-f2-test2"><span>发货速度&nbsp:&nbsp</span><span class="sinfo_num"><{$score.bw|number_format:1}></span></p>
             </li>
         </ul>
         <ul class="ub t-bla ub-ac uinn-pFS1 ub-kefu clearfix">
@@ -199,6 +181,7 @@
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
     </div>
+   <!--  <div id="offset-top"></div> -->
     <div class="c-wh bgw clearfix">
         <div class="clearfix">
             <div class="nav-box">
@@ -211,8 +194,11 @@
             <div class="wap_pdetail j_tab pdetail_show">
                 <{$de.detail}>
             </div>
-            <div class="wap_pdetail j_tab">
-                <{$de.detail}>
+            <div class="wap_pdetail j_tab pdetail_show2">
+                <span>品牌：<{$de.brand}></span>
+                <{foreach item=list from=$de.extfiled.s}>
+                    <{$list}>
+                <{/foreach}>
             </div>
             <div class="wap_pdetail j_tab">
                 <{insert name="label" type="product" o=4 temp="product_list_li_4" limit=0}>
@@ -220,10 +206,9 @@
         </div>
     </div>
     <div class="qg_bottom">
-        <img src="../../../image/wap/wap_haitao_shu.jpg">
-        <img src="../../../image/wap/wap_haitao_qg.jpg">
+        <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_shu.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="消费者告知书" />
+        <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_qg.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="什么是海外直发" />
     </div>
-   <!--  <div style="height:50px" class="hidden_jianxi"></div> -->
     <input name="id" type="hidden" value="<{$de.id}>" />
     <input name="sid" id="sid" type="hidden" value="0" />
     <input name="sku" id="sku" type="hidden" value="0" />
@@ -322,14 +307,10 @@ function check_nums()
                        "<div class='collect_box'>"+
                             "<div class='collect_box_content'></div>"+
                             "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
-                            "<div class='collect_box_hid'>+</div>"+
                         "</div>"+
                    "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".collect_box_out").addClass('collect_box_out_test');
-        $(".collect_box_hid").on("click",function(){
-            removeco();
-        })
         $(".collect_box_btn a").on("click",function(){
             removeco();
         })
@@ -345,10 +326,6 @@ function check_nums()
     }
     $(function(){
         $("dl ul[genre*=property]").each(function(index){
-            // var a=$(this).find("li").size();
-            // if(a==1){
-            //     $(this).find("li").eq(0).find("a").addClass("checked"); 
-            // }
             $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
         })    
     })
@@ -363,10 +340,6 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
-            // alert('请先登录！');
-            $(".collect_box_hid").on("click",function(){
-               removeco();
-            })
             $(".collect_box_btn a").on("click",function(){
                 window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
             })
@@ -398,10 +371,6 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
-            // alert('<{$lang.no_logo}>');
-            $(".collect_box_hid").on("click",function(){
-               removeco();
-            })
             $(".collect_box_btn a").on("click",function(){  
                 window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
             }) 
@@ -425,6 +394,7 @@ function check_nums()
             }
         }
     }
+
     $(".incar_c").click(function(){
         
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
@@ -442,9 +412,14 @@ function check_nums()
             console.log(sid)
             var dist_user_id = '<{$smarty.get.shop_id}>';
             $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
+            var numLen=$(".cart-num-cont").text();
+            if(numLen>99){
+                $(".cart").append("<span class='cart-num-conts'>...</span>");
+            }
             return false;
         }
     })
+
     function buy(){
         var flag = false;
         if (goodsspec.getSpec() == null || flag)

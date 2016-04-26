@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 09:49:53
+<?php /* Smarty version 2.6.20, created on 2016-04-25 16:13:43
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 6, false),)), $this); ?>
@@ -12,7 +12,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
         	<div>
             <h3><?php echo $this->_tpl_vars['re']['note']; ?>
 </h3>
-            <p>收款方：admin@systerm.com <!--<?php if ($this->_tpl_vars['re']['real_name']): ?><?php echo $this->_tpl_vars['re']['real_name']; ?>
+            <p>收款方：Myzx168@163.com <!--<?php if ($this->_tpl_vars['re']['real_name']): ?><?php echo $this->_tpl_vars['re']['real_name']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['re']['seller_email']; ?>
 <?php endif; ?>-->  (担保交易)</p>
             </div>

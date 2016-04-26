@@ -89,14 +89,14 @@ class Page
             $prePage  = "<a class='prePage' href='".$this->url."?firstRow=$preRow&totalRows=$this->totalRows$this->parameter'>上一页</a>";
         }
 		if($this->nowPage>5)
-			$theFirst = " <a href='".$this->url."?firstRow=0&totalRows=$this->totalRows$this->parameter'>1...</a>";
+			$theFirst = " <a href='".$this->url."?firstRow=0&totalRows=$this->totalRows$this->parameter'>首页</a>";
         
    		if($this->nowPage<$this->totalPages)
 		{
 			$nextRow   = ($this->nowPage) * $this->listRows;
 			$theEndRow = ($this->totalPages-1) * $this->listRows;
 			$nextPage  = " <a class='nextPage' href='".$this->url."?firstRow=$nextRow&totalRows=$this->totalRows$this->parameter'>下一页</a>";
-			$theEnd    = " <a href='".$this->url."?firstRow=$theEndRow&totalRows=$this->totalRows$this->parameter'>..$this->totalPages</a>";
+			$theEnd    = " <a href='".$this->url."?firstRow=$theEndRow&totalRows=$this->totalRows$this->parameter'>末页</a>";
         }
 
         //list pages

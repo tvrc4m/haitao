@@ -265,7 +265,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .sns-item:hover .more-action{display:block;}
 
 .more{text-align: center}
-.more a{background: url(../../../image/default/user_admin/mayi_mores.png) no-repeat 59% 23px;background-color: #ff5c5c;color: #fff !important;font-size: 16px;width: 721px;height: 60px;line-height: 60px; border: 1px solid #D9D9D9;border-radius: 2px 2px 2px 2px;cursor: pointer;display: inline-block;overflow: hidden;vertical-align: middle;margin-bottom:100px;margin-top: 40px;}
+.more a{background: url(../../../image/default/user_admin/mayi_mores.png) no-repeat 59% 23px;background-color: #ff5c5c;color: #fff !important;font-size: 16px;width: 721px;height: 60px;line-height: 60px; border: 1px solid #D9D9D9;border-radius: 2px 2px 2px 2px;cursor: pointer;display: inline-block;overflow: hidden;vertical-align: middle;margin-bottom:40px;margin-top: 40px;}
 .more a:hover{background:-moz-linear-gradient(center top ,#FFB847 0%,#FFA210 100%) repeat 0 0;text-decoration:none;border-color:#FFCE82;color:#FFF;}
 
 .forward{background-color:#FFFFFF;border:1px solid #D5E5F5;clear:both;font-size:12px;margin:0 auto;overflow:hidden;padding:10px;width:94%;}
@@ -317,6 +317,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .right_module_content .addicon{font-size: 14px;color: #fff;width: 70px;height: 30px;line-height: 28px;text-align: center;cursor:pointer;display:inline-block;overflow:hidden;vertical-align:middle;}
 .right_module_content .addicon:hover{background:-moz-linear-gradient(center top ,#FFB847 0%,#FFA210 100%) repeat 0 0;text-decoration:none;border-color:#FFCE82;color:#FFF;} 
 .right_module_content span{background-color: #ff8800;color: #fff;width: 70px;height: 30px;line-height: 28px;text-align: center; border-radius:5px;border:1px #FFF solid;display:inline-block;cursor:pointer;white-space:nowrap;}
+.right_module_content span.alforcus{cursor: default;background: #999;}
 .right_module_content span em{margin-right:2px;vertical-align:-2px;color:#FFF;font:bold 16px Arial;height:16px;text-decoration:none;margin-right: 10px;}
 .right_module_content .addicon:hover em{color:#FFF;}
 .right_module .con{clear:both;line-height:22px;}
@@ -365,7 +366,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .main .form-style dl dt{color:#404040;float:left;line-height:23px;margin:0;padding:6px 6px 0 0;text-align:right;width:110px;} 
 .main .form-style dl dd em{background:url(../../../image/default/user_admin/required.gif) no-repeat;display:inline-block;height:8px;margin-left:10px;width:7px;}
 .main .form-style dl dd{float:left;padding:8px;width:580px;}
-.main .form-style dl dd .send{padding: 5px;background: #999;color: #fff;height: 27px;margin-top: -5px;vertical-align: top;cursor:pointer;}
+.main .form-style dl dd .send{padding: 5px;background: #ff5c5c;color: #fff;height: 27px;margin-top: -5px;vertical-align: top;cursor:pointer;}
 .main .form-style dl dd p{clear:both;}
 .main .form-style dl dd .hint{color:#BBBBBB;line-height:20px;}
 .main .form-style dl dd .pic{border:1px dashed #E7E7E7;padding:4px;clear:left;float:left;margin-bottom:5px;overflow:hidden;}
@@ -628,6 +629,7 @@ td.al i{color:#000;font-size:11px;}
 #main{background-color: #f5f5f5;overflow: hidden;}
 input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;height: 40px;border-radius: 5px;}
 .nav_left_ul li, .father dt{border-bottom: 1px dashed #ccc}
+.nav_left_ul li.father{border-bottom:none;}
 .dn{display: none;}
 /*左侧导航*/
 .nav_left_ul .child span {background: url(../../../image/default/user_admin/mayi_icon7.png) no-repeat;display: inline-block;width: 25px;height: 10px;margin-left: 30px;}

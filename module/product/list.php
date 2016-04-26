@@ -1,6 +1,6 @@
 <?php
-$id=!empty($_GET["id"])?$_GET["id"]*1:NULL;
-$key=!empty($_GET["key"])?trim($_GET["key"]):NULL;
+ $id=!empty($_GET["id"])?$_GET["id"]*1:NULL;
+ $key=!empty($_GET["key"])?trim($_GET["key"]):NULL;
 
 if (null == $key)
 {
@@ -98,7 +98,7 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 			$matches['attrs']['id'] = $matches['id'];
 			$prol[] = $matches['attrs'];
 		}
-		
+
 	}
 
 
@@ -138,6 +138,7 @@ else
                 $newname[$key_f] = array('id' => $catname[$key_f], 'oid' => $catname[$key_f]);
             }
         }
+
 		$tpl->assign("catname",$newname);
 		$cat=readCat($id);
 		//-----------------------------分类关连的品牌
@@ -178,6 +179,12 @@ else
 		//---------------------------------按分类搜索
 		$scl.=" and LOCATE('".intval(trim($_GET['id']))."',a.catid)=1 ";//按类别搜索
 	}
+	$ads = array('1000'=>'33','1001'=>'34','1002'=>'35','1003'=>'36');
+	if(array_key_exists($newname[0]['oid'],$ads))
+		$gid = $ads[$newname[0]['oid']];
+	elseif(!empty($_GET['national']))
+		$gid = 37;
+	$tpl->assign('gid',$gid);
 //------------------------------------------------------
 	include_once("config/module_product_config.php");
 	$tpl->assign("ptype",$ptype=explode('|',$module_product_config['ptype']));
@@ -211,7 +218,7 @@ else
 
 	if(!empty($_GET['is_dist']) and $_GET['is_dist']==1)
 		$scl.=" and a.is_dist=1 ";
-
+	if(!empty($_GET['national']))$scl.=" and a.national=".$_GET['national'];
 	if($orderby==1)
 		$scl.=" order by a.sales desc";
 	elseif($orderby==2)
@@ -238,7 +245,7 @@ else
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=16;
+	$page->listRows=10;
 	if(empty($cat['ext_field_cat']))
 		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
@@ -252,6 +259,7 @@ else
 //--------------------------------------------------
 	$db->query($sql);
 	$prol=$db->getRows();
+
 	foreach($prol as $key => $val){
 		$sql = "select count(id) as num from mallbuilder_product_comment where pid = ".$val[id];
 		$db->query($sql);
@@ -267,8 +275,6 @@ else
 	}
 
 	fb($prol);
-
-
 
 	if ($distribution_open_flag)
 	{
@@ -317,6 +323,14 @@ else
 	unset($prolist);
 }
 
+//获取当前页的类名
+if(!empty($_GET['id'])){
+    $sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
+    $db->query($sql);
+    $res = $db->fetchField('cat');
+    $tpl->assign("wapcatname",$res);
+}
+
 $tpl->assign("province",GetDistrict1());
 
 //------------------------------------------------------
@@ -334,6 +348,5 @@ if($cat['templates'])
 }
 $tpl->assign("current","product");
 include_once("footer.php");
-
 $out=tplfetch("product_list.htm");
 ?>

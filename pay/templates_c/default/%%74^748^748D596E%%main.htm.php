@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-25 09:51:32
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:00:24
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 37, false),)), $this); ?>
@@ -22,7 +22,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 /?m=payment&s=transfer">转 账</a>
         </div>
     </div>
-	<div class="message"><p>Mall 帐户: 1个</p></div>
+	<!-- <div class="message"><p>Mall 帐户: 1个</p></div> -->
 </div>
 <div class="block">
 	<div class="record">

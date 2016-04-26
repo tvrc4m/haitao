@@ -1,11 +1,12 @@
 <{foreach item=list key=num from=$pro}>
-<li class="shopli <{if $num%2 !== 0}>even<{/if}> <{if $num%4 eq 3 && $num!==0 }>guanggao_kong<{/if}> clearfix">
+<li class="shopli <{if $num%4 eq 3 && $num!==0 }>guanggao_kong<{/if}> clearfix">
 	<span class="pname_img">
-        <img src="/uploadfile/national/d958079d28bb3bf37fca18e97a48cad1.png">
+		<{if $list.nationalurl.1 }>
+        	<img src="<{$list.nationalurl.1}>" alt="<{$list.nationalurl.0}>">
+		<{/if}>
 	</span>
 	<a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
 		<div class="shopli_top_img">
-			<!-- <img src="<{$list.pic}>"/> -->
 			<img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" height="132"  style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;"/>
 		</div>
 		<!-- <div class="shop_over">已售完</div> -->

@@ -8,14 +8,10 @@
                        "<div class='collect_box'>"+
                             "<div class='collect_box_content'></div>"+
                             "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
-                            "<div class='collect_box_hid'>+</div>"+
                         "</div>"+
                    "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".collect_box_out").addClass('collect_box_out_test');
-        $(".collect_box_hid").click(function(){
-            removeco();
-        })
         $(".collect_box_btn a").click(function(){
             removeco();
         })
@@ -38,16 +34,14 @@
         if(uname=='')
         {
             altto('<{$lang.no_logo}>');
-            $(".collect_box_hid").click(function(){
-               removeco();
-            })
             $(".collect_box_btn a").click(function(){
                 window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
             })
             return false;
         }
-        var shopid='<{$smarty.get.uid}>';
-        var shopname="<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
+
+        var shopid = '<{$smarty.get.uid}>';
+        var shopname = "<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
         var pars = 'uname='+uname+'&shopid='+shopid+'&shopname='+shopname;
         $.post(url, pars,showResponse);
         function showResponse(originalRequest)
@@ -72,9 +66,6 @@
         if(uname=='')
         {
             altto('<{$lang.no_logo}>');
-            $(".collect_box_hid").click(function(){
-               removeco();
-            })
             $(".collect_box_btn a").click(function(){
                  window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
             })
@@ -111,25 +102,27 @@
             <{$com.company}>
         </div>
     </div>
-    <div class="shopinfo-banner-content">
+    <div class="shopinfo-banner-content shopinfo-banner-content2">
         <div class="header_topleft">
-            <a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1"><img src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" ></a>
+            <a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1">
+                <img src="<{if $com.plogo}><{$com.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" >
+            </a>
         </div>       
         <div class="typ">信誉级：<img alt="<{$com.sellerpoints}>" title="<{$com.sellerpoints}>" align="absmiddle" src="<{$config.weburl}>/image/points/<{$com.sellerpointsimg}>"></div>
         <div class="typ">好评率：<span><{$list.favorablerate|number_format:2}>%</span></div>
         <div class="col" style="padding: 0 10px">
             <a onclick="javascript:getfavshop()">
-                <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
+                <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
                 <div class="nav-c" style="font-size: .7em">收藏</div>
             </a>
         </div>
         <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}>
-        <div class="col" style="padding: 0 10px">
-            <a href="javascript:distribute_goods('<{$de.id}>');" style="color:8b8b8b">
-                <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe663;</div>
-                <div style="font-size: .7em">加入分销</div>
-            </a>
-        </div>
+            <div class="col" style="padding: 0 10px">
+                <a href="javascript:distribute_goods('<{$de.id}>');" style="color:8b8b8b">
+                    <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe663;</div>
+                    <div style="font-size: .7em">加入分销</div>
+                </a>
+            </div>
         <{/if}>
     </div>
 </section>
@@ -148,7 +141,7 @@
                             <div class="shopli_bottom_message">
                                 <p class="shopli_bottom_text"><{$list.pname|truncate:18:""}></p>
                             </div>
-                            <div class="shopli_bottom_rob clearfix">
+                            <div class="shopli_bottom_rob shopli_bottom_rob2 clearfix">
                                 <div class="al shopli_bottom_money">
                                     <p class="money"><{$config.money}><{$list.price}></p>
                                     <p class="money money_del"><{$config.money}><{$list.market_price}></p>
@@ -179,7 +172,7 @@
                             <div class="shopli_bottom_message">
                                 <p class="shopli_bottom_text"><{$list.pname|truncate:18:""}></p>
                             </div>
-                            <div class="shopli_bottom_rob clearfix">
+                            <div class="shopli_bottom_rob shopli_bottom_rob2 clearfix">
                                 <div class="al shopli_bottom_money">
                                     <p class="money"><{$config.money}><{$list.price}></p>
                                     <p class="money money_del"><{$config.money}><{$list.market_price}></p>

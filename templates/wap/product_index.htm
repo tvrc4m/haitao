@@ -1,4 +1,7 @@
 <div>
+    <style type="text/css">
+        .mains{height: 0;}
+    </style>
     <script type="text/javascript">
         var web_url = "<{$config.weburl}>"
     </script>
@@ -6,6 +9,20 @@
 <link href="<{$config.weburl}>/templates/<{$config.temp}>/css/new_page.css" type="text/css" rel="stylesheet"/>
 <link rel="stylesheet" href="<{$config.weburl}>/script/owl-carousel/owl.carousel.css">
 <link rel="stylesheet" href="<{$config.weburl}>/script/owl-carousel/owl.theme.css">
+<div class="main">
+<header class="head clearfix">
+    <section id="J_search" class="in-search cc-search showoff clearfix">
+    <a href="/login.php" data-href="login" class="user_icon"></a>   
+        <div class="main95">
+            <div class="s_main">
+                <input type="text" value="" autocomplete="off" placeholder="搜所您需要的商品" />
+                <div class="s_images"></div>
+            </div>
+        </div>
+     <a href="<{$config.weburl}>/cat.php" id="y_menu_icon" data-open="off"></a>
+    </section>  
+</header>
+</div>
 <section class="m_main m_main-v1s">
     <div class="w100">
         <script src='<{$config.weburl}>/api/ad.php?id=13&catid=1'></script>
@@ -16,22 +33,25 @@
     <div class="cate-guang" id="end_pro">
         <i class="cate-guang-img"></i>
         <ul>
-            <li>日本馆开馆了，对面的美眉看过来</li>
-            <li>韩国馆开馆了，对面的美眉看过来</li>
-            <li>英国馆开馆了，对面的美眉看过来</li>
-            <li>澳洲馆开馆了，对面的美眉看过来</li>
+            <{foreach item=list key=num from=$annoub}>
+                <li><a href="<{if $list.url}><{$list.url}><{else}><{$config.weburl}>/?m=announcement&s=detail&id=<{$list.id}><{/if}>"><{$list.title}></a></li>
+            <{/foreach}>
         </ul>
     </div>
 </section>
 <section>
     <div class="cate-guangimg clearfix">
-       <div class="cate-guangimg-left"><a href="<{$config.weburl}>/?m=product&s=list&id=1002&dist_id=42"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_gg0.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></div>
+       <div class="cate-guangimg-left">
+            <script src='<{$config.weburl}>/api/ad.php?id=32'></script>
+       </div>
+
        <div class="cate-guangimg-right">
            <ul class="clearfix">
-               <li><a href="<{$config.weburl}>/?m=product&s=list&id=1000&dist_id=42"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_gg2.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-               <li><a href="<{$config.weburl}>/?m=product&s=list&id=1001&dist_id=42"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_gg3.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-               <li><a href="<{$config.weburl}>/?m=product&s=list&id=1002&dist_id=42"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_gg4.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-               <li><a href="<{$config.weburl}>/?m=product&s=list&id=1003&dist_id=42"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_gg1.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
+               <{foreach item=list key=num from=$categorys}>
+                    <{if $num < 1004}>
+                    <li><a href="<{$config.weburl}>/?m=product&s=list&id=<{$list.catid}>&dist_id=<{$list.displayorder}>"><img class="scrollLoading" data-url="<{$list.wpic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="<{$list.name}>"></a></li>
+                    <{/if}>
+               <{/foreach}>
            </ul>
        </div>
     </div>
@@ -39,14 +59,16 @@
 <section>
     <div class="cate-guanglist clearfix">
         <ul class="clearfix">
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl1.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl2.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl3.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl4.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl5.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl6.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl7.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
-           <li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl8.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>
+            <{foreach item=list key=num from=$categorys}>
+                <{if $num < 1004}>
+                <{foreach item=lists key=nums from=$list.sub_cat}>
+                    <{if $nums < 2 }>
+                   <li><a href="<{$config.weburl}>/?m=product&s=list&id=<{$lists.catid}>&dist_id=<{$lists.displayorder}>"><img class="scrollLoading" data-url="<{$lists.wpic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="<{$lists.cat}>"></a></li>
+                    <{/if}>
+                   <!--<li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl2.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>-->
+                <{/foreach}>
+                <{/if}>
+            <{/foreach}>
        </ul>
     </div>
 </section>
@@ -67,33 +89,27 @@
                 <li><a href="javascript:void(0);">美妆个护</a></li>
                 <li><a href="javascript:void(0);">日用百货</a></li>
                 <li><a href="javascript:void(0);">食品保健</a></li>
-                <li><a href="javascript:void(0);">日本馆</a></li>
             </ul>
         </div>
         <div class="da_list da_list_t">
             <div class="shop clearfix list_current">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1000 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1001 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1002 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
             <div class="shop clearfix">
                 <ul class="shoplist clearfix">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
-                </ul>
-            </div>
-            <div class="shop clearfix">
-                <ul class="shoplist">
-                <{insert name="label" type="product" o=4 temp="product_list_li_0" limit=20}>
+                <{insert name="label" type="product" catid=1003 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
         </div>      
@@ -103,7 +119,7 @@
 
 <section class="m_main-v9">
     <div class="m m2">
-        <a href="<{$config.weburl}>/cat.php" class="m_jiazai next"><i></i>点击加载更多</a>
+        <a href="javascript:void(0);" class="m_jiazai next" id="more-msg" >下拉加载更多</a>
     </div>
 </section>
 
@@ -174,7 +190,6 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
             _slideObj.animate({height:slideH},800);
         }, 800);
     }, false);
-    
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
     for(var i=0;i<imgIndex;i++){
         dot.append("<span></span>")
@@ -183,6 +198,40 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
     if(imgIndex==1){
         dot.html("");
     }
+    $jj(function(){
+        eval('var ar =<{$ar}>;');
+        var i = 1;
+        var stop=true; 
+        $jj(window).scroll(function(){
+            if(i>=5){
+                stop=false;
+            }
+            totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()) + parseFloat($jj("footer").height()); 
+            if($jj(document).height() <= totalheight){ 
+                if(stop==true){ 
+                    $jj("#more-msg").html("正在加载中.....");
+                    stop=false; 
+                     $jj.ajax({
+                        url: "<{$config.weburl}>/module/ajax/wapajax.php",
+                        type: "post",
+                        data: {ar:ar,num:i},
+                        success: function(msg){
+                            $jj(".shop .shoplist").append(msg);
+                            $jj("#more-msg").html("下拉加载更多");
+                            if(i>=5){
+                                $jj("#more-msg").html("商品已加载完毕");
+                            }
+                            if(msg==""){
+                                $jj("#more-msg").html("商品已加载完毕");
+                            }
+                            stop=true;
+                        }
+                    });
+                    i++;
+                } 
+            } 
+        });
+    }) 
 </script>
 </div>
 

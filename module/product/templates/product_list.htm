@@ -1,23 +1,27 @@
 <link href="<{$config.weburl}>/module/product/templates/pro.css" rel="stylesheet" type="text/css" />
-<div>
-<div class="w">
+<div class="bgcolor">
+<div style="position: relative;top: 0;left: 50%;margin-left: -960px;">
+    <{if $gid}>
+    <script src='<{$config.weburl}>/api/ad.php?id=<{$gid}>'></script>
+    <!--<img src="image/default/banner_list.jpg">-->
+    <{/if}>
+</div>
+<!--  <div class="w">
     <div class="detailnav">
-    
     	<{if $smarty.get.key}>
         <strong><a href="<{$config.weburl}>?m=product&s=list">全部结果</a></strong><span>
         <{/if}>
-        
+
         <{foreach item=list key=key from=$catname}>
-        
+
         <{if $key==0 && !$smarty.get.key}>
         <strong><a href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}></a></strong><span>
         <{else}><b></b><a href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}>&nbsp</a><a
-            href="<{$config.weburl}>?m=product&s=list&id=<{$list.oid}>">×</a>
-          <!--<a href="<{$config.weburl}>?m=product&s=list&id=<{$list}>">ds<{$list|getName}></a>-->
+            style="border-left:none;" href="<{$config.weburl}>?m=product&s=list&id=<{$list.oid}>">×</a>
         <{/if}>
-        
+
         <{foreachelse}>
-        
+
         <{if !$smarty.get.key}>
         <strong><a href="index.php">首页</a></strong><span>
          > <a href="<{$config.weburl}>?m=product&s=list">全部商品</a>
@@ -27,17 +31,16 @@
         <{if $smarty.get.key}>
          > "<{$smarty.get.key}>"
         <{/if}>
-        
+
         <{if $smarty.get.brand}>
          <b></b> <a href="<{$config.weburl}>?m=product&s=list&<{$url}>"><{$smarty.get.brand}></a><a
             href="<{$config.weburl}>?m=product&s=list&id=<{$smarty.get.id}>">×</a>
         <{/if}>
-        
         </span>
     </div>
-</div>
+</div> -->
 
-<div class="w pd20">
+<div class="w pd20" style="padding-top: 20px;">
     <{if $brand || $catfile || $cat}>
     <div id="select">
     	<{if $cat }>
@@ -67,6 +70,38 @@
             </dd>
         </dl>
         <{/if}>
+        <dl>
+            <dt>筛选：</dt>
+            <{if $smarty.get.key}>
+            <strong><a href="<{$config.weburl}>?m=product&s=list">全部结果</a></strong><span>
+            <{/if}>
+
+            <{foreach item=list key=key from=$catname}>
+
+            <{if $key==0 && !$smarty.get.key}>
+            <!-- <strong><a href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}></a></strong> --><span style="display: block;padding-top: 8px;">
+            <{else}><b></b><a style="border:1px solid #ccc;padding: 0 5px;" href="<{$config.weburl}>?m=product&s=list&id=<{$list.id}>"><{$list.id|getName}>&nbsp</a><a
+                style="border:1px solid #ccc;border-left:none;padding: 0 3px; margin-right: 10px;" href="<{$config.weburl}>?m=product&s=list&id=<{$list.oid}>">×</a>
+            <{/if}>
+
+            <{foreachelse}>
+
+            <{if !$smarty.get.key}>
+            <strong><a href="index.php">首页</a></strong><span>
+             > <a href="<{$config.weburl}>?m=product&s=list">全部商品</a>
+            <{/if}>
+            <{/foreach}>
+
+            <{if $smarty.get.key}>
+             > "<{$smarty.get.key}>"
+            <{/if}>
+
+            <{if $smarty.get.brand}>
+             <b></b> <a style="border:1px solid #ccc;padding: 0 5px;" href="<{$config.weburl}>?m=product&s=list&<{$url}>"><{$smarty.get.brand}></a><a style="border:1px solid #ccc;border-left:none;padding: 0 3px;margin-right: 10px;"
+                href="<{$config.weburl}>?m=product&s=list&id=<{$smarty.get.id}>">×</a>
+            <{/if}>
+            </span>
+        </dl>
         <{foreach item=list key=num from=$catfile}>
         <{assign var=fieldName value=$list.field}>
         <{assign var=s value=$smarty.get.$fieldName}>
@@ -91,11 +126,10 @@
                 <div class="order">
                     <{assign var=s value=$smarty.get.orderby}>
                     <a <{if !$s}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>"><span>综合</span></a>
-                    <a <{if $s==1}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=1"><span>销量</span><!-- <b></b> --></a>
-                    <a <{if $s==4}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=4"><span>新品</span><!-- <b></b> --></a>
+                    <a <{if $s==1}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=1"><span>销量</span></a>
+                    <a <{if $s==4}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=4"><span>新品</span></a>
                     <a <{if $s==5 || $s==6}>class="current <{if $s==5}>up<{/if}>"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=<{if $s==6 }>5<{else $s==5 }>6<{/if}>"><span>价格</span><b></b></a>
-                    <a <{if $s==2}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=2"><span>人气</span><!-- <b></b> --></a>
-                    <!-- <a <{if $s==3}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=3"><span>信用</span><b></b></a> -->
+                    <a <{if $s==2}>class="current"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=2"><span>人气</span></a>
                 </div>
                 <div class="sendadd">发货地</div>
                 <div class="area"><span><{if $smarty.get.province|getdistrictname}><{$smarty.get.province|getdistrictname}><{else}><{/if}></span><b></b></div>
@@ -128,44 +162,51 @@
                         });
                     });
                 </script>
-               <!--  <div class="total">共<strong><{$info.count}></strong>个商品</div> -->
             </div>
         </div>
             <ul class="clearfix border_left">
                 <{foreach item=list key=num from=$info.list}>
-                <li <{if ($num+1)%4==0}>class="mr0"<{/if}> >
+                <li <{if ($num+1)%5==0}>class="mr0 w242"<{/if}> >
                     <div class="p-info">
                         <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
-                        <p class="p-price"><strong><{$config.money}><{$list.price}></strong></p>
-                        <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a>
+                        <p class="p-country"><span>
+                            <{if $list.nat}>
+                                <img src="<{$list.nat.img}>">
+                            <{/if}>
+                        </span><a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a></p>
+                        <p class="p-price"><strong><{$config.money}><{$list.price}></strong><s>¥<{$list.market_price}></s></p>
                         <p class="p-option clearfix"><a class="fl" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.con.num}></a><a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="fr">加入购物车</a></p>
                         <!-- <div class="p-shop"><a href="shop.php?uid=<{$list.userid}>"><{$list.company}></a></div> -->
                     </div>
+                    <div class="fix">免税包邮</div>
                 </li>
                 <{/foreach}>
             </ul>
             <{if $info.page}>
             <div class="flpage clearfix">
-                <div class="page"><{$info.page}></div>
+                <div class="page clearfix"><{$info.page}></div>
             </div>
             <{/if}>
         </div>
-        <div class="hotProduct">
+       <!--  <div class="hotProduct">
         	<div class="m">
                 <div class="mt"><h3>为您推荐</h3></div>
                 <div class="mc">
                  <{insert name="label" type="product" catid=$smarty.get.id o='1' temp="product_list_li" limit=6}>
                 </div>
             </div>
-        </div>
+        </div> -->
         <{else}>
-        <div class="itemsNull">
-            <h3>很抱歉，没有找到符合条件的宝贝</h3>
-            <p>
-                <em>建议您：</em>
-                <span>1、适当减少筛选条件，可以获得更多结果</span>
-                <span>2、尝试其他关键字</span>
-            </p>
+        <div class="itemsNull clearfix">
+            <div class="left"><img src="image/default/null.png"></div>
+            <div class="right">
+                <h3>很抱歉，没有找到符合条件的宝贝</h3>
+                <p>
+                    <em>建议您：</em>
+                    <span>1、适当减少筛选条件，可以获得更多结果</span>
+                    <span>2、尝试其他关键字</span>
+                </p>
+            </div>
         </div>
         <{/if}>
     </div>

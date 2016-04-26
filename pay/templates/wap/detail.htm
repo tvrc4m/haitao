@@ -1,8 +1,20 @@
 <div class="block fn-clear">
+      <div class="balance account balance2">
+        <div>
+            <span class="wallet">
+                  <span>账户余额</span>
+                <em><strong class="srt"><{$de.cash}></strong></em>
+                <span> 元</span>
+            </span>
+            <a class="btn btns" href="<{$config.weburl}>/?m=payment&s=withdraw">提 现</a>
+        </div>
+    </div>
+</div>
+<div class="block fn-clear">
 	<div class="i-block">
-		<h2>记录详情</h2>
+		<h2>账单详情</h2>
         <dl class="detail">
-            <dt><{$re.note}></dt>
+            <dt></dt>
             <{if $re.real_name||$re.seller_email}>
             <dd><span>收款方：</span><{if $re.real_name}><{$re.real_name}><{else}><{$re.seller_email}><{/if}></dd>
             <{/if}>
@@ -21,7 +33,7 @@
             <{if $re.con}><dd><span>备注：</span><{$re.con}></dd><{/if}>
             <{if $re.censor}><dd><span>操作者：</span><{$re.censor}></dd><{/if}>
             <{if $re.check_time}><dd><span>操作时间：</span><{$re.check_time|date_format:"%Y-%m-%d&nbsp;%H:%M:%S"}></dd><{/if}>
-            <{/if}>
+             <{/if}>
         </dl>
 	</div>
 </div>

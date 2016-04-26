@@ -103,3 +103,16 @@
 .step .order_sum{float: right;display: inline-block;line-height: 40px;margin-right: 20px;}
 .step .order_sum b{color: #ff5c5c;font-size: 24px;}
 
+.waitpay{display:none;text-align: center;z-index: 200001;background-clip: padding-box;background-color: #FFFFFF;border: 1px solid rgba(0, 0, 0, 0.3);box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    left: 50%;margin: -150px 0 0 -250px;overflow: hidden;position: fixed;top: 50%;width: 500px; height: 300px;overflow: hidden;}
+.waitpay .head{text-align: left;padding:0 20px;font-size: 16px; background: #f2f2f2;line-height: 35px;border-bottom: 1px solid #ccc;}
+.waitpay .head a{float: right;font-size: 20px;cursor: pointer;}
+.waitpay .content{font-size: 16px;width: 360px;padding: 35px 0;}
+.waitpay .content h2{color: #333;font-weight:500;margin-bottom: 20px;}
+.waitpay ul{margin-top: 20px;}
+.waitpay ul li{float: left;width: 158px;margin: 0 10px;line-height: 30px;border:1px solid #ccc;border-radius: 5px;background-color: #f2f2f2;}
+.waitpay ul li.cur{background-color: #ff5c5c;border: none;}
+.waitpay .cur a,.waitpay .cur a:hover{color: #fff;}
+.waitpay .repay{margin-top: 10px;}
+.waitpay .repay a{color: #ff5c5c;}
+#overlay{opacity: 0.7;position: fixed;top: 0;left: 0;background-color: black;width: 100%; height:100%;z-index: 20000;}

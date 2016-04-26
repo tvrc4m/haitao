@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-18 23:26:31
+<?php /* Smarty version 2.6.20, created on 2016-04-25 18:49:31
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -49,7 +49,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block fn-clear">
 	<div class="i-block payment">
-        <div class="title">
+        <div class="title title2">
        		<div>
             <h3><?php echo $this->_tpl_vars['re']['note']; ?>
 </h3>
@@ -64,12 +64,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
         </div>
 
 
-		<?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
-        <div class="form_weixin">
-        <span>推荐支付：</span>
-        <a  style="text-align:center;line-height:45px;width:99.5%;height:45px; background-color:#FE6714; border:0px #FE6714 solid; cursor: pointer;  color:white;  font-size:16px;display:inline-block" onclick="callpay()" >微信支付</a></div>
-        <?php endif; ?>
-
+		
         <?php if ($this->_tpl_vars['re']['statu'] == 1): ?>
         <div class="form">
         <form method="post">
@@ -78,18 +73,23 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 " />
             <fieldset>
             <dl>
-                <dt>支付方式：</dt>
+                <dt style="margin-left:5px;">请选择支付方式：</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
+                    <li>
+                         <?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
+                            <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a            
+                        <?php endif; ?>
+                    </li>
                     <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
-                         <li <?php if ($this->_tpl_vars['key'] == 0): ?>class="checked"<?php endif; ?> >
-                        <img title="<?php echo $this->_tpl_vars['list']['payment_name']; ?>
-" alt="<?php echo $this->_tpl_vars['list']['payment_name']; ?>
-" data-param="{'id':'<?php echo $this->_tpl_vars['list']['payment_type']; ?>
-'}" src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
-.gif" /><i></i>
+                        <li>           
+                            <a class="form_qianbao_btn" data-param="{'id':'<?php echo $this->_tpl_vars['list']['payment_type']; ?>
+'}"><img src="image/payment/<?php echo $this->_tpl_vars['list']['payment_type']; ?>
+.gif" class="form_qianbao_img"><?php echo $this->_tpl_vars['list']['payment_name']; ?>
+<i></i></a>
+                            <div style="border-top:1px solid #f1f1f1;height:0;"></div>
                         </li>
                     <?php endforeach; endif; unset($_from); ?>  
                     </ul>
@@ -99,20 +99,25 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
             <?php if ($this->_tpl_vars['account'] != 'false'): ?>
             <fieldset class="fieldset">  
             <dl class="free">
-                <dt>可用总额：</dt>
-                <dd><?php echo $this->_tpl_vars['de']['cash']; ?>
- 元</dd>
+                <dt></dt>
+                <dd>可用总额：<span class="free_price"><?php echo $this->_tpl_vars['de']['cash']; ?>
+</span> 元</dd>
             </dl> 
-            <dl>
+            <dl class="free2">
                 <dt>支付密码：</dt>
-                <dd><input type="password" class="text" name="password" value="" /></dd>
+                <dd><input type="password" class="text" name="password" value="" placeholder="填写支付密码" /></dd>
             </dl>
             </fieldset>
             <?php endif; ?>
-            <dl>
+            <dl class="btn_pay">
                 <dt></dt>
                 <dd>
-                <input style="padding-top:4px;" type="submit" class="submit" value="确定支付" />
+                <?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
+                <div class="form_weixin_btns2" onclick="callpay()" >确定支付</div>
+                <div style="display:none"><input style="font-size:14px;letter-spacing:1px;margin-left:-12px;padding:0;" type="submit" class="submit" value="确定支付" /></div>
+                <?php else: ?>
+                <input style="font-size:14px;letter-spacing:1px;margin-left:-12px;" type="submit" class="submit" value="确定支付" />
+                <?php endif; ?>
                 </dd>
             </dl>
         </form>   
@@ -123,20 +128,26 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 </div>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
-$(".pay li").bind("click",function(){
-	var data = $(this).children('img').attr('data-param');
-	eval("data = "+data);
-	<?php if ($this->_tpl_vars['account'] != 'false'): ?>
-	if(data.id=='account')
-	{
-		$('.fieldset').show();
-	}
-	else
-	{
-		$('.fieldset').hide();
-	}
-	<?php endif; ?>
-	$("#payment_type").val(data.id);
-	$(this).addClass("checked").siblings().removeClass("checked");
-});
+$(function(){
+   $(".pay li").bind("click",function(){
+        var liIndex=$(this).index();
+        console.log(liIndex)
+        var data = $(this).children('a').attr('data-param');
+        eval("data = "+data);
+        <?php if ($this->_tpl_vars['account'] != 'false'): ?>
+        if(data.id=='account')
+        {
+            $('.fieldset').show();
+        }
+        else
+        {
+            $('.fieldset').hide();
+        }
+        <?php endif; ?>
+        $("#payment_type").val(data.id);
+        $(this).find("i").toggleClass("formsh").end().siblings().find("i").removeClass("formsh");
+        $(".btn_pay dd div").eq(liIndex).show().siblings().hide();
+    }); 
+})
+
 </script>

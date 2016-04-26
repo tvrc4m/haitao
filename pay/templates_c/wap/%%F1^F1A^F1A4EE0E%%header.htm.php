@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-03-29 17:05:14
+<?php /* Smarty version 2.6.20, created on 2016-04-25 09:50:10
          compiled from header.htm */ ?>
 <?php echo '<?xml'; ?>
  version="1.0" encoding="utf-8"<?php echo '?>'; ?>
@@ -18,5 +18,6 @@
 <meta property="wb:webmaster" content="c51923015ca19eb1">
 <link href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /templates/wap/css/page.css" rel="stylesheet" type="text/css" />
+<script src="../../script/jquery-1.4.4.min.js"></script>
 </head>
 <body>
