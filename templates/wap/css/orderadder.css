@@ -5,7 +5,7 @@ ul li p:first-child{border-bottom:1px solid #ff5c5c;padding:0.5rem;}
 ul li p:first-child span{color:#6E6E6E;font-size:0.65rem;}
 ul li p:first-child span:nth-child(2){color:#ff5c5c;padding-left:10px;}
 ul li p:first-child span:last-child{float:right;}
-ul li p:last-child{padding:0 0.6rem;clear:both;display:block;overflow:hidden;word-break:break-all;word-wrap:break-word;height:1.8rem;line-height:1.8rem;}
+ul li p:last-child{padding:0 0.5rem;clear:both;display:block;overflow:hidden;word-break:break-all;word-wrap:break-word;height:1.8rem;line-height:1.8rem;}
 ul li p:last-child span{color:#6E6E6E;font-size:0.65rem;}
 ul li .del{background:url(../../../image/wap/del.png) center no-repeat #EEE;position:absolute;right:0;bottom:0;display:block;height:1.8rem;overflow:hidden;padding:0;text-indent:-9876px;top:auto;width:45px;z-index:100;}
 .add{padding:0 0 20px;}

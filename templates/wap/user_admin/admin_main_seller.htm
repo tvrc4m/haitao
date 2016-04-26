@@ -2,9 +2,9 @@
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type=text/javascript></script>
 <header>
     <div class="nav-w">
-        <section class="nav-s iconfont"><a href="<{$config.weburl}>"><font>&#xe619</font></a></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span><{if $cominfo.shop_type eq 1}>分销中心<{else}>卖家中心<{/if}></span></section>
-        <section class="nav-e"></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <script type="text/javascript">

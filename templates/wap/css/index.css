@@ -65,8 +65,8 @@ footer{margin-top:30px;}
 .center{padding-bottom:10px;background-color:#eee; overflow:hidden;}
 .c_info{width:100%;padding:15px 0 10px;border-bottom:1px solid #ccc;background-color:#fff; overflow:hidden;}
 .c_infoL{float:left;height:70px;margin-right:10px;}
-.c_infoL{float:left;height:70px;margin-right:10px;}
-.c_infoL img{padding:0 8px;border-right:1px solid #ccc;}
+.c_infoL{float:left;height:80px;margin-right:15px;margin-left: 15px;border-radius: 50%;}
+.c_infoL img{border-right:1px solid #ccc;border-radius: 50%;}
 
 .c_infoR{float:right;height:80px;margin-right:5px;}
 .c_infoR img{padding:0 8px;border-right:1px solid #ccc;}
@@ -78,7 +78,7 @@ footer{margin-top:30px;}
 .c_info1 a{color:#959595;}
 .c_info1 .shop{color:#dd3030;margin-right:5px}
 .c_info1 .pay{color:#FF6600;margin-left:15px;margin-right:5px}
-.c_info1 dd{line-height:2.0;}
+.c_info1 dd{line-height:2.0;color: #ff5c5c;}
 
 .info_list{margin:15px 0;position:relative;}
 .info_list1,.info_list2{width:100%;height:38px;line-height:38px;padding-left:10px;border:1px solid #ccc;background-color:#fff;box-sizing:border-box;-webkit-box-sizing:border-box;font-weight:200;font-size:15px;overflow:hidden;}
