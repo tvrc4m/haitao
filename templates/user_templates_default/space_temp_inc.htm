@@ -7,9 +7,11 @@
 <meta name="keywords" content="<{if $com.shop_description!=''}><{$com.shop_description}><{else}><{$de.description|truncate:100:"...":true}><{/if}>">
 <link rel="stylesheet" type="text/css" href="<{$config.weburl}>/templates/user_templates_default/space.css"/>
 <link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script language="javascript" src="<{$config.weburl}>/templates/user_templates_default/jquery.Sonline.js"></script>
 <script language="javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
+<script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<{$config.weburl}>/script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
 <script type="text/javascript">
 function getfavshop()
 {	
@@ -29,22 +31,24 @@ function getfavshop()
 	function showResponse(originalRequest)
 	{
 		if(originalRequest>1)
-			alert('<{$lang.fav_ok}>');
+			// alert('<{$lang.fav_ok}>');
+            layer.msg('<{$lang.fav_ok}>', {icon: 0});
 		else if (originalRequest>0)
-			alert('<{$lang.fav_isbing}>');
+			// alert('<{$lang.fav_isbing}>');
+            layer.msg('<{$lang.fav_isbing}>', {icon: 0});
 		else
 			alert('<{$lang.error}>');
 	 }
 	
 }
-$(function(){
-	$("body").Sonline({
-		<{if !$cs}>
-		DefaultsOpen:false,
-		<{/if}>
-		Qqlist:"<{$cs}>" //多个QQ用','隔开，QQ和客服名用'|'隔开
-	});
-})	
+// $(function(){
+// 	$("body").Sonline({
+// 		<{if !$cs}>
+// 		DefaultsOpen:false,
+// 		<{/if}>
+// 		Qqlist:"<{$cs}>" //多个QQ用','隔开，QQ和客服名用'|'隔开
+// 	});
+// })	
 </script>
 </head>
 <body>

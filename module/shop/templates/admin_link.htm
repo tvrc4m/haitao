@@ -14,21 +14,19 @@
     </div>
     <{if $smarty.get.type=='add' or $smarty.get.type=='edit'}>
     <div class="form-style">
-      <form action="" method="post">
+      <form action="" method="post" id="form">
         <input type="hidden" value="<{$link.id}>" name="id">
         <input type="hidden" value="<{if $link.id}>edit<{else}>add<{/if}>" name="submit">
         <dl>
           <dt><em>*</em>标题：</dt>
           <dd>
-            <input type="text" value="<{$link.name}>" name="name" class="w300 text">
+            <input type="text" value="<{$link.name}>" name="name" class="w300 text"><div class="form-error"></div>
           </dd>
         </dl>
         <dl>
           <dt><em>*</em>链接：</dt>
           <dd>
-            <p>
-              <input type="text" value="<{$link.url}>" name="url" class="w300 text">
-            </p>
+            <input type="text" value="<{$link.url}>" name="url" class="w300 text"><div class="form-error"></div>
             <p class="hint">请填写包含http://的完整URL地址</p>
           </dd>
         </dl>
@@ -88,3 +86,29 @@
     </table>
     <{/if}> </div>
 </div>
+<script type="text/javascript" src="../script/jquery.validation.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+    $('#form').validate({
+        errorPlacement: function(error, element){
+            element.nextAll('.form-error').append(error);
+        },
+        rules : {
+            name:{
+                required:true
+            },
+            url:{
+                required:true
+            }
+        },
+        messages : {
+            name:{
+                required:'请填写标题'
+            },
+            url:{
+                required:'请填写URL'
+            }
+        }
+    });
+});
+</script>
