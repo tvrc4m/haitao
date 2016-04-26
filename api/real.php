@@ -113,14 +113,14 @@ include_once("../includes/global.php");
 $real = new real;
 $post = $_POST?$_POST:$_GET;
 $aa = $real->idcard_authentication('130429198702155219');
-
+echo -1;
 if($config['temp']=='wap'){
 die(11);
 }
 if($config['temp'=='default']){
 die(222);
 }
-var_dump($aa);die;
+
 
 
 
