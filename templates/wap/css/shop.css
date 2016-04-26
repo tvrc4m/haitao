@@ -45,7 +45,7 @@
     line-height: 0.725rem;}
 .plist ul li div.p-price{color:#ff5353;font-size:0.6rem;line-height:1;margin-top:8px;overflow:hidden;padding:0px 10px;margin-bottom: 10px;}
 .plist h2{color:#333333;font-size:20px;font-weight:normal;line-height:1;position:relative;}
-.plist h3 a{margin:20px auto 20px;height:32px;line-height:32px;border-radius:5px 5px 5px 5px;width:100%;display:inline-block;background:-webkit-gradient(linear,left top,left bottom,from(#F9F9F9),to(#DCDCDC)) #DCDCDC;text-align:center;font-weight:normal;font-size:12px;}
+.plist h3 a{margin:10px auto 20px;height:40px;line-height:40px;border-radius:5px 5px 5px 5px;width:100%;display:inline-block;background:-webkit-gradient(linear,left top,left bottom,from(#F9F9F9),to(#DCDCDC)) #DCDCDC;text-align:center;font-weight:normal;font-size:14px;color: #535353;}
 .filter{margin:10px auto 0;padding:0 10px;}
 .filter-ul{border-top: 2px solid #7753ff}
 .filter li{width:25%;float:left;text-align:center;height:40px;line-height:40px;}

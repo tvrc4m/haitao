@@ -1,9 +1,7 @@
 $(function(){
-    $(document).scroll(function(){
-        var h = $(document).scrollTop();
+    $(window).scroll(function(){
+        var h = $(window).scrollTop();
         var wHeight=500;
-        console.log(h)
-        console.log(wHeight)
         if(h>wHeight){
             $(".addtop").show()
             $(".addtop").click(function(){
@@ -31,6 +29,5 @@ $(function(){
         $('.itemSearchResult').show();
         $('#leftmask').remove();
     });
-   
-    $(".scrollLoading").scrollLoading();
+    $(".scrollLoading").scrollLoading(); 
 })

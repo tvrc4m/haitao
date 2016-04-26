@@ -49,6 +49,10 @@ $dist_rows = $distribution->getDistributionProduct($buid);
 $produce_id_row = array_filter_key('product_id', $dist_rows);
 $dist_pro = $distribution->getProductInfo($produce_id_row);
 
+//获取国家馆
+foreach($dist_pro as $key => $val){
+	$dist_pro[$key]['p_national'] = $distribution->getProductNational($val['national']);
+}
 
 $dist_p_rows = array();
 

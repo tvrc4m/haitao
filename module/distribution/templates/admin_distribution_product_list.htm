@@ -69,7 +69,8 @@ $(function(){
         <div class="hd">
             <ul class="tabs">
                 <li class="active"><a href="main.php?m=distribution&s=admin_distribution_product_list">我的分销商品</a></li>
-                <li class="search-box"><!--
+                <li class="search-box">
+                    <!--
                     <form method="get">
 						<input type="hidden" name="m" value="product" />
 						<input type="hidden" name="s" value="admin_product_list" />
@@ -118,7 +119,7 @@ $(function(){
                 <td><{$list.uptime|date_format}></td>
                 <td><!--
                 <span <{if $list.shop_rec==0 }>style="display:none"<{/if}> id="rec1_<{$list.id}>"><a href="javascript:ref(<{$list.id}>,'unrec','rec=<{$list.id}>&action=admin_list&type=0')">点击取消推荐</a></span>
-               
+
                 <span <{if $list.shop_rec==1 }>style="display:none"<{/if}> id="rec2_<{$list.id}>"><a href="javascript:ref(<{$list.id}>,'rec','rec=<{$list.id}>&action=admin_list&type=1')">点击橱窗推荐</a></span>-->
                 </td>
                 <td>
@@ -128,7 +129,7 @@ $(function(){
             <{foreachelse}>
             <tr>
             	<td colspan="20" class="norecord">
-                	<i></i><span>暂无符合条件的数据记录</span>	
+                	<i></i><span>暂无符合条件的数据记录</span>
                 </td>
             </tr>
             <{/foreach}>

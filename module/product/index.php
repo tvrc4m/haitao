@@ -93,7 +93,7 @@ if($config['temp'] != "wap")
 }
 
     //调用公告
-    $sql = "select title,content,url from mallbuilder_announcement where status = 1 order by displayorder desc limit 5";
+    $sql = "select id,title,content,url from mallbuilder_announcement where status = 1 order by displayorder desc limit 5";
     $db->query($sql);
     $annoub = $db->getRows();
     $tpl->assign("annoub",$annoub);

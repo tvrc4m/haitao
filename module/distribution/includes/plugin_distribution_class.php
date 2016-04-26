@@ -525,7 +525,7 @@ fb($sql);
 	 * @param array $produce_id_row 产品Id
 	 * @return bool
 	 */
-	function getProductInfo($produce_id_row=array())
+	function getProductInfo($produce_id_row=array(), $begin = 0, $limit = 1000)
 	{
 		global $db;
 		global $tpl;
@@ -534,7 +534,7 @@ fb($sql);
 
 		if (is_array($produce_id_row) && $produce_id_row)
 		{
-			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, p.member_id, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ')  ORDER BY p.id DESC LIMIT 0, 1000';
+			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status,p.national, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, p.member_id, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ')  ORDER BY p.id DESC LIMIT '.$begin.','.$limit;
 
 			$db->query($sql);
 
@@ -544,6 +544,16 @@ fb($sql);
 		return $rs;
 	}
 
+	/**
+	 * 获取商品的国家馆
+	 */
+	public function getProductNational($id = 0){
+		global $db;
+		global $tpl;
+		$sql = "select title,img from mallbuilder_national_pavilions where id = ".$id;
+		$db->query($sql);
+		return $db->fetchRow();
+	}
 
 	/**
 	 * 判断产品是否允许分销

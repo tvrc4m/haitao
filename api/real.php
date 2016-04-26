@@ -76,6 +76,7 @@ class real{
  * real 身份证号
  * */
     function idcard_authentication($users='',$real=''){
+        global $db;
         $partner_id = '20160100136';
         $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
         $card_id = !empty($post['real']) ? $post['real'] : '';
@@ -84,11 +85,11 @@ class real{
         if(empty($post[users])) $erry = -1;else $users = $post[users];
         if(empty($post[real])) $erry = -2;else $real = $post[real];
         if(!empty($post[users])&&!empty($post[real])){
-            $type = validation_filter_id_card($post[real]);
+            $type = self::validation_filter_id_card($post[real]);
             if($type){
                 $sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
                 // 判断type为正确身份证再跳转验证身份证真假
-                $tokens = aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
+                $tokens = self::aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
                 if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
                     $sql = "update pay_member set identity_verify=true where userid=".$_COOKIE['dist_id'];
                     $db -> query($sql);
@@ -105,19 +106,21 @@ class real{
         }else{
             $erry = -1;
         }
+        return $erry;
     }
 }
-include_once("includes/global.php");
+include_once("../includes/global.php");
+$real = new real;
 $post = $_POST?$_POST:$_GET;
-
-
+$aa = $real->idcard_authentication('130429198702155219');
+echo -1;
 if($config['temp']=='wap'){
 die(11);
 }
 if($config['temp'=='default']){
 die(222);
 }
-var_dump($post);die;
+
 
 
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 18:00:26
+<?php /* Smarty version 2.6.20, created on 2016-04-26 10:50:28
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -30,7 +30,7 @@ $(function(){
 function formSubmit() {
     $.ajax({
         type: "POST",
-        url:ajaxCallUrl,
+        url:haitao.com/api/real.php,
         data:$('#form').serialize(),
         async: false,
         error: function(request) {

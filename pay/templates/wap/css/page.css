@@ -50,7 +50,7 @@ i.fanhui_icon {display: inline-block;height: 50px;width: 50px;background: url(..
 .banner{background:url(../image/wap_haitao_banner1.jpg);height:150px;}
 
 .banner .user{float:left;display:inline;height:97px;position:relative;background-color: rgba(255,255,255,.5);left: 50%;margin-left: -128.5px;top: 50%;margin-top: -49.5px;}
-.banner .img{float:left;width:76px;height:76px;padding:4px;margin:7px 0 0 12px;display:inline;overflow:hidden;position:relative;}
+.banner .img{float:left;width:72px;height:72px;padding:0px;margin:12px 0 0 12px;display:inline;overflow:hidden;position:relative;border-radius: 50%;}
 .banner .img-cover{position:absolute;top:0;left:0;z-index:100;width:100px;height:98px;}
 .banner .info{float:left;display:inline;margin-left:10px;padding-right: 20px;}
 .banner .user_info{margin-top:12px;line-height:22px;font-size:14px;color:#333;}
