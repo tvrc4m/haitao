@@ -68,7 +68,7 @@
     padding-top:1em;
 }
 .content_box{height:100%;position: relative;}
-.content{width:100%;margin-right:10px;}
+.content{width:100%;margin-right:10px;margin-bottom: 15px;}
 .content1{width:100%;margin-top:40px;bottom: 50px;}
 .lchat{float:left;margin-bottom:.3em;width:100%;}
 .lchat dt{float:left;margin-right:.65em}
