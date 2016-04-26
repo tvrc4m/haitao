@@ -29,4 +29,5 @@ $(function(){
         $('.itemSearchResult').show();
         $('#leftmask').remove();
     });
+    $(".scrollLoading").scrollLoading(); 
 })

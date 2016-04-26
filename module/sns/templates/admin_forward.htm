@@ -68,6 +68,7 @@ function ajaxpost(formid) {
 </div>
 </form>
 </div>
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.charCount.js"></script>
 <script>
 $(function(){
 	$("#forwardcontent").charCount({
@@ -75,10 +76,11 @@ $(function(){
 		warning: 10,
 		counterContainerID:'charcount',
 		firstCounterText:'<{$lang.remaining}>',
-		endCounterText:'<{$lang.characters}>'
+		endCounterText:'<{$lang.characters}>',
+		errorCounterText:'已经超出<span>'
 	});
 });
-$('#forward').live('click',function(){
+$('#forward').on('click',function(){
 	ajaxpost('forward_form');
 });
 </script>

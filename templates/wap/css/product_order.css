@@ -25,7 +25,7 @@
 .item:first-child{margin-top:10px;} 
 .item dl{padding:15px 10px;border-top:1px solid #b9b9b9;position:relative;}
 .item dl:first-child{border-top:none;}
-.item dt{width:90px;height:90px;float:left;margin-right: 20px;border: 1px solid #b9b9b9;}
+.item dt{width:90px;height:90px;float:left;margin-right: 20px;border: 1px solid #e1e1e1;}
 .item dd{margin-left:90px;line-height:18px;font-size:14px;}
 .item dd .p-name{max-height:36px;margin-bottom:8px;}
 .item dd .p-price{position:relative;overflow:inherit;height:29px;line-height:29px;}

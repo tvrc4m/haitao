@@ -68,7 +68,7 @@ else
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
 
 	//-----------如果为空,返回至购物车
-	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
+	//if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
 	//=============================提交订单
 	if($_POST['act']=='order')
 	{  
@@ -249,19 +249,22 @@ else
 		$res=pay_get_url($post,true);//跳转至订单生成页面			
 
 		//------------清空购物车
-		/*$cart -> clear_cart($_SESSION['product_id']);
-		unset($_SESSION['product_id']);
+		$cart -> clear_cart($_SESSION['product_id']);
+		/*unset($_SESSION['product_id']);
 		unset($_SESSION['dist_user_id']);*/
 		//msg($config['weburl']."/main.php?cg_u_type=1&m=product&s=admin_buyorder");//订单提交成功
 	//	msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$inorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
-		if($_COOKIE['identity']=='true'&&$config['temp']=='default'){
-			echo $config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp'];
-		}else if($_COOKIE['identity']=='true'&&$config['temp']=='wap'){
-			msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
-		}else if($config['temp']=='wap')
-		msg($config['web_url']."/real.php");//wap实名认证
-		else
-		msg($config['pay_url']."/?act=edit&op=name");//实名认证
+		if($_COOKIE['identity']=='true'){
+			if($config['temp']=='wap')
+				msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
+			else
+				echo $pcUrl = $config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp'];
+		}else{
+			if($config['temp']=='wap')
+				msg($config['web_url']."/real.php");//wap实名认证
+			else
+				msg($config['pay_url']."/?act=edit&op=name");//实名认证
+		}
 		die;
 	}
 }

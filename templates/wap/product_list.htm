@@ -92,7 +92,7 @@
 <section class="addtop">
     <a class="top" href="javascript:void(0);"></a>
 </section>
-<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_list.js"></script>
 <script type="text/javascript">   
@@ -105,13 +105,15 @@
                         "</div>"+
                    "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".collect_box_out").addClass('collect_box_out_test');
-        $(".collect_box_btn a").on("click",function(){
+        $(".collect_box_btn a").click(function(){
             removeco();
         })
     }
     function altto(co){
         $(".collect_box_content").html(co);
+    }
+     function show(){
+        $(".collect_box_out").addClass('collect_box_out_test');
     }
     function removeco(){
         $(".am-dialog-mask").removeClass("am-dialog-mask-test");
@@ -126,7 +128,7 @@
         if(uname=='')
         {
             altto('请先登录！');
-            // alert('<{$lang.no_logo}>');
+            show();
             $(".collect_box_btn a").on("click",function(){  
                 window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
             }) 
@@ -139,15 +141,15 @@
             
             if(originalRequest>1){
                 altto('成功添加至我的分销!');
-                
+                show();
             }
             else if (originalRequest>0){
                 altto('该内容已经在你的分销中心<br>请勿重复添加！');
-               
+                show();
             }  
             else{
                 altto('参数传递错误<br>无法完成操作!');
-              
+                show();
             }
         }
     }
@@ -164,7 +166,6 @@ $(function(){
     $(window).scroll(function(){
         totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
         if($(document).height() <= totalheight){
-        console.log(stop) 
             if(stop==true){ 
                 $(".m_jiazai").html("正在加载中.....");
                 stop=false; 
@@ -175,7 +176,6 @@ $(function(){
                     data: {id:id, page:page, m:"product", s:"ajax_list"},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
@@ -206,9 +206,10 @@ $(function(){
                                             "</div>"+ 
                                        "</div>"+
                                     "</a>"+
-                                "</li>")                           
+                                "</li>")                      
                         }
                         stop=true;
+                        $(".scrollLoading").scrollLoading();
                         }else{
                          $(".m_jiazai").html("已到最底部");
                         }
@@ -216,8 +217,7 @@ $(function(){
                 });
             } 
         } 
-    });
-    $(".scrollLoading").scrollLoading();       
+    })      
 })
 </script>
 

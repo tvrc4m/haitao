@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 09:50:10
+<?php /* Smarty version 2.6.20, created on 2016-04-26 16:16:34
          compiled from header.htm */ ?>
 <?php echo '<?xml'; ?>
  version="1.0" encoding="utf-8"<?php echo '?>'; ?>
@@ -8,7 +8,6 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <meta charset="utf-8" />
 <title>我的<?php echo $this->_tpl_vars['config']['company']; ?>
- 触屏版-<?php echo $this->_tpl_vars['config']['company']; ?>
 </title>
 <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
 <meta name="viewport" media="(device-height: 568px)" content="initial-scale=1.0,user-scalable=no,maximum-scale=1">

@@ -47,7 +47,7 @@
 .cart-con tbody .checked td{background:#fff;}
 .cart-con tbody td .cart-checkbox em{padding-left:15px;}
 .cart-con .last{border-right:1px solid #CCC;}
-.cart-con .pro-img{float:left;height:80px;margin-right:10px;padding:0;width:80px;overflow:hidden;border:1px solid #CCC;}
+.cart-con .pro-img{float:left;height:80px;margin-right:10px;padding:0;width:80px;overflow:hidden;border:1px solid #e1e1e1;}
 .cart-con .pro-name{line-height:20px;word-break:break-all;word-wrap:break-word;overflow:hidden;text-align:left;height: 40px;}
 .cart-con .pro-name a{font-size: 0.6rem;}
 .cart-con .pro-name span{background:#fff;color:#fff;height:12px;line-height:12px;padding:4px 5px;display:inline-block;margin-right:5px;}
