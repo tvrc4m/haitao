@@ -63,7 +63,7 @@
         <{/foreach}>
        </ul>
     </div> 
-    <a href="javascript:more_info();" class="m_jiazai">下滑加载更多</a>
+    <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 </div>
 <{else}>
 <div class="itemsNull">
@@ -151,46 +151,74 @@
             }
         }
     }
-    // var page = 0;
-    // function more_info(){
-    //     var url = "<{$config.weburl}>/";
-    //     var id = "<{$smarty.get.id}>";
-    //     page = parseInt(parseInt(page) + 10);
-    //     $.ajax({
-    //         url: url,
-    //         type: 'get',
-    //         data: {id:id, page:page, m:"product", s:"ajax_list"},
-    //         success: function(msg){
-    //             alert(msg);
-    //         }
-    //     });
-    // }
-    $(function(){
-        var page = 0;
-        var url = "<{$config.weburl}>/";
-        var id = "<{$smarty.get.id}>";
-        var stop=true; 
-        $(window).scroll(function(){
-            totalheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop()) ;
-            console.log($(document).height()) 
-            console.log(totalheight) 
-            if($(document).height() <= totalheight){ 
-                if(stop==true){ 
-                    $("#more-msg").html("正在加载中.....");
-                    stop=false; 
-                    page = parseInt(parseInt(page) + 10);
-                    $.ajax({
-                        url: url,
-                        type: 'get',
-                        data: {id:id, page:page, m:"product", s:"ajax_list"},
-                        success: function(msg){
-                            console.log(msg);
+$(function(){
+    var liLen=$(".shoplist .shopli").size();
+    if(liLen<10){
+        $(".m_jiazai").hide();
+        $("footer").css({"margin-top":"20px"})
+    }
+    var page = 0;
+    var url = "<{$config.weburl}>/";
+    var id = "<{$smarty.get.id}>";
+    var stop=true; 
+    $(window).scroll(function(){
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        if($(document).height() <= totalheight){
+        console.log(stop) 
+            if(stop==true){ 
+                $(".m_jiazai").html("正在加载中.....");
+                stop=false; 
+                page = parseInt(parseInt(page) + 10);
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: {id:id, page:page, m:"product", s:"ajax_list"},
+                    dataType: "json",
+                    success: function(msg){
+                        console.log(msg)
+                        if(msg.status==2){
+                        var dataLen=msg.data.length;
+                        for(var i=0;i<dataLen;i++){
+                        $(".shoplist").append("<li class='shopli clearfix'>"+
+                                    "<span class='pname_img'>"+
+                                        "<{if $list.nat != '' }>"+
+                                            "<img src='<{$list.nat.img|default:$list.nat.title}>'>"+
+                                        "<{/if}>"+
+                                    "</span>"+
+                                    "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].product_id+"'>"+
+                                        "<div class='shopli_top_img'>"+
+                                            "<img  class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;' height='125' width='125' alt='"+msg.data[i].pname+"'/>"+
+                                        "</div>"+
+                                        "<div class='shopli_bottom clearfix'>"+
+                                            "<div class='shopli_bottom_message'>"+
+                                                "<p class='shopli_bottom_text'>"+msg.data[i].pname+"</p>"+
+                                            "</div>"+
+                                            "<div class='shopli_bottom_rob clearfix'>"+
+                                                "<div class='al shopli_bottom_money'>"+
+                                                    "<p class='money'>¥"+msg.data[i].price+"</p>"+
+                                                    "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
+                                                "</div>"+
+                                                "<{if $smarty.get.is_dist eq 1}>"+
+                                                    "<a href='javascript:distribute_goods('"+msg.data[i].product_id+"');' class='shopli_bottom_zhuanxiang'>加入分销</a>"+
+                                                "<{else}>"+
+                                                    "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].product_id+"' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
+                                                "<{/if}>"+
+                                            "</div>"+ 
+                                       "</div>"+
+                                    "</a>"+
+                                "</li>")                           
                         }
-                    });
-                } 
+                        stop=true;
+                        }else{
+                         $(".m_jiazai").html("已到最底部");
+                        }
+                    }
+                });
             } 
-        });
-    })
+        } 
+    });
+    $(".scrollLoading").scrollLoading();       
+})
 </script>
 
 
