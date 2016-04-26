@@ -224,20 +224,6 @@ $(function(){
     	collect_confirm(".price-btns");
     })
 })
-    var page = 0;
-    function more_info(){
-        var url = "<{$config.weburl}>/";
-        var id = "<{$smarty.get.deid}>";
-        page = parseInt(parseInt(page) + 10);
-        $.ajax({
-            url: url,
-            type: 'get',
-            data: {id:id, page:page, m:"distribution", s:"admin_distribution_product_ajax_list"},
-            success: function(msg){
-                console.log(msg);
-            }
-        });
-    }
 $(function(){
     var dlLen=$(".itemSearchResult dl").size();
     if(dlLen<10){
