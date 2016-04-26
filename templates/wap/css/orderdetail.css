@@ -11,12 +11,12 @@
 .tg dd .p-count{margin-top:2px;font-size:12px;}
 .tg dd .p-count strong{font-size:16px;color:#FF0000;}
 .itemsNull{margin:20px 0 15px;}
-.order h2{margin:12px 0 10px;font-size: 0.7rem;}
+.order h2{margin:0.5rem 0 0.5rem;font-size: 0.7rem;}
 .mt0{margin-top:0px !important;}
-.list{background-color:#FFFFFF;border-radius:5px;border:1px solid #E0E1E1;padding:15px 10px;position:relative;word-break:break-all;margin-top:10px;font-size: 0.6rem;}
+.list{background-color:#FFFFFF;border-radius:5px;border:1px solid #E0E1E1;padding:15px 10px;position:relative;word-break:break-all;margin-top:0.5rem;font-size: 0.6rem;}
 .list p{overflow:hidden;margin-top:5px;}
 .list:last-child{margin-bottom:20px;}
-.item {background:#FFF;border-radius:5px;border:1px solid #E0E1E1;min-height:80px;;position:relative;margin-top:15px;}
+.item {background:#FFF;border-radius:5px;border:1px solid #E0E1E1;min-height:80px;;position:relative;margin-top:0.5rem;}
 .item dl{padding:15px 10px;border-bottom:1px solid #E0E1E1;}
 .item dl:last-child{border-bottom:none;}
 .item dt{width:80px;height:80px;float:left;}
