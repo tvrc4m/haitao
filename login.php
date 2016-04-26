@@ -447,7 +447,7 @@ function is_repeat($str)
         return is_repeat($str);
     }
 }
-/*
+
 if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 {
     $appid = $config['weixin_app_id'];
@@ -457,7 +457,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 
     if($config['bw'] == "weixin")
     {
-        $wechat_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_login&state=type&connect_redirect=1#wechat_redirect";
+        $wechat_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
     }
     else
     {
@@ -538,7 +538,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
                 msg("login.php?connect_id=$cre[id]");
             }
         }
-      *
+        /*
         if($openid)
         {
             $sql = "select userid,user from ".MEMBER." where open_id = '$openid'";
@@ -565,9 +565,9 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
             login($member_id,$nickname);
             msg($config["weburl"] . "/main.php");
         }
-        *
+        */
     }
-}*/
+}
 
 //===========================================
 if($buid)
