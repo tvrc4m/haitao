@@ -8,18 +8,18 @@
 .item dd{margin-left:90px;line-height:18px;font-size:14px;font-size: 0.6rem;}
 
 .item dd .p-name{height:18px;margin-bottom:10px;overflow: hidden;text-overflow: ellipsis;
-	white-space: nowrap;font-size: 0.7rem;}
+	white-space: nowrap;font-size: 14px;}
 .p-commissin {display: inline-block;margin-top: 10px;margin-bottom: 0px}
 .p-commissin:last-of-type{float: right;}
 .item dd .p-detail{font-size:0.6rem;color:#ABABAB;margin-top:3px;}
-.p-price {font-size: 0.7rem;}
+.p-price {font-size: 14px;}
 .p-price-numss{float: right;color: #535353;}
 .p-price span{float: right;color: #535353;}
 .distri-price{color: #ff5c5c;}
 .item dd .p-action{margin-top:5px;font-size:12px;}
 .item dd .p-action a{color:#2366A8;}
-.item .top{background-color:#fff;border-bottom:1px solid #ff5c5c;height:28px;line-height:28px;padding-top:2px;}
-.item .top a{/*background:url(../../../image/wap/shop.png) no-repeat scroll 15px 0;*//*background-size:15px 14px;*/color:#1F1F1F;padding-left:10px;font-size: 0.7rem;}
+.item .top{background-color:#fff;border-bottom:1px solid #ff5c5c;height:30px;line-height:30px;}
+.item .top a{color:#1F1F1F;padding-left:10px;font-size: 14px;}
 .item .bottom{height:30px;line-height:30px;background-color:#FFF;border-top:1px solid #b9b9b9;border-bottom-left-radius:8px;border-bottom-right-radius:8px;padding:0 18px;font-size:12px;} 
 .item .bottom strong{color:#ff5c5c;font-size:14px;}
 .item .bottom span:last-child{float:right;}
