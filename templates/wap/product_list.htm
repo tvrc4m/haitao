@@ -106,7 +106,7 @@
                    "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".collect_box_out").addClass('collect_box_out_test');
-        $(".collect_box_btn a").on("click",function(){
+        $(".collect_box_btn a").click(function(){
             removeco();
         })
     }
@@ -164,7 +164,6 @@ $(function(){
     $(window).scroll(function(){
         totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
         if($(document).height() <= totalheight){
-        console.log(stop) 
             if(stop==true){ 
                 $(".m_jiazai").html("正在加载中.....");
                 stop=false; 
@@ -175,7 +174,6 @@ $(function(){
                     data: {id:id, page:page, m:"product", s:"ajax_list"},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){

@@ -38,10 +38,10 @@ $(function(){
 });
 </script>
 <section class="order"> <{foreach item=list from=$re}>
-  <div class="distributionUser">
+  <div class="distributionUser clearfix">
     <dl>
       <dt>下线用户</dt>
-      <dd><{$list.user_name}></dd>
+      <dd class="distribu-name"><{$list.user_name}></dd>
     </dl>
     <dl>
       <dt>分销层级</dt>

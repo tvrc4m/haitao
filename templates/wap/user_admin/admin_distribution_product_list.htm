@@ -14,10 +14,9 @@
 
 <div class="itemSearchResult clearfix">
   <{foreach item=list from=$dist_pro}>
-        <dl>
+    <dl>
         <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_60X60.jpg<{/if}>" class="shop_src"></a> </dt>
         <dd>
-            <!-- <p class="p-name"><span class="pname_img"><img src="../../../image/wap/state1.png">&nbsp;&nbsp;日本馆</span>&nbsp;&nbsp;<a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>"><{$list.pname}></a><span class="price">（剩<{$list.amount}>件）</span></p> -->
             <p class="p-name">
                 <{if $list.p_national }>
                     <span class="pname_img">
@@ -25,7 +24,7 @@
                     </span>
                 <{/if}>
                 &nbsp;&nbsp;
-                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name">Huggies金装纸尿裤男S64P</a>
+                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:30:""}></a>
                 <span class="price">（剩<{$list.amount}>件）</span>
             </p>
             <p class="p-name color">  
@@ -49,7 +48,7 @@
     <{/foreach}>
 </section>
 
-<a href="javascript:more_info();" class="m_jiazai">下滑加载更多</a>
+<a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -232,8 +231,71 @@ $(function(){
             type: 'get',
             data: {id:id, page:page, m:"distribution", s:"admin_distribution_product_ajax_list"},
             success: function(msg){
-                alert(msg);
+                console.log(msg);
             }
         });
     }
+$(function(){
+    var dlLen=$(".itemSearchResult dl").size();
+    if(dlLen<10){
+        $(".m_jiazai").hide();
+        $("footer").css({"margin-top":"20px"})
+    }
+    var page = 0;
+    var url = "<{$config.weburl}>/";
+    var id = "<{$smarty.get.deid}>";
+    var stop=true; 
+    $(window).scroll(function(){
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        if($(document).height() <= totalheight){
+            if(stop==true){ 
+                $(".m_jiazai").html("正在加载中.....");
+                stop=false; 
+                page = parseInt(parseInt(page) + 10);
+                 $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: {id:id, page:page, m:"distribution", s:"admin_distribution_product_ajax_list"},
+                    dataType: "json",
+                    success: function(msg){
+                        if(msg.status==2){
+                            var dataLen=msg.data.length;
+                            for(var i=0;i<dataLen;i++){
+                                var value_substr=msg.data[i].pname.substr(i,19); 
+                                 $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"<{/if}>' class='shop_src'></a></dt>"+
+                                    "<dd>"+
+                                       "<p class='p-name'>"+
+                                            "<{if $list.p_national }>"+
+                                                "<span class='pname_img'>"+
+                                                    "<img src='<{$list.p_national.img}>'>&nbsp;&nbsp;<{$list.p_national.title}>"+
+                                                "</span>"+
+                                            "<{/if}>"+
+                                            "&nbsp;&nbsp;"+
+                                            "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
+                                            "<span class='price'>（剩"+msg.data[i].amount+"件）</span>"+
+                                        "</p>"+
+                                        "<p class='p-name color'>"+  
+                                           "<span class='price-w'>"+
+                                            "价格：<span class='price-tests'><{$config.money}>"+msg.data[i].price+"</span>"+ 
+                                            "</span>"+
+                                            "<span class='complateMoney'>"+
+                                                "<{if $list.is_dist}>佣金: <span class='price-tests'><{$config.money}>"+msg.data[i].share_money+"</span><{/if}>"+
+                                            "</span>"+
+                                        "</p>"+
+                                        "<div class='price-btns'>"+
+                                            "<span class='price-delate'><a href='javascript:void(0);'>删除</a></span>"+
+                                            "<{if $list.is_dist}><span class='price-fenxiang price'>分享</span><{/if}>"+
+                                        "</div>"+
+                                    "</dd></dl>")   
+                            }
+                            stop=true;
+                        }else{
+                         $(".m_jiazai").html("已到最底部");
+                        }
+                    }
+                });
+            } 
+        } 
+    })      
+})
 </script>
