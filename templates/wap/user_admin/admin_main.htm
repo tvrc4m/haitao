@@ -216,7 +216,7 @@ $(function(){
     <div class="wrap" style="width:96%;margin:0px auto">\
     <div class="form-style">\
         <form id="form" method="post" enctype="multipart/form-data" action="./main.php?m=distribution&s=admin_distribution_settlement">\
-            <p class="shop_step_title">尚未结算佣金：<{$config.money}>&nbsp;<{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}> &nbsp;&nbsp;(结算最低额度：<{$distribution_config.distribution_commission_min|floor}>)&nbsp;&nbsp; <a href="./main.php?m=distribution&s=admin_distribution_settlement">结算记录</a></p>\
+            <p class="shop_step_title shop_step_title3">尚未结算佣金：<{$config.money}>&nbsp;<{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}> &nbsp;&nbsp;(结算最低额度：<{$distribution_config.distribution_commission_min|floor}>)&nbsp;&nbsp; <a href="./main.php?m=distribution&s=admin_distribution_settlement">结算记录</a></p>\
             <p class="shop_step_title">申请结算佣金：<{$config.money}>&nbsp;<input type="text" name="distribution_user_settlement_value" value="<{$distribution_config.distribution_commission_min|floor}>" class="text diag_text"  style="width:50%; "/></p>\
             <p class="shop_step_title shop_step_title2"><input type="submit" value="提交" class="submit diag_submit" /></p>\
         </form>\
