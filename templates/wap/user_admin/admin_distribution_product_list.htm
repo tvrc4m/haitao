@@ -142,6 +142,9 @@
 <{/if}>
 <script type="text/javascript">
 $(function(){
+    var dlHeih=$(".itemSearchResult dl").height();
+    console.log(dlHeih)
+    $(".itemSearchResult dl dt").find("img").css({"width":dlHeih+"px","height":dlHeih+"px"})
 	function collect_altr(cla){
         $(cla).append("<div class='am-dialog-mask'></div>"+
 				"<div class='price-btns-context'>"+
