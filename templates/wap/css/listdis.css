@@ -75,7 +75,8 @@
 .detate-btns-context-bot a{display: inline-block;width:50%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;letter-spacing: 1px;}
 .detate-btns-context-bot a:first-of-type{border-bottom-left-radius: 5px;border-right: 1px solid #fff;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .detate-btns-context-bot a:last-of-type{border-bottom-right-radius: 5px;}
-.price-btns-contexts{text-align: center; opacity: 0;transform:scale(1);-webkit-transform:scale(1);padding: 0 20px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
+.price-btns-contexts{text-align: center; opacity: 0;transform:scale(1);-webkit-transform:scale(1);padding: 0 50px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
+.price-btns-context-tops p{font-size: 16px}
 .price-btns-contexts_test{animation: myfirst .1s linear ;-webkit-animation: myfirst .1s linear ;opacity: 1;}
 @-webkit-keyframes myfirst {
     0%   {-webkit-transform:scale(2);}

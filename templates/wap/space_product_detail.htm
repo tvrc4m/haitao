@@ -310,10 +310,12 @@ function check_nums()
                         "</div>"+
                    "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".collect_box_out").addClass('collect_box_out_test');
         $(".collect_box_btn a").on("click",function(){
             removeco();
         })
+    }
+    function show(){
+        $(".collect_box_out").addClass('collect_box_out_test');
     }
     function altto(co){
         $(".collect_box_content").html(co);
@@ -333,6 +335,7 @@ function check_nums()
         collect_altr(".col")
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
             altto('不能收藏自己店铺的商品！');
+            show();
             return;
         }
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
@@ -340,6 +343,7 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
+            show();
             $(".collect_box_btn a").on("click",function(){
                 window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
             })
@@ -352,15 +356,15 @@ function check_nums()
             if(originalRequest>1){
                 $("#collect").addClass("collect");
                 altto('成功添加至我的收藏夹!');
-               
+                show();
             }
             else if (originalRequest>0){
                 altto('该内容已经在你的收藏中心<br>请勿重复添加！');
-                
+                show();
             }
             else{
                 altto('参数传递错误<br>无法完成操作!');
-                
+                show();
             } 
         }
     }
@@ -371,6 +375,7 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
+            show();
             $(".collect_box_btn a").on("click",function(){  
                 window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
             }) 
@@ -382,15 +387,15 @@ function check_nums()
         {
             if(originalRequest>1){
                 altto('成功添加至我的分销!');
-                
+                show();
             }
             else if (originalRequest>0){
                 altto('该内容已经在你的分销中心<br>请勿重复添加！');
-               
+                show();
             }  
             else{
                 altto('参数传递错误<br>无法完成操作!');
-              
+                show();
             }
         }
     }
@@ -400,6 +405,7 @@ function check_nums()
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
             collect_altr(".addcart")
             altto('不能购买自己店铺的商品！');
+            show();
             return;
         }
         flag = buy();
@@ -438,6 +444,7 @@ function check_nums()
             collect_altr(".addcart")
             console.log('<{$com.company}>' == '<{$smarty.cookies.USER}>')
             altto('不能购买自己店铺的商品！');
+            show();
             return;
         }
         $("#form").attr("action","/?m=product&s=confirm_order");
