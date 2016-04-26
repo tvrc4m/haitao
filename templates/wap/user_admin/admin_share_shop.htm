@@ -50,7 +50,7 @@
         </dd>
     </dl>
     <{/foreach}>
-    <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
+    <a href="javascript:more_info();" class="m_jiazai">下滑加载更多</a>
 </div>
 <{else}>
 <div class="itemsNull">
@@ -58,3 +58,20 @@
 </div>
 <{/if}>
 </section>
+<script>
+    var page = 0 ;
+    function more_info(){
+        var url = "<{$config.weburl}>/main.php";
+        var key = "<{$smarty.get.key}>";
+        var dist_id = "<{$smarty.get.dist_id}>";
+        page = page+10;
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: {page:page, key:key, m:'sns', s:'admin_share_shop', dist_id:dist_id, ptype:'ajax'},
+            success: function(msg){
+                alert(msg);
+            }
+        });
+    }
+</script>

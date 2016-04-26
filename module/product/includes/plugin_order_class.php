@@ -131,10 +131,9 @@ class order
 	 * @param $status 状态 默认值 NULL
 	 * return array
 	 */
-	function buyorder($status = NULL,$flag = 0)
+	function buyorder($status = NULL,$flag = 0, $begin = 0, $limit = 2)
 	{
 		global $buid;
-
 		if($_GET['key'])
 		{
 			$keys = trim($_GET['key']);
@@ -223,7 +222,8 @@ class order
 
 		//=============================
 	  	$page = new Page;
-		$page -> listRows = 10;
+		$page -> listRows = $limit;
+		$page -> firstRow = $begin;
 		if (!$page -> __get('totalRows')){
 			$this -> db -> query($sql);
 			$page -> totalRows = $this -> db -> num_rows();
