@@ -16,6 +16,7 @@
 .entry dd{margin-top:6px;width:60px;}
 .m{margin:30px auto 0;width:300px;}
 .m .mt{margin-bottom:10px;}
+#msgObj table td iframe{margin-left: 10px;}
 .m .mt .cat{width:42px;height:83px;padding-left:10px;float:left;color:#fff;background:url(../../../image/wap/icon.png) 12px 58px no-repeat;}
 .m .mt .cat a{color:#FFFFFF;display:block;height:100%;}
 .m .mt .cat h3{font-size:16px;line-height:24px;padding:8px 0;}
