@@ -19,12 +19,12 @@
         
         <{if $smarty.get.type=='add' or $smarty.get.type=='edit'}>
         <div class="form-style">
-            <form action="" method="post">
+            <form action="" method="post" id="form">
             <input type="hidden" value="<{$nav.id}>" name="id">
             <input type="hidden" value="<{if $nav.id}>edit<{else}>add<{/if}>" name="submit">
             <dl>
                 <dt><em>*</em>导航名称：</dt>
-                <dd><input maxlength="4" type="text" value="<{$nav.title}>" name="title" class="w150 text"></dd>
+                <dd><input maxlength="4" type="text" dataType="required" value="<{$nav.title}>" name="title" class="w150 text"><div class="form-error"></div></dd>
             </dl>
             <dl>
                 <dt>是否显示：</dt>
@@ -130,3 +130,23 @@
         <{/if}>
     </div>
 </div>
+<script type="text/javascript" src="../script/jquery.validation.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+    $('#form').validate({
+        errorPlacement: function(error, element){
+            element.nextAll('.form-error').append(error);
+        },
+        rules : {
+            title:{
+                required:true
+            }
+        },
+        messages : {
+            title:{
+                required:'请填写导航名称'
+            }
+        }
+    });
+});
+</script>

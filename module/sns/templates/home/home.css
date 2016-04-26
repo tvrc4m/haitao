@@ -127,7 +127,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .body-main .item-bd li .sitem .func .collect a{background-color:#FC8E5B;color:#FFFFFF;display:inline-block;padding:0 4px;}
 .body-main .item-bd li .sitem .func .collect a i{background:url(home/heart.gif) -5px -4px no-repeat;display:inline-block;height:12px;margin-right:4px;vertical-align:middle;width:12px;}
 .body-main .item-bd li .sitem .func .collect strong{background-color:#FFFFFF;color:#FF6600;display:inline-block;font-family:Tahoma,Geneva,sans-serif;font-weight:600;padding:0 4px;}*/
-.sns-item{margin-bottom: 10px;border-bottom:1px solid #F3F3F3;clear:both;overflow:hidden;padding-bottom:12px;padding-top:22px;width: 885px;margin-right: auto;margin-left: auto;border:1px solid #ccc;padding-left: 20px;padding-right: 20px;padding-bottom: 20px;background-color: #f5f5f5;}
+.sns-item{margin-bottom: 10px;border-bottom:1px solid #F3F3F3;clear:both;overflow:hidden;padding-bottom:12px;padding-top:22px;width: 885px;margin-right: auto;margin-left: auto;border:1px solid #ccc;padding-left: 20px;padding-right: 20px;padding-bottom: 20px;background-color: #fff;}
 .sns-item .sns-wrap a, .sns-item .sns-wrap a:hover{color:#006A92;}
 .sns-item .sns-wrap{font-size:14px;}
 .sns-item .sns-wrap p{width:100%;margin-top:12px;display:inline-block;word-break:break-all;word-wrap:break-word;}

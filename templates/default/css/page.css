@@ -65,7 +65,7 @@ em{font-style:normal;}
 .site-nav .nav{float:left;}
 .site-nav .nav .icon4{display: inline-block;width: 12px;height: 16px;background: url(../../../image/default/icon4.png) no-repeat;float: left;margin:9px -5px 9px 0;}
 .site-nav .nav .icon7{display: inline-block;width: 17px;height: 16px;background: url(../../../image/default/icon7.png) no-repeat;float: left;margin: 9px -9px 9px 5px;}
-.site-nav .nav .nav-fore1{z-index:10002;position:relative;padding:0 10px;height:35px;line-height:35px;overflow:hidden;_display:inline;_zoom:1}
+.site-nav .nav .nav-fore1{z-index:2;position:relative;padding:0 10px;height:35px;line-height:35px;overflow:hidden;_display:inline;_zoom:1}
 .site-nav .nav .nav-fore1 a{text-decoration:none;display:inline;float:left;font-size:12px;color:#6c6c6c;}
 .site-nav .nav .nav-fore1 a:hover,
 .site-nav .nav.hover .nav-fore1 a{color:#f22e00;}
@@ -74,7 +74,7 @@ em{font-style:normal;}
 .site-nav .nav .nav-fore1 i em{border-color:rgba(255, 255, 255, 0);border-style:solid;border-width:3px 4px 0;height:0;right:0;overflow:hidden;position:absolute;width:0;border-top-color:#6C6C6C;top:16px;}
 .site-nav .nav-fore2{display:none;}
 .site-nav .hover .nav-fore1{background:#FFF;border-color:#EEE;border-style:solid;border-width:0 1px;padding:0 9px 1px;}
-.site-nav .hover .nav-fore2{display:block;margin-top:-1px;position:relative;z-index:10001;}
+.site-nav .hover .nav-fore2{display:block;margin-top:-1px;position:relative;z-index:1;}
 .site-nav .hover .nav-fore2 ul{position:absolute;left:0;top:0;padding:0px 6px 6px;line-height:normal;border:1px solid #eee;background:#fff;}
 .site-nav .hover .nav-fore2 ul li{color:#6c6c6c;display:block;line-height:28px;padding:0 5px;white-space:nowrap;}
 .site-nav .site-nav-pipe{display:inline;float:left;height:35px;line-height:35px;padding:0 5px;font-style:normal;color:#ddd;}
@@ -235,7 +235,7 @@ em{font-style:normal;}
 .wap dd h2{margin:10px auto 0;font-size:16px;line-height:25px;}
 .wap dd p{color:#767571;}
 
-.news{margin-top:30px;border:1px solid #EBEBEB;padding:15px 30px 0;overflow:hidden;}
+.news{margin:30px 0;border:1px solid #ccc;padding:15px 30px 0;overflow:hidden;}
 .news .title{padding-bottom:2px;position:relative;}
 .news h1{border-bottom:1px solid #EBEBEB;font-family:微软雅黑;font-size:20px;height:24px;line-height:24px;margin-bottom:10px;padding:10px 0 15px;text-align:center;}
 .news .summary{color:#999999;text-align:center;}

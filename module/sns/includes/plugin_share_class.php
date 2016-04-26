@@ -13,7 +13,7 @@ class share
 		$this -> db     = & $db;
 	}
 	
-	function GetShareShopList()
+	function GetShareShopList($begin = 0, $limit = 10)
 	{
 		global $config,$buid;
 		
@@ -25,21 +25,21 @@ class share
 		
 		include_once($config['webroot']."/includes/page_utf_class.php");
 		$page = new Page;
-		$page->listRows=10;
-		
+		$page->listRows = $limit;
+		$page->firstRow = $begin;
 		if (!$page->__get('totalRows')){
 			$this->db->query("select count(id) as num from ".SSHOP." where uid=$buid ");
 			$num=$this->db->fetchRow();
 			$page->totalRows = $num['num'];
 		}
-        $sql .= "  limit ".$page->firstRow.",10";
+        $sql .= "  limit ".$page->firstRow.",".$page->listRows;
 		$this->db->query($sql);
 		$re["list"]=$this->db->getRows();
 		$re["page"]=$page->prompt();
 		return $re;
 	}
 	
-	function GetShareGoodsList()
+	function GetShareGoodsList($begin = 0, $limit = 10)
 	{
 		global $config,$buid;
 		if($_GET['key'])
@@ -50,14 +50,14 @@ class share
 		
 		include_once($config['webroot']."/includes/page_utf_class.php");
 		$page = new Page;
-		$page->listRows=15;
-		
+		$page->listRows = $limit;
+		$page->firstRow = $begin;
 		if (!$page->__get('totalRows')){
 			$this->db->query("select count(id) as num from ".SPRO." where uid=$buid ");
 			$num=$this->db->fetchRow();
 			$page->totalRows = $num['num'];
 		}
-        $sql .= "  limit ".$page->firstRow.",15";
+        $sql .= "  limit ".$page->firstRow.",".$page->listRows;
 		$this->db->query($sql);
 		$re["list"]=$this->db->getRows();
 		$re["page"]=$page->prompt();

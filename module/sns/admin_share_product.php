@@ -2,7 +2,26 @@
 include_once("$config[webroot]/module/sns/includes/plugin_share_class.php");
 $share=new share();
 //=======================================
-$tpl->assign("re",$share->GetShareGoodsList());
+
+if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
+	$res = $share->GetShareGoodsList($_GET['page'],10);
+	if($res['list']){
+		echo json_encode(array(
+			'code' => 200,
+			'data' => $res['list'],
+			'status' => 2
+		));
+	}else{
+		echo json_encode(array(
+			'code' => 300,
+			'data' => null,
+			'status' => 1
+		));
+	}
+	die;
+}
+
+$tpl->assign("re",$share->GetShareGoodsList(0,10));
 //删除
 if($_GET['type']=='del' and is_numeric($_GET['id']))
 {

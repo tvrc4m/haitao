@@ -141,9 +141,8 @@
 <{else}>
 <{/if}>
 <script type="text/javascript">
-$(function(){
-    var dlHeih=$(".itemSearchResult dl").height();
-    $(".itemSearchResult dl dt").find("img").css({"width":dlHeih+"px","height":dlHeih+"px"});
+
+/*$(function(){
 	function collect_altr(cla){
         $(cla).append("<div class='am-dialog-mask'></div>"+
 				"<div class='price-btns-context'>"+
@@ -222,7 +221,9 @@ $(function(){
     $(".price-delate").bind("click",function(){
     	collect_confirm(".price-btns");
     })
-})
+
+})*/
+
 $(function(){
     var dlLen=$(".itemSearchResult dl").size();
     if(dlLen<10){
