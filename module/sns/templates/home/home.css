@@ -58,7 +58,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 #header .search form a{border-style:solid; border-width:1px;float:left;padding:1px;background-image:-moz-linear-gradient(center top , #FFCA00, #FFB901);border-color:#F48000;border-width:1px;}
 #header .search form a span{float:left;font-size:1.2em;font-weight:600;height:20px;line-height:20px;padding:0 8px;background-image:-moz-linear-gradient(center top , #FFCC00, #FF9003);color:#FFFFFF;text-shadow:1px 1px 1px #EA7B00;}
 #container{background-color: #f5f5f5;}
-.head{position:relative;z-index:100;}
+.head{position:relative;}
 .head .info-left{float:left;height:145px;position:relative;width:709px;}
 .head .info-left .basic-info{color:#666666;height:145px;margin-left:240px;padding-top:18px;position:relative;}
 .head .basic-info .realy-info{margin-right: 35px;}
