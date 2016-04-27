@@ -210,17 +210,18 @@ $tpl->assign("working_time",$working_time);
 	}
 	else
 	{
-		{
 			if($config['temp']=='wap')
 			{
 				msg("$config[weburl]","商铺还未开启，或暂时关闭,将转向主页");
 			}
 			else
 			{
-				return 0;
+				echo json_encode(array(
+					'status' => 0
+				));die;
 				//msg("$config[weburl]/home.php?uid=$_GET[uid]","商铺还未开启，或暂时关闭,将转向个人主页");
 			}
-		}
+
 	}
 }
 
