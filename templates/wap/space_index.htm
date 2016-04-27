@@ -137,6 +137,7 @@
 <section class="clearfix">
     <{if $dist_pro}>
         <div class="plist itemSearchResult">
+            <!-- <h2>推荐商品</h2> -->
             <ul class="shoplist clearfix">
                 <{foreach item=list key=key from=$dist_pro key=num}>
                 <li class="shopli clearfix">
@@ -168,7 +169,6 @@
         </div>
         <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a>
     <{/if}>
-
     <script>
         var page = 0;
         function  more_info(){
