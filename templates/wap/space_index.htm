@@ -157,7 +157,6 @@
                                     <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                                 </div>
                                 <a href="javascript:distribute_goods('<{$de.id}>');" class="shopli_bottom_zhuanxiang">加入分销</a>
-                               <!-- <span class="pname_img"><{if $de.img }><img src="../../../image/wap/state1.png"><{/if}></span> -->
                             </div>  
                         </div>
                     </a>
@@ -165,6 +164,7 @@
                 <{/foreach}>
             </ul>
         </div>
+        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
     <{/if}>
 
     <{if $com.shop_statu eq 1}>
