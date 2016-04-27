@@ -38,10 +38,15 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		}
 	}
 
-
 	// 如果为3， 则代表分佣及卖家
 	if((1==$company['shop_type'] && $company['shop_statu']==-3) || (2==$company['shop_type'] && $company['shop_statu']==1) || (1==$company['shop_statu'] && 3==$company['shop_type']))
 	{
+		$ajax = !empty($_GET['ajax'])?$_GET['ajax']:0;
+		if($ajax){
+			echo json_encode(array(
+				'status' => 1
+			));die;
+		}
 		//-----------------语言包--------------------
 		include_once("lang/".$config['language']."/user_space.php");
 		$dir=$config['webroot'].'/module/';
@@ -219,7 +224,6 @@ $tpl->assign("working_time",$working_time);
 				echo json_encode(array(
 					'status' => 0
 				));die;
-				//msg("$config[weburl]/home.php?uid=$_GET[uid]","商铺还未开启，或暂时关闭,将转向个人主页");
 			}
 
 	}

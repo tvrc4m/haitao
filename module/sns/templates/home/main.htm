@@ -35,7 +35,7 @@ function collect_goods(id){
                 <span class="meta">
                     <span class="sex<{if $member.sex==2}> female<{/if}>"><{if $member.sex==2}>女<{else}>男<{/if}></span>
                     <!-- <span><{$member.area}></span> -->
-                    <span><a href="">逛TA商铺</a></span>
+                    <span><a >逛TA商铺</a></span>
                 </span>
                 
             </div>
@@ -203,12 +203,15 @@ $('.large').on('click',function(){
 });
 $('.meta a').on('click',function(){
     $.ajax({
-        type: 'POST',
-        url: "<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>",
+        type: 'GET',
+        url: "<{$config.weburl}>/shop.php?ajax=ajax&uid=<{$smarty.get.uid}>",
         success: function(data){
-           if(data){
-                layer.msg('商铺还未开启或暂时关闭', {icon: 0});
-            }
+            var status = JSON.parse(data);
+               if(!status.status){
+                    layer.msg('商铺还未开启或暂时关闭', {icon: 0});
+                }else{
+                window.location.href="<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>";
+             }
         }
     });
 });
