@@ -106,11 +106,12 @@ $(function(){
                                     <dd style="float: left;line-height: 40px;font-weight: 500;font-size: 15px;width: 18%">操作</dd>
                                 </dl>
                             </div>
+                            <{else}>
+                                 <div style="text-align: left;line-height: 40px;border: 1px solid #ccc;"><span style="width: 60px;display: inline-block;text-align: center;">头像</span><span style="margin-left: 150px;">好友名称</span><span style="float: right;margin-right: 35px;">操作</span></div>
                             <{/if}>
                             <div  id="shows">
                             <{foreach item=slist from=$re.list}>
                             <{if $smarty.get.type==fan}>
-                                <div style="text-align: left;line-height: 40px;border: 1px solid #ccc;"><span style="width: 60px;display: inline-block;text-align: center;">头像</span><span style="margin-left: 150px;">好友名称</span><span style="float: right;margin-right: 35px;">操作</span></div>
                                 <li class="bt">
                                     <div class="friend_img">
                                         <a target="_blank" href="<{$config.weburl}>/home.php?uid=<{$slist.uid}>">
