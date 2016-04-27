@@ -12,7 +12,7 @@
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery.ui.js" ></script>
 <script type="text/javascript" id="dialog_js" charset="utf-8" src="<{$config.weburl}>/script/dialog/dialog.js" ></script>
 <script language="javascript">
-var searchTxt = ' <{$lang.search_products}>';
+var searchTxt = "<{$lang.search_products}>";
 function searchFocus(e){
 	if(e.value == searchTxt){
 		e.value='';
@@ -173,6 +173,7 @@ $(document).ready(function(){
             </dd>
         </dl>
         <{/foreach}> -->
+
         <{foreach item=list from=$submenu.sub}>
         <dl>
             <dt><i class="pngFix"></i><{$list.name}></dt>
@@ -191,6 +192,7 @@ $(document).ready(function(){
             </dd>
         </dl>
         <{/foreach}>
+
     </div>
     <div class="right_content"><{$output}></div>
     <div class="clear"></div>
