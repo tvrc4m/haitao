@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-27 18:27:03
+<?php /* Smarty version 2.6.20, created on 2016-04-27 18:57:11
          compiled from settings.htm */ ?>
 <script src="script/my_lightbox.js" language="javascript"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -10,7 +10,7 @@
     <div class="tips"><span></span>温馨提示：请先设置账户信息。</div>
     <?php endif; ?>
     <div class="form">
-        <form method="post" id="form" id="form">
+        <form method="post" id="form" id="form" onsubmit="return commit()" action="">
             <input type="hidden" name="act" value="act" />
             <fieldset>
                 <dl class="email">
@@ -44,22 +44,32 @@
             <dl>
                 <dt></dt>
                 <dd>
-                    <input type="button" class="submit" value="确定" onclick="commit()" />
+                    <input type="submit" class="submit" value="确定" />
                 </dd>
             </dl>
         </form>
     </div>
 </div>
+<script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/../script/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/../script/layer/layer.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/../script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
 <script type="text/javascript">
 function commit () {
-$.ajax({
-    type: "POST",
-    data:$('#form').serialize(),
-    async: false,
-    error: function(request) {
-    },
-    success: function(data) {
-    }
-});
+    $.ajax({
+        type: "POST",
+        data:$('#form').serialize(),
+        async: false,
+        error: function(request) {
+        },
+        success: function(data) {
+            if(data){
+                layer.msg("修改成功",{icon:0});
+            }
+        }
+    });
+    return false;
 }
 </script>
