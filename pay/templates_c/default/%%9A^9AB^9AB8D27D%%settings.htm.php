@@ -1,6 +1,5 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 14:07:16
+<?php /* Smarty version 2.6.20, created on 2016-04-27 18:17:31
          compiled from settings.htm */ ?>
-<script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <script src="script/my_lightbox.js" language="javascript"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
@@ -45,31 +44,9 @@
             <dl>
                 <dt></dt>
                 <dd>
-                    <input type="button" class="submit" value="确定" onclick="sub_chk()"/>
+                    <input type="submit" class="submit" value="确定" />
                 </dd>
             </dl>
         </form>
     </div>
 </div>
-<script>
-    function checkmo(m){  //手机号拦截器
-        if(!(/^1[3|4|5|7|8][0-9]\d{8}$/.test(m))){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-    function sub_chk(){
-        if($('#pay_mobile').val()){
-            if(checkmo($('#pay_mobile').val())){
-                $("#pay_mobile").next().html("");
-                $("#form").submit();
-            }else{
-                $("#pay_mobile").next().html("<label for='pass' generated='true' class='error'>请输入正确的手机号。</label>");
-            }
-        }else{
-            $("#pay_mobile").next().html("<label for='pass' generated='true' class='error'>请输入手机号。</label>");
-        }
-    }
-</script>
