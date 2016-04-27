@@ -229,10 +229,9 @@ class order
 		}
 		if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
 			$sql .= "  limit " . $page -> firstRow . "," . $page -> listRows;
-		}else {
-			$sql .= "  limit " . $page->listRows;
-		}
-
+		}else{
+			$sql .= "  limit " . $page -> listRows;
+        }
 		//==============================
 		$this -> db -> query($sql);
 		$ore = $this -> db -> getRows();

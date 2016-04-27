@@ -497,7 +497,7 @@ fb($sql);
 	 * @param int $dist_id 上线Id
 	 * @return bool
 	 */
-	function getProductInfoNormal($produce_id_row=array())
+	function getProductInfoNormal($produce_id_row=array(), $begin = 0, $limit = 10)
 	{
 		global $db;
 		global $tpl;
@@ -505,16 +505,43 @@ fb($sql);
 		$rs = array();
 		if (is_array($produce_id_row) && $produce_id_row)
 		{
-			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status, p.national, p.market_price, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ') AND p.is_shelves=1 AND p.status>0 ORDER BY p.id DESC LIMIT 0, 10';
+			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status, p.national, p.market_price, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ') AND p.is_shelves=1 AND p.status>0 ORDER BY p.id DESC ';
+
+            if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
+                $sql .= " limit ".$begin .' , '.$limit;
+            } else {
+                $sql .= "limit $limit";
+            }
+
 			$db->query($sql);
             $rs = $db->getRows();
-            foreach($rs as $key => $val){
+
+            foreach($rs as $key => $val) {
                 $sql = "select title,img from mallbuilder_national_pavilions where id = ". $val['national'];
                 $db->query($sql);
                 $rs[$key]['pnational'] = $db->fetchRow();
             }
 		}
-		return $rs;
+
+        if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
+            if($rs){
+                echo json_encode(array(
+                    'code' => 200,
+                    'data' => $rs,
+                    'status' => 2
+                ));
+            }else{
+                echo json_encode(array(
+                    'code' => 300,
+                    'data' => null,
+                    'status' => 1
+                ));
+            }
+            die;
+        } else {
+            return $rs;
+        }
+
 	}
 
 

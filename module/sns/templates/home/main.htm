@@ -1,28 +1,3 @@
-<script>
-function collect_goods(id){
-	
-	var url = '<{$config.weburl}>/module/sns/ajax_update.php';
-	var uname='<{$smarty.cookies.USER}>';
-	if(uname=='')
-	{
-		alert('<{$lang.no_logo}>');
-		window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-		return false;
-	}
-	var pars = 'pid='+id+'&uname='+uname;
-	$.post(url, pars,showResponse);
-	function showResponse(originalRequest)
-	{
-		if(originalRequest>1)
-			alert('<{$lang.fav_ok}>');
-		else if (originalRequest>0)
-			alert('<{$lang.fav_isbing}>');
-		else
-			alert('<{$lang.error}>');
-	}
-	
-}
-</script>
 <div class="head">
     <div class="info clearfix">
         <div class="info-left">
@@ -34,20 +9,20 @@ function collect_goods(id){
                 </span>
                 <span class="meta">
                     <span class="sex<{if $member.sex==2}> female<{/if}>"><{if $member.sex==2}>女<{else}>男<{/if}></span>
-                    <!-- <span><{$member.area}></span> -->
-                    <span><a >逛TA商铺</a></span>
+                    <span><a href="javascript:void(0)">逛TA商铺</a></span>
                 </span>
-                
             </div>
-            <div class="user-avatar"><img width="160" height="160" src="<{if $member.logo}><{$member.logo}><{else}>image/default/avatar.png<{/if}>"></div>
+            <div class="user-avatar">
+                <img width="160" height="160" src="<{if $member.logo}><{$member.logo}><{else}>image/default/avatar.png<{/if}>">
+            </div>
         </div>
         <div class="info-right">
             <div class="attention-box">
-                <div class="attention clearfix">
-                    <ul>
+                <div class="attention">
+                    <ul  class="clearfix">
                         <li><b class="large"><{$count.f}></b><span>粉丝</span></li>
                         <li><b class="large"><{$count.g}></b><span>关注</span></li>
-                        <li><b class="large"><{$count.v}></b><span>访问</span></li><li class="clear"></li>
+                        <li><b class="large"><{$count.v}></b><span>访问</span></li>
                     </ul>
                 </div>
             </div>
@@ -55,8 +30,9 @@ function collect_goods(id){
                 <div class="follow-widget">
                     <{if $friend}>
                         <span class="<{if $fan}>all_gz<{else}>have_gz<{/if}>">
-                        <b style="margin-left:25px;">已关注</b> &nbsp;&nbsp;
-                        <a href="main.php?m=message&s=admin_message_sed&uid=<{$smarty.get.uid}>">发私信</a></span>
+                            <b style="margin-left:25px;">已关注</b> &nbsp;&nbsp;
+                            <a href="main.php?m=message&s=admin_message_sed&uid=<{$smarty.get.uid}>">发私信</a>
+                        </span>
                     <{else}>
                         <a genre="followbtn" data-param="{'mid':'<{$smarty.get.uid}>'}" href="javascript:void(0)"></a>
                     <{/if}>
@@ -64,7 +40,6 @@ function collect_goods(id){
             <{/if}>
         </div>
     </div>
-    <div class="clear"></div>
     <div class="nav">
         <ul class="clearfix">
             <li class="<{if $smarty.get.act==''}>current <{/if}>first">
@@ -80,27 +55,22 @@ function collect_goods(id){
     </div>
 </div>
 <div class="main-widget">
-	<h3 class="item-hd">
-    	<a class="read-more" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">查看全部</a>
+    <h3 class="item-hd">
+        <a class="read-more" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">查看全部</a>
         <span><a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">我分享的宝贝</a></span>
     </h3>
     <div class="item-bd">
-    	<ul class="clearfix">
-        	<{foreach item=list name=name from=$sharegoods}>
+        <ul class="clearfix">
+            <{foreach item=list name=name from=$sharegoods}>
             <li <{if $smarty.foreach.name.iteration==3}>class="last"<{/if}>>
-            	<div class="sitem">
-                	<div class="pic">
-                    <a title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><img width="226" height="210" src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>" /></a>
+                <div class="sitem">
+                    <div class="pic">
+                        <a title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank">
+                            <img width="226" height="210" src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>" />
+                        </a>
                     </div>
                     <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><{$list.pname}></a>
                     <p class="p-price"><strong>¥<{$list.price}></strong></p>
-                	<!-- <div class="content"><{if $list.content}><{$list.content}><{else}>分享了商品<{/if}></div>
-                    <div class="func">
-                        <span class="collect">
-                            <a href="javascript:collect_goods('<{$list.pid}>');"><i></i>收藏</a>
-                            <strong> <{$list.collectnum}> </strong>
-                        </span>
-                    </div> -->
                 </div>
             </li>
             <{/foreach}>
@@ -108,23 +78,22 @@ function collect_goods(id){
     </div>
 </div>
 <div class="main-widget clearfix">
-	<h3 class="item-hd">
-    	<a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace" class="read-more">查看全部</a>
+    <h3 class="item-hd">
+        <a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace" class="read-more">查看全部</a>
         <span><a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">我的新鲜事</a></span>
     </h3>
     <div class="item-bd">
-    	<{foreach item=list key=num from=$blog}>
+    <{foreach item=list key=num from=$blog}>
         <div class="sns-item" <{if !$num}>style="padding-top:5px"<{/if}> >
-            
             <div class="sns-wrap">
-           		<p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.member_id}>"><{$list.member_name}></a></p>
-                <div class="sns-text"><span><{$list.title}></span></div>
-                <{if $list.original_id }>
+            <p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.member_id}>"><{$list.member_name}></a></p>
+            <div class="sns-text"><span><{$list.title}></span></div>
+            <{if $list.original_id }>
                 <div class="quote-wrap">
-                     <{if $list.original_status==1}>
-                     原文已删除
-                     <{else}>
-                     <p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.ouid}>"><{$list.ouser}></a></p>
+                    <{if $list.original_status==1}>
+                    原文已删除
+                    <{else}>
+                    <p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.ouid}>"><{$list.ouser}></a></p>
                     <div class="sns-text"><span><{$list.otitle}></span></div>
                     <{if $list.oimg}>
                     <div class="sns-img clearfix">
@@ -138,14 +107,14 @@ function collect_goods(id){
                             <{/foreach}>
                         </ul>
                     </div>
-                	<{/if}>
+                    <{/if}>
                     <div class="sns-extra">
-                    	<span class="sns-time"><{$list.ocreate_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
+                        <span class="sns-time"><{$list.ocreate_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
                     </div>
                     <{/if}>
                 </div>
-                <{else}>
-                	<{if $list.img}>
+            <{else}>
+                <{if $list.img}>
                     <div class="sns-img clearfix">
                         <ul>
                             <{foreach item=p from=$list.pic}>
@@ -157,20 +126,20 @@ function collect_goods(id){
                             <{/foreach}>
                         </ul>
                     </div>
-                	<{/if}>
                 <{/if}>
+            <{/if}>
                 <div class="sns-extra">
                     <span class="sns-time"><{$list.create_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
                     <span class="sns-action">
                         <span>
-                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_forward" href="javascript:void(0);" class="sns-action-forward">转发</a>
-                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_comment" href="javascript:void(0);" class="sns-action-comment">评论</a>
+                            <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_forward" href="javascript:void(0);" class="sns-action-forward">转发</a>
+                            <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_comment" href="javascript:void(0);" class="sns-action-comment">评论</a>
                         </span>
                     </span>
                 </div>
-			</div>
+            </div>
         </div>
-        <{/foreach}>
+    <{/foreach}>
         <div class="sns-next"><a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">去看更多新鲜事<i></i></a></div>
     </div>
 </div>
@@ -179,10 +148,10 @@ function collect_goods(id){
 <link rel="stylesheet" href="<{$config.weburl}>/script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
 <script>
 $("[genre='sns_forward']").on('click',function(){
-	var data = $(this).attr('data-param');
-	eval("data = "+data);
-	ajax_form("forward_form", '转发', '<{$config.weburl}>/main.php?m=sns&s=sns&op=forward&cg_u_type=1&bid='+data.bid, 500);
-	return false;
+    var data = $(this).attr('data-param');
+    eval("data = "+data);
+    ajax_form("forward_form", '转发', '<{$config.weburl}>/main.php?m=sns&s=sns&op=forward&cg_u_type=1&bid='+data.bid, 500);
+    return false;
 });
 $("[genre='sns_comment']").on('click',function(){
 	var data = $(this).attr('data-param');
@@ -207,14 +176,13 @@ $('.meta a').on('click',function(){
         url: "<{$config.weburl}>/shop.php?sAjax=sAjax&uid=<{$smarty.get.uid}>",
         success: function(data){
             var status = JSON.parse(data);
-               if(!status.status){
-                    layer.msg('商铺还未开启或暂时关闭', {icon: 0});
-                }else{
+            if(!status.status){
+                layer.msg('商铺还未开启或暂时关闭', {icon: 0});
+            }else{
                 window.location.href="<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>";
-             }
+            }
         }
     });
 });
 </script>
-
 <{$chat_html}>

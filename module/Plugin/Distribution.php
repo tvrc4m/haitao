@@ -507,10 +507,9 @@ class Plugin_Distribution implements Yf_Plugin_Interface
 		//获取详细产品信息
 		$dist_rows = $distribution->getDistributionProduct($user_id);
 
-
 		//根据商品Id获取商品详情
 		$produce_id_row = array_filter_key('product_id', $dist_rows);
-		$dist_pro = $distribution->getProductInfoNormal($produce_id_row);
+		$dist_pro = $distribution->getProductInfoNormal($produce_id_row, $_GET['page'], 10);
 		$tpl->assign("dist_pro", $dist_pro);
 	}
 

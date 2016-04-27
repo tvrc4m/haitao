@@ -141,7 +141,8 @@ function saveorder(zf){
         error: function(request) {
         },
         success: function(data) {
-            window.open(data);
+            var pcUrl = JSON.parse(data);
+            window.open(pcUrl.pcUrl);
         }
     });
     return false;
