@@ -166,8 +166,26 @@
                 <{/foreach}>
             </ul>
         </div>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
+        <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a>
     <{/if}>
+
+    <script>
+        var page = 0;
+        function  more_info(){
+            var uid = "<{$smarty.get.uid}>";
+            var dis_id = "<{$smarty.get.dist_id}>";
+            var url = "<{$config.weburl}>/shop.php";
+            page = page + 10;
+            $.ajax({
+                url: url,
+                type: 'get',
+                data: {uid:uid, dis_id:dis_id, page:page, ptype:'ajax'},
+                success: function(msg){
+                    alert(msg);
+                }
+            });
+        }
+    </script>
 
     <{if $com.shop_statu eq 1}>
     <div class="plist itemSearchResult">

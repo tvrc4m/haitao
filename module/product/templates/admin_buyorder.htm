@@ -15,7 +15,7 @@
                 <li class="<{if $smarty.get.rate=='1'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_buyorder&rate=1">待评论</a></li>
 			</ul>
         </div>
-        
+
         <!-- <div class="searchbar">
         <form action="main.php" method="get">
         <input type="hidden" name="m" value="product" />
@@ -55,10 +55,10 @@
                                 <{if $smarty.get.zt}>
                                     <{foreach item=list key=key from=$order_status}>
                                        <{if $key==$smarty.get.zt}><{$list}><{/if}>
-                                    <{/foreach}> 
+                                    <{/foreach}>
                                 <{else}>
                                    全部
-                                <{/if}>    
+                                <{/if}>
                                 </span>
                                 <b></b>
                             </div>
@@ -96,7 +96,7 @@
                                     <{/foreach}>
                                 <{else}>
                                    全部
-                                <{/if}>    
+                                <{/if}>
                                 </span>
                                 <b></b>
                             </div>
@@ -128,8 +128,8 @@
                     </td>
                 </tr>
             </table>
-        </form>   
-        <script type="text/javascript" src="<{$config.weburl}>/script/Calendar.js"></script>       
+        </form>
+        <script type="text/javascript" src="<{$config.weburl}>/script/Calendar.js"></script>
 		<script type="text/javascript">
 		var cdr = new Calendar("cdr");
 		document.write(cdr);
@@ -143,15 +143,15 @@
 				else
 					$(".whole").hide();
 			})
-			$(".search-select").click(function(){ 
+			$(".search-select").click(function(){
 				var obj=$(this);
 				$(obj).addClass("current");
 				$(obj).next().find("li").each(function(){
 					var val = $(this).parent().parent().prev().prev().val();
-					
+
 						$.each($('li[key="'+val+'"]'),function(i){
-							$(this).addClass('selected').siblings().removeClass('selected');						});	
-					
+							$(this).addClass('selected').siblings().removeClass('selected');						});
+
 				});
 				$(this).next().slideToggle("fast",function(){
 					if($(obj).next().is(":visible")){
@@ -190,7 +190,7 @@
                 <tr>
                     <td class="sep-row" colspan="20"></td>
                 </tr>
-                
+
                 <tr>
                     <th class="bdl">
                     <span class="dealtime"><{$buylist.create_time|date_format:"%Y-%m-%d"}></span>
@@ -200,9 +200,9 @@
                     <th></th>
                     <th class="bdr" colspan="3"></th>
                 </tr>
-                
+
                 <{foreach item=plist key=key from=$buylist.product}>
-                <tr> 
+                <tr>
                     <td class="bdl product">
                         <a class="pic" target="_blank" href="<{$config.weburl}>/?m=product&s=detail&order_id=<{$buylist.order_id}>&pid=<{$plist.id}>&id=<{$plist.pid}>"><img width="80" height="80" src="<{$plist.pic}>_220X220.jpg" /></a>
                         <div class="desc">
@@ -237,7 +237,7 @@
                         <{/if}>
 						<{if $buylist.is_line eq 1}><p style="color:red;">线下订单</p><p style="color:red;"><{$buylist.payment_name}></p><{/if}>
                     </td>
-                
+
                     <{if $key==0}>
                     <td class="bl" rowspan="<{$count}>">
 						<b><{$buylist.product_price+$buylist.logistics_price-$buylist.deduction|number_format:2}></b>
@@ -246,16 +246,16 @@
 						<{if $buylist.deduction gt 0}><br/>折扣金额:<b>-<{$buylist.deduction}></b><{/if}>
 						<!-- <{if $buylist.deduction gt 0}><br/>付款金额:<b><{$buylist.product_price-$buylist.deduction}></b><{/if}> -->
 					</td>
-                   
+
                     <td class="bl" rowspan="<{$count}>">
                     <a target="_blank" href="<{$config.weburl}>/main.php?m=product&s=admin_orderdetail&id=<{$buylist.order_id}>"><{$buylist.statu_text}></a>
                     <a target="_blank" href="<{$config.weburl}>/main.php?m=product&s=admin_orderdetail&id=<{$buylist.order_id}>">订单详情</a>
-                    
+
                     <{if $buylist.status==4 && $buylist.buyer_comment==1 && $buylist.seller_comment!=1}>已评
                     <{elseif $buylist.status==4 && $buylist.buyer_comment==1 && $buylist.seller_comment==1}>双方已评
                     <{/if}>
                     </td>
-                    
+
                     <td class="bl bdr" rowspan="<{$count}>">
                     <{if $buylist.status==1}>
                         <a class="button button-pay" href="<{$config.pay_url}>?m=payment&s=pay&tradeNo=<{$buylist.order_id}>">立刻付款</a>
@@ -289,7 +289,7 @@
 			<{foreachelse}>
                 <tr>
                     <td colspan="20" class="norecord">
-                        <i></i><span>暂无符合条件的数据记录</span>	
+                        <i></i><span>暂无符合条件的数据记录</span>
                     </td>
                 </tr>
             <{/foreach}>
