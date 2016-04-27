@@ -95,10 +95,10 @@ ScreenLocker = {
 		
         this.masker = $('<div></div>');
         /* IE6 Hack */
-        if ($.browser.msie)
-        {
-            $('select').css('visibility', 'hidden');
-        }
+        // if ($.browser.msie)
+        // {
+        //     $('select').css('visibility', 'hidden');
+        // }
         //var _iframe = $('<iframe></iframe>').css({'opacity':0, 'width':'100%', 'height':'100%'});
         //this.masker.append(_iframe);
 
@@ -133,10 +133,10 @@ ScreenLocker = {
 		}
 		
         /* IE6 Hack */
-        if ($.browser.msie)
-        {
-            $('select').css('visibility', 'visible');
-        }
+        // if ($.browser.msie)
+        // {
+        //     $('select').css('visibility', 'visible');
+        // }
     }
 };
 
