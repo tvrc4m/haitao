@@ -8,7 +8,7 @@
     <div class="tips"><span></span>温馨提示：请先设置账户信息。</div>
     <{/if}>
     <div class="form">
-        <form method="post" id="form" id="form">
+        <form method="post" id="form" id="form" action="">
             <input type="hidden" name="act" value="act" />
             <fieldset>
                 <dl class="email">
@@ -48,7 +48,6 @@ function commit () {
     $.ajax({
         type: "POST",
         data:$('#form').serialize(),
-        async: false,
         error: function(request) {
         },
         success: function(data) {

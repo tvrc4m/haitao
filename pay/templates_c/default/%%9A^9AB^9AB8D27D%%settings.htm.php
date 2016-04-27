@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-27 18:27:03
+<?php /* Smarty version 2.6.20, created on 2016-04-27 18:41:22
          compiled from settings.htm */ ?>
 <script src="script/my_lightbox.js" language="javascript"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -10,7 +10,7 @@
     <div class="tips"><span></span>温馨提示：请先设置账户信息。</div>
     <?php endif; ?>
     <div class="form">
-        <form method="post" id="form" id="form">
+        <form method="post" id="form" id="form" action="">
             <input type="hidden" name="act" value="act" />
             <fieldset>
                 <dl class="email">
@@ -52,14 +52,13 @@
 </div>
 <script type="text/javascript">
 function commit () {
-$.ajax({
-    type: "POST",
-    data:$('#form').serialize(),
-    async: false,
-    error: function(request) {
-    },
-    success: function(data) {
-    }
-});
+    $.ajax({
+        type: "POST",
+        data:$('#form').serialize(),
+        error: function(request) {
+        },
+        success: function(data) {
+        }
+    });
 }
 </script>
