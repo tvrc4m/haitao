@@ -603,7 +603,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .order-detail .first{border-left:1px solid #DDDDDD;}
 .order-detail .last{border-right:1px solid #DDDDDD;}
 .order-detail .pic-info{display:inline;float:left;margin-right:10px;}
-.order-detail .txt-info{color:#808080;line-height:18px;margin-left:60px;text-align:left;}
+.order-detail .txt-info{color:#808080;line-height:18px;margin-left:60px;text-align:left;line-height: 70px;}
 .order-detail .txt-info p{margin-top:4px;}
 .order-detail .money{text-align:right;padding:40px 8px 0 0;}
 .order-detail .money b{color:#FF5500;font-size:16px;font-weight:700;padding:0 2px;}
