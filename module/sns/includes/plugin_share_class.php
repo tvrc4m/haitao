@@ -26,13 +26,20 @@ class share
 		include_once($config['webroot']."/includes/page_utf_class.php");
 		$page = new Page;
 		$page->listRows = $limit;
-		$page->firstRow = $begin;
+        $page->firstRow = $begin;
+
 		if (!$page->__get('totalRows')){
 			$this->db->query("select count(id) as num from ".SSHOP." where uid=$buid ");
 			$num=$this->db->fetchRow();
 			$page->totalRows = $num['num'];
 		}
-        $sql .= "  limit ".$page->firstRow.",".$page->listRows;
+
+        if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
+            $sql .= "  limit ".$page->firstRow.",".$page->listRows;
+        }else{
+            $sql .= "  limit ".$page->listRows;
+        }
+
 		$this->db->query($sql);
 		$re["list"]=$this->db->getRows();
 		$re["page"]=$page->prompt();
@@ -52,12 +59,19 @@ class share
 		$page = new Page;
 		$page->listRows = $limit;
 		$page->firstRow = $begin;
+
 		if (!$page->__get('totalRows')){
 			$this->db->query("select count(id) as num from ".SPRO." where uid=$buid ");
 			$num=$this->db->fetchRow();
 			$page->totalRows = $num['num'];
 		}
-        $sql .= "  limit ".$page->firstRow.",".$page->listRows;
+
+        if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
+            $sql .= "  limit ".$page->firstRow.",".$page->listRows;
+        }else{
+            $sql .= "  limit ".$page->listRows;
+        }
+
 		$this->db->query($sql);
 		$re["list"]=$this->db->getRows();
 		$re["page"]=$page->prompt();
