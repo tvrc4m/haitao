@@ -105,6 +105,17 @@
     <{/if}>
     <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
 </section>
+<section class="addcarts">
+    <a class="carts" href="/?m=product&s=cart">
+        <span class="cart-num-conts" id='cart_num'>
+            <span class="cart-num"></span>
+            <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+        </span>
+    </a>
+</section>
+<section class="addtop">
+    <a class="top" href="javascript:void(0);"></a>
+</section>
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script>
@@ -168,6 +179,24 @@ $(function(){
             } 
         } 
     }) 
+     $(window).scroll(function(){
+        var h = $(window).scrollTop();
+        var wHeight=500;
+        if(h>wHeight){
+            $(".addtop").show()
+            $(".addtop").click(function(){
+                $(window).scrollTop(0);
+            })
+        }else{
+            $(".addtop").hide()
+        }
+        if(h > 50)
+        {
+            $(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"});
+            $(".filter").css({"position":"fixed","top":"50px","width":"100%","z-index":"9999","background-color":"#fff","margin-top":"0px"})
+            $(".itemSearchResult").eq(0).css({"margin-top":"50px"})
+        }
+    })
     $("#list").click(function(){
         window.scroll(0,0);
         $('.leftcate').show();
