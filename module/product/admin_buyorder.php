@@ -49,13 +49,16 @@ if(isset($_GET['flag'])&&isset($_GET['id']))
 $status=isset($_GET['status'])?$_GET['status']:"";
 
 if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
-    $res =  $order->buyorder($status,0,$_GET['page'],2);
+    $res =  $order->buyorder($status,0,$_GET['page'],10);
     if($res['list']){
-        echo json_encode(array(
+        /*echo json_encode(array(
             'code' => 200,
             'data' => $res['list'],
             'status' => 2
-        ));
+        ));*/
+
+        $tpl->assign("blist",$res);
+        $tpl->display("admin_buyorder_prifex.htm");
     }else{
         echo json_encode(array(
             'code' => 300,
@@ -85,4 +88,5 @@ $tpl->assign("uid",$buid);
 $tpl->assign("config",$config);
 $tpl->assign("lang",$lang);
 $output=tplfetch("admin_buyorder.htm");
+
 ?>
