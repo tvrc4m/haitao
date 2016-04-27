@@ -204,7 +204,7 @@ $('.large').on('click',function(){
 $('.meta a').on('click',function(){
     $.ajax({
         type: 'GET',
-        url: "<{$config.weburl}>/shop.php?ajax=ajax&uid=<{$smarty.get.uid}>",
+        url: "<{$config.weburl}>/shop.php?sAjax=sAjax&uid=<{$smarty.get.uid}>",
         success: function(data){
             var status = JSON.parse(data);
                if(!status.status){
