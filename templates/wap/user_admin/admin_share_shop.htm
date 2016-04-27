@@ -50,28 +50,61 @@
         </dd>
     </dl>
     <{/foreach}>
-    <a href="javascript:more_info();" class="m_jiazai">下滑加载更多</a>
 </div>
 <{else}>
 <div class="itemsNull">
     <h3>暂无符合条件的数据记录</h3>
 </div>
 <{/if}>
+<a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 </section>
 <script>
-    var page = 0 ;
-    function more_info(){
-        var url = "<{$config.weburl}>/main.php";
-        var key = "<{$smarty.get.key}>";
-        var dist_id = "<{$smarty.get.dist_id}>";
-        page = page+10;
-        $.ajax({
-            url: url,
-            type: 'get',
-            data: {page:page, key:key, m:'sns', s:'admin_share_shop', dist_id:dist_id, ptype:'ajax'},
-            success: function(msg){
-                alert(msg);
-            }
-        });
+$(function(){
+    var dlLen=$(".itemSearchResult dl").size();
+    if(dlLen<10){
+        $(".m_jiazai").hide();
+        $("footer").css({"margin-top":"20px"})
     }
+    var page = 0;
+    var url = "<{$config.weburl}>/main.php";
+    var key = "<{$smarty.get.key}>";
+    var dist_id = "<{$smarty.get.dist_id}>";
+    var stop=true; 
+    $(window).scroll(function(){
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        if($(document).height() <= totalheight){
+            if(stop==true){ 
+                $(".m_jiazai").html("正在加载中.....");
+                stop=false; 
+                page = page+1;
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: {page:page, key:key, m:'sns', s:'admin_share_shop', dist_id:dist_id, ptype:'ajax'},
+                    dataType: "json",
+                    success: function(msg){
+                        console.log(msg)
+                        if(msg.status==2){
+                        var dataLen=msg.data.length;
+                        for(var i=0;i<dataLen;i++){
+                            $(".itemSearchResult").append("<dl>"+
+                                    "<dt><a class='p-img' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>  <img height='80' width='80' alt='<{$list.pname}>' src='<{if $slist.logo!=''}><{$slist.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>'></a> </dt>"+
+                                    "<dd>"+
+                                        "<p class='p-name'><a target='_blank' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>"+msg.data[i].company+"</a></p>"+
+                                        "<p class='p-name color'>"+msg.data[i].area+"</p>"+
+                                        "<p class='p-name color'>店主："+msg.data[i].user+"</p>"+
+                                        "<div class='handle'><a href='main.php?m=sns&s=admin_share_shop&type=del&id="+msg.data[i].id+"'>删除</a></div>"+
+                                    "</dd>"+
+                                "</dl>")                      
+                        }
+                        stop=true;
+                        }else{
+                         $(".m_jiazai").html("已到最底部");
+                        }
+                    }
+                });
+            } 
+        } 
+    })      
+})
 </script>
