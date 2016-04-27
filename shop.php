@@ -217,7 +217,8 @@ $tpl->assign("working_time",$working_time);
 			}
 			else
 			{
-				msg("$config[weburl]/home.php?uid=$_GET[uid]","商铺还未开启，或暂时关闭,将转向个人主页");
+				return 0;
+				//msg("$config[weburl]/home.php?uid=$_GET[uid]","商铺还未开启，或暂时关闭,将转向个人主页");
 			}
 		}
 	}

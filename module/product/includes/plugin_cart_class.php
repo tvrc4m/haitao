@@ -428,7 +428,7 @@ class cart
 		$re['quantity'] *= 1;
 		$stock = $spec_id?$de['stock']:$pro['stock'];
 		$price = $spec_id?$de['price']:$pro['price'];
-                
+
 		if($re['quantity']+$quantity>$stock)
 		{
 			$sql = "update ".CART." set quantity = '$stock' where id = '$re[id]'";	
