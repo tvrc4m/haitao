@@ -49,11 +49,11 @@ if(isset($_GET['flag'])&&isset($_GET['id']))
 $status=isset($_GET['status'])?$_GET['status']:"";
 
 if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
-    $res =  $re->$order->buyorder($status);
-    if($res){
+    $res =  $order->buyorder($status,0,$_GET['page'],2);
+    if($res['list']){
         echo json_encode(array(
             'code' => 200,
-            'data' => $res,
+            'data' => $res['list'],
             'status' => 2
         ));
     }else{

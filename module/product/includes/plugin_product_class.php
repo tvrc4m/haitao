@@ -806,7 +806,13 @@ class product
 			$this->db->query($sql);
 			$page->totalRows =$this->db->num_rows();
 		}
-		$sql .= "  limit ".$page->firstRow.", ".$page->listRows;
+
+		if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
+			$sql .= "  limit ".$page->firstRow.", ".$page->listRows;
+		}else{
+			$sql .= "  limit ".$page->listRows;
+		}
+
 		$infoList['page']=$page->prompt();
 		$infoList['count']=$page->totalRows;
 		//--------------------------------------------------

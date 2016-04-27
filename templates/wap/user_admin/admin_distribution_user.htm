@@ -58,75 +58,79 @@ $(function(){
   </div>
   <{/foreach}>
    </section>
-<!-- <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a> -->
+<a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
 <script>
-    // var page = 0 ;
-    // function more_info(){
-    //     var url = "<{$config.weburl}>/main.php";
-    //     var level = "<{$smarty.get.level}>";
-    //     var dist_id = "<{$smarty.get.dist_id}>";
-    //     page = page+10;
-    //     $.ajax({
-    //         url: url,
-    //         type: 'get',
-    //         data: {page:page, level:level, m:'distribution', s:'admin_distribution_user', dist_id:dist_id, ptype:'ajax'},
-    //         success: function(msg){
-    //             alert(msg);
-    //         }
-    //     });
-    // }
 $(function(){
-    $("footer").css({"margin-top":"20px"})
-    // var divLen=$(".order .distributionUser").size();
-    // if(divLen<10){
-    //     $(".m_jiazai").hide();
-    //     $("footer").css({"margin-top":"20px"})
-    // }
-    // var page = 0;
-    // var url = "<{$config.weburl}>/main.php";
-    // var level = "<{$smarty.get.level}>";
-    // var dist_id = "<{$smarty.get.dist_id}>";
-    // var stop=true; 
-    // $(window).scroll(function(){
-    //     totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
-    //     if($(document).height() <= totalheight){
-    //         if(stop==true){ 
-    //             $(".m_jiazai").html("正在加载中.....");
-    //             stop=false; 
-    //             page = page+10;
-    //             $.ajax({
-    //             url: url,
-    //             type: 'get',
-    //             data: {page:page, level:level, m:'distribution', s:'admin_distribution_user', dist_id:dist_id, ptype:'ajax'},
-    //             dataType: "json",
-    //                 success: function(msg){
-    //                     console.log(msg)
-    //                     if(msg.status==2){
-    //                     var dataLen=msg.data.length;
-    //                     for(var i=0;i<dataLen;i++){
-    //                         $(".itemSearchResult").append("<div class='distributionUser clearfix'>"+
-    //                                         "<dl>"+
-    //                                           "<dt>下线用户</dt>"+
-    //                                           "<dd class='distribu-name'><{$list.user_name}></dd>"+
-    //                                         "</dl>"+
-    //                                         "<dl>"+
-    //                                           "<dt>分销层级</dt>"+
-    //                                           "<dd><{$list.user_relationship_level}></dd>"+
-    //                                         "</dl>"+
-    //                                         "<dl>"+
-    //                                           "<dt>佣金收益</dt>"+
-    //                                           "<dd class='distri-price'><{$list.user_commission_shop_amount|string_format:"%.2f"}></dd>"+
-    //                                         "</dl>"+
-    //                                       "</div>")                      
-    //                     }
-    //                     stop=true;
-    //                     }else{
-    //                      $(".m_jiazai").html("已到最底部");
-    //                     }
-    //                 }
-    //             });
-    //         } 
-    //     } 
-    // })      
+    var divLen=$(".order .distributionUser").size();
+    if(divLen<10){
+        $(".m_jiazai").hide();
+        $("footer").css({"margin-top":"20px"})
+    }
+    var page = 0;
+    var url = "<{$config.weburl}>/main.php";
+    var level = "<{$smarty.get.level}>";
+    var dist_id = "<{$smarty.get.dist_id}>";
+    var stop=true; 
+    $(window).scroll(function(){
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        if($(document).height() <= totalheight){
+            if(stop==true){ 
+                $(".m_jiazai").html("正在加载中.....");
+                stop=false; 
+                page = page+10;
+                $.ajax({
+                url: url,
+                type: 'get',
+                data: {page:page, level:level, m:'distribution', s:'admin_distribution_user', dist_id:dist_id, ptype:'ajax'},
+                dataType: "json",
+                    success: function(msg){
+                        console.log(msg)
+                        if(msg.status==2){
+                        var dataLen=msg.data.length;
+                        for(var i=0;i<dataLen;i++){
+                            var nums=msg.data[i].user_commission_shop_amount
+                            function toDecimal2(x) {    
+                                var f = parseFloat(x);    
+                                if (isNaN(f)) {    
+                                    return false;    
+                                }    
+                                var f = Math.round(x*100)/100;    
+                                var s = f.toString();    
+                                var rs = s.indexOf('.');    
+                                if (rs < 0) {    
+                                    rs = s.length;    
+                                    s += '.';    
+                                }    
+                                while (s.length <= rs + 2) {    
+                                    s += '0';    
+                                }    
+                                return s;    
+                            } 
+                            var amount_num=toDecimal2(nums);
+                            console.log(amount_num)
+                            $(".order").append("<div class='distributionUser clearfix'>"+
+                                            "<dl>"+
+                                              "<dt>下线用户</dt>"+
+                                              "<dd class='distribu-name'>"+msg.data[i].user_name+"</dd>"+
+                                            "</dl>"+
+                                            "<dl>"+
+                                              "<dt>分销层级</dt>"+
+                                              "<dd>"+msg.data[i].user_relationship_level+"</dd>"+
+                                            "</dl>"+
+                                            "<dl>"+
+                                              "<dt>佣金收益</dt>"+
+                                              "<dd class='distri-price'>"+amount_num+"</dd>"+
+                                            "</dl>"+
+                                          "</div>")                      
+                        }
+                        stop=true;
+                        }else{
+                         $(".m_jiazai").html("已到最底部");
+                        }
+                    }
+                });
+            } 
+        } 
+    })      
 })
 </script>

@@ -27,9 +27,9 @@
                 <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:30:""}></a>
                 <span class="price">（剩<{$list.amount}>件）</span>
             </p>
-            <p class="p-name color">  
+            <p class="p-name color">
 				<span class="price-w">
-				价格：<span class="price-tests"><{$config.money}><{$list.price|number_format:2}></span> 
+				价格：<span class="price-tests"><{$config.money}><{$list.price|number_format:2}></span>
 				</span>
 				<span class="complateMoney">
 					<{if $list.is_dist}>佣金: <span class="price-tests"><{$config.money}><{$list.commission_product_price_0|number_format:2}></span><{/if}>
@@ -193,29 +193,29 @@
 	    	WeiXinShareBtn();
 	    })
 
-	    function WeiXinShareBtn() { 
-			if (typeof WeixinJSBridge == "undefined") { 
-				alert("请先通过微信搜索 蚂蚁海淘 添加蚂蚁海淘为好友，通过微信分享文章 "); 
-			} else { 
-				 WeixinJSBridge.invoke('shareTimeline', { 
-					 "title": 'shopTitle', 
-					 "link": 'shopLink', 
-					 "desc": 'shopTitle', 
-					 "img_url": 'shopSrc' 
-				 }); 
-			} 
+	    function WeiXinShareBtn() {
+			if (typeof WeixinJSBridge == "undefined") {
+				alert("请先通过微信搜索 蚂蚁海淘 添加蚂蚁海淘为好友，通过微信分享文章 ");
+			} else {
+				 WeixinJSBridge.invoke('shareTimeline', {
+					 "title": 'shopTitle',
+					 "link": 'shopLink',
+					 "desc": 'shopTitle',
+					 "img_url": 'shopSrc'
+				 });
+			}
 		 }
-		  function WeiXinSendAppMessage() { 
-			if (typeof WeixinJSBridge == "undefined") { 
-				alert("请先通过微信搜索 蚂蚁海淘 添加蚂蚁海淘为好友，通过微信分享文章 "); 
-			} else { 
-				 WeixinJSBridge.invoke('sendAppMessage', { 
-					 "title": "1111111", 
-					 "link": 'shopLink', 
-					 "desc": 'shopTitle', 
-					 "img_url": 'shopSrc' 
-				 }); 
-			} 
+		  function WeiXinSendAppMessage() {
+			if (typeof WeixinJSBridge == "undefined") {
+				alert("请先通过微信搜索 蚂蚁海淘 添加蚂蚁海淘为好友，通过微信分享文章 ");
+			} else {
+				 WeixinJSBridge.invoke('sendAppMessage', {
+					 "title": "1111111",
+					 "link": 'shopLink',
+					 "desc": 'shopTitle',
+					 "img_url": 'shopSrc'
+				 });
+			}
 		 }
     })
     $(".price-delate").bind("click",function(){
@@ -233,13 +233,13 @@ $(function(){
     var page = 0;
     var url = "<{$config.weburl}>/";
     var id = "<{$smarty.get.deid}>";
-    var stop=true; 
+    var stop=true;
     $(window).scroll(function(){
-        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());
         if($(document).height() <= totalheight){
-            if(stop==true){ 
+            if(stop==true){
                 $(".m_jiazai").html("正在加载中.....");
-                stop=false; 
+                stop=false;
                 page = parseInt(parseInt(page) + 10);
                  $.ajax({
                     url: url,
@@ -250,7 +250,7 @@ $(function(){
                         if(msg.status==2){
                             var dataLen=msg.data.length;
                             for(var i=0;i<dataLen;i++){
-                                var value_substr=msg.data[i].pname.substr(i,19); 
+                                var value_substr=msg.data[i].pname.substr(i,19);
                                  $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"<{/if}>' class='shop_src'></a></dt>"+
                                     "<dd>"+
                                        "<p class='p-name'>"+
@@ -263,9 +263,9 @@ $(function(){
                                             "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
                                             "<span class='price'>（剩"+msg.data[i].amount+"件）</span>"+
                                         "</p>"+
-                                        "<p class='p-name color'>"+  
+                                        "<p class='p-name color'>"+
                                            "<span class='price-w'>"+
-                                            "价格：<span class='price-tests'><{$config.money}>"+msg.data[i].price+"</span>"+ 
+                                            "价格：<span class='price-tests'><{$config.money}>"+msg.data[i].price+"</span>"+
                                             "</span>"+
                                             "<span class='complateMoney'>"+
                                                 "<{if $list.is_dist}>佣金: <span class='price-tests'><{$config.money}>"+msg.data[i].share_money+"</span><{/if}>"+
@@ -275,7 +275,7 @@ $(function(){
                                             "<span class='price-delate'><a href='javascript:void(0);'>删除</a></span>"+
                                             "<{if $list.is_dist}><span class='price-fenxiang price'>分享</span><{/if}>"+
                                         "</div>"+
-                                    "</dd></dl>")   
+                                    "</dd></dl>")
                             }
                             stop=true;
                         }else{
@@ -283,8 +283,8 @@ $(function(){
                         }
                     }
                 });
-            } 
-        } 
-    })      
+            }
+        }
+    })
 })
 </script>
