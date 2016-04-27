@@ -28,13 +28,13 @@ var weburl="<{$config.weburl}>";
 function chk()
 {
 	var flag = true;
-	
+
 	if(!require("company","请填写店铺名称。"))
 	{
 		return false;
 	}
 	if(!require("addr","请填写详细地址。"))
-	{	
+	{
 		return false;
 	}
 	if(!require("tel","请填写联系电话。"))
@@ -63,22 +63,22 @@ function chk()
     }
 
 	if($("#d_2").css('display')!='none' && !$("#select_1").val())
-	{	
+	{
 		id="select_1";
 		flag = false;
 	}
 	else if($("#select_2").find("option").length>0 && !$("#select_2").val())
-	{	
+	{
 		id="select_2";
 		flag = false;
 	}
 	else if($("#select_3").find("option").length>0 && !$("#select_3").val())
-	{	
+	{
 		id="select_3";
 		flag = false;
 	}
 	else if($("#select_4").find("option").length>0 && !$("#select_4").val())
-	{	
+	{
 		id="select_4";
 		flag = false;
 	}
@@ -89,12 +89,12 @@ function chk()
 			$("#d_2 .form-error").html("请选择所在地区。")
 		else
 			$('#d_2').append("<span class='form-error'>请选择所在地区。</span>")
-		return false;	
-	}	
-		
+		return false;
+	}
+
 }
 function require(id,msg)
-{	
+{
 	if(!$("#"+id).val())
 	{
 		msgs(id,msg);
@@ -103,11 +103,11 @@ function require(id,msg)
 	else
 	{
 		$("#"+id).next('span').html("");
-		return true;	
+		return true;
 	}
 }
 function limit(id,m,msg)
-{	
+{
 	if((($("#"+id).val()).length)>m)
 	{
 		msgs(id,msg);
@@ -116,7 +116,7 @@ function limit(id,m,msg)
 	else
 	{
 		$("#"+id).next('span').html("");
-		return true;	
+		return true;
 	}
 }
 function msgs(id,msg)
@@ -124,14 +124,14 @@ function msgs(id,msg)
 	if($("#"+id).next('span').attr('class'))
 		$("#"+id).next('span').html(msg)
 	else
-		$("#"+id).after("<span class='form-error'>"+msg+"</span>")	
+		$("#"+id).after("<span class='form-error'>"+msg+"</span>")
 	document.getElementById(id).focus();
 }
 </script>
 <div class="path">
     <div>
-    	<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span> 
-        <a href="main.php?m=shop&s=myshop">店铺设置</a> <span>&gt;</span> 
+    	<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span>
+        <a href="main.php?m=shop&s=myshop">店铺设置</a> <span>&gt;</span>
         店铺设置
     </div>
 </div>
@@ -147,7 +147,7 @@ function msgs(id,msg)
                 <!-- <li class="normal"><a href="main.php?m=shop&s=admin_wapset">wap端设置</a></li> -->
 			</ul>
         </div>
-        
+
         <div class="form-style">
             <form id="form" method="post" enctype="multipart/form-data" onsubmit="return chk()">
             <input type="hidden" value="edit" name="submit">
@@ -222,7 +222,7 @@ function msgs(id,msg)
                 <dt><em>*</em>详细地址：</dt>
                 <dd>
                 <p><input type='text' name='addr' id='addr' value="<{$de.addr}>" maxlength="200" class="text w300"></p>
-                <p class="hint">不必重复填写所在地区</p>  
+                <p class="hint">不必重复填写所在地区</p>
           		</dd>
             </dl>
             <dl>
@@ -237,7 +237,7 @@ function msgs(id,msg)
                 var editor;
                 KindEditor.ready(function(K) {
                     editor = K.create('textarea[name="intro"]', {
-                        
+
                     });
                 });
                 </script>
@@ -247,7 +247,7 @@ function msgs(id,msg)
             <dl>
                 <dt>SEO标题：</dt>
                 <dd>
-                
+
                 <p><input type="text" name="shop_title" value="<{$de.shop_title}>" class="w300 text" /></p>
                 <p class="hint">用于店铺搜索引擎的优化</p>
                 </dd>
@@ -277,7 +277,7 @@ function msgs(id,msg)
                 <dd><input type="submit" value="提交" class="submit" /></dd>
             </dl>
             </form>
-        </div>  
-        
+        </div>
+
    </div>
 </div>

@@ -274,6 +274,7 @@ $num = $num['identity_verify'] == 'true' ? 1 : 0 ;
 $tpl->assign("lang",$lang);
 $tpl->assign("verify",$num);
 $tpl -> assign("menus",$nav_menu);
+$tpl->assign("geturl",$_SERVER['REQUEST_URI']);
 include_once("footer.php");
 if(!empty($nohead))
 	$tpl->display($page);
