@@ -131,7 +131,7 @@ class order
 	 * @param $status 状态 默认值 NULL
 	 * return array
 	 */
-	function buyorder($status = NULL,$flag = 0, $begin = 0, $limit = 2)
+	function buyorder($status = NULL,$flag = 0, $begin = 0, $limit = 10)
 	{
 		global $buid;
 		if($_GET['key'])
@@ -216,19 +216,23 @@ class order
 			
 		}
 		
-		
-		
 		$sql = "select a.*,b.company from ".ORDER." a left join ".SHOP." b on a.seller_id=b.userid $table where a.userid = '".$buid."' $str and seller_id != '' order by  FROM_UNIXTIME(a.`create_time`, '%Y-%m-%d') desc,field(a.status,'1','3','2','4','5','6','0'),buyer_comment,seller_comment,a.id desc";
 
 		//=============================
 	  	$page = new Page;
 		$page -> listRows = $limit;
-		$page -> firstRow = $begin;
+		$page->firstRow = $begin;
+
 		if (!$page -> __get('totalRows')){
 			$this -> db -> query($sql);
 			$page -> totalRows = $this -> db -> num_rows();
 		}
-        $sql .= "  limit " . $page -> firstRow . "," . $page -> listRows;
+		if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
+			$sql .= "  limit " . $page -> firstRow . "," . $page -> listRows;
+		}else {
+			$sql .= "  limit " . $page->listRows;
+		}
+
 		//==============================
 		$this -> db -> query($sql);
 		$ore = $this -> db -> getRows();
