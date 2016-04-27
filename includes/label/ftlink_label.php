@@ -17,7 +17,7 @@ function ftlink($ar)
 		$db->query($sql);
 		$groups = $db->getRows();
 		//-------------------------------------
-		$sql="select * from ".WEBCON." where lang='$config[language]' and type=1 order by con_no asc";
+		$sql="select * from ".WEBCON." where lang='$config[language]' and type=1 and con_statu=1 order by con_no asc";
 		$db->query($sql);
 		$all_web = $db->getRows();
 		foreach($groups as $p)

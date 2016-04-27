@@ -12,7 +12,7 @@ if(empty($buid))
 	}
 }
 else
-{	
+{
 	include_once("module/member/includes/plugin_orderadder_class.php");
 	include_once("module/product/includes/plugin_cart_class.php");
 	$cart = new cart();
@@ -255,10 +255,13 @@ else
 		//msg($config['weburl']."/main.php?cg_u_type=1&m=product&s=admin_buyorder");//订单提交成功
 	//	msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$inorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
 		if($_COOKIE['identity']=='true'){
-			if($config['temp']=='wap')
+			if($config['temp']=='wap'){
 				msg($config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp']);//直接跳转到支付页面进行支付选择
-			else
-				echo $pcUrl = $config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp'];
+			}else{
+				echo json_encode(array(
+					'pcUrl' => $config['pay_url']."/?m=payment&s=pay&tradeNo=".$uorder."&temp=".$config['temp']
+				));die;
+			}
 		}else{
 			if($config['temp']=='wap')
 				msg($config['web_url']."/real.php");//wap实名认证
