@@ -5,7 +5,6 @@
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span>全部商品</span></section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
-       <!--  <section class="nav-e"><{if $custom_cat}><a class="list" id="list" href="javascript:void(0)"><nav>分类</nav></a><{/if}></section> -->
 	</div>
 </header>
 <{if $dist_pro and false}>
@@ -37,8 +36,8 @@
             </li>
             <{/foreach}>
         </ul>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
     </div>
+    <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
 </section>
 <{/if}>
 
@@ -77,7 +76,6 @@
             </li>
         <{/foreach}>
     </ul>
-    <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a>
     </div>
     <{if $dist_pro}>
     <div class="itemSearchResult plist ">
@@ -105,29 +103,71 @@
         </ul>
     </div>
     <{/if}>
-
-    <div class="leftcate" style="display: none">
-        <{if $custom_cat }>
-        <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
-        <ul>
-        <{foreach item=list from=$custom_cat}>
-            <li>
-            <a <{if $smarty.get.cat==$list.id}>class="current"<{/if}> class="<{if $list.con}>block_ico<{else}>none_ico<{/if}>" href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$list.id}>" title="<{$list.name}>"><{$list.name}></a>
-            <{if $list.con}>
-            <{foreach item=lists from=$list.con}>
-                <li><a <{if $smarty.get.cat==$lists.id}>class="current"<{/if}> href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$lists.id}>" title="<{$lists.name}>">&nbsp;<{$lists.name}></a></li>
-            <{/foreach}>
-            <{/if}>
-            </li>
-        <{/foreach}>
-        </ul>
-		<{/if}>
-    </div>
+    <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
 </section>
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script>
 $(function(){
+    var divLen=$(".shoplist .shopli").size();
+    if(divLen<10){
+        $(".m_jiazai").hide();
+        $("footer").css({"margin-top":"20px"})
+    }
+    var page = 0;
+    var url = "http://haitao.com/shop.php";
+    var sort = "<{$smarty.get.sort}>";
+    var keyword = "<{$smarty.get.keyword}>";
+    var price1 = "<{$smarty.get.price1}>";
+    var price2 = "<{$smarty.get.price2}>";
+    var cat = "<{$smarty.get.cat}>";
+    var uid = "<{$smarty.get.uid}>";
+    var dist_id = "<{$smarty.get.dist_id}>";
+    var stop=true; 
+    $(window).scroll(function(){
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        if($(document).height() <= totalheight){
+            if(stop==true){ 
+                $(".m_jiazai").html("正在加载中.....");
+                stop=false; 
+                page = page+10;
+                 $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: {sort:sort, keyword:keyword, price1:price1, price2:price2, cat:cat, uid:uid, sort:"price", dist_id:dist_id, action:"product_ajax_list", m:"product", page:page},
+                    dataType: "json",
+                    success: function(msg){
+                        console.log(msg)
+                        if(msg.status==2){
+                        var dataLen=msg.data.length;
+                        for(var i=0;i<dataLen;i++){
+                            $(".shoplist").append("<li class='shopli <{if $key%2}>even<{/if}>'>"+
+                                    "<span class='pname_img'>"+
+                                        "<{if $list.nat != '' }>"+
+                                            "<img src='<{$list.nat.img|default:$list.nat.title}>'>"+
+                                        "<{/if}>"+
+                                    "</span>"+
+                                    "<a target='_blank' title='"+msg.data[i].pname+"' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'>"+
+                                    "<div class='p-pic'><img class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;' width='125' height='125' alt='"+msg.data[i].pname+"' /></div>"+
+                                    "<div class='p-name'>"+msg.data[i].pname+"</div>"+
+                                    "</a>"+
+                                    "<div class='p-price'>"+
+                                        "<p class='money'><{$config.money}>"+msg.data[i].price+"</p>"+
+                                        "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
+                                    "</div>"+
+                                    "<{if $smarty.get.is_dist eq 1}><a href='javascript:distribute_goods('"+msg.data[i].id+"');' class='shopli_bottom_zhuanxiangs'>加入分销</a><{else}><a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"' class='shopli_bottom_zhuanxiangs'>专享抢购</a><{/if}>"+
+                                "</li>")                      
+                        }
+                        stop=true;
+                        $(".scrollLoading").scrollLoading();
+                        }else{
+                         $(".m_jiazai").html("已到最底部");
+                        }
+                    }
+                });
+            } 
+        } 
+    }) 
     $("#list").click(function(){
         window.scroll(0,0);
         $('.leftcate').show();
@@ -140,26 +180,6 @@ $(function(){
         $('.itemSearchResult').show();
         $('#leftmask').remove();
     });
-    $(".scrollLoading").scrollLoading();
-});
-    var page = 0 ;
-    function more_info(){
-        var url = "http://haitao.com/shop.php";
-        var sort = "<{$smarty.get.sort}>";
-        var keyword = "<{$smarty.get.keyword}>";
-        var price1 = "<{$smarty.get.price1}>";
-        var price2 = "<{$smarty.get.price2}>";
-        var cat = "<{$smarty.get.cat}>";
-        var uid = "<{$smarty.get.uid}>";
-        var dist_id = "<{$smarty.get.dist_id}>";
-        page = page+10;
-        $.ajax({
-            url: url,
-            type: 'get',
-            data: {sort:sort, keyword:keyword, price1:price1, price2:price2, cat:cat, uid:uid, sort:"price", dist_id:dist_id, action:"product_ajax_list", m:"product", page:page},
-            success: function(msg){
-                alert(msg);
-            }
-        });
-    }
+    $(".scrollLoading").scrollLoading();     
+})
 </script>
