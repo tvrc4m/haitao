@@ -4,9 +4,9 @@
 .item {background:#FFF;border:1px solid #b9b9b9;min-height:80px;;position:relative;margin-top:15px;}
 .item dl{padding:15px 10px;border-bottom:1px dashed #e1e1e1;}
 .item dl:last-child{border-bottom:none;}
-.item dt{width:3.3rem;height:3.3rem;float:left;}
+.item dt{width:80px;height:80px;float:left;}
 .item dt img{border: 1px solid #e1e1e1;}
-.item dd{margin-left:3.8rem;line-height:18px;font-size:0.7rem;font-size: 0.6rem;}
+.item dd{margin-left:90px;line-height:18px;font-size:0.7rem;font-size: 0.6rem;}
 
 .item dd .p-name{height:0.9rem;margin-bottom:10px;overflow: hidden;text-overflow: ellipsis;
 	white-space: nowrap;font-size: 0.65rem;}
