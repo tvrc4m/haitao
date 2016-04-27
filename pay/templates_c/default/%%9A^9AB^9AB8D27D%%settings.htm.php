@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-04-27 18:41:22
-=======
-<?php /* Smarty version 2.6.20, created on 2016-04-27 18:57:11
->>>>>>> b6717d188edb9406d92d0792f86e0c7fe8b14fb4
+<?php /* Smarty version 2.6.20, created on 2016-04-27 19:05:35
          compiled from settings.htm */ ?>
 <script src="script/my_lightbox.js" language="javascript"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -14,11 +10,7 @@
     <div class="tips"><span></span>温馨提示：请先设置账户信息。</div>
     <?php endif; ?>
     <div class="form">
-<<<<<<< HEAD
-        <form method="post" id="form" id="form" action="">
-=======
         <form method="post" id="form" id="form" onsubmit="return commit()" action="">
->>>>>>> b6717d188edb9406d92d0792f86e0c7fe8b14fb4
             <input type="hidden" name="act" value="act" />
             <fieldset>
                 <dl class="email">
@@ -69,14 +61,6 @@ function commit () {
     $.ajax({
         type: "POST",
         data:$('#form').serialize(),
-<<<<<<< HEAD
-        error: function(request) {
-        },
-        success: function(data) {
-        }
-    });
-=======
-        async: false,
         error: function(request) {
         },
         success: function(data) {
@@ -86,6 +70,5 @@ function commit () {
         }
     });
     return false;
->>>>>>> b6717d188edb9406d92d0792f86e0c7fe8b14fb4
 }
 </script>
