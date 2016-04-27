@@ -177,22 +177,23 @@ class distribution
 		if ($page_str)
 		{
 			$page           = new Page();
-			$page->firstRow = $begin;
 			$page->listRows = $limit;
+			$page->firstRow = $begin;
 
 			if (!$page->__get('totalRows'))
 			{
 				$db->query($sql);
 				$page->totalRows = $db->num_rows();
 			}
-
-			$sql .= "  LIMIT " . $page->firstRow . ",".$page->listRows;
+			if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
+				$sql .= "  LIMIT " . $page->firstRow . ",".$page->listRows;
+			}else{
+				$sql .= "  LIMIT ".$page->listRows;
+			}
 			$page_str = $page->prompt();
 		}
-
 		$db->query($sql);
 		$re = $db->getRows();
-
 		foreach ($re as $v)
 		{
 
@@ -502,16 +503,17 @@ fb($sql);
 		global $tpl;
 
 		$rs = array();
-
 		if (is_array($produce_id_row) && $produce_id_row)
 		{
-			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ') AND p.is_shelves=1 AND p.status>0 ORDER BY p.id DESC LIMIT 0, 10';
-
+			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status, p.national, p.market_price, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ') AND p.is_shelves=1 AND p.status>0 ORDER BY p.id DESC LIMIT 0, 10';
 			$db->query($sql);
-
-			$rs = $db->getRows();
+            $rs = $db->getRows();
+            foreach($rs as $key => $val){
+                $sql = "select title,img from mallbuilder_national_pavilions where id = ". $val['national'];
+                $db->query($sql);
+                $rs[$key]['pnational'] = $db->fetchRow();
+            }
 		}
-
 		return $rs;
 	}
 
