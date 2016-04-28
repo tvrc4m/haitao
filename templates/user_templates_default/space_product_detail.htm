@@ -227,7 +227,7 @@ function buy()
                                 </form>
                          </div>
                         <ul class="social clearfix">
-                            <li class="fav"><a href="javascript:collect_goods('<{$de.id}>');"><i></i>收藏商品</a></li>
+                            <li class="fav"><a href="javascript:collect_goods('<{$de.id}>');"><i></i><{if $spro neq 1}>收藏商品<{else}>取消收藏<{/if}></a></li>
                             <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><li class="fav"><a href="javascript:distribute_goods('<{$de.id}>');"><i></i>分销赚佣金</a></li><{/if}>
                             <li class="ercode iconfont"><a href="javascript:void(0);" style="padding-left: 0"><span style="color:orange">&#xe626</span>二维码</a></li>
                             <li class="share"><a href="javascript:void(0);"><i></i>分享</a>
@@ -339,7 +339,7 @@ function buy()
                     </div>
                     <div class="shop-info-fd clearfix">
                         <a target="_blank" href="shop.php?uid=<{$smarty.get.uid}>">进入店铺</a>
-                        <a class="fr favshop" href="javascript:void(0);" onclick="javascript:getfavshop();">收藏店铺</a>
+                        <a class="fr favshop" href="javascript:void(0);" onclick="javascript:getfavshop();"><{if $sshop neq 1}>收藏店铺<{else}>取消收藏<{/if}></a>
                     </div>
                 </div>
             </div>

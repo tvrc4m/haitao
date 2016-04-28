@@ -1,7 +1,26 @@
+<div class="nav-w">
+    <section class="nav-s nav-ss" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe619</font> --></section>
+    <section class="nav-c"><span></span></section>
+    <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+</div>
 <{include file="header.htm"}>
 <div class="w">
 	<div class="error404">
-    	<h2>抱歉，您请求的页面现在无法打开！</h2>
+		<div>
+			<img src="../../../image/wap/wap_haitao_p404.png">
+		</div>
+	    <div class="err_btn">
+	    	<img src="../../../image/wap/wap_haitao_p404btn.png">
+	    </div>	  	
     </div>
 </div>
-<{include file="footer.htm"}>
+	<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".err_btn").bind("click",function(){
+			self.location.reload();
+		})
+	})
+	</script>
+</body>
+</html>
