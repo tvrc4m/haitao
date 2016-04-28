@@ -287,7 +287,7 @@ function Check_data($data = null, $keyval = null){
         case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
         case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
         case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
-        case 'password' : $res = preg_match('/^[-\da-zA-Z`=\\\[\];\',./~!@#$%^&*()_+|{}:"<>?]{6,10}$/', $data);  break;
+        case 'password' : $res = preg_match('/^[\s\S]{6,10}$/', $data);  break;
         //case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
     }
     return $res;
