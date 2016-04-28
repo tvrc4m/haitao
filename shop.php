@@ -197,9 +197,10 @@ $tpl->assign("working_time",$working_time);
             $uid = $db->fetchField('userid');
 
             //判断 当前用户 是否 添加 共享 商铺
-            $sql = "select id from " . SSHOP . " where uid=" . $uid . " and shopid=" . $shopid ;
+            $sql = "select statu from " . SSHOP . " where uid=" . $uid . " and shopid=" . $shopid ;
             $db->query($sql);
-            if ($db->num_rows() <= 0) {
+			$sshop=$db->fetchRow();
+            if ($sshop['statu']!=1) {
                 $tpl->assign('sns_shop', 'no');
             } else {
                 $tpl->assign('sns_shop', 'yes');
