@@ -229,7 +229,6 @@ function buy()
                         <p>分享到微信朋友圈<a>×</a></p>
                         <img src="api/share_qrcode.php?type=product&pid=<{$smarty.get.id}>&rand=<{math equation=rand(1,10000)}>">
                         </div>
-                        
                         <div class="clear"></div>
                         <div id="cart_show"></div>
                     </div>
@@ -282,10 +281,6 @@ function buy()
                 <a class="shop-info-bg"><{$com.company}></a>
                 <div class="shop-info-wrap clearfix">
                     <div class="shop-info-hd">
-                        <!-- <dl>
-                            <dt>店铺：</dt>
-                            <dd><{$com.company}> <{if $chat_open_flag}>&nbsp; <a href="javascript:void(0);" onclick="return chat(<{$com.shop_id}>);"><span class="iconfont" style="color: #FF6600;font-size: 16px;">&#xe635;</span></a><{/if}></dd>
-                        </dl> -->
                         <dl>
                             <dt>信誉：</dt>
                             <dd><img align="absmiddle" src="image/points/<{$com.sellerpointsimg}>" /></dd>
@@ -342,61 +337,6 @@ function buy()
         </div>
     </div>
 </div>
-<!-- <div class="tabbar-wrap clearfix">
-    <div class="shop-search">
-        <div class="search-panel">
-            <form action="<{$config.weburl}>/shop.php" method="get">
-                <div class="search-btn">
-                    <input type="submit" value="">
-                </div>
-                <div class="search-fields">
-                    <input type="text" value="<{$smarty.get.keyword}>" name="keyword">
-                </div>
-                <input id="search" type="hidden" name="search" value="search" />
-                <input id="uid" name="uid" type="hidden" value="<{$smarty.get.uid}>" />
-                <input id="action" name="action" type="hidden" value="product_list" />
-                <input id="m" name="m" type="hidden" value="product" />
-            </form>
-        </div>
-    </div>
-    <div class="inner-wrap">
-        <ul class="clearfix">
-            <li class="cur"><a href="javascript:void(0);">商品详情</a></li>
-            <li><a href="javascript:void(0);">累计评论</a></li>
-            <li><a href="javascript:void(0);">成交记录</a></li>
-            <li><a href="javascript:void(0);">商品问答</a></li>
-        </ul>
-    </div>
-</div> -->
-<!-- <div class="layout clearfix">
-    <div class="left">
-        <div class="m">
-            <div class="mt"><h3>热销产品</h3></div>
-            <div class="mc">
-                <{insert name="label" type="product" uid=$de.member_id o='1' temp="product_list_li" limit=5}>
-            </div>
-        </div>
-    </div>
-    <div class="con clearfix">
-        <div class="i-con">
-            <{if $de.brand || $de.extfiled.s}>
-            <div class="attributes clearfix">
-                <ul class="clearfix">
-                    <li>品牌：<{$de.brand}></li>
-                    <{foreach item=list from=$de.extfiled.s}><{$list}><{/foreach}>
-                </ul>
-            </div>
-            <{/if}>
-            <div class="description"><{$de.detail}></div>
-        </div>
-        <div id="reviews" class="i-con hidden"></div>
-        <div id="deal-record" class="i-con hidden"></div>
-        <div id="consult" class="i-con hidden"></div>
-    </div>
-    <div class="right"><ul></ul></div>
-</div> -->
-<!-- <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
-<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script> -->
 <script type="text/javascript">
 $(".sell-counter").click(function(){
     $("body,html").animate({scrollTop:$(".inner-wrap").offset().top});
@@ -428,15 +368,6 @@ $('.qrcode a').click(function(){
     else
         $('.qrcode').show();
 });
-// $('.like a').click(function(){
-//     alert("你已经喜欢过了。");
-// });
-// $('.share a').click(function(){
-//     if($('.bshare-custom').css('display')=='block')
-//         $('.bshare-custom').hide();
-//     else
-//         $('.bshare-custom').show();
-// });
 <{if $de.rest>0}>
     var CID = "endtime";
     if(window.CID != null)
