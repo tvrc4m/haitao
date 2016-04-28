@@ -184,7 +184,7 @@ $(document).ready(function(){
                     <{assign var="gets" value=$akey|explode:"&"}>
                         <li <{if $smarty.get.action==$akey or in_array($smarty.get.type,$gets) or in_array($smarty.get.s,$gets)}> class="active"<{elseif $smarty.get.m == 'shop' && in_array($smarty.get.s,array('admin_custom_service', 'admin_certification', 'admin_shop_set', 'admin_wechat')) && $slist == '店铺设置'}> class="active"<{/if}> >
                         <span></span>
-                        <a <{if $akey|truncate:4:''=='http'}>target="_blank"<{/if}>href="<{if $akey|truncate:1:''=='?' or $akey|truncate:4:''=='http'}><{else}>?action=<{/if}><{$akey}>">aa<{$slist}><{$smarty.get.action}></a>
+                        <a <{if $akey|truncate:4:''=='http'}>target="_blank"<{/if}>href="<{if $akey|truncate:1:''=='?' or $akey|truncate:4:''=='http'}><{else}>?action=<{/if}><{$akey}>"><{$slist}></a>
                         </li>
                     <{/if}>
                     <{/foreach}>

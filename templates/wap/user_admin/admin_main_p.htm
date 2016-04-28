@@ -54,6 +54,14 @@
 <section class="m_btn">
     <div class="m_tuichu"><a href="<{$config.weburl}>/main.php?action=logout">退出登录</a></div>
 </section>
+<section class="addcarts">
+    <a class="carts" href="/?m=product&s=cart">
+        <span class="cart-num-conts" id='cart_num'>
+            <span class="cart-num"></span>
+            <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+        </span>
+    </a>
+</section>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.11.2.min.js"></script>
 <script>
     // js获取屏幕宽度，自动调节相应模块的宽高比例

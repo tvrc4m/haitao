@@ -176,14 +176,13 @@ $(function(){
                     data: {id:id, page:page, m:"product", s:"ajax_list"},
                     dataType: "json",
                     success: function(msg){
+                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
+                        var nat=msg.data[i].nat;
                         $(".shoplist").append("<li class='shopli clearfix'>"+
-                                    "<span class='pname_img'>"+
-                                        "<{if $list.nat != '' }>"+
-                                            "<img src='<{$list.nat.img|default:$list.nat.title}>'>"+
-                                        "<{/if}>"+
+                                    "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                     "</span>"+
                                     "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].product_id+"'>"+
                                         "<div class='shopli_top_img'>"+
@@ -206,7 +205,10 @@ $(function(){
                                             "</div>"+ 
                                        "</div>"+
                                     "</a>"+
-                                "</li>")                      
+                                "</li>") 
+                                if(nat!==""){
+                                    $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].nat.img+"' alt='"+msg.data[i].nat.title+"'>")
+                                }                       
                         }
                         stop=true;
                         $(".scrollLoading").scrollLoading();

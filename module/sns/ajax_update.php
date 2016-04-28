@@ -42,11 +42,12 @@
 		$db->query($sql);
 		$uid=$db->fetchField('userid');
 		
-		$sql="select * from ".SPRO." where uid=".$uid." and pid='".$_POST['pid']."'";
+		$sql="select *  from ".SPRO." where uid=".$uid." and pid='".$_POST['pid']."'";
 		$db->query($sql);
+		$spros=$db->fetchRow();
 		if($db->num_rows()<=0)
 		{
-			$sql="insert into ".SPRO." (pid,uid,uname,content,addtime,likeaddtime,privacy,commentcount,isshare,islike) VALUES ('$_POST[pid]','$uid','$_POST[uname]','','".time()."','0','0','0','0','0')"; 
+			$sql="insert into ".SPRO." (pid,uid,uname,content,addtime,likeaddtime,privacy,commentcount,isshare,islike,statu) VALUES ('$_POST[pid]','$uid','$_POST[uname]','','".time()."','0','0','0','0','0','1')";
 			$db->query($sql);
 			
 			//判断 共享商品信息
@@ -59,13 +60,21 @@
 			}
 			else
 			{
-				$db->query("update ".SPROINFO." set collectnum=collectnum+1 where pid='".$_POST['pid']."'");	
+				$db->query("update ".SPROINFO." set collectnum=collectnum+1 where pid='".$_POST['pid']."'");
 			}
-			die('2');
+			echo json_encode(array("statu"=>1));die;
+			//die('2');
 		}
 		else
 		{
-			die('1');
+			if($spros['statu']){
+				$db->query("update ".SPRO." set statu=0 where pid='".$_POST['pid']."' and uid='".$uid."'");
+				echo json_encode(array("statu"=>0));die;
+			}else{
+				$db->query("update ".SPRO." set statu=1 where pid='".$_POST['pid']."' and uid='".$uid."'");
+				echo json_encode(array("statu"=>1));die;
+			}
+			//die('1');
 		}
 	}
 	

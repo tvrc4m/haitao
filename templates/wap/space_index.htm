@@ -148,7 +148,11 @@
         <ul class="shoplist clearfix">
             <{foreach item=list key=key from=$pro key=num}>
                 <li class="shopli clearfix">
-                    <span class="pname_img"><img src="../../../image/wap/state1.png"></span>
+                    <span class="pname_img">
+                        <{if $list.pnational }>
+                            <img src="<{$list.pnational.img}>" alt="<{$list.pnational.title}>">
+                        <{/if}>
+                    </span>
                     <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
                         <div class="shopli_top_img">
                             <img height="125" width="125" src="<{$list.pic}>" alt="<{$list.pname}>"/>
@@ -228,6 +232,7 @@
     </div>
 </section>
 <script>
+$(function(){
     var a=<{$com.shop_statu}>;
     var imgSize=$(".pchart_first li").size();
     var pchart_li=$(".pchart .pchart_con li");
@@ -287,6 +292,70 @@
         $(".shop-bannar").css({"height":"405px","width":"100%","background-size":"contain","background-repeat":"no-repeat"})
         $(".shopli").find("img").height("224px")
     }
+    var dlLen=$(".plist .shoplist").size();
+    if(dlLen<10){
+        $(".m_jiazai").hide();
+        $("footer").css({"margin-top":"20px"})
+    }
+    var page = 0;
+    var uid = "<{$smarty.get.uid}>";
+    var dis_id = "<{$smarty.get.dist_id}>";
+    var url = "<{$config.weburl}>/shop.php";
+    var stop=true; 
+    $(window).scroll(function(){
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        if($(document).height() <= totalheight){
+            if(stop==true){ 
+                $(".m_jiazai").html("正在加载中.....");
+                stop=false; 
+                page = page+10;
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: {uid:uid, dis_id:dis_id, page:page, ptype:'ajax'},
+                    dataType: "json",
+                    success: function(msg){
+                        console.log(msg)
+                        if(msg.status==2){
+                        var dataLen=msg.data.length;
+                        for(var i=0;i<dataLen;i++){
+                            var pnational=msg.data[i].pnational;
+                            var value_substrs=msg.data[i].pname.substr(i,9);
+                            $(".plist .shoplist").append("<li class='shopli clearfix'>"+
+                                    "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+                                       
+                                    "</span>"+
+                                    "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'>"+
+                                        "<div class='shopli_top_img'>"+
+                                            "<img height='125' width='125' src='"+msg.data[i].pic+"' alt='"+msg.data[i].pname+"'/>"+
+                                        "</div>"+
+                                        "<div class='shopli_bottom clearfix'>"+
+                                            "<div class='shopli_bottom_message'>"+
+                                                "<p class='shopli_bottom_text'>"+value_substrs+"</p>"+
+                                            "</div>"+
+                                            "<div class='shopli_bottom_rob shopli_bottom_rob2 clearfix'>"+
+                                                "<div class='al shopli_bottom_money'>"+
+                                                    "<p class='money'><{$config.money}>"+msg.data[i].price+"</p>"+
+                                                    "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
+                                                "</div>"+
+                                                "<a href='javascript:distribute_goods('<{$de.id}>');' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</a>"+
+                                "</li>") 
+                                if(pnational!==false){
+                                    $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].pnational.img+"' alt='"+msg.data[i].pnational.title+"'>")
+                                }                 
+                        }
+                        stop=true;
+                        }else{
+                         $(".m_jiazai").html("已到最底部");
+                        }
+                    }
+                });
+            } 
+        } 
+    })      
+})
 </script>
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
