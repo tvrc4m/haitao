@@ -82,8 +82,7 @@ function distribute_goods(id){
     var uname='<{$smarty.cookies.USER}>';
     if(uname=='')
     {
-        alert('请先登录！');
-        window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
+        layer.msg('请先登录！');
         return false;
     }
     var pars = 'pid='+id+'&uname='+uname;
@@ -91,12 +90,37 @@ function distribute_goods(id){
     function showResponse(originalRequest)
     {
         if(originalRequest>1)
-            alert('成功添加至我的分销!');
+            layer.msg('成功添加至我的分销!');
         else if (originalRequest>0)
-            alert('该内容已经在你的分销中心，请勿重复添加！');
+            layer.msg('该内容已经在你的分销中心，请勿重复添加！');
         else
-            alert('参数传递错误，无法完成操作!');
+            layer.msg('参数传递错误，无法完成操作!');
     }
+}
+function getfavshop(){
+        var url = '<{$config.weburl}>/module/sns/ajax_update.php';
+        var uname='<{$smarty.cookies.USER}>';
+        if(uname=='')
+        {
+            layer.msg('请先登录！');
+            return false;
+        }
+        var shopid = '<{$smarty.get.uid}>';
+        var shopname = "<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
+        var pars = 'uname='+uname+'&shopid='+shopid+'&shopname='+shopname;
+        $.post(url, pars,showResponse,"json");
+        function showResponse(data)
+        {
+            if(data.statu==1){
+                $(".favshop").html("取消收藏");
+                layer.msg('收藏店铺成功！');
+            }
+            else {
+                $(".favshop").html("收藏店铺");
+                layer.msg('已取消店铺收藏！');
+            }
+        }
+
 }
 function buy()
 {
@@ -316,7 +340,7 @@ function buy()
                     </div>
                     <div class="shop-info-fd clearfix">
                         <a target="_blank" href="shop.php?uid=<{$smarty.get.uid}>">进入店铺</a>
-                        <a class="fr" href="javascript:void(0);" onclick="javascript:getfavshop();">收藏店铺</a>
+                        <a class="fr favshop" href="javascript:void(0);" onclick="javascript:getfavshop();">收藏店铺</a>
                     </div>
                 </div>
             </div>
