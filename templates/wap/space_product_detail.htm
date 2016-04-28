@@ -75,7 +75,7 @@
         <div class="select_style clearfix">
             <div class="select_guanshui clearfix">
                 <div><span class="select_one">该商品</span><span>由<b>郑州保税仓</b>发货 预计3-5天送达</span></div>
-                <div><span class="select_one">进口税</span><span>由<a href="shop.php?uid=<{$smarty.get.uid}>"><var><{$com.company}></var></a>商家承担</span></div>
+                <div><span class="select_one">进口税</span><span>由<a href="shop.php?uid=<{$smarty.get.uid}>"><var><{$com.company}></var></a>承担</span></div>
                 <div class="select_duty_context">
                     <div><span class="select_one">服务</span><span class="select_guanshui_ic">支持14天退换货</span><span class="select_guanshui_ip">免运费</span></div>
                     <div class="select_guanshui_hid"><i></i>只支持在物流中损坏的商品</div>
@@ -222,9 +222,9 @@
 </div>
 </form>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
-<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
 <script type="text/javascript">
     window.jsVersion = "7b3d28d5da";
     require.config({
@@ -303,6 +303,7 @@ function check_nums()
 </script>
 <script>
     $(function(){
+        $jq(".scrollLoading").scrollLoading();
         $("dl ul[genre*=property]").each(function(index){
             $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
         })    
