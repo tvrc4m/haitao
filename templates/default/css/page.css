@@ -128,7 +128,7 @@ em{font-style:normal;}
 .menu-items{background:#EB3E44;height:40px;padding-left:176px;}
 .menu-items li{float:left;height:40px;position:relative;}
 .menu-items li a{color:#FFFFFF!important;display:block;font:bold 14px/40px "microsoft yahei";text-align:center;text-decoration:none;height:40px;width:85px;}
-.menu-items .current a ,
+.menu-items .current a{background-color: #ff5c5c;}
 .menu-items .hover a{background:#FA4D51;}
 .menu-items .i-items{display:none;background:#FFF;}
 .menu-items .hover .i-items{display:block; margin-top:-5px;}
@@ -373,6 +373,7 @@ ul,ol{list-style:none}
 
 .m_nav .nav{float:left;}
 .m_nav .nav li{float:left;}
+.m_nav .nav li.current a{color: #ff5c5c;}
 .m_nav .nav li a{padding:0 25px;height:40px;line-height:40px;}
 
 .m_nav .m_gz{position:absolute;top:10px;right:0;cursor:pointer}
