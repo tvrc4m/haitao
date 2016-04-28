@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>注册<{$config.company}></title>
+<title>找回密码</title>
 <meta name="description" content="<{$config.description}>" />
 <meta name="keywords" content="<{$config.keyword}>" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link href="<{$config.weburl}>/templates/default/page.css" rel="stylesheet" type="text/css" />
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/lostpass.js" type="text/javascript"></script>
 </head>
 <body class="login">
@@ -20,7 +19,6 @@
         <div class="logo2"></div>
     </div>
 </div>
-
 <div class="wl">
     <div class="mc lostpass">
         <div class="title">
@@ -29,9 +27,6 @@
         </div>
         <div class="form lostpass1">
             <form id="lostpass" name="lostpass" action="lostpass.php" method="post">
-                <{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
-                <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
-                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>
                 <div>
                     <dl>
                         <dt><img src="image/default/icon6.png"></dt>
@@ -55,7 +50,6 @@
                     </dl>
                     <p class="registerNotice1" style="display: none;"><span class="tipcon"></span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p>
                 </div>
-                
                 <{if $smarty.get.erry=="-2"}>
                 <font color="red" class="clearfix"><{$lang.passerr}></font>
                 <{/if}>
