@@ -169,7 +169,7 @@
                 </li>
             <{/foreach}>
         </ul>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
+        <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a>
     </div>
     <{/if}>
     </div>
@@ -286,6 +286,21 @@
     {
         $(".shop-bannar").css({"height":"405px","width":"100%","background-size":"contain","background-repeat":"no-repeat"})
         $(".shopli").find("img").height("224px")
+    }
+    var page = 0;
+    function  more_info(){
+        var uid = "<{$smarty.get.uid}>";
+        var dis_id = "<{$smarty.get.dist_id}>";
+        var url = "<{$config.weburl}>/shop.php";
+        page = page + 1;
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: {uid:uid, dis_id:dis_id, page:page, ptype:'ajax'},
+            success: function(msg){
+                alert(msg);
+            }
+        });
     }
 </script>
 <{if $smarty.session.appid}>

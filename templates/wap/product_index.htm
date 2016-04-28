@@ -160,7 +160,6 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script src='<{$config.weburl}>/script/jquery.cookie.js' type='text/javascript'></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_index.js"></script>
-<script type="text/javascript" src="<{$config.weburl}>/script/wap_index2.js"></script>
 <div>
 <script type="text/javascript">
 $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
@@ -224,6 +223,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
                             if(msg==""){
                                 $jj("#more-msg").html("商品已加载完毕");
                             }
+                            $jj(".scrollLoading").scrollLoading();
                             stop=true;
                         }
                     });
@@ -231,6 +231,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
                 } 
             } 
         });
+        $jj(".scrollLoading").scrollLoading();
     }) 
 </script>
 </div>
