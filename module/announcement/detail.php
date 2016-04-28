@@ -18,7 +18,6 @@ $tpl->assign("noticecontent",$de);
 $config['title']=$de['title'];
 $config['keyword']=csubstr(strip_tags($de['content']),0,100);
 $config['description']=csubstr(strip_tags($de['content']),0,100);
-var_dump($config['temp']);die;
 //========================================
 $tpl->assign("temp",$config['temp']);
 include_once("footer.php");
