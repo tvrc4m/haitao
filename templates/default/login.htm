@@ -7,24 +7,17 @@
 <meta name="keywords" content="<{$config.keyword}>" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link href="<{$config.weburl}>/templates/default/page.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/base.js" type="text/javascript"></script>
-<script src="script/login.js" type=text/javascript></script>
-<script type=text/javascript>
-var nousername='<{$lang.nouname}>';
-var nouserpass='<{$lang.noupass}>';
-var norandcode='<{$lang.nocode}>';
-</script>
+<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/login.js" type=text/javascript></script>
 </head>
 <body class="login">
 <div class="header">
     <div class="logo">
-        <a hidefocus="true" title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
+        <a title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/Logo.png" /></a>
     </div>
     <div class="welcome">欢迎登录</div>
     <div class="logo2"></div>
 </div>
-
 <div class="wl">
 <img src="../../image/default/login_bg.jpg">
     <div class="mc">
@@ -44,9 +37,6 @@ var norandcode='<{$lang.nocode}>';
                         <{/if}>
                     </dd>
                 </dl>
-                <!--<{if $smarty.get.erry=="-1"}><font color="red" class="clearfix"><{$lang.noname}></font>
-                <{elseif $smarty.get.erry=="-5"}><font color="red" class="clearfix">用户被禁止访问</font>
-                <{elseif $smarty.get.erry=="-4"}><font color="red" class="clearfix"><{$lang.have_restpass}></font><{/if}>-->
                 <dl>
                     <dt><img src="image/default/icon3.png"></dt>
                     <dd>
