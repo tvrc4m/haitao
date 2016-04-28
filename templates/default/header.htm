@@ -71,7 +71,7 @@
                 <ul class="nav ml20 newclear">
                     <{foreach item=list key=num from=$menus name=nav}>
                     <li <{if $list.identifier==$current}>class="current"<{/if}>>
-                    <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}><{$list.identifier}><{$current}></a>
+                    <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
                     <{if $list.scat}>
                     <div class="i-items">
                         <{foreach item=slist from=$list.scat}>
