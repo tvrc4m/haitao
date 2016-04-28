@@ -37,6 +37,16 @@ if ($config['bw'] == "weixin")
 $sql = "select title,img from mallbuilder_national_pavilions where id = ".$prode['national'];
 $db->query($sql);
 $prode['national_info'] = $db->fetchRow();
+//=======================================收藏商品
+$sql="select statu  from ".SPRO." where uid=".$buid." and pid='".$_GET['id']."'";
+$db->query($sql);
+$spro=$db->fetchRow();
+$tpl->assign("spro",$spro['statu']);
+//=====================================收藏店铺
+$sql="select statu from ".SSHOP." where uid=".$buid." and shopid='".$prode['member_id']."'";
+$db->query($sql);
+$sshop=$db->fetchRow();
+$tpl->assign("sshop",$sshop['statu']);
 //====================================产品详情
 
 $tpl->assign("de",$prode);
@@ -224,7 +234,6 @@ function namereplace($name, $charset = 'UTF8') {
 		return mb_substr($name, 0, 1, $charset).str_repeat('*',$strlen-1);
 	}
 }
-
 //====================================SEO
 $company["shop_title"] = $prode['name'];
 $company["shop_keywords"] = $prode['keywords'].','.$shopconfig["homedes"];
