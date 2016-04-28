@@ -31,6 +31,7 @@
         $.post(url, pars,showResponse);
         function showResponse(originalRequest)
         {
+            console.log(originalRequest.statu)
             if(originalRequest.statu==1){
                 $("#collect").addClass("collect");
                 altto('成功添加至我的收藏夹!');
