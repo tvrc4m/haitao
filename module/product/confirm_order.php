@@ -12,7 +12,7 @@ if(empty($buid))
 	}
 }
 else
-{
+{	
 	include_once("module/member/includes/plugin_orderadder_class.php");
 	include_once("module/product/includes/plugin_cart_class.php");
 	$cart = new cart();
@@ -68,7 +68,7 @@ else
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
 
 	//-----------如果为空,返回至购物车
-	//if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
+	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
 	//=============================提交订单
 	if($_POST['act']=='order')
 	{  
