@@ -8,6 +8,7 @@
         <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
     </div>
 </header>
+<div class='collect_box_content'></div>
 <div class="shoping-fixed">
     <div class="c-wh bgw">
         <div class="addcart clearfix">
@@ -306,19 +307,21 @@ function check_nums()
             $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
         })    
     })
-    function collect_altr(cla){
-        $(cla).parent().append("<div class='collect_box_content'></div>")
-    }
     function altto(co){
+        $(".collect_box_content").show();
         $(".collect_box_content").html(co);
     }
+    function wid(){
+        var wid=$(".collect_box_content").width()/2;
+        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
+        setTimeout(function(){
+            $(".collect_box_content").hide();
+        },2000)
+    }
     function collect_goods(id){
-        collect_altr(".col")
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
             altto('不能收藏自己店铺的商品！');
-            setTimeout(function(){
-                $(".collect_box_content").hide();
-            },2000)
+            wid();
             return;
         }
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
@@ -326,31 +329,32 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
+            wid()
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
-        $.post(url, pars,showResponse);
+        $.post(url, pars,showResponse,"json");
         function showResponse(originalRequest)
         {
-            if(originalRequest>1){
+            if(originalRequest.statu==1){
                 $("#collect").addClass("collect");
-                setTimeout(function(){
-                    $(".collect_box_content").hide();
-                },2000)
                 altto('成功添加至我的收藏夹!');
+                wid()
             }
-            else if (originalRequest>0){
+            else if (originalRequest.statu==0){
+                $("#collect").removeClass("collect");
                 altto('成功取消商品收藏');
+                wid()
             }
         }
     }
     function distribute_goods(id){
-        collect_altr(".nav-e")
         var url = '<{$config.weburl}>/module/distribution/add.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
             altto('请先登录！');
+            wid()
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -359,12 +363,15 @@ function check_nums()
         {
             if(originalRequest>1){
                 altto('成功添加至我的分销!');
+                wid()
             }
             else if (originalRequest>0){
                 altto('该内容已经在你的分销中心请勿重复添加！');
+                wid()
             }  
             else{
-                altto('参数传递错误<br>无法完成操作!');
+                altto('参数传递错误,无法完成操作!');
+                wid()
             }
         }
     }
@@ -372,9 +379,8 @@ function check_nums()
     $(".incar_c").click(function(){
         
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
-            collect_altr(".addcart")
             altto('不能购买自己店铺的商品！');
-            show();
+            wid();
             return;
         }
         flag = buy();

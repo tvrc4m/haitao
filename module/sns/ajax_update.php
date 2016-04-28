@@ -11,21 +11,30 @@
 		//修改收藏人气
 		$db->query("update ".SHOP." set shop_collect=shop_collect+1 where userid='".$_POST['shopid']."'");	
 		//判断 当前用户 是否 添加 共享 商铺
-		$sql="select id from ".SSHOP." where uid=".$uid." and shopid='".$_POST['shopid']."'";
+		$sql="select statu from ".SSHOP." where uid=".$uid." and shopid='".$_POST['shopid']."'";
 		$db->query($sql);
+		$sshop=$db->fetchRow();
 		if($db->num_rows()<=0)
 		{
 			$uname=$_POST['uname'];
 			$shopid=$_POST['shopid'];
 			$shopname=$_POST['shopname'];
 			$time=time();
-			$sql="insert into ".SSHOP." (shopid,shopname,uid,uname,addtime,content,privacy) VALUES ('$shopid','$shopname','$uid','$uname','$time','','0')"; 
+			$sql="insert into ".SSHOP." (shopid,shopname,uid,uname,addtime,content,privacy,statu) VALUES ('$shopid','$shopname','$uid','$uname','$time','','0','1')";
 			$db->query($sql);
-			die('2');
+			echo json_encode(array("statu"=>1));die;
 		}
 		else
 		{
-			die('1');
+			if($sshop['statu']){
+				$db->query("update ".SSHOP." set statu=0 where shopid='".$_POST['shopid']."' and uid='".$uid."'");
+				$db->query("update ".SHOP." set shop_collect=shop_collect-1 where userid='".$_POST['shopid']."'");
+				echo json_encode(array("statu"=>0));die;
+			}else{
+				$db->query("update ".SSHOP." set statu=1 where shopid='".$_POST['shopid']."' and uid='".$uid."'");
+				$db->query("update ".SHOP." set shop_collect=shop_collect+1 where userid='".$_POST['shopid']."'");
+				echo json_encode(array("statu"=>1));die;
+			}
 		}
 	}
 	//添加 共享 商品
@@ -42,7 +51,7 @@
 		$db->query($sql);
 		$uid=$db->fetchField('userid');
 		
-		$sql="select *  from ".SPRO." where uid=".$uid." and pid='".$_POST['pid']."'";
+		$sql="select statu  from ".SPRO." where uid=".$uid." and pid='".$_POST['pid']."'";
 		$db->query($sql);
 		$spros=$db->fetchRow();
 		if($db->num_rows()<=0)
@@ -69,9 +78,11 @@
 		{
 			if($spros['statu']){
 				$db->query("update ".SPRO." set statu=0 where pid='".$_POST['pid']."' and uid='".$uid."'");
+				$db->query("update ".SPROINFO." set collectnum=collectnum-1 where pid='".$_POST['pid']."'");
 				echo json_encode(array("statu"=>0));die;
 			}else{
 				$db->query("update ".SPRO." set statu=1 where pid='".$_POST['pid']."' and uid='".$uid."'");
+				$db->query("update ".SPROINFO." set collectnum=collectnum+1 where pid='".$_POST['pid']."'");
 				echo json_encode(array("statu"=>1));die;
 			}
 			//die('1');
