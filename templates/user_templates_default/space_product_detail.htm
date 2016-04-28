@@ -8,9 +8,8 @@
 <script type="text/javascript">
 $(document).ready(function(){
     $(".add-cart").click(function(event) {
-
         if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
-            alert('不能购买自己店铺的商品！');
+            layer.msg("不能购买自己店铺的商品！",{icon:0});
             return;
         }
         flag = buy();
@@ -20,34 +19,24 @@ $(document).ready(function(){
             var flyer = $('<img class="u-flyer" src="' + img + '">');
             flyer.fly({
                 start: {
-                    left: event.pageX,
-                    //开始位置（必填）#fly元素会被设置成position: fixed 
-                    top: event.pageY //开始位置（必填） 
+                    left: event.pageX,//开始位置（必填）#fly元素会被设置成position: fixed
+                    top: event.pageY //开始位置（必填
                 },
                 end: {
-                    left: offset.left + 10,
-                    //结束位置（必填） 
-                    top: offset.top + 10,
-                    //结束位置（必填） 
-                    width: 0,
-                    //结束时宽度 
-                    height: 0 //结束时高度 
+                    left: offset.left + 10,//结束位置（必填）
+                    top: offset.top + 10,//结束位置（必填）
+                    width: 0,//结束时宽度
+                    height: 0 //结束时高度
                 },
-                onEnd: function() { //结束回调 
+                onEnd: function() { //结束回调
                     var price = $('#price').html();
                     var num = $('#nums').val();
                     $("#cart_num").text(parseInt($('#nums').val())+parseInt($('#cart_num').text()));
                     var sid = $('#sid').val();
                     var pid = '<{$smarty.get.id}>';
                     var dist_user_id = '<{$smarty.get.shop_id}>';
-                    // $('#cart_show').fadeIn(500);
                     $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
                     $('#cart_show').css("display","none");
-                    // x = $(".buy_box").offset();
-                    // $("#cart_show").offset({
-                    //     top: x.top,
-                    //     left: x.left
-                    // });
                     return false;
                 }
             });
@@ -71,20 +60,21 @@ function collect_goods(id){
     var uname='<{$smarty.cookies.USER}>';
     if(uname=='')
     {
-        alert('请先登录！');
-        window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
+        layer.msg('请先登录！');
         return false;
     }
     var pars = 'pid='+id+'&uname='+uname;
     $.post(url, pars,showResponse);
-    function showResponse(originalRequest)
+    function showResponse(data)
     {
-        if(originalRequest>1)
-            alert('成功添加至我的收藏夹!');
-        else if (originalRequest>0)
-            alert('该内容已经在你的收藏中心，请勿重复添加！');
-        else
-            alert('参数传递错误，无法完成操作!');
+        var data = JSON.parse(data);
+        if(data.statu == 1){
+            $(".fav a").html('<i></i>取消收藏');
+            layer.msg('成功添加至我的收藏夹!');
+        }else{
+            $(".fav a").html('<i></i>收藏商品');
+            layer.msg('成功取消商品收藏！');
+        }
     }
 }
 function distribute_goods(id){
@@ -118,11 +108,9 @@ function buy()
     });
     if (goodsspec.getSpec() == null || flag)
     {
-        // alert('请选择相关规格');
         layer.msg('请选择相关规格', {icon: 0});
         return !flag;
-    }
-    else
+    }else
     {
         return !flag;
     }
@@ -207,8 +195,6 @@ function buy()
                                         </dl>
                                         <{/if}>
                                     </div>
-                                    <!-- <div style="margin-top: 20px;"><span class="mr10">交易成功</span>1212 <span  class="ml10 mr10">累计评论</span>1212</div> -->
-                                    <!-- <div class="choose_result"></div> -->
                                     <div class="choose_btn clearfix">
                                         <a href="javascript:void(0);" class="btn-buy">立即购买</a>
                                         <{if $de.is_virtual neq 1}>
