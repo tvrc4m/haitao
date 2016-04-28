@@ -148,7 +148,11 @@
         <ul class="shoplist clearfix">
             <{foreach item=list key=key from=$pro key=num}>
                 <li class="shopli clearfix">
-                    <span class="pname_img"><img src="../../../image/wap/state1.png"></span>
+                    <span class="pname_img">
+                        <{if $list.pnational }>
+                            <img src="<{$list.pnational.img}>" alt="<{$list.pnational.title}>">
+                        <{/if}>
+                    </span>
                     <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
                         <div class="shopli_top_img">
                             <img height="125" width="125" src="<{$list.pic}>" alt="<{$list.pname}>"/>
@@ -304,11 +308,11 @@ $(function(){
     //     });
     // }
 
-    var dlLen=$(".itemSearchResult dl").size();
-    if(dlLen<10){
-        $(".m_jiazai").hide();
-        $("footer").css({"margin-top":"20px"})
-    }
+    // var dlLen=$(".itemSearchResult dl").size();
+    // if(dlLen<10){
+    //     $(".m_jiazai").hide();
+    //     $("footer").css({"margin-top":"20px"})
+    // }
     var page = 0;
     var uid = "<{$smarty.get.uid}>";
     var dis_id = "<{$smarty.get.dist_id}>";
@@ -331,15 +335,30 @@ $(function(){
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
-                            $(".itemSearchResult").append("<dl>"+
-                                    "<dt><a class='p-img' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>  <img height='80' width='80' alt='<{$list.pname}>' src='<{if $slist.logo!=''}><{$slist.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>'></a> </dt>"+
-                                    "<dd>"+
-                                        "<p class='p-name'><a target='_blank' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>"+msg.data[i].company+"</a></p>"+
-                                        "<p class='p-name color'>"+msg.data[i].area+"</p>"+
-                                        "<p class='p-name color'>店主："+msg.data[i].user+"</p>"+
-                                        "<div class='handle'><a href='main.php?m=sns&s=admin_share_shop&type=del&id="+msg.data[i].id+"'>删除</a></div>"+
-                                    "</dd>"+
-                                "</dl>")                      
+                            $(".plist .shoplist").append("<li class='shopli clearfix'>"+
+                                    "<span class='pname_img'>"+
+                                        "<{if $list.pnational }>"+
+                                            "<img src='<{$list.pnational.img}>' alt='<{$list.pnational.title}>'>"+
+                                        "<{/if}>"+
+                                    "</span>"+
+                                    "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'>"+
+                                        "<div class='shopli_top_img'>"+
+                                            "<img height='125' width='125' src='"+msg.data[i].pic+"' alt='"+msg.data[i].pname+"'/>"+
+                                        "</div>"+
+                                        "<div class='shopli_bottom clearfix'>"+
+                                            "<div class='shopli_bottom_message'>"+
+                                                "<p class='shopli_bottom_text'>"+msg.data[i].pname+"</p>"+
+                                            "</div>"+
+                                            "<div class='shopli_bottom_rob shopli_bottom_rob2 clearfix'>"+
+                                                "<div class='al shopli_bottom_money'>"+
+                                                    "<p class='money'><{$config.money}>"+msg.data[i].price+"</p>"+
+                                                    "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
+                                                "</div>"+
+                                                "<a href='javascript:distribute_goods('"+msg.data[i].id+"');' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</a>"+
+                                "</li>")                      
                         }
                         stop=true;
                         }else{
