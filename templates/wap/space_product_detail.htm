@@ -41,7 +41,7 @@
             <div>
                 <div id="pname"><span class="pname_img"><{if $de.img }><img src="<{$de.img}>">&nbsp;&nbsp;<{/if}><{$de.title}></span><{if $de.img }>&nbsp;&nbsp;<{/if}><{$de.name}></div>
                 <div class="col">
-                    <a href="javascript:collect_goods('<{$de.id}>');" style="color:8b8b8b">
+                    <a href="javascript:collect_goods(<{$de.id}>);" style="color:8b8b8b" class="collect_xin">
                         <div class="col_ttt">
                             <div id="collect" class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe615;</div>
                             <div style="font-size: .6rem; color:#000;">收藏</div>
@@ -301,41 +301,24 @@ function check_nums()
 }
 </script>
 <script>
-    function collect_altr(cla){
-        $(cla).append("<div class='am-dialog-mask'></div>"+
-                   "<div class='collect_box_out'>"+
-                       "<div class='collect_box'>"+
-                            "<div class='collect_box_content'></div>"+
-                            "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
-                        "</div>"+
-                   "</div>")
-        $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".collect_box_btn a").on("click",function(){
-            removeco();
-        })
-    }
-    function show(){
-        $(".collect_box_out").addClass('collect_box_out_test');
-    }
-    function altto(co){
-        $(".collect_box_content").html(co);
-    }
-    function removeco(){
-        $(".am-dialog-mask").removeClass("am-dialog-mask-test");
-        $(".collect_box_out").removeClass('collect_box_out_test');
-        $(".am-dialog-mask").remove();
-        $(".collect_box_out").remove();
-    }
     $(function(){
         $("dl ul[genre*=property]").each(function(index){
             $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
         })    
     })
+    function collect_altr(cla){
+        $(cla).parent().append("<div class='collect_box_content'></div>")
+    }
+    function altto(co){
+        $(".collect_box_content").html(co);
+    }
     function collect_goods(id){
         collect_altr(".col")
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
             altto('不能收藏自己店铺的商品！');
-            show();
+            setTimeout(function(){
+                $(".collect_box_content").hide();
+            },2000)
             return;
         }
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
@@ -343,10 +326,6 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
-            show();
-            $(".collect_box_btn a").on("click",function(){
-                window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-            })
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -355,17 +334,14 @@ function check_nums()
         {
             if(originalRequest>1){
                 $("#collect").addClass("collect");
+                setTimeout(function(){
+                    $(".collect_box_content").hide();
+                },2000)
                 altto('成功添加至我的收藏夹!');
-                show();
             }
             else if (originalRequest>0){
-                altto('该内容已经在你的收藏中心<br>请勿重复添加！');
-                show();
+                altto('成功取消商品收藏');
             }
-            else{
-                altto('参数传递错误<br>无法完成操作!');
-                show();
-            } 
         }
     }
     function distribute_goods(id){
@@ -375,10 +351,6 @@ function check_nums()
         if(uname=='')
         {
             altto('请先登录！');
-            show();
-            $(".collect_box_btn a").on("click",function(){  
-                window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
-            }) 
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -387,15 +359,12 @@ function check_nums()
         {
             if(originalRequest>1){
                 altto('成功添加至我的分销!');
-                show();
             }
             else if (originalRequest>0){
-                altto('该内容已经在你的分销中心<br>请勿重复添加！');
-                show();
+                altto('该内容已经在你的分销中心请勿重复添加！');
             }  
             else{
                 altto('参数传递错误<br>无法完成操作!');
-                show();
             }
         }
     }
