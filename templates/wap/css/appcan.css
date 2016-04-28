@@ -64,8 +64,8 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .incar span{color:#fff;padding-right: 5px;}
 .choose_btn .buy{background-color:#dd3030;color:#fff;height:100%;padding: .5em;border-radius: .2em;min-width:85px}
 .collect{color:#ff5c5c}
-.am-dialog-mask{position: fixed;top: 0;left: 0;z-index: 2000;width: 100%;height: 100%;background: rgba(0,0,0,.5);display: none;}
-.am-dialog-mask-test{display: block;}
+/*.am-dialog-mask{position: fixed;top: 0;left: 0;z-index: 2000;width: 100%;height: 100%;background: rgba(0,0,0,.5);display: none;}
+.am-dialog-mask-test{display: block;}*/
 .col-money{border-bottom: 1px dashed #b9b9b9;font-size: 0.6rem;}
 .pdetail_show2 {width: 100%;box-sizing: border-box;-webkit-box-sizing: border-box;}
 .pdetail_show2 span{    display: block;
@@ -74,7 +74,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .pdetail_show2 li{    display: block;
     border-bottom: 1px solid #f0f0f0;
     padding: 10px 0px;font-size: 14px;width: 100%;}
-.collect_box_out{text-align: center; opacity: 0;transform:scale(1);-webkit-transform:scale(1);padding: 0 20px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
+/*.collect_box_out{text-align: center; opacity: 0;transform:scale(1);-webkit-transform:scale(1);padding: 0 20px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
 .collect_box_out_test{animation: myfirst .1s linear ;-webkit-animation: myfirst .1s linear ;opacity: 1;}
 @-webkit-keyframes myfirst {
     0%   {-webkit-transform:scale(2);}
@@ -94,7 +94,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .collect_box_content{padding: 25px 10px 20px;font-size: 0.7rem;line-height: 1.5;}
 .collect_box_btn{padding-bottom: 25px;font-size: 0.7rem;}
 .collect_box_btn a{display: inline-block; width: 40%;height: 30px;line-height: 30px;background-color: #ff5c5c;color: #fff;border-radius: 5px;text-align: center;}
-.collect_box_hid{position: absolute;right: 20px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }
+.collect_box_hid{position: absolute;right: 20px;top: 7px;transform:rotate(135deg);-webkit-transform:rotate(135deg);font-size: 30px;line-height: 0.8; }*/
 .col_ttt{padding: 0.1rem 0.5rem;}
 /***space_index***/
 .hidden{display:none !important;}
