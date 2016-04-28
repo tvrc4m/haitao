@@ -9,6 +9,7 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
+<div class='collect_box_content'></div>
 <section class="filter clearfix">
 	<ul class="clearfix">
     	<{assign var=s value=$smarty.get.orderby}>
@@ -96,42 +97,24 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_list.js"></script>
 <script type="text/javascript">   
-    function collect_altr(cla){
-        $(cla).append("<div class='am-dialog-mask'></div>"+
-                   "<div class='collect_box_out'>"+
-                       "<div class='collect_box'>"+
-                            "<div class='collect_box_content'></div>"+
-                            "<div class='collect_box_btn'><a href='javascript:void(0);'>确定</a></div>"+
-                        "</div>"+
-                   "</div>")
-        $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".collect_box_btn a").click(function(){
-            removeco();
-        })
-    }
     function altto(co){
+        $(".collect_box_content").show();
         $(".collect_box_content").html(co);
     }
-     function show(){
-        $(".collect_box_out").addClass('collect_box_out_test');
-    }
-    function removeco(){
-        $(".am-dialog-mask").removeClass("am-dialog-mask-test");
-        $(".collect_box_out").removeClass('collect_box_out_test');
-        $(".am-dialog-mask").remove();
-        $(".collect_box_out").remove();
+    function wid(){
+        var wid=$(".collect_box_content").width()/2;
+        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px","top":"30%"});
+        setTimeout(function(){
+            $(".collect_box_content").hide();
+        },2000)
     }
     function distribute_goods(id){
-        collect_altr(".nav-e")
         var url = '<{$config.weburl}>/module/distribution/add.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
             altto('请先登录！');
-            show();
-            $(".collect_box_btn a").on("click",function(){  
-                window.location.href='<{$config.weburl}>/login.php?forward=index.php?m=product&s=detail&id='+id;
-            }) 
+            wid();
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -141,15 +124,15 @@
             
             if(originalRequest>1){
                 altto('成功添加至我的分销!');
-                show();
+                wid();
             }
             else if (originalRequest>0){
                 altto('该内容已经在你的分销中心<br>请勿重复添加！');
-                show();
+                wid();
             }  
             else{
                 altto('参数传递错误<br>无法完成操作!');
-                show();
+                wid();
             }
         }
     }

@@ -17,7 +17,10 @@
         $jq(".j_tab").eq(liLength).addClass("pdetail_show").siblings().removeClass("pdetail_show");
     })
     $jq(".select_guanshui_ic").click(function(){
-        $jq(".select_guanshui_hid").toggleClass("select_guanshui_hid_test");
+        $jq(".select_guanshui_hid").show();
+        setTimeout(function(){
+            $(".select_guanshui_hid").hide();
+        },3000)
     })
     $jq(".scrollLoading").scrollLoading();
  })

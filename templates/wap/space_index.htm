@@ -8,7 +8,7 @@
     }
     function wid(){
         var wid=$(".collect_box_content").width()/2;
-        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
+        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px","top":"30%"});
         setTimeout(function(){
             $(".collect_box_content").hide();
         },2000)
@@ -28,17 +28,17 @@
         var shopid = '<{$smarty.get.uid}>';
         var shopname = "<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
         var pars = 'uname='+uname+'&shopid='+shopid+'&shopname='+shopname;
-        $.post(url, pars,showResponse);
+        $.post(url, pars,showResponse,"json");
         function showResponse(originalRequest)
         {
             console.log(originalRequest.statu)
             if(originalRequest.statu==1){
-                $("#collect").addClass("collect");
+                $(".iconfont_min").addClass("collect");
                 altto('成功添加至我的收藏夹!');
                 wid()
             }
             else if (originalRequest.statu==0){
-                $("#collect").removeClass("collect");
+                $(".iconfont_min").removeClass("collect");
                 altto('成功取消商品收藏');
                 wid()
             }
@@ -81,7 +81,7 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
-<div class='collect_box_content'></div>
+   <div class='collect_box_content'></div> 
 <section class="clearfix" style="width:100%;">
     <div class="shopinfo-banner">
         <div class="ulev-app2" id="company">
