@@ -452,7 +452,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 {
     $appid = $config['weixin_app_id'];
     $appsecret = $config['weixin_key'];
-
+    if(empty($_SESSION['accessToken'])){
     $redirect_uri = urlencode("$config[weburl]/login.php?connect_type=weixin");
 
     if($config['bw'] == "weixin")
@@ -481,13 +481,15 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 
     $code = $_GET['code'];
     $state = $_GET['state'];
+    $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
+    $token = json_decode(file_get_contents($token_url));
 
-    if(!empty($code))
+    $_SESSION['accessToken']=$token;
+    }
+
+    if(!empty($_SESSION['accessToken']))
     {
-        $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
-        $token = json_decode(file_get_contents($token_url));
-
-        $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
+        $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$_SESSION['accessToken']->refresh_token;
         $access_token = json_decode(file_get_contents($access_token_url));
 
         $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
