@@ -1,15 +1,14 @@
 <{include file="header.htm"}>
 <div class="w">
-    <div class="detailnav">
-        <strong><a href="#">帮助中心</a></strong>
+    <div class="helpnav"><a href="help.php">帮助中心</a>
         <span> >  <{$de.con_title}></span>
     </div>
 </div>
 <div class="w help clearfix">
     <div class="left">
-    	<div class="help_side">
+        <div class="help_side">
             <{foreach item=list from=$con_groups}>
-           	<div class="current">
+            <div class="current">
                 <h4><span><{$list.title}></span><b></b></h4>
                 <ul>  
                     <{foreach item=li from=$all_web}>
@@ -23,17 +22,7 @@
             </div>
             <{/foreach}>
         </div>
-        <script type="text/javascript">
-		$(".help_side h4").bind("click",function(){
-			var element=$(this).parent();
-			if(element.hasClass("current"))
-				element.removeClass("current");
-			else
-				element.addClass("current");
-		});
-		</script>
-    </div>		
-    
+    </div>
     <div class="right">
         <h3 class="help_tit"><{$de.con_title}></h3>
         <div class="help_box">
@@ -44,4 +33,13 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+$(".help_side h4").bind("click",function(){
+    var element=$(this).parent();
+    if(element.hasClass("current"))
+        element.removeClass("current");
+    else
+        element.addClass("current");
+});
+</script>
 <{include file="footer.htm"}>
