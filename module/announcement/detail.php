@@ -19,6 +19,7 @@ $config['title']=$de['title'];
 $config['keyword']=csubstr(strip_tags($de['content']),0,100);
 $config['description']=csubstr(strip_tags($de['content']),0,100);
 //========================================
+$tpl->assign("temp",$config['temp']);
 include_once("footer.php");
 $out=tplfetch("detail.htm");
 ?>

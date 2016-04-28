@@ -1,58 +1,65 @@
-*-- 注册--*/
-.login .entry{background:#E8E8E8;border-radius:3px 3px 3px 3px;margin:10px auto 50px;padding:5px;position:relative;}
+html, body, div,span,h1, h2, h3, h4, h5, h6, p, a,font, img,strong,b,i,dl, dt, dd,ul, li,form, label{margin:0;padding:0;}
+body{background:#f5f5f5 repeat scroll 0 0;color:#333;font:12px/150% "microsoft yahei";}
+ol, ul , li{list-style:none outside none;}
+.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
+.clearfix{display:inline-table;}
 .login .text{font-family:arial,"微软雅黑";font-size:14px;height:24px;line-height:24px;padding:8px 4px;width:240px;float:left;border: none}
-.login .item-ifo .ico{position:absolute;right:12px;z-index:5;}
-.login .item-ifo .i-name{background:url(../../image/default/icon1.jpg) no-repeat #FFFFFF;height:16px;top:8px;width:16px;}
-.login .item-ifo .i-pass{background:url(../../image/default/icon2.jpg) no-repeat #FFFFFF;height:19px;top:8px;width:14px;}
-.login .item-ifo img{height:34px;float:left;margin-left:5px;}
+/*--头部--*/
+.header{height: 60px;width: 1212px;padding:15px 0;margin: 0 auto;}
+.header .logo{margin-top: 0;float: left;width: 250px;}
+.header .logo2{background:url(../../image/default/logo2.png) no-repeat;float: right;width: 435px;height: 34px;margin-top: 12px;}
+.header .welcome{font-size: 24px;color: #666;display: inline-block;line-height: 59px;}
 
-.login{background:#F5F5f5 !important;font-family: microsoft yahei;}
-.login .header{height: 60px;width: 1212px;margin: 0 auto;}
-.login .header .logo{margin-top: 0;}
-.login .header .logo2{background:url(../../image/default/logo2.png) no-repeat;display: inline-block;float: right;width: 435px;height: 34px;margin-top: 12px;}
-.login .header .welcome{font-size: 24px;color: #666;display: inline-block;line-height: 59px;}
-.login .wl{width: 100%;height: 475px;position: relative;overflow: hidden;}
-.login .mc{position:absolute;width: 1212px;top: 0;}
+.login .entries{line-height: 40px;font-size: 14px;}
+.login .entries i{display: inline-block;width: 24px;height: 24px;margin-left: 15px;vertical-align: middle;background: url(../../image/default/icon8.png);}
+.login .entries .ic1{background-position: 144px 0;}
+.login .entries .ic2{background-position: 84px 0;}
+.login .entries .ic3{background-position: 24px 0;}
+.login .entries .ic1:hover{background-position: 173px 0;}
+.login .entries .ic2:hover{background-position: 114px 0;}
+.login .entries .ic3:hover{background-position: 54px 0;}
+
+.login{width: 100%;height: 475px;position: relative;overflow: hidden;}
+.login>img{position: absolute;top: 0;left:50%;margin-left: -960px;}
+.login .mc{position:absolute;width: 1212px;top: 0;left:50%;margin-left: -606px;}
+.form{background-color: #FFF;width: 290px;margin-top:60px;padding: 25px 30px;float: right;box-shadow:5px 5px 5px #d65458;-moz-box-shadow:5px 5px 5px #d65458;-webkit-box-shadow:5px 5px 5px #d65458;}
+
+.login .wl .second img{position: static;margin-left: 0;}
+.login .wl form dl dt img{position: static;margin-left: 0;}
+
 .login .protocol{height: 30px;}
 .login .protocol a{color: #959595;}
 .login .idcode{height: 40px;margin-bottom:20px;}
 .login .idcode .text{width: 130px;border: 1px solid #ccc;text-indent: 10px;padding: 7px 4px;}
-.login .idcode .btn{color: #FFF;background-color: #ff5c5d;height: 40px;border: none;cursor: pointer;width: 140px;margin-left:10px; }
-.login .lostpass{background: #fff;}
+.login .idcode .btn{color: #FFF;background-color: #ff5c5d;height: 40px;border: none;cursor: pointer;width: 140px;float: right; }
+/*.login .lostpass{background: #fff;}
 .login .lostpass .title{height: 40px;margin-top:40px;line-height:40px;}
-.login .lostpass .title .first{display: inline-block;float: left;font-size: 20px;color: #f00;margin-left: 50px;}
+.login .lostpass .title .first{display: inline-block;float: left;font-size: 20px;color: #ccc;margin-left: 50px;}
 .login .lostpass .title .second{display: inline-block;float: right;margin-right: 50px;}
 .login .lostpass .title a{color: #ff5f5c}
-.login .lostpass .form {margin: 0 auto;padding: 10px 30px;float: none;}
+.login .lostpass .form {margin: 0 auto;padding: 10px 30px;float: none;box-shadow: none;}
 .login .lostpass p{text-align: center;margin-bottom: 50px;color: #7f7f7f}
 .login .lostpass1 form div{position: relative;}
-.login .lostpass1 form div span{position: absolute; top: 12px;right: -20px;width: 15px;height: 15px;}
-.login .lostpass1 form div .correct{background: url(../../image/default/true.png);}
-.login .lostpass1 form div .fault{background: url(../../image/default/false.png);}
-.login .form.register{margin-top:30px; }
+.login .form .registerNotice1{color: #666;line-height: 20px; border: 1px solid #ffbdbf;background: #fffafa;height: 22px;width: auto;padding: 0 6px 0 6px;text-align: center;position: absolute;z-index: 3;left: 10px;top: -32px;}
+.login .rownotice img{top: 21px;left: 20px;margin: 0;}
+.login .form.register{margin-top:60px; }
 .login .register form div{position: relative;}
-.login .register form div span{position: absolute; top: 12px;right: -20px;width: 15px;height: 15px;}
 .login .register form div .correct{background: url(../../image/default/true.png);}
 .login .register form div .fault{background: url(../../image/default/false.png);}
-/*.login .regist-now{font-size: 14px;color: #AAA;line-height: 20px;float: right;height: 40px;margin-top: 30px;}
-
-.login .regist-now a {font-weight: 600;margin-left: 4px;color: #06C;}
-.login .regist-now span {vertical-align: top;display: inline-block;}
-.login .regist-now .avatar {width: 40px;height: 40px;margin-right: 6px;border-radius: 100%;}
-.login .regist-now .avatar img {width: 40px;height: 40px;border-radius: 100%;}*/
-
 .login .logo b{background:url(../../image/default/login_word.png) no-repeat;height:46px;left:280px;position:absolute;top:10px;width:111px;}
 
 .login .adv{width: 450px;height: 350px;float: left;margin: 30px 0;position: relative;z-index: 1;}
 .login .adv img {height: 350px;width: 450px;}
-.login .form{background-color: #FFF;width: 290px;margin-top:40px;padding: 25px 30px;float: right;}
-/*.login .tabs-nav .tabulous_active{font-size: 18px;color: #F32613;line-height: 24px;padding-bottom: 13px;position: relative;z-index: 1;  border-bottom: 3px solid #F32613;  width: 45%;text-align: center;margin-left:5%}*/
+
+.login .tabs-nav{position: relative;}
 .login .tabs-nav .text-left {font-size: 18px;float: left;}
+.login .tabs-nav .fr img{margin-left: 0;left: 125px;top: 1px;}
+.login .register .tabs-nav .fr img{margin-left: 0;left: 150px;top: 1px;}
 .login .tabs-nav .fr a{color: #ff5757;font-size: 12px}
 .login .tabs-nav i{font-size: 0;line-height: 0;border-color: #F32613 transparent transparent transparent;border-style: solid dashed dashed dashed;border-width: 7px;width: 0;height: 0;margin-left: -4px;position: absolute;z-index: 1;left: 50%;bottom: -17px;}
 .login form{margin-top: 25px;}
 .login form .mt15{margin-top:15px}
-.login form dl {width: 290px;background-color: #FFF;height: 40px;border: solid 1px #E6E6E6;position: relative;z-index: 1;margin-bottom: 20px;}
+.login form dl {width: 290px;background-color: #FFF;height: 40px;border: solid 1px #ccc;position: relative;z-index: 1;margin-bottom: 20px;}
 .login form .code-div dl{width: 212px;float:left}
 .login form .code-div .text{width: 84px;}
 .login form .code-div font{width: 226px;}
@@ -70,17 +77,16 @@
 .login .item h4{color:#666666;}
 .login .item a{font-size: 12px;text-decoration: none;color: #AAA;vertical-align: top;display: inline-block;height: 32px;margin-left: 18px;}
 .login .item a i {background: url(./images/login_pic.png) no-repeat;vertical-align: middle;display: inline-block;width: 32px;height: 32px;margin-right: 6px;}
-.login .item a.qq {color:#3EB6E8}
-.login .item a.qq i {background-position: -96px 0;}
-.login .item a.sina {color:#F66C5B}
-.login .item a.sina i {background-position: -128px 0;}
 
 .login .fore1{z-index:10;}
 .login .fore3 .text{width:50px;}
 .login .fore4{height:50px;overflow:hidden;z-index:3;}
 .login .extra span{float:left;height:18px;line-height:18px;margin-right:2px;overflow:hidden;position:relative;margin-right:5px;}
-.login font{background:#FFEBEC;border:1px solid #FFBDBF;color:#E6393D;line-height:25px;padding:2px;width: 290px;}
-/*.login font{background: #FFEBEC;border: 1px solid #FFBDBF;color: #E6393D;line-height: 25px;padding: 2px 0 2px 3px;}*/
+.login font{background:#FFEBEC;border:1px solid #FFBDBF;color:#E6393D;line-height:25px;padding:2px 0 2px 10px;width: 280px;}
 .login .login-btn{height:50px;}
 .login input[type="submit"]{font-size: 16px;font-weight: 600;color: #FFF;background-color: #ff5c5d;width: 290px;height: 42px;border: none;cursor: pointer;}
 .login input[type="submit"]:hover{background-position:0 -34px;}
+.free-regist{background:#E8E8E8;border-radius:0 0 3px 3px;bottom:-31px;height:32px;line-height:32px;padding:0 5px 5px;position:absolute;right:42px;text-align:center;width:115px;}
+.free-regist span{background:#7CBE56;border-radius:0 0 3px 3px;color:#FFFFFF;display:block;font-size:14px;height:32px;text-align:center;width:115px;}
+.free-regist span a{color:#FFF;text-decoration:none;}
+.free-regist span:hover{background:#89C964;}*/
