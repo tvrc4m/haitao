@@ -41,8 +41,6 @@ $prode['national_info'] = $db->fetchRow();
 
 $tpl->assign("de",$prode);
 
-/*echo "<pre>";
-var_export($prode);*/
 $tpl->assign("relation",$relation);
 
 $score = $shop->score();
