@@ -382,7 +382,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .failure span{background:url(../../../image/default/user_admin/failure.gif) no-repeat 0 0;display:inline-block;padding-left:64px;}
 
 /* 分页*/
-.pagination{float:right;padding:2px;}
+.pagination{float:right;padding:2px;margin-top: -10px;}
 .pagination a ,.pagination b{position:relative;display:inline;float:left;min-width:35px;_width:35px;height:35px;border:solid 1px #ededed;color:#3e3e3e;text-align:center;line-height:35px;font-weight:700;cursor:pointer;text-decoration:none;}
 .pagination b{background:#FF4400;border-color:#FF4400;color:#FFFFFF;cursor:default;position:relative;text-decoration:none;}
 .pagination a:hover{border-color:#FF4400;color:#FF4400;}
