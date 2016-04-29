@@ -67,7 +67,7 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .head .basic-info .meta span a{color: #ff5c5c;}
 .head .basic-info .meta span{padding-right:10px;word-wrap:break-word;font-size:12px;line-height:16px;}
 .head .basic-info .meta span.sex{background:url(home/sex.png) no-repeat  right -35px;padding-right:10px;margin-right:35px;}
-.head .basic-info .meta span.female{background-position:0 2px;} 
+.head .basic-info .meta span.female{background-position:15px 3px;} 
 .head .basic-info .name{font-size:18px;font-weight:bold;margin-top: 30px;margin-bottom: 20px;}
 .head .basic-info .name .nick{color:#555555;font-family:'microsoft yahei';font-weight:400;padding-right:5px;color: #ff5c5c;}
 .head .user-avatar{background-image:url(home/image.png);background-position:center center; background-repeat:no-repeat;left:24px;padding:0 7px;position:absolute;top:15px;}
