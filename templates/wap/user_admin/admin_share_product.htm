@@ -82,7 +82,6 @@ $(function(){
                 data: {page:page, key:key, m:'sns', s:'admin_share_product', dist_id:dist_id, ptype:'ajax'},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
