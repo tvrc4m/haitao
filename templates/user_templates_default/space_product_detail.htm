@@ -574,7 +574,7 @@ function shareTo(site){
   var uuid = '';
   var img =$(".jqzoom").attr("src");
   var ctxt = $(".summary .title>p").text();
-  var url = "http://api.bshare.cn/share/"+site+"?url="+e("https://www.mayihaitao.com")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
+  var url = "http://api.bshare.cn/share/"+site+"?url="+e("https://www.mayihaitao.com/?m=product&s=detail&id=<{$de.id}>")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
   window.open(url, 'bshare', ['toolbar=0,status=0,resizable=1,width='+ wd +',height='+ hg +',left='+ (s.width - wd) / 2+ ',top='+ (s.height - hg) / 2]);
 }
 </script>

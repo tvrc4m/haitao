@@ -140,7 +140,7 @@ class Page
 			if($this->totalPages<=5)
 				$pageStr =$theFirst.' '.$prePage.' '.$linkPage.' '.$nextPage;
 			else
-				$pageStr =$theFirst.' '.$prePage.' '.$linkPage.' '.$theEnd.' '.$nextPage;
+				$pageStr =$theFirst.' '.$prePage.' '.$linkPage.' '.$nextPage.' '.$theEnd;
 		}
         return $pageStr;
     }
