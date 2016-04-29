@@ -46,7 +46,7 @@ $(function(){
                 <li class="<{if $smarty.get.statu=='-1'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_product_storage&statu=-1">违规的商品</a></li>
                 
                 <li class="<{if $smarty.get.statu=='-2'}>active<{else}>normal<{/if}>"><a href="main.php?m=product&s=admin_product_storage&statu=-2">待审核商品</a></li>
-                <li class="search-box">
+                <li class="search-box" style="width:245px;border-right:none">
                     <form method="get">
 						<input type="hidden" name="m" value="product" />
 						<input type="hidden" name="s" value="admin_product_storage" />
