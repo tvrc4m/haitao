@@ -294,7 +294,6 @@ $(function(){
                     data: {uid:uid, dis_id:dis_id, page:page, ptype:'ajax'},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
