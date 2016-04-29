@@ -103,12 +103,14 @@ if($_GET['ajax'] == 'deal-record')
 	$sql="select * from ".ORPRO." where status in (4,5) and pid = '$product_id'";
 	$db -> query($sql);
 	$re["total3"] = $db -> num_rows();
-		
+
+	$tpl->assign("chengjiao", count($re['list']));
 	$tpl->assign("re",$re);
 	$tpl->assign("config",$config);
 	echo $output=tplfetch("space_record.htm",$flag);
 	die;
 }
+
 //====================================评价
 if($_GET['ajax'] == 'reviews')
 {

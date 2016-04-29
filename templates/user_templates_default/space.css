@@ -278,7 +278,7 @@ html[xmlns] .clearfix{display:block;}
 .social a{display:inline-block;vertical-align:middle;margin-right:15px;background:0;height:auto;padding-left:20px;position:relative;font-size: 14px;}
 .social a i{background:url(img/ico.gif) no-repeat;display:inline-block;width:13px;height:12px;position:absolute;}
 .social .like i{background-position:0 -309px;top:5px;left:0;} 
-.social .fav i{background-position:-14px -309px;top:4px;left:0;} 
+.social .fav i,.social .fyc i{background-position:-14px -309px;top:4px;left:0;} 
 .social .share i{background-position:-31px -309px;top:5px;left:0;}
 .social .share>a{float: left;}
 .social .ercode span{margin-right: 4px;}
