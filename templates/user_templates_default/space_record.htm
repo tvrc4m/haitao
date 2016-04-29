@@ -11,7 +11,7 @@
     <tr class="pl_nav">
         <th class="pl15">买家</th>
         <th>拍下价格</th>
-        <th>数量</th>
+        <th>数<{$chengjiao}>量</th>
         <th>付款时间</th>
         <th>款式和型号</th>
     </tr>
@@ -35,10 +35,14 @@
         <td class="no-result" colspan="5">暂时还没有买家购买此商品</td>
     </tr>
     <{/foreach}>
-</tbody>  
+</tbody>
 </table>
+<input type="hidden" id="chengjiao" value="<{$chengjiao}>">
 <div class="pages"><{$re.page}></div>
 <script type="text/javascript">
+$(function(){
+    $('#chengjiao1').html($('#chengjiao').val());
+});
 $(".pages a").click(function(){
 	$("body,html").animate({scrollTop:$(".inner-wrap").offset().top});
 	$('#deal-record').html('<div class="loading"><p>正在努力加载中...</p></div>');

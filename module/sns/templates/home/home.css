@@ -114,12 +114,11 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .body-main .main-widget h3 .read-more{color:#999999;float:right;font-size:14px;font-weight:normal;line-height:30px;margin-top:6px;}
 .body-main .main-widget h3 span{/*border-bottom:3px solid #9ECBE7;*/display:inline-block;height:39px;line-height:38px;margin-bottom:-2px;position:relative;vertical-align:middle;color:#555555;font-size:14px;}
 .body-main .item-bd{position:relative;z-index:10; padding-top:20px;}
-.body-main .item-bd li{margin-right:22px; float:left;}
+.body-main .item-bd li{margin-right:9px; float:left;margin-bottom:10px;}
 .body-main .item-bd li.last{ margin-right:0px;}
 .body-main .item-bd li .sitem{border:1px solid #DBDBDB;width:226px;padding-bottom:10px;}
-.body-main .item-bd li .sitem:hover{box-shadow:2px 2px 8px #CCCCCC;}
 .body-main .item-bd li .sitem .pic{height:210px;overflow:hidden;text-align:center;width:226px;}
-.body-main .item-bd li .sitem .p-name{display: block;line-height: 20px;margin: 0 20px;font-size: 12px;}
+.body-main .item-bd li .sitem .p-name{display: block;line-height: 20px;margin: 0 20px;font-size: 12px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .body-main .item-bd li .sitem .p-price{text-align: center;font-size: 24px;}
 /*.body-main .item-bd li .sitem .content{color:#999999;height:20px;line-height:20px;margin:5px 10px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:206px;}
 .body-main .item-bd li .sitem .func{margin:0 8px 0 10px;}

@@ -3,17 +3,17 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <style>
+    .table-list-style{border: 1px solid #ccc;}
+    </style>
 </head>
 <body>
 
 <div class="main">
-    <div class="shop_other">
-        <ul>
-            <li class="info_qrcode">
-                <br />
+    <div class="shop_other clearfix" style="border: 1px solid #ccc;margin: 20px;">
                 <div style="width: 20%;float:left;">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店铺二维码</span><b></b>
                     <p ><img src="api/share_qrcode.php?type=shop&shop_id=<{$shop_id}>&rand=<{math equation=rand(1,10000)}>" title="微信扫描店铺二维码，分享出去带来下级店铺，享受三级分佣！"></p>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店铺二维码</span>
                 </div>
                 <div style="width: 80%;float:right;"><br />
                     微信扫描店铺二维码，分销出去带来下级店铺，享受三级分佣！<br /><br />
@@ -21,8 +21,6 @@
                     ●演绎圈子裂变理论，覆盖更多人群<br /><br />
                     ●每个分销商佣金来自两个部分：1、销售产品佣金 &nbsp;&nbsp;  2、发展下级分销商<br />
                 </div>
-            </li>
-        </ul>
     </div>
     <div class="wrap">
         <table class="table-list-style">
@@ -116,8 +114,6 @@
             </tbody>
         </table>
         <{/if}>
-        <br />
-        <br />
         <table class="table-list-style">
             <thead>
             <tr>
