@@ -195,9 +195,11 @@
  })
 var cid = $("#hidden_consignee_id").val();
 if(!cid)
-{
-	alert("请先添加收货地址!");
-	window.location="main.php?m=member&s=admin_orderadder&type=add&cg_u_type=1&act=return";
+{   
+	layer.msg("请先添加收货地址!");
+	setTimeout(function() {
+        window.location="main.php?m=member&s=admin_orderadder&type=add&cg_u_type=1&act=return";
+    },3000);
 }
 
 function count_price(id)

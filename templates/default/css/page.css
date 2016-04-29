@@ -111,8 +111,8 @@ em{font-style:normal;}
 .search .i-search{border:3px solid #FC5600;border-radius:2px 0 0 2px;height:35px;width:555px;padding-left:25px;background:url(../../../image/default/index.png) 10px 13px no-repeat;}
 .search .text{background:#FFFFFF;border:0 none;color:#333333;font-size:12px;height:25px;line-height:25px;outline:0 none;padding:6px 0 4px 5px;width:530px;}
 .search .button{background:#FC5600;border:0 none;cursor:pointer;height:41px;_height:43px;overflow:hidden;position:absolute;right:0;top:0;width:94px;color:#FFF;font-size:16px;padding:0 2px 0 0px;border-radius:0 2px 2px 0;}
-.search #key_select{  background-color: #FFFFFF;border: 1px solid #CCCCCC;border-top: none;margin-left: 0px;width: 564px;height: auto;float: left;z-index: 10000;position: absolute;display: none; }
-.search #key_select a{width: 100%;display: block;line-height: 22px;height: 22px;}
+.m_t_search #key_select{  background-color: #FFFFFF;border: 1px solid #CCCCCC;width: 418px;height: auto;position: absolute;display: none; }
+.m_t_search #key_select a{width: 100%;display: block;line-height: 25px;height: 25px;padding: 5px;}
 
 .hotwords{color:#999;height:18px;width:600px;overflow:hidden;overflow:hidden;margin-top:8px;}
 .hotwords strong{float:left;font-weight:normal;}

@@ -24,9 +24,7 @@ if($config['temp']=='wap')
 		$db->query($sql);
 		$de = $db->getRows();
 	}
-
     $tpl->assign("de",$de);
-  
 	$tpl->assign("config",$config);
 	$page='help.htm';
 }
@@ -54,7 +52,7 @@ $config['keyword']=$de['keywords'];
 $config['description']=$de['description'];
 //======================================================================
 include_once("footer.php");
-
+$tpl->assign("current","user");
 if(!empty($de['template'])&&file_exists($tpl->template_dir.'/'.$de['template']))
 	$page=$de['template'];
 else
