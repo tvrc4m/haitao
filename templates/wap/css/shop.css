@@ -35,7 +35,8 @@
 .search input[type="text"]{border:solid 1px #E4E4E4;border-radius:5px 0 0 5px;width:265px;color:#333;font-size:16px;height:36px;background:#FFF;padding-left:8px;line-height:30px;}
 .search input[type="submit"]{border:solid 1px #DB181E;border-radius:0 5px 5px 0;margin-left:-5px;background:url(../../../image/wap/submit.png) no-repeat;width:34px;height:36px;}
 .plist ul li p.shopli_bottom_text{padding: 10px 0;}
-.plist ul li p{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;}
+.plist ul li p{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;text-overflow: ellipsis;
+	white-space: nowrap;}
 .plist ul li p.money_del{color: #999;text-decoration: line-through;}
 .plist ul li p.al-one{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .plist ul li p.al{padding-bottom: 15px;}
