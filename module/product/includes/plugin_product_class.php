@@ -511,7 +511,7 @@ class product
 				$prod["activity_list"]=$activity_re;
 			}
 		}
-		
+
 		/*** 判断是否为虚拟类型 ****/
 		if($prod['is_virtual'] == 1)
 		{
