@@ -57,7 +57,7 @@ $(document).ready(function(){
 });
 function collect_goods(id){
     var url = '<{$config.weburl}>/module/sns/ajax_update.php';
-    var uname='<{$smarty.cookies.USER}>';
+    var uname = '<{$smarty.cookies.USER}>';
     if(uname=='')
     {
         layer.msg('请先登录！');
@@ -263,7 +263,7 @@ function buy()
                     <ul class="clearfix">
                         <li class="cur"><a href="javascript:void(0);">商品详情</a></li>
                         <li><a href="javascript:void(0);">累计评论&nbsp&nbsp<{$de.count}></a></li>
-                        <li><a href="javascript:void(0);">成交记录&nbsp&nbsp<{$de.sales}></a></li>
+                        <li><a href="javascript:void(0);">成交记录&nbsp&nbsp <span id="chengjiao1"></span></a></li>
                         <li><a href="javascript:void(0);">商品问答</a></li>
                     </ul>
                 </div>
