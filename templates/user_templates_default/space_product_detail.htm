@@ -131,7 +131,7 @@ function buy()
     });
     if (goodsspec.getSpec() == null || flag)
     {
-        layer.msg('请选择相关规格', {icon: 0});
+        layer.msg('请选择相关规格！');
         return !flag;
     }else
     {
@@ -228,7 +228,7 @@ function buy()
                          </div>
                         <ul class="social clearfix">
                             <li class="fav"><a href="javascript:collect_goods('<{$de.id}>');"><i></i><{if $spro neq 1}>收藏商品<{else}>取消收藏<{/if}></a></li>
-                            <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><li class="fav"><a href="javascript:distribute_goods('<{$de.id}>');"><i></i>分销赚佣金</a></li><{/if}>
+                            <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><li class="fyc"><a href="javascript:distribute_goods('<{$de.id}>');"><i></i>分销赚佣金</a></li><{/if}>
                             <li class="ercode iconfont"><a href="javascript:void(0);" style="padding-left: 0"><span style="color:orange">&#xe626</span>二维码</a></li>
                             <li class="share"><a href="javascript:void(0);"><i></i>分享</a>
                                 <div class="bshare-custom icon-medium">
