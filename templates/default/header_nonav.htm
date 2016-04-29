@@ -15,7 +15,7 @@
                 <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
                     <input type="hidden" value="product" name="m" id="m">
                     <input type="hidden" value="list" name="s" id="s">
-                    <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
+                    <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索"><div id="key_select"></div>
                 </form>
             </div>
             <div class="m_shop_cart mid pos_re">
@@ -69,14 +69,12 @@
     </div>
     <!--header end-->
 <script>
-$('.menu-items li').hover(function(){                    
-    $(this).addClass("hover");
-},function(){
-    $(this).removeClass("hover");   
-});
 $(".m_gz").bind("mouseenter mouseleave",function(){
        $(".m_gz .sjmy").toggleClass("fn-hide");
-    });
+});
+$(".m_menu").bind("mouseenter mouseleave",function(){
+    $(".m_menu dd").toggleClass("hidden");
+});
 function get_search_word(k)
 {
     if(k!='')
@@ -86,26 +84,20 @@ function get_search_word(k)
         var pars = 'shuiji=' + sj+'&search_flag=1&key='+k;
         $.post(url, pars,showResponse);
     }
-
     function showResponse(originalRequest)
     {
         if(originalRequest)
         {
             $('#key_select').show();
-            //$('#key_select').css("display",'block');
             $('#key_select').html(originalRequest);
         }
         else
             $('#key_select').hide();
     }
-
 }
 function select_word(v)
 {
     $('#key').val(v);
     $('#key_select').hide();
 }
-$(".m_menu").bind("mouseenter mouseleave",function(){
-    $(".m_menu dd").toggleClass("hidden");
-});
 </script>
