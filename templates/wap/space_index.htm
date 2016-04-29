@@ -144,7 +144,7 @@
                                     <p class="money"><{$config.money}><{$list.price}></p>
                                     <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                                 </div>
-                                <a href="javascript:distribute_goods('<{$de.id}>');" class="shopli_bottom_zhuanxiang">专享抢购</a>
+                                <a href="javascript:void(0);" class="shopli_bottom_zhuanxiang">专享抢购</a>
                             </div>  
                         </div>
                     </a>
@@ -180,7 +180,7 @@
                                     <p class="money"><{$config.money}><{$list.price}></p>
                                     <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                                 </div>
-                                <a href="javascript:distribute_goods('<{$de.id}>');" class="shopli_bottom_zhuanxiang">加入分销</a>
+                                <a href="javascript:distribute_goods('<{$list.id}>');" class="shopli_bottom_zhuanxiang">加入分销</a>
                             </div>  
                         </div>
                     </a>
@@ -270,7 +270,8 @@ $(function(){
         $(".shop-bannar").css({"height":"405px","width":"100%","background-size":"contain","background-repeat":"no-repeat"})
         $(".shopli").find("img").height("224px")
     }
-    var dlLen=$(".plist .shoplist").size();
+    var dlLen=$(".plist .shopli").size();
+    console.log(dlLen)
     if(dlLen<10){
         $(".m_jiazai").hide();
         $("footer").css({"margin-top":"20px"})
@@ -298,6 +299,7 @@ $(function(){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
                             var pnational=msg.data[i].pnational;
+                            var shop_statu=<{$com.shop_statu}>;
                             var value_substrs=msg.data[i].pname.substr(i,9);
                             $(".plist .shoplist").append("<li class='shopli clearfix'>"+
                                     "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+                                       
@@ -310,19 +312,23 @@ $(function(){
                                             "<div class='shopli_bottom_message'>"+
                                                 "<p class='shopli_bottom_text'>"+value_substrs+"</p>"+
                                             "</div>"+
-                                            "<div class='shopli_bottom_rob shopli_bottom_rob2 clearfix'>"+
+                                            "<div class='shopli_bottom_rob shopli_bottom_rob2 clearfix' data-id='"+msg.data[i].id+"'>"+
                                                 "<div class='al shopli_bottom_money'>"+
                                                     "<p class='money'><{$config.money}>"+msg.data[i].price+"</p>"+
                                                     "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
-                                                "<a href='javascript:distribute_goods('<{$de.id}>');' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
                                             "</div>"+
                                         "</div>"+
                                     "</a>"+
                                 "</li>") 
                                 if(pnational!==false){
                                     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].pnational.img+"' alt='"+msg.data[i].pnational.title+"'>")
-                                }                 
+                                }
+                                if(shop_statu==1) {
+                                    $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append("<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>")
+                                } else{
+                                    $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append(" <a href='javascript:distribute_goods('"+msg.data[i].id+"');' class='shopli_bottom_zhuanxiang'>加入分销</a>")
+                                }               
                         }
                         stop=true;
                         }else{
