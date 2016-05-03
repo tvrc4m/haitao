@@ -53,6 +53,72 @@
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
+    function collect_altr(cla){
+        $(cla).append("<div class='am-dialog-mask'></div>"+
+                "<div class='price-btns-context'>"+
+                    "<div class='price-btns-context-top clearfix'>"+
+                        "<div class='context-top-list context-top-listb' id='frinds'>"+
+                            "<img src='../../../image/wap/../../../image/wap/wap_haitao_icon66.png'>"+
+                            "<p>微信好友</p>"+
+                        "</div>"+
+                        "<div class='context-top-list' id='goods'>"+
+                            "<img src='../../../image/wap/../../../image/wap/wap_haitao_icon58.png'>"+
+                            "<p style='margin-top:5px'>朋友圈</p>"+
+                        "</div>"+
+                    "</div>"+
+                "</div>")
+        $(".am-dialog-mask").addClass("am-dialog-mask-test");
+        $(".price-btns-context").addClass('price-btns-context_test');
+    }
+    $(".price-fenxiang").bind("click",function(){
+        var shopTitle=$(this).parent().parent().parent().find(".shop_name").html();
+        var shopSrc=$(this).parent().parent().parent().find(".shop_src").attr("src");
+        var shopLink=$(this).parent().parent().parent().find(".shop_name").attr("href");
+        var shopDesc=$(this).parent().parent().parent().find(".shop_name").html();
+        console.log(shopTitle);
+        console.log(shopSrc);
+        console.log(shopLink);
+        collect_altr(".price-btns");
+        $("#frinds").live("click",function(){
+           wx.onMenuShareAppMessage({
+                title:"shopTitle", // 分享标题
+                desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
+                link: location.href, // 分享链接
+                imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+                type: '', // 分享类型,music、video或link，不填默认为link
+                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    /*
+                    var url = "<{$config.weburl}>/ajax_back_end.php";
+                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                    })
+                    */
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            })
+        })
+        $("#goods").live("click",function(){
+            wx.onMenuShareTimeline({
+                title: "<{$com.shop_title}>", // 分享标题
+                link: location.href, // 分享链接
+                imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    /*
+                    var url = "<{$config.weburl}>/ajax_back_end.php";
+                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                    })
+                    */
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+        })
+    })
     var cnf = {
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
@@ -100,131 +166,32 @@
                 // 用户取消分享后执行的回调函数
             }
         })
-
-        wx.onMenuShareQQ({
-            title: '<{$com.shop_title}>', // 分享标题
-            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
-            link: location.href, // 分享链接
-            imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                /*
-                var url = "<{$config.weburl}>/ajax_back_end.php";
-                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                })
-                */
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            }
-        });
-
-        wx.onMenuShareWeibo({
-            title: '<{$com.shop_title}>', // 分享标题
-            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
-            link: location.href, // 分享链接
-            imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                /*
-                var url = "<{$config.weburl}>/ajax_back_end.php";
-                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                })
-                */
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            }
-        });
     })
 </script>
 <{else}>
 <{/if}>
 <script type="text/javascript">
-
-/*$(function(){
-	function collect_altr(cla){
-        $(cla).append("<div class='am-dialog-mask'></div>"+
-				"<div class='price-btns-context'>"+
-					"<div class='price-btns-context-top clearfix'>"+
-						"<div class='context-top-list context-top-listb' id='frinds'>"+
-							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon66.png'>"+
-							"<p>微信好友</p>"+
-						"</div>"+
-						"<div class='context-top-list' id='goods'>"+
-							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon58.png'>"+
-							"<p style='margin-top:5px'>朋友圈</p>"+
-						"</div>"+
-					"</div>"+
-				"</div>")
-        $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".price-btns-context").addClass('price-btns-context_test');
-    }
+$(function(){
     function collect_confirm(cla){
         $(cla).append("<div class='am-dialog-mask'></div>"+
-				"<div class='price-btns-contexts'>"+
-					"<div class='price-btns-context-tops clearfix'>"+
-						"<p>确信删除?</P>"+
-					"</div>"+
-					"<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
-				"</div>")
+                "<div class='price-btns-contexts'>"+
+                    "<div class='price-btns-context-tops clearfix'>"+
+                        "<p>确信删除?</P>"+
+                    "</div>"+
+                    "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
+                "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".price-btns-contexts").addClass('price-btns-contexts_test');
         $(".detate-btns-context-bot a:first-child").bind("click",function(){
-	    	location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
-	    })
-	    $(".detate-btns-context-bot a:last-child").bind("click",function(){
-	    	location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
-	    })
+            location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
+        })
+        $(".detate-btns-context-bot a:last-child").bind("click",function(){
+            location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
+        })
     }
-    $(".price-fenxiang").bind("click",function(){
-    	var shopTitle=$(this).parent().parent().parent().find(".shop_name").html();
-    	var shopSrc=$(this).parent().parent().parent().find(".shop_src").attr("src");
-    	var shopLink=$(this).parent().parent().parent().find(".shop_name").attr("href");
-    	var shopDesc=$(this).parent().parent().parent().find(".shop_name").html();
-    	console.log(shopTitle);
-    	console.log(shopSrc);
-    	console.log(shopLink);
-    	collect_altr(".price-btns");
-    	$("#frinds").live("click",function(){
-	    	WeiXinSendAppMessage();
-	    })
-	    $("#goods").live("click",function(){
-	    	WeiXinShareBtn();
-	    })
-
-	    function WeiXinShareBtn() {
-			if (typeof WeixinJSBridge == "undefined") {
-				alert("请先通过微信搜索 蚂蚁海淘 添加蚂蚁海淘为好友，通过微信分享文章 ");
-			} else {
-				 WeixinJSBridge.invoke('shareTimeline', {
-					 "title": 'shopTitle',
-					 "link": 'shopLink',
-					 "desc": 'shopTitle',
-					 "img_url": 'shopSrc'
-				 });
-			}
-		 }
-		  function WeiXinSendAppMessage() {
-			if (typeof WeixinJSBridge == "undefined") {
-				alert("请先通过微信搜索 蚂蚁海淘 添加蚂蚁海淘为好友，通过微信分享文章 ");
-			} else {
-				 WeixinJSBridge.invoke('sendAppMessage', {
-					 "title": "1111111",
-					 "link": 'shopLink',
-					 "desc": 'shopTitle',
-					 "img_url": 'shopSrc'
-				 });
-			}
-		 }
-    })
     $(".price-delate").bind("click",function(){
-    	collect_confirm(".price-btns");
+        collect_confirm(".price-btns");
     })
-
-})*/
-
-$(function(){
     var dlLen=$(".itemSearchResult dl").size();
     if(dlLen<10){
         $(".m_jiazai").hide();
