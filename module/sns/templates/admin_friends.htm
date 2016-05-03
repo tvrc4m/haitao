@@ -146,8 +146,10 @@ $(function(){
                                             <em class=""></em>
                                         </p>
                                         <{if $slist.buyerpointsimg}>
+                                            <{$slist.funame}> <br>
                                             <img align="absmiddle" src="<{$config.weburl}>/image/points/<{$slist.buyerpointsimg}>" />
                                         <{else}>
+                                            <{$slist.funame}>
                                             <{$slist.buyerpoints}>
                                         <{/if}>
                                         <dd class="area"><{$slist.province}><{$slist.city}></dd>
@@ -168,10 +170,19 @@ $(function(){
                                         </p>
                                     </div>
                                     <div style="margin-left: 15px;float: left;">
-                                        <p style="width: 60px;margin-top: 2px;margin-left: 25px;"> <{$slist.name}></p>
+                                        <{if $slist.name }>
+                                            <p style="width: 60px;margin-top: 2px;margin-left: 25px;"> <{$slist.name}></p>
+                                        <{else}>
+                                            <{$slist.name}>
+                                            <p style="width: 60px;margin-top: 2px;margin-left: 25px;"> 暂未分组</p>
+                                        <{/if}>
                                     </div>
                                     <div style="margin-left: 5px;float: left;">
-                                        <p style="width: 90px;margin-top: 2px;margin-left: 40px;"> <{$slist.describe}></p>
+                                        <{if $slist.describe }>
+                                            <p style="width: 90px;margin-top: 2px;margin-left: 40px;"><{$slist.describe}></p>
+                                        <{else}>
+                                            <p style="width: 90px;margin-top: 2px;margin-left: 40px;">暂无组备注</p>
+                                        <{/if}>
                                     </div>
                                     <dd style="margin-top:2px;width: 100px;float: right">
                                         <span class="cancel">

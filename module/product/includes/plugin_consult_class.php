@@ -25,7 +25,7 @@ class consult
 		global $buid;
 		$con = htmlspecialchars($_POST["con"]);
 		$user = get_member_field($buid,'user');
-		$sql="insert into ".CONSULT." (`catid`,product_member_id,product_id,product_name,member_id,member_name,question,answer,answer_id,question_time,answer_time,status) values ('0','$de[member_id]','$de[id]','$de[name]','$buid','$user','$con','','0','".time()."','0','1')";
+		$sql="insert into ".CONSULT." (`catid`,product_member_id,product_id,product_name,member_id,member_name,question,answer,answer_id,question_time,answer_time,status) values ('0','$de[member_id]','$de[id]','".addslashes($de[name])."','$buid','$user','$con','','0','".time()."','0','1')";
 		$this -> db->query($sql);
 	}
 }
