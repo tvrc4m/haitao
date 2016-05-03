@@ -565,3 +565,11 @@
 {"ctl":"Shop","met":"getCompany","typ":"json","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M=","member_id":"6"}
 {"ctl":"Shop","met":"get","typ":"json","shop_id":"6","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M="}
 {"ctl":"Goods","met":"getListByProid","typ":"json"}
+{"ctl":"Goods","met":"get","typ":"json","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M=","pid":"19"}
+{"ctl":"GoodsFavorites","met":"isCollect","typ":"json","id":"19","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M="}
+{"ctl":"Goods","met":"addFooter","typ":"json","type":"1","id":"19","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M="}
+{"ctl":"Goods","met":"getCommentList","typ":"json","page":"1","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M=","pid":"19","rows":"5"}
+{"ctl":"Goods","met":"get","typ":"json","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M=","pid":"19"}
+{"ctl":"Goods","met":"get","typ":"json","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M=","pid":"19"}
+{"ctl":"Shop","met":"get","typ":"json","shop_id":"6","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M="}
+{"ctl":"Shop","met":"getCompany","typ":"json","key":"BHNVI1NpDS8GDwQ6ADhTOABjB2M=","member_id":"6"}
