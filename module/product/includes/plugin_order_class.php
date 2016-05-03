@@ -222,16 +222,12 @@ class order
 	  	$page = new Page;
 		$page -> listRows = $limit;
 		$page->firstRow = $begin;
-
 		if (!$page -> __get('totalRows')){
 			$this -> db -> query($sql);
 			$page -> totalRows = $this -> db -> num_rows();
 		}
-		if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax') {
-			$sql .= "  limit " . $page -> firstRow . "," . $page -> listRows;
-		}else{
-			$sql .= "  limit " . $page -> listRows;
-        }
+		$sql .= "  limit " . $page -> firstRow . "," . $page -> listRows;
+
 		//==============================
 		$this -> db -> query($sql);
 		$ore = $this -> db -> getRows();
