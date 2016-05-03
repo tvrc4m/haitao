@@ -48,8 +48,8 @@ class friend
 		{
 			$str=" and uid=$buid";
 		}
-		$sql="select id,uid,uname,uimg,fuid,funame,fuimg,state,area,buyerpoints,sex  from ".FRIEND." a left join ".MEMBER." b on a.fuid = b.userid where 1 $str order by addtime desc";
-		
+
+		$sql="select id,uid,uname,group_id,fnickname,uimg,fuid,funame,fuimg,state,area,buyerpoints,sex  from ".FRIEND." a left join ".MEMBER." b on a.fuid = b.userid where 1 $str order by addtime desc";
 		include_once($config['webroot']."/includes/page_utf_class.php");
 		$page = new Page;
 		$page->listRows=20;
@@ -60,8 +60,15 @@ class friend
 		}
         $sql .= "  limit ".$page->firstRow.",".$page->listRows;
 		$this->db->query($sql);
-		$re["list"]=$this->db->getRows();
-		
+		$list = $this->db->getRows();
+		if(isset($_GET['type']) && $_GET['type'] != 'fan' || (!isset($_GET['type']))) {
+			foreach ($list as $key => $val) {
+				$sql = "select name,`describe` from mallbuilder_sns_group where group_id =" . $val['group_id'];
+				$this->db->query($sql);
+				$list[$key] = array_merge($list[$key], $this->db->fetchRow());
+			}
+		}
+		$re["list"] = $list;
 		$sql="select * from ".POINTS." order by id";
 		$this ->db ->query($sql);
 		$de=$this ->db->getRows();
