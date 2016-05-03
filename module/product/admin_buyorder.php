@@ -69,7 +69,8 @@ if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
     die;
 }
 
-$tpl->assign("blist",$re=$order->buyorder($status));
+$re=$order->buyorder($status, '', $_GET['firstRow']?$_GET['firstRow']:0,10);
+$tpl->assign("blist",$re);
 
 $order_status[2]="等待买家付款";
 $order_status[3]="买家已付款";

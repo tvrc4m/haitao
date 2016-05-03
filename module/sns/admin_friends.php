@@ -18,7 +18,7 @@ $re =$db->getRows();
 $tpl->assign("gronmame",$re);
 //获取好友
 $tpl->assign("re",$friend->GetFriendList());
-
+//var_dump($friend->GetFriendList());
 //==================================
 $tpl->assign("config",$config);
 $tpl->assign("lang",$lang);
