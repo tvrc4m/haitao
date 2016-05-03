@@ -1,4 +1,3 @@
-<!--田晓宝添加-->
 <!--banner start-->
 <div class="pos_re newclear">
     <script src='<{$config.weburl}>/api/ad.php?id=1&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
@@ -28,26 +27,21 @@
                         <div class="clu pos_re list_box">
                             <ul class="newclear">
                                 <{insert name="label" national=1 type="product" o=6 temp="product_list_li_3" limit=6}>
-                                <!--<li class="spe">
-                                    <div>
-                                        <a href="" class="goods_img"><img src="../../../uploadfile/adv/2016/g_img.jpg" alt=""></a>
-                                        <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                                        <p><var>￥180</var><s>￥235</s></p>
-                                    </div>
-                                </li>-->
                             </ul>
-                            <div class="m_img_box pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=17&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
+                            <div class="m_img_box pos_ab">
+                                <script src='<{$config.weburl}>/api/ad.php?id=17&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
+                            </div>
                         </div>
                         <div class="clu m_img_box w_202"><script src='<{$config.weburl}>/api/ad.php?id=18&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
                     </div>
                     <div class="pos_ab c_l_img"><a href="<{$config.weburl}>/?m=product&s=list&dist_id=31&national=7"><img src="/image/default/jp_left.png" alt=""></a></div>
                     <div class="pos_ab c_r_img"><img src="/image/default/jp_right.png" alt=""></div>
                 </li>
-                <li class="item">2</li>
+                <!--<li class="item">2</li>
                 <li class="item">3</li>
                 <li class="item">4</li>
                 <li class="item">5</li>
-                <li class="item">6</li>
+                <li class="item">6</li> -->
             </ul>
         </div>
     </div>
@@ -60,32 +54,31 @@
 <!--商品分类 end-->
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
-    function adjust(obj){
-        /*图片加载完成功能设置margin值使其居中*/
-        var imgdefereds=[];
-        $('.slides img').each(function(){
-            var dfd=$.Deferred();
-            $(this).bind('load',function(){
-                dfd.resolve();
-            }).bind('error',function(){
-                //图片加载错误，加入错误处理
-                // dfd.resolve();
-            })
-            if(this.complete) setTimeout(function(){
+function adjust(obj){
+    /*图片加载完成功能设置margin值使其居中*/
+    var imgdefereds=[];
+    $('.slides img').each(function(){
+        var dfd=$.Deferred();
+        $(this).bind('load',function(){
+            dfd.resolve();
+        });
+        if(this.complete)
+            setTimeout(function(){
                 dfd.resolve();
             },10);
-            imgdefereds.push(dfd);
-        });
-        $.when.apply(null,imgdefereds).done(function(){
-            $(".slides img").css("margin-left",Math.floor(($(window).width()-1920)/2));
-        });
-    }
-    window.onload=function(){
-        window.onresize = adjust;
-        adjust();
-    }
-    $(".m_menu").unbind("mouseenter mouseleave");
-    $(".m_menu dd").removeClass("hidden");
-
-    $(window).load(function(){$(".flexslider").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true})});
+        imgdefereds.push(dfd);
+    });
+    $.when.apply(null,imgdefereds).done(function(){
+        $(".slides img").css("margin-left",Math.floor(($(window).width()-1920)/2));
+    });
+}
+window.onload=function(){
+    window.onresize = adjust;
+    adjust();
+}
+$(".m_menu").unbind("mouseenter mouseleave");
+$(".m_menu dd").removeClass("hidden");
+$(window).load(function(){
+    $(".flexslider").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true});
+});
 </script>
