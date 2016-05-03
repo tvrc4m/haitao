@@ -646,7 +646,7 @@ input[readonly]{
 .main .wrap .hd ul{height: 40px;line-height: 40px;border-bottom: 2px solid #e0e0e0;color: #666;font-size: 16px;}
 .main .wrap .hd ul li{float: left;width: 125px;border-right: 1px solid #e0e0e0;text-align: center;}
 .main .wrap .hd ul li.active{background-color: #f5f5f5;border-right: none;border-bottom: 2px solid #ff5c5c;}
-.main .wrap .hd ul li.search-box{float:right;}
+.main .wrap .hd ul li.search-box{float:right;width: auto;border-right: none;}
 .main .wrap .hd ul li.search-box .btn2{height:25px;}
 /*表单*/
 input.submit{border:0 none;border-radius:4px 4px 4px 4px;color:#fff;cursor:pointer;font-weight:700;height:40px;line-height:40px;width:300px;font-size: 16px;background:#ff5c5c;}

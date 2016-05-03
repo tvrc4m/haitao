@@ -82,14 +82,13 @@ $(function(){
                 data: {page:page, key:key, m:'sns', s:'admin_share_product', dist_id:dist_id, ptype:'ajax'},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
                             $(".itemSearchResult").append("<dl>"+
-                                "<dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'><img height='80' width='80' alt='"+msg.data[i].pname+"' src='"+msg.data[i].image+"'></a></dt>"+
+                                "<dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].pid+"'><img height='80' width='80' alt='"+msg.data[i].pname+"' src='"+msg.data[i].image+"'></a></dt>"+
                                 "<dd>"+
-                                    "<p class='p-name'><a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'>"+msg.data[i].pname+"</a></p>"+
+                                    "<p class='p-name'><a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].pid+"'>"+msg.data[i].pname+"</a></p>"+
                                     "<p class='p-price'><strong><{$config.money}>"+msg.data[i].price+"</strong></p>"+
                                     "<div class='handle'><a href='main.php?m=sns&s=admin_share_product&type=del&id="+msg.data[i].id+"'>删除</a></div>"+
                                 "</dd>"+
