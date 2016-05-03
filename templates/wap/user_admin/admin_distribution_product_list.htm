@@ -53,23 +53,6 @@
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
-    function collect_altr(cla){
-        $(cla).append("<div class='am-dialog-mask'></div>"+
-                "<div class='price-btns-context'>"+
-                    "<div class='price-btns-context-top clearfix'>"+
-                        "<div class='context-top-list context-top-listb' id='frinds'>"+
-                            "<img src='../../../image/wap/../../../image/wap/wap_haitao_icon66.png'>"+
-                            "<p>微信好友</p>"+
-                        "</div>"+
-                        "<div class='context-top-list' id='goods'>"+
-                            "<img src='../../../image/wap/../../../image/wap/wap_haitao_icon58.png'>"+
-                            "<p style='margin-top:5px'>朋友圈</p>"+
-                        "</div>"+
-                    "</div>"+
-                "</div>")
-        $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".price-btns-context").addClass('price-btns-context_test');
-    }
     $(".price-fenxiang").bind("click",function(){
         var shopTitle=$(this).parent().parent().parent().find(".shop_name").html();
         var shopSrc=$(this).parent().parent().parent().find(".shop_src").attr("src");
@@ -78,95 +61,45 @@
         console.log(shopTitle);
         console.log(shopSrc);
         console.log(shopLink);
-        collect_altr(".price-btns");
-        $("#frinds").live("click",function(){
-           wx.onMenuShareAppMessage({
-                title:"shopTitle", // 分享标题
-                desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
-                link: location.href, // 分享链接
-                imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
-                type: '', // 分享类型,music、video或link，不填默认为link
-                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    /*
-                    var url = "<{$config.weburl}>/ajax_back_end.php";
-                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                    })
-                    */
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
+
+        var cnf = {
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
+            timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
+            nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
+            signature: '<{$smarty.session.signature}>',// 必填，签名，见附录1
+            jsApiList: ['onMenuShareQQ','onMenuShareTimeline','onMenuShareWeibo','onMenuShareAppMessage','downloadImage','checkJsApi'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        };
+        wx.config(cnf);
+        wx.ready(function() { 
+            // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+                wx.onMenuShareAppMessage({
+                         title:shopTitle, // 分享标题
+                         desc: "rrr", // 分享描述
+                         link: location.href, // 分享链接
+                         imgUrl: shopSrc, // 分享图标
+                         type: '', // 分享类型,music、video或link，不填默认为link
+                         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                         success: function () {
+                         // 用户确认分享后执行的回调函数
+                         /*
+                         var url = "<{$config.weburl}>/ajax_back_end.php";
+                         $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                         })
+                         */
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                })
+//                alert('已注册获取“发送给朋友”状态事件');
             })
-        })
-        $("#goods").live("click",function(){
-            wx.onMenuShareTimeline({
-                title: "<{$com.shop_title}>", // 分享标题
-                link: location.href, // 分享链接
-                imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    /*
-                    var url = "<{$config.weburl}>/ajax_back_end.php";
-                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                    })
-                    */
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
-        })
-    })
-    var cnf = {
-        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
-        timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
-        nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
-        signature: '<{$smarty.session.signature}>',// 必填，签名，见附录1
-        jsApiList: ['onMenuShareQQ','onMenuShareTimeline','onMenuShareWeibo','onMenuShareAppMessage','downloadImage','checkJsApi'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    };
 
-    wx.config(cnf);
-    wx.ready(function(){
-        wx.onMenuShareTimeline({
-            title: "<{$com.shop_title}>", // 分享标题
-            link: location.href, // 分享链接
-            imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                /*
-                var url = "<{$config.weburl}>/ajax_back_end.php";
-                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                })
-                */
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            }
-        });
 
-        wx.onMenuShareAppMessage({
-            title:"<{$com.shop_title}>", // 分享标题
-            desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
-            link: location.href, // 分享链接
-            imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                /*
-                var url = "<{$config.weburl}>/ajax_back_end.php";
-                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                })
-                */
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            }
-        })
+
     })
+
+
 </script>
 <{else}>
 <{/if}>
