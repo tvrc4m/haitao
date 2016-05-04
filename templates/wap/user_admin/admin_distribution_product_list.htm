@@ -47,45 +47,123 @@
 </div>
     <{/foreach}>
 </section>
-
 <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
-
+<div class="hj_share_box" id="share_box"></div>
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
-    var cnf = {
-        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
-        timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
-        nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
-        signature: '<{$smarty.session.signature}>',// 必填，签名，见附录1
-        jsApiList: ['onMenuShareQQ','onMenuShareTimeline','onMenuShareWeibo','onMenuShareAppMessage','downloadImage','checkJsApi'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    };
+var cnf = {
+    //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
+    timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
+    nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
+    signature: '<{$smarty.session.signature}>',// 必填，签名，见附录1
+    jsApiList: ['onMenuShareQQ','onMenuShareTimeline','onMenuShareWeibo','onMenuShareAppMessage','downloadImage','checkJsApi'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+};
+wx.config(cnf);
+wx.ready(function(){
+    wx.onMenuShareTimeline({
+        title: "<{$com.shop_title}>", // 分享标题
+        link: location.href, // 分享链接
+        imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+            })
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
 
-    wx.config(cnf);
-    wx.ready(function(){
+    wx.onMenuShareAppMessage({
+        title:"<{$com.shop_title}>", // 分享标题
+        desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
+        link: location.href, // 分享链接
+        imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+            })
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    })
+
+    wx.onMenuShareQQ({
+        title: '<{$com.shop_title}>', // 分享标题
+        desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+        link: location.href, // 分享链接
+        imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+            })
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+
+    wx.onMenuShareWeibo({
+        title: '<{$com.shop_title}>', // 分享标题
+        desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+        link: location.href, // 分享链接
+        imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+            })
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    $(".price-fenxiang").bind("click",function(){
+        $("#share_box").show();
+        setTimeout(function(){
+            $("#share_box").animate({opacity: "1"}, 800)
+        }, 200);
+        var shopTitles=$(this).parent().parent().parent().find(".shop_name").html();
+        var shopSrcs=$(this).parent().parent().parent().find(".shop_src").attr("src");
+        var shopLinks=$(this).parent().parent().parent().find(".shop_name").attr("href");
+        var shopDescs=$(this).parent().parent().parent().find(".shop_name").html();
         wx.onMenuShareTimeline({
-            title: "蚂蚁海淘1", // 分享标题
-            link: location.href, // 分享链接
-            imgUrl: "https://www.mayihaitao.comimage/default/nopic.gif", // 分享图标
+            title: shopTitles, // 分享标题
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
-                /*
+                
                 var url = "<{$config.weburl}>/ajax_back_end.php";
                 $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
                 })
-                */
+                
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
             }
         });
-
         wx.onMenuShareAppMessage({
-            title:"蚂蚁海淘1", // 分享标题
-            desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
-            link: location.href, // 分享链接
-            imgUrl: "https://www.mayihaitao.comimage/default/nopic.gif", // 分享图标
+            title:shopTitles, // 分享标题
+            desc: shopDescs, // 分享描述
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -100,90 +178,52 @@
                 // 用户取消分享后执行的回调函数
             }
         })
+        wx.onMenuShareQQ({
+            title: shopTitles, // 分享标题
+            desc: shopDescs, // 分享描述
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareWeibo({
+            title: shopTitles, // 分享标题
+            desc: shopDescs, // 分享描述
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
     })
+    $("#share_box").bind("click", function() {
+        $(this).animate({opacity: "0"}, 800);
+        setTimeout(function() {
+            $("#share_box").hide()
+        }, 800)
+    })
+})
 </script>
 <{else}>
 <{/if}>
 <script type="text/javascript">
-$(function(){
-	function collect_altr(cla){
-        $(cla).append("<div class='am-dialog-mask'></div>"+
-				"<div class='price-btns-context'>"+
-					"<div class='price-btns-context-top clearfix'>"+
-						"<div class='context-top-list context-top-listb' id='frinds'>"+
-							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon66.png'>"+
-							"<p>微信好友</p>"+
-						"</div>"+
-						"<div class='context-top-list' id='goods'>"+
-							"<img src='../../../image/wap/../../../image/wap/wap_haitao_icon58.png'>"+
-							"<p style='margin-top:5px'>朋友圈</p>"+
-						"</div>"+
-					"</div>"+
-				"</div>")
-        $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".price-btns-context").addClass('price-btns-context_test');
-    }
-    $(".price-fenxiang").bind("click",function(){
-    	var shopTitle=$(this).parent().parent().parent().find(".shop_name").html();
-    	var shopSrc=$(this).parent().parent().parent().find(".shop_src").attr("src");
-    	var shopLink=$(this).parent().parent().parent().find(".shop_name").attr("href");
-    	var shopDesc=$(this).parent().parent().parent().find(".shop_name").html();
-    	console.log(shopTitle);
-    	console.log(shopSrc);
-    	console.log(shopLink);
-    	collect_altr(".price-btns");
-        var imgUrl = "https://www.mayihaitao.com/image/default/nopic.gif";  
-        var lineLink = "https://www.mayihaitao.com";  
-        var descContent = '爱在五月，\n\n妈咪爱1+1亲子健康之旅开启全国行首站----重庆站妈咪爱活性益生菌';  
-        var shareTitle = '标题';  
-        var appid = '';  
-           
-        function shareFriend() {  
-            WeixinJSBridge.invoke('sendAppMessage',{  
-                "appid": "appid",  
-                "img_url": imgUrl,  
-                "img_width": "200",  
-                "img_height": "200",  
-                "link": lineLink,  
-                "desc": descContent,  
-                "title": shareTitle  
-            }, function(res) {  
-                //_report('send_msg', res.err_msg);  
-            })  
-        }  
-        function shareTimeline() {  
-            WeixinJSBridge.invoke('shareTimeline',{  
-                "img_url": imgUrl,  
-                "img_width": "200",  
-                "img_height": "200",  
-                "link": lineLink,  
-                "desc": descContent,  
-                "title": shareTitle  
-            }, function(res) {  
-                   //_report('timeline', res.err_msg);  
-            });  
-        }  
-        // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。  
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {  
-            // 发送给好友  
-            WeixinJSBridge.on('menu:share:appmessage', function(argv){  
-                shareFriend();  
-            });  
-            // 分享到朋友圈  
-            WeixinJSBridge.on('menu:share:timeline', function(argv){  
-                shareTimeline();  
-            });  
-            // 分享到微博    
-        }, false);
-        $("#frinds").live("click",function(){
-            shareFriend();
-        })
-        $("#goods").live("click",function(){
-            shareFriend();
-        })
-    })
-})
-
 $(function(){
     function collect_confirm(cla){
         $(cla).append("<div class='am-dialog-mask'></div>"+
