@@ -34,7 +34,6 @@ class GoodsCtl extends Yf_AppController
 
 		$html_header = '<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"><style>*,html,body{margin:0;padding:0;} html {width:100%;overflow:hidden;} img,table{max-width:100%;}</style></head><body>';
 		$html_footer = '</body></html>';
-
 		//商品图文内容
 		foreach ($goods_id_row as $key => $value) {
 			fb($value);
@@ -43,6 +42,7 @@ class GoodsCtl extends Yf_AppController
 			$Product_DetailModel = new Product_DetailModel();
 			$detail_rows     = $Product_DetailModel->getDetails($value);
 			fb($detail_rows);
+
 			if($detail_rows[$value]['detail'])
 			{
 				$goods_rows[$value]['detail']   =  $html_header . $detail_rows[$value]['detail'] . $html_footer;
@@ -146,6 +146,7 @@ class GoodsCtl extends Yf_AppController
 			$status = 250;
 		}
 		fb($good_row);
+		$good_row[0]['detail'] = str_replace('/lib/kindeditor/php/../../..','http://'.$_SERVER['HTTP_HOST'], $good_row[0]['detail']);
 		$this->data->addBody(-140, $good_row, $msg, $status);
 	}
 
