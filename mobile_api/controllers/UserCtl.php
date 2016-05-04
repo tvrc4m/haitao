@@ -273,7 +273,6 @@ class UserCtl extends Yf_AppController
 			$status = 250;
 		}
 
-
 		$this->data->addBody(-140, $data, $msg, $status);
 	}
 
