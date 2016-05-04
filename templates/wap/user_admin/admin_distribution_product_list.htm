@@ -49,6 +49,7 @@
 </section>
 <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 <div class="hj_share_box" id="share_box"></div>
+<div class='collect_box_contentss'></div>
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
@@ -222,6 +223,23 @@ wx.ready(function(){
 })
 </script>
 <{else}>
+<script type="text/javascript">
+function altto(co){
+    $(".collect_box_contentss").show();
+    $(".collect_box_contentss").html(co);
+}
+function wid(){
+    var wid=$(".collect_box_contentss").width()/2;
+    $(".collect_box_contentss").css({"margin-left":-wid+"px","padding":"10px"});
+    setTimeout(function(){
+        $(".collect_box_contentss").hide();
+    },2000)
+}
+$(".price-fenxiang").bind("click",function(){
+    altto('只支持在微信端分享');
+    wid();
+})
+</script>
 <{/if}>
 <script type="text/javascript">
 $(function(){
