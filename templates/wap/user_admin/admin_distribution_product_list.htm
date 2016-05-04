@@ -243,26 +243,6 @@ $(".price-fenxiang").bind("click",function(){
 <{/if}>
 <script type="text/javascript">
 $(function(){
-    function collect_confirm(cla){
-        $(cla).append("<div class='am-dialog-mask'></div>"+
-                "<div class='price-btns-contexts'>"+
-                    "<div class='price-btns-context-tops clearfix'>"+
-                        "<p>确信删除?</P>"+
-                    "</div>"+
-                    "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
-                "</div>")
-        $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".price-btns-contexts").addClass('price-btns-contexts_test');
-        $(".detate-btns-context-bot a:first-child").bind("click",function(){
-            location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
-        })
-        $(".detate-btns-context-bot a:last-child").bind("click",function(){
-            location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
-        })
-    }
-    $(".price-delate").bind("click",function(){
-        collect_confirm(".price-btns");
-    })
     var dlLen=$(".itemSearchResult dl").size();
     if(dlLen<10){
         $(".m_jiazai").hide();
@@ -323,6 +303,26 @@ $(function(){
                 });
             }
         }
+    })
+    function collect_confirm(cla){
+        $(cla).append("<div class='am-dialog-mask'></div>"+
+                "<div class='price-btns-contexts'>"+
+                    "<div class='price-btns-context-tops clearfix'>"+
+                        "<p>确信删除?</P>"+
+                    "</div>"+
+                    "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
+                "</div>")
+        $(".am-dialog-mask").addClass("am-dialog-mask-test");
+        $(".price-btns-contexts").addClass('price-btns-contexts_test');
+        $(".detate-btns-context-bot a:first-child").bind("click",function(){
+            location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
+        })
+        $(".detate-btns-context-bot a:last-child").bind("click",function(){
+            location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
+        })
+    }
+    $(".price-delate").bind("click",function(){
+        collect_confirm(".itemSearchList");
     })
 })
 </script>
