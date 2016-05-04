@@ -141,18 +141,7 @@ $(function(){
                                         </a>
                                     </div>
                                     <div style="margin-left: 40px;float: left;">
-                                        <p style="width: 80px;margin-left: 5px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
-                                            <a class="friend_name" target="_blank" href="<{$config.weburl}>/home.php?uid=<{$slist.fuid}>"<{$slist.funame}></a>
-                                            <em class=""></em>
-                                        </p>
-                                        <{if $slist.buyerpointsimg}>
-                                            <{$slist.funame}> <br>
-                                            <img align="absmiddle" src="<{$config.weburl}>/image/points/<{$slist.buyerpointsimg}>" />
-                                        <{else}>
-                                            <{$slist.funame}>
-                                            <{$slist.buyerpoints}>
-                                        <{/if}>
-                                        <dd class="area"><{$slist.province}><{$slist.city}></dd>
+                                            <a class="friend_name" target="_blank" href="<{$config.weburl}>/home.php?uid=<{$slist.fuid}>"><{$slist.funame}></a>
                                     </div>
                                     <div style="margin-left: 15px;float: left;">
                                         <p style="width: 90px;margin-top: 2px;margin-left: 15px;">
