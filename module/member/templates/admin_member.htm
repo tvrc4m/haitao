@@ -5,7 +5,7 @@ $(function(){
 	$('#form').validate({
 		errorPlacement: function(error, element){
 			element.nextAll('.form-error').append(error);
-		},      
+		},
 		rules : {
 			name:{
 				required:true
@@ -70,7 +70,7 @@ $(function(){
     		<a href="main.php?cg_u_type=2"><{$lang.seller_center}></a> <span>&gt;</span>
         <{/if}>
         <a href="main.php?m=member&s=admin_member"><{$lang.personal_information}></a> <span>&gt;</span>
-        <{if $smarty.get.type=='password'}><{$lang.change_password}><{elseif $smarty.get.type=='email'}>修改邮箱<{elseif $smarty.get.type=='mobile'}>修改手机<{/if}>
+        <{if $smarty.get.type=='password'}><{$lang.change_password}><{elseif $smarty.get.type=='email'}>修改邮箱<{elseif $smarty.get.type=='mobile'}>修改手机<{else}>基本信息<{/if}>
     </div>
 </div>
 <div class="main">
