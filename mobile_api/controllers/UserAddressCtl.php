@@ -27,7 +27,7 @@ class UserAddressCtl extends Yf_AppController
 
 		$Delivery_AddrModel = new Delivery_AddressModel();
 		$data = $Delivery_AddrModel->getAddressList($user_id, $page, $lenght_rows, $isdefault);
-
+		//var_dump($data); die;
 		$arr = array(); //这里不是数组会输出 250
 
 		if (true)
@@ -175,7 +175,6 @@ class UserAddressCtl extends Yf_AppController
 	 */
 	public function setDefaultAddr()
 	{
-
 		$user_id = Perm::$userId;		
 		$addr_id = request_int('id');	// =>  地址id主键
 		$field_name = '`default`';
@@ -185,10 +184,11 @@ class UserAddressCtl extends Yf_AppController
 		$id_rowDefault = $getDefaultModel->getAddressListDefault($user_id, 1, 10, 1);
 
 		$AddressModel 	= new Delivery_Address();
-		$statusData 	= $AddressModel->editAddressSingleField($id_rowDefault[0], $field_name, 0, 1);
+
+		$statusData 	= $AddressModel->editAddressSingleField(!empty($id_rowDefault[0])?$id_rowDefault[0]:0, $field_name, 0, 1);
 
 		$setDefault  = $AddressModel->editAddressSingleField($addr_id, $field_name, 1, 0);
-
+        
 		$arr = array();
 
 		if ($setDefault)
