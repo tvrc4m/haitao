@@ -47,13 +47,13 @@
 </div>
     <{/foreach}>
 </section>
-
 <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
+<div class="hj_share_box" id="share_box"></div>
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
 var cnf = {
-    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    // debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
     appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
     timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
     nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
@@ -62,87 +62,164 @@ var cnf = {
 };
 wx.config(cnf);
 wx.ready(function(){
-        weixinfen("<{$com.shop_title}>","<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>","location.href","<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>");
-        function weixinfen(shopTitles,shopDescs,shopLinks,shopSrcs){
-            wx.onMenuShareTimeline({
-                title: shopTitles, // 分享标题
-                link: shopLinks, // 分享链接
-                imgUrl: shopSrcs, // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    
-                    var url = "<{$config.weburl}>/ajax_back_end.php";
-                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                    })
-                    
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
-
-            wx.onMenuShareAppMessage({
-                title:shopTitles, // 分享标题
-                desc: shopDescs, // 分享描述
-                link: shopLinks, // 分享链接
-                imgUrl: shopSrcs, // 分享图标
-                type: '', // 分享类型,music、video或link，不填默认为link
-                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    /*
-                    var url = "<{$config.weburl}>/ajax_back_end.php";
-                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                    })
-                    */
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
+    wx.onMenuShareTimeline({
+        title: "<{$com.shop_title}>", // 分享标题
+        link: location.href, // 分享链接
+        imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
             })
-            wx.onMenuShareQQ({
-                title: shopTitles, // 分享标题
-                desc: shopDescs, // 分享描述
-                link: shopLinks, // 分享链接
-                imgUrl: shopSrcs, // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    /*
-                    var url = "<{$config.weburl}>/ajax_back_end.php";
-                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                    })
-                    */
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
-
-            wx.onMenuShareWeibo({
-                title: shopTitles, // 分享标题
-                desc: shopDescs, // 分享描述
-                link: shopLinks, // 分享链接
-                imgUrl: shopSrcs, // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    /*
-                    var url = "<{$config.weburl}>/ajax_back_end.php";
-                    $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-                    })
-                    */
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
         }
-        $(".price-fenxiang").bind("click",function(){{
-            var shopTitle=$(this).parent().parent().parent().find(".shop_name").html();
-            var shopSrc=$(this).parent().parent().parent().find(".shop_src").attr("src");
-            var shopLink=$(this).parent().parent().parent().find(".shop_name").attr("href");
-            var shopDesc=$(this).parent().parent().parent().find(".shop_name").html();
-            weixinfen("shopTitle","shopDesc","shopLink","shopSrc");
+    });
+
+    wx.onMenuShareAppMessage({
+        title:"<{$com.shop_title}>", // 分享标题
+        desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
+        link: location.href, // 分享链接
+        imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+            })
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    })
+
+    wx.onMenuShareQQ({
+        title: '<{$com.shop_title}>', // 分享标题
+        desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+        link: location.href, // 分享链接
+        imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+            })
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+
+    wx.onMenuShareWeibo({
+        title: '<{$com.shop_title}>', // 分享标题
+        desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+        link: location.href, // 分享链接
+        imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+        success: function () {
+            // 用户确认分享后执行的回调函数
+            /*
+            var url = "<{$config.weburl}>/ajax_back_end.php";
+            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+            })
+            */
+        },
+        cancel: function () {
+            // 用户取消分享后执行的回调函数
+        }
+    });
+    $(".price-fenxiang").bind("click",function(){
+        $("#share_box").show();
+        setTimeout(function(){
+            $("#share_box").animate({opacity: "1"}, 800)
+        }, 200);
+        var shopTitles=$(this).parent().parent().parent().find(".shop_name").html();
+        var shopSrcs=$(this).parent().parent().parent().find(".shop_src").attr("src");
+        var shopLinks=$(this).parent().parent().parent().find(".shop_name").attr("href");
+        var shopDescs=$(this).parent().parent().parent().find(".shop_name").html();
+        wx.onMenuShareTimeline({
+            title: shopTitles, // 分享标题
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title:shopTitles, // 分享标题
+            desc: shopDescs, // 分享描述
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
         })
+        wx.onMenuShareQQ({
+            title: shopTitles, // 分享标题
+            desc: shopDescs, // 分享描述
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: shopTitles, // 分享标题
+            desc: shopDescs, // 分享描述
+            link: shopLinks, // 分享链接
+            imgUrl: shopSrcs, // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    })
+    $("#share_box").bind("click", function() {
+        $(this).animate({opacity: "0"}, 800);
+        setTimeout(function() {
+            $("#share_box").hide()
+        }, 800)
+    })
 })
 </script>
 <{else}>
