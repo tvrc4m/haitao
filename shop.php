@@ -152,15 +152,14 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 
 			//-----------------------------------------
 
-			$sql="select name as pname,price,id,pic from ".PRODUCT." where shop_rec=1 and member_id='$_GET[uid]' and is_shelves=1 and status=1 order by id limit 0,8";
+			$sql="select name as pname,price,id,pic,market_price from ".PRODUCT." where shop_rec=1 and member_id='$_GET[uid]' and is_shelves=1 and status=1 order by id limit 0,8";
 			$db->query($sql);
 			$re=$db->getRows();
 			$tpl->assign("rec_pro",$re);
-			$sql="select name as pname,price,id,pic from ".PRODUCT." where member_id = '$_GET[uid]' and is_shelves=1 and status>0 order by id desc limit 0,12";
+			$sql="select name as pname,price,id,pic,market_price from ".PRODUCT." where member_id = '$_GET[uid]' and is_shelves=1 and status>0 order by id desc limit 0,12";
 			$db->query($sql);
 			$de=$db->getRows();
 			$tpl->assign("pro",$de);
-
 			//
 			$PluginManager = Yf_Plugin_Manager::getInstance();
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
