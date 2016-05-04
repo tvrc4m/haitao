@@ -52,7 +52,12 @@ class Delivery_AddressModel extends Delivery_Address
 
 		$data = array();
 		$data['page'] = $page;
-		$data['total'] = ceil_r($total / $rows);  //total page
+		if($total == 0 || $rows == 0){
+			$data['total'] = 0;
+		}else {
+			$data['total'] = ceil_r($total / $rows);  //total page
+		}
+
 		$data['totalsize'] = $data['total'];
 		$data['records'] = count($data_rows);
 		$data['items'] = array_values($data_rows);
