@@ -36,7 +36,7 @@
 				</span>
 			</p>
 			<div class="price-btns">
-				<span class="price-delate"><a href="javascript:void(0);">删除</a></span>
+				<span class="price-delate"><a href="?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list" onClick="return confirm('<{$lang.sure_del}>');">删除</a></span>
 				<{if $list.is_dist}><span class="price-fenxiang price">分享</span><{/if}>
 			</div>
         </dd>
@@ -304,25 +304,25 @@ $(function(){
             }
         }
     })
-    function collect_confirm(cla){
-        $(cla).append("<div class='am-dialog-mask'></div>"+
-                "<div class='price-btns-contexts'>"+
-                    "<div class='price-btns-context-tops clearfix'>"+
-                        "<p>确信删除?</P>"+
-                    "</div>"+
-                    "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
-                "</div>")
-        $(".am-dialog-mask").addClass("am-dialog-mask-test");
-        $(".price-btns-contexts").addClass('price-btns-contexts_test');
-        $(".detate-btns-context-bot a:first-child").bind("click",function(){
-            location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
-        })
-        $(".detate-btns-context-bot a:last-child").bind("click",function(){
-            location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
-        })
-    }
-    $(".price-delate").bind("click",function(){
-        collect_confirm(".itemSearchList");
-    })
+    // function collect_confirm(cla){
+    //     $(cla).append("<div class='am-dialog-mask'></div>"+
+    //             "<div class='price-btns-contexts'>"+
+    //                 "<div class='price-btns-context-tops clearfix'>"+
+    //                     "<p>确信删除?</P>"+
+    //                 "</div>"+
+    //                 "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
+    //             "</div>")
+    //     $(".am-dialog-mask").addClass("am-dialog-mask-test");
+    //     $(".price-btns-contexts").addClass('price-btns-contexts_test');
+    //     $(".detate-btns-context-bot a:first-child").bind("click",function(){
+    //         location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
+    //     })
+    //     $(".detate-btns-context-bot a:last-child").bind("click",function(){
+    //         location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
+    //     })
+    // }
+    // $(".price-delate").bind("click",function(){
+    //     collect_confirm(".itemSearchList");
+    // })
 })
 </script>
