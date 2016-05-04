@@ -45,23 +45,12 @@ $(function(){
                 <li class="normal"><a href="main.php?m=sns&s=admin_share_product">收藏商品</a></li>
                 <li class="active"><a href="main.php?m=sns&s=admin_share_shop">收藏店铺</a></li>
                 <li class="normal"><a href="main.php?m=product&s=admin_footprint">我的足迹</a></li>
-                <!--<div class="search">
-                    <div class="i-search ld">
-                    <form method="get">
-                        <input type="hidden" name="m" value="sns" />
-                        <input type="hidden" name="s" value="admin_share_shop" />
-                        <input type="hidden" name="act" value="search" />
-                        <input name="key" class="text" type="text" value="<{$smarty.get.key}>" />
-                        <input class="search_button" type="submit" value="搜索" />
-                    </form>
-                    </div>
-                </div>-->
             </ul>
         </div>
         <div class="delete">
             <input type="checkbox" class="checkall" id="checkall"></td>
             <label for="checkall" class="btn2">全选</label>
-            <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
+            <a id="del" confirm="您确定要删除吗?" class="btn2" style="color:#ff5c5c;" href="javascript:void(0);">删除</a>
             <div class="pagination"><{$re.page}></div>
         </div>
         <table class="table-list-style">
@@ -69,20 +58,20 @@ $(function(){
             <tr>
                 <th width="30"></th>
                 <th width="70"></th>
-                <th class="tl">店铺</th>
-                <th width="150">收藏时间</th>
-                <th width="90">收藏人气</th>
-                <th width="90" class="br">操作</th>
+                <th class="tl" style="padding-left:90px;text-align:left;">店铺</th>
+                <th width="180">收藏时间</th>
+                <th width="180">收藏人气</th>
+                <th width="180" class="br">操作</th>
             </tr>
             </thead>
             <tbody>
             <{foreach item=slist key=num from=$re.list}>
             <tr>
             	<td><input type="checkbox" value="<{$slist.id}>" class="checkitem" name="chk[]"></td>
-                <td><div class="pic_small"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><img height="50" width="50" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" /></a></div></td>
-                <td class="tl"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a><p><{$slist.area}></p><p><{$slist.user}></p></td>
-                <td><{$slist.addtime|date_format}></td>
-                <td><{$slist.shop_collect}></td>
+                <td><div class="pic_small"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><img height="60" width="60" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" /></a></div></td>
+                <td class="tl" style="text-align:left;padding-left:10px;"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a><p><{$slist.area}></p><p><{$slist.user}></p></td>
+                <td class="tl"><{$slist.addtime|date_format}></td>
+                <td class="tl" style="color:#ff5c5c;"><{$slist.shop_collect}></td>
                 <td class="br">
                 <p><a href="main.php?m=sns&s=admin_share_shop&type=del&id=<{$slist.id}>">删除</a></p>
                 </td>
