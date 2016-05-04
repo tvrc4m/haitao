@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 13:11:08
+<?php /* Smarty version 2.6.20, created on 2016-05-04 14:46:42
          compiled from setpass.htm */ ?>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
@@ -111,7 +111,7 @@
                     $("#oldpass").focus();
                     flag = false;
                 }else{
-                    $(".form-error").html("");
+                    // $(".form-error").html("");
                 }
             })
         }

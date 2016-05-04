@@ -211,7 +211,7 @@ $(function(){
                                 "</td>"+
                                 "<{if !$smarty.get.mold}><td class='al'><{$list.name.real_name}></td><{/if}>"+
                                 "<td class='price<{if $list.minus=='T'}> minus<{/if}>'><{if $list.minus!='T'}>+<{/if}>"+msg.data[i].price+"</td>"+
-                                "<td <{if $list.is_refund=='true'}>rowspan="2"<{/if}>>"+
+                                "<td <{if $list.is_refund=='true'}>rowspan='2'<{/if}>>"+
                                 "<{if $list.statu==1}><{if $list.mold==8}>进行中<{else}>等待付款<{/if}>"+
                                 "<{elseif $list.statu==2}>"+
                                     "<{if $list.buyer_email==''}>"+
@@ -237,7 +237,7 @@ $(function(){
                                 "<{else}>已取消"+
                                 "<{/if}>"+
                                 "<br>"+
-                                "<p <{if $list.is_refund=='true'}>rowspan="2"<{/if}>>"+
+                                "<p <{if $list.is_refund=='true'}>rowspan='2'<{/if}>>"+
                                 "<{if $list.statu==1&&$list.seller_email&&($list.mold==3||$list.mold==0)}>"+
                                 "<a href='<{$config.weburl}>?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
                                "<{else}>"+
