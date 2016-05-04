@@ -139,7 +139,7 @@ class cart
 		".PRODUCT." b on a.product_id = b.id left join 
 		".SETMEAL." c on a.spec_id = c.id 
 		where a.seller_id = $seller_id and a.buyer_id = $buid $str order by b.is_shelves desc, b.status desc, b.stock desc, c.stock desc,a.create_time desc";
-		$this->db->query($sql);	 	
+		$this->db->query($sql);
 		$re = $this->db->getRows();	
 		$invalid_count = "0";
 		$time=time();
