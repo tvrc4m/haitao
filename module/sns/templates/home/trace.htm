@@ -12,7 +12,6 @@
                     <!-- <span><{$member.area}></span> -->
                     <span><a href="<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>">逛TA商铺</a></span>
                 </span>
-                
             </div>
             <div class="user-avatar"><img width="160" height="160" src="<{if $member.logo}><{$member.logo}><{else}>image/default/avatar.png<{/if}>"></div>
         </div>
@@ -116,8 +115,8 @@
                     <span class="sns-time"><{$list.create_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
                     <span class="sns-action">
                         <span>
-                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_forward" href="javascript:void(0);">转发</a>
-                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_comment" href="javascript:void(0);">评论</a>
+                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_forward" href="javascript:void(0);" class="sns-action-forward">转发</a>
+                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_comment" href="javascript:void(0);" class="sns-action-comment">评论</a>
                         </span>
                     </span>
                 </div>
@@ -128,25 +127,25 @@
 </div>
 <script type="text/javascript" src="<{$config.weburl}>/script/dialog/dialog.js" id="dialog_js"></script>
 <script>
-$("[genre='sns_forward']").live('click',function(){
+$("[genre='sns_forward']").on('click',function(){
 	var data = $(this).attr('data-param');
 	eval("data = "+data);
 	ajax_form("forward_form", '转发', '<{$config.weburl}>/main.php?m=sns&s=sns&op=forward&bid='+data.bid, 500);
 	return false;
 });
-$("[genre='sns_comment']").live('click',function(){
+$("[genre='sns_comment']").on('click',function(){
 	var data = $(this).attr('data-param');
 	eval("data = "+data);
 	ajax_form("comment_form", '评论', '<{$config.weburl}>/main.php?m=sns&s=sns&op=comment&bid='+data.bid, 500);
 	return false;
 });
-$('.small').live('click',function(){
+$('.small').on('click',function(){
 	$(this).addClass('large').removeClass('small');	
 	var url=$(this).attr("src")
 	url = url.substr(0,url.lastIndexOf('_'));
 	$(this).attr("src",url);
 });
-$('.large').live('click',function(){
+$('.large').on('click',function(){
 	$(this).addClass('small').removeClass('large');	
 	var url=$(this).attr("src")
 	$(this).attr("src",url+"_120X120.jpg");
