@@ -1,8 +1,8 @@
 function do_login()
 {
-	if(document.getElementById('mobile').value.length < 1)
+	if(document.getElementById('user').value.length < 1)
 	{
-		document.getElementById('mobile').focus();
+		document.getElementById('user').focus();
 		return false;
 	}
 	if(document.getElementById('password').value.length < 1)
@@ -10,11 +10,24 @@ function do_login()
 		document.getElementById('password').focus();
 		return false;
 	}
-	if(document.getElementById('phcode').value.length < 1)
-	{
-		document.getElementById('phcode').focus();
-		return false;
-	}
+}
+function do_register()
+{
+    if(document.getElementById('mobile').value.length < 1)
+    {
+        document.getElementById('mobile').focus();
+        return false;
+    }
+    if(document.getElementById('password').value.length < 1)
+    {
+        document.getElementById('password').focus();
+        return false;
+    }
+    if(document.getElementById('phcode').value.length < 1)
+    {
+        document.getElementById('phcode').focus();
+        return false;
+    }
 }
 /*focus边框变色*/
 $(function(){
@@ -36,7 +49,9 @@ $(document).ready(function(){
         focusblurid.blur(function(){
             var thisval = $(this).val();
             var tip = $(this).parentsUntil("form").find("p");
-            var flag; 
+            var flag =true; 
+            if(focusid == "#user" && thisval =="")
+                flag = false;
             if(focusid == "#mobile")
                 flag = phnumber.test(thisval);
             if(focusid == "#smsvode")
@@ -44,6 +59,9 @@ $(document).ready(function(){
             if(focusid == "#password")
                 flag = password.test(thisval);
             if(!flag){
+                if(focusid == "#user"){
+                     tip.find(".tipcon").text("请输入用户名");
+                }
                 if(focusid == "#mobile"){
                     tip.find(".tipcon").text("请输入正确的手机号码，且为11位纯数字格式");
                 }
@@ -92,4 +110,5 @@ $(document).ready(function(){
     $.focusblur("#mobile");
     $.focusblur("#smsvode");  
     $.focusblur("#password");
+    $.focusblur("#user");
 });
