@@ -52,7 +52,7 @@ span.p-price strong{font-size:20px;}
 .d_select{float: right;margin-top: 0.9rem;font-size: 0.7rem;color: #535353; border: none;-webkit-appearance: none;padding-right: 15px;background: url(../../../image/wap/wap_haitao_icon71.png) no-repeat right center;}
 .replenish_buchong{color: #535353;margin-right: 5px;}
 .v_order_juan{float: left;}
-.fr-gong{margin-right: 20px;}
+.fr-gong{margin-right: 10px;}
 .v_order{display: block;clear: both;overflow: hidden;;height: 2.5rem;line-height: 2.5rem;font-size: 0.7rem;width: 100%;padding: 0px 10px;border-bottom: 1px dashed #ccc;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .am-dialog-mask{position: fixed;top: 0;left: 0;z-index: 2000;width: 100%;height: 100%;background: rgba(0,0,0,.5);display: none;}
 .am-dialog-mask-test {display: block;}
