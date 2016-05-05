@@ -2,9 +2,9 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.validation.min.js"></script>
 <header>
     <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span>提交订单</span></section>
-        <section class="nav-e"></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/product_order.css" rel="stylesheet" type="text/css" />
@@ -273,15 +273,11 @@ $(function(){
 <script type="text/javascript">
     location.href="main.php?m=member&s=admin_orderadder&t=pro"
 </script>
-<!-- <div class="noaddr">
-<div></div>
-您还没有设置收货地址<br><a href="main.php?m=member&s=admin_orderadder&t=pro">请点击这里设置！</a> 
-</div> -->
 <{/if}>
 </section>
 <{/if}>
 <script type="text/javascript">
-    $(function(){
-        $("footer").css({"margin-bottom":"50px"})
-    })
+$(function(){
+    $("footer").css({"margin-bottom":"50px"})
+})
 </script>
