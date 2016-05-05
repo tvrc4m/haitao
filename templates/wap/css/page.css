@@ -245,3 +245,17 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .error404 div p{margin-top: 15px;font-size: 14px;}
 .error404 div p:last-of-type{margin-top: 5px;}
 .error404 div p a{color: #ff5c5c;}
+.shop_over {
+    width: 4rem;
+    height: 4rem;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -2rem;
+    line-height: 4rem;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+}

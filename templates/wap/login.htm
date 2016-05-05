@@ -19,11 +19,11 @@ var norandcode='<{$lang.nocode}>';
 <form id="login" name="login" action="login.php" method="post">
     <ul>
         <li class="user_names user_rela">
-            <input name="user" type="text" id="user" placeholder="请输入手机号/用户名" value=""/>
+            <input class="texts" name="user" type="text" id="user" placeholder="请输入手机号/用户名" value=""/>
             <div class="inp_close"><i></i></div>
         </li>
         <li class="user_names user_rela">
-            <input type="password" name="password" id="password" placeholder="请输入密码"/>
+            <input class="texts" type="password" name="password" id="password" placeholder="请输入密码"/>
             <div class="inp_close inp_close_t"><i></i></div>
         </li>
         <li class="spe_del">
@@ -72,25 +72,33 @@ var norandcode='<{$lang.nocode}>';
 </form>
 </section>
 <script type="text/javascript">
-    // $(".user_rela input").live("focus",function(){
-    //     $(this).parent().find(".inp_close").show()
-    // })
-    // $(".user_rela input").live("blur",function(){
-    //     $(this).parent().find(".inp_close").hide()
-    // })
-    //  $(".inp_close").live("click",function(e){
-    //     $(this).show()
-    //     var evt = e ? e : window.event; 
-    //     if (evt.stopPropagation) { 
-    //     evt.stopPropagation(); 
-    //     } 
-    //     else { 
-    //     evt.cancelBubble = true; 
-    //     } 
-    //     var userName=$("this").prev();
-    //     if(userName.val() != ""){
-    //         userName.val("");
-    //     }
-    // })
+$(function(){
+    $("form").find(".texts").each(function(){
+        $(this).bind('input propertychange', function(){
+            var val=$(this).val();
+            if(val !=""){
+                $(this).parent().find(".inp_close").addClass("inp_up");
+            }
+            else{
+                 $(this).parent().find(".inp_close").removeClass("inp_up");
+            }           
+        }); 
+        $(this).bind("focus",function(){
+            var val=$(this).val();
+            if(val !=""){
+                $(this).parent().find(".inp_close").addClass("inp_up");
+            }else{
+                $(this).parent().find(".inp_close").removeClass("inp_up");
+            }
+        });
+        $(this).bind("blur",function(){
+            $(this).parent().find(".inp_close").removeClass("inp_up");
+        });  
+    });
+    $(".inp_close").bind('click', function(){  
+        $(this).prev().val("");
+        $(this).removeClass("inp_up");
+    });  
+});
 </script>
 <{include file="footer.htm"}>

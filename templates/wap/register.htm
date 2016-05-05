@@ -63,16 +63,18 @@
 <{else}>
 <form action="register.php" method="post">
  <ul>
-    <li>
-        <input  class="text" name="mobile" tabindex="2" maxlength="11" autocomplete="off" type="text" id="mobile" placeholder="请输入手机号"/>
-       <p class="registerNotice1"><span class="tipcon"></span></p>
+    <li class="user_names">
+        <input  class="text texts" name="mobile" tabindex="2" maxlength="11" autocomplete="off" type="text" id="mobile" placeholder="请输入手机号"/>
+        <div class="inp_close"><i></i></div>
     </li>
+    <p class="registerNotice1"><span class="tipcon"></span></p>
     <li class="clearfix">
         <input  class="text" name="smsvode" tabindex="3" maxlength="6" autocomplete="off" type="text" id="yzm" placeholder="请输入验证码"/>
         <input class="gain_ma" id="gain_ma" type="button" value="获取验证码" />
     </li>
-    <li>
-        <input type="password" maxlength="10" tabindex="4" autocomplete="off" name="password" id="password" placeholder="请输入密码"/>
+    <li class="user_names">
+        <input class="texts" type="password" maxlength="10" tabindex="4" autocomplete="off" name="password" id="password" placeholder="请输入密码"/>
+        <div class="inp_close inp_close_t"><i></i></div>
     </li>
     <li class="spe_del">
         <input type="checkbox" name="agreement" value="yes" checked>
@@ -91,62 +93,83 @@
 <{/if}>
 
 <{include file="footer.htm"}>
-<!--<script type=text/javascript>
-    $(function(){
-        <{if $config.user_reg eq 3}>
-        showcode("mobile");
-        <{else}>
-        <{/if}>
-        });
-</script>-->
-
-    <script type="text/javascript">
-        var ml = Math.floor(($(window).width()-1212)/2);
-        var ml1 = Math.floor(($(window).width()-1920)/2);
-        $(".mc").css("margin-left",ml);
-        $(".wl>img").css("margin-left",ml1);
-        var num = 60;
-        $("#gain_ma").click(function(){
-            var mob = $('#mobile').val();
-            var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
-            if(mob == ""){
-                $("#gain_ma").parent().parent().find("p .tipcon").text("请输入手机号");
-                $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
+<script type="text/javascript">
+$(function(){
+    $("form").find(".texts").each(function(){
+        $(this).bind('input propertychange', function(){
+            var val=$(this).val();
+            if(val !=""){
+                $(this).parent().find(".inp_close").addClass("inp_up");
             }
-            if(str.test(mob)) {
-                $.ajax({
-                    url: 'register.php',
-                    type: 'post',
-                    data: {m_send: 'm_send', mobile: mob},
-                    dataType: 'json',
-                    success: function(datainfo){
-                        if(datainfo.status_code!=200) {
-                            $("#gain_ma").parent().parent().find("p .tipcon").text(datainfo.message);
-                            $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
-                        }else{
-                            num = datainfo.data ? datainfo.data : num;
-                            $("#gain_ma").attr("disabled","true").css("background-color","#ccc");
-                            var interval = window.setInterval(function(){
-                                num = num - 1;
-                                $("#gain_ma").val(num+ "秒后重新发送");
-                                if (num < 1) {
-                                    $("#gain_ma").attr("disabled",false).css("background-color","#ff5c5d");
-                                    clearInterval(interval);
-                                    $("#gain_ma").val("发送短信验证码");
-                                    num = 60;
-                                };
-                            },1000);
-                            $("#gain_ma").parent().parent().find("p .tipcon").text("短信发送成功，请注意查收！");
-                            $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
-                        }
+            else{
+                 $(this).parent().find(".inp_close").removeClass("inp_up");
+            }           
+        }); 
+        $(this).bind("focus",function(){
+            var val=$(this).val();
+            if(val !=""){
+                $(this).parent().find(".inp_close").addClass("inp_up");
+            }else{
+                $(this).parent().find(".inp_close").removeClass("inp_up");
+            }
+        });
+        $(this).bind("blur",function(){
+            $(this).parent().find(".inp_close").removeClass("inp_up");
+        });  
+    });
+    $(".inp_close").bind('click', function(){  
+        $(this).prev().val("");
+        $(this).removeClass("inp_up");
+    });  
+});
+</script>
+<script type="text/javascript">
+    var ml = Math.floor(($(window).width()-1212)/2);
+    var ml1 = Math.floor(($(window).width()-1920)/2);
+    $(".mc").css("margin-left",ml);
+    $(".wl>img").css("margin-left",ml1);
+    var num = 60;
+    $("#gain_ma").click(function(){
+        var mob = $('#mobile').val();
+        var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
+        if(mob == ""){
+            $("#gain_ma").parent().parent().find("p .tipcon").text("请输入手机号");
+            $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
+        }
+        if(str.test(mob)) {
+            $.ajax({
+                url: 'register.php',
+                type: 'post',
+                data: {m_send: 'm_send', mobile: mob},
+                dataType: 'json',
+                success: function(datainfo){
+                    if(datainfo.status_code!=200) {
+                        $("#gain_ma").parent().parent().find("p .tipcon").text(datainfo.message);
+                        $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
+                    }else{
+                        num = datainfo.data ? datainfo.data : num;
+                        $("#gain_ma").attr("disabled","true").css("background-color","#ccc");
+                        var interval = window.setInterval(function(){
+                            num = num - 1;
+                            $("#gain_ma").val(num+ "秒后重新发送");
+                            if (num < 1) {
+                                $("#gain_ma").attr("disabled",false).css("background-color","#ff5c5d");
+                                clearInterval(interval);
+                                $("#gain_ma").val("发送短信验证码");
+                                num = 60;
+                            };
+                        },1000);
+                        $("#gain_ma").parent().parent().find("p .tipcon").text("短信发送成功，请注意查收！");
+                        $("#gain_ma").parent().parent().find("p").css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
                     }
-                });
-            }
-        });
-        $(".inp_close").on("click",function(){
-            var userName=$("#user");
-            if(userName.val() != ""){
-                userName.val("");
-            }
-        })
-    </script>
+                }
+            });
+        }
+    });
+    $(".inp_close").on("click",function(){
+        var userName=$("#user");
+        if(userName.val() != ""){
+            userName.val("");
+        }
+    })
+</script>
