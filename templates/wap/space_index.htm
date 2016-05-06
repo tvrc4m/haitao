@@ -5,10 +5,10 @@
     function altto(co){
         $(".collect_box_content").show();
         $(".collect_box_content").html(co);
-    }
-    function wid(){
         var wid=$(".collect_box_content").width()/2;
         $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px","top":"30%"});
+    }
+    function wid(){
         setTimeout(function(){
             $(".collect_box_content").hide();
         },2000)
@@ -63,11 +63,11 @@
                 wid()
             }
             else if (originalRequest>0){
-                altto('该内容已经在你的分销中心，请勿重复添加！');
+                altto('该内容已经在你的分销中心<br>请勿重复添加！');
                 wid()
             }
             else{
-                altto('参数传递错误，无法完成操作!');
+                altto('参数传递错误<br>无法完成操作!');
                 wid()
             }
         }
@@ -81,7 +81,7 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
-   <div class='collect_box_content'></div> 
+<div class='collect_box_content'></div> 
 <section class="clearfix" style="width:100%;">
     <div class="shopinfo-banner" style="background:url(<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>) no-repeat;background-size: cover;">
         <div class="ulev-app2" id="company">
