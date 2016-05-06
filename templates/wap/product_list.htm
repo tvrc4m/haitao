@@ -181,7 +181,7 @@ $(function(){
                                                     "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
                                                 "<{if $smarty.get.is_dist eq 1}>"+
-                                                    "<a href='javascript:distribute_goods('"+msg.data[i].product_id+"');' class='shopli_bottom_zhuanxiang'>加入分销</a>"+
+                                                    "<a href='javascript:distribute_goods("+msg.data[i].product_id+");' class='shopli_bottom_zhuanxiang'>加入分销</a>"+
                                                 "<{else}>"+
                                                     "<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
                                                 "<{/if}>"+
