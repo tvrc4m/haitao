@@ -90,9 +90,7 @@
     </div>
     <div class="shopinfo-banner-content shopinfo-banner-content2">
         <div class="header_topleft">
-            <a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1">
-                <img src="<{if $com.plogo}><{$com.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" >
-            </a>
+            <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>" id="clogo">
         </div>       
         <div class="typ">信誉级：<img alt="<{$com.sellerpoints}>" title="<{$com.sellerpoints}>" align="absmiddle" src="<{$config.weburl}>/image/points/<{$com.sellerpointsimg}>"></div>
         <div class="typ">好评率：<span><{$list.favorablerate|number_format:2}>%</span></div>
