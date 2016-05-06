@@ -5,7 +5,7 @@
     <div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span>商品详情</span></section>
-        <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
+        <section class="nav-e"><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a></section>
     </div>
 </header>
 <div class='collect_box_content'></div>
@@ -368,11 +368,11 @@ function check_nums()
                 wid()
             }
             else if (originalRequest>0){
-                altto('该内容已经在你的分销中心请勿重复添加！');
+                altto('该内容已经在你的分销中心<br>请勿重复添加！');
                 wid()
             }  
             else{
-                altto('参数传递错误,无法完成操作!');
+                altto('参数传递错误<br>无法完成操作!');
                 wid()
             }
         }
