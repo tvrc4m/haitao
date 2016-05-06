@@ -22,7 +22,6 @@
          <form id="form" method="post" action="">
     <input type="hidden" id="act" name="act" />
     <ul class="cart-con">
-        <div class="bottom" style="border-bottom: none;"></div>
         <{foreach item=list from=$cart.cart}>
             <li class="cart-checkbox-first1">
                 <div>
@@ -31,7 +30,7 @@
                 </div>
             </li>
             <{foreach item=pro key=n from=$list.prolist}>
-            <li class="clearfix cart-checkbox-first2">
+            <li class="clearfix cart-checkbox-first2" data-uid="<{$list.seller_id}>">
                 <div class="first check-left">
                     <label class="cart-checkbox"><input type="checkbox" data-value="<{$list.seller_id}>" name="product_id[]" value="<{$pro.id}>"><em></em></label>
                 </div>
@@ -67,7 +66,9 @@
                 </div>
             </li>
             <{/foreach}>
-            <div  class="bottom"></div>
+            <div class="bottom">
+               <!--  小计:&nbsp;&nbsp;<span class="p-name" id="price" ><{$config.money}><strong class="price_he"></strong></span> -->
+            </div>
         <{/foreach}>
     </ul>   
     <div class="toolbar fn-clear">
@@ -83,11 +84,12 @@
         </div>
     </div>
     </form>
-    <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     // 页面加载时全选总价钱设定
     $(function(){
         $(".cart-checkbox").addClass("cart-checkbox-checked");
+        $(".cart-checkbox-first2").addClass("checked");
         $(".cart-checkbox").find("input").attr({"checked":"checked"});
         var count = 0;
         $(".cart-checkbox").find("input[name='product_id[]']:checked").each(function(){
@@ -98,6 +100,13 @@
             count = count + price;
             $(".subtotal").html(count.toFixed(2));
         });
+        // $(".cart-con li.cart-checkbox-first2.checked").each(function(index){
+        //     var counts = 0;
+        //     $(this).find("#price")
+        //     var price_money= Number($(this).find("#price").html()); 
+        //     var counts=counts+price_money     
+        //     console.log(counts.toFixed(2));
+        // })
     })
     $(".operations a").bind("click",function(){
         $("#act").val($(this).attr("class"));
