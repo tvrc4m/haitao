@@ -54,31 +54,31 @@
       </form>
     </div>
     <{else}>
-    <table class="table-list-style">
+    <table class="table-list-style" style="border: 1px solid #ccc;">
       <thead>
         <tr>
           <th width="60">排序</th>
           <th width="10"></th>
-          <th class="tl" width="200">标题</th>
-          <th class="tl">链接</th>
-          <th width="70">状态</th>
-          <th width="90">操作</th>
+          <th width="200">标题</th>
+          <th>链接</th>
+          <th width="160">状态</th>
+          <th width="160">操作</th>
         </tr>
       </thead>
       <tbody>
       <{foreach item=list key=num from=$link}>
       <tr>
-        <td><{$list.displayorder}></td>
+        <td style="border-right: 1px solid #ccc"><{$list.displayorder}></td>
         <td></td>
-        <td class="tl"><a title="<{$list.desc}>" href="<{$list.url}>" target="_blank"><{$list.name}></a></td>
-        <td class="tl"><{$list.url}></td>
-        <td><{if $list.status==1}>已审核<{else}>未审核<{/if}></td>
-        <td><p><a href="main.php?m=shop&s=admin_link&type=edit&id=<{$list.id}>">编辑</a></p>
-          <p><a href="main.php?m=shop&s=admin_link&type=del&id=<{$list.id}>">删除</a></p></td>
+        <td style="border-right: 1px solid #ccc"><a title="<{$list.desc}>" href="<{$list.url}>" target="_blank"><{$list.name}></a></td>
+        <td style="border-right: 1px solid #ccc"><{$list.url}></td>
+        <td style="border-right: 1px solid #ccc"><{if $list.status==1}>已审核<{else}>未审核<{/if}></td>
+        <td><p><a href="main.php?m=shop&s=admin_link&type=edit&id=<{$list.id}>">编辑</a>&nbsp/
+          <a href="main.php?m=shop&s=admin_link&type=del&id=<{$list.id}>">删除</a></p></td>
       </tr>
       <{foreachelse}>
       <tr>
-        <td colspan="20" class="norecord"><i></i><span>暂无符合条件的数据记录</span></td>
+        <td colspan="6" class="norecord"><i></i><span>暂无符合条件的数据记录</span></td>
       </tr>
       <{/foreach}>
         </tbody>

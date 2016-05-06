@@ -22,7 +22,7 @@
         </div>
         
         <div class="form-style">
-            <div class="flexslider">
+            <div class="flexslider" style="margin-left: 0;">
                 <ul class="slides">
                 	<{if $re.slide.0}>
                 	<{foreach item=list key=num from=$re.slide}>
@@ -58,7 +58,7 @@
                     </tr>
                     <tr>
                     	<td>
-                         <a class="upload-button" href="javascript:uploadfile('Style images','img<{$smarty.section.name.index}>',1140,460,'shop')">图片上传</a> 
+                         <a class="upload-button" style="background-color: #ffc97d;" href="javascript:uploadfile('Style images','img<{$smarty.section.name.index}>',1140,460,'shop')">图片上传</a> 
                          <{if $re.slide.$img}><a href="javascript:del(<{$smarty.section.name.index}>);">删除</a><{/if}>
                         </td>
                     </tr>
@@ -66,14 +66,14 @@
                 <{/section}>
                 <div class="clear"></div>
                 </div>
-                <div class="notes">
+                <div class="notes" style="margin-left: 0;width:773px;">
                     <p>最多可上传5张幻灯片图片。</p>
                     <p>支持jpg、jpeg、gif、png格式上传，建议图片宽度1140px、高度在300px到500px之间、大小1.00M以内的图片。提交2~5张图片可以进行幻灯片播放，一张图片没有幻灯片播放效果。</p>
                     <p>操作完成以后，按“提交”按钮，可以在当前页面进行幻灯片展示。</p>
-                    <p>跳转链接必须带有<b style="color:red;">“http://”</b></p>
+                    <p>跳转链接必须带有<b style="color:#ff5c5c;">“http://”</b></p>
                 </div>
-                <dl class="foot" style="margin-left:65px;">
-                    <dd><input type="submit" value="提交" class="submit"></dd>
+                <dl class="foot">
+                    <dd style="padding-left: 0;"><input type="submit" value="提交" class="submit"></dd>
                 </dl>
         	</form>
         </div>    
