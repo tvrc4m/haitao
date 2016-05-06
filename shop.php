@@ -156,8 +156,8 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$db->query($sql);
 			$re=$db->getRows();
 			$tpl->assign("rec_pro",$re);
-			$sql="select name as pname,price,id,pic,market_price from ".PRODUCT." where member_id = '$_GET[uid]' and is_shelves=1 and status>0 order by id desc limit 0,12";
-			//$sql="select p.name as pname,p.price,p.id,p.pic,p.market_price,n.national,n.img,n.title from mallbuilder_product p left join mallbuilder_national_pavilions n ON p.`national` = n.`id` where p.member_id = '$_GET[uid]' and p.is_shelves=1 and p.status>0 order by p.id desc limit 0,12";
+			//$sql="select name as pname,price,id,pic,market_price from ".PRODUCT." where member_id = '$_GET[uid]' and is_shelves=1 and status>0 order by id desc limit 0,12";
+			$sql="select p.name as pname,p.price,p.id,p.pic,p.market_price,p.national,n.img,n.title from mallbuilder_product p left join mallbuilder_national_pavilions n ON p.`national` = n.`id` where p.member_id = '$_GET[uid]' and p.is_shelves=1 and p.status>0 order by p.id desc limit 0,12";
 			$db->query($sql);
 			$de=$db->getRows();
 			$tpl->assign("pro",$de);
