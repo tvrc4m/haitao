@@ -265,20 +265,19 @@ $(function(){
                     data: {id:id, page:page, m:"distribution", s:"admin_distribution_product_ajax_list"},
                     dataType: "json",
                     success: function(msg){
+                        console.log(msg)
                         if(msg.status==2){
                             var dataLen=msg.data.length;
                             for(var i=0;i<dataLen;i++){
+                                var pnational=msg.data[i].p_national;
                                 var value_substr=msg.data[i].pname.substr(i,19);
                                  $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"<{/if}>' class='shop_src'></a></dt>"+
                                     "<dd>"+
                                        "<p class='p-name'>"+
-                                            "<{if $list.p_national }>"+
-                                                "<span class='pname_img'>"+
-                                                    "<img src='<{$list.p_national.img}>'>&nbsp;&nbsp;<{$list.p_national.title}>"+
+                                                "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                                 "</span>"+
-                                            "<{/if}>"+
                                             "&nbsp;&nbsp;"+
-                                            "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
+                                            "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
                                             "<span class='price'>（剩"+msg.data[i].amount+"件）</span>"+
                                         "</p>"+
                                         "<p class='p-name color'>"+
@@ -290,10 +289,13 @@ $(function(){
                                             "</span>"+
                                         "</p>"+
                                         "<div class='price-btns'>"+
-                                            "<span class='price-delate'><a href='javascript:void(0);'>删除</a></span>"+
+                                            "<span class='price-delate'><a href='?deid="+msg.data[i].id+"&m=distribution&s=admin_distribution_product_list' onClick='return confirm('<{$lang.sure_del}>')'>删除</a></span>"+
                                             "<{if $list.is_dist}><span class='price-fenxiang price'>分享</span><{/if}>"+
                                         "</div>"+
                                     "</dd></dl>")
+                                if(pnational!==false){
+                                    $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].p_national.img+"' alt='"+msg.data[i].p_national.title+"'>")
+                                }
                             }
                             stop=true;
                         }else{
