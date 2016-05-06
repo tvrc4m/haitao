@@ -34,7 +34,11 @@
         });
     });
 </script>
-
+<div class="path">
+    <div>
+        <a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span>结算记录
+    </div>
+</div>
 <div class="main">
     <div class="wrap">
         <div class="hd">
@@ -44,7 +48,7 @@
                 <li class="<{if $smarty.get.level=='1'}>active<{else}>normal<{/if}>"><a href="main.php?m=distribution&s=admin_distribution_settlement&level=1"><{$lang.distribution_settlement_done}></a></li>
             </ul>
         </div>
-        <table class="table-list-style">
+        <table class="table-list-style" style="border: 1px solid #ccc;">
             <thead>
             <tr>
                 <th width="20%">申请额度</th>
@@ -58,8 +62,8 @@
             <tbody>
             <{foreach item=list from=$dist_user_settlement_rows}>
             <tr>
-                <td><{$list.distribution_user_settlement_amount|string_format:"%.2f"}></td>
-                <td><{$list.distribution_user_settlement_apply_time|date_format:"%Y-%m-%d"}></td>
+                <td style="border-right: 1px solid #ccc;"><{$list.distribution_user_settlement_amount|string_format:"%.2f"}></td>
+                <td style="border-right: 1px solid #ccc;"><{$list.distribution_user_settlement_apply_time|date_format:"%Y-%m-%d"}></td>
                 <td><{$list.state_label}></td>
                 <!--<td><a href="<{$config.weburl}>/main.php?m=message&s=admin_message_det&id=<{$list.user_id}>">详情</a></td>-->
             </tr>
@@ -70,11 +74,11 @@
                 </td>
             </tr>
             <{/foreach}>
-            <tr>
+            <!-- <tr>
                 <td colspan="3" >
                     <{$page}>
                 </td>
-            </tr>
+            </tr> -->
 
             </tbody>
         </table>

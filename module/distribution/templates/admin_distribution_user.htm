@@ -58,7 +58,7 @@ $(function(){
             </ul>
         </div>
         <table class="table-list-style">
-            <thead>
+            <thead style="border: 1px solid #ccc;">
             <tr>
                 <th width="20%">用户名</th>
                 <th width="20%">分销层级</th>
@@ -70,7 +70,7 @@ $(function(){
             </thead>
             <tbody>
             <{foreach item=list from=$re}>
-            <tr>
+            <tr style="height: 80px;">
             	<td><{$list.user_name}></td>
                 <td><{$list.user_relationship_level}></td>
                 <td><{$list.user_commission_shop_amount|string_format:"%.2f"}></td>

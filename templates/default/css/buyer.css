@@ -693,7 +693,7 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .friend_list li .friend_img{height: 60px;width: 60px;}
 .friend_list li.bt #gz_statu{display: inline-block;float: right;line-height: 60px;margin-right: 20px;}
 /*信息*/
-.table-list-style.info tbody tr{border-bottom: 1px solid #ccc;}
+.table-list-style.info tbody tr{border-bottom: 1px solid #ccc;height: 100px;}
 .admin_message_list_inbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
 .admin_message_list_inbox .delete .checkall{margin-left: 0;}
 .admin_message_list_outbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
@@ -710,4 +710,3 @@ input.submit{width: 202px;background-color: #ff5c5c;color: #fff;font-size: 18px;
 .admin_footprint .team-list .p-pirce span.p-pirce-del{color:#999;text-decoration: line-through;font-size:14px;}
 .admin_footprint .team-list .p-pirce b{font-family: "微软雅黑";color: #ff5c5c;font-weight:normal;}
 .admin_footprint .team-list .p-pname{white-space: nowrap;text-overflow:ellipsis;}
-
