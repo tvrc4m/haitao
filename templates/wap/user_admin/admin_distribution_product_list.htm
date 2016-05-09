@@ -15,16 +15,16 @@
 <div class="itemSearchResult clearfix">
   <{foreach item=list from=$dist_pro}>
     <dl>
-        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_60X60.jpg<{/if}>" class="shop_src"></a> </dt>
+        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="<{$list.pname}>" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_60X60.jpg<{/if}>" class="shop_src"></a> </dt>
         <dd>
             <p class="p-name">
                 <{if $list.p_national }>
                     <span class="pname_img">
-                        <img src="<{$list.p_national.img}>">&nbsp;&nbsp;<{$list.p_national.title}>
+                        <img src="<{$list.p_national.img}>" alt="<{$list.p_national.title}>">&nbsp;&nbsp;<{$list.p_national.title}>
                     </span>               
                 &nbsp;&nbsp;
                 <{/if}>
-                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:34:""}></a>
+                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:34:"..."}></a>
                 <span class="price">（剩<{$list.amount}>件）</span>
             </p>
             <p class="p-name color">
@@ -271,7 +271,12 @@ $(function(){
                             var dataLen=msg.data.length;
                             for(var i=0;i<dataLen;i++){
                                 var pnational=msg.data[i].p_national;
-                                var value_substr=msg.data[i].pname.substr(i,19);
+                                var value_substr=msg.data[i].pname.substr(i,24);
+                                var pname_len=msg.data[i].pname.length;
+                                var value_substr_len=value_substr.length+1;
+                                if(pname_len>value_substr_len){
+                                    value_substr=value_substr+"...";                
+                                }
                                  $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"<{/if}>' class='shop_src'></a></dt>"+
                                     "<dd>"+
                                        "<p class='p-name'>"+
