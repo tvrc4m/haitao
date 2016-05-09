@@ -448,7 +448,7 @@ function is_repeat($str)
     }
 }
 
-if ($config['weixin_connect'] && !isset($_GET['connect_id']))
+/*if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 {
     $appid = $config['weixin_app_id'];
     $appsecret = $config['weixin_key'];
@@ -540,7 +540,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
                 msg("login.php?connect_id=$cre[id]");
             }
         }
-        /*
+        /
         if($openid)
         {
             $sql = "select userid,user from ".MEMBER." where open_id = '$openid'";
@@ -567,9 +567,9 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
             login($member_id,$nickname);
             msg($config["weburl"] . "/main.php");
         }
-        */
+        /
     }
-}
+}*/
 
 //===========================================
 if($buid)
