@@ -179,7 +179,6 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .select_style #low_num{border-right:0;font-size:14px;border-top-left-radius: 0.2rem;border-bottom-left-radius: 0.2rem;}
 .select_style #add_num{border-left:0;font-size:16px;border-top-right-radius: 0.2rem;border-bottom-right-radius: 0.2rem;}
 .select_style .stock em{float:left;line-height:28px;margin-left:8px;}
-.c-wh-commit{background-color: #ff5c5c;/*padding: 0.8rem 0.5rem;*/}
 .commit-left{float: left;margin-right: 0.6rem;}
 .c-wh-commit-gao{background-color: #fff;padding-bottom: 12px;padding-top: 15px;padding-right: 0.5rem;}
 /*商品詳情*/

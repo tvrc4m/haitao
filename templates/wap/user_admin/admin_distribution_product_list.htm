@@ -15,7 +15,7 @@
 <div class="itemSearchResult clearfix">
   <{foreach item=list from=$dist_pro}>
     <dl>
-        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="<{$list.pname}>" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_60X60.jpg<{/if}>" class="shop_src"></a> </dt>
+        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="<{$list.pname}>" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_120X120.jpg<{/if}>" class="shop_src"></a> </dt>
         <dd>
             <p class="p-name">
                 <{if $list.p_national }>
@@ -266,7 +266,6 @@ $(function(){
                     data: {id:id, page:page, m:"distribution", s:"admin_distribution_product_ajax_list"},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                             var dataLen=msg.data.length;
                             for(var i=0;i<dataLen;i++){
@@ -277,7 +276,7 @@ $(function(){
                                 if(pname_len>value_substr_len){
                                     value_substr=value_substr+"...";                
                                 }
-                                 $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"<{/if}>' class='shop_src'></a></dt>"+
+                                 $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"_120X120.jpg<{/if}>' class='shop_src'></a></dt>"+
                                     "<dd>"+
                                        "<p class='p-name'>"+
                                                 "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
