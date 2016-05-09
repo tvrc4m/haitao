@@ -6,7 +6,7 @@
 		msg("main.php?m=product&s=admin_footprint");
 	}
 	
-	$sql = "select a.id,a.tid,a.time,b.name,b.pic,b.price from ".READREC." a left join ".PRODUCT." b on a.tid = b.id where a.userid='$buid' and a.type='1' order by FROM_UNIXTIME(`time`, '%Y-%m-%d') desc ";
+	$sql = "select a.id,a.tid,a.time,b.name,b.pic,b.price,b.market_price from ".READREC." a left join ".PRODUCT." b on a.tid = b.id where a.userid='$buid' and a.type='1' order by FROM_UNIXTIME(`time`, '%Y-%m-%d') desc ";
 	$db->query($sql);
 	$re=$db->getRows();
 	foreach($re as $key => $val)
