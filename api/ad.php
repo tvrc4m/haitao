@@ -133,7 +133,7 @@ function jside($re,$ar,$type)
 		$js="$(window).load(function(){\$(\"#slider_".$ar['id']."\").flexslider({directionNav:false})});";
 	}else{
 	/*田晓宝更改开始，首页的滚动banner返回数据格式调整*/
-	//$js="$(window).load(function(){\$(\"#slider_".$ar['id']."\").flexslider({controlNav:false,slideshowSpeed:9000})});";
+	// 	$js="$(window).load(function(){\$(\"#slider_".$ar['id']."\").flexslider({controlNav:false,slideshowSpeed:9000})});";
 	// $str="document.write('<div class=\"slide\" id=\"slider_".$ar['id']."\"><ul class=\"slides\">".implode("",$ssp)."</ul></div>');".$js;
 	$str="document.write('<div class=\"flexslider\" id=\"slider_".$ar['id']."\"><ul class=\"slides clearfix\">".implode("",$ssp)."</ul></div>');";
 	/*田晓宝更改结束*/
