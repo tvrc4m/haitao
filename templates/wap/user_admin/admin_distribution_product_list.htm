@@ -21,10 +21,10 @@
                 <{if $list.p_national }>
                     <span class="pname_img">
                         <img src="<{$list.p_national.img}>">&nbsp;&nbsp;<{$list.p_national.title}>
-                    </span>
-                <{/if}>
+                    </span>               
                 &nbsp;&nbsp;
-                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:30:""}></a>
+                <{/if}>
+                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:34:""}></a>
                 <span class="price">（剩<{$list.amount}>件）</span>
             </p>
             <p class="p-name color">
@@ -277,7 +277,6 @@ $(function(){
                                        "<p class='p-name'>"+
                                                 "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                                 "</span>"+
-                                            "&nbsp;&nbsp;"+
                                             "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
                                             "<span class='price'>（剩"+msg.data[i].amount+"件）</span>"+
                                         "</p>"+
@@ -295,7 +294,7 @@ $(function(){
                                         "</div>"+
                                     "</dd></dl>")
                                 if(pnational!==false){
-                                    $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].p_national.img+"' alt='"+msg.data[i].p_national.title+"'>&nbsp;&nbsp;"+msg.data[i].p_national.title+"")
+                                    $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].p_national.img+"' alt='"+msg.data[i].p_national.title+"'>&nbsp;&nbsp;"+msg.data[i].p_national.title+"&nbsp;&nbsp;")
                                 }
                             }
                             stop=true;
@@ -307,7 +306,7 @@ $(function(){
             }
         }
     })
-    $(".price-delate").bind("click",function(){
+    $(".price-delate").live("click",function(){
         var data_id=$(this).attr("data-id");
         $(".itemSearchList").append("<div class='price-btns-contexts'>"+
                     "<div class='price-btns-context-tops clearfix'>"+
@@ -317,10 +316,10 @@ $(function(){
                 "</div>")
         $(".am-dialog-mask").addClass("am-dialog-mask-test");
         $(".price-btns-contexts").addClass('price-btns-contexts_test');
-        $(".detate-btns-context-bot a:first-child").delegate("click",function(){
+        $(".detate-btns-context-bot a:first-child").bind("click",function(){
             location.href="<{$config.weburl}>/main.php?deid="+data_id+"&m=distribution&s=admin_distribution_product_list"
         })
-        $(".detate-btns-context-bot a:last-child").delegate("click",function(){
+        $(".detate-btns-context-bot a:last-child").bind("click",function(){
             location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
         })
     })
