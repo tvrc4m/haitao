@@ -312,10 +312,10 @@ function check_nums()
     function altto(co){
         $(".collect_box_content").show();
         $(".collect_box_content").html(co);
-    }
-    function wid(){
         var wid=$(".collect_box_content").width()/2;
         $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
+    }
+    function wid(){
         setTimeout(function(){
             $(".collect_box_content").hide();
         },2000)
