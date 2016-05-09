@@ -198,6 +198,13 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
         dot.html("");
     }
     $jj(function(){
+        function buju(){
+            var indexLi=($jj(".list_current .shoplist .shopli").size())%2;
+            if(indexLi==1){
+                $jj(".list_current .shoplist .shopli:last-of-type").css({"border-bottom":"none"});
+                $jj(".list_current").css({"border-bottom":"1px solid #b9b9b9"});
+            }
+        }
         eval('var ar =<{$ar}>;');
         var i = 1;
         var stop=true; 
@@ -225,6 +232,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
                             }
                             $jj(".scrollLoading").scrollLoading();
                             stop=true;
+                            buju();
                         }
                     });
                     i++;
@@ -232,6 +240,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
             } 
         });
         $jj(".scrollLoading").scrollLoading();
+        buju();
     }) 
 </script>
 </div>

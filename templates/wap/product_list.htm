@@ -137,6 +137,14 @@
         }
     }
 $(function(){
+    function buju(){
+        var indexLi=($(".shop .shoplist .shopli").size())%2;
+        console.log(indexLi)
+        if(indexLi==1){
+            $(".shop .shoplist .shopli:last-of-type").css({"border-bottom":"none"});
+            $(".shop").css({"border-bottom":"1px solid #b9b9b9"});
+        }
+    }
     var liLen=$(".shoplist .shopli").size();
     if(liLen<10){
         $(".m_jiazai").hide();
@@ -195,6 +203,7 @@ $(function(){
                         }
                         stop=true;
                         $(".scrollLoading").scrollLoading();
+                        buju();
                         }else{
                          $(".m_jiazai").html("已到最底部");
                         }
@@ -202,7 +211,8 @@ $(function(){
                 });
             } 
         } 
-    })      
+    })
+    buju();      
 })
 </script>
 
