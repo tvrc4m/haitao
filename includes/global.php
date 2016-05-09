@@ -24,7 +24,6 @@ ini_set('include_path',$config['webroot'].'/');
 
 include_once($config['webroot']."/config/config.inc.php");
 include_once($config['webroot']."/config/web_config.php");
-include_once($config['webroot']."/config/seo_config.php");
 include_once($config['webroot']."/config/table_config.php");
 include_once($config['webroot']."/includes/convertip.php");
 include_once($config['webroot']."/includes/function.php");

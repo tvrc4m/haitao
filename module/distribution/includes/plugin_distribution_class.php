@@ -551,7 +551,7 @@ fb($sql);
 	 * @param array $produce_id_row 产品Id
 	 * @return bool
 	 */
-	function getProductInfo($produce_id_row=array(), $begin = 0, $limit = 1000)
+	function getProductInfo($produce_id_row=array(), $begin = 0, $limit = 10)
 	{
 		global $db;
 		global $tpl;

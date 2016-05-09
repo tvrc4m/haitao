@@ -105,7 +105,7 @@ else
 			$s=$_GET['s'];
 			$m=$_GET['m'];
 			if(file_exists($config['webroot'].'/module/'.$m.'/'.$s.'.php'))
-			{
+			{	$config['seo_title']=$config['title'];
 				if(file_exists($config['webroot'].'/config/module_'.$m.'_config.php'))
 				{
 					@include($config['webroot'].'/config/module_'.$m.'_config.php');
