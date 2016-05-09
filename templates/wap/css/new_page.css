@@ -969,12 +969,11 @@ ins,a
 .zhoushop {background: #fff;overflow: hidden;padding: 3px 6px 3px 2px;border-bottom: 1px dashed #b9b9b9;}
 
 /*** 更多精彩 ****/
-.shop{position: relative;}
-.shop .mor{float:right;font-size:12px;color:#535353}
+.shop{position: relative;border: 1px solid #b9b9b9;border-bottom:none;}
+.shop .mor{float:right;font-size:12px;color:#535353;}
 .shop .shoplist{width:100%}
-.shop .shopli{position: relative;float:left;width:50%;text-align:center;height: auto;overflow: hidden;background: #fff;border:1px solid #b9b9b9;box-sizing:border-box;-webkit-box-sizing:border-box;}
-.shop .shopli:nth-of-type(even){border-left:none;}
-.shop .shopli:nth-of-type(n+3){border-top:none;}
+.shop .shopli{position: relative;float:left;width:50%;text-align:center;height: auto;overflow: hidden;background: #fff;border-right:1px solid #b9b9b9;border-bottom:1px solid #b9b9b9;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.shop .shopli:nth-of-type(even){border-right:none;}
 /*.shop .shopli:nth-of-type(2){border-bottom:none;}*/
 /*.itemSearchResult .shop .shopli{margin-right: 2.5%;}
 .itemSearchResult .shop .shopli:nth-of-type(even){margin-right: 0px;}*/

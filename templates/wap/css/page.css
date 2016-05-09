@@ -231,7 +231,7 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .pname_img {position: absolute;top: 0;left: 1.2rem;}
 .pname_img img {width: 1.5rem;height: 0.75rem!important;}
 .da_list div.shop{display: none;}
-.da_list div.list_current{display: block;}
+.da_list div.list_current{display: block;border: 1px solid #b9b9b9;border-bottom: none;}
 .da_list_test {position: fixed;top: 50px;z-index: 999999999999;width: 93.3%;}
 .addcarts {position: fixed;bottom: 2rem;left: 0rem;padding: 8px;background-color: rgba(0,0,0,0.7);border-radius: 50%;}
 .addcarts .carts{float: left; background: url(../../../image/wap/wap_haitao_icon61.png) no-repeat;position: relative;width: 24px;height:22.5px;background-size: contain;}

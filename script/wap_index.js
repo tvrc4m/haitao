@@ -79,18 +79,19 @@ $jj(function(){
 			$jj(".filter").eq(0).css({"margin-top":"50px"})
 		}
 	})
-
+	var dacli=$jj(".da_banner").height();
 	var daHeight=$jj(".da_banner").offset().top;
+	console.log(daHeight-dacli)
 	$jj(".da_banner li").click(function(){
 		$jj(".da_banner").addClass("da_list_test");
-		$jj(window).scrollTop(daHeight);
+		$jj(window).scrollTop(daHeight-dacli);
 		var liSize=$jj(this).index();
 		$jj(this).addClass("current").siblings().removeClass("current");
 		$jj(".da_list>div").eq(liSize).addClass("list_current").siblings().removeClass("list_current");
 	})	
  	$jj(window).scroll(function(){
         var wScrotop=$jj(window).scrollTop();
-        if(wScrotop>=daHeight){
+        if(wScrotop>=daHeight-dacli){
             $jj(".da_banner").addClass("da_list_test");
         }
         else{

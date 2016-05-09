@@ -137,6 +137,13 @@
         }
     }
 $(function(){
+    function buju(){
+        var indexLi=($(".shop .shoplist .shopli").size())%2;
+        if(indexLi==1){
+            $(".shop .shoplist .shopli:last-of-type").css({"border-bottom":"none"});
+            $(".shop").css({"border-bottom":"1px solid #b9b9b9"});
+        }
+    }
     var liLen=$(".shoplist .shopli").size();
     if(liLen<10){
         $(".m_jiazai").hide();
@@ -159,7 +166,6 @@ $(function(){
                     data: {id:id, page:page, m:"product", s:"ajax_list"},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
@@ -195,6 +201,7 @@ $(function(){
                         }
                         stop=true;
                         $(".scrollLoading").scrollLoading();
+                        buju();
                         }else{
                          $(".m_jiazai").html("已到最底部");
                         }
@@ -202,7 +209,8 @@ $(function(){
                 });
             } 
         } 
-    })      
+    })
+    buju();      
 })
 </script>
 
