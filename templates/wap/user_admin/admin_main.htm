@@ -77,12 +77,12 @@ function gotoMenu(url)
             </div>
             <div style="background-color:#e1e1e1;height:10px;"></div>
             <div class="centent_shop">
-                <div class="centent_ten_buluo"><a href="<{$config.weburl}>/shop.php?uid=<{$buid}>">我的Ant店</a></div>
+                <div class="centent_ten_buluo"><a href="javascript:void(0);">我的店铺</a></div>
                 <div class="centent_shop_cont">
                     <div class="centent_shop_dian">店铺<a href="<{$config.weburl}>/shop.php?uid=<{$buid}>"><span><{$smarty.cookies.USER|default:'蚂小小'}></span></a></div>
                     <div class="centent_shop_pin">主营商品：<span>大牌尿裤、进口奶粉、安全喂养、洗护用品、营养辅食、宝宝护肤</span></div>
                     <div class="centent_left">
-                        <a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1"><img src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>"></a>
+                        <img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>">
                     </div>
                 </div>
             </div>
