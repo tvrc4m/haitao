@@ -159,7 +159,6 @@ $(function(){
                     data: {id:id, page:page, m:"product", s:"ajax_list"},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
@@ -202,7 +201,7 @@ $(function(){
                 });
             } 
         } 
-    })      
+    })     
 })
 </script>
 

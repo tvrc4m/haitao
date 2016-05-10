@@ -65,7 +65,6 @@
                     <{if $nums < 2 }>
                    <li><a href="<{$config.weburl}>/?m=product&s=list&id=<{$lists.catid}>&dist_id=<{$lists.displayorder}>"><img class="scrollLoading" data-url="<{$lists.wpic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="<{$lists.cat}>"></a></li>
                     <{/if}>
-                   <!--<li><a href="<{$config.weburl}>/cat.php"><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_fl2.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt=""></a></li>-->
                 <{/foreach}>
                 <{/if}>
             <{/foreach}>
@@ -163,7 +162,6 @@
 <div>
 <script type="text/javascript">
 $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
-// $(".m_main .w100 .flexslider").append("")
     window.jsVersion = "7b3d28d5da";
     require.config({
         //By default load any module IDs from js/lib
@@ -178,8 +176,6 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
     });
     require(['pages/hj_index'], function (hjIndex) {
         hjIndex.hjSlide("#slider_13",4000);
-    //              hjIndex.cashEvent("#cash_event");
-    //              hjIndex.ajaxLoadPage(".load_links");
     });
 
     window.addEventListener('load', function() {
