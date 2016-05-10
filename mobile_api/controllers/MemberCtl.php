@@ -452,10 +452,10 @@ class MemberCtl extends Yf_AppController
 
 	public function get()
 	{
-		$user_id     = Perm::$userId;        //用户id
+		//$user_id     = Perm::$userId;        //用户idrequest_string
+		$user_id     = request_int('id') ? request_int('id') : null;        //用户id
 		$MemberModel = new MemberModel();
 		$data        = $MemberModel->getMember($user_id);
-
 		if ($data)
 		{
 			$msg    = 'success';
@@ -466,7 +466,6 @@ class MemberCtl extends Yf_AppController
 			$msg    = '失败';
 			$status = 250;
 		}
-
 		$this->data->addBody(-140, $data, $msg, $status);
 	}
 

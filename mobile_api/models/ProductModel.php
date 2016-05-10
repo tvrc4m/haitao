@@ -179,7 +179,7 @@ class ProductModel extends Product
 		$id_row2 = array_keys($goods2_rows); 
 		fb($goods1_rows);
 		fb($goods2_rows);
-		
+
 		$goods_rows = array();
 		if(!empty($id_row1) && !empty($id_row2) )
 		{
@@ -210,7 +210,9 @@ class ProductModel extends Product
 				$price[$key] = $value['price'];
 				$time[$key]  = $value['uptime'];	
 			}
-			array_multisort($price,SORT_ASC,$time,SORT_DESC,$goods_rows);
+			if( (isset($price) && is_array($price)) && (isset($time) && is_array($time)) && (isset($goods_rows) && is_array($goods_rows)) ) {
+				array_multisort($price, SORT_ASC, $time, SORT_DESC, $goods_rows);
+			}
 		}
 		if($order == 'sales')
 		{
@@ -268,8 +270,8 @@ class ProductModel extends Product
 		$data['page']      = $page;
 		$data['total']     = $total;
 		$data['totalsize'] = ceil_r($total / $rows);
-		$data['records']   = count($grows);
-		$data['items']     = array_values($grows);
+		$data['records']   = isset($grows) ? count($grows) : 0;
+		$data['items']     = isset($grows) ? array_values($grows) : 0;
 		return $data;
 	}
 
