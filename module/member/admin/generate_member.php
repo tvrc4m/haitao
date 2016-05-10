@@ -88,6 +88,7 @@ if(!empty($_POST['card'])&&$_POST['card']=='add')
 }
 
 //根据条件筛选
+/**
 if($_SESSION['province'])
 	$scl.=" and provinceid='".getdistrictid($_SESSION['province'])."'";
 if($_SESSION['city'])
@@ -96,7 +97,7 @@ if($_SESSION['area'])
 	$scl.=" and areaid='".getdistrictid($_SESSION['area'])."'";	
 if($_SESSION['street'])
 	$scl.=" and streetid='".getdistrictid($_SESSION['street'])."'";
-		
+*/
 if(!empty($_GET['name']))
 	$scl.=" and `card_num` like '%".trim($_GET['name'])."%'";
 if(!empty($_GET['type']))

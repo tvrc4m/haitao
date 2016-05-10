@@ -100,22 +100,22 @@ class TradeCtl extends Yf_AppController
 		//fb($cart_pro_rows);
 		$sumprice = array();
 		$lists = array();
-		foreach ($cart_pro_rows as $key => $value) 
+		foreach ($cart_pro_rows as $key => $value)
 		{
 			$sumprice[$key] = 0;
-			foreach ($value as $ke => $val) 
+			foreach ($value as $ke => $val)
 			{
 				$lists[$val['seller_id']]['is_invoice'] = 0;
 				//fb($val);
-				
+
 				$setmealname = $val['setmealname'] ? explode(',',$val['setmealname']) : "";
 				$spec_name = $val['spec_name'] ? explode(',',$val['spec_name']) : "";
 				if($spec_name && $setmealname)
 				{
 					foreach($setmealname as $k => $v)
 					{
-						$cart_pro_rows[$key][$ke]['spec'][] = $spec_name[$k].":".$v;	
-					}	
+						$cart_pro_rows[$key][$ke]['spec'][] = $spec_name[$k].":".$v;
+					}
 				}
 
 				//产品库存数量，用套餐的替换
@@ -137,7 +137,7 @@ class TradeCtl extends Yf_AppController
 					//fb($key);
 					if($val['is_invoice']=='true')
 					{
-						$lists[$val['seller_id']]['is_invoice']++;	
+						$lists[$val['seller_id']]['is_invoice']++;
 					}
 					unset($cart_pro_rows[$key][$ke]['is_invoice']);
 				}
@@ -346,7 +346,7 @@ class TradeCtl extends Yf_AppController
 			{
 				$gquantity = 0;
 			}
-			
+
 
 			$stock = $sid ? $de['stock']:$goods[$id]['stock'];
 			$price = $sid ? $de['price']:$goods[$id]['price'];
@@ -404,7 +404,7 @@ class TradeCtl extends Yf_AppController
 					}
 					else
 					{
-						$field = array( 'buyer_id'     => $user_id, 
+						$field = array( 'buyer_id'     => $user_id,
 										'product_id'   => $id,
 										'seller_id'    => $goods[$id]['member_id'],
 										'price'		   => $price,
@@ -471,15 +471,15 @@ class TradeCtl extends Yf_AppController
 		$sid_row      = explode(',', $sid);
 
 		$n = count($nums_row);
-		for ($i=0; $i < $n; $i++) 
-		{ 
+		for ($i=0; $i < $n; $i++)
+		{
 			$order_pro_row[$i]['quantity'] = $nums_row[$i];
 			$order_pro_row[$i]['pid'] = $id_row[$i];
 			$order_pro_row[$i]['sid'] = $sid_row[$i];
 		}
 		fb($order_pro_row);
 
-foreach ($order_pro_row as $kkey => $vvalue) 
+foreach ($order_pro_row as $kkey => $vvalue)
 {
 	$flag = true;
 			$nums = $vvalue['quantity'];
@@ -520,7 +520,7 @@ foreach ($order_pro_row as $kkey => $vvalue)
 			{
 				$gquantity = 0;
 			}
-			
+
 
 			$stock = $sid ? $de['stock']:$goods[$id]['stock'];
 			$price = $sid ? $de['price']:$goods[$id]['price'];
@@ -578,7 +578,7 @@ foreach ($order_pro_row as $kkey => $vvalue)
 					}
 					else
 					{
-						$field = array( 'buyer_id'     => $user_id, 
+						$field = array( 'buyer_id'     => $user_id,
 										'product_id'   => $id,
 										'seller_id'    => $goods[$id]['member_id'],
 										'price'		   => $price,
@@ -655,7 +655,7 @@ foreach ($order_pro_row as $kkey => $vvalue)
 		$user_id  = Perm::$userId;
 		$id       = request_int('id');
 		$quantity = request_int('quantity');
-		$act	  = request_int('act');  //1->+ 2->- 空->直接替换 
+		$act	  = request_int('act');  //1->+ 2->- 空->直接替换
 
 		$field_row['quantity'] = $quantity;
 
@@ -723,7 +723,8 @@ foreach ($order_pro_row as $kkey => $vvalue)
 	 */
 	public function orderList()
 	{
-		$user_id = Perm::$userId;		//用户ID
+		//$user_id = Perm::$userId;		//用户ID
+		$user_id = request_int('id');		//用户ID
 		$status  = request_int('status');//订单状态
 		$rate = request_int('rate');  //评价状态
 		$name = request_string('name');	//商品名称
@@ -735,84 +736,81 @@ foreach ($order_pro_row as $kkey => $vvalue)
 
 		$Product_OrderModel    = new Product_OrderModel();
 		$order_rows            = $Product_OrderModel->getOrdersList($user_id,$status,$page,$rows,$rate,$name);
-if(!empty($order_rows['items']))
-{
-		foreach ($order_rows['items'] as $k => $value) {
-			//获取店铺名称
-			$ShopModel         = new ShopModel();
-			$company           = $ShopModel->getCompanyByUid($value['seller_id']);
-			$order_rows['items'][$k]['company'] = $company;
+		if(!empty($order_rows['items']))
+		{
+				foreach ($order_rows['items'] as $k => $value) {
+					//获取店铺名称
+					$ShopModel         = new ShopModel();
+					$company           = $ShopModel->getCompanyByUid($value['seller_id']);
+					$order_rows['items'][$k]['company'] = $company;
 
-			//获取订单商品信息
-			$Product_OrderProModel = new Product_OrderProModel();
-			$good_rows         = $Product_OrderProModel->getOrderProByOid($value['order_id']);
-		if(is_array($good_rows)){
-			foreach ($good_rows as $rowkey => $rowvalue)
-			{
-				
-				$ProductModel   = new ProductModel();
-				$product = $ProductModel->getProduct($rowvalue['pid']);
-				$good_rows[$rowkey]['is_invoice'] = $product[$rowvalue['pid']]['is_invoice'];
-
-			}
-		}
-
-			$order_rows['items'][$k]['isret'] = '0';//用于判断返修、退货
-			$order_rows['items'][$k]['product'] = $good_rows;
-
-		}
-		if(is_array($order_rows['items'])){
-			foreach ($order_rows['items'] as $k => $value) 
-			{
-				if(is_array($value['product'])){
-					foreach ($value['product'] as $ke => $val)
+					//获取订单商品信息
+					$Product_OrderProModel = new Product_OrderProModel();
+					$good_rows         = $Product_OrderProModel->getOrderProByOid($value['order_id']);
+				if(is_array($good_rows)){
+					foreach ($good_rows as $rowkey => $rowvalue)
 					{
-						if($val['status'] < 0  || $val['status'] >3)
-						{
-							$order_rows['items'][$k]['isret'] = '1';
+
+						$ProductModel   = new ProductModel();
+						$product = $ProductModel->getProduct($rowvalue['pid']);
+						$good_rows[$rowkey]['is_invoice'] = $product[$rowvalue['pid']]['is_invoice'];
+
+					}
+				}
+
+					$order_rows['items'][$k]['isret'] = '0';//用于判断返修、退货
+					$order_rows['items'][$k]['product'] = $good_rows;
+
+				}
+				if(is_array($order_rows['items'])){
+					foreach ($order_rows['items'] as $k => $value)
+					{
+						if(is_array($value['product'])){
+							foreach ($value['product'] as $ke => $val)
+							{
+								if($val['status'] < 0  || $val['status'] >3)
+								{
+									$order_rows['items'][$k]['isret'] = '1';
+								}
+							}
 						}
 					}
 				}
-			}
+				if($status == '4')  //返修、退货
+				{
+					foreach ($order_rows['items'] as $key => $value)
+					{
+						fb($value);
+						if($value['isret'] == '1')
+						{
+							$order_row[]=$order_rows['items'][$key];
+						}
+					}
+
+					unset($order_rows['items']);
+
+					$offset = $rows * ($page - 1);
+					$end    = $offset + ($rows-1);
+
+					foreach ($order_row as $key => $value)
+					{
+						if($key >= $offset && $key <= $end)
+						{
+							$order_rows['items'][$key] = $order_row[$key];
+						}
+					}
+
+					$order_rows['total'] = $total = count($order_row);
+					$order_rows['totalsize'] = ceil_r($total / $rows);
+					$order_rows['records']   = count($order_rows['items']);
+
+				}
 		}
-		if($status == '4')  //返修、退货
+		else
 		{
-			foreach ($order_rows['items'] as $key => $value) 
-			{
-				fb($value);
-				if($value['isret'] == '1')
-				{
-					$order_row[]=$order_rows['items'][$key];
-				}
-			}
-
-			unset($order_rows['items']);
-
-			$offset = $rows * ($page - 1);
-			$end    = $offset + ($rows-1);
-
-			foreach ($order_row as $key => $value) 
-			{
-				if($key >= $offset && $key <= $end)
-				{
-					$order_rows['items'][$key] = $order_row[$key];
-				}
-			}
-
-			$order_rows['total'] = $total = count($order_row);
-			$order_rows['totalsize'] = ceil_r($total / $rows);
-			$order_rows['records']   = count($order_rows['items']);
-
+			$order_rows = array();
 		}
-}
-else
-{
-	$order_rows = array();
-}
-
-		
-
-fb($order_rows);
+		fb($order_rows);
 
 		if (true)
 		{
@@ -824,10 +822,7 @@ fb($order_rows);
 			$msg    = 'failure';
 			$status = 250;
 		}
-
-
 		$this->data->addBody(-140, $order_rows, $msg, $status);
-
 	}
 
 
@@ -841,13 +836,13 @@ fb($order_rows);
 	 */
 	public function getOrderNum()
 	{
-		$user_id = Perm::$userId;		//用户ID
+		//$user_id = Perm::$userId;		//用户ID
+		$user_id = request_int('id');		//用户ID
 		$status  = request_int('status');//订单状态
 		$rate = request_int('rate');  //评价状态
 
 		$Product_OrderModel   = new Product_OrderModel();
 		$res                  = $Product_OrderModel->getOrdersNum($user_id,$status,$rate);
-
 		if ($res)
 		{
 			$msg    = 'success';
@@ -858,7 +853,6 @@ fb($order_rows);
 			$msg    = 'failure';
 			$status = 250;
 		}
-
 		$this->data->addBody(-140, $res, $msg, $status);
 
 	}
@@ -880,7 +874,7 @@ fb($order_rows);
 
 		if($consignee_id)
 		{
-		
+
 			//获取收货地址
 			$Delivery_AddressModel = new Delivery_AddressModel();
 			$address = $Delivery_AddressModel->getAddress($consignee_id);
@@ -911,7 +905,7 @@ fb($order_rows);
 
 					//获取单个店铺商品及商品总价格、平邮、快递、EMS、总邮费
 					$cart_list = $Product_CartModel->getCartList($user_id, $value['seller_id'], $pid_row);//cart表
-			
+
 					foreach ($cart_list as $ke => $va)
 					{
 						$cart_list[$ke]['sumprice'] = $cart_list[$ke]['price']*$cart_list[$ke]['quantity']*1;
@@ -958,14 +952,14 @@ fb($order_rows);
 					}
 					$cart_pro_rows[$value['seller_id']]=$cart_list;
 				}
-		
+
 		//fb($cart_pro_rows);
 		$sumprice = array();
 		$lists = array();
-		foreach ($cart_pro_rows as $key => $value) 
+		foreach ($cart_pro_rows as $key => $value)
 		{
 			$sumprice[$key] = 0;
-			foreach ($value as $ke => $val) 
+			foreach ($value as $ke => $val)
 			{
 				//fb($val);
 				$lists[$val['seller_id']]['is_invoice'] = '0';
@@ -975,8 +969,8 @@ fb($order_rows);
 				{
 					foreach($setmealname as $k => $v)
 					{
-						$cart_pro_rows[$key][$ke]['spec'][] = $spec_name[$k].":".$v;	
-					}	
+						$cart_pro_rows[$key][$ke]['spec'][] = $spec_name[$k].":".$v;
+					}
 				}
 
 				//产品库存数量，用套餐的替换
@@ -998,7 +992,7 @@ fb($order_rows);
 					//fb($key);
 					if($val['is_invoice']=='true')
 					{
-						$lists[$val['seller_id']]['is_invoice']++;	
+						$lists[$val['seller_id']]['is_invoice']++;
 					}
 					unset($cart_pro_rows[$key][$ke]['is_invoice']);
 				}
@@ -1099,13 +1093,13 @@ fb($order_rows);
         // fb($voucher);
         // fb($lists);
         // fb($data);
-		foreach ($data as $key => $value) 
+		foreach ($data as $key => $value)
 		{
 			$rde[$value['seller_id']] = $value;
 		}
         //fb($re);
         $sumprices = 0;
-		foreach ($rde as $key => $value) 
+		foreach ($rde as $key => $value)
 		{
 			if($lists[$key]['prolist'])
 			{
@@ -1137,7 +1131,7 @@ fb($order_rows);
 		$buyer = $user_id;
 		$inorder = '';
 
-		foreach ($res['cart'] as $key => $val) 
+		foreach ($res['cart'] as $key => $val)
 		{
 			if($val['prolist'])
 			{
@@ -1153,13 +1147,13 @@ fb($order_rows);
 					$time 			 = time();
 					$vou_price       = 0; //优惠价格
 					$discounts       = $val['discounts'];  //会员折扣
-					$inorder        .=$order_id.","; 
+					$inorder        .=$order_id.",";
 
 					/*****是否使用代金券******/
 					if(request_int('voucher_'.$sell_userid) != '' && request_int('voucher_'.$sell_userid) > 0)
 					{
 						$id = request_int('voucher_'.$sell_userid) * 1;
-						
+
 						$rest = $VoucherModel->getVoucherByMid($user_id,$sell_userid,$product_price,$id);
 						if($rest)
 						{
@@ -1226,7 +1220,7 @@ fb($order_rows);
 									'`dist_user_id`'	 => $dist_user_id);
 					$Product_OrderModel->addOrder($fiel);
 
-					foreach ($val['prolist'] as $key => $val) 
+					foreach ($val['prolist'] as $key => $val)
 					{
 						$val['spec_id'] = $val['spec_id']?$val['spec_id']:"0";
 						//插入订单商品表
@@ -1258,7 +1252,7 @@ fb($order_rows);
 
 						//插入快照表
 						$Product_SnapshotModel = new Product_SnapshotModel();
-						$filed = array( 'order_id'   => $order_id, 
+						$filed = array( 'order_id'   => $order_id,
 										'product_id' => $val['product_id'],
 										'spec_id'	 => $val['spec_id'],
 										'member_id'	 => $sell_userid,
@@ -1306,14 +1300,14 @@ fb($order_rows);
 					// 	if($res==-2)
 					// 		msg('main.php?m=payment&s=admin_info','您的支付账户还没有开通');
 					// 	if($res==-1)
-					// 		msg("$config[weburl]/?m=product&s=confirm_order",'卖家没有开通支付功能，暂不能购买');	
+					// 		msg("$config[weburl]/?m=product&s=confirm_order",'卖家没有开通支付功能，暂不能购买');
 					// }
 					if($res >=0)
 					{
 						$flag = true;
 						$dat = array('message' => '订单提交成功');
 					}
-					
+
 				}
 			}
 		}
@@ -1540,7 +1534,7 @@ fb($order_rows);
 		fb($pro_row);
 		*/
 		$data = $pro_row;
-		
+
 
 		if (true)
 		{
@@ -1678,7 +1672,7 @@ fb($order_rows);
 		$Product_OrderModel->sql->setWhere('order_id',$order_id)->setWhere('userid',$user_id);
 		$order_row = $Product_OrderModel->getOrder("*");
 		//fb($order_row);
-		foreach ($order_row as $key => $value) 
+		foreach ($order_row as $key => $value)
 		{
 			$opinfo['userid'] = $value['userid'];
 			$opinfo['order_id'] = $value['order_id'];
@@ -1692,7 +1686,7 @@ fb($order_rows);
 		$Product_OrderProModel->sql->setWhere('order_id',$order_id)->setWhere('id',$proid);
 		$pro_row = $Product_OrderProModel->getOrderPro("*");
 		//fb($pro_row);
-		foreach ($pro_row as $key => $value) 
+		foreach ($pro_row as $key => $value)
 		{
 			$opinfo['price'] = $value['price'];
 			$opinfo['num'] = $value['num'];
@@ -1705,7 +1699,7 @@ fb($order_rows);
 		$ShopModel->sql->setWhere('userid',$opinfo['seller_id']);
 		$shop_row = $ShopModel->getShop("*");
 		//fb($shop_row);
-		foreach ($shop_row as $key => $value) 
+		foreach ($shop_row as $key => $value)
 		{
 			$opinfo['user'] = $value['user'];
 			$opinfo['company'] = $value['company'];
@@ -1714,7 +1708,7 @@ fb($order_rows);
 		$ReturnModel = new ReturnModel();
 		$ReturnModel->sql->setWhere('order_id',$order_id)->setWhere('member_id',$user_id)->setWhere('status','0','>')->setWhere('product_id',$proid);
 		$return_row = $ReturnModel->getReturn('*');
-		foreach ($return_row as $key => $value) 
+		foreach ($return_row as $key => $value)
 		{
 			unset($return_row[$key]['status']);
 		}
@@ -1793,7 +1787,7 @@ fb($order_rows);
 		$data = array();
 
 		$this->data->addBody(-140, $data, $msg, $status);
-		
+
 	}
 
 	/**
@@ -1816,7 +1810,7 @@ fb($order_rows);
 		$Product_OrderModel = new Product_OrderModel();
 		$data=$Product_OrderModel->editOrderStatus($order_id,$status,$user_id);
 
-		if ($data) 
+		if ($data)
 		{
 			//更改订单商品状态
 			$close_reason = $Product_OrderProModel->editOrderProStatus($order_id,$status);
@@ -1850,7 +1844,7 @@ fb($order_rows);
 
 		$this->data->addBody(-140, $dat, $msg, $status);
 
-		
+
 
 	}
 
@@ -1887,16 +1881,16 @@ fb($order_rows);
 				$data = array();
 			}else{
 				$data = $data['pay_member'];
-			
+
 				//更改订单商品状态
 				$Product_OrderProModel = new Product_OrderProModel();
 				$res = $Product_OrderProModel->editOrderProStatus($order_id,$status);
 
 				//添加积分
 				foreach ($data as $key) {
-					$sum = ($key['product_price'] + $key['logistics_price'])*1;	
+					$sum = ($key['product_price'] + $key['logistics_price'])*1;
 				}
-				
+
 				$Member_InfoModel = new Member_InfoModel();
 				$desc = $Member_InfoModel->addPoints($sum, '1', $order_id, $user_id);
 
@@ -1904,7 +1898,7 @@ fb($order_rows);
 				//1.获取用户名
 				$MemberModel = new MemberModel();
 				$member = $MemberModel->getMember($user_id);
-				
+
 				foreach ($member as $key) {
 					$user = $key['user'];
 				}
@@ -1920,8 +1914,8 @@ fb($order_rows);
 
 				//佣金计算
 				//1.获取订单商品
-				$good_rows = $Product_OrderProModel->getOrderProByOid($order_id);  
-				foreach ($good_rows as $k => $val) 
+				$good_rows = $Product_OrderProModel->getOrderProByOid($order_id);
+				foreach ($good_rows as $k => $val)
 				{
 					fb($val);
 					//获取商品分类的佣金比
@@ -1951,7 +1945,7 @@ fb($order_rows);
 					//pay_get_url($post,true);//跳转至订单生成页面
 					PayHelper::getPayUrl($post);
 				}
-			}	
+			}
 
 		}
 
@@ -1971,7 +1965,7 @@ fb($order_rows);
 
 	/**
 	 * 获取订单商品列表
-	 *	
+	 *
 	 * @access public
 	 */
 	public function orderGoodsList()
@@ -1981,9 +1975,9 @@ fb($order_rows);
 
 		$Product_OrderProModel = new Product_OrderProModel();
 		$order_row = $Product_OrderProModel->getOrderProByOid($order_id);
-		
 
-		foreach ($order_row as $key => $value) 
+
+		foreach ($order_row as $key => $value)
 		{
 			$ProductModel = new ProductModel();
 			$product_row = $ProductModel->getProduct($value['pid']);
@@ -2046,21 +2040,21 @@ fb($order_rows);
 					//修改订单状态
 					$file1 = array( 'status'       => 2,
 									'payment_name' => $payment_name,
-									'payment_time' => time() 
+									'payment_time' => time()
 								 );
 					$Product_OrderModel = new Product_OrderModel();
 					$Product_OrderModel->sql->setWhere('order_id',$val);
 					$order = $Product_OrderModel->getOrder("*");
-					foreach ($order as $k => $v) 
+					foreach ($order as $k => $v)
 					{
 						$Product_OrderModel->editOrder($v['id'],$file1);
 					}
-					
+
 
 					//获取订单商品详情
 					$Product_OrderProModel = new Product_OrderProModel();
-					$good_rows = $Product_OrderProModel->getOrderProByOid($val); 
-					foreach ($good_rows as $key => $value) 
+					$good_rows = $Product_OrderProModel->getOrderProByOid($val);
+					foreach ($good_rows as $key => $value)
 					{
 						//修改订单商品状态
 						$file2  = array('status' => 1);
@@ -2070,7 +2064,7 @@ fb($order_rows);
 						$status = $value['status'];
 						$pid    = $value['pid'];
 						//fb($status);
-						
+
 						if($status < 2)
 						{
 							//---------------------付款成功减库存
@@ -2079,17 +2073,17 @@ fb($order_rows);
 								//修改商品销售数量
 								$ProductModel = new ProductModel();
 								$ProductModel->editProuductSales($value['pid'],$value['num']);
-										
+
 								if($value['setmeal'])
 								{
 									//修改规格库存数量
 									$Product_SetmealModel = new Product_SetmealModel();
 									$Product_SetmealModel->editSetmealStock($value['setmeal'],$value['num']);
-								}		
-							
+								}
+
 								//修改商品库存
 								$ProductModel->editProuductStock($value['pid'],$value['num']);
-		
+
 							}
 
 						}
@@ -2103,21 +2097,21 @@ fb($order_rows);
 				    //修改订单状态
 					$file1 = array( 'status'       => 2,
 									'payment_name' => $payment_name,
-									'payment_time' => time() 
+									'payment_time' => time()
 								  );
 					$Product_OrderModel = new Product_OrderModel();
 					$Product_OrderModel->sql->setWhere('order_id',$order_id);
 					$order = $Product_OrderModel->getOrder("*");
 
-					foreach ($order as $k => $v) 
+					foreach ($order as $k => $v)
 					{
 						$Product_OrderModel->editOrder($v['id'],$file1);
 					}
 
 					//获取订单商品详情
 					$Product_OrderProModel = new Product_OrderProModel();
-					$good_rows = $Product_OrderProModel->getOrderProByOid($order_id); 
-					foreach ($good_rows as $key => $value) 
+					$good_rows = $Product_OrderProModel->getOrderProByOid($order_id);
+					foreach ($good_rows as $key => $value)
 					{
 						//修改订单商品状态
 						$file2  = array('status' => 1);
@@ -2127,7 +2121,7 @@ fb($order_rows);
 						$status = $value['status'];
 						$pid    = $value['pid'];
 						//fb($status);
-						
+
 						if($status < 2)
 						{
 							//---------------------付款成功减库存
@@ -2136,23 +2130,23 @@ fb($order_rows);
 								//修改商品销售数量
 								$ProductModel = new ProductModel();
 								$ProductModel->editProuductSales($value['pid'],$value['num']);
-										
+
 								if($value['setmeal'])
 								{
 									//修改规格库存数量
 									$Product_SetmealModel = new Product_SetmealModel();
 									$Product_SetmealModel->editSetmealStock($value['setmeal'],$value['num']);
-								}		
-							
+								}
+
 								//修改商品库存
 								$ProductModel->editProuductStock($value['pid'],$value['num']);
-		
+
 							}
 
 						}
 					}
 			}
-				
+
 		}
 		else
 		{
@@ -2183,7 +2177,7 @@ fb($order_rows);
 		$Product_CartModel = new Product_CartModel();
 		$data = $Product_CartModel->getCartlist($user_id);
 		fb($data);
-		foreach ($data as $key => $value) 
+		foreach ($data as $key => $value)
 		{
 			$res['num'] += $value['quantity'];
 		}
