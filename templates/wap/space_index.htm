@@ -5,10 +5,10 @@
     function altto(co){
         $(".collect_box_content").show();
         $(".collect_box_content").html(co);
-    }
-    function wid(){
         var wid=$(".collect_box_content").width()/2;
         $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px","top":"30%"});
+    }
+    function wid(){
         setTimeout(function(){
             $(".collect_box_content").hide();
         },2000)
@@ -63,11 +63,11 @@
                 wid()
             }
             else if (originalRequest>0){
-                altto('该内容已经在你的分销中心，请勿重复添加！');
+                altto('该内容已经在你的分销中心<br>请勿重复添加！');
                 wid()
             }
             else{
-                altto('参数传递错误，无法完成操作!');
+                altto('参数传递错误<br>无法完成操作!');
                 wid()
             }
         }
@@ -81,35 +81,27 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
-   <div class='collect_box_content'></div> 
+<div class='collect_box_content'></div> 
 <section class="clearfix" style="width:100%;">
     <div class="shopinfo-banner">
-        <div class="ulev-app2" id="company">
+        <img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>">
+        <div class="shopinfo-companys">
             <{$com.company}>
         </div>
-    </div>
-    <div class="shopinfo-banner-content shopinfo-banner-content2">
-        <div class="header_topleft">
-            <a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1">
-                <img src="<{if $com.plogo}><{$com.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" >
-            </a>
-        </div>       
-        <div class="typ">信誉级：<img alt="<{$com.sellerpoints}>" title="<{$com.sellerpoints}>" align="absmiddle" src="<{$config.weburl}>/image/points/<{$com.sellerpointsimg}>"></div>
-        <div class="typ">好评率：<span><{$list.favorablerate|number_format:2}>%</span></div>
-        <div class="col" style="padding: 0 10px">
-            <a onclick="javascript:getfavshop()">
-                <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
-                <div class="nav-c" style="font-size: .7em">收藏</div>
-            </a>
-        </div>
-        <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}>
-            <div class="col" style="padding: 0 10px">
-                <a href="javascript:distribute_goods('<{$de.id}>');" style="color:8b8b8b">
-                    <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe663;</div>
-                    <div style="font-size: .7em">加入分销</div>
+        <div class="shopinfo-banner-content">
+            <div class="header_topleft">
+                <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
+            </div>
+            <div class="shopinfo-imphost">
+                <p>主营商品：<span>大牌尿裤、进口奶粉、安全喂养、洗护用品、营养辅食、宝宝护肤</span></p>
+            </div>       
+            <div class="cols" style="padding: 0 10px">
+                <a onclick="javascript:getfavshop()">
+                    <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
+                    <div class="nav-c">收藏</div>
                 </a>
             </div>
-        <{/if}>
+        </div>
     </div>
 </section>
 <section class="pchart">
@@ -127,14 +119,15 @@
             <{foreach item=list key=key from=$pro key=num}>
                 <li class="shopli clearfix">
                     <span class="pname_img">
-                        <{if $list.pnational }>
-                            <img src="<{$list.pnational.img}>" alt="<{$list.pnational.title}>">
+                        <{if $list.national }>
+                            <img src="<{$list.img}>" alt="<{$list.title}>">
                         <{/if}>
                     </span>
                     <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
                         <div class="shopli_top_img">
                             <img height="125" width="125" src="<{$list.pic}>" alt="<{$list.pname}>"/>
                         </div>
+                        <!-- <div class="shop_over">已售完</div> -->
                         <div class="shopli_bottom clearfix">
                             <div class="shopli_bottom_message">
                                 <p class="shopli_bottom_text"><{$list.pname}></p>
@@ -171,6 +164,7 @@
                         <div class="shopli_top_img">
                             <img height="125" width="125" src="<{$list.pic}>" alt="<{$list.pname}>"/>
                         </div>
+                        <!-- <div class="shop_over">已售完</div> -->
                         <div class="shopli_bottom clearfix">
                             <div class="shopli_bottom_message">
                                 <p class="shopli_bottom_text"><{$list.pname}></p>
@@ -208,6 +202,13 @@
         </ul>
         <{/if}>
     </div>
+</section>
+<section class="bom_nav">
+    <ul>
+        <li><a href="<{$config.weburl}>/shop.php?uid=<{$buid}>"><img src="../image/wap/wap_haitao_icon67.png" alt="购物"><p class="bom_nav_color">店铺</p></a></li><li>
+        <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon27.png" alt="购物"><p>加入蚁族</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>我的</p></a></li>
+    </ul>
 </section>
 <script>
 $(function(){
@@ -271,7 +272,6 @@ $(function(){
         $(".shopli").find("img").height("224px")
     }
     var dlLen=$(".plist .shopli").size();
-    console.log(dlLen)
     if(dlLen<10){
         $(".m_jiazai").hide();
         $("footer").css({"margin-top":"20px"})

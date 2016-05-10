@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 09:50:17
+<?php /* Smarty version 2.6.20, created on 2016-05-09 11:06:35
          compiled from record.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'record.htm', 77, false),)), $this); ?>
@@ -33,13 +33,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
         <div style="height:10px;background-color:#ededed;"></div>
          <p>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-">收支明细</a>
+/index.php">收支明细</a>
             <!-- <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /?m=payment&s=record&mold=0" <?php if ($_GET['mold'] == 0): ?>class="pay_sgo"<?php endif; ?> >交易记录</a> -->
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=record&mold=1" <?php if ($_GET['mold'] == 1): ?>class="pay_sgo"<?php endif; ?> >充值记录</a>
+/index.php?m=payment&s=record&mold=1" <?php if ($_GET['mold'] == 1): ?>class="pay_sgo"<?php endif; ?> >充值记录</a>
             <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/?m=payment&s=record&mold=2" <?php if ($_GET['mold'] == 2): ?>class="pay_sgo"<?php endif; ?> >提现记录</a>
+/index.php?m=payment&s=record&mold=2" <?php if ($_GET['mold'] == 2): ?>class="pay_sgo"<?php endif; ?> >提现记录</a>
         </p>
     	<?php if (! $_GET['mold']): ?>
    		<div class="filter">
@@ -146,12 +146,12 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
                 <p <?php if ($this->_tpl_vars['list']['is_refund'] == 'true'): ?>rowspan="2"<?php endif; ?>>
                 <?php if ($this->_tpl_vars['list']['statu'] == 1 && $this->_tpl_vars['list']['seller_email'] && ( $this->_tpl_vars['list']['mold'] == 3 || $this->_tpl_vars['list']['mold'] == 0 )): ?>
                 <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-?m=payment&s=pay&tradeNo=<?php echo $this->_tpl_vars['list']['order_id']; ?>
+/index.php?m=payment&s=pay&tradeNo=<?php echo $this->_tpl_vars['list']['order_id']; ?>
 ">付款</a>
                 <?php else: ?>
                 <a href="<?php if ($this->_tpl_vars['list']['return_url']): ?><?php echo $this->_tpl_vars['list']['return_url']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['config']['weburl']; ?>
-?m=payment&s=detail&tradeNo=<?php echo $this->_tpl_vars['list']['flow_id']; ?>
+/index.php?m=payment&s=detail&tradeNo=<?php echo $this->_tpl_vars['list']['flow_id']; ?>
 <?php endif; ?>">详情</a>
                 <?php endif; ?> </p>
                 </td>
@@ -260,7 +260,7 @@ $(function(){
                                 "<?php if (! $_GET['mold']): ?><td class='al'><?php echo $this->_tpl_vars['list']['name']['real_name']; ?>
 </td><?php endif; ?>"+
                                 "<td class='price<?php if ($this->_tpl_vars['list']['minus'] == 'T'): ?> minus<?php endif; ?>'><?php if ($this->_tpl_vars['list']['minus'] != 'T'): ?>+<?php endif; ?>"+msg.data[i].price+"</td>"+
-                                "<td <?php if ($this->_tpl_vars['list']['is_refund'] == 'true'): ?>rowspan="2"<?php endif; ?>>"+
+                                "<td <?php if ($this->_tpl_vars['list']['is_refund'] == 'true'): ?>rowspan='2'<?php endif; ?>>"+
                                 "<?php if ($this->_tpl_vars['list']['statu'] == 1): ?><?php if ($this->_tpl_vars['list']['mold'] == 8): ?>进行中<?php else: ?>等待付款<?php endif; ?>"+
                                 "<?php elseif ($this->_tpl_vars['list']['statu'] == 2): ?>"+
                                     "<?php if ($this->_tpl_vars['list']['buyer_email'] == ''): ?>"+
@@ -286,14 +286,14 @@ $(function(){
                                 "<?php else: ?>已取消"+
                                 "<?php endif; ?>"+
                                 "<br>"+
-                                "<p <?php if ($this->_tpl_vars['list']['is_refund'] == 'true'): ?>rowspan="2"<?php endif; ?>>"+
+                                "<p <?php if ($this->_tpl_vars['list']['is_refund'] == 'true'): ?>rowspan='2'<?php endif; ?>>"+
                                 "<?php if ($this->_tpl_vars['list']['statu'] == 1 && $this->_tpl_vars['list']['seller_email'] && ( $this->_tpl_vars['list']['mold'] == 3 || $this->_tpl_vars['list']['mold'] == 0 )): ?>"+
                                 "<a href='<?php echo $this->_tpl_vars['config']['weburl']; ?>
-?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
+/index.php?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
                                "<?php else: ?>"+
                                 " <a href='<?php if ($this->_tpl_vars['list']['return_url']): ?><?php echo $this->_tpl_vars['list']['return_url']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['config']['weburl']; ?>
-?m=payment&s=detail&tradeNo="+msg.data[i].flow_id+"<?php endif; ?>'>详情</a>"+
+/index.php?m=payment&s=detail&tradeNo="+msg.data[i].flow_id+"<?php endif; ?>'>详情</a>"+
                                 "<?php endif; ?> </p>"+
                                 "</td>"+
                             "</tr>"+

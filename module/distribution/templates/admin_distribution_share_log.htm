@@ -79,27 +79,27 @@
                 </li>
             </ul>
         </div>
-        <table class="table-list-style">
+        <table class="table-list-style" style="border: 1px solid #ccc;">
             <thead>
             <tr>
                 <th width="30"></th>
                 <th width="70"></th>
                 <th>商品名称</th>
-                <th width="100">价格</th>
-                <th width="90">分享次数</th>
+                <th width="160">价格</th>
+                <th width="160">分享次数</th>
             </tr>
             </thead>
             <tbody>
             <{foreach item=list from=$dist_pro}>
-            <tr>
-                <th class="tc"><!--<input type="checkbox" value="<{$list.id}>" class="checkitem" name="chk[]">--></th>
+            <!-- <tr>
+                <th class="tc"></th>
                 <th colspan="6">商品货号: <{$list.code}> </th>
                 <th class="tc">
                     <{if $taobao_config.appkey}>
                     <a href="main.php?m=product&s=admin_product_list&id=<{$list.id}>&act=taobao">发布到淘宝</a>
                     <{/if}>
                 </th>
-            </tr>
+            </tr> -->
             <tr>
                 <td></td>
                 <td>
@@ -117,7 +117,7 @@
             </tr>
             <{foreachelse}>
             <tr>
-                <td colspan="20" class="norecord">
+                <td colspan="4" class="norecord">
                     <i></i><span>暂无符合条件的数据记录</span>
                 </td>
             </tr>

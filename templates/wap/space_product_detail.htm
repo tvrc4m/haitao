@@ -17,6 +17,7 @@
                     <span class="cart-num"></span>
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
+                <p class="cart-adds">+1</p>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
             <{if $de.is_virtual neq 1}>
@@ -123,6 +124,7 @@
                                     <div class="shopli_top_img shopli_top_imgs">
                                         <img class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;"/>
                                     </div>
+                                    <!-- <div class="shop_over">已售完</div> -->
                                     <div class="shopli_bottom clearfix">
                                         <div class="shopli_bottom_message">
                                             <p class="shopli_bottom_text"><{$list.name|truncate:18:""}></p>
@@ -311,10 +313,10 @@ function check_nums()
     function altto(co){
         $(".collect_box_content").show();
         $(".collect_box_content").html(co);
-    }
-    function wid(){
         var wid=$(".collect_box_content").width()/2;
         $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
+    }
+    function wid(){
         setTimeout(function(){
             $(".collect_box_content").hide();
         },2000)
@@ -367,18 +369,17 @@ function check_nums()
                 wid()
             }
             else if (originalRequest>0){
-                altto('该内容已经在你的分销中心请勿重复添加！');
+                altto('该内容已经在你的分销中心<br>请勿重复添加！');
                 wid()
             }  
             else{
-                altto('参数传递错误,无法完成操作!');
+                altto('参数传递错误<br>无法完成操作!');
                 wid()
             }
         }
     }
 
-    $(".incar_c").click(function(){
-        
+    $(".incar_c").click(function(){       
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
             altto('不能购买自己店铺的商品！');
             wid();
@@ -391,13 +392,13 @@ function check_nums()
             $("#cart_num").text(parseInt($('#nums').val())+parseInt($('#cart_num').text()));
             var sid = $('#sid').val();
             var pid = '<{$smarty.get.id}>';
-            console.log(sid)
             var dist_user_id = '<{$smarty.get.shop_id}>';
             $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
-            var numLen=$(".cart-num-cont").text();
-            if(numLen>99){
-                $(".cart").append("<span class='cart-num-conts'>...</span>");
-            }
+            altto('添加成功');
+            wid();
+            // $(".cart-adds").addClass("cart-adds-test");
+            // $(".cart-adds").animate({"opacity":"0","transform":"translate(19px,-39px);","-webkit-transform":"translate(19px,-39px);"},{ duration: 3000, queue: false }
+            // );
             return false;
         }
     })

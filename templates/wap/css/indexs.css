@@ -46,3 +46,14 @@
 .centent_ten .cen_shop7 dt{background: #fff url(../../../image/wap/wap_haitao_icon50.png) 0.5rem center no-repeat;background-size: contain;}
 .centent_ten .cen_shop10 dt{background: #fff url(../../../image/wap/wap_haitao_icon49.png) 0.5rem center no-repeat;background-size: contain;}
 .centent_ten .cen_shop dd{float: right;font-size: 0.65rem;background:url(../../../image/wap/wap_haitao_icon18.png) right center no-repeat;background-size: contain;width: 1rem;height: 0.7rem;margin-right: 0.5rem;}
+.collect_box_contentss {
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    top: 35%;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+}
+.hj_share_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size:70%;opacity:0;display: none;}

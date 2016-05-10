@@ -2,9 +2,9 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.validation.min.js"></script>
 <header>
     <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span>提交订单</span></section>
-        <section class="nav-e"></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/product_order.css" rel="stylesheet" type="text/css" />
@@ -136,7 +136,7 @@
             <{/if}>
             
             <div class="fr">
-           <!--  <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span> -->
+            <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span>
             合计(含运费):&nbsp;&nbsp;
             <span class="p-name">
                 <strong class="price">
@@ -162,12 +162,14 @@
     </div>  
 </div>  
 <script>
-// $(".inventory .item").each(function(index){
-//     $(this).find(".p-price-num-z").each(function(i){
-//         var itemDl=$(this).html();
-//         console.log(itemDl)
-//     })
-// })
+$(".inventory .item").each(function(index){
+    var count=0;
+    $(this).find(".p-price-num-z").each(function(i){
+        var itemDl=Number($(this).html());
+        count = count + itemDl;
+    })
+    $(this).find(".fr-gong-num").html(count)
+})
 function count_price(id,flag)
 {   
     if(!flag)
@@ -271,15 +273,11 @@ $(function(){
 <script type="text/javascript">
     location.href="main.php?m=member&s=admin_orderadder&t=pro"
 </script>
-<!-- <div class="noaddr">
-<div></div>
-您还没有设置收货地址<br><a href="main.php?m=member&s=admin_orderadder&t=pro">请点击这里设置！</a> 
-</div> -->
 <{/if}>
 </section>
 <{/if}>
 <script type="text/javascript">
-    $(function(){
-        $("footer").css({"margin-bottom":"50px"})
-    })
+$(function(){
+    $("footer").css({"margin-bottom":"50px"})
+})
 </script>

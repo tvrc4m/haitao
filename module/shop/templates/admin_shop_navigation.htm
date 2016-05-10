@@ -96,23 +96,23 @@
             </form>
         </div>  
         <{else}>
-        <table class="table-list-style">
+        <table class="table-list-style" style="border:1px solid #ccc;">
         	<thead>
             <tr>
-            	<th width="60">排序</th>
+            	<th width="100">排序</th>
                 <th width="10"></th>
-            	<th class="tl">导航名称</th>
-            	<th width="120">是否显示</th>
-            	<th width="90">操作</th>
+            	<th>导航名称</th>
+            	<th width="160">是否显示</th>
+            	<th width="160">操作</th>
             </tr>
             </thead>
             <tbody>
             <{foreach item=list key=num from=$nav}>
             <tr>
-            	<td><{$list.sort}></td>
+            	<td style="border-right:1px solid #ccc;"><{$list.sort}></td>
             	<td></td>
-            	<td class="tl"><{$list.title}></td>
-            	<td><{if $list.if_show==1}>是<{else}>否<{/if}></td>
+            	<td style="border-right:1px solid #ccc;"><{$list.title}></td>
+            	<td style="border-right:1px solid #ccc;"><{if $list.if_show==1}>是<{else}>否<{/if}></td>
             	<td>
                 <p><a href="main.php?m=shop&s=admin_shop_navigation&type=edit&id=<{$list.id}>">编辑</a>&nbsp/
                 <a href="main.php?m=shop&s=admin_shop_navigation&type=del&id=<{$list.id}>">删除</a></p>
@@ -120,7 +120,7 @@
             </tr>
             <{foreachelse}>
             <tr>
-            	<td colspan="20" class="norecord">
+            	<td colspan="5" class="norecord">
                 	<i></i><span>暂无符合条件的数据记录</span>	
                 </td>
             </tr>

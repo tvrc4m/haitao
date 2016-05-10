@@ -15,16 +15,16 @@
 <div class="itemSearchResult clearfix">
   <{foreach item=list from=$dist_pro}>
     <dl>
-        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_60X60.jpg<{/if}>" class="shop_src"></a> </dt>
+        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="<{$list.pname}>" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_120X120.jpg<{/if}>" class="shop_src"></a> </dt>
         <dd>
             <p class="p-name">
                 <{if $list.p_national }>
                     <span class="pname_img">
-                        <img src="<{$list.p_national.img}>">&nbsp;&nbsp;<{$list.p_national.title}>
-                    </span>
-                <{/if}>
+                        <img src="<{$list.p_national.img}>" alt="<{$list.p_national.title}>">&nbsp;&nbsp;<{$list.p_national.title}>
+                    </span>               
                 &nbsp;&nbsp;
-                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:30:""}></a>
+                <{/if}>
+                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:34:"..."}></a>
                 <span class="price">（剩<{$list.amount}>件）</span>
             </p>
             <p class="p-name color">
@@ -36,7 +36,7 @@
 				</span>
 			</p>
 			<div class="price-btns">
-				<span class="price-delate"><a href="?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list" onClick="return confirm('<{$lang.sure_del}>');">删除</a></span>
+				<span class="price-delate" data-id='<{$list.id}>'><a href="javascript:void(0);">删除</a></span>
 				<{if $list.is_dist}><span class="price-fenxiang price">分享</span><{/if}>
 			</div>
         </dd>
@@ -50,6 +50,7 @@
 <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 <div class="hj_share_box" id="share_box"></div>
 <div class='collect_box_contentss'></div>
+<div class='am-dialog-mask'></div>
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
@@ -268,17 +269,19 @@ $(function(){
                         if(msg.status==2){
                             var dataLen=msg.data.length;
                             for(var i=0;i<dataLen;i++){
-                                var value_substr=msg.data[i].pname.substr(i,19);
-                                 $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"<{/if}>' class='shop_src'></a></dt>"+
+                                var pnational=msg.data[i].p_national;
+                                var value_substr=msg.data[i].pname.substr(i,24);
+                                var pname_len=msg.data[i].pname.length;
+                                var value_substr_len=value_substr.length+1;
+                                if(pname_len>value_substr_len){
+                                    value_substr=value_substr+"...";                
+                                }
+                                 $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"_120X120.jpg<{/if}>' class='shop_src'></a></dt>"+
                                     "<dd>"+
                                        "<p class='p-name'>"+
-                                            "<{if $list.p_national }>"+
-                                                "<span class='pname_img'>"+
-                                                    "<img src='<{$list.p_national.img}>'>&nbsp;&nbsp;<{$list.p_national.title}>"+
+                                                "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                                 "</span>"+
-                                            "<{/if}>"+
-                                            "&nbsp;&nbsp;"+
-                                            "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
+                                            "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
                                             "<span class='price'>（剩"+msg.data[i].amount+"件）</span>"+
                                         "</p>"+
                                         "<p class='p-name color'>"+
@@ -290,10 +293,13 @@ $(function(){
                                             "</span>"+
                                         "</p>"+
                                         "<div class='price-btns'>"+
-                                            "<span class='price-delate'><a href='javascript:void(0);'>删除</a></span>"+
+                                            "<span class='price-delate' data-id='"+msg.data[i].id+"'><a href='javsccript:void(0);'>删除</a></span>"+
                                             "<{if $list.is_dist}><span class='price-fenxiang price'>分享</span><{/if}>"+
                                         "</div>"+
                                     "</dd></dl>")
+                                if(pnational!==false){
+                                    $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].p_national.img+"' alt='"+msg.data[i].p_national.title+"'>&nbsp;&nbsp;"+msg.data[i].p_national.title+"&nbsp;&nbsp;")
+                                }
                             }
                             stop=true;
                         }else{
@@ -304,25 +310,22 @@ $(function(){
             }
         }
     })
-    // function collect_confirm(cla){
-    //     $(cla).append("<div class='am-dialog-mask'></div>"+
-    //             "<div class='price-btns-contexts'>"+
-    //                 "<div class='price-btns-context-tops clearfix'>"+
-    //                     "<p>确信删除?</P>"+
-    //                 "</div>"+
-    //                 "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
-    //             "</div>")
-    //     $(".am-dialog-mask").addClass("am-dialog-mask-test");
-    //     $(".price-btns-contexts").addClass('price-btns-contexts_test');
-    //     $(".detate-btns-context-bot a:first-child").bind("click",function(){
-    //         location.href="<{$config.weburl}>/main.php?deid=<{$list.id}>&m=distribution&s=admin_distribution_product_list"
-    //     })
-    //     $(".detate-btns-context-bot a:last-child").bind("click",function(){
-    //         location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
-    //     })
-    // }
-    // $(".price-delate").bind("click",function(){
-    //     collect_confirm(".itemSearchList");
-    // })
+    $(".price-delate").live("click",function(){
+        var data_id=$(this).attr("data-id");
+        $(".itemSearchList").append("<div class='price-btns-contexts'>"+
+                    "<div class='price-btns-context-tops clearfix'>"+
+                        "<p>确信删除?</P>"+
+                    "</div>"+
+                    "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
+                "</div>")
+        $(".am-dialog-mask").addClass("am-dialog-mask-test");
+        $(".price-btns-contexts").addClass('price-btns-contexts_test');
+        $(".detate-btns-context-bot a:first-child").bind("click",function(){
+            location.href="<{$config.weburl}>/main.php?deid="+data_id+"&m=distribution&s=admin_distribution_product_list"
+        })
+        $(".detate-btns-context-bot a:last-child").bind("click",function(){
+            location.href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list"
+        })
+    })
 })
 </script>

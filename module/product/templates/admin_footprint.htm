@@ -18,6 +18,7 @@
         <{foreach item=list key=key from=$de}>
         <div class="team">
         	<div class="team-title clearfix">
+                <i class="team-title-cirle"></i>
             	<h3><{$list.date}></h3>
                 <div class="date-info">
                 	<p><{$key|date_format:"%Y-%m"}></p>
@@ -36,9 +37,8 @@
                             <a class="delete" href="<{$config.weburl}>/main.php?m=product&s=admin_footprint&id=<{$slist.id}>"><i></i>删除</a>
                             </div>
                             <div class="p-pirce">
-                            	<span><{$config.money}></span>
-                            	<b><{$slist.price}></b>
-                                <s>¥0.00</s>
+                            	<span><{$config.money}><{$slist.price}></span>                           	
+                                <span class="p-pirce-del"><{$config.money}><{$slist.market_price}></span>
                             </div>
                             <div class="p-pname"><{$slist.name}></div>
                         </div>
