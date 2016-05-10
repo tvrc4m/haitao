@@ -17,6 +17,7 @@
                     <span class="cart-num"></span>
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
+                <p class="cart-adds">+1</p>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
             <{if $de.is_virtual neq 1}>
@@ -378,8 +379,7 @@ function check_nums()
         }
     }
 
-    $(".incar_c").click(function(){
-        
+    $(".incar_c").click(function(){       
         if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
             altto('不能购买自己店铺的商品！');
             wid();
@@ -392,13 +392,13 @@ function check_nums()
             $("#cart_num").text(parseInt($('#nums').val())+parseInt($('#cart_num').text()));
             var sid = $('#sid').val();
             var pid = '<{$smarty.get.id}>';
-            console.log(sid)
             var dist_user_id = '<{$smarty.get.shop_id}>';
             $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
-            var numLen=$(".cart-num-cont").text();
-            if(numLen>99){
-                $(".cart").append("<span class='cart-num-conts'>...</span>");
-            }
+            altto('添加成功');
+            wid();
+            // $(".cart-adds").addClass("cart-adds-test");
+            // $(".cart-adds").animate({"opacity":"0","transform":"translate(19px,-39px);","-webkit-transform":"translate(19px,-39px);"},{ duration: 3000, queue: false }
+            // );
             return false;
         }
     })
