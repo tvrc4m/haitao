@@ -65,8 +65,11 @@ class friend
 			foreach ($list as $key => $val) {
 				$sql = "select name,`describe` from mallbuilder_sns_group where group_id =" . $val['group_id'];
 				$this->db->query($sql);
-				if(is_array($list[$key])&&is_array($this->db->fetchRow()))
-				$list[$key] = array_merge($list[$key], $this->db->fetchRow());
+				$ques_res = $this->db->fetchRow();
+				if(is_array($list[$key]) && is_array($ques_res))
+				{
+					$list[$key] = array_merge($list[$key], $ques_res);
+				}
 			}
 		}
 		$re["list"] = $list;
