@@ -5,11 +5,12 @@
     <div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span>商品详情</span></section>
-        <section class="nav-e"><{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}><a href="javascript:distribute_goods('<{$de.id}>');"><nav>加入分销</nav></a><{/if}></section>
+        <section class="nav-e"></section>
     </div>
 </header>
 <div class='collect_box_content'></div>
-<div class="shoping-fixed">
+<!-- test-1 -->
+<!-- <div class="shoping-fixed">
     <div class="c-wh bgw">
         <div class="addcart clearfix">
             <a class="cart" href="/?m=product&s=cart">
@@ -17,7 +18,6 @@
                     <span class="cart-num"></span>
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
-                <p class="cart-adds">+1</p>
             </a>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
             <{if $de.is_virtual neq 1}>
@@ -25,7 +25,20 @@
             <{/if}>
         </div>
     </div>
-</div>
+</div> -->
+<!-- test-1 -->
+<!-- test-2 -->
+    <div class="shoping-fixed">
+        <div class="c-wh bgw">
+            <div class="addcart clearfix">
+                <a class="incars incars_c" href="javascript:distribute_goods('<{$de.id}>');">代销上架</a>
+                <a class="incars incars_l" href="javascript:void(0)">马上分享</a>
+            </div>
+        </div>
+    </div>
+    <div class="hj_share_box" id="share_box"></div>
+    <div class='collect_box_contentss'></div>
+<!-- test-2 -->
 <form id="form" onsubmit="return buy()" name="form" action="<{$config.weburl}>/?m=product&s=<{if $de.is_virtual}>confirm_virtual_order<{else}>confirm_order<{/if}><{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
 <input name="dist_user_id" type="hidden" value="<{$smarty.get.shop_id}>" />
 <div class="ub ub-ver" id="pro_detail">
@@ -51,16 +64,11 @@
                     </a>
                 </div>
             </div>
-            <div class="col-money">
-                <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>&nbsp;&nbsp;
-                <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>&nbsp;&nbsp;
-                <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
-            </div>
-            <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
             </div>
         </div>
         <div id="cart_show" style="display:none;"></div>
     </div>
+<!-- test-1 -->
 	<{if $de.activity_list}>
 		<div class="c-wh bgw">
             <{foreach item=activ_list name=foo from=$de.activity_list}>
@@ -72,6 +80,14 @@
 			</dl>
 		</div>
 	<{/if}>
+    <div class="b-gra-cfs">
+        <div class="col-money">
+            <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>&nbsp;&nbsp;
+            <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>&nbsp;&nbsp;
+            <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
+        </div>
+        <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
+    </div>
     <div class="c-wh bgw" style="margin-bottom: 0">
         <div class="select_style clearfix">
             <div class="select_guanshui clearfix">
@@ -111,6 +127,32 @@
         </div>
     </div>
     <div style="height:0px;border-top:1px solid #ccc;"></div>
+    <div class="c_daixiao clearfix">
+        <div class="c_daixiao_text"><span>该宝贝物美价廉被抢疯啦！</span></div>
+        <div class="c_daixiao_link"><a href="javascript:void(0);">我要代销</a></div>
+    </div>
+<!-- test-1 -->
+<!-- test-2 -->
+    <div class="b-gra-cfs">
+        <div class="col-money">
+            <span>佣金：</span><span class="price_moneys"> <{$config.money}>  <span class="price_dels_num" id="price">0.25</span></span><span class="price_moneys">/件</span>&nbsp;&nbsp;
+            <span>卖价：</span><span><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
+        </div>
+    </div>
+    <div class="c_daibao clearfix">
+        <div class="c_daibao_title">代销保障</div>
+        <ul>
+            <li><img src="../image/wap/wap_haitao_icon67.png" alt="全球直邮"><p class="bom_nav_color">全球直邮</p></li><li>
+            <img src="../image/wap/wap_haitao_icon27.png" alt="正品保证"><p>正品保证</p></li><li>
+            <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>14天退货</p></li><li>
+            <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>闪电发货</p></li>
+        </ul>
+    </div>
+    <div class="c_daixiao clearfix">
+        <div class="c_daixiao_text"><span>该宝贝最近火的不得了，代销赚佣金</span></div>
+        <div class="c_daixiao_link"><a href="javascript:void(0);">我要买</a></div>
+    </div>
+<!-- test-2 -->
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
@@ -611,7 +653,112 @@ function check_nums()
                 // 用户取消分享后执行的回调函数
             }
         });
+    $(".incars_l").bind("click",function(){
+        $("#share_box").show();
+        setTimeout(function(){
+            $("#share_box").animate({opacity: "1"}, 800)
+        }, 200);
+        var shopTitles=$(this).parent().parent().parent().find(".shop_name").html();
+        var shopSrcs=$(this).parent().parent().parent().find(".shop_src").attr("src");
+        var shopLinks=$(this).parent().parent().parent().find(".shop_name").attr("href");
+        var shopDescs=$(this).parent().parent().parent().find(".shop_name").html();
+       wx.onMenuShareTimeline({
+            title: "<{$com.shop_title}>", // 分享标题
+            link: location.href, // 分享链接
+            imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title:"<{$com.shop_title}>", // 分享标题
+            desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
+            link: location.href, // 分享链接
+            imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        })
+
+        wx.onMenuShareQQ({
+            title: '<{$com.shop_title}>', // 分享标题
+            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+            link: location.href, // 分享链接
+            imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: '<{$com.shop_title}>', // 分享标题
+            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+            link: location.href, // 分享链接
+            imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    })
+    $("#share_box").bind("click", function() {
+        $(this).animate({opacity: "0"}, 800);
+        setTimeout(function() {
+            $("#share_box").hide()
+        }, 800)
+    })
     })
 </script>
 <{else}>
+<script type="text/javascript">
+function altto(co){
+    $(".collect_box_contentss").show();
+    $(".collect_box_contentss").html(co);
+}
+function wid(){
+    var wid=$(".collect_box_contentss").width()/2;
+    $(".collect_box_contentss").css({"margin-left":-wid+"px","padding":"10px"});
+    setTimeout(function(){
+        $(".collect_box_contentss").hide();
+    },2000)
+}
+$(".incars_l").bind("click",function(){
+    altto('只支持在微信端分享');
+    wid();
+})
+</script>
 <{/if}>
