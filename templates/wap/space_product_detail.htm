@@ -9,25 +9,25 @@
     </div>
 </header>
 <div class='collect_box_content'></div>
-<!-- test-1 -->
-<!-- <div class="shoping-fixed">
-    <div class="c-wh bgw">
-        <div class="addcart clearfix">
-            <a class="cart" href="/?m=product&s=cart">
-                <span class="cart-num-cont" id='cart_num'>
-                    <span class="cart-num"></span>
-                    <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
-                </span>
-            </a>
-            <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
-            <{if $de.is_virtual neq 1}>
-            <a class="incar incar_c " href="javascript:void(0)">加入购物车</a>
-            <{/if}>
+<div class="select_style_one">
+    <div class="shoping-fixed">
+        <div class="c-wh bgw">
+            <div class="addcart clearfix">
+                <a class="cart" href="/?m=product&s=cart">
+                    <span class="cart-num-cont" id='cart_num'>
+                        <span class="cart-num"></span>
+                        <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+                    </span>
+                </a>
+                <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
+                <{if $de.is_virtual neq 1}>
+                <a class="incar incar_c " href="javascript:void(0)">加入购物车</a>
+                <{/if}>
+            </div>
         </div>
     </div>
-</div> -->
-<!-- test-1 -->
-<!-- test-2 -->
+</div>
+<div class="select_style_two shoping-hide">
     <div class="shoping-fixed">
         <div class="c-wh bgw">
             <div class="addcart clearfix">
@@ -38,7 +38,7 @@
     </div>
     <div class="hj_share_box" id="share_box"></div>
     <div class='collect_box_contentss'></div>
-<!-- test-2 -->
+</div>
 <form id="form" onsubmit="return buy()" name="form" action="<{$config.weburl}>/?m=product&s=<{if $de.is_virtual}>confirm_virtual_order<{else}>confirm_order<{/if}><{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
 <input name="dist_user_id" type="hidden" value="<{$smarty.get.shop_id}>" />
 <div class="ub ub-ver" id="pro_detail">
@@ -68,91 +68,80 @@
         </div>
         <div id="cart_show" style="display:none;"></div>
     </div>
-<!-- test-1 -->
-	<{if $de.activity_list}>
-		<div class="c-wh bgw">
-            <{foreach item=activ_list name=foo from=$de.activity_list}>
-            <{/foreach}>
-			<dl style="padding:5px;">
-					<dt style="margin-bottom: 6px;">活动 : <strong style="color:red;font-size:16px;"><{$de.activity_list.title}></strong></dt>
-					<dd>活动时间 : <{$de.activity_list.start_time|date_format}> 至 <{$de.activity_list.end_time|date_format}></dd>
-					<dd></dd>
-			</dl>
-		</div>
-	<{/if}>
-    <div class="b-gra-cfs">
-        <div class="col-money">
-            <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>&nbsp;&nbsp;
-            <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>&nbsp;&nbsp;
-            <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
+    <div class="select_style_one">
+        <div class="b-gra-cfs">
+            <div class="col-money">
+                <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>&nbsp;&nbsp;
+                <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>&nbsp;&nbsp;
+                <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
+            </div>
+            <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
         </div>
-        <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
-    </div>
-    <div class="c-wh bgw" style="margin-bottom: 0">
-        <div class="select_style clearfix">
-            <div class="select_guanshui clearfix">
-                <div><span class="select_one">该商品</span><span>由<b>郑州保税仓</b>发货 预计3-5天送达</span></div>
-                <div><span class="select_one">进口税</span><span>由<a href="shop.php?uid=<{$smarty.get.uid}>"><var><{$com.company}></var></a>承担</span></div>
-                <div class="select_duty_context">
-                    <div><span class="select_one">服务</span><span class="select_guanshui_ic">支持14天退换货</span><span class="select_guanshui_ip">免运费</span></div>
-                    <div class="select_guanshui_hid"><i></i>只支持在物流中损坏的商品</div>
+        <div class="c-wh bgw" style="margin-bottom: 0">
+            <div class="select_style clearfix">
+                <div class="select_guanshui clearfix">
+                    <div><span class="select_one">该商品</span><span>由<b>郑州保税仓</b>发货 预计3-5天送达</span></div>
+                    <div><span class="select_one">进口税</span><span>由<a href="shop.php?uid=<{$smarty.get.uid}>"><var><{$com.company}></var></a>承担</span></div>
+                    <div class="select_duty_context">
+                        <div><span class="select_one">服务</span><span class="select_guanshui_ic">支持14天退换货</span><span class="select_guanshui_ip">免运费</span></div>
+                        <div class="select_guanshui_hid"><i></i>只支持在物流中损坏的商品</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="c-wh bgw" style="margin-bottom: 0">
-        <div class="select_style clearfix">
-            <{if $de.rest==0 && !$de.offertime}>
-            <dl class="clearfix select_style_num">
-                <dt class="select_style_shu">数量</dt>
-                <dd class="stock">
-                    <a href="javascript:void(0);" id="low_num">-</a>
-                    <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
-                    <a href="javascript:void(0);" id="add_num">+</a>
-                </dd>
-                <dd class="stock_kucun">
-                    <em> （库存 <span id="stock"><{$de.stock}></span> 件<{if $de.is_virtual eq 1 && $de.maxbuy lt $de.stock  && $de.maxbuy gt 0}>，每人限购<strong style='color:#f40'><{$de.maxbuy}>件<{/if}></strong>） </em>
-                </dd>
-            </dl>
-            <{/if}>
-            <{if $de.porperty}>
-                <ul class="ub t-bla ub-ac">
-                    <li class="ub-f1 ut-s">选择商品规格：</li>
-                    <li class="iconfont fas"></li>
-                </ul>
-                <{foreach item=list from=$de.extfiled.d}>
-                    <{$list}>
-                <{/foreach}>
-            <{/if}>
+        <div class="c-wh bgw" style="margin-bottom: 0">
+            <div class="select_style clearfix">
+                <{if $de.rest==0 && !$de.offertime}>
+                <dl class="clearfix select_style_num">
+                    <dt class="select_style_shu">数量</dt>
+                    <dd class="stock">
+                        <a href="javascript:void(0);" id="low_num">-</a>
+                        <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
+                        <a href="javascript:void(0);" id="add_num">+</a>
+                    </dd>
+                    <dd class="stock_kucun">
+                        <em> （库存 <span id="stock"><{$de.stock}></span> 件<{if $de.is_virtual eq 1 && $de.maxbuy lt $de.stock  && $de.maxbuy gt 0}>，每人限购<strong style='color:#f40'><{$de.maxbuy}>件<{/if}></strong>） </em>
+                    </dd>
+                </dl>
+                <{/if}>
+                <{if $de.porperty}>
+                    <ul class="ub t-bla ub-ac">
+                        <li class="ub-f1 ut-s">选择商品规格：</li>
+                        <li class="iconfont fas"></li>
+                    </ul>
+                    <{foreach item=list from=$de.extfiled.d}>
+                        <{$list}>
+                    <{/foreach}>
+                <{/if}>
+            </div>
+        </div>
+        <div style="height:0px;border-top:1px solid #ccc;"></div>
+        <div class="c_daixiao clearfix">
+            <div class="c_daixiao_text"><span>该宝贝物美价廉被抢疯啦！</span></div>
+            <div class="c_daixiao_link"><a href="javascript:void(0);" class="c_daixiao_btn1">我要代销</a></div>
         </div>
     </div>
-    <div style="height:0px;border-top:1px solid #ccc;"></div>
-    <div class="c_daixiao clearfix">
-        <div class="c_daixiao_text"><span>该宝贝物美价廉被抢疯啦！</span></div>
-        <div class="c_daixiao_link"><a href="javascript:void(0);">我要代销</a></div>
-    </div>
-<!-- test-1 -->
-<!-- test-2 -->
-    <div class="b-gra-cfs">
-        <div class="col-money">
-            <span>佣金：</span><span class="price_moneys"> <{$config.money}>  <span class="price_dels_num" id="price">0.25</span></span><span class="price_moneys">/件</span>&nbsp;&nbsp;
-            <span>卖价：</span><span><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
+    <div class="select_style_two shoping-hide">
+        <div class="b-gra-cfs">
+            <div class="col-money">
+                <span>佣金：</span><span class="price_moneys"> <{$config.money}>  <span class="price_dels_num" id="price">0.25</span></span><span class="price_moneys">/件</span>&nbsp;&nbsp;
+                <span>卖价：</span><span><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
+            </div>
+        </div>
+        <div class="c_daibao clearfix">
+            <div class="c_daibao_title">代销保障</div>
+            <ul>
+                <li><img src="../image/wap/wap_haitao_icon67.png" alt="全球直邮"><p class="bom_nav_color">全球直邮</p></li><li>
+                <img src="../image/wap/wap_haitao_icon27.png" alt="正品保证"><p>正品保证</p></li><li>
+                <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>14天退货</p></li><li>
+                <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>闪电发货</p></li>
+            </ul>
+        </div>
+        <div class="c_daixiao clearfix">
+            <div class="c_daixiao_text"><span>该宝贝最近火的不得了，代销赚佣金</span></div>
+            <div class="c_daixiao_link"><a href="javascript:void(0);" class="c_daixiao_btn2">我要买</a></div>
         </div>
     </div>
-    <div class="c_daibao clearfix">
-        <div class="c_daibao_title">代销保障</div>
-        <ul>
-            <li><img src="../image/wap/wap_haitao_icon67.png" alt="全球直邮"><p class="bom_nav_color">全球直邮</p></li><li>
-            <img src="../image/wap/wap_haitao_icon27.png" alt="正品保证"><p>正品保证</p></li><li>
-            <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>14天退货</p></li><li>
-            <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>闪电发货</p></li>
-        </ul>
-    </div>
-    <div class="c_daixiao clearfix">
-        <div class="c_daixiao_text"><span>该宝贝最近火的不得了，代销赚佣金</span></div>
-        <div class="c_daixiao_link"><a href="javascript:void(0);">我要买</a></div>
-    </div>
-<!-- test-2 -->
     <div class="c-wh bgw clearfix">
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
@@ -307,6 +296,14 @@
 </script>
 <script>
 $(document).ready(function(){
+    $(".c_daixiao_btn1").click(function(){
+        $(".select_style_one").hide();
+        $(".select_style_two").show();
+    });
+    $(".c_daixiao_btn2").click(function(){
+        $(".select_style_two").hide();
+        $(".select_style_one").show();
+    });
     $("#low_num").click(
         function()
         {
