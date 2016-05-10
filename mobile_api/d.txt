@@ -7767,3 +7767,4 @@ ctl=Goods&met=get&pid=248&typ=json
 ctl=GoodsFavorites&id=248&met=isCollect&typ=json
 ctl=GoodsFavorites&id=248&met=isCollect&typ=json
 ctl=GoodsFavorites&id=95&met=remove&typ=json
+

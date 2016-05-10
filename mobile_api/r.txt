@@ -7765,3 +7765,4 @@ p":"json"}
 {"ctl":"GoodsFavorites","id":"248","met":"isCollect","typ":"json"}
 {"ctl":"GoodsFavorites","id":"248","met":"isCollect","typ":"json"}
 {"ctl":"GoodsFavorites","id":"95","met":"remove","typ":"json"}
+{"user_id":"1","Key":"1","ctl":"GoodsFavorites","met":"get","typ":"json"}
