@@ -48,10 +48,17 @@
                             <p class="shopli_bottom_text"><{$list.pname}></p>
                         </div>
                         <div class="shopli_bottom_rob clearfix">
+                            <{if $smarty.get.is_dist eq 1}>
+                            <div class="al shopli_bottom_money">
+                                <p class="money"><span>佣金</span><{$config.money}>2.50</p>
+                                <p class="money money_d"><{$config.money}><{$list.price}></p>
+                            </div>
+                            <{else}>
                             <div class="al shopli_bottom_money">
                                 <p class="money"><{$config.money}><{$list.price}></p>
                                 <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                             </div>
+                            <{/if}>
                             <{if $smarty.get.is_dist eq 1}>
                                 <a href="javascript:distribute_goods('<{$list.id}>');" class="shopli_bottom_zhuanxiang">加入分销</a>
                             <{else}>
