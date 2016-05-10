@@ -93,7 +93,13 @@
                 <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
             </div>
             <div class="shopinfo-imphost">
-                <p>主营商品：<span>大牌尿裤、进口奶粉、安全喂养、洗护用品、营养辅食、宝宝护肤</span></p>
+                <p>主营商品：
+                    <{if $com.shop_description}>
+                    <span><{$com.shop_description}></span>
+                    <{else}>
+                    <span>无</span>
+                    <{/if}>
+                </p>
             </div>       
             <div class="cols" style="padding: 0 10px">
                 <a onclick="javascript:getfavshop()">
