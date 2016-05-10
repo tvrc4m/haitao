@@ -513,9 +513,6 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
                 $db->query($sql);
                 $cre['id']=$db->lastid();
             }
-            else
-            {
-            }
 
             //判断userid ， bind
             if(!$cre['userid'])
