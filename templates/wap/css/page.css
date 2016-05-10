@@ -259,3 +259,22 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
     background-color: rgba(0,0,0,0.5);
     border-radius: 50%;
 }
+/*合伙人页面*/
+.partner_fixed{position: fixed;bottom: 0px;width: 100%;text-align: center;background-color: rgba(153, 51, 255, 1);}
+.partner_fixed a{display: inline-block;width: 100%;font-size: 0.7rem;padding: 0.7rem 0;color: #fff;}
+.partner_container{background-color: #ff5c5c;padding: 0px 0.5rem;padding-bottom: 4rem;}
+.partner_container_top{padding: 0.8rem 0rem;}
+.partner_container_top p{font-size: 1rem;line-height: 1.2;color: #fff;font-weight: 500;padding-left: 3rem;}
+.partner_container_top p:last-of-type{padding-left: 3.5rem;margin-top: 0.5rem;}
+.partner_container_content{border-radius: 5px;margin-top: 1.5rem;background-color: #fff;position: relative;}
+.partner_container_content h2{background-color: rgba(242, 242, 242, 1);width: 200px;text-align: center;font-size: 0.7rem;color: #535353;margin: 0 auto;
+    height: 50px;line-height: 50px;position: absolute;top: -1rem;left: 50%;margin-left: -100px;}
+.partner_list{padding: 0.8rem 0;border-bottom: 1px solid #b9b9b9;}
+.partner_list_inner{padding-right: 0.5rem;padding-left: 85px;background: url(../../../image/wap/1-4.jpg) 10px center no-repeat;background-size: contain;}
+.partner_list_inner p{font-size: 0.7rem;margin-bottom: 0.4rem;}
+.partner_list_inner span{font-size: 0.6rem;display: inline-block;min-height: 37px;}
+.partner_list ul{padding-top: 0.8rem;}
+.partner_list ul li {width: 25%;display: inline-block;text-align: center;}
+.partner_list ul li img {width: 40px;height: 40px;}
+.partner_list ul li p {margin-top: 5px;}
+.partner_botimg{text-align: center;padding-top: 0.4rem;padding-bottom: 1rem;}

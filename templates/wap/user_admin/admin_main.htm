@@ -47,7 +47,7 @@ function gotoMenu(url)
 <div class="xiaoke">
     <section>
         <div class="xiaoke_centent">
-            <div class="centent_topnum clearfix">
+            <!-- <div class="centent_topnum clearfix">
                 <div class="centent_left">
                   <div class="header_topleft">
                     <a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1"><img src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" ></a>
@@ -60,9 +60,34 @@ function gotoMenu(url)
                         <a href="<{$config.weburl}>/main.php" id="pay_dist" class="pay_dist">提现</a>
                     </dd> 
                 </dl>
+            </div> -->
+            <div class="centent_tops">
+                <div class="centent_tops_text clearfix">
+                    <span>今日佣金（元）</span><a href="<{$config.weburl}>/pay">蚂蚁钱包</a>
+                </div>
+                <div class="centent_tops_money"><{$config.money}>100.00</div>
+            </div>
+            <div class="centent_yongjin clearfix">
+                <div>
+                    <p>累计佣金（元）</p><span><{$config.money}><{$dist_user_row.distribution_user_amount|string_format:"%.2f"}></span>
+                </div>
+                <div>
+                    <p>账户余额（元）</p><span><{$config.money}>12.25</span>
+                </div>
+            </div>
+            <div style="background-color:#e1e1e1;height:10px;"></div>
+            <div class="centent_shop">
+                <div class="centent_ten_buluo"><a href="javascript:void(0);">我的店铺</a></div>
+                <div class="centent_shop_cont">
+                    <div class="centent_shop_dian">店铺<a href="<{$config.weburl}>/shop.php?uid=<{$buid}>"><span><{$smarty.cookies.USER|default:'蚂小小'}></span></a></div>
+                    <div class="centent_shop_pin">主营商品：<span>大牌尿裤、进口奶粉、安全喂养、洗护用品、营养辅食、宝宝护肤</span></div>
+                    <div class="centent_left">
+                        <img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>">
+                    </div>
+                </div>
             </div>
             <div class="centent_cennum_container">
-                <div class="centent_cennum centent_cennum_test">
+                <!-- <div class="centent_cennum centent_cennum_test clearfix">
                     <dl>
                       <dt>今日访客</dt>
                       <dd><{$click_num|intval}></dd>
@@ -79,15 +104,11 @@ function gotoMenu(url)
                         <dd><{$order_amout|string_format:"%.2f"}></dd>
                     </a>
                     </dl>
+                </div> -->
+                <div class="cen_shop_add">
+                    <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_find">添加商品+</a>
                 </div>
-                <div class="clearfix"></div>
                 <div class="centent_cen clearfix">
-                    <div class="cen_shop cen_shop1">
-                        <a class="clearfix" href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_find">
-                        <p class=""><img src="/image/wap/wap_haitao_icon48.png"></p>
-                        <dd>发现商品</dd>
-                        </a>
-                    </div>
                     <div class="cen_shop cen_shop2">
                         <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list">
                             <p class="iconfont"><img src="/image/wap/wap_haitao_icon47.png"></p>
@@ -97,13 +118,13 @@ function gotoMenu(url)
                     <div class="cen_shop cen_shop5">
                         <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_order_list">
                             <p class="iconfont"><img src="/image/wap/wap_haitao_icon46.png"></p>
-                            <dd>分销业绩</dd>
+                            <dd>代销业绩</dd>
                         </a>
                     </div>
                     <div class="cen_shop cen_shop6">
                       <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution">
                           <p class="iconfont"><img src="/image/wap/wap_haitao_icon45.png"></p>
-                          <dd>分佣明细</dd>
+                          <dd>代销明细</dd>
                       </a>
                     </div>
                      <div class="cen_shop cen_shop3">
@@ -111,23 +132,21 @@ function gotoMenu(url)
                             <p class="iconfont"><img src="/image/wap/wap_haitao_icon44.png"></p>
                             <dd>店铺设置</dd></a>
                     </div>
-                    <div class="cen_shop cen_shop8">
+                   <!--  <div class="cen_shop cen_shop8">
                         <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>">
                             <p class="iconfont"><img src="/image/wap/wap_haitao_icon43.png"></p>
                             <dd>我的店铺</dd>
                         </a>
-                    </div>
+                    </div> -->
+                </div>
+                <div style="background-color:#e1e1e1;height:10px;"></div>
+                <div class="centent_ten_buluo">
+                    <div><a href="javascript:void(0);">我的部落</a></div>
                 </div>
                 <div class="centent_ten">
                    <dl class="cen_shop cen_shop4 clearfix">
                         <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_user">
-                            <dt>我的下线</dt>
-                            <dd></dd>
-                        </a>
-                    </dl>
-                    <dl class="cen_shop cen_shop7 clearfix">
-                        <a href="<{$config.weburl}>/pay">
-                            <dt>蚂蚁钱包</dt>
+                            <dt>我的合伙人</dt>
                             <dd></dd>
                         </a>
                     </dl>
@@ -136,7 +155,7 @@ function gotoMenu(url)
                             <dt id="shop_img">二维码分享 <img style="display:none" src="api/share_qrcode.php?type=shop&shop_id=<{$cominfo.userid}>&rand=<{math equation=rand(1,10000)}>"></dt>
                             <dd></dd>
                         </a> -->
-                        <dt>分享我的店铺</dt>
+                        <dt>邀请合伙人</dt>
                         <dd></dd>
                     </dl>
                 </div>
@@ -144,6 +163,13 @@ function gotoMenu(url)
         </div>
     </section>
 </div>
+<section class="bom_nav">
+    <ul>
+        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon27.png" alt="购物"><p>购物</p></a></li><li>
+        <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon67.png" alt="赚钱"><p class="bom_nav_color">赚钱</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=1"><img src="../image/wap/wap_haitao_icon70.png" alt="我的"><p>我的</p></a></li>
+    </ul>
+</section>
 <div style="clear:both"></div>
 <div class="hj_share_box" id="share_box"></div>
 <div class='collect_box_contentss'></div>
