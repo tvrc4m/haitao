@@ -109,13 +109,11 @@ if ($distribution_open_flag)
 	$admin->tpl->assign("click_num", $click_num);
 
 	//7日订单
-<<<<<<< HEAD
-	$time = time() - 3600 * 24 * 7;
-=======
+
 	//$time = time() - 3600 * 24 * 7;
 	//$time = time() - 3600 * 24 * 1;
 	$time = strtotime(date("Y-m-d"));//当天时间0点
->>>>>>> d6d1e8905529b261501ba5ccc2ab6e2981e1ac7c
+
 	$order_num = $distribution->getDistributionOrderNum($buid, $time);
 	$admin->tpl->assign("order_num", $order_num);
 	//7日营业额
