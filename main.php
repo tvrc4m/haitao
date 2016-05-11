@@ -109,6 +109,10 @@ if ($distribution_open_flag)
 	$admin->tpl->assign("click_num", $click_num);
 
 	//7日订单
+<<<<<<< HEAD
+
+=======
+>>>>>>> 80337f5dfcebf8ff366c31ea0c153cdf877b4809
 	//$time = time() - 3600 * 24 * 7;
 	//$time = time() - 3600 * 24 * 1;
 	$time = strtotime(date("Y-m-d"));//当天时间0点
