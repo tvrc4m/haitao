@@ -30,19 +30,20 @@
 .centent_bomnum .bomnum_shop{width: 100%;height: auto;text-align: center;line-height: 55px;}
 .centent_bomnum .bomnum_shop  img{max-width: 45px;max-height: 45px;margin-right: 10px;margin-bottom: 10px;}
 .centent_bomnum .bomnum_shop a span{font-size: 20px;color: #FF4C01;font-weight: bold;font-family: "微软雅黑";}
-.centent_cen{width: 100%;height: auto;text-align: center;color: #999;}
-.centent_cen .cen_shop{width: 25%;float: left;padding: 15px 0;box-sizing: border-box;-webkit-box-sizing: border-box;}
-.centent_cen .cen_shop img{max-width: 45px;max-height: 40px;margin-top:6px ;}
+.centent_cen{width: 100%;height: auto;text-align: center;color: #999;border-top: 1px dashed #b9b9b9;padding: 0.8rem 0;}
+.centent_cen .cen_shop{width: 25%;float: left;box-sizing: border-box;-webkit-box-sizing: border-box;border-right: 1px solid #e1e1e1;}
+.centent_ten .cen_shop3{border-right: none;}
+.centent_cen .cen_shop img{max-width: 50px;max-height: 50px;}
 .centent_cen .cen_shop a dd{text-align: center;margin-top:10px;font-size: 0.6rem;color: #535353;}
 .cententnoll{width: 100%;height: 60px;border-top: 1px solid #BEBEBE;border-bottom: 1px solid #BEBEBE;clear: both;padding: 2px 0px;margin-bottom: 80px}
-.centent_ten{border: 1px solid #b9b9b9;width: 100%;padding: 0 0.5rem;box-sizing: border-box;-webkit-box-sizing: border-box;}
-.centent_ten dl.cen_shop{padding: 15px 0;border-bottom: 1px dashed #b9b9b9;}
+.centent_ten{border: 1px solid #b9b9b9;width: 100%;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.centent_ten dl.cen_shop{padding: 15px 0;border-top: 1px dashed #b9b9b9;padding-left: 15px;}
 .centent_ten dl.cen_shop a{display: inline-block;width: 100%;color: #535353;}
 .centent_ten dl.cen_shop:last-of-type{border-bottom: none;}
 .centent_ten .cen_shop dt{float: left;padding-left: 1.4rem;font-size: 0.65rem;}
-.centent_ten .cen_shop4 dt{background: #fff url(../../../image/wap/wap_haitao_icon51.png) 0rem center no-repeat;background-size: contain;}
+.centent_ten .cen_shop4 dt{background: #fff url(../../../image/wap/wap_haitao_icon87.png) 0rem center no-repeat;background-size: contain;}
 .centent_ten .cen_shop7 dt{background: #fff url(../../../image/wap/wap_haitao_icon50.png) 0rem center no-repeat;background-size: contain;}
-.centent_ten .cen_shop10 dt{background: #fff url(../../../image/wap/wap_haitao_icon49.png) 0rem center no-repeat;background-size: contain;}
+.centent_ten .cen_shop10 dt{background: #fff url(../../../image/wap/wap_haitao_icon86.png) 0rem center no-repeat;background-size: contain;}
 .centent_ten .cen_shop dd{float: right;font-size: 0.65rem;background:url(../../../image/wap/wap_haitao_icon18.png) right center no-repeat;background-size: contain;width: 1rem;height: 0.7rem;margin-right: 0.5rem;}
 .collect_box_contentss {
     position: fixed;
@@ -56,23 +57,27 @@
 }
 .hj_share_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size:70%;opacity:0;display: none;}
 /*新版样式*/
-.centent_tops{text-align: center;padding:0.8rem 0.5rem;}
+.centent_tops{padding:0.8rem 1.5rem 0;background-color: #ff5c5c;border-top: 1px solid #f5f5f5;color: #FFF;}
 .centent_tops .centent_tops_text{font-size: 0.7rem;}
 .centent_tops .centent_tops_text span{float: left;}
-.centent_tops .centent_tops_text a{float: right;text-decoration: underline;color: #9900CC;}
-.centent_tops .centent_tops_money{font-size: 0.9rem;margin-top: 0.5rem;color: #ff5c5c;}
-.centent_yongjin{padding:0 0.5rem;border-top: 1px solid #b9b9b9;}
-.centent_yongjin div{width: 50%;float: left;padding: 0.8rem 0;}
-.centent_yongjin div:first-of-type{box-sizing:border-box;-webkit-box-sizing:border-box;border-right: 1px solid #b9b9b9;}
-.centent_yongjin div p{margin-bottom: 8px;padding-left: 10px;font-size: 0.6rem;}
-.centent_yongjin div span{display: inline-block;padding-left: 10px;font-size: 0.9rem;color: #ff5c5c;}
-.cen_shop_add{font-size: 0.7rem;text-align: center;border-bottom:1px solid #b9b9b9;}
-.cen_shop_add a{display: inline-block;width: 100%;color: #ff5c5c;padding:0.5rem 0;}
-.centent_ten_buluo{font-size:0.7rem;padding:0.5rem;}
-.centent_ten_buluo a{width: 100%;padding-left: 10px;border-left:5px solid #ff5c5c;}
-.centent_shop_cont{padding: 0.8rem 0;border-top: 1px solid #b9b9b9;border-bottom: 1px solid #b9b9b9;position: relative;}
-.centent_shop_cont .centent_shop_dian{font-size: 0.7rem;padding-left: 4.5rem;margin-bottom: 0.5rem;}
-.centent_shop_cont .centent_shop_dian span{padding-right: 40px;background:url(../../../image/wap/wap_haitao_icon51.png) right center no-repeat;background-size: contain;}
-.centent_shop_cont .centent_shop_pin{font-size: 0.6rem;background-color: rgba(0,0,0,.5);color: #fff;padding: 0.3rem 0;padding-left: 4.5rem;}
-.centent_shop .centent_left{width: 3.5rem;height: 3.5rem;position: absolute;bottom: 0.8rem;left: 0.5rem;}
+.centent_tops .centent_tops_text a{float: right;color: #fff;}
+.centent_tops .centent_tops_money{font-size: 1.3rem;margin-top: 0.8rem;color: #ffea00;line-height: 0.9;}
+.centent_yongjin{padding:0 0.5rem;background-color: #ff5c5c;color: #FFF;padding: 0.8rem 1.5rem;}
+.centent_yongjin>div{width: 50%;float: left;text-align: right;}
+.centent_yongjin>div:first-of-type{box-sizing:border-box;-webkit-box-sizing:border-box;border-right: 1px solid #fff;text-align: left;}
+.centent_yongjin>div p{margin-bottom: 8px;font-size: 0.6rem;}
+.centent_yongjin>div span{display: inline-block;font-size: 0.9rem;}
+.cen_shop_add{font-size: 0.7rem;text-align: center;padding:0.8rem 0;}
+.centent_yongjin div.centent_yongjin_dw{text-align: left;float: right;}
+.cen_shop_add a{display: inline-block;color: #ff5c5c;padding-left: 25px;background: url(../../../image/wap/wap_haitao_icon74.png) left center no-repeat;background-size: contain;}
+.centent_cennum_container{padding: 0 0.5rem;}
+.centent_shop{border:1px solid #b9b9b9;}
+.centent_ten_buluo{width: 100%;height: 40px;line-height: 40px;margin-left: -1px;margin-top: -1px;}
+.centent_ten_buluo a{width: 100%;border-left:5px solid #ffa200;font-size:0.7rem;padding-left: 15px;height: 40px;line-height: 40px;display: inline-block;}
+.centent_shop_cont{padding: 0.8rem 0;position: relative;border-bottom: 1px dashed #b9b9b9;border-top: 1px dashed #b9b9b9;}
+.centent_shop_cont .centent_shop_dian{font-size: 0.7rem;margin-bottom: 0.5rem;margin-top: 0.5rem;}
+.centent_shop_cont .centent_shop_pin{font-size: 0.6rem;color: #535353;padding-right: 0.5rem;}
+.centent_shop .centent_left{width: 3.5rem;height: 3.5rem;float: left;margin: 0 15px;}
 .centent_shop .centent_left img {width: 3.5rem;height: 3.5rem;border-radius: 50%;}
+.centent_shop_yan{float: right;margin-right: 0.5rem;}
+.centent_shop_yan img{height: 20px;}
