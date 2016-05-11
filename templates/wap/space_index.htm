@@ -120,8 +120,8 @@
     </a>
 </section>
 <section class="clearfix pchart_commit">
+<{if $com.shop_statu eq 1}>
     <div class='pchart_last pchart_test'>
-    <{if $com.shop_statu eq 1}>
     <div class="plist itemSearchResult">
         <ul class="shoplist clearfix">
             <{foreach item=list key=key from=$pro key=num}>
@@ -152,12 +152,12 @@
                 </li>
             <{/foreach}>
         </ul>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
     </div>
-    <{/if}>
+    <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
     </div>
-    <div class='pchart_first'>
-    <{if $dist_pro}>
+<{/if}>
+<{if $dist_pro}>
+    <div class='pchart_first'>   
         <div class="plist itemSearchResult">
             <!-- <h2>推荐商品</h2> -->
             <ul class="shoplist clearfix">
@@ -191,8 +191,8 @@
             </ul>
         </div>
         <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-    <{/if}>
     </div> 
+<{/if}>
     <div class="leftcate" style="display: none">
         <{if $custom_cat }>
         <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
