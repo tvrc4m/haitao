@@ -82,9 +82,9 @@ class real{
         $card_id = !empty($post['real']) ? $post['real'] : '';
         $realname = !empty($post['users']) ? $post['users'] : '';
         $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
-        if(empty($post[users])) $erry = -1;else $users = $post[users];
-        if(empty($post[real])) $erry = -2;else $real = $post[real];
-        if(!empty($post[users])&&!empty($post[real])){
+       /* if(empty($users)) $erry = -1;else $users = $post[users];
+        if(empty($post[real])) $erry = -2;else $real = $post[real];*/
+        if(!empty($users)&&!empty($real)){
             $type = self::validation_filter_id_card($post[real]);
             if($type){
                 $sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
@@ -112,12 +112,11 @@ class real{
 include_once("../includes/global.php");
 $real = new real;
 $post = $_POST?$_POST:$_GET;
-$aa = $real->idcard_authentication('130429198702155219');
-$a = 1;
-$url="haitao.com";
+$aa = $real->idcard_authentication($post['real_name'],$post['identity_card']);
+var_dump($post);
 echo json_encode(array(
-    "erry"=>$a,
-    "url"=>$url
+    "erry"=>$aa,
+    "url"=>$post['url']
 ));
 if($config['temp']=='wap'){
 die(11);
