@@ -93,12 +93,12 @@ class shop
 		if(!empty($_GET['area']))
 			$scl.=" and areaid='$_GET[area]'";
 		
-		if($_SESSION['province'] and empty($_GET['province']))
+		/*if($_SESSION['province'] and empty($_GET['province']))
 			$scl.=" and provinceid='".getdistrictid($_SESSION['province'])."'";
 		if($_SESSION['city'] and empty($_GET['city']))
 			$scl.=" and cityid='".getdistrictid($_SESSION['city'])."'";
 		if($_SESSION['area'] and empty($_GET['area']))
-			$scl.=" and areaid='".getdistrictid($_SESSION['area'])."'";
+			$scl.=" and areaid='".getdistrictid($_SESSION['area'])."'";*/
 
 
 		if(!empty($_GET['catid']))
