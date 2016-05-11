@@ -260,10 +260,10 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
     border-radius: 50%;
 }
 /*合伙人页面*/
-.partner_container{background: url(../../../image/wap/bg.png) no-repeat;padding: 0px 0.5rem;padding-bottom: 0.5rem;background-size:100% 100%;}
-.partner_container_top{padding: 2.5rem 0rem;}
+.partner_container{background: url(../../../image/wap/bg.png) no-repeat;padding: 0px 0.5rem;padding-bottom: 0.5rem;background-size:100% 100%;overflow: hidden;}
+.partner_container_top{padding: 2.5rem 0rem;background: url(../../../image/wap/wap_haitao_icon106.png) no-repeat;background-size: 100%;margin-top: 1rem;margin-bottom: -1.8rem;}
 .partner_container_content{border-radius: 5px;margin-top: 1.5rem;background-color: #fff;position: relative;}
-.partner_container_content h2{width: 200px;height: 50px;position: absolute;top: -1rem;left: 50%;margin-left: -100px;background: url(../../../image/wap/wap_haitao_icon98.png) no-repeat;background-size:100%;}
+.partner_container_content h2{width: 160px;height: 50px;position: absolute;top: -0.8rem;left: 50%;margin-left: -80px;background: url(../../../image/wap/wap_haitao_icon98.png) no-repeat;background-size:100%;}
 .partner_list{padding: 0.8rem 0;border-bottom: 1px dashed #b9b9b9;}
 .partner_list_inner{padding-right: 0.5rem;padding-left: 85px;}
 .partner_list_inner.icon1{background: url(../../../image/wap/wap_haitao_icon97.png) 10px no-repeat;background-size: contain;}
