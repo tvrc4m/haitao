@@ -78,13 +78,16 @@
 .bom_nav ul li a img{width: 24px;height: 24px;}
 .bom_nav ul li a p{margin-top: 5px;font-size: 0.7rem;}
 .bom_nav_color{color: #ff5c5c;}
-.pchart_first,.pchart_last{display: none;}
 .pchart_test{display: block;}
 .pchart_con .active{color: #ff5c5c;}
 .pchart_con li p{font-size: 0.6rem;margin-top: 5px;}
 .pchart_commit{padding-bottom:70px;}
-.pchart_con2{text-align: center;margin: 15px 0;font-size: 0.8rem;line-height: 1.3}
+.pchart_con2{text-align: center;margin: 15px 0;font-size: 0.8rem;line-height: 1.3;}
 .pchart_con2 span{font-size: 0.6rem;color: #999;}
+.pchart_add{display: none;text-align: center;margin-top: 60px;}
+.pchart_add a{display: inline-block;}
+.pchart_add_con{text-align: center;}
+.pchart_add_con span{font-size: 0.8rem;}
 @media screen and (min-width: 600px) and (max-width: 800px) { 
  	.plist ul li{margin-bottom: 0.7rem;}
 }
