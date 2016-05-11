@@ -15,7 +15,7 @@
     <a href="/login.php" data-href="login" class="user_icon"></a>   
         <div class="main95">
             <div class="s_main">
-                <input type="text" value="" autocomplete="off" placeholder="搜所您需要的商品" />
+                <input type="text" value="" autocomplete="off" placeholder="搜索您需要的商品" />
                 <div class="s_images"></div>
             </div>
         </div>
@@ -219,7 +219,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
             if(i>=5){
                 stop=false;
             }
-            totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()) + parseFloat($jj("footer").height()); 
+            totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()); 
             if($jj(document).height() <= totalheight){ 
                 if(stop==true){ 
                     $jj("#more-msg").html("正在加载中.....");
