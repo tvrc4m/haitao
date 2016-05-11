@@ -113,7 +113,12 @@ include_once("../includes/global.php");
 $real = new real;
 $post = $_POST?$_POST:$_GET;
 $aa = $real->idcard_authentication('130429198702155219');
-echo -1;
+$a = 1;
+$url="haitao.com";
+echo json_encode(array(
+    "erry"=>$a,
+    "url"=>$url
+));
 if($config['temp']=='wap'){
 die(11);
 }
