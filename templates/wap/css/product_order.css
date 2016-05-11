@@ -19,7 +19,7 @@
 .address p:first-of-type{margin-bottom: 10px;font-weight: 600;}
 .p-price-num-z{font-size: 0.9rem;}
 .address_line{width: 100%;margin-bottom: 10px;}
-.inventory{padding: 0px 10px;}
+.inventory{padding: 0px 10px 60px;}
 .p-name-gunge{font-size: 0.6rem;color: #666;}
 .item {background:#FFF;border:1px solid #b9b9b9;min-height:80px;;position:relative;margin-bottom:15px;}
 .item:first-child{margin-top:10px;} 
