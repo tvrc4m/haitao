@@ -47,6 +47,8 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 #pro_detail .slogote{width:2.5rem;height:2.5rem;border-radius:50%;float: left;}
 #pro_detail .sinfo{padding-left:.5em;color:#000;font-size: 0.6rem;line-height: 1rem;}
 .price_moneys{color: #ff5c5c;}
+.price_moneys2{color: #ff5c5c;font-size: 1rem;}
+#pro_detail .price_moneys2 #price{font-size: 1rem;}
 .price_dels{color: #535353;text-decoration: line-through;}
 /*.price_chas{font-size: 0.7rem;}*/
 .chats{margin: 5px 0;}
@@ -254,6 +256,8 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .bgw_vi{padding:0 0.5rem;margin-bottom: 0.5rem}
 .c_daixiao_img{padding: 2px;border-radius: 50%;background-color: #944ce5;color: #fff;display: inline-block;width: 0.8rem;height: 0.8rem;text-align: center;line-height: 0.8rem;}
 .c_daixiao_imgs{background-color: #ff6600;}
+.col-money-bot{font-size: 0.6rem;margin: 0.5rem 0;}
+.col-money-bots{font-size: 0.7rem;}
 /*商品推荐*/
 .select_style .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}
 .select_style .shop_t .shopli:nth-of-type(3n){margin-right: 0;}
