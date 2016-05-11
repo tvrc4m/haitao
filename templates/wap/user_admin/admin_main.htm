@@ -72,7 +72,7 @@ function gotoMenu(url)
                     <p>累计佣金（元）</p><span><{$config.money}><{$dist_user_row.distribution_user_amount|string_format:"%.2f"}></span>
                 </div>
                 <div>
-                    <p>账户余额（元）</p><span><{$config.money}>12.25</span>
+                    <p>账户余额（元）</p><span><{$config.money}><{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}></span>
                 </div>
             </div>
             <div style="background-color:#e1e1e1;height:10px;"></div>
