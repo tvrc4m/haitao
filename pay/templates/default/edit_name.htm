@@ -1,4 +1,7 @@
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
+
+<script type="text/javascript" src="script/my_lightbox.js"></script>
+
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <script>
 $(function(){
@@ -70,7 +73,8 @@ window.onload=function(){
     </div>
 
     <div class="form">
-    <form method="post" id="form">
+    <!--<form method="post" id="form" action="http://<{php}>echo $_SERVER['HTTP_HOST']<{/php}>/real.php">-->
+    <form method="post" id="form" >
     <input type="hidden" value="name" name="act" />
     <input type="hidden" value='' name="url">
         <fieldset>
@@ -89,6 +93,20 @@ window.onload=function(){
             <dt>身份证号码：</dt>
             <dd><input type="text" class="text" name="identity_card" id="identity_card" value="<{$de.identity_card}>" maxlength="18" <{if $de.identity_verify=='true'}>readonly<{/if}> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
         </dl>
+
+            <div class="logo_show">
+                <input class="text w300 hidden" name="logo" type="hidden" id="logo" value="<{$de.logo}>">
+                <a href="javascript:uploadfile('LOGO','logo',120,120,'real','','front.jpg')">
+                    <img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                </a>
+            </div>
+            <div class="logo_show">
+                <input class="text w300 hidden" name="logo1" type="hidden" id="logo1" value="<{$de.logo}>">
+                <a href="javascript:uploadfile('LOGO','logo1',120,120,'real','','back.jpg')">
+                    <img id="logo1_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                </a>
+            </div>
+
         </fieldset>
         <{if $de.identity_verify!='true'}>
         <dl>

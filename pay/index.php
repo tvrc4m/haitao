@@ -9,7 +9,6 @@ $pay=new pay();
 $de=$pay->get_member_info($buid);
 $_SESSION['pay_id'] = $buid;
 $tpl->assign("de",$de);
-
 $sql="select con_group,con_title,con_id from ".WEBCON." where type=1 limit 0,4";
 $db->query($sql);
 $help=$db->getRows();

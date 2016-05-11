@@ -91,7 +91,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		//-----------------------------------------------------
 		$score = $shop->score();		
 		foreach ($score as $key => $value) {
-			$score[$key] = $value?$value:0;
+			$score[$key] = $value?$value:5;
 		}
 
 		$tpl->assign("ulink",$shop->get_user_link());		

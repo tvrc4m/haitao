@@ -2,7 +2,10 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("footer.php");
+//echo $_COOKIE['dist_id'];
 
+/*echo $_COOKIE['dist_id'].substr(time(),4).'_front.jpg';
+die;*/
 if(!empty($_SERVER['HTTP_REFERER'])&&empty($_POST['action']))
     setcookie('old_url',$_SERVER['HTTP_REFERER']);
 
@@ -15,10 +18,13 @@ if(!empty($_POST['action'])){
     $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
     $card_id = !empty($post['real']) ? $post['real'] : '';
     $realname = !empty($post['users']) ? $post['users'] : '';
+    $img1 = !empty($post['logo']) ? $post['logo'] : '';
+    $img2 = !empty($post['logo1']) ? $post['logo1'] : '';
 
     $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
     if(empty($post[users])) $erry = -1;else $users = $post[users];
     if(empty($post[real])) $erry = -2;else $real = $post[real];
+    if(empty($img1) || empty($img1)) $erry = -2;else $real = $post[real];
     if(!empty($post[users])&&!empty($post[real])){
 
         $type = validation_filter_id_card($post[real]);
@@ -27,7 +33,7 @@ if(!empty($_POST['action'])){
             // 判断type为正确身份证再跳转验证身份证真假
             $tokens = aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
 	    if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
-            $sql = "update pay_member set identity_verify=true where userid=".$_COOKIE['dist_id'];
+            $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$_COOKIE['dist_id'];
             $db -> query($sql);
                 msg($_COOKIE['old_url']);
                 setcookie("old_url");
