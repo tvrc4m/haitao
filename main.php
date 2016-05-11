@@ -88,10 +88,10 @@ if ($distribution_open_flag)
 {
 	//我的佣金总额
 	$dist_user_row = $distribution->getDistributionUser($buid);
-
-	$dist_user_row['distribution_user_amount'] =  $dist_user_row['distribution_shop_amount_0'] +  $dist_user_row['distribution_shop_amount_1'] +  $dist_user_row['distribution_shop_amount_2']
+	//var_dump($dist_user_row['distribution_user_amount']);die;
+	/*$dist_user_row['distribution_user_amount'] =  $dist_user_row['distribution_shop_amount_0'] +  $dist_user_row['distribution_shop_amount_1'] +  $dist_user_row['distribution_shop_amount_2']
 		+ $dist_user_row['distribution_click_amount_0'] +  $dist_user_row['distribution_click_amount_1'] +  $dist_user_row['distribution_click_amount_2']
-		+ $dist_user_row['distribution_reg_amount_0'] +  $dist_user_row['distribution_reg_amount_1'] +  $dist_user_row['distribution_reg_amount_2'];
+		+ $dist_user_row['distribution_reg_amount_0'] +  $dist_user_row['distribution_reg_amount_1'] +  $dist_user_row['distribution_reg_amount_2'];*/
 
 
 	$dist_user_row['distribution_user_unsettlement_amount'] =  $dist_user_row['distribution_user_amount'] - $dist_user_row['distribution_user_settlement_amount'];
