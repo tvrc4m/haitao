@@ -81,6 +81,9 @@ class real{
         $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
         $card_id = !empty($reals) ? $reals : '';
         $realname = !empty($users) ? $users : '';
+        $img1 = !empty($post['logo']) ? $post['logo'] : '';
+        $img2 = !empty($post['logo1']) ? $post['logo1'] : '';
+
         $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
         if(empty($users)){$erry = -1;return $erry;} else $user = $users;
         if(empty($reals)){$erry = -2;return $erry;}else $real = $reals;
@@ -91,7 +94,7 @@ class real{
                 // 判断type为正确身份证再跳转验证身份证真假
                 $tokens = self::aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
                 if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
-                    $sql = "update pay_member set identity_verify=true where userid=".$_COOKIE['dist_id'];
+                    $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$_COOKIE['dist_id'];
                     $db -> query($sql);
                     $erry = -5;
                 }else{
@@ -108,7 +111,7 @@ include_once("../includes/global.php");
 $real = new real;
 $post = $_POST?$_POST:$_GET;
 $aa = $real->idcard_authentication($post['real_name'],$post['identity_card']);
-var_dump($post);
+
 echo json_encode(array(
     "erry"=>$aa,
     "url"=>$post['url']
