@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-26 10:50:28
+<?php /* Smarty version 2.6.20, created on 2016-05-11 17:15:03
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -96,12 +96,12 @@ window.onload=function(){
 " maxlength="18" <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>readonly<?php endif; ?> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
         </dl>
         </fieldset>
-        <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
+       
         <dl>
             <dt></dt>
             <dd><input type="submit" onclick="formSubmit();" class="submit" value="确 定" /></dd>
         </dl>
-        <?php endif; ?>
+       
     </form>
     </div>
 </div>
