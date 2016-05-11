@@ -35,9 +35,9 @@ if($flag=='false'){
 }*/
 
 if(empty($_SESSION['USER_TYPE']))
-	$_SESSION['USER_TYPE']=$is_company;
+	$_SESSION['USER_TYPE'] = $is_company;
 if($_GET['cg_u_type'])
-	$_SESSION['USER_TYPE']=$_GET['cg_u_type']*1;
+	$_SESSION['USER_TYPE'] = $_GET['cg_u_type'] * 1;
 
 $tpl->assign("cg_u_type",$_SESSION['USER_TYPE']);
 
@@ -109,13 +109,18 @@ if ($distribution_open_flag)
 	$admin->tpl->assign("click_num", $click_num);
 
 	//7日订单
+<<<<<<< HEAD
+	$time = time() - 3600 * 24 * 7;
+=======
 	//$time = time() - 3600 * 24 * 7;
 	//$time = time() - 3600 * 24 * 1;
 	$time = strtotime(date("Y-m-d"));//当天时间0点
+>>>>>>> d6d1e8905529b261501ba5ccc2ab6e2981e1ac7c
 	$order_num = $distribution->getDistributionOrderNum($buid, $time);
 	$admin->tpl->assign("order_num", $order_num);
 	//7日营业额
 	$order_amout = $distribution->getDistributionOrderAmount($buid, $time);
+
 	$admin->tpl->assign("order_amout", $order_amout);
 }
 
@@ -140,7 +145,7 @@ switch ($action)
 		}
 		$_SESSION['USER_TYPE']=NULL;
 		header("Location: ".$config['weburl']);
-		//header("Location: "."$config[weburl]/login.php");
+		//header("Location: "."$config[weburl]/login.php"	);
 		break;
 	}
 	case "msg":
