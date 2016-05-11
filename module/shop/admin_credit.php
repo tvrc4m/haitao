@@ -89,7 +89,7 @@
 		$db->query($sql);
 		$u=$db->fetchRow();
 		foreach($u as $key => $val){
-			$u[$key] = $val ? $val : 0;
+			$u[$key] = $val ? $val : 5;
 		}
 		$u['aw']=$u['a']/5*100;
 		$u['bw']=$u['b']/5*100;
