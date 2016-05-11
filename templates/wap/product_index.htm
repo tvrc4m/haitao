@@ -192,6 +192,17 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
             _slideObj.animate({height:slideH},800);
         }, 800);
     }, false);
+    function sd(){
+        var liLens=$(".list_current ul li").size()%2;
+        console.log(liLens)
+        if(liLens==1){
+            $(".shop li:last-of-type").css({"border-bottom":"2px solid #b9b9b9;"});
+            $(".shop").css({"border-bottom":"none"})
+        }
+        if(liLens==0){
+            $(".shop").css({"border-bottom":"1px solid #b9b9b9;"})
+        }
+    }
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
     for(var i=0;i<imgIndex;i++){
         dot.append("<span></span>")
@@ -227,6 +238,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
                                 $jj("#more-msg").html("商品已加载完毕");
                             }
                             $jj(".scrollLoading").scrollLoading();
+                            sd()
                             stop=true;
                         }
                     });
@@ -235,6 +247,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
             } 
         });
         $jj(".scrollLoading").scrollLoading();
+        sd()
     }) 
 </script>
 </div>
