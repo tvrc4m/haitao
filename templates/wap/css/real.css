@@ -22,3 +22,6 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .inp_close {opacity: 0; width: 1rem;height: 1rem;background: url(../../../image/wap/wap_haitao_icon1.png) no-repeat;position: absolute;right: 3%;top:24%;background-size: contain;}
 .inp_close_t{top:45%;}
 .inp_up{opacity: 1;}
+.logo_shows{margin-right: 2%;}
+.logo_show{width: 49%;float: left;margin-top: 15px;}
+.logo_show img{width:120px;}
