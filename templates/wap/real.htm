@@ -41,6 +41,19 @@
             <div class="inp_close inp_close_t"><i></i></div>
         </li>
         <li>
+            <div class="logo_show">
+                <input class="text w300 hidden" name="logo" type="text" id="logo" value="<{$de.logo}>">
+                <a href="javascript:uploadfile('LOGO','logo',120,120,'member')">
+                    <img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                </a>
+            </div><div class="logo_show">
+                <input class="text w300 hidden" name="logo1" type="text" id="logo" value="<{$de.logo}>">
+                <a href="javascript:uploadfile('LOGO','logo',120,120,'member')">
+                    <img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                </a>
+            </div>
+        </li>
+        <li>
             <input name="action" type="hidden" value="submit" />
             <input name="forward" type="hidden" id="forward" value="<{$forward}>" />
             <input type="submit" value="去验证" onclick="">
@@ -54,7 +67,7 @@
             <li>1.由于免税店、跨境直邮商品需要办理入境申报，请您配合进行实名认证。</li>
             <li>2.蚂蚁海淘承诺所传身份证明只用于办理保税区、跨境直邮商品的清关手续，不作他途使用，其他任何人均无法查看。</li>
         </ul>
-    </div>  
+    </div>
 </div>
 </section>
 <{include file="footer.htm"}>
