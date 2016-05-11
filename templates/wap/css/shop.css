@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*.shopinfo-banner{background-color: #e65c5c;}*/
 .shopinfo-banner .shopinfo-companys{color: #fff;font-size: 0.7rem;position: absolute;bottom: 2.5rem;left: 4.5rem;}
-.shopinfo-banner{margin-bottom: 35px;position: relative;}
+.shopinfo-banner{position: relative;}
 .shopinfo-banner img{width: 100%;}
 .shopinfo-imphost{width: 100%; position: absolute;bottom: 0;background-color: rgba(0,0,0,.5);color: #fff;padding: 0.1rem 0.5rem 0.1rem 4rem;padding-right: 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .shopinfo-imphost p{height: 40px;overflow: hidden;font-size: 0.6rem;}
@@ -82,7 +82,8 @@
 .pchart_test{display: block;}
 .pchart_con .active{color: #ff5c5c;}
 .pchart_con li p{font-size: 0.6rem;margin-top: 5px;}
-.pchart_con2{text-align: center;margin: 15px 0;font-size: 0.7rem;}
+.pchart_con2{text-align: center;margin: 15px 0;font-size: 0.8rem;line-height: 1.3}
+.pchart_con2 span{font-size: 0.6rem;color: #999;}
 @media screen and (min-width: 600px) and (max-width: 800px) { 
  	.plist ul li{margin-bottom: 0.7rem;}
 }
