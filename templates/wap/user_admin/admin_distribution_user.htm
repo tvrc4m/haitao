@@ -72,7 +72,7 @@ $(function(){
     var dist_id = "<{$smarty.get.dist_id}>";
     var stop=true; 
     $(window).scroll(function(){
-        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());      
         if($(document).height() <= totalheight){
             if(stop==true){ 
                 $(".m_jiazai").html("正在加载中.....");
