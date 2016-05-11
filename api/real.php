@@ -75,18 +75,18 @@ class real{
  * users 身份证姓名
  * real 身份证号
  * */
-    function idcard_authentication($users='',$reals=''){
+    function idcard_authentication($users='',$reals='',$logo='',$logo1=''){
         global $db;
         $partner_id = '20160100136';
         $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
         $card_id = !empty($reals) ? $reals : '';
         $realname = !empty($users) ? $users : '';
-        $img1 = !empty($post['logo']) ? $post['logo'] : '';
-        $img2 = !empty($post['logo1']) ? $post['logo1'] : '';
 
         $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
         if(empty($users)){$erry = -1;return $erry;} else $user = $users;
         if(empty($reals)){$erry = -2;return $erry;}else $real = $reals;
+        if(empty($logo)){$erry = -6;return $erry;} else $img1 = $logo;
+        if(empty($logo1)){$erry = -7;return $erry;} else $img2 = $logo1;
         if(!empty($user)&&!empty($real)){
             $type = self::validation_filter_id_card($real);
             if($type){
@@ -110,21 +110,18 @@ class real{
 include_once("../includes/global.php");
 $real = new real;
 $post = $_POST?$_POST:$_GET;
-$aa = $real->idcard_authentication($post['real_name'],$post['identity_card']);
+$aa = $real->idcard_authentication($post['real_name'],$post['identity_card'],$post['logo'],$post['logo1']);
 
 echo json_encode(array(
     "erry"=>$aa,
     "url"=>$post['url']
 ));
-if($config['temp']=='wap'){
+/*if($config['temp']=='wap'){
 die(11);
 }
 if($config['temp'=='default']){
 die(222);
-}
-
-
-
+}*/
 
 //-1真实姓名不能为空！-2身份证号不能为空！-3请填写正确身份证号！-4姓名和身份证不一致！
 

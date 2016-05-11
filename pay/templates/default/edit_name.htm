@@ -29,6 +29,12 @@ function formSubmit() {
                     break;
                 case -5:
                     window.location.href=data.url;
+                case -6:
+                    $("#identity_card").nextAll(".form-error").html('<label>请上传身份证正面！</label>');
+                    break;
+                case -7:
+                    $("#identity_card").nextAll(".form-error").html('<label>请上传身份证反面！</label>');
+                    break;
                 default:
                     $("#real_name").attr("readonly","readonly");
                     $("#identity_card").attr("readonly","readonly");
