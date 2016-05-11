@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-05-11 19:16:10
+<?php /* Smarty version 2.6.20, created on 2016-05-11 19:19:04
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
+<<<<<<< HEAD
 <script type="text/javascript" src="script/my_lightbox.js"></script>
 =======
-<?php /* Smarty version 2.6.20, created on 2016-05-11 19:07:01
-         compiled from edit_name.htm */ ?>
-<script type="text/javascript" src="script/jquery.validation.min.js"></script>
 
 <script type="text/javascript" src="script/my_lightbox.js"></script>
 
@@ -83,11 +80,10 @@ window.onload=function(){
             <dd><input type="text" class="text" name="identity_card" id="identity_card" value="<?php echo $this->_tpl_vars['de']['identity_card']; ?>
 " maxlength="18" <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>readonly<?php endif; ?> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
         </dl>
-<<<<<<< HEAD
         <dl>
             <dt>上传身份证：</dt>
             <dd>
-                <div class="logo_show fl">
+                <div class="logo_show uplode">
                     <input class="text w300 hidden" name="logo" type="text" id="logo" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
 ">
                     <a href="javascript:uploadfile('LOGO','logo',120,120,'member')">
@@ -95,7 +91,7 @@ window.onload=function(){
 /pay/templates/default/image/icon9.png">
                     </a>
                 </div>
-                <div class="logo_show fl">
+                <div class="logo_show uplode">
                     <input class="text w300 hidden" name="logo1" type="text" id="logo1" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
 ">
                     <a href="javascript:uploadfile('LOGO','logo1',120,120,'member')">
@@ -105,28 +101,6 @@ window.onload=function(){
                 </div>
             </dd>
         </dl>
-=======
-
-            <div class="logo_show">
-                <input class="text w300 hidden" name="logo" type="hidden" id="logo" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
-">
-                <a href="javascript:uploadfile('LOGO','logo',120,120,'real','','front.jpg')">
-                    <img id="logo_img" src="<?php if ($this->_tpl_vars['de']['logo']): ?><?php echo $this->_tpl_vars['de']['logo']; ?>
-<?php else: ?><?php echo $this->_tpl_vars['config']['weburl']; ?>
-/image/default/user_admin/default_user_portrait.gif<?php endif; ?>">
-                </a>
-            </div>
-            <div class="logo_show">
-                <input class="text w300 hidden" name="logo1" type="hidden" id="logo1" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
-">
-                <a href="javascript:uploadfile('LOGO','logo1',120,120,'real','','back.jpg')">
-                    <img id="logo1_img" src="<?php if ($this->_tpl_vars['de']['logo']): ?><?php echo $this->_tpl_vars['de']['logo']; ?>
-<?php else: ?><?php echo $this->_tpl_vars['config']['weburl']; ?>
-/image/default/user_admin/default_user_portrait.gif<?php endif; ?>">
-                </a>
-            </div>
-
->>>>>>> cb035f9c64bed01cdfd2464182525f93e10fbf12
         </fieldset>
         <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
         <dl>
