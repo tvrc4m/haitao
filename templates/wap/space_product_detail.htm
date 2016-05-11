@@ -37,8 +37,8 @@
         </div>
     </div>
     <div class="hj_share_box" id="share_box"></div>
-    <div class='collect_box_contentss'></div>
 </div>
+<div class='collect_box_contentss'></div>
 <form id="form" onsubmit="return buy()" name="form" action="<{$config.weburl}>/?m=product&s=<{if $de.is_virtual}>confirm_virtual_order<{else}>confirm_order<{/if}><{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
 <input name="dist_user_id" type="hidden" value="<{$smarty.get.shop_id}>" />
 <div class="ub ub-ver" id="pro_detail">
