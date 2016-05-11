@@ -7766,3 +7766,7 @@ p":"json"}
 {"ctl":"GoodsFavorites","id":"248","met":"isCollect","typ":"json"}
 {"ctl":"GoodsFavorites","id":"95","met":"remove","typ":"json"}
 {"user_id":"1","Key":"1","ctl":"GoodsFavorites","met":"get","typ":"json"}
+{"ctl":"Trade","met":"getCartNum","typ":"json"}
+{"ctl":"Adv","met":"slide","typ":"json"}
+{"ctl":"Category","met":"hot","typ":"json"}
+{"ctl":"Goods","keyWord":"","met":"getListByProid","page":"","rows":"","typ":"json"}

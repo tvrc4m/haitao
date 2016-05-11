@@ -35,9 +35,9 @@ if($flag=='false'){
 }*/
 
 if(empty($_SESSION['USER_TYPE']))
-	$_SESSION['USER_TYPE']=$is_company;
+	$_SESSION['USER_TYPE'] = $is_company;
 if($_GET['cg_u_type'])
-	$_SESSION['USER_TYPE']=$_GET['cg_u_type']*1;
+	$_SESSION['USER_TYPE'] = $_GET['cg_u_type'] * 1;
 
 $tpl->assign("cg_u_type",$_SESSION['USER_TYPE']);
 
