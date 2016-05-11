@@ -93,7 +93,13 @@
                 <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
             </div>
             <div class="shopinfo-imphost">
-                <p>主营商品：<span>大牌尿裤、进口奶粉、安全喂养、洗护用品、营养辅食、宝宝护肤</span></p>
+                <p>主营商品：
+                    <{if $com.shop_description}>
+                    <span><{$com.shop_description}></span>
+                    <{else}>
+                    <span>无</span>
+                    <{/if}>
+                </p>
             </div>       
             <div class="cols" style="padding: 0 10px">
                 <a onclick="javascript:getfavshop()">
@@ -205,9 +211,9 @@
 </section>
 <section class="bom_nav">
     <ul>
-        <li><a href="<{$config.weburl}>/shop.php?uid=<{$buid}>"><img src="../image/wap/wap_haitao_icon67.png" alt="购物"><p class="bom_nav_color">店铺</p></a></li><li>
-        <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon27.png" alt="购物"><p>加入蚁族</p></a></li><li>
-        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>我的</p></a></li>
+        <li><a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon103.png" alt="店铺"><p class="bom_nav_color">店铺</p></a></li><li>
+        <a href="<{$config.weburl}>/partner.php"><img src="../image/wap/wap_haitao_icon104.png" alt="成为合伙人"><p>成为合伙人</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li>
     </ul>
 </section>
 <script>

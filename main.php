@@ -35,9 +35,9 @@ if($flag=='false'){
 }*/
 
 if(empty($_SESSION['USER_TYPE']))
-	$_SESSION['USER_TYPE']=$is_company;
+	$_SESSION['USER_TYPE'] = $is_company;
 if($_GET['cg_u_type'])
-	$_SESSION['USER_TYPE']=$_GET['cg_u_type']*1;
+	$_SESSION['USER_TYPE'] = $_GET['cg_u_type'] * 1;
 
 $tpl->assign("cg_u_type",$_SESSION['USER_TYPE']);
 
@@ -88,10 +88,10 @@ if ($distribution_open_flag)
 {
 	//我的佣金总额
 	$dist_user_row = $distribution->getDistributionUser($buid);
-
-	$dist_user_row['distribution_user_amount'] =  $dist_user_row['distribution_shop_amount_0'] +  $dist_user_row['distribution_shop_amount_1'] +  $dist_user_row['distribution_shop_amount_2']
+	//var_dump($dist_user_row['distribution_user_amount']);die;
+	/*$dist_user_row['distribution_user_amount'] =  $dist_user_row['distribution_shop_amount_0'] +  $dist_user_row['distribution_shop_amount_1'] +  $dist_user_row['distribution_shop_amount_2']
 		+ $dist_user_row['distribution_click_amount_0'] +  $dist_user_row['distribution_click_amount_1'] +  $dist_user_row['distribution_click_amount_2']
-		+ $dist_user_row['distribution_reg_amount_0'] +  $dist_user_row['distribution_reg_amount_1'] +  $dist_user_row['distribution_reg_amount_2'];
+		+ $dist_user_row['distribution_reg_amount_0'] +  $dist_user_row['distribution_reg_amount_1'] +  $dist_user_row['distribution_reg_amount_2'];*/
 
 
 	$dist_user_row['distribution_user_unsettlement_amount'] =  $dist_user_row['distribution_user_amount'] - $dist_user_row['distribution_user_settlement_amount'];
@@ -109,11 +109,16 @@ if ($distribution_open_flag)
 	$admin->tpl->assign("click_num", $click_num);
 
 	//7日订单
-	$time = time() - 3600 * 24 * 7;
+
+	//$time = time() - 3600 * 24 * 7;
+	//$time = time() - 3600 * 24 * 1;
+	$time = strtotime(date("Y-m-d"));//当天时间0点
+
 	$order_num = $distribution->getDistributionOrderNum($buid, $time);
 	$admin->tpl->assign("order_num", $order_num);
 	//7日营业额
 	$order_amout = $distribution->getDistributionOrderAmount($buid, $time);
+
 	$admin->tpl->assign("order_amout", $order_amout);
 }
 
