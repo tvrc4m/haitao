@@ -4,7 +4,7 @@
 .shopinfo-banner{margin-bottom: 35px;position: relative;}
 .shopinfo-banner img{width: 100%;}
 .shopinfo-imphost{width: 100%; position: absolute;bottom: 0;background-color: rgba(0,0,0,.5);color: #fff;padding: 0.1rem 0.5rem 0.1rem 4rem;padding-right: 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;}
-.shopinfo-imphost p{height: 40px;overflow: hidden;}
+.shopinfo-imphost p{height: 40px;overflow: hidden;font-size: 0.6rem;}
 /*.shopinfo-banner-content{padding: 0.5rem 0;background-color: #fff;border-bottom:1px solid #b9b9b9;margin-bottom: 15px;}*/
 .shopinfo-banner-content .typ{padding-left: 6rem;font-size: 0.6rem;}
 .shopinfo-banner-content .typ span{color: #ff5c5c;}
@@ -13,7 +13,7 @@
 .cols .nav-c{color: #fff;font-size: 12px;}
 .iconfont_min{color: #999;}
 .collect {
-    color: #ff5c5c;
+    color: #f00;
 }
 .shopinfo-banner-content .header_topleft img {width: 3rem;height: 3rem;border-radius: 50%;}
 .shopli_bottom_rob2{padding-right: 0px!important;}
