@@ -109,7 +109,9 @@ if ($distribution_open_flag)
 	$admin->tpl->assign("click_num", $click_num);
 
 	//7日订单
-	$time = time() - 3600 * 24 * 7;
+	//$time = time() - 3600 * 24 * 7;
+	//$time = time() - 3600 * 24 * 1;
+	$time = strtotime(date("Y-m-d"));//当天时间0点
 	$order_num = $distribution->getDistributionOrderNum($buid, $time);
 	$admin->tpl->assign("order_num", $order_num);
 	//7日营业额
@@ -138,7 +140,7 @@ switch ($action)
 		}
 		$_SESSION['USER_TYPE']=NULL;
 		header("Location: ".$config['weburl']);
-		//header("Location: "."$config[weburl]/login.php"	);
+		//header("Location: "."$config[weburl]/login.php");
 		break;
 	}
 	case "msg":

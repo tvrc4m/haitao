@@ -83,31 +83,31 @@
 </header>
 <div class='collect_box_content'></div> 
 <section class="clearfix" style="width:100%;">
-    <div class="shopinfo-banner" style="background:url(<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>) no-repeat;background-size: cover;">
-        <div class="ulev-app2" id="company">
+    <div class="shopinfo-banner">
+        <img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>">
+        <div class="shopinfo-companys">
             <{$com.company}>
         </div>
-    </div>
-    <div class="shopinfo-banner-content shopinfo-banner-content2">
-        <div class="header_topleft">
-            <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>" id="clogo">
-        </div>       
-        <div class="typ">信誉级：<img alt="<{$com.sellerpoints}>" title="<{$com.sellerpoints}>" align="absmiddle" src="<{$config.weburl}>/image/points/<{$com.sellerpointsimg}>"></div>
-        <div class="typ">好评率：<span><{$list.favorablerate|number_format:2}>%</span></div>
-        <div class="col" style="padding: 0 10px">
-            <a onclick="javascript:getfavshop()">
-                <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
-                <div class="nav-c" style="font-size: .7em">收藏</div>
-            </a>
-        </div>
-        <{if $dist_user_row.distribution_user_state eq -3 AND $is_distribution_product eq true}>
-            <div class="col" style="padding: 0 10px">
-                <a href="javascript:distribute_goods('<{$de.id}>');" style="color:8b8b8b">
-                    <div class="iconfont_min <{if $de.is_collect}>collect<{/if}>">&#xe663;</div>
-                    <div style="font-size: .7em">加入分销</div>
+        <div class="shopinfo-banner-content">
+            <div class="header_topleft">
+                <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
+            </div>
+            <div class="shopinfo-imphost">
+                <p>主营商品：
+                    <{if $com.shop_description}>
+                    <span><{$com.shop_description}></span>
+                    <{else}>
+                    <span>无</span>
+                    <{/if}>
+                </p>
+            </div>       
+            <div class="cols" style="padding: 0 10px">
+                <a onclick="javascript:getfavshop()">
+                    <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
+                    <div class="nav-c">收藏</div>
                 </a>
             </div>
-        <{/if}>
+        </div>
     </div>
 </section>
 <section class="pchart">
@@ -208,6 +208,13 @@
         </ul>
         <{/if}>
     </div>
+</section>
+<section class="bom_nav">
+    <ul>
+        <li><a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon67.png" alt="店铺"><p class="bom_nav_color">店铺</p></a></li><li>
+        <a href="<{$config.weburl}>/partner.php"><img src="../image/wap/wap_haitao_icon27.png" alt="成为合伙人"><p>成为合伙人</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li>
+    </ul>
 </section>
 <script>
 $(function(){

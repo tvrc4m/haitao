@@ -1,9 +1,7 @@
 <?php
 
 /**
- *
  * 商品相关
- *
  * @category   Framework
  * @package    Controller
  * @author     Xinze <xinze@live.cn>
@@ -11,6 +9,7 @@
  * @version    1.0
  * @todo
  */
+
 class GoodsCtl extends Yf_AppController
 {
 	/**
@@ -94,46 +93,42 @@ class GoodsCtl extends Yf_AppController
 			
 			$good_row[] = $goods_rows[$value]; 
 		}
+
 		fb($goods_rows);
-		foreach ($good_row as $key => $value) 
-		{
-			//店铺信息
-			$Shop_Model = new ShopModel();
-			$shop_row = $Shop_Model->getShop($value['member_id']);
-			fb($shop_row);
+        if(!empty($goods_rows)) {
+            foreach ($good_row as $key => $value) {
+                //店铺信息
+                $Shop_Model = new ShopModel();
+                $shop_row = $Shop_Model->getShop($value['member_id']);
+                fb($shop_row);
 
-			$good_row[$key]['shop']['userid'] = $shop_row[$value['member_id']]['userid'];
-			$good_row[$key]['shop']['company'] = $shop_row[$value['member_id']]['company'];
-			$good_row[$key]['shop']['logo'] = $shop_row[$value['member_id']]['logo'];
-			$good_row[$key]['shop']['tel'] = $shop_row[$value['member_id']]['tel'];
- 		}
+                $good_row[$key]['shop']['userid'] = $shop_row[$value['member_id']]['userid'];
+                $good_row[$key]['shop']['company'] = $shop_row[$value['member_id']]['company'];
+                $good_row[$key]['shop']['logo'] = $shop_row[$value['member_id']]['logo'];
+                $good_row[$key]['shop']['tel'] = $shop_row[$value['member_id']]['tel'];
+            }
+            foreach ($good_row as $key => $value) {
+                fb($value);
+                $validTime = 0;
+                if ($value['valid_time'] == 0) {
+                    $validTime = 7;
+                } elseif ($value['valid_time'] == 1) {
+                    $validTime = 30;
+                }
 
-		foreach ($good_row as $key => $value) 
-		{
-			fb($value);
-			$validTime = 0;
-			if($value['valid_time'] == 0)
-			{
-				$validTime = 7;
-			}elseif($value['valid_time'] == 1)
-			{
-				$validTime = 30;
-			}	
-
-			$time = $value['start_time_type'] == 2?$value['start_time']:$value['uptime'];
-			if(($time + $validTime*24*3600 - time()<0 )&& $value['valid_time']!=2)
-			{
-				$fi=array('is_shelves'=>'0');
-				$ProductModel->editProduct($value['id'],$fi);
-				$good_row[$key]['down']=1;
-			}else{
-				$good_row[$key]['rest'] = '0';
-				if($value['start_time_type'] == 2 && $time>time())
-				{
-					$good_row[$key]['rest'] = $time - time();
-				}
-			}
-		}
+                $time = $value['start_time_type'] == 2 ? $value['start_time'] : $value['uptime'];
+                if (($time + $validTime * 24 * 3600 - time() < 0) && $value['valid_time'] != 2) {
+                    $fi = array('is_shelves' => '0');
+                    $ProductModel->editProduct($value['id'], $fi);
+                    $good_row[$key]['down'] = 1;
+                } else {
+                    $good_row[$key]['rest'] = '0';
+                    if ($value['start_time_type'] == 2 && $time > time()) {
+                        $good_row[$key]['rest'] = $time - time();
+                    }
+                }
+            }
+        }
 
 		if ($goods_rows)
 		{
@@ -145,8 +140,13 @@ class GoodsCtl extends Yf_AppController
 			$msg    = 'failure';
 			$status = 250;
 		}
-		fb($good_row);
-		$good_row[0]['detail'] = str_replace('/lib/kindeditor/php/../../..','http://'.$_SERVER['HTTP_HOST'], $good_row[0]['detail']);
+        isset($good_row) ? fb($good_row) : null;
+        if(!empty($goods_rows)) {
+            $good_row[0]['detail'] = str_replace('/lib/kindeditor/php/../../..', 'http://' . $_SERVER['HTTP_HOST'], $good_row[0]['detail']);
+        }else{
+            $good_row = null;
+        }
+
 		$this->data->addBody(-140, $good_row, $msg, $status);
 	}
 
@@ -163,12 +163,12 @@ class GoodsCtl extends Yf_AppController
 		$page = request_int('page',1);
 		$rows = request_int('rows',20);
 		$order = request_string('order','price');
-		$shop_id = request_int('shop_id');   //店铺id
+		$shop_id = request_int('shop_id'); //店铺id
 
 		//获取开启店铺的ID
 		$ShopModel    = new ShopModel();
 		$shops_id_row = $ShopModel->getShopIdByStatu(1);
-		
+
 		//根据搜索关键字获取商品信息
 		$ProductModel = new ProductModel();
 		$goods_rows = $ProductModel->getGoodsByKey($key, $shops_id_row,$order, $page, $rows, $shop_id);
@@ -176,8 +176,6 @@ class GoodsCtl extends Yf_AppController
 		//搜索词入库
 		$Search_WordModel = new  Search_WordModel();
 		$Search_WordModel->setWord($key);
-
-		
 
 		if ($goods_rows)
 		{
@@ -328,7 +326,7 @@ class GoodsCtl extends Yf_AppController
 
 		$ProductModel = new ProductModel();
 		$goods_rows   = $ProductModel->getGoodsByOrder($order, $shops_id_row, $page, $rows);
-
+        //var_dump($goods_rows); die;
 		if ($goods_rows)
 		{
 			$msg    = 'success';
@@ -497,8 +495,8 @@ class GoodsCtl extends Yf_AppController
 
 	public function getListByFooterNum()
 	{
-		$user_id = Perm::$userId;  //用户id
 
+		$user_id = Perm::$userId;  //用户id
 		$User_ReadRecModel =new User_ReadRecModel();
 		$res = $User_ReadRecModel->getReadRecNum($user_id);
 

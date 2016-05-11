@@ -229,10 +229,8 @@ class Product_OrderModel extends Product_Order
 
 		$this->sql->setwhere('userid',$user_id)->setwhere('seller_id','','!=');
 		$orders_rows = $this->getOrder('*');
-
 		//取得影响行数
 		$total = $this->getFoundRows();
-
 		$data['total']     = $total; 
 		return $data;
 	}
