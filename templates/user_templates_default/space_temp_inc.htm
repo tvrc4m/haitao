@@ -403,10 +403,10 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
             <div class="clear"></div>
             <div class="user_data">
                 <h2>动态评价</h2>
-                <p>描述相符：<span class="star"><em style=" width:<{$score.aw}>%"><{$score.a|number_format:1}></em></span><span class="num"><{$score.a|number_format:1}>分</span></p>
-                <p>服务态度：<span class="star"><em style=" width:<{$score.bw}>%"><{$score.b|number_format:1}></em></span><span class="num"><{$score.b|number_format:1}>分</span></p>
-                <p>发货速度：<span class="star"><em style=" width:<{$score.cw}>%"><{$score.c|number_format:1}></em></span><span class="num"><{$score.c|number_format:1}>分</span></p>
-                <p>物流速度：<span class="star"><em style=" width:<{$score.dw}>%"><{$score.d|number_format:1}></em></span><span class="num"><{$score.d|number_format:1}>分</span></p>			
+                <p>描述相符：<span class="star"><em style=" width:<{$score.aw}>%"><{$score.a|number_format:1}></em></span><span class="num"><{$score.aw|number_format:1}>分</span></p>
+                <p>服务态度：<span class="star"><em style=" width:<{$score.bw}>%"><{$score.bw|number_format:1}></em></span><span class="num"><{$score.b|number_format:1}>分</span></p>
+                <p>发货速度：<span class="star"><em style=" width:<{$score.cw}>%"><{$score.cw|number_format:1}></em></span><span class="num"><{$score.c|number_format:1}>分</span></p>
+                <p>物流速度：<span class="star"><em style=" width:<{$score.dw}>%"><{$score.dw|number_format:1}></em></span><span class="num"><{$score.d|number_format:1}>分</span></p>
 				<h2>店铺信息</h2>
                 <p>认证信息：
                 <img src="image/default/certification<{if $com.shop_auth!='1'}>_no<{/if}>.gif" />

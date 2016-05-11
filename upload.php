@@ -32,6 +32,7 @@ else
 	$path.='all/';
 }
 $ist=$image_config['image_storage_type']?$image_config['image_storage_type']:"1";
+$ist=!empty($_GET['ty'])? 5 : $ist;
 switch ($ist){
 	case "1":
 	{	
@@ -46,6 +47,11 @@ switch ($ist){
 	case "3":
 	{	
 		$path.=date('Y').'/';
+		break;
+	}
+	case "5":
+	{
+		$path.= '';
 		break;
 	}
 	default:
@@ -88,7 +94,12 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 		try
 		{
 			$fh = fopen($_FILES['pic']['tmp_name'], 'rb');
-			$pn=time().".jpg";
+			if(!empty($_GET['ty'])){
+				$pn = $_COOKIE['dist_id'].substr(time(),4).'_'.$_GET['ty'];
+			}else{
+				$pn=time().".jpg";
+			}
+
 			$rsp = $upyun->writeFile($path.$pn, $fh, True);   // 上传图片，自动创建目录
 			fclose($fh);
 			if($_GET['m']=='product'||$_GET['m']=='product/property')
@@ -133,8 +144,12 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 			$watermark=false;
 		else
 			$watermark=true;
-			
-		$pn=time().".jpg";
+
+		if(!empty($_GET['ty'])){
+			$pn = $_COOKIE['dist_id'].substr(time(),4).'_'.$_GET['ty'];
+		}else{
+			$pn=time().".jpg";
+		}
 		$pw=$_POST['pw']?$_POST['pw']:$_GET['pw'];
 		$ph=$_POST['ph']?$_POST['ph']:$_GET['ph'];
 		

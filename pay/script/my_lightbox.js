@@ -21,7 +21,7 @@ function preview(obj)
 	src=weburl+'upload.php?pv=true&obj='+obj;
 	alertWin(title, msg, w, h,src);
 }
-function uploadfile(title,obj,pw,ph,m,wm)
+function uploadfile(title,obj,pw,ph,m,wm,ty)
 {
 	thisURL = document.URL;
 	if(thisURL.indexOf('admin/')>0||thisURL.indexOf('/pay/')>0)
@@ -32,7 +32,7 @@ function uploadfile(title,obj,pw,ph,m,wm)
 	w=270;
 	h=158;
 	if(!m) m='';
-	src=$weburl+'upload.php?pw='+pw+'&ph='+ph+'&obj='+obj+'&watermark='+wm+'&m='+m;
+	src=$weburl+'upload.php?pw='+pw+'&ph='+ph+'&obj='+obj+'&watermark='+wm+'&m='+m+'&ty='+ty;
 	alertWin(title, msg, w, h,src);
 }
 
