@@ -104,7 +104,7 @@ $(function(){
                 <dd><input type="submit" value="<{$lang.submit}>" class="submit"></dd>
             </dl>
             </form>
-        </div>  
+        </div>
         <{elseif $smarty.get.type=='email'}>
         <div class="form-style">
             <form action="" method="post" id="form">
@@ -140,21 +140,21 @@ $(function(){
                     var flag = true;
 					var url = 'ajax_back_end.php';
 					var sj = new Date();
-					var pars = 'shuiji=' + sj+'&verify_type=email&verify_field='+val; 
+					var pars = 'shuiji=' + sj+'&verify_type=email&verify_field='+val;
 					$.post(url, pars, function (originalRequest)
 					{
                         var flag = true;
 						if(originalRequest=="true"){
-							
+
 							msg = "获取邮件验证码";
 							$(".send").attr("disabled", "disabled");
 							$("#email").attr("disabled", "disabled");
 							$("#email").attr("readonly", "readonly");
 							t=setTimeout(countDown,1000);
-					
+
 							var url = 'ajax_back_end.php';
 							var sj = new Date();
-							var pars = 'shuiji=' + sj +'&email='+val; 
+							var pars = 'shuiji=' + sj +'&email='+val;
 							$.post(url, pars, function (originalRequest){})
 						}
 						else{
@@ -213,34 +213,34 @@ $(function(){
             $(".send").click(function(){
 				var val = $("#mobile").val();
 				var mobile = new RegExp("^0?(13|15|17|18|14)[0-9]{9}$");//手机
-				
+
 				if(!val){
 					$("#mobile").nextAll(".form-error").html('<label for="mobile" generated="true" class="error">请输入手机</label>');return false;
 				}
-				else if(!mobile.test(val)){  
+				else if(!mobile.test(val)){
 					$("#mobile").nextAll(".form-error").html('<label for="mobile" generated="true" class="error">手机格式错误</label>');
 					return false;
 				}
 				else{
 					var url = 'ajax_back_end.php';
 					var sj = new Date();
-					var pars = 'shuiji=' + sj+'&verify_type=mobile&verify_field='+val; 
+					var pars = 'shuiji=' + sj+'&verify_type=mobile&verify_field='+val;
 					$.post(url, pars, function (originalRequest)
 					{
 						if(originalRequest=="true"){
-							
+
 							msg = "获取短信验证码";
 							$(".send").attr("disabled", "disabled");
 							$("#mobile").attr("disabled", "disabled");
 							$("#mobile").attr("readonly", "readonly");
 							t=setTimeout(countDown,1000);
-					
+
 							var url = 'ajax_back_end.php';
 							var sj = new Date();
-							var pars = 'shuiji=' + sj +'&mobile='+val; 
+							var pars = 'shuiji=' + sj +'&mobile='+val;
 							$.post(url, pars, function (originalRequest){})
 						}
-						else{				
+						else{
 							$("#mobile").nextAll(".form-error").html('<label for="mobile" generated="true" class="error">该手机已注册，请更换其他手机</label>');
 							flag = false;
 						}
@@ -295,11 +295,11 @@ $(function(){
                 <dt>当前头像：</dt>
                 <dd>
                 <p class="pic" style=" width:120px; height:120px; "><img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>" height="120" width="120" /></p>
-				
+
                 <p><input class="text w184" name="logo" type="text" id="logo" value="<{$de.logo}>"> <a class="upload-button" href="javascript:uploadfile('LOGO','logo',120,120,'member')"><{$lang.upload}></a></p>
                 </dd>
             </dl>
-            
+
             <dl>
                 <dt>昵称：</dt>
                 <dd><input name='name' type='text' id="name" value="<{$de.name}>" dataType="Require" msg="<{$lang.ar_con_user}>" class="text w184"><em></em><div class="form-error"></div>
@@ -310,7 +310,7 @@ $(function(){
                 <input name="sex" id="s1" type="radio"  value="1" <{if $de.sex==1}>checked="checked"<{/if}> />
                 <label for="s1"><{$lang.male}></label>
                 <input name="sex" id="s2" type="radio"  value="2" <{if $de.sex==2}>checked="checked"<{/if}> />
-                <label for="s2"><{$lang.female}></label>   
+                <label for="s2"><{$lang.female}></label>
                 </dd>
             </dl>
             <dl>
@@ -349,7 +349,7 @@ $(function(){
                 <dd><input type="submit" value="<{$lang.submit}>" class="submit"></dd>
             </dl>
             </form>
-        </div> 
+        </div>
         <{/if}>
     </div>
 </div>
