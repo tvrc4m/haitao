@@ -2,10 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("footer.php");
-//echo $_COOKIE['dist_id'];
 
-/*echo $_COOKIE['dist_id'].substr(time(),4).'_front.jpg';
-die;*/
 if(!empty($_SERVER['HTTP_REFERER'])&&empty($_POST['action']))
     setcookie('old_url',$_SERVER['HTTP_REFERER']);
 
@@ -36,6 +33,7 @@ if(!empty($_POST['action'])){
             $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$_COOKIE['dist_id'];
             $db -> query($sql);
                 msg($_COOKIE['old_url']);
+                setcookie("identity", 'true', time()+60*60*24*3, "/");
                 setcookie("old_url");
             }else{
                 $erry = -3;
