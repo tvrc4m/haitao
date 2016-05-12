@@ -73,7 +73,7 @@
     </ul>   
     <div class="toolbar fn-clear">
         <div class="select-all select-bots">
-            <label class="cart-checkbox"><input type="checkbox" data-type="all"><em>全选</em></label>
+            <label class="cart-checkbox"><input type="checkbox" data-type="all" ><em>全选</em></label>
         </div>   
         <div class="cart-sum">
             <span>合计：</span>
@@ -146,11 +146,11 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
         var dli=$("#form ul li").find("label.cart-checkbox-checked").length;
         if(dli==eli){
             $("input[data-type='all']").parent().addClass("cart-checkbox-checked")
-            $("input[data-type='all']").parent().attr("checked",true);
+            $("input[data-type='all']").attr("checked",true);
         }
         else{
             $("input[data-type='all']").parent().removeClass("cart-checkbox-checked")
-            $("input[data-type='all']").parent().attr("checked",false);
+            $("input[data-type='all']").attr("checked",false);
         }
     }
     else
@@ -173,11 +173,11 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
         var dli=$("#form ul li").find("label.cart-checkbox-checked").length;
         if(dli==eli){
             $("input[data-type='all']").parent().addClass("cart-checkbox-checked")
-            $("input[data-type='all']").parent().attr("checked",true);
+            $("input[data-type='all']").attr("checked",true);
         }
         else{
             $("input[data-type='all']").parent().removeClass("cart-checkbox-checked")
-            $("input[data-type='all']").parent().attr("checked",false);
+            $("input[data-type='all']").attr("checked",false);
         }
     }
     count();
