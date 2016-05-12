@@ -194,7 +194,6 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
     }, false);
     function sd(){
         var liLens=$(".list_current ul li").size()%2;
-        console.log(liLens)
         if(liLens==1){
             $(".shop li:last-of-type").css({"border-bottom":"2px solid #b9b9b9;"});
             $(".shop").css({"border-bottom":"none"})
@@ -211,7 +210,15 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
     if(imgIndex==1){
         dot.html("");
     }
+
+
+
     $jj(function(){
+        // var liIndex= $jj(".shop.list_current .shoplist li").size();
+        //         console.log(liIndex)
+        // if(liIndex<20){
+        //     $jj("#more-msg").html("");
+        // }
         eval('var ar =<{$ar}>;');
         var i = 1;
         var stop=true; 
@@ -229,7 +236,7 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
                         type: "post",
                         data: {ar:ar,num:i},
                         success: function(msg){
-                            $jj(".shop .shoplist").append(msg);
+                            $jj(".shop.list_current .shoplist").append(msg);
                             $jj("#more-msg").html("下拉加载更多");
                             if(i>=5){
                                 $jj("#more-msg").html("商品已加载完毕");
