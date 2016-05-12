@@ -260,29 +260,6 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
 <script type="text/javascript">
-    window.jsVersion = "7b3d28d5da";
-    require.config({
-        //By default load any module IDs from js/lib
-        baseUrl: '/script/',
-        urlArgs: "v="+window.jsVersion,
-        paths: {
-            "formValid":"formvalid",
-            "utility":"util"
-        },
-        shim: {},
-        waitSeconds:0
-    });
-    require(['pages/hj_index'], function (hjIndex) {
-        hjIndex.hjSlide("#hj_slide",4000);
-    });
-
-    window.addEventListener('load', function() {
-        var _slideObj = $("#hj_slide");
-        setTimeout(function() {
-            var slideH = _slideObj.find("li").find("img").height();
-            _slideObj.animate({height:slideH},800);
-        }, 800);
-    }, false);
     
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
     for(var i=0;i<imgIndex;i++){

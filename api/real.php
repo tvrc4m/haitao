@@ -96,6 +96,7 @@ class real{
                 if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
                     $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$_COOKIE['dist_id'];
                     $db -> query($sql);
+                    setcookie("identity", 'true', time()+60*60*24*3, "/");
                     $erry = -5;
                 }else{
                     $erry = -4;
