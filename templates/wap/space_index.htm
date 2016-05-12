@@ -129,60 +129,23 @@
     <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
     </div>
 <{/if}>
-<{if $dist_pro}>
-    <div class='pchart_first'>   
-        <div class="plist itemSearchResult">
-            <!-- <h2>推荐商品</h2> -->
-            <ul class="shoplist clearfix">
-                <{foreach item=list key=key from=$dist_pro key=num}>
-                <li class="shopli clearfix">
-                    <span class="pname_img">
-                        <{if $list.pnational }>
-                            <img src="<{$list.pnational.img}>" alt="<{$list.pnational.title}>">
-                        <{/if}>
-                    </span>
-                    <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
-                        <div class="shopli_top_img">
-                            <img src="<{$list.pic}>" alt="<{$list.pname}>"/>
-                        </div>
-                        <!-- <div class="shop_over">已售完</div> -->
-                        <div class="shopli_bottom clearfix">
-                            <div class="shopli_bottom_message">
-                                <p class="shopli_bottom_text"><{$list.pname}></p>
-                            </div>
-                            <div class="shopli_bottom_rob shopli_bottom_rob2 clearfix">
-                                <div class="al shopli_bottom_money">
-                                    <p class="money"><{$config.money}><{$list.price}></p>
-                                    <p class="money money_del"><{$config.money}><{$list.market_price}></p>
-                                </div>
-                                <a href="javascript:void(0);" class="shopli_bottom_zhuanxiang">专享抢购</a>
-                            </div>  
-                        </div>
-                    </a>
-                </li>
-                <{/foreach}>
-            </ul>
-        </div>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-    </div> 
-<{/if}>
-    <div class="leftcate" style="display: none">
-        <{if $custom_cat }>
-        <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
-        <ul>
-            <{foreach item=list from=$custom_cat}>
-            <li>
-                <a <{if $smarty.get.cat==$list.id}>class="current"<{/if}> class="<{if $list.con}>block_ico<{else}>none_ico<{/if}>" href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$list.id}>" title="<{$list.name}>"><{$list.name}></a>
-                <{if $list.con}>
-                <{foreach item=lists from=$list.con}>
-            <li><a <{if $smarty.get.cat==$lists.id}>class="current"<{/if}> href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$lists.id}>" title="<{$lists.name}>">&nbsp;<{$lists.name}></a></li>
-            <{/foreach}>
-            <{/if}>
-            </li>
-            <{/foreach}>
-        </ul>
+<div class="leftcate" style="display: none">
+    <{if $custom_cat }>
+    <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
+    <ul>
+        <{foreach item=list from=$custom_cat}>
+        <li>
+            <a <{if $smarty.get.cat==$list.id}>class="current"<{/if}> class="<{if $list.con}>block_ico<{else}>none_ico<{/if}>" href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$list.id}>" title="<{$list.name}>"><{$list.name}></a>
+            <{if $list.con}>
+            <{foreach item=lists from=$list.con}>
+        <li><a <{if $smarty.get.cat==$lists.id}>class="current"<{/if}> href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$lists.id}>" title="<{$lists.name}>">&nbsp;<{$lists.name}></a></li>
+        <{/foreach}>
         <{/if}>
-    </div>
+        </li>
+        <{/foreach}>
+    </ul>
+    <{/if}>
+</div>
 </section>
 <section class="bom_nav">
     <ul>
