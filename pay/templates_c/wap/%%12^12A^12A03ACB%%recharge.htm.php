@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-26 13:24:01
+<?php /* Smarty version 2.6.20, created on 2016-05-12 16:42:55
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -61,9 +61,7 @@
     </div>
 </div>	
 <script type="text/javascript">
-// $(function(){
-//     $(".pay li").eq(0).find("i").addClass("formsh");
-// })
+$(".pay .fn-clear li:first-of-type").find("i").addClass("formsh")
 $(".pay li").bind("click",function(){
 	var data = $(this).children('a').attr('data-param');
 	eval("data = "+data);
