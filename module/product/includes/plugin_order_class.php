@@ -274,7 +274,7 @@ class order
 	 * @param $status 状态 默认值 NULL
 	 * return array
 	 */
-	function sellorder($status='',$flag = 0, $dist_user_id=0)
+	function sellorder($status='',$flag = 0, $dist_user_id=0,$begin = 0, $limit = 10)
 	{
 		global $buid;
 		
@@ -326,7 +326,7 @@ class order
 
 		//分销商读取
 		$str .= " and a.is_virtual = ".$flag;
-
+		$buid =1;
 		if ($dist_user_id)
 		{
 			if(!$flag)
@@ -346,13 +346,14 @@ class order
 
 		//=============================
 	  	$page = new Page;
-		$page -> listRows = 10;
+		$page -> firstRow = $begin;
+		$page -> listRows = $limit;
 		if (!$page -> __get('totalRows'))
 		{
 			$this -> db -> query($sql);
 			$page -> totalRows = $this -> db -> num_rows();
 		}
-        $sql .= "  limit ".$page -> firstRow.",".$page -> listRows;
+         $sql .= "  limit ".$page -> firstRow.",".$page -> listRows;
 		//=============================
 		$this -> db -> query($sql);
 		$ore = $this -> db -> getRows();

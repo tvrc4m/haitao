@@ -179,10 +179,12 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
             $db->query($sql);
             $working_time = $db->fetch_Row();
         }
+
         if(empty($working_time)){
             $working_time=array('AM 10:00 - PM 18:00');
         }
-$tpl->assign("working_time",$working_time);
+
+		$tpl->assign("working_time",$working_time);
 		$tpl->assign("cs",$shop->get_cs());
 		$tpl->assign("shopconfig",$shopconfig);
 		$tpl->assign("com",$company);
@@ -216,17 +218,16 @@ $tpl->assign("working_time",$working_time);
 	}
 	else
 	{
-			if($config['temp']=='wap')
-			{
-				msg("$config[weburl]","商铺还未开启，或暂时关闭,将转向主页");
-			}
-			else
-			{
-				echo json_encode(array(
-					'status' => 0
-				));die;
-			}
-
+		if($config['temp']=='wap')
+		{
+			msg("$config[weburl]","商铺还未开启，或暂时关闭,将转向主页");
+		}
+		else
+		{
+			echo json_encode(array(
+				'status' => 0
+			));die;
+		}
 	}
 }
 
