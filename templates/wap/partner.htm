@@ -41,7 +41,11 @@
             <img src="../image/wap/wap_haitao_icon105.png">
         </div>
         <div class="partner_button">
+         <{if $button}>
+            <a href="<{$config.weburl}>/register.php">邀请合伙人</a>
+            <{else}>
             <a href="<{$config.weburl}>/register.php">成为合伙人</a>
+            <{/if}>
         </div>
         <div style="height:20px;"></div>
     </div>
