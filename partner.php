@@ -2,9 +2,6 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("footer.php");
-$button = isset($_GET['yq'])?1:0;
-$tpl->assign('button',$button);
-$tpl->display('partner.htm');
 if ($config['bw'] == "weixin")
 {
 	include_once("pay/module/payment/lib/WxPayPubHelper/WxPay.pub.config.php");
@@ -38,4 +35,8 @@ if ($config['bw'] == "weixin")
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
 }
+$button = isset($_GET['yq'])?1:0;
+$tpl->assign('button',$button);
+$tpl->display('partner.htm');
+
 ?>
