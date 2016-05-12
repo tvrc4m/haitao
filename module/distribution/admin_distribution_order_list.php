@@ -23,8 +23,27 @@ else
 	//===================================================
 	$_GET['status'] = isset($_GET['status'])?$_GET['status']:"1";
 	$status = $_GET['status'];
+    if(!empty($_GET['is_ajax']) && $_GET['is_ajax'] == 'yes'){
+        $re=$order->sellorder($status, 0, 0, $_GET['p']+10, 10);
+        if($re['list']){
+            echo json_encode(array(
+                'status' => 2,
+                'data' => $re['list'],
+                'code' => 200
+            ));
+        }else{
+            echo json_encode(array(
+                'status' => 1,
+                'data' => null,
+                'code' => 300
+            ));
+        }
 
-	$tpl->assign("slist",$re=$order->sellorder($status, 0, $buid));
+        die;
+    }else{
+        $re=$order->sellorder($status, 0);
+    }
+	$tpl->assign("slist",$re);
 
 	//===================================================
 	$tpl->assign("config",$config);
