@@ -1,13 +1,7 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-11 19:19:04
+<?php /* Smarty version 2.6.20, created on 2016-05-11 19:19:46
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript" src="script/my_lightbox.js"></script>
-=======
-
-<script type="text/javascript" src="script/my_lightbox.js"></script>
-
->>>>>>> cb035f9c64bed01cdfd2464182525f93e10fbf12
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <script>
 function formSubmit() {
