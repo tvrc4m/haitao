@@ -460,25 +460,25 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
          * @param  {[type]} wrap [description]
          * @return {[type]}      [description]
          */
-    Util.prototype.hjShare = function(wrap,vcode) {
-            var _self = this;
-            var ua = _self.UA();
-            if(ua.mayi){
-                Android.share(vcode);
-            }else{
-                var shareDom = '<div class="hj_share_box" id="share_box"></div>';
-                $(wrap).append(shareDom);
-                $("#share_box").show();
-                $("#share_box").on("tap", function() {
-                    $(this).animate({
-                        "opacity": "0"
-                    }, 800);
-                    setTimeout(function() {
-                        $("#share_box").remove();
-                    }, 800);
-                })
-            }
-        }
+    // Util.prototype.hjShare = function(wrap,vcode) {
+    //         var _self = this;
+    //         var ua = _self.UA();
+    //         if(ua.mayi){
+    //             Android.share(vcode);
+    //         }else{
+    //             var shareDom = '<div class="hj_share_box" id="share_box"></div>';
+    //             $(wrap).append(shareDom);
+    //             $("#share_box").show();
+    //             $("#share_box").on("tap", function() {
+    //                 $(this).animate({
+    //                     "opacity": "0"
+    //                 }, 800);
+    //                 setTimeout(function() {
+    //                     $("#share_box").remove();
+    //                 }, 800);
+    //             })
+    //         }
+    //     }
         /**
          * 截取字符串
          * @param  {[type]} str   [description]
@@ -881,23 +881,23 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
      * @param  {[type]} el [description]
      * @return {[type]}    [description]
      */
-    Util.prototype.appDown = function(el){
-        var _self = this;
-        var androidUrl = "http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537";
-        var ua = _self.UA();
-        var downDOM = "<div class='m_app_down'><p class='fl'><i class='icon_app'></i><span>蚂蚁在线<br><em>安卓1.0隆重发布</em></span></p><a href='http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537' class='fr b_down_btn' id='b_down_btn' onclick=\"dplus.track('点击安卓App下载', {})\">下载App</a><div class='b_close_btn' id='b_close_btn'><b></b></div></div>";
-        var isShow = _self.getCookie("m_b_down_close");
-        if(ua.android && !ua.mayi && isShow != "close"){
-            $(el).append(downDOM);
-        }
-        $(el).delegate("#b_close_btn","tap",function(){
-            $(".m_app_down").remove();
-            _self.setCookie("m_b_down_close","close",1);
-        })
-        $(el).delegate("#b_down_btn","tap",function(){
-            _self.setCookie("m_b_down_close","close",30);
-        })
-    }
+    // Util.prototype.appDown = function(el){
+    //     var _self = this;
+    //     var androidUrl = "http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537";
+    //     var ua = _self.UA();
+    //     var downDOM = "<div class='m_app_down'><p class='fl'><i class='icon_app'></i><span>蚂蚁在线<br><em>安卓1.0隆重发布</em></span></p><a href='http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537' class='fr b_down_btn' id='b_down_btn' onclick=\"dplus.track('点击安卓App下载', {})\">下载App</a><div class='b_close_btn' id='b_close_btn'><b></b></div></div>";
+    //     var isShow = _self.getCookie("m_b_down_close");
+    //     if(ua.android && !ua.mayi && isShow != "close"){
+    //         $(el).append(downDOM);
+    //     }
+    //     $(el).delegate("#b_close_btn","tap",function(){
+    //         $(".m_app_down").remove();
+    //         _self.setCookie("m_b_down_close","close",1);
+    //     })
+    //     $(el).delegate("#b_down_btn","tap",function(){
+    //         _self.setCookie("m_b_down_close","close",30);
+    //     })
+    // }
     /**
          * set cookie, non-comment use
          *

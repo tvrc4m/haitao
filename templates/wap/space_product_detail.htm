@@ -656,10 +656,10 @@ function check_nums()
         setTimeout(function(){
             $("#share_box").animate({opacity: "1"}, 800)
         }, 200);
-        var shopTitles=$(this).parent().parent().parent().find(".shop_name").html();
-        var shopSrcs=$(this).parent().parent().parent().find(".shop_src").attr("src");
-        var shopLinks=$(this).parent().parent().parent().find(".shop_name").attr("href");
-        var shopDescs=$(this).parent().parent().parent().find(".shop_name").html();
+        // var shopTitles=$(this).parent().parent().parent().find(".shop_name").html();
+        // var shopSrcs=$(this).parent().parent().parent().find(".shop_src").attr("src");
+        // var shopLinks=$(this).parent().parent().parent().find(".shop_name").attr("href");
+        // var shopDescs=$(this).parent().parent().parent().find(".shop_name").html();
        wx.onMenuShareTimeline({
             title: "<{$com.shop_title}>", // 分享标题
             link: location.href, // 分享链接
