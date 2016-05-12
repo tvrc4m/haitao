@@ -135,7 +135,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 				{
 					$_SESSION['noncestr'] = randomkeys(12);
 
-					$strTmp = "http://".$_SERVER['HTTP_HOST'];
+					$strTmp = "https://".$_SERVER['HTTP_HOST'];
 					if(!empty($_SERVER['REQUEST_URI']))
 					{
 						$strTmp .= $_SERVER['REQUEST_URI'];
@@ -166,6 +166,9 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
 
 			//-------------------------------------------
+			if($_GET[fx]='fx')
+				$page = "space_index_fx.htm";
+			else
 			$page = "space_index.htm";
 		}
         //--------------------------------------------
