@@ -326,7 +326,7 @@ class order
 
 		//分销商读取
 		$str .= " and a.is_virtual = ".$flag;
-		$buid =1;
+
 		if ($dist_user_id)
 		{
 			if(!$flag)
