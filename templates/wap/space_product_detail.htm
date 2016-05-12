@@ -260,22 +260,33 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
 <script type="text/javascript">
-    window.jsVersion = "7b3d28d5da";
-    require.config({
-        //By default load any module IDs from js/lib
-        baseUrl: '/script/',
-        urlArgs: "v="+window.jsVersion,
-        paths: {
-            "formValid":"formvalid",
-            "utility":"util"
+    $("#hj_slide").on("swipeLeft", function(e) {
+        e = e || window.event;
+        if (e.stopPropagation) { //W3C阻止冒泡方法
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true; //IE阻止冒泡方法
+        }
+    });
+    $("#hj_slide").on("swipeRight", function(e) {
+        e = e || window.event;
+        if (e.stopPropagation) { //W3C阻止冒泡方法
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true; //IE阻止冒泡方法
+        }
+    });
+    $("#hj_slide").swipeSlide({
+        continuousScroll: true,
+        lazyLoad : true,
+        speed: 4000,
+        firstCallback: function(i, sum, me) {
+            me.parent().find(".dot").children().first().addClass('cur');
         },
-        shim: {},
-        waitSeconds:0
+        callback: function(i, sum, me) {
+            me.parent().find(".dot").children().eq(i).addClass('cur').siblings().removeClass('cur');
+        }
     });
-    require(['pages/hj_index'], function (hjIndex) {
-        hjIndex.hjSlide("#hj_slide",4000);
-    });
-
     window.addEventListener('load', function() {
         var _slideObj = $("#hj_slide");
         setTimeout(function() {
@@ -405,7 +416,7 @@ function check_nums()
         function showResponse(originalRequest)
         {
             if(originalRequest>1){
-                altto('成功添加至我的分销!');
+                altto('代销成功！');
                 wid()
             }
             else if (originalRequest>0){
