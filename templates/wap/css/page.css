@@ -279,3 +279,5 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .partner_botimg img{width: 90%;}
 .partner_button{text-align: center;background-color: #ff5c5c;width: 90%;margin: 0 auto;border-radius: 5px;}
 .partner_button a{display: inline-block;font-size: 0.7rem;padding: 0.7rem 0;color: #fff;}
+.hj_share_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size:70%;opacity:0;display: none;}
+.collect_box_contentss{position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;font-size: 14px;}
