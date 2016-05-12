@@ -179,11 +179,11 @@ else
 					foreach($val['prolist'] as $key=>$val)
 					{
 						$val['spec_id'] = $val['spec_id']?$val['spec_id']:"0"; 
-						$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`pcatid`,`name`,`pic`,`price`,`num`,`time`,`setmeal`,`is_tg`,`spec_name`,`spec_value`,`skuid`)
+						$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`pcatid`,`name`,`pic`,`price`,`num`,`time`,`setmeal`,`is_tg`,`spec_name`,`spec_value`,`skuid`,trade)
 						VALUES 
-						($order_id,$buid,$val[product_id],$val[catid],'".addslashes($val[pname])."','".$val['pic']."','".$val['price']."','".$val['quantity']."','".time()."','$val[spec_id]','$val[is_tg]','$val[spec_name]','$val[setmealname]','$val[skuid]')";
+						($order_id,$buid,$val[product_id],$val[catid],'".addslashes($val[pname])."','".$val['pic']."','".$val['price']."','".$val['quantity']."','".time()."','$val[spec_id]','$val[is_tg]','$val[spec_name]','$val[setmealname]','$val[skuid]','$val[trade]')";
 						$db->query($sql);
-						
+
 						$sql="select detail from ".PRODETAIL." where proid='$val[product_id]'";
 						$db->query($sql);
 						$detail=$db->fetchField('detail');
@@ -277,6 +277,7 @@ $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
 $tpl->assign("cart",$cartlist['cart']);
 $tpl->assign("sumprice",$cartlist['sumprice']);
+
 include_once("footer.php");
 if($config['temp']=='wap'||$config['temp']=='wap_app')
 {

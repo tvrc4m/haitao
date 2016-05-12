@@ -49,9 +49,9 @@ function gotoMenu(url)
         <div class="xiaoke_centent">
             <div class="centent_tops">
                 <div class="centent_tops_text clearfix">
-                    <span>今日佣金（元）</span><a href="<{$config.weburl}>/main.php" id="pay_dist" class="pay_dist">提现</a>
+                    <span>已结算佣金（元）</span><a href="<{$config.weburl}>/main.php" id="pay_dist" class="pay_dist">提现</a>
                 </div>
-                <div class="centent_tops_money">0.00</div>
+                <div class="centent_tops_money"><{$dist_user_row.distribution_user_settlement_amount|string_format:"%.2f"}></div>
             </div>
             <div class="centent_yongjin clearfix">
                 <div>
@@ -59,7 +59,7 @@ function gotoMenu(url)
                 </div>
                 <div>
                     <div class="centent_yongjin_dw"> 
-                        <p>账户余额（元）</p><span><{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}></span>  
+                        <p>未结算佣金（元）</p><span><{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}></span>  
                     </div>                 
                 </div>
             </div>
@@ -73,8 +73,8 @@ function gotoMenu(url)
                         </div>
                         <div class="centent_right">
                             <div class="centent_shop_dian">
-                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>" style="color:#ff5c5c;"><span><{$smarty.cookies.USER|default:'蚂小小'}></span>的店铺</a>
-                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>" class="centent_shop_yan"><img src="/image/wap/wap_haitao_icon85.png" alt="店铺"></a>
+                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span><{$smarty.cookies.USER|default:'我'}></span>的店铺</a>
+                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" class="centent_shop_yan"><img src="/image/wap/wap_haitao_icon85.png" alt="店铺"></a>
                             </div>
                             <div class="centent_shop_pin">主营商品：<span>大牌尿裤、进口奶粉、安全喂养、洗护用品、营养辅食、宝宝护肤</span></div>
                         </div>    
@@ -134,7 +134,7 @@ function gotoMenu(url)
 </div>
 <section class="bom_nav">
     <ul>
-        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="购物"><p>购物</p></a></li><li>
+        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="海淘"><p>海淘</p></a></li><li>
         <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon84.png" alt="赚钱"><p class="bom_nav_color">赚钱</p></a></li><li>
         <a href="<{$config.weburl}>/main.php?cg_u_type=1"><img src="../image/wap/wap_haitao_icon81.png" alt="我的"><p>我的</p></a></li>
     </ul>

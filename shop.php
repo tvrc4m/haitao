@@ -37,7 +37,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('analyse', intval($_GET['uid']), 0, $company['company']);
 		}
 	}
-
 	// 如果为3， 则代表分佣及卖家
 	if((1==$company['shop_type'] && $company['shop_statu']==-3) || (2==$company['shop_type'] && $company['shop_statu']==1) || (1==$company['shop_statu'] && 3==$company['shop_type']))
 	{
@@ -135,7 +134,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 				{
 					$_SESSION['noncestr'] = randomkeys(12);
 
-					$strTmp = "http://".$_SERVER['HTTP_HOST'];
+					$strTmp = "https://".$_SERVER['HTTP_HOST'];
 					if(!empty($_SERVER['REQUEST_URI']))
 					{
 						$strTmp .= $_SERVER['REQUEST_URI'];
@@ -166,6 +165,9 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
 
 			//-------------------------------------------
+			if($_GET[fx]=='fx')
+				$page = "space_index_fx.htm";
+			else
 			$page = "space_index.htm";
 		}
         //--------------------------------------------

@@ -3,15 +3,15 @@
 <header>
 <div class="nav-w">
   <section class="nav-s iconfont"><a href="<{$config.weburl}>/main.php"><i class="fanhui_icon"></i></a></section>
-  <section class="nav-c"> <span class="select"> <{if $smarty.get.level=='1'}>一级用户
+  <section class="nav-c"> <span class="select"> <{if $smarty.get.level=='1'}>I级合伙人
     
-    <{elseif $smarty.get.level=='2'}>二级用户
+    <{elseif $smarty.get.level=='2'}>Ⅱ级合伙人
     <{else}>所有<{/if}> <em></em> </span>
     <div style="display:none;" class="i-select">
       <ul>
         <li key="" class="sub-line"><a href="main.php?m=distribution&s=admin_distribution_user">所有</a></li>
-        <li key="1"><a href="main.php?m=distribution&s=admin_distribution_user&level=1">一级用户</a></li>
-        <li key="2"><a href="main.php?m=distribution&s=admin_distribution_user&level=2">二级用户</a></li>
+        <li key="1"><a href="main.php?m=distribution&s=admin_distribution_user&level=1">I级合伙人</a></li>
+        <li key="2"><a href="main.php?m=distribution&s=admin_distribution_user&level=2">Ⅱ级合伙人</a></li>
       </ul>
     </div>
   </section>
@@ -40,11 +40,11 @@ $(function(){
 <section class="order"> <{foreach item=list from=$re}>
   <div class="distributionUser clearfix">
     <dl>
-      <dt>下线用户</dt>
+      <dt>合伙人</dt>
       <dd class="distribu-name"><{$list.user_name}></dd>
     </dl>
     <dl>
-      <dt>分销层级</dt>
+      <dt>合伙人层级</dt>
       <dd><{$list.user_relationship_level}></dd>
     </dl>
     <dl>
@@ -54,7 +54,8 @@ $(function(){
   </div>
   <{foreachelse}>
   <div class="itemsNull">
-    <h3>暂无下线</h3>
+    <a href="<{$config.weburl}>/partner.php?yq=yq"><img src="../image/wap/wap_haitao_icon108.png" alt="邀请合伙人"></a>
+    <div class="items_cs">暂无合伙人，<a href="<{$config.weburl}>/partner.php?yq=yq" class="items_link">邀请</a>合伙人</div>
   </div>
   <{/foreach}>
    </section>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 18:49:31
+<?php /* Smarty version 2.6.20, created on 2016-05-12 16:42:52
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -76,11 +76,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
                 <dt style="margin-left:5px;">请选择支付方式：</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
-                    <li>
-                         <?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
-                            <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a            
-                        <?php endif; ?>
+                    <?php if ($this->_tpl_vars['config']['bw'] == 'weixin'): ?>
+                    <li>                       
+                        <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a>            
                     </li>
+                    <?php endif; ?>
                     <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['list']):
 ?>
@@ -129,6 +129,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 $(function(){
+    $(".pay .fn-clear li:first-of-type").find("i").addClass("formsh")
    $(".pay li").bind("click",function(){
         var liIndex=$(this).index();
         console.log(liIndex)
