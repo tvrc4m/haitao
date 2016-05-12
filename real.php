@@ -2,10 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("footer.php");
-//echo $_COOKIE['dist_id'];
 
-/*echo $_COOKIE['dist_id'].substr(time(),4).'_front.jpg';
-die;*/
 if(!empty($_SERVER['HTTP_REFERER'])&&empty($_POST['action']))
     setcookie('old_url',$_SERVER['HTTP_REFERER']);
 
