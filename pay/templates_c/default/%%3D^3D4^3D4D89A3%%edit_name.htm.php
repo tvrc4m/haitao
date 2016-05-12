@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-11 19:19:04
+<?php /* Smarty version 2.6.20, created on 2016-05-11 19:21:56
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <script type="text/javascript" src="script/my_lightbox.js"></script>
@@ -74,6 +74,9 @@ window.onload=function(){
             <dd><input type="text" class="text" name="identity_card" id="identity_card" value="<?php echo $this->_tpl_vars['de']['identity_card']; ?>
 " maxlength="18" <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>readonly<?php endif; ?> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
         </dl>
+
+        </fieldset>
+        <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
         <dl>
             <dt>上传身份证：</dt>
             <dd>
@@ -95,8 +98,6 @@ window.onload=function(){
                 </div>
             </dd>
         </dl>
-        </fieldset>
-        <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
         <dl>
             <dt></dt>
             <dd><input type="submit" class="submit" value="确 定" /></dd>

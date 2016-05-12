@@ -23,7 +23,7 @@ if ($config['bw'] == "weixin")
 	{
 		$_SESSION['noncestr'] = randomkeys(12);
 
-		$strTmp = "http://".$_SERVER['HTTP_HOST'];
+		$strTmp = "https://".$_SERVER['HTTP_HOST'];
 		if(!empty($_SERVER['REQUEST_URI']))
 		{
 			$strTmp .= $_SERVER['REQUEST_URI'];

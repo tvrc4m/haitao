@@ -260,6 +260,13 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
 <script type="text/javascript">
+    var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
+    for(var i=0;i<imgIndex;i++){
+        dot.append("<span></span>")
+    }
+    if(imgIndex==1){
+        dot.html("");
+    }
     $("#hj_slide").on("swipeLeft", function(e) {
         e = e || window.event;
         if (e.stopPropagation) { //W3C阻止冒泡方法
@@ -293,15 +300,7 @@
             var slideH = _slideObj.find("li").find("img").height();
             _slideObj.animate({height:slideH},800);
         }, 800);
-    }, false);
-    
-    var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
-    for(var i=0;i<imgIndex;i++){
-        dot.append("<span></span>")
-    }
-    if(imgIndex==1){
-        dot.html("");
-    }
+    }, false);    
     var monNum=Number($(".price_moneys .price_moneys_num").html()),delNum=Number($(".price_dels .price_dels_num").html());
     var chaNum=(delNum-monNum).toFixed(2);
     $(".price_chas .price_chas_num").html(chaNum);
@@ -577,7 +576,11 @@ function check_nums()
 </script>
 
 <{if $smarty.session.appid}>
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+define = null;
+require = null;
+</script>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
     var cnf = {
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
