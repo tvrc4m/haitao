@@ -45,33 +45,6 @@
         }
 
     }
-    function distribute_goods(id){
-        var url = '<{$config.weburl}>/module/distribution/add.php';
-        var uname='<{$smarty.cookies.USER}>';
-        if(uname=='')
-        {
-            altto('请先登录！');
-            wid();
-            return false;
-        }
-        var pars = 'pid='+id+'&uname='+uname;
-        $.post(url, pars,showResponse);
-        function showResponse(originalRequest)
-        {
-            if(originalRequest>1){
-                altto('成功添加至我的分销!');
-                wid()
-            }
-            else if (originalRequest>0){
-                altto('该内容已经在你的分销中心<br>请勿重复添加！');
-                wid()
-            }
-            else{
-                altto('参数传递错误<br>无法完成操作!');
-                wid()
-            }
-        }
-    }
 </script>
 
 <header>
@@ -120,8 +93,8 @@
     </a>
 </section>
 <section class="clearfix pchart_commit">
+<{if $com.shop_statu eq 1}>
     <div class='pchart_last pchart_test'>
-    <{if $com.shop_statu eq 1}>
     <div class="plist itemSearchResult">
         <ul class="shoplist clearfix">
             <{foreach item=list key=key from=$pro key=num}>
@@ -152,12 +125,12 @@
                 </li>
             <{/foreach}>
         </ul>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
     </div>
-    <{/if}>
+    <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
     </div>
-    <div class='pchart_first'>
-    <{if $dist_pro}>
+<{/if}>
+<{if $dist_pro}>
+    <div class='pchart_first'>   
         <div class="plist itemSearchResult">
             <!-- <h2>推荐商品</h2> -->
             <ul class="shoplist clearfix">
@@ -191,8 +164,8 @@
             </ul>
         </div>
         <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-    <{/if}>
     </div> 
+<{/if}>
     <div class="leftcate" style="display: none">
         <{if $custom_cat }>
         <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
@@ -289,11 +262,7 @@ $(function(){
                                 if(pnational!==false){
                                     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].pnational.img+"' alt='"+msg.data[i].pnational.title+"'>")
                                 }
-                                if(shop_statu==1) {
-                                    $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append("<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>")
-                                } else{
-                                    $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append(" <a href='javascript:distribute_goods("+msg.data[i].id+");' class='shopli_bottom_zhuanxiang'>加入分销</a>")
-                                }               
+                                $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append("<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>")           
                         }
                         stop=true;
                         }else{

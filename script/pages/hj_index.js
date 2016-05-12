@@ -19,7 +19,7 @@ define(["module", "utility"], function(module, Util) {
         // var wrapper = document.getElementById("wrapper");
         //侧面导航控制
         utility.textSlide("#end_pro", 3000);
-        utility.appDown("#y_wrap");
+        // utility.appDown("#y_wrap");
         // setTimeout(function(){
         //     $("#cash_event_box").removeClass('anim');
         // }, 3200);

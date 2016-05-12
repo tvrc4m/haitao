@@ -49,9 +49,9 @@ function gotoMenu(url)
         <div class="xiaoke_centent">
             <div class="centent_tops">
                 <div class="centent_tops_text clearfix">
-                    <span>今日佣金（元）</span><a href="<{$config.weburl}>/pay">资金中心</a>
+                    <span>今日佣金（元）</span><a href="<{$config.weburl}>/main.php" id="pay_dist" class="pay_dist">提现</a>
                 </div>
-                <div class="centent_tops_money">100.00</div>
+                <div class="centent_tops_money">0.00</div>
             </div>
             <div class="centent_yongjin clearfix">
                 <div>
@@ -134,7 +134,7 @@ function gotoMenu(url)
 </div>
 <section class="bom_nav">
     <ul>
-        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="购物"><p>购物</p></a></li><li>
+        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="海淘"><p>海淘</p></a></li><li>
         <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon84.png" alt="赚钱"><p class="bom_nav_color">赚钱</p></a></li><li>
         <a href="<{$config.weburl}>/main.php?cg_u_type=1"><img src="../image/wap/wap_haitao_icon81.png" alt="我的"><p>我的</p></a></li>
     </ul>
@@ -321,9 +321,9 @@ wx.ready(function(){
             $("#share_box").animate({opacity: "1"}, 800)
         }, 200);
        wx.onMenuShareTimeline({
-        title: "<{$com.shop_title}>", // 分享标题
-        link: location.href, // 分享链接
-        imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+        title: "成为我的合伙人，数钱数到手抽筋", // 分享标题
+        link: "<{$config.weburl}>/partner.php", // 分享链接
+        imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
         success: function () {
             // 用户确认分享后执行的回调函数
             /*
@@ -338,10 +338,10 @@ wx.ready(function(){
     });
 
     wx.onMenuShareAppMessage({
-        title:"<{$com.shop_title}>", // 分享标题
-        desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
-        link: location.href, // 分享链接
-        imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
+        title:"成为我的合伙人，数钱数到手抽筋", // 分享标题
+        desc: "免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......", // 分享描述
+        link: "<{$config.weburl}>/partner.php", // 分享链接
+        imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
         type: '', // 分享类型,music、video或link，不填默认为link
         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
         success: function () {
@@ -358,10 +358,10 @@ wx.ready(function(){
     })
 
     wx.onMenuShareQQ({
-        title: '<{$com.shop_title}>', // 分享标题
-        desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
-        link: location.href, // 分享链接
-        imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+        title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
+        desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
+        link: "<{$config.weburl}>/partner.php", // 分享链接
+        imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
         success: function () {
             // 用户确认分享后执行的回调函数
             /*
@@ -376,10 +376,10 @@ wx.ready(function(){
     });
 
     wx.onMenuShareWeibo({
-        title: '<{$com.shop_title}>', // 分享标题
-        desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
-        link: location.href, // 分享链接
-        imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
+        title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
+        desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
+        link: "<{$config.weburl}>/partner.php", // 分享链接
+        imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
         success: function () {
             // 用户确认分享后执行的回调函数
             /*

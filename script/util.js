@@ -3,14 +3,13 @@
  * Create by LiXiongXiong on 2015/11/13
  */
 ;
-define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.js"], function(require, module, IScroll) {
+define(["require", 'module', "IScroll"], function(require, module, IScroll) {
     /**
      * @class Util
      * @constructor
      */
     function Util() {}
     module.exports = Util;
-    var weixin = require("//res.wx.qq.com/open/js/jweixin-1.0.0.js");
 
     /**
      * 浮层提示
@@ -461,25 +460,25 @@ define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.j
          * @param  {[type]} wrap [description]
          * @return {[type]}      [description]
          */
-    Util.prototype.hjShare = function(wrap,vcode) {
-            var _self = this;
-            var ua = _self.UA();
-            if(ua.mayi){
-                Android.share(vcode);
-            }else{
-                var shareDom = '<div class="hj_share_box" id="share_box"></div>';
-                $(wrap).append(shareDom);
-                $("#share_box").show();
-                $("#share_box").on("tap", function() {
-                    $(this).animate({
-                        "opacity": "0"
-                    }, 800);
-                    setTimeout(function() {
-                        $("#share_box").remove();
-                    }, 800);
-                })
-            }
-        }
+    // Util.prototype.hjShare = function(wrap,vcode) {
+    //         var _self = this;
+    //         var ua = _self.UA();
+    //         if(ua.mayi){
+    //             Android.share(vcode);
+    //         }else{
+    //             var shareDom = '<div class="hj_share_box" id="share_box"></div>';
+    //             $(wrap).append(shareDom);
+    //             $("#share_box").show();
+    //             $("#share_box").on("tap", function() {
+    //                 $(this).animate({
+    //                     "opacity": "0"
+    //                 }, 800);
+    //                 setTimeout(function() {
+    //                     $("#share_box").remove();
+    //                 }, 800);
+    //             })
+    //         }
+    //     }
         /**
          * 截取字符串
          * @param  {[type]} str   [description]
@@ -516,63 +515,63 @@ define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.j
      * @param  {[type]} ptitle    [description]
      * @return {[type]}           [description]
      */
-    Util.prototype.weixinShare = function(appid, timestamp, nonceStr, signature, img, plink, pdesc, ptitle, qtil) {
-        var wxData = {
-            "appId": "", // 服务号可以填写appId
-            "imgUrl": img,
-            "link": plink,
-            "desc": pdesc,
-            "title": ptitle
-        };
-        weixin.config({
-            debug: false,
-            appId: appid,
-            timestamp: timestamp,
-            nonceStr: nonceStr,
-            signature: signature,
-            jsApiList: [
-                // 所有要调用的 API 都要加到这个列表中'checkJsApi',
-                'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'translateVoice', 'startRecord', 'stopRecord', 'onRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'
-            ]
-        });
-        weixin.ready(function() {
-            //隐藏右上角菜单
-            // wx.hideOptionMenu();
-            // 在这里调用 API
-            var title = wxData.title;
-            var desc = wxData.desc;
-            var link = wxData.link;
-            var imgUrl = wxData.imgUrl;
-            // 2. 分享接口
-            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
-            weixin.onMenuShareAppMessage({
-                title: title,
-                desc: desc,
-                link: link,
-                imgUrl: imgUrl
-            });
-            // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
-            weixin.onMenuShareTimeline({
-                title: qtil,
-                link: link,
-                imgUrl: imgUrl
-            });
-        });
-    }
-    Util.prototype.UA = function() {
-        var userAgent = navigator.userAgent.toLowerCase();
-        return {
-            ipad: /ipad/.test(userAgent),
-            iphone: /iphone/.test(userAgent),
-            ipod: /ipod/.test(userAgent),
-            blackBerry: /blackBerry/.test(userAgent),
-            android: /android/.test(userAgent),
-            webos: /webOS/.test(userAgent),
-            windowsPhone: /Windows Phone/.test(userAgent),
-            weixin: /micromessenger/.test(userAgent),
-            mayi: /mayi/.test(userAgent)
-        };
-    }
+    // Util.prototype.weixinShare = function(appid, timestamp, nonceStr, signature, img, plink, pdesc, ptitle, qtil) {
+    //     var wxData = {
+    //         "appId": "", // 服务号可以填写appId
+    //         "imgUrl": img,
+    //         "link": plink,
+    //         "desc": pdesc,
+    //         "title": ptitle
+    //     };
+    //     weixin.config({
+    //         debug: false,
+    //         appId: appid,
+    //         timestamp: timestamp,
+    //         nonceStr: nonceStr,
+    //         signature: signature,
+    //         jsApiList: [
+    //             // 所有要调用的 API 都要加到这个列表中'checkJsApi',
+    //             'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'translateVoice', 'startRecord', 'stopRecord', 'onRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'
+    //         ]
+    //     });
+    //     weixin.ready(function() {
+    //         //隐藏右上角菜单
+    //         // wx.hideOptionMenu();
+    //         // 在这里调用 API
+    //         var title = wxData.title;
+    //         var desc = wxData.desc;
+    //         var link = wxData.link;
+    //         var imgUrl = wxData.imgUrl;
+    //         // 2. 分享接口
+    //         // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+    //         weixin.onMenuShareAppMessage({
+    //             title: title,
+    //             desc: desc,
+    //             link: link,
+    //             imgUrl: imgUrl
+    //         });
+    //         // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+    //         weixin.onMenuShareTimeline({
+    //             title: qtil,
+    //             link: link,
+    //             imgUrl: imgUrl
+    //         });
+    //     });
+    // }
+    // Util.prototype.UA = function() {
+    //     var userAgent = navigator.userAgent.toLowerCase();
+    //     return {
+    //         ipad: /ipad/.test(userAgent),
+    //         iphone: /iphone/.test(userAgent),
+    //         ipod: /ipod/.test(userAgent),
+    //         blackBerry: /blackBerry/.test(userAgent),
+    //         android: /android/.test(userAgent),
+    //         webos: /webOS/.test(userAgent),
+    //         windowsPhone: /Windows Phone/.test(userAgent),
+    //         weixin: /micromessenger/.test(userAgent),
+    //         mayi: /mayi/.test(userAgent)
+    //     };
+    // }
     Util.prototype.isPhone = function() {
             if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
                 return true;
@@ -882,23 +881,23 @@ define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.j
      * @param  {[type]} el [description]
      * @return {[type]}    [description]
      */
-    Util.prototype.appDown = function(el){
-        var _self = this;
-        var androidUrl = "http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537";
-        var ua = _self.UA();
-        var downDOM = "<div class='m_app_down'><p class='fl'><i class='icon_app'></i><span>蚂蚁在线<br><em>安卓1.0隆重发布</em></span></p><a href='http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537' class='fr b_down_btn' id='b_down_btn' onclick=\"dplus.track('点击安卓App下载', {})\">下载App</a><div class='b_close_btn' id='b_close_btn'><b></b></div></div>";
-        var isShow = _self.getCookie("m_b_down_close");
-        if(ua.android && !ua.mayi && isShow != "close"){
-            $(el).append(downDOM);
-        }
-        $(el).delegate("#b_close_btn","tap",function(){
-            $(".m_app_down").remove();
-            _self.setCookie("m_b_down_close","close",1);
-        })
-        $(el).delegate("#b_down_btn","tap",function(){
-            _self.setCookie("m_b_down_close","close",30);
-        })
-    }
+    // Util.prototype.appDown = function(el){
+    //     var _self = this;
+    //     var androidUrl = "http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537";
+    //     var ua = _self.UA();
+    //     var downDOM = "<div class='m_app_down'><p class='fl'><i class='icon_app'></i><span>蚂蚁在线<br><em>安卓1.0隆重发布</em></span></p><a href='http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537' class='fr b_down_btn' id='b_down_btn' onclick=\"dplus.track('点击安卓App下载', {})\">下载App</a><div class='b_close_btn' id='b_close_btn'><b></b></div></div>";
+    //     var isShow = _self.getCookie("m_b_down_close");
+    //     if(ua.android && !ua.mayi && isShow != "close"){
+    //         $(el).append(downDOM);
+    //     }
+    //     $(el).delegate("#b_close_btn","tap",function(){
+    //         $(".m_app_down").remove();
+    //         _self.setCookie("m_b_down_close","close",1);
+    //     })
+    //     $(el).delegate("#b_down_btn","tap",function(){
+    //         _self.setCookie("m_b_down_close","close",30);
+    //     })
+    // }
     /**
          * set cookie, non-comment use
          *

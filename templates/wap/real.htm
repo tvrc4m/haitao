@@ -40,17 +40,16 @@
             <input class="texts" type="text" name="real" id="real" placeholder="身份证号" value="<{$real}>"/>
             <div class="inp_close inp_close_t"><i></i></div>
         </li>
-        <li>
-            <div class="logo_show">
+        <li class="clearfix">
+            <div class="logo_show logo_shows">
                 <input class="text w300 hidden" name="logo" type="text" id="logo" value="<{$de.logo}>">
-                <a href="javascript:uploadfile('LOGO','logo',120,120,'real','','front.jpg')">
-                    <img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                <a href="javascript:uploadfile('LOGO','logo',120,120,'member')">
+                    <img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/wap/wap_zhe.png<{/if}>">
                 </a>
-            </div>
-            <div class="logo_show">
+            </div><div class="logo_show">
                 <input class="text w300 hidden" name="logo1" type="text" id="logo1" value="<{$de.logo}>">
-                <a href="javascript:uploadfile('LOGO','logo1',120,120,'real','','back.jpg')">
-                    <img id="logo1_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                <a href="javascript:uploadfile('LOGO','logo1',120,120,'member')">
+                    <img id="logo1_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/wap/wap_fan.png<{/if}>">
                 </a>
             </div>
         </li>

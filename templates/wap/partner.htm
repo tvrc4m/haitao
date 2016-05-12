@@ -2,7 +2,7 @@
 <header>
     <div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
-        <section class="nav-c"><span>分销中心</span></section>
+        <section class="nav-c"><span>成为合伙人</span></section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
@@ -41,7 +41,11 @@
             <img src="../image/wap/wap_haitao_icon105.png">
         </div>
         <div class="partner_button">
+         <{if $button}>
+            <a href="<{$config.weburl}>/register.php">邀请合伙人</a>
+            <{else}>
             <a href="<{$config.weburl}>/register.php">成为合伙人</a>
+            <{/if}>
         </div>
         <div style="height:20px;"></div>
     </div>

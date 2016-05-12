@@ -54,28 +54,6 @@
 <!--商品分类 end-->
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
-function adjust(obj){
-    /*图片加载完成功能设置margin值使其居中*/
-    var imgdefereds=[];
-    $('.slides img').each(function(){
-        var dfd=$.Deferred();
-        $(this).bind('load',function(){
-            dfd.resolve();
-        });
-        if(this.complete)
-            setTimeout(function(){
-                dfd.resolve();
-            },10);
-        imgdefereds.push(dfd);
-    });
-    $.when.apply(null,imgdefereds).done(function(){
-        $(".slides img").css("margin-left",Math.floor(($(window).width()-1920)/2));
-    });
-}
-window.onload=function(){
-    window.onresize = adjust;
-    adjust();
-}
 $(".m_menu").unbind("mouseenter mouseleave");
 $(".m_menu dd").removeClass("hidden");
 $(window).load(function(){

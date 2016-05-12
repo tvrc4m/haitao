@@ -115,7 +115,7 @@
                 <{/if}>
             </div>
             <div class="c_daixiao clearfix">
-                <div class="c_daixiao_text"><a href="javascript:void(0);" class="c_daixiao_img">赚</a><span>该宝贝物美价廉被抢疯啦！</span></div>
+                <div class="c_daixiao_text"><a href="javascript:void(0);" class="c_daixiao_img">赚</a><span>该宝贝最近火的不得了，代销赚佣金</span></div>
                 <div class="c_daixiao_link"><a href="javascript:void(0);" class="c_daixiao_btn1">我要代销</a></div>
             </div>
         </div>
@@ -138,7 +138,7 @@
                 <img src="../image/wap/wap_haitao_icon92.png" alt="海外优选"><p>海外优选</p></li>
             </ul>
             <div class="c_daixiao clearfix">
-                <div class="c_daixiao_text c_daixiao_texts"><a href="javascript:void(0);" class="c_daixiao_img c_daixiao_imgs">买</a><span>该宝贝最近火的不得了，代销赚佣金</span></div>
+                <div class="c_daixiao_text c_daixiao_texts"><a href="javascript:void(0);" class="c_daixiao_img c_daixiao_imgs">买</a><span>该宝贝物美价廉被抢疯啦！</span></div>
                 <div class="c_daixiao_link c_daixiao_links"><a href="javascript:void(0);" class="c_daixiao_btn2">我要买</a></div>
             </div>
         </div>
@@ -260,30 +260,6 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_detail.js"></script>
 <script type="text/javascript">
-    window.jsVersion = "7b3d28d5da";
-    require.config({
-        //By default load any module IDs from js/lib
-        baseUrl: '/script/',
-        urlArgs: "v="+window.jsVersion,
-        paths: {
-            "formValid":"formvalid",
-            "utility":"util"
-        },
-        shim: {},
-        waitSeconds:0
-    });
-    require(['pages/hj_index'], function (hjIndex) {
-        hjIndex.hjSlide("#hj_slide",4000);
-    });
-
-    window.addEventListener('load', function() {
-        var _slideObj = $("#hj_slide");
-        setTimeout(function() {
-            var slideH = _slideObj.find("li").find("img").height();
-            _slideObj.animate({height:slideH},800);
-        }, 800);
-    }, false);
-    
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
     for(var i=0;i<imgIndex;i++){
         dot.append("<span></span>")
@@ -291,6 +267,40 @@
     if(imgIndex==1){
         dot.html("");
     }
+    $("#hj_slide").on("swipeLeft", function(e) {
+        e = e || window.event;
+        if (e.stopPropagation) { //W3C阻止冒泡方法
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true; //IE阻止冒泡方法
+        }
+    });
+    $("#hj_slide").on("swipeRight", function(e) {
+        e = e || window.event;
+        if (e.stopPropagation) { //W3C阻止冒泡方法
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true; //IE阻止冒泡方法
+        }
+    });
+    $("#hj_slide").swipeSlide({
+        continuousScroll: true,
+        lazyLoad : true,
+        speed: 4000,
+        firstCallback: function(i, sum, me) {
+            me.parent().find(".dot").children().first().addClass('cur');
+        },
+        callback: function(i, sum, me) {
+            me.parent().find(".dot").children().eq(i).addClass('cur').siblings().removeClass('cur');
+        }
+    });
+    window.addEventListener('load', function() {
+        var _slideObj = $("#hj_slide");
+        setTimeout(function() {
+            var slideH = _slideObj.find("li").find("img").height();
+            _slideObj.animate({height:slideH},800);
+        }, 800);
+    }, false);    
     var monNum=Number($(".price_moneys .price_moneys_num").html()),delNum=Number($(".price_dels .price_dels_num").html());
     var chaNum=(delNum-monNum).toFixed(2);
     $(".price_chas .price_chas_num").html(chaNum);
@@ -405,7 +415,7 @@ function check_nums()
         function showResponse(originalRequest)
         {
             if(originalRequest>1){
-                altto('成功添加至我的分销!');
+                altto('代销成功！');
                 wid()
             }
             else if (originalRequest>0){
@@ -566,7 +576,11 @@ function check_nums()
 </script>
 
 <{if $smarty.session.appid}>
-<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+define = null;
+require = null;
+</script>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
     var cnf = {
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -598,7 +612,7 @@ function check_nums()
 
         wx.onMenuShareAppMessage({
             title:"<{$com.shop_title}>", // 分享标题
-            desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
+            desc: "该宝贝物美价廉被抢疯啦！", // 分享描述
             link: location.href, // 分享链接
             imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
@@ -618,7 +632,7 @@ function check_nums()
 
         wx.onMenuShareQQ({
             title: '<{$com.shop_title}>', // 分享标题
-            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+            desc: '该宝贝物美价廉被抢疯啦！', // 分享描述
             link: location.href, // 分享链接
             imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
             success: function () {
@@ -636,7 +650,7 @@ function check_nums()
 
         wx.onMenuShareWeibo({
             title: '<{$com.shop_title}>', // 分享标题
-            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+            desc: '该宝贝物美价廉被抢疯啦！', // 分享描述
             link: location.href, // 分享链接
             imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
             success: function () {
@@ -656,10 +670,6 @@ function check_nums()
         setTimeout(function(){
             $("#share_box").animate({opacity: "1"}, 800)
         }, 200);
-        var shopTitles=$(this).parent().parent().parent().find(".shop_name").html();
-        var shopSrcs=$(this).parent().parent().parent().find(".shop_src").attr("src");
-        var shopLinks=$(this).parent().parent().parent().find(".shop_name").attr("href");
-        var shopDescs=$(this).parent().parent().parent().find(".shop_name").html();
        wx.onMenuShareTimeline({
             title: "<{$com.shop_title}>", // 分享标题
             link: location.href, // 分享链接
@@ -679,7 +689,7 @@ function check_nums()
 
         wx.onMenuShareAppMessage({
             title:"<{$com.shop_title}>", // 分享标题
-            desc: "<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>", // 分享描述
+            desc: "该宝贝物美价廉被抢疯啦！", // 分享描述
             link: location.href, // 分享链接
             imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
@@ -699,7 +709,7 @@ function check_nums()
 
         wx.onMenuShareQQ({
             title: '<{$com.shop_title}>', // 分享标题
-            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+            desc: '该宝贝物美价廉被抢疯啦！', // 分享描述
             link: location.href, // 分享链接
             imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
             success: function () {
@@ -717,7 +727,7 @@ function check_nums()
 
         wx.onMenuShareWeibo({
             title: '<{$com.shop_title}>', // 分享标题
-            desc: '<{$com.shop_description|truncate:32:'.....'}>\n好评率：<{if $comment==0}>100<{else}><{$comment|number_format:2}><{/if}>%\n<{$com.area}>', // 分享描述
+            desc: '该宝贝物美价廉被抢疯啦！', // 分享描述
             link: location.href, // 分享链接
             imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
             success: function () {
