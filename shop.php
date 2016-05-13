@@ -37,6 +37,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('analyse', intval($_GET['uid']), 0, $company['company']);
 		}
 	}
+
 	// 如果为3， 则代表分佣及卖家
 	if((1==$company['shop_type'] && $company['shop_statu']==-3) || (2==$company['shop_type'] && $company['shop_statu']==1) || (1==$company['shop_statu'] && 3==$company['shop_type']))
 	{
@@ -49,13 +50,13 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		//-----------------语言包--------------------
 		include_once("lang/".$config['language']."/user_space.php");
 		$dir=$config['webroot'].'/module/';
-		$handle = opendir($dir); 
+		$handle = opendir($dir);
 		while ($filename = readdir($handle))
-		{ 
+		{
 			if($filename!="."&&$filename!="..")
 			{
 				if(file_exists($dir.$filename.'/config.php'))
-				{ 
+				{
 					include("$dir/$filename/config.php");
 				}
 		   }
@@ -66,9 +67,9 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		$config_file=$config['webroot']."/config/shop_config/shop_config_".$_GET['uid'].'.php';
 		if(file_exists($config_file))
 		{
-			include($config_file);			
+			include($config_file);
 		}
-		
+
 		$company["shop_title"]=($shopconfig["hometitle"]?'':$company['company']);
 		$company["shop_keywords"]=$shopconfig['homedes'].','.$company['main_pro'];
 		$company["shop_description"]=$homekeyword['homekeyword'].','.$company['main_pro'];
@@ -79,21 +80,21 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		{
 			if(file_exists($config['webroot']."/templates/$_GET[template]"))
 				$company['template']=$_GET['template'];
-		}		
+		}
 		if(empty($company['template']))	$company['template']='user_templates_default';
 		if($config['temp']=='wap') $company['template']='wap';
 		if($config['temp']=='wap_app') $company['template']='wap_app';
-		
+
 		$tpl -> template_dir = $config['webroot'] . "/templates/".$company['template']."/";
 		$tpl -> compile_dir = $config['webroot'] . "/templates_c/".$company['template']."/";
 		$tpl -> assign("imgurl","templates/".$company['template']."/img/");
 		//-----------------------------------------------------
-		$score = $shop->score();		
+		$score = $shop->score();
 		foreach ($score as $key => $value) {
 			$score[$key] = $value?$value:5;
 		}
 
-		$tpl->assign("ulink",$shop->get_user_link());		
+		$tpl->assign("ulink",$shop->get_user_link());
 		$tpl->assign("score",$score);
 		$tpl->assign("custom_cat",$shop->get_custom_cat_list(1));
 		$tpl->assign("shop_nav",$shop->get_shop_nav());
@@ -134,7 +135,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 				{
 					$_SESSION['noncestr'] = randomkeys(12);
 
-					$strTmp = "https://".$_SERVER['HTTP_HOST'];
+					$strTmp = "http://".$_SERVER['HTTP_HOST'];
 					if(!empty($_SERVER['REQUEST_URI']))
 					{
 						$strTmp .= $_SERVER['REQUEST_URI'];
@@ -165,8 +166,9 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
 
 			//-------------------------------------------
+
 			if($_GET[fx]=='fx')
-				$page = "space_index_fx.htm1";
+				$page = "space_index_fx.htm";	
 			else
 			$page = "space_index.htm";
 		}
@@ -181,12 +183,10 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
             $db->query($sql);
             $working_time = $db->fetch_Row();
         }
-
         if(empty($working_time)){
             $working_time=array('AM 10:00 - PM 18:00');
         }
-
-		$tpl->assign("working_time",$working_time);
+$tpl->assign("working_time",$working_time);
 		$tpl->assign("cs",$shop->get_cs());
 		$tpl->assign("shopconfig",$shopconfig);
 		$tpl->assign("com",$company);
@@ -220,16 +220,17 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 	}
 	else
 	{
-		if($config['temp']=='wap')
-		{
-			msg("$config[weburl]","商铺还未开启，或暂时关闭,将转向主页");
-		}
-		else
-		{
-			echo json_encode(array(
-				'status' => 0
-			));die;
-		}
+			if($config['temp']=='wap')
+			{
+				msg("$config[weburl]","商铺还未开启，或暂时关闭,将转向主页");
+			}
+			else
+			{
+				echo json_encode(array(
+					'status' => 0
+				));die;
+			}
+
 	}
 }
 

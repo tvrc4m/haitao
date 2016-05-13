@@ -73,10 +73,10 @@ function gotoMenu(url)
                         </div>
                         <div class="centent_right">
                             <div class="centent_shop_dian">
-                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span><{$shopCon.company}></span></a>
+                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span class="centent_shop_name"><{$shopCon.company}></span></a>
                                 <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" class="centent_shop_yan"><img src="/image/wap/wap_haitao_icon85.png" alt="店铺"></a>
                             </div>
-                            <div class="centent_shop_pin">主营商品：<span><{$shopCon.main_pro}></span></div>
+                            <div class="centent_shop_pin">主营商品：<span><{$com.shop_description}></span></div>
                         </div>    
                     </div>
                     <div class="cen_shop_add">
@@ -120,10 +120,6 @@ function gotoMenu(url)
                         </a>
                     </dl>
                     <dl class="cen_shop cen_shop10 clearfix">
-                        <!-- <a href="javascript:void(0);">
-                            <dt id="shop_img">二维码分享 <img style="display:none" src="api/share_qrcode.php?type=shop&shop_id=<{$cominfo.userid}>&rand=<{math equation=rand(1,10000)}>"></dt>
-                            <dd></dd>
-                        </a> -->
                         <dt>邀请合伙人</dt>
                         <dd></dd>
                     </dl>
@@ -180,6 +176,28 @@ document.getElementById("shop_img").style.top=(document.documentElement.scrollTo
 document.getElementById("shop_img").style.left=(document.documentElement.scrollLeft+(document.documentElement.clientWidth-document.getElementById("Javascript.Div1").offsetWidth)/2)+"px";
 }
 $(function(){
+    function substr(htm,obj,num){
+        var value_substr=obj.substr(0,num);
+        var pname_len=obj.length;
+        var value_substr_len=value_substr.length+1;
+        if(pname_len>value_substr_len){
+            value_substr=value_substr+"...";                
+        }       
+        htm.html(value_substr);
+    }
+    var shop_htm=$(".centent_shop_pin span") , shop_pin=$(".centent_shop_pin span").html() , shop_name_htm=$(".centent_shop_name") ,  shop_name=$(".centent_shop_name").html();
+    if(shop_pin==""){
+        shop_htm.html("无");
+    }
+    else{
+        substr(shop_htm,shop_pin,26);
+    }
+    if(shop_name==""){
+        shop_name_htm.html("我的店铺");
+    }
+    else{
+        substr(shop_name_htm,shop_name,10);
+    }
     $("#shop_img").click(function(){
         var width = $(this).find("img").width();
         var height = $(this).find("img").height();
