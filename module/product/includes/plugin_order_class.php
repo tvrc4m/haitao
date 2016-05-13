@@ -291,7 +291,6 @@ class order
 				$sql = "select order_id from ".MSGCORD." where `serial` = '".$_GET['key']."' ";
 				$this -> db -> query($sql);
 				$order_id = $this -> db -> fetchField("order_id");
-
 				$str .= " and a.order_id ='$order_id' ";
 			}
 			else
