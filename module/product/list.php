@@ -341,7 +341,6 @@ $config['title']=str_replace('[catname]',$cat['cat'],$config['title2']);
 $config['keyword']=str_replace('[catname]',$cat['cat'],$config['keyword2']);
 $config['description']=str_replace('[catname]',$cat['cat'],$config['description2']);
 //=====================================================
-
 if($cat['templates'])
 {
 	$tpl -> template_dir = $config['webroot'] . "/templates/".$cat['templates']."/";

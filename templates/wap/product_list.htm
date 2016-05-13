@@ -184,7 +184,7 @@ $(function(){
                                             "<div class='shopli_bottom_rob clearfix'>"+
                                                 "<{if $smarty.get.is_dist eq 1}>"+
                                                  "<div class='al shopli_bottom_money'>"+
-                                                    "<p class='money'><span>佣金</span><{$config.money}>2.50</p>"+
+                                                    "<p class='money'><span>佣金</span><{$config.money}>"+msg.data[i].commission_product_price_0+"</p>"+
                                                     "<p class='money money_d'><{$config.money}>"+msg.data[i].price+"</p>"+
                                                 "</div>"+
                                                 "<{else}>"+
