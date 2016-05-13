@@ -73,7 +73,7 @@ function gotoMenu(url)
                         </div>
                         <div class="centent_right">
                             <div class="centent_shop_dian">
-                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span><{$shopCon.company}></span></a>
+                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span class="centent_shop_name"><{$shopCon.company}></span></a>
                                 <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" class="centent_shop_yan"><img src="/image/wap/wap_haitao_icon85.png" alt="店铺"></a>
                             </div>
                             <div class="centent_shop_pin">主营商品：<span><{$shopCon.main_pro}></span></div>
@@ -180,9 +180,27 @@ document.getElementById("shop_img").style.top=(document.documentElement.scrollTo
 document.getElementById("shop_img").style.left=(document.documentElement.scrollLeft+(document.documentElement.clientWidth-document.getElementById("Javascript.Div1").offsetWidth)/2)+"px";
 }
 $(function(){
-    var shop_pin=$(".centent_shop_pin span").html();
+    function substr(htm,obj,num){
+        var value_substr=obj.substr(0,num);
+        var pname_len=obj.length;
+        var value_substr_len=value_substr.length+1;
+        if(pname_len>value_substr_len){
+            value_substr=value_substr+"...";                
+        }       
+        htm.html(value_substr);
+    }
+    var shop_htm=$(".centent_shop_pin span") , shop_pin=$(".centent_shop_pin span").html() , shop_name_htm=$(".centent_shop_name") ,  shop_name=$(".centent_shop_name").html();
     if(shop_pin==""){
-        $(".centent_shop_pin span").html("无");
+        shop_htm.html("无");
+    }
+    else{
+        substr(shop_htm,shop_pin,26);
+    }
+    if(shop_name==""){
+        shop_name_htm.html("我的店铺");
+    }
+    else{
+        substr(shop_name_htm,shop_name,10);
     }
     $("#shop_img").click(function(){
         var width = $(this).find("img").width();

@@ -96,23 +96,23 @@ $(function(){
     </div>
 </div>
    <{foreachelse}>
-<div class="itemsNull">
+<div class="itemsNulls">
     <h3>无相关信息</h3>
 </div>
 
    <{/foreach}>
 
- <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a>
+<!--  <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a> -->
 </section>
 
 <script>
-    function more_info(){
-        var st = "<{$smarty.get.status}>";
-        var page = "<{$smarty.get.p}>";
-        $.ajax({
-            url: "<{$config.weburl}>/main.php",
-            type: 'get',
-            data: {m:'distribution', s:'admin_distribution_order_list',status:st, is_ajax:'yes', p:page}
-        });
-    }
+    // function more_info(){
+    //     var st = "<{$smarty.get.status}>";
+    //     var page = "<{$smarty.get.p}>";
+    //     $.ajax({
+    //         url: "<{$config.weburl}>/main.php",
+    //         type: 'get',
+    //         data: {m:'distribution', s:'admin_distribution_order_list',status:st, is_ajax:'yes', p:page}
+    //     });
+    // }
 </script>
