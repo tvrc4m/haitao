@@ -12,7 +12,7 @@ if(empty($buid))
 	}
 }
 else
-{	
+{
 	include_once("module/member/includes/plugin_orderadder_class.php");
 	include_once("module/product/includes/plugin_cart_class.php");
 	$cart = new cart();
@@ -33,7 +33,7 @@ else
 			header("Location: ?m=product&s=confirm_order");
 		}
 	}
-	
+
 	$orderadder = new orderadder();
 	//============================获取数据
 	if($config['temp']=='wap'||$config['temp']=='wap_app')
@@ -73,7 +73,7 @@ else
 	if($_POST['act']=='order')
 	{
 		if($_COOKIE['identity']=='true'){
-		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']); 
+		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']);
 		//----------循环店铺,生成多个订单
 
 		// 合并付款
@@ -141,7 +141,7 @@ else
 					$vou_price = 0; //优惠价格
                     $discounts = $val['discounts']; //会员折扣
                     $inorder .= $order_id.",";
-                                        
+
                     /*** 是否使用代金券 ****/
                     if(isset($_POST['voucher_'.$sell_userid]) && $_POST['voucher_'.$sell_userid] >0 )
                     {
@@ -154,11 +154,11 @@ else
                            $vou_price = ($product_price - $vo['price'] >0)?$vo['price']:$product_price;
                            $vprice = $product_price - $vo['price'];
                            $product_price = $vprice > 0?$vprice:0;
-                           
+
                            /*** 更新优惠券状态 和 绑定 order_id ****/
                            $sql = "update ".VOUCHER."  set `status` = 2 ,`order_id` = 'order_id' where id = ".$vo['id'];
                            $db->query($sql);
-                           
+
                            /*** 更新优惠券模板中的使用次数 ****/
                            $sql = "update ".VOUTEMO."  set `used` = used + 1 where id = ".$vo['temp_id'];
                            $db->query($sql);
@@ -170,26 +170,26 @@ else
 					/***生成买家订单****/
 					$sql = "INSERT INTO ".ORDER." (`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($buid,$order_id,'0',$sell_userid,'".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
 					$db->query($sql);
-					
+
 					/***生成卖家订单****/
 					$sql = "INSERT INTO ".ORDER."	(`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($sell_userid,$order_id,'$buid','0','".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
 					$db->query($sql);
-					
-                                        
+
+
 					foreach($val['prolist'] as $key=>$val)
 					{
-						$val['spec_id'] = $val['spec_id']?$val['spec_id']:"0"; 
+						$val['spec_id'] = $val['spec_id']?$val['spec_id']:"0";
 						$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`pcatid`,`name`,`pic`,`price`,`num`,`time`,`setmeal`,`is_tg`,`spec_name`,`spec_value`,`skuid`,trade)
-						VALUES 
+						VALUES
 						($order_id,$buid,$val[product_id],$val[catid],'".addslashes($val[pname])."','".$val['pic']."','".$val['price']."','".$val['quantity']."','".time()."','$val[spec_id]','$val[is_tg]','$val[spec_name]','$val[setmealname]','$val[skuid]','$val[trade]')";
 						$db->query($sql);
 
 						$sql="select detail from ".PRODETAIL." where proid='$val[product_id]'";
 						$db->query($sql);
 						$detail=$db->fetchField('detail');
-			
+
 						$detail = addslashes($detail);
-				
+
 						$sql = "insert into ".SNAPSHOT." (`order_id`,`product_id`,`spec_id`,`member_id`,`shop_id`,`catid`,`type`,`name`,`subhead`,`brand`,`price`,`freight`,`pic`,`uptime`,`detail`,`spec_name`,`spec_value`) values ('$order_id','$val[product_id]','$val[spec_id]','$sell_userid','$sell_userid','$val[catid]','$val[type]','".addslashes($val[pname])."','".addslashes($val[subhead])."','".addslashes($val[brand])."','$val[price]','0','$val[pic]','".time()."','".addslashes($detail)."','".addslashes($val[spec_name])."','".addslashes($val[setmealname])."')";
 						$db->query($sql);
 					}
@@ -197,13 +197,13 @@ else
 					{
 						foreach($value["giftlist"] as $key=>$va)
 						{
-							$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`name`,`pic`,`price`,`num`,`time`,`is_gift`) 
-							VALUES 
+							$sql = "INSERT INTO ".ORPRO." (`order_id`,`buyer_id`,`pid`,`name`,`pic`,`price`,`num`,`time`,`is_gift`)
+							VALUES
 							($order_id,$buid,$va[pid],'".addslashes($va[pname])."','".$va['pic']."','".$va['price']."',1,'".time()."',1)";
 							$db->query($sql);
 						}
 					}
-					
+
 					$post['action']='add';//填加流水
 					$post['type']=2;//担保接口
 					$post['seller_email'] = "Myzx168@163.com";//卖家账号
@@ -223,9 +223,9 @@ else
 						if($res==-2)
 							msg('main.php?m=payment&s=admin_info','您的支付账户还没有开通');
 						if($res==-1)
-							msg("$config[weburl]/?m=product&s=confirm_order",'卖家没有开通支付功能，暂不能购买');	
+							msg("$config[weburl]/?m=product&s=confirm_order",'卖家没有开通支付功能，暂不能购买');
 					}
-				}	
+				}
 			}
 		}
 
@@ -247,7 +247,7 @@ else
 		$post['return_url'] = $config['weburl'].'/api/order.php?id='.$uorder;//返回地址
 		$post['notify_url'] = $config['weburl'].'/api/order.php?id='.$uorder;//异步返回地址
 		$post['name']="订单【".$order_id."】合并消费";
-		$res=pay_get_url($post,true);//跳转至订单生成页面			
+		$res=pay_get_url($post,true);//跳转至订单生成页面
 
 		//------------清空购物车
 		$cart -> clear_cart($_SESSION['product_id']);
@@ -284,7 +284,7 @@ if($config['temp']=='wap'||$config['temp']=='wap_app')
 	$out=tplfetch("confirm_order.htm",$flag);
 }
 else
-{	
+{
 	if($_GET['ajax']=='ajax')
 	{
 		$url = $_SERVER['HTTP_REFERER']?base64_encode($_SERVER['HTTP_REFERER']):1;

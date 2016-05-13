@@ -12,7 +12,7 @@
 <div class="main">
 <header class="head clearfix">
     <section id="J_search" class="in-search cc-search showoff clearfix">
-    <a href="/login.php" data-href="login" class="user_icon"></a>   
+    <a href="/login.php" data-href="login" class="user_icon"></a>
         <div class="main95">
             <div class="s_main">
                 <input type="text" value="" autocomplete="off" placeholder="搜索您需要的商品" />
@@ -20,7 +20,7 @@
             </div>
         </div>
      <a href="<{$config.weburl}>/cat.php" id="y_menu_icon" data-open="off"></a>
-    </section>  
+    </section>
 </header>
 </div>
 <section class="m_main m_main-v1s">
@@ -84,10 +84,10 @@
         </div>
         <div class="da_banner">
             <ul class="clearfix">
-                <li class="current"><a href="javascript:void(0);">母婴专区</a></li>
-                <li><a href="javascript:void(0);">美妆个护</a></li>
-                <li><a href="javascript:void(0);">日用百货</a></li>
-                <li><a href="javascript:void(0);">食品保健</a></li>
+                <li class="current" accesskey="1000"><a href="javascript:void(0);">母婴专区</a></li>
+                <li accesskey="1001"><a href="javascript:void(0);">美妆个护</a></li>
+                <li accesskey="1002"><a href="javascript:void(0);">日用百货</a></li>
+                <li accesskey="1003"><a href="javascript:void(0);">食品保健</a></li>
             </ul>
         </div>
         <div class="da_list da_list_t">
@@ -111,8 +111,8 @@
                 <{insert name="label" type="product" catid=1003 o=4 temp="product_list_li_0" limit=20}>
                 </ul>
             </div>
-        </div>      
-        
+        </div>
+
     </div>
 </section>
 
@@ -122,7 +122,7 @@
     </div>
 </section>
 
-<section class="s-page">  
+<section class="s-page">
     <div class="cc-search-hide">
         <a class="cc-back">关闭</a>
         <ul class="cc-search-tab">
@@ -221,16 +221,17 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
         // }
         eval('var ar =<{$ar}>;');
         var i = 1;
-        var stop=true; 
+        var stop=true;
         $jj(window).scroll(function(){
             if(i>=5){
                 stop=false;
             }
-            totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop()); 
-            if($jj(document).height() <= totalheight){ 
-                if(stop==true){ 
+             ar['catid'] = $('.current').attr('accesskey');
+            totalheight = parseFloat($jj(window).height()) + parseFloat($jj(window).scrollTop());
+            if($jj(document).height() <= totalheight){
+                if(stop==true){
                     $jj("#more-msg").html("正在加载中.....");
-                    stop=false; 
+                    stop=false;
                      $jj.ajax({
                         url: "<{$config.weburl}>/module/ajax/wapajax.php",
                         type: "post",
@@ -250,12 +251,12 @@ $(".m_main .w100 .flexslider").addClass("t_slide pos_re");
                         }
                     });
                     i++;
-                } 
-            } 
+                }
+            }
         });
         $jj(".scrollLoading").scrollLoading();
         sd()
-    }) 
+    })
 </script>
 </div>
 
