@@ -207,6 +207,8 @@ html[xmlns] .clearfix{display:block;}
 .main .table-list-style tbody td.tl p{color:#808080;padding:3px 0;}
 .main .table-list-style tfoot td{background:#FFFFFF;border-top:1px solid #C4D5E0;padding:12px 0 0;}
 .main .table-list-style tfoot td label{color:#555555;cursor:pointer;display:inline-block;}
+.main .table-list-style.info thead tr{border: 1px solid #ccc;}
+.main .table-list-style.info tbody tr{border-bottom: 1px solid #ccc;height: 100px;}
 
 .main .searchbar {padding: 15px 0;border-bottom: 1px solid #AED2FF;}
 .main .top_searchbar {border:none;padding: 0 0 20px}
