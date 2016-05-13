@@ -72,8 +72,8 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 
 		$company["shop_title"]=($shopconfig["hometitle"]?'':$company['company']);
 		$company["shop_keywords"]=$shopconfig['homedes'].','.$company['main_pro'];
-		$company["shop_description"]=$homekeyword['homekeyword'].','.$company['main_pro'];
-		$company["logo"] = $company['shop_logo'] ? $company['shop_logo'] : $config['weburl'] . "/image/default/nopic.gif";
+		$company["shop_description"]=$company['main_pro'];
+		$company["logo"] = $company['plogo'];
 
 		//-------------使用指定店铺模板。-----------------------------
 		if(!empty($_GET['template']))
@@ -135,7 +135,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 				{
 					$_SESSION['noncestr'] = randomkeys(12);
 
-					$strTmp = "http://".$_SERVER['HTTP_HOST'];
+					$strTmp = "https://".$_SERVER['HTTP_HOST'];
 					if(!empty($_SERVER['REQUEST_URI']))
 					{
 						$strTmp .= $_SERVER['REQUEST_URI'];
@@ -166,7 +166,10 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
 
 			//-------------------------------------------
-			$page = "space_index.htm";
+			if($_GET[fx]=='fx')
+				$page = "space_index_fx.htm";
+			else
+				$page = "space_index.htm";
 		}
         //--------------------------------------------
         if(!empty($_GET['uid'])){
