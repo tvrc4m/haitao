@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-13 13:57:30
+<?php /* Smarty version 2.6.20, created on 2016-05-13 14:03:33
          compiled from setpass.htm */ ?>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
