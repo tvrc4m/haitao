@@ -180,6 +180,10 @@ document.getElementById("shop_img").style.top=(document.documentElement.scrollTo
 document.getElementById("shop_img").style.left=(document.documentElement.scrollLeft+(document.documentElement.clientWidth-document.getElementById("Javascript.Div1").offsetWidth)/2)+"px";
 }
 $(function(){
+    var shop_pin=$(".centent_shop_pin span").html();
+    if(shop_pin==""){
+        $(".centent_shop_pin span").html("无");
+    }
     $("#shop_img").click(function(){
         var width = $(this).find("img").width();
         var height = $(this).find("img").height();
