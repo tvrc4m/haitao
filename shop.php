@@ -72,7 +72,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 
 		$company["shop_title"]=($shopconfig["hometitle"]?'':$company['company']);
 		$company["shop_keywords"]=$shopconfig['homedes'].','.$company['main_pro'];
-		$company["shop_description"]=$homekeyword['homekeyword'].','.$company['main_pro'];
+		$company["shop_description"]=$company['main_pro'];
 		$company["logo"] = $company['plogo'];
 
 		//-------------使用指定店铺模板。-----------------------------

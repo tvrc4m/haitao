@@ -151,6 +151,7 @@ $(function(){
     var url = "<{$config.weburl}>/";
     var id = "<{$smarty.get.id}>";
     var national = "<{$smarty.get.national}>";
+    var dist_id = "<{$smarty.get.dist_id}>";
     var stop=true;
     $(window).scroll(function(){
         totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());
@@ -162,7 +163,7 @@ $(function(){
                 $.ajax({
                     url: url,
                     type: 'get',
-                    data: {id:id, page:page, m:"product", s:"ajax_list", national:national},
+                    data: {id:id, page:page, m:"product", s:"ajax_list", national:national, dist_id:dist_id},
                     dataType: "json",
                     success: function(msg){
                         if(msg.status==2){
