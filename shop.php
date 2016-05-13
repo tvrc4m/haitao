@@ -166,10 +166,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
 
 			//-------------------------------------------
-
-			if($_GET[fx]=='fx')
-				$page = "space_index_fx.htm";	
-			else
 			$page = "space_index.htm";
 		}
         //--------------------------------------------
