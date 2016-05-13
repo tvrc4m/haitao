@@ -75,7 +75,7 @@
 .bom_nav ul li{width: 33.33%;text-align: center;display:inline-block;}
 .bom_nav ul li a{width: 100%;text-align: center;display:inline-block;}
 .bom_nav ul li a img{width: 24px;height: 24px;}
-.bom_nav ul li a p{margin-top: 5px;font-size: 0.7rem;}
+.bom_nav ul li a p{margin-top: 5px;font-size: 0.6rem;}
 .bom_nav_color{color: #ff5c5c;}
 .pchart_test{display: block;}
 .pchart_con .active{color: #ff5c5c;}
