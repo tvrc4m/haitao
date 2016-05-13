@@ -109,10 +109,29 @@ $(function(){
     // function more_info(){
     //     var st = "<{$smarty.get.status}>";
     //     var page = "<{$smarty.get.p}>";
-    //     $.ajax({
-    //         url: "<{$config.weburl}>/main.php",
-    //         type: 'get',
-    //         data: {m:'distribution', s:'admin_distribution_order_list',status:st, is_ajax:'yes', p:page}
-    //     });
+    //     var stop=true; 
+    //     $(window).scroll(function(){
+    //         totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());      
+    //         if($(document).height() <= totalheight){
+    //             if(stop==true){ 
+    //                 $(".m_jiazai").html("正在加载中.....");
+    //                 stop=false; 
+    //                 page = page+10;
+    //                 $.ajax({
+    //                     url: "<{$config.weburl}>/main.php",
+    //                     type: 'get',
+    //                     data: {m:'distribution', s:'admin_distribution_order_list',status:st, is_ajax:'yes', p:page},
+    //                     success: function(msg){
+    //                         console.log(msg)
+    //                         // $(".order").append(msg);                  
+    //                         // if(msg==""){
+    //                         //     $(".m_jiazai").html("已到最底部");
+    //                         // }
+    //                         stop=true;        
+    //                     }
+    //                 });
+    //             } 
+    //         } 
+    //     }) 
     // }
 </script>
