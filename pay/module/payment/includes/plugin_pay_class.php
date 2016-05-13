@@ -32,7 +32,7 @@ class pay
                 {
                     msg($config["web_url"]."/login.php");
                 }
-                else
+               /* else
                 {
                     if($_GET['act']!='logout')
                     {
@@ -50,7 +50,7 @@ class pay
                             msg("$config[weburl]/?m=payment&s=setpass&forword=".$url);
                         }
                     }
-                }
+                }*/
             }
             else
             {

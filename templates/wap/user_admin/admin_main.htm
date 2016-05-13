@@ -69,14 +69,14 @@ function gotoMenu(url)
                     <div class="centent_ten_buluo"><a href="javascript:void(0);">我的海淘店</a></div>
                     <div class="centent_shop_cont clearfix">
                         <div class="centent_left">
-                            <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
+                            <img class="ub-img shoplogo" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>">
                         </div>
                         <div class="centent_right">
                             <div class="centent_shop_dian">
-                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span><{$smarty.cookies.USER|default:'我'}></span>的店铺</a>
+                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span><{$shopCon.company}></span></a>
                                 <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" class="centent_shop_yan"><img src="/image/wap/wap_haitao_icon85.png" alt="店铺"></a>
                             </div>
-                            <div class="centent_shop_pin">主营商品：<span>大牌尿裤、进口奶粉、安全喂养、洗护用品、营养辅食、宝宝护肤</span></div>
+                            <div class="centent_shop_pin">主营商品：<span><{$shopCon.main_pro}></span></div>
                         </div>    
                     </div>
                     <div class="cen_shop_add">

@@ -242,6 +242,11 @@ switch ($action)
 				{
 					if ($distribution_open_flag)
 					{
+						//店铺信息
+						$sql = "select company,main_pro from mallbuilder_shop where userid=".$buid;
+						$db -> query($sql);
+						$shopCon = $db -> fetchRow();
+						$tpl->assign("shopCon",$shopCon);
 						$page="user_admin/admin_main.htm";
 					}
 					else
@@ -306,6 +311,8 @@ $sql = "select identity_verify from pay_member where userid = $buid";
 $db -> query($sql);
 $num = $db -> fetchRow();
 $num = $num['identity_verify'] == 'true' ? 1 : 0 ;
+
+
 
 $tpl->assign("lang",$lang);
 $tpl->assign("verify",$num);
