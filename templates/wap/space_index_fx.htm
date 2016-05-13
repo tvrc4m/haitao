@@ -58,21 +58,13 @@
 <section class="clearfix" style="width:100%;">
     <div class="shopinfo-banner">
         <img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>">
-        <div class="shopinfo-companys">
-            <{$com.company}>
-        </div>
+        <div class="shopinfo-companys"><{$com.company}></div>
         <div class="shopinfo-banner-content">
             <div class="header_topleft">
                 <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
             </div>
-            <div class="shopinfo-imphost">
-                <p>主营商品：
-                    <{if $com.shop_description}>
-                    <span><{$com.shop_description}></span>
-                    <{else}>
-                    <span>无</span>
-                    <{/if}>
-                </p>
+             <div class="shopinfo-imphost">
+                <p>主营商品：<span><{$com.shop_description}></span></p>
             </div>       
             <div class="cols" style="padding: 0 10px">
                 <a onclick="javascript:getfavshop()">
@@ -166,6 +158,28 @@ $(function(){
     $(".cols").css({"bottom":(boHei+10)+"px"});
     $(".header_topleft").css({"bottom":(boHei/2)+"px"});
     $(".shopinfo-companys").css({"bottom":(boHei+15)+"px"});
+    function substr(htm,obj,num){
+        var value_substr=obj.substr(0,num);
+        var pname_len=obj.length;
+        var value_substr_len=value_substr.length+1;
+        if(pname_len>value_substr_len){
+            value_substr=value_substr+"...";                
+        }       
+        htm.html(value_substr);
+    }
+    var shop_htm=$(".shopinfo-imphost p span") , shop_pin=$(".shopinfo-imphost p span").html() , shop_name_htm=$(".shopinfo-companys") ,  shop_name=$(".shopinfo-companys").html();
+    if(shop_pin==""){
+        shop_htm.html("无");
+    }
+    else{
+        substr(shop_htm,shop_pin,36);
+    }
+    if(shop_name==""){
+        shop_name_htm.html("我的店铺");
+    }
+    else{
+        substr(shop_name_htm,shop_name,10);
+    }
     var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
     if(w <=540)
     {
