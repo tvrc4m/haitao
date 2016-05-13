@@ -97,6 +97,6 @@ $jj(function(){
             $jj(".da_banner").removeClass("da_list_test");
         }
     })
- 	 var liHeight=$jj(".cate-guangimg-right ul li").height()*2;
+ 	 var liHeight=$jj(".cate-guangimg-right").height();
  	 $(".cate-guangimg-left img").css({"height":liHeight+"px"})
 });
