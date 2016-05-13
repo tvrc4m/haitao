@@ -77,6 +77,7 @@ class real{
  * */
     function idcard_authentication($users='',$reals='',$logo='',$logo1=''){
         global $db;
+	    global $buid;
         $partner_id = '20160100136';
         $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
         $card_id = !empty($reals) ? $reals : '';
@@ -94,7 +95,7 @@ class real{
                 // 判断type为正确身份证再跳转验证身份证真假
                 $tokens = self::aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
                 if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
-                    $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$_COOKIE['dist_id'];
+                    $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$buid;
                     $db -> query($sql);
                     setcookie("identity", 'true', time()+60*60*24*3, "/");
                     $erry = -5;

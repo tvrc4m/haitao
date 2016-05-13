@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-12 16:42:52
+<?php /* Smarty version 2.6.20, created on 2016-05-12 18:23:54
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 45, false),)), $this); ?>
@@ -129,7 +129,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_form
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 $(function(){
-    $(".pay .fn-clear li:first-of-type").find("i").addClass("formsh")
+    $(".pay .fn-clear li:first-of-type").find("i").addClass("formsh");
    $(".pay li").bind("click",function(){
         var liIndex=$(this).index();
         console.log(liIndex)

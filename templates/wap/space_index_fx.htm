@@ -119,7 +119,7 @@
                                     <p class="money"><{$config.money}><{$list.price}></p>
                                     <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                                 </div>
-                                <a href="javascript:void(0);" class="shopli_bottom_zhuanxiang">专享抢购</a>
+                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_bottom_zhuanxiang">专享抢购</a>
                             </div>  
                         </div>
                     </a>
@@ -162,6 +162,10 @@ $(function(){
         $(".pchart").hide();
         $(".pchart_add").show();
     }
+    var boHei=$(".shopinfo-imphost").height();
+    $(".cols").css({"bottom":(boHei+10)+"px"});
+    $(".header_topleft").css({"bottom":(boHei/2)+"px"});
+    $(".shopinfo-companys").css({"bottom":(boHei+15)+"px"});
     var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
     if(w <=540)
     {

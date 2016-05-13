@@ -81,7 +81,6 @@ $jj(function(){
 	})
 	var dacli=$jj(".da_banner").height();
 	var daHeight=$jj(".da_banner").offset().top;
-	console.log(daHeight-dacli)
 	$jj(".da_banner li").click(function(){
 		$jj(".da_banner").addClass("da_list_test");
 		$jj(window).scrollTop(daHeight-dacli);
