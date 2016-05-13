@@ -565,6 +565,12 @@ fb($sql);
 			$db->query($sql);
 
 			$rs = $db->getRows();
+		}else{
+			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status,p.national, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, p.member_id, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id ='.$produce_id_row . ' LIMIT 1';
+
+			$db->query($sql);
+
+			$rs = $db->getRows();
 		}
 
 		return $rs;

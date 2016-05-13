@@ -344,9 +344,9 @@ sub{vertical-align:text-bottom}
 .newheader .head .m_commitment li i{width:48px;height:48px}
 .newheader .head .m_commitment li em{display:inline-block;margin-left:10px;color:#666;font-size:14px;line-height:18px;vertical-align:middle;letter-spacing:2px}
 
-.m_t_search input{display:inline-block;font-size:14px;border:2px solid #ff5c5c;vertical-align:middle;}
+.m_t_search input{display:inline-block;font-size:14px;border:2px solid #ff5c5c;vertical-align:middle;line-height: 16px;}
 .m_t_search input[type=text]{width:300px;padding:10px 10px 10px 34px;background:url(../../../image/default/icon_search.png) 10px 10px no-repeat;}
-.m_t_search input[type=submit]{color:#fff;padding:10px 20px;background:#ff5c5c;cursor:pointer;}
+.m_t_search input[type=submit]{color:#fff;padding:10px 20px;background:#ff5c5c;cursor:pointer;height: 40px;}
 
 .m_shop_cart{float:right;margin-top:8px}
 .m_shop_cart .cart_box{font-size:14px}
