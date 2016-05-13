@@ -18,7 +18,7 @@
 <div class="itemSearchResult clearfix">
     <{foreach item=list key=num from=$info.list}>
     <dl>
-        <dt><a class="p-img" href="<{geturl uid=$list.userid user=$list.user com=$list.company}>">  <img height="80" width="80" alt="<{$list.company}>" src="<{if $list.wap_logo}><{$list.wap_logo}><{elseif $list.logo}><{$list.logo}><{else}>image/default/nopic.gif<{/if}>"></a> </dt>
+        <dt><a class="p-img" href="<{geturl uid=$list.userid user=$list.user com=$list.company}>">  <img height="80" width="80" alt="<{$list.company}>" src="<{if $list.wap_logo}><{$list.wap_logo}><{elseif $list.logo}><{$list.logo}><{else}>templates/wap/images/user.png<{/if}>"></a> </dt>
         <dd>
             <p class="p-name"><a href="<{geturl uid=$list.userid user=$list.user com=$list.company}>"><{$list.company}></a></p>
             <{if $list.sellerpointsimg}><p class="p-name color"><img align="absmiddle" src="<{$config.weburl}>/image/points/<{$list.sellerpointsimg}>"></p><{/if}>
