@@ -986,7 +986,7 @@ ins,a
 .bom_nav ul li{width: 33.33%;text-align: center;display:inline-block;}
 .bom_nav ul li a{width: 100%;text-align: center;display:inline-block;}
 .bom_nav ul li a img{width: 24px;height: 24px;}
-.bom_nav ul li a p{margin-top: 5px;font-size: 14px;}
+.bom_nav ul li a p{margin-top: 5px;font-size: 0.6rem;}
 .bom_nav_color{color: #ff5c5c;}
 /* .shopli_top_img img{width: 100%}*/
 .shopli_bottom_text{margin-bottom: 0.25rem;}
