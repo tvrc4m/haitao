@@ -56,7 +56,7 @@ if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
             'data' => $res['list'],
             'status' => 2
         ));*/
-
+        $tpl->assign("config",$config);
         $tpl->assign("blist",$res);
         $tpl->display("admin_buyorder_prifex.htm");
     }/*else{

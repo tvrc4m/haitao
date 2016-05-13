@@ -166,7 +166,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 
 			//-------------------------------------------
 			if($_GET[fx]=='fx')
-				$page = "space_index_fx.htm";
+				$page = "space_index_fx.htm1";
 			else
 			$page = "space_index.htm";
 		}
