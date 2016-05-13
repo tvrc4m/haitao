@@ -182,12 +182,19 @@ $(function(){
                                                 "<p class='shopli_bottom_text'>"+msg.data[i].pname+"</p>"+
                                             "</div>"+
                                             "<div class='shopli_bottom_rob clearfix'>"+
+                                                "<{if $smarty.get.is_dist eq 1}>"+
+                                                 "<div class='al shopli_bottom_money'>"+
+                                                    "<p class='money'><span>佣金</span><{$config.money}>2.50</p>"+
+                                                    "<p class='money money_d'><{$config.money}>"+msg.data[i].price+"</p>"+
+                                                "</div>"+
+                                                "<{else}>"+
                                                 "<div class='al shopli_bottom_money'>"+
                                                     "<p class='money'>¥"+msg.data[i].price+"</p>"+
                                                     "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
+                                                "<{/if}>"+
                                                 "<{if $smarty.get.is_dist eq 1}>"+
-                                                    "<a href='javascript:distribute_goods("+msg.data[i].product_id+");' class='shopli_bottom_zhuanxiang'>加入分销</a>"+
+                                                    "<a href='javascript:distribute_goods("+msg.data[i].product_id+");' class='shopli_bottom_zhuanxiang'>代销上架</a>"+
                                                 "<{else}>"+
                                                     "<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
                                                 "<{/if}>"+
