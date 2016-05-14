@@ -22,7 +22,7 @@
         <dd>
             <p class="p-name"><a href="<{geturl uid=$list.userid user=$list.user com=$list.company}>"><{$list.company}></a></p>         
             <{if $list.name}><p class="p-name color">店主：<{$list.name}></p><{/if}>
-            <p class="p-shangpin">主营商品：<span><{$com.shop_description}></span></p>
+            <p class="p-shangpin">主营商品：<span><{$list.main_pro}></span></p>
         </dd>
     </dl>
     <{/foreach}>
