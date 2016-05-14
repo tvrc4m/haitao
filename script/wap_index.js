@@ -87,6 +87,12 @@ $jj(function(){
 		var liSize=$jj(this).index();
 		$jj(this).addClass("current").siblings().removeClass("current");
 		$jj(".da_list>div").eq(liSize).addClass("list_current").siblings().removeClass("list_current");
+		var liIndex= $jj(".shop.list_current .shoplist li").size();
+		console.log(liIndex)
+        if(liIndex<20){
+            $jj(".m_jiazai").hide();
+           $jj(".shop.list_current").css({"margin-bottom":"20px"});
+        }
 	})	
  	$jj(window).scroll(function(){
         var wScrotop=$jj(window).scrollTop();
