@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-14 15:08:52
+<?php /* Smarty version 2.6.20, created on 2016-05-14 16:01:26
          compiled from header.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,8 +28,8 @@
         </ul>
         <ul class="fn-right">
             <li class="nav<?php if ($_COOKIE['USER']): ?> drop-down<?php endif; ?> user">
-                <script src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
-/login_statu.php?m=index"></script>
+                <script src="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/login_statu.php?m=index&p=pay"></script>
             </li>
             <?php if ($this->_tpl_vars['current'] != 'index'): ?>
             <li class="nav">
