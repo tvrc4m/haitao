@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-14 13:35:12
+<?php /* Smarty version 2.6.20, created on 2016-05-14 15:08:52
          compiled from header.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,8 +47,10 @@
                 </div>
                 <div class="nav-fore2">
                     <ul>
-                        <li><a href="main.php?m=product&s=admin_buyorder&cg_u_type=1">已买到的商品</a></li>
-                        <li><a href="main.php?m=product&s=admin_footprint&cg_u_type=1">我的足迹</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=product&s=admin_buyorder&cg_u_type=1">已买到的商品</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=product&s=admin_footprint&cg_u_type=1">我的足迹</a></li>
                         <li><a href="<?php echo $this->_tpl_vars['config']['pay_url']; ?>
 "><?php echo $this->_tpl_vars['config']['pay_name']; ?>
 </a></li>
@@ -59,33 +61,39 @@
             <li class="nav drop-down">
                 <div class="nav-fore1">
                     <?php if ($this->_tpl_vars['cominfo']['shop_type'] == 1): ?>
-                    <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+                    <a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
 /main.php?m=shop&s=admin_step&shop_type=2&cg_u_type=2">卖家中心</a>
                     <?php else: ?>
-                    <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+                    <a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
 /main.php?cg_u_type=2">卖家中心</a>
                     <?php endif; ?>
                     <i><em></em></i>
                 </div>
                 <div class="nav-fore2">
                     <ul>
-                        <li><a href="main.php?m=shop&s=admin_step&cg_u_type=2">免费开店</a></li>
-                        <li><a href="main.php?m=product&s=admin_sellorder&cg_u_type=2">已卖出的商品</a></li>
-                        <li><a href="main.php?m=product&s=admin_product_list&cg_u_type=2">出售中的商品</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=shop&s=admin_step&cg_u_type=2">免费开店</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=product&s=admin_sellorder&cg_u_type=2">已卖出的商品</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=product&s=admin_product_list&cg_u_type=2">出售中的商品</a></li>
                     </ul>
                 </div>
             </li>
             <li class="nav collect drop-down">
                 <div class="nav-fore1">
-                    <a href="main.php?m=sns&s=admin_share_product&cg_u_type=1">
+                    <a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=sns&s=admin_share_product&cg_u_type=1">
                     <span>收藏夹</span>
                     </a>
                     <i><em></em></i>
                 </div>
                 <div class="nav-fore2">
                     <ul>
-                        <li><a href="main.php?m=sns&s=admin_share_product&cg_u_type=1">收藏的商品</a></li>
-                        <li><a href="main.php?m=sns&s=admin_share_shop&cg_u_type=1">收藏的店铺</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=sns&s=admin_share_product&cg_u_type=1">收藏的商品</a></li>
+                        <li><a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?m=sns&s=admin_share_shop&cg_u_type=1">收藏的店铺</a></li>
                     </ul>
                 </div>
             </li>
