@@ -224,7 +224,7 @@ wx.ready(function(){
             // 用户取消分享后执行的回调函数
         }
     });
-    $(".price-fenxiang").bind("click",function(){
+    $(".price-fenxiang").live("click",function(){
         $("#share_box").show();
         setTimeout(function(){
             $("#share_box").animate({opacity: "1"}, 800)
@@ -332,7 +332,7 @@ function wid(){
         $(".collect_box_contentss").hide();
     },2000)
 }
-$(".price-fenxiang").bind("click",function(){
+$(".price-fenxiang").live("click",function(){
     altto('只支持在微信端分享');
     wid();
 })
