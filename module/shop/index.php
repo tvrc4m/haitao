@@ -131,7 +131,7 @@ else
 	if($dsid)
 		$sqls.=" and a.streetid='".getdistrictid($dsid)."'";
 
-	$sql="select grade,a.company,a.main_pro,a.userid,a.user,a.tel,a.area,a.logo,a.addr,b.sellerpoints,b.name from ".SHOP." a left join  ".MEMBER." b on a.userid=b.userid WHERE a.shop_statu=1 $sqls $o";
+	$sql="select grade,a.company,a.main_pro,a.userid,a.user,a.tel,a.area,a.logo,a.addr,a.main_pro,b.sellerpoints,b.name from ".SHOP." a left join  ".MEMBER." b on a.userid=b.userid WHERE a.shop_statu=1 $sqls $o";
 
 	include_once("includes/page_utf_class.php");
 	$page = new Page;

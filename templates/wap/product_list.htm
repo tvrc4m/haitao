@@ -39,7 +39,7 @@
                 </span>
                 <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
                     <div class="shopli_top_img">
-                        <img  class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" height="125" width="125" alt="<{$list.pname}>"/>
+                        <img  class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" height="125" width="125" alt="<{$list.pname}>"/>
                     </div>
                     <!-- <div class="shop_over">已售完</div> -->
                     <div class="shopli_bottom clearfix">
@@ -47,9 +47,9 @@
                             <p class="shopli_bottom_text"><{$list.pname}></p>
                         </div>
                         <div class="shopli_bottom_rob clearfix">
-                            <{if $smarty.get.is_dist eq 1}>
+                            <{if $list.is_dist eq 1}>
                             <div class="al shopli_bottom_money">
-                                <p class="money"><span>佣金</span><{$config.money}>2.50</p>
+                                <p class="money"><span>佣金</span><{$config.money}><{$list.commission_product_price_0|number_format:2}></p>
                                 <p class="money money_d"><{$config.money}><{$list.price}></p>
                             </div>
                             <{else}>
@@ -175,7 +175,7 @@ $(function(){
                                     "</span>"+
                                     "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].product_id+"'>"+
                                         "<div class='shopli_top_img'>"+
-                                            "<img  class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;' height='125' width='125' alt='"+msg.data[i].pname+"'/>"+
+                                            "<img  class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;' height='125' width='125' alt='"+msg.data[i].pname+"'/>"+
                                         "</div>"+
                                         "<div class='shopli_bottom clearfix'>"+
                                             "<div class='shopli_bottom_message'>"+
@@ -184,7 +184,7 @@ $(function(){
                                             "<div class='shopli_bottom_rob clearfix'>"+
                                                 "<{if $smarty.get.is_dist eq 1}>"+
                                                  "<div class='al shopli_bottom_money'>"+
-                                                    "<p class='money'><span>佣金</span><{$config.money}>2.50</p>"+
+                                                    "<p class='money'><span>佣金</span><{$config.money}>"+msg.data[i].commission_product_price_0+"</p>"+
                                                     "<p class='money money_d'><{$config.money}>"+msg.data[i].price+"</p>"+
                                                 "</div>"+
                                                 "<{else}>"+

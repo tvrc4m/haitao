@@ -46,7 +46,7 @@
         <div class="t_slide pos_re" id="hj_slide">
             <ul class="clearfix slides">
             <{foreach item=pic key=num from=$de.pic_more}>
-                <li class="<{if $num==0}>hover<{/if}>"><img class="jqzoom-img scrollLoading" data-url="<{$pic}>" src="../../../image/wap/wap_haitao_touming.png" big="<{$pic}>" width="320" height="320" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;"></li>
+                <li class="<{if $num==0}>hover<{/if}>"><img class="jqzoom-img scrollLoading" data-url="<{$pic}>" src="../../../image/wap/wap_haitao_touming.png" big="<{$pic}>" width="320" height="320" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;"></li>
             <{/foreach}>
             </ul>
             <div class='dot'></div>
@@ -124,7 +124,7 @@
     <div class="select_style_two shoping-hide">
         <div class="b-gra-cfs">
             <div class="col-money">
-                <div class="col-money-bot col-money-bots">佣金：</span><span class="price_moneys2"> <{$config.money}>  <span class="price_dels_num">0.25</span></span><span class="price_moneys2">/件</div>
+                <div class="col-money-bot col-money-bots">佣金：</span><span class="price_moneys2"> <{$config.money}>  <span class="price_dels_num"><{$distr.commission_product_price_0|number_format:2}></span></span><span class="price_moneys2"></div>
                 <div class="col-money-bot">卖价：</span><span><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></div>
             </div>
         </div>
@@ -154,7 +154,7 @@
                             <li class="shopli clearfix">
                                 <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_top_as">
                                     <div class="shopli_top_img shopli_top_imgs">
-                                        <img class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;"/>
+                                        <img class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.name}>"/>
                                     </div>
                                     <!-- <div class="shop_over">已售完</div> -->
                                     <div class="shopli_bottom clearfix">
@@ -187,7 +187,7 @@
         <div class="select_style clearfix">
             <dl class="clearfix select_style_xiangqing">
                 <dt class="select_style_title select_style_titleg">购物流程</dt>
-                <dd><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_qs.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;"  alt="购物流程"></dd>
+                <dd><img class="scrollLoading" data-url="../../../image/wap/wap_haitao_qs.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;"  alt="购物流程"></dd>
             </dl>
         </div>
     </div>
@@ -241,8 +241,8 @@
         </div>
     </div>
     <div class="qg_bottom">
-        <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_shu.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="消费者告知书" />
-        <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_qg.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" alt="什么是海外直发" />
+        <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_shu.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" alt="消费者告知书" />
+        <img class="scrollLoading" data-url="../../../image/wap/wap_haitao_qg.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" alt="什么是海外直发" />
     </div>
     <input name="id" type="hidden" value="<{$de.id}>" />
     <input name="sid" id="sid" type="hidden" value="0" />
@@ -675,6 +675,7 @@ require = null;
             link: location.href, // 分享链接
             imgUrl: "<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>", // 分享图标
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -683,6 +684,7 @@ require = null;
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         });
@@ -695,6 +697,7 @@ require = null;
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -703,6 +706,7 @@ require = null;
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         })
@@ -713,6 +717,7 @@ require = null;
             link: location.href, // 分享链接
             imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -721,6 +726,7 @@ require = null;
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         });
@@ -731,6 +737,7 @@ require = null;
             link: location.href, // 分享链接
             imgUrl: '<{if $com.logo}><{$com.logo}><{else}>image/default/nopic.gif<{/if}>', // 分享图标
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -739,6 +746,7 @@ require = null;
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         });

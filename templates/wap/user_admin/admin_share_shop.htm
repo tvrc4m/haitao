@@ -41,7 +41,7 @@
 <div class="itemSearchResult clearfix">
     <{foreach item=slist key=num from=$re.list}>
     <dl>
-        <dt><a class="p-img" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>">  <img height="80" width="80" alt="<{$list.pname}>" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>"></a> </dt>
+        <dt><a class="p-img" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>">  <img height="80" width="80" alt="<{$list.pname}>" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>templates/wap/images/user.png<{/if}>"></a> </dt>
         <dd>
             <p class="p-name"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a></p>
             <p class="p-name color"><{$slist.area}></p>
@@ -52,7 +52,7 @@
     <{/foreach}>
 </div>
 <{else}>
-<div class="itemsNull">
+<div class="itemsNulls">
     <h3>暂无符合条件的数据记录</h3>
 </div>
 <{/if}>
@@ -60,6 +60,7 @@
 </section>
 <script>
 $(function(){
+    console.log("<{$slist.logo}>")
     var dlLen=$(".itemSearchResult dl").size();
     if(dlLen<10){
         $(".m_jiazai").hide();
@@ -88,7 +89,7 @@ $(function(){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
                             $(".itemSearchResult").append("<dl>"+
-                                    "<dt><a class='p-img' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>  <img height='80' width='80' alt='<{$list.pname}>' src='<{if $slist.logo!=''}><{$slist.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>'></a> </dt>"+
+                                    "<dt><a class='p-img' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>  <img height='80' width='80' alt='<{$list.pname}>' src='<{if $slist.logo!=''}><{$slist.logo}><{else}>templates/wap/images/user.png<{/if}>'></a> </dt>"+
                                     "<dd>"+
                                         "<p class='p-name'><a target='_blank' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>"+msg.data[i].company+"</a></p>"+
                                         "<p class='p-name color'>"+msg.data[i].area+"</p>"+

@@ -32,7 +32,6 @@
             <li><a <{if $shop_count.0}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=1"><strong><{$shop_count.0}></strong>待付款</a></li>
             <li><a <{if $shop_count.1}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=2"><strong><{$shop_count.1}></strong>待发货</a></li>
             <li><a <{if $shop_count.2}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=3"><strong><{$shop_count.2}></strong>待收货</a></li>
-           <!--  <li><a <{if $shop_count.3}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=4"><strong><{$shop_count.3}></strong>待评价</a></li> -->
         </ul>
     </div>
 </section>
@@ -46,7 +45,7 @@
 <section class="m_btn">
     <div class="m_tuichu"><a href="<{$config.weburl}>/main.php?action=logout">退出登录</a></div>
 </section>
-<div style="height:90px;background-color:#fff;"></div>
+<div style="height:70px;background-color:#fff;"></div>
 <section class="addcarts">
     <a class="carts" href="/?m=product&s=cart">
         <span class="cart-num-conts" id='cart_num'>

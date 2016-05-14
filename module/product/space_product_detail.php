@@ -249,6 +249,9 @@ $company["shop_keywords"] = $prode['keywords'].','.$shopconfig["homedes"];
 $company["shop_description"] = $prode['keywords'].','.$shopconfig["homekeyword"];
 $company["logo"] = $prode['pic'] ? $prode['pic'] : $config['weburl'] . "/image/default/nopic.gif";
 //====================================
+//获取商品分销信息
+$distr =$distribution->getProductInfo($_GET['id']);
+$tpl->assign('distr',$distr[0]);
 $tpl->assign("config",$config);
 $tpl->assign("com",$company);
 
