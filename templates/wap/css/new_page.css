@@ -982,11 +982,11 @@ ins,a
 .select_style li a.shopli_top_as{border-radius: 0px!important;}
 
 /*底部公共导航栏*/
-.bom_nav{position: fixed;bottom: 0;background-color: #f1f1f1;width: 100%;padding: 10px 0;box-sizing:border-box;-webkit-box-sizing:border-box;border-top: 2px solid #ff5c5c;}
+.bom_nav{position: fixed;bottom: 0;background-color: #f1f1f1;width: 100%;padding: 5px 0;box-sizing:border-box;-webkit-box-sizing:border-box;border-top: 2px solid #ff5c5c;}
 .bom_nav ul li{width: 33.33%;text-align: center;display:inline-block;}
 .bom_nav ul li a{width: 100%;text-align: center;display:inline-block;}
-.bom_nav ul li a img{width: 24px;height: 24px;}
-.bom_nav ul li a p{margin-top: 5px;font-size: 0.6rem;}
+.bom_nav ul li a img{width: 20px;height: 20px;}
+.bom_nav ul li a p{margin-top: 2px;font-size: 12px;}
 .bom_nav_color{color: #ff5c5c;}
 /* .shopli_top_img img{width: 100%}*/
 .shopli_bottom_text{margin-bottom: 0.25rem;}
@@ -1015,7 +1015,7 @@ ins,a
 #wlocate{float: left;}
 .reload{float: right;margin-right: 6px;}
 .shop_over{width: 4rem;height: 4rem;font-size: 0.7rem; position: absolute;top: 20%;left: 50%;margin-left: -2rem; line-height: 4rem;text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
-.m_main-v9{padding-bottom: 70px;}
+.m_main-v9{padding-bottom: 50px;}
 @media screen and (min-width: 600px) and (max-width: 800px) { 
     .shop_over{top: 25%;}
 }
