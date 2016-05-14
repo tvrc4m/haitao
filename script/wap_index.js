@@ -90,7 +90,8 @@ $jj(function(){
 		var liIndex= $jj(".shop.list_current .shoplist li").size();
 		console.log(liIndex)
         if(liIndex<20){
-            $jj("#more-msg").html("");
+            $jj(".m_jiazai").hide();
+           $jj(".shop.list_current").css({"margin-bottom":"20px"});
         }
 	})	
  	$jj(window).scroll(function(){
