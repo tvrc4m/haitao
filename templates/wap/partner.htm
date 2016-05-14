@@ -81,6 +81,7 @@ wx.ready(function(){
             link: "<{$config.weburl}>/partner.php", // 分享链接
             imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -89,6 +90,7 @@ wx.ready(function(){
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         });
@@ -101,6 +103,7 @@ wx.ready(function(){
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -109,6 +112,7 @@ wx.ready(function(){
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         })
@@ -119,6 +123,7 @@ wx.ready(function(){
             link: "<{$config.weburl}>/partner.php", // 分享链接
             imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -127,6 +132,7 @@ wx.ready(function(){
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         });
@@ -137,6 +143,7 @@ wx.ready(function(){
             link: "<{$config.weburl}>/partner.php", // 分享链接
             imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
             success: function () {
+                $("#share_box").hide()
                 // 用户确认分享后执行的回调函数
                 /*
                 var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -145,6 +152,7 @@ wx.ready(function(){
                 */
             },
             cancel: function () {
+                $("#share_box").hide()
                 // 用户取消分享后执行的回调函数
             }
         });
