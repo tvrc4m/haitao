@@ -1,6 +1,4 @@
-
 <link href="<{$config.weburl}>/templates/wap/css/listdis.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <header>
 	<div class="nav-w">
         <section class="nav-s iconfont"><a href="<{$config.weburl}>/main.php"><i class="fanhui_icon"></i></a></section>
@@ -8,14 +6,11 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
-
-
 <section class="itemSearchList">
-
 <div class="itemSearchResult clearfix">
   <{foreach item=list from=$dist_pro}>
     <dl>
-        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>">  <img alt="<{$list.pname}>" src="<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}><{$list.pic}>_120X120.jpg<{/if}>" class="shop_src"></a> </dt>
+        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>"><img alt="<{$list.pname}>"  class="shop_src scrollLoading" data-url="<{if !$list.pic }><{$config.weburl}>/image/wap/avatar.png<{else}><{$list.pic}>_120X120.jpg<{/if}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;"></a> </dt>
         <dd>
             <p class="p-name">
                 <{if $list.p_national }>
@@ -51,6 +46,8 @@
 <div class="hj_share_box" id="share_box"></div>
 <div class='collect_box_contentss'></div>
 <div class='am-dialog-mask'></div>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript">
 $(function(){
     var dlLen=$(".itemSearchResult dl").size();
@@ -85,7 +82,7 @@ $(function(){
                                 if(pname_len>value_substr_len){
                                     value_substr=value_substr+"...";                
                                 }
-                                 $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' src='<{if !$list.pic }><{$config.weburl}>/image/default/nopic.gif<{else}>"+msg.data[i].pic+"_120X120.jpg<{/if}>' class='shop_src'></a></dt>"+
+                                 $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' class='shop_src scrollLoading' data-url='<{if !$list.pic }><{$config.weburl}>/image/wap/avatar.png<{else}>"+msg.data[i].pic+"_120X120.jpg<{/if}>' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;'></a></dt>"+
                                     "<dd>"+
                                        "<p class='p-name'>"+
                                                 "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
@@ -110,6 +107,7 @@ $(function(){
                                     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].p_national.img+"' alt='"+msg.data[i].p_national.title+"'>&nbsp;&nbsp;"+msg.data[i].p_national.title+"&nbsp;&nbsp;")
                                 }
                             }
+                            $(".scrollLoading").scrollLoading();
                             stop=true;
                         }else{
                          $(".m_jiazai").html("已到最底部");
@@ -119,6 +117,7 @@ $(function(){
             }
         }
     })
+    $(".scrollLoading").scrollLoading();
     $(".price-delate").live("click",function(){
         var data_id=$(this).attr("data-id");
         $(".itemSearchList").append("<div class='price-btns-contexts'>"+
