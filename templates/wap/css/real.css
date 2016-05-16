@@ -24,4 +24,4 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .inp_up{opacity: 1;}
 .logo_shows{margin-right: 2%;}
 .logo_show{width: 49%;float: left;margin-top: 15px;}
-.logo_show img{width:120px;}
+.logo_show img{width:100%;}
