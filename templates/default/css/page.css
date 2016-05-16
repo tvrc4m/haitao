@@ -368,8 +368,8 @@ sub{vertical-align:text-bottom}
 .m_nav .nav li a{padding:0 25px;height:40px;line-height:40px;}
 
 .m_nav .m_gz{position:absolute;top:10px;right:0;cursor:pointer}
-.m_nav .m_gz i{width:20px;height:17px;margin-right:10px}
-.m_nav .m_gz .sjmy{-webkit-box-shadow: 0 0 3px #999;-moz-box-shadow: 0 0 3px #999;box-shadow: 0 0 3px #999;width: 100px;height: 100px;position: absolute;top: 25px;left: 0;padding:10px;background: #fff;z-index: 9999;}
+.m_nav .m_gz .money{background: url(../../../image/default/money.png) no-repeat;padding-left: 23px;background-size: 25%;}
+.m_nav .m_gz .sjmy{-webkit-box-shadow: 0 0 3px #999;-moz-box-shadow: 0 0 3px #999;box-shadow: 0 0 3px #999;width: 100px;height: 100px;position: absolute;top: 25px;left: -10px;padding:10px;background: #fff;z-index: 9999;}
 .m_nav .m_gz .sjmy span{top:-11px;left:50px;position: absolute;display: inline-block;width: 16px;height: 16px;background: url(../../../image/default/arr2.png);}
 
 .m_goods_list{width:202px;margin:31px auto;overflow:hidden;}
