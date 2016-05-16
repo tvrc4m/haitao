@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-13 15:27:20
+<?php /* Smarty version 2.6.20, created on 2016-05-16 19:56:05
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <script type="text/javascript" src="script/my_lightbox.js"></script>
@@ -89,7 +89,7 @@ window.onload=function(){
                 <div class="logo_show uplode">
                     <input class="text w300 hidden" name="logo" type="text" id="logo" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
 ">
-                    <a href="javascript:uploadfile('LOGO','logo',120,120,'member')">
+                    <a href="javascript:uploadfile('LOGO','logo',441,358,'member')">
                         <img id="logo_img" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon9.png">
                     </a>
@@ -97,7 +97,7 @@ window.onload=function(){
                 <div class="logo_show uplode">
                     <input class="text w300 hidden" name="logo1" type="text" id="logo1" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
 ">
-                    <a href="javascript:uploadfile('LOGO','logo1',120,120,'member')">
+                    <a href="javascript:uploadfile('LOGO','logo1',441,358,'member')">
                         <img id="logo1_img" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon8.png">
                     </a>
