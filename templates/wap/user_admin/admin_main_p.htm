@@ -8,10 +8,14 @@
 <link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
 <section>
     <div class="duser">
-        <dl class="duser-user">
+      <!--   <dl class="duser-user">
          <dt><a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1"><img width="70" height="70" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>"></a></dt>
         <dd><{$cominfo.user}></dd>
-    </dl>
+    </dl> -->
+    <div class="duser_left">
+        <img class="ub-img shoplogo" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>">
+    </div>
+    <div><{$cominfo.user}></div>
     <ul class="duser-auth">
         <li><a href="javascript:void(0);" class="duser-auth-mob duser-auth-mob-j">已认证</a></li>
         <li class="duser-auth-line"></li>
@@ -49,8 +53,8 @@
     </ul> 
     <div style="height:10px;background-color:#f1f1f1;"></div> 
     <ul>
-        <li class="mforder"><a href="tel:"><span class="fore_e">联系客服</span></a></li>
-        <li class="mforder"><a href="main.php?m=member&s=admin_orderadder"><span class="fore_f">帮助中心</span></a></li>
+        <li class="mforder"><a href="tel:4000101977"><span class="fore_e">联系客服</span></a></li>
+        <li class="mforder"><a href="<{$config.weburl}>/help.php"><span class="fore_g">帮助中心</span></a></li>
         <li><a href="main.php?m=member&s=admin_orderadder"><span class="fore_f">关于蚂蚁海淘</span></a></li>
     </ul>
     <div style="height:20px;background-color:#f1f1f1;"></div>  

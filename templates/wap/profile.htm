@@ -7,11 +7,10 @@
     </div>
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
-<div style="height:10px;background-color:#f1f1f1;"></div>
 <section class="m_fore clearfix">
     <ul>
         <li class="mforder"><a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1"><span class="mforders">账户管理</span></a></li>
-        <li class="mforder"><a href="<{$config.weburl}>/real.php"><span class="mforders">实名认证</span><span class="mforder_f">已设置</span></a></li>
+        <li class="mforder"><a href="<{$config.weburl}>/real.php"><span class="mforders">实名认证</span><{if $verify }><span class="mforder_fs">已认证</span><{else}><span class="mforder_f">未认证</span><{/if}></span></a></li>
         <li class="mforder"><a href="<{$config.weburl}>/lostpass.php"><span class="mforders">修改登录密码</span></a></li>
         <li class="mforder"><a href="main.php?m=member&s=admin_orderadder"><span class="mforders">收货地址</span></a></li>
         <li class="mforder"><a href="<{$config.weburl}>/agreement.php"><span class="mforders">注册协议</span></a></li>
