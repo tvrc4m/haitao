@@ -240,7 +240,7 @@ if(str=='')
 	str='图片地址为空，无法预览';
 else
 	str='<img src='+str+'>';
-document.getElementById('preview').innerHTML=str;
+    document.getElementById('preview').innerHTML=str;
 </script>
 <?php } ?>
 </body>
