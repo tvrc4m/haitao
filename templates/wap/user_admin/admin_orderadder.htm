@@ -64,7 +64,7 @@ $(function(){
 </script>
 <header>
 	<div class="nav-w">
-    	<section class="nav-s iconfont"><{if $back_flag}><a href="<{$config.weburl}>/main.php"><{else}><a href="javascript:void(0)" onclick="history.back();"><{/if}><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></a></section>
+    	<section class="nav-s iconfont"><{if $back_flag}><a href="<{$config.weburl}>/main.php"><{else}><a href="javascript:void(0)" onclick="history.back();"><{/if}><i class="fanhui_icon"></i></a></section>
     	<section class="nav-c"><span>收货地址</span></section>
     	<section class="nav-e"></section>
     </div>
@@ -126,14 +126,36 @@ $(function(){
             <p>
                 <span><{$list.name}></span>
 				<span><{$list.mobile}></span>
-                <span><{if $list.default==2}>默认<{/if}></span>
+                <span><{if $list.default==2}>默认<{else}>修改<{/if}></span>
             </p>
             <p><span><{$list.area}>&nbsp;<{$list.address}></span></p>
             </a>
-            <a class="del del_context" href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&edid=<{$list.id}>">删除</a>
+            <a class="del del_context" href="javascript:void(0);" data-id="<{$list.id}>">删除</a>
         </li>  
         <{/foreach}>
     </ul>
     <div class="add"><a href="main.php?m=member&s=admin_orderadder&type=add&type=add<{if $smarty.get.t}>&t=<{$smarty.get.t}><{/if}><{if $smarty.get.i}>&i=<{$smarty.get.i}><{/if}>">添加新地址</a></div>
 <{/if}>
+<div class='am-dialog-mask'></div>
 </section>
+<script type="text/javascript">
+    $(".del_context").live("click",function(){
+        var data_id=$(this).attr("data-id");
+        $(".orderadder").append("<div class='price-btns-contexts'>"+
+                    "<div class='price-btns-context-tops clearfix'>"+
+                        "<p>确信删除?</P>"+
+                    "</div>"+
+                    "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
+                "</div>");
+        var dialog_mask=$(".am-dialog-mask"),btns_contexts=$(".price-btns-contexts")
+        dialog_mask.addClass("am-dialog-mask-test");
+        btns_contexts.addClass('price-btns-contexts_test');
+        $(".detate-btns-context-bot a:first-child").bind("click",function(){
+            location.href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&edid="+data_id+""
+        })
+        $(".detate-btns-context-bot a:last-child").bind("click",function(){
+            dialog_mask.removeClass("am-dialog-mask-test");
+            btns_contexts.removeClass('price-btns-contexts_test');
+        })
+    })
+</script>

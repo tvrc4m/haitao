@@ -82,6 +82,25 @@ $(function(){
                                 if(pname_len>value_substr_len){
                                     value_substr=value_substr+"...";                
                                 }
+                                var nums=msg.data[i].commission_product_price_0;
+                                function toDecimal2(x) {    
+                                    var f = parseFloat(x);    
+                                    if (isNaN(f)) {    
+                                        return false;    
+                                    }    
+                                    var f = Math.round(x*100)/100;    
+                                    var s = f.toString();    
+                                    var rs = s.indexOf('.');    
+                                    if (rs < 0) {    
+                                        rs = s.length;    
+                                        s += '.';    
+                                    }    
+                                    while (s.length <= rs + 2) {    
+                                        s += '0';    
+                                    }    
+                                    return s;    
+                                } 
+                                var amount_num=toDecimal2(nums);
                                  $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' class='shop_src scrollLoading' data-url='<{if !$list.pic }><{$config.weburl}>/image/wap/avatar.png<{else}>"+msg.data[i].pic+"_120X120.jpg<{/if}>' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;'></a></dt>"+
                                     "<dd>"+
                                        "<p class='p-name'>"+
@@ -95,7 +114,7 @@ $(function(){
                                             "价格：<span class='price-tests'><{$config.money}>"+msg.data[i].price+"</span>"+
                                             "</span>"+
                                             "<span class='complateMoney'>"+
-                                                "<{if $list.is_dist}>佣金: <span class='price-tests'><{$config.money}>"+msg.data[i].share_money+"</span><{/if}>"+
+                                                "<{if $list.is_dist}>佣金: <span class='price-tests'><{$config.money}>"+amount_num+"</span><{/if}>"+
                                             "</span>"+
                                         "</p>"+
                                         "<div class='price-btns'>"+
