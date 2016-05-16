@@ -31,6 +31,12 @@
 <section class="pchart">
     <div class="pchart_con2">最新商品<br><span>Latest product<span></div>
 </section>
+<section class="pchart_add pchart_adds">
+    <a href="javascript:void(0);">
+        <img src="/image/wap/wap_haitao_icon117.png" alt="+">
+        <div class="pchart_add_con"><span>暂无商品</span></div>
+    </a>
+</section>
 <section class="clearfix pchart_commit">
 <{if $com.shop_statu eq 1}>
     <div class='pchart_last pchart_test'>
@@ -142,6 +148,11 @@
 </script>
 <script>
 $(function(){
+    var liIndex=$(".shoplist .shopli").size();
+    if(liIndex==0){
+        $(".pchart").hide();
+        $(".pchart_add").show();
+    }
     var boHei=$(".shopinfo-imphost").height();
     $(".cols").css({"bottom":(boHei+10)+"px"});
     $(".header_topleft").css({"bottom":(boHei/2)+"px"});

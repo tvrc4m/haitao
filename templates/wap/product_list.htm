@@ -145,7 +145,7 @@ $(function(){
     var liLen=$(".shoplist .shopli").size();
     if(liLen<10){
         $(".m_jiazai").hide();
-        $("footer").css({"margin-top":"20px"})
+        $(".itemSearchList").css({"margin-bottom":"20px"})
     }
     var page = 0;
     var url = "<{$config.weburl}>/";
@@ -170,6 +170,25 @@ $(function(){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
                         var nat=msg.data[i].nat;
+                        var nums=msg.data[i].commission_product_price_0;
+                            function toDecimal2(x) {    
+                                var f = parseFloat(x);    
+                                if (isNaN(f)) {    
+                                    return false;    
+                                }    
+                                var f = Math.round(x*100)/100;    
+                                var s = f.toString();    
+                                var rs = s.indexOf('.');    
+                                if (rs < 0) {    
+                                    rs = s.length;    
+                                    s += '.';    
+                                }    
+                                while (s.length <= rs + 2) {    
+                                    s += '0';    
+                                }    
+                                return s;    
+                            } 
+                        var amount_num=toDecimal2(nums);
                         $(".shoplist").append("<li class='shopli clearfix'>"+
                                     "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                     "</span>"+
@@ -184,7 +203,7 @@ $(function(){
                                             "<div class='shopli_bottom_rob clearfix'>"+
                                                 "<{if $smarty.get.is_dist eq 1}>"+
                                                  "<div class='al shopli_bottom_money'>"+
-                                                    "<p class='money'><span>佣金</span><{$config.money}>"+msg.data[i].commission_product_price_0+"</p>"+
+                                                    "<p class='money'><span>佣金</span><{$config.money}>"+amount_num+"</p>"+
                                                     "<p class='money money_d'><{$config.money}>"+msg.data[i].price+"</p>"+
                                                 "</div>"+
                                                 "<{else}>"+
