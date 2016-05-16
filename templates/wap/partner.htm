@@ -78,7 +78,7 @@ wx.ready(function(){
         }, 200);
         wx.onMenuShareTimeline({
             title: "成为我的合伙人，数钱数到手抽筋", // 分享标题
-            link: "<{$config.weburl}>/partner.php", // 分享链接
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
             imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
             success: function () {
                 $("#share_box").hide()
@@ -98,7 +98,7 @@ wx.ready(function(){
         wx.onMenuShareAppMessage({
             title:"成为我的合伙人，数钱数到手抽筋", // 分享标题
             desc: "免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......", // 分享描述
-            link: "<{$config.weburl}>/partner.php", // 分享链接
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
             imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -120,7 +120,7 @@ wx.ready(function(){
         wx.onMenuShareQQ({
             title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
             desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
-            link: "<{$config.weburl}>/partner.php", // 分享链接
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
             imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
             success: function () {
                 $("#share_box").hide()
@@ -140,7 +140,7 @@ wx.ready(function(){
         wx.onMenuShareWeibo({
             title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
             desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
-            link: "<{$config.weburl}>/partner.php", // 分享链接
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
             imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
             success: function () {
                 $("#share_box").hide()
