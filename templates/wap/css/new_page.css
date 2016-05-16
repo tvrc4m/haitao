@@ -1016,6 +1016,9 @@ ins,a
 .reload{float: right;margin-right: 6px;}
 .shop_over{width: 4rem;height: 4rem;font-size: 0.7rem; position: absolute;top: 20%;left: 50%;margin-left: -2rem; line-height: 4rem;text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
 .m_main-v9{padding-bottom: 50px;}
+.c_daibao{padding: 0.5rem;}
+.c_daibao ul{padding-bottom: 0rem;}
+.c_daibao ul li{width: 20%;display: inline-block;text-align: center;}
 @media screen and (min-width: 600px) and (max-width: 800px) { 
     .shop_over{top: 25%;}
 }

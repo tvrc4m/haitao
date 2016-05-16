@@ -231,7 +231,7 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .cate-guanglist ul li a{width: 100%;display: inline-block;border: 1px solid #f1f1f1;}
 .cate-guanglist ul li:nth-child(n+5) a{border-top: none;}
 .cate-guanglist ul li img{width: 100%;}
-.m_main-v4{padding: 0 0.5rem;margin-top: 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 70px;}
+.m_main-v4{padding: 0 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 70px;background-color: #fff;}
 .m_main-v44{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 0.4rem;}
 .w100s{width: 100%}
 .w100s img{width: 100%;}
