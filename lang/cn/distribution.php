@@ -9,8 +9,8 @@ if (!isset($lang))
 global $_LANG_DIST;
 $_LANG_DIST = array(
 	'distribution_level_all' => '所有',
-	'distribution_level_1' => '一级用户',
-	'distribution_level_2' => '二级用户',
+	'distribution_level_1' => 'Ⅰ级用户',
+	'distribution_level_2' => 'Ⅱ级用户',
 
 
 	'distribution_list'=>'分销商品',
