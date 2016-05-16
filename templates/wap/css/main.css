@@ -11,7 +11,7 @@
 .info ul li:last-of-type a{border-right: none;}
 .info ul li strong{display:block;color:#535353 !important;font-size:0.7rem;font-weight:normal;margin-bottom: 5px;}
 .info ul li a.color strong{color:#ff5c5c !important;}
-.duser{background:url(../../../image/wap/wap_haitao_usebg.jpg) no-repeat;background-size: cover;overflow:hidden;padding: 1.5rem 0.5rem;text-align: center;}
+.duser{background:url(../../../image/wap/wap_haitao_usebg.jpg) no-repeat;background-size: 100% 100%;overflow:hidden;padding: 1.5rem 0.5rem;text-align: center;}
 .duser-user dt{margin:0 auto;position:relative;text-align:center;background:#FFF;border-radius:50%;display: inline-block;}
 .duser-user dd{color:#fff;font-size:0.6rem;padding-top:10px;text-align: center;padding-bottom: 6px;}
 .duser-user dt img{border-radius: 50%;}

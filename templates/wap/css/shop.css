@@ -84,6 +84,7 @@
 .pchart_con2{text-align: center;margin: 15px 0;font-size: 0.8rem;line-height: 1.3;}
 .pchart_con2 span{font-size: 0.6rem;color: #999;}
 .pchart_add{display: none;text-align: center;margin-top: 60px;}
+.pchart_adds img{width: 64px;margin-bottom: 12px;}
 .pchart_add a{display: inline-block;}
 .pchart_add_con{text-align: center;}
 .pchart_add_con span{font-size: 0.8rem;}
