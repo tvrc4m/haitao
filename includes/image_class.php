@@ -30,9 +30,9 @@ class cls_image
 			{
 				if($watermark_config['wmark_type']==1)
 				{
-					
+
 					$water_img=$config['webroot']."/image/logo.gif";
-					
+
 					$config['logo']=str_replace($config['weburl'],$config['webroot'],$config['logo']);
 					$water_img=$config['logo']?$config['logo']:$water_img;
 					$this->imageWaterMark($img,$watermark_config['wmark_locaction'],$water_img); 
@@ -42,7 +42,7 @@ class cls_image
 			}
 		}
 		//========================================================
-		
+
         /* 检查缩略图宽度和高度是否合法 */
         if ($thumb_width == 0 && $thumb_height == 0)
         {

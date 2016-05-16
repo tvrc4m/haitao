@@ -40,7 +40,7 @@
 .m_tuichu a{font-size: 0.7rem;color: #ff5c5c;width: 100%;}
 .m_btn{background-color: #fff;}
 .info_top{padding: 0.5rem;font-size: 0.6rem;background-color: #FFF;}
-.info_top a{float: right;padding-right: 15px;background: url(../../../image/wap/wap_haitao_icon18.png) right no-repeat;background-size: 0.4rem;}
+.info_top a{float: right;padding-right: 15px;background: url(../../../image/wap/wap_haitao_icon18.png) right no-repeat;background-size: 0.4rem;color: #999;}
 /*** bruce 2015-01-17 ****/
 .v_ul li{clear: both;width: 100%;overflow: hidden;color: #fff;margin-bottom: 3px;}
 .v_l{float: left;width: 75%;}

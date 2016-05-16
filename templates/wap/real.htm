@@ -27,6 +27,8 @@
         <{$lang.identity_correct}>
         <{elseif $erry=="-3"}>
         <{$lang.identity_error}>
+        <{elseif $erry=="-4"}>
+            请上传身份证的正反面
         <{/if}>
     </div>
     <{/if}>
@@ -43,12 +45,13 @@
         <li class="clearfix">
             <div class="logo_show logo_shows">
                 <input class="text w300 hidden" name="logo" type="text" id="logo" value="<{$de.logo}>">
-                <a href="javascript:uploadfile('LOGO','logo',441,358,'member')">
+                <a href="javascript:uploadfile('LOGO','logo',441,358,'real','','front.jpg')">
                     <img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/wap/wap_zhe.png<{/if}>">
                 </a>
-            </div><div class="logo_show">
+            </div>
+            <div class="logo_show">
                 <input class="text w300 hidden" name="logo1" type="text" id="logo1" value="<{$de.logo}>">
-                <a href="javascript:uploadfile('LOGO','logo1',441,358,'member')">
+                <a href="javascript:uploadfile('LOGO','logo1',441,358,'real','','front.jpg')">
                     <img id="logo1_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/wap/wap_fan.png<{/if}>">
                 </a>
             </div>

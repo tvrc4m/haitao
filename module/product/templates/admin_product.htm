@@ -177,11 +177,11 @@ var weburl="<{$config.weburl}>";
     <tr>
         <th><font color="red">*</font>贸易类型</th>
         <td>
-            <label> <input name="trade" type="radio" class="radio" value="0" checked="checked"/> 一般贸易 </label>
+            <label> <input name="trade" type="radio" class="radio" value="0" <{if $de.trade eq 0}>checked="checked"<{/if}>/> 一般贸易</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label> <input name="trade" type="radio" class="radio" value="1" />  保税仓 </label>
+                <label> <input name="trade" type="radio" class="radio" value="1" <{if $de.trade eq 1}>checked="checked"<{/if}>/>  保税仓 </label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label> <input name="trade" type="radio" class="radio" value="2"  />  直邮 </label>
+            <label> <input name="trade" type="radio" class="radio" value="2"  <{if $de.trade eq 2}>checked="checked"<{/if}>/>  直邮 </label>
         </td>
     </tr>
 
@@ -307,14 +307,14 @@ var weburl="<{$config.weburl}>";
                 <{section name=name loop=$count*-1+5}>
                 <li id="p<{$key+$smarty.section.name.index+1}>" data-itemid='<{$key+$smarty.section.name.index+1}>'>
                     <div data_type="handle_image">
-                        <div class="image">
+                    <div class="image">
                         <input name="pic[]" type="hidden" id="pic<{$smarty.section.name.index}>" value="" />
                         <img width="60" id="pic<{$smarty.section.name.index}>_img" src="<{$config.weburl}>/image/default/nopicsmall.gif"  />
-                        </div>
-                        <div data_type="handle" class="bg">
-                            <span title="删除" data_type="delete_image" class="delete">删除</span>
-                        </div>
                     </div>
+                    <div data_type="handle" class="bg">
+                        <span title="删除" data_type="delete_image" class="delete">删除</span>
+                    </div>
+                </div>
                     <div class="upload-btn"><div class="upload-button" onclick="uploadfile('上传图片','pic<{$smarty.section.name.index}>',300,300,'product')">上传</div></div>
                 </li>
                 <{/section}>

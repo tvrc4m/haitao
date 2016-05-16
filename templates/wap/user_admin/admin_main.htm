@@ -81,7 +81,7 @@ function gotoMenu(url)
                         </div>    
                     </div>
                     <div class="cen_shop_add">
-                        <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_find"><span>+</span>添加商品</a>
+                        <a href="<{$config.weburl}>/index.php?m=product&s=list&is_dist=1&fx=fx"><span>+</span>添加商品</a>
                     </div>
                     <div class="centent_cen clearfix">
                         <div class="cen_shop cen_shop2">
@@ -341,9 +341,10 @@ wx.ready(function(){
         }, 200);
        wx.onMenuShareTimeline({
         title: "成为我的合伙人，数钱数到手抽筋", // 分享标题
-        link: "<{$config.weburl}>/partner.php", // 分享链接
+        link: "<{$config.weburl}>/partner.php?dist_id=<{$buid}>", // 分享链接
         imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
         success: function () {
+            $("#share_box").hide()
             // 用户确认分享后执行的回调函数
             /*
             var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -352,6 +353,7 @@ wx.ready(function(){
             */
         },
         cancel: function () {
+            $("#share_box").hide()
             // 用户取消分享后执行的回调函数
         }
     });
@@ -359,11 +361,12 @@ wx.ready(function(){
     wx.onMenuShareAppMessage({
         title:"成为我的合伙人，数钱数到手抽筋", // 分享标题
         desc: "免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......", // 分享描述
-        link: "<{$config.weburl}>/partner.php", // 分享链接
+        link: "<{$config.weburl}>/partner.php?uid=<{$buid}>&dist_id=<{$buid}>", // 分享链接
         imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
         type: '', // 分享类型,music、video或link，不填默认为link
         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
         success: function () {
+            $("#share_box").hide()
             // 用户确认分享后执行的回调函数
             /*
             var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -372,6 +375,7 @@ wx.ready(function(){
             */
         },
         cancel: function () {
+            $("#share_box").hide()
             // 用户取消分享后执行的回调函数
         }
     })
@@ -379,9 +383,10 @@ wx.ready(function(){
     wx.onMenuShareQQ({
         title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
         desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
-        link: "<{$config.weburl}>/partner.php", // 分享链接
+        link: "<{$config.weburl}>/partner.php?uid=<{$buid}>&dist_id=<{$buid}>", // 分享链接
         imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
         success: function () {
+            $("#share_box").hide()
             // 用户确认分享后执行的回调函数
             /*
             var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -390,6 +395,7 @@ wx.ready(function(){
             */
         },
         cancel: function () {
+            $("#share_box").hide()
             // 用户取消分享后执行的回调函数
         }
     });
@@ -397,9 +403,10 @@ wx.ready(function(){
     wx.onMenuShareWeibo({
         title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
         desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
-        link: "<{$config.weburl}>/partner.php", // 分享链接
+        link: "<{$config.weburl}>/partner.php?uid=<{$buid}>&dist_id=<{$buid}>", // 分享链接
         imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
         success: function () {
+            $("#share_box").hide()
             // 用户确认分享后执行的回调函数
             /*
             var url = "<{$config.weburl}>/ajax_back_end.php";
@@ -408,6 +415,7 @@ wx.ready(function(){
             */
         },
         cancel: function () {
+            $("#share_box").hide()
             // 用户取消分享后执行的回调函数
         }
     });

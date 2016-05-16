@@ -977,8 +977,8 @@ ins,a
 .shop .shopli:last-of-type(){border-bottom:1px solid #b9b9b9;}
 .shop .shopli .shopli_bottom{padding: 0.5rem;}
 .shopli_bottom_message{width:100%;font-size: 0.6rem;float: left;}
-.shopli_top_img{margin-bottom: 1px;margin: 1rem 0.5rem 0;padding-bottom: 10px; border-bottom: 1px dashed #b9b9b9;}
-.shopli_top_imgs{margin-bottom: 1px;padding: 0.5rem;margin: 0;border-bottom:1px solid #e1e1e1;}
+.shopli_top_img{margin-bottom: 1px;margin: 1rem 0.5rem 0;border-bottom: 1px dashed #b9b9b9;}
+.shopli_top_imgs{margin-bottom: 1px;margin: 0;border-bottom:1px solid #e1e1e1;}
 .select_style li a.shopli_top_as{border-radius: 0px!important;}
 
 /*底部公共导航栏*/
@@ -1016,6 +1016,11 @@ ins,a
 .reload{float: right;margin-right: 6px;}
 .shop_over{width: 4rem;height: 4rem;font-size: 0.7rem; position: absolute;top: 20%;left: 50%;margin-left: -2rem; line-height: 4rem;text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
 .m_main-v9{padding-bottom: 50px;}
+.c_daibaos{padding: 0.5rem 0;background-color: #fff;}
+.c_daibaos ul{padding-bottom: 0rem;}
+.c_daibaos ul li{width: 20%;display: inline-block;text-align: center;}
+.c_daibaos ul li img{width: 40px;height: 40px;}
+.c_daibaos p{margin-top: 5px;}
 @media screen and (min-width: 600px) and (max-width: 800px) { 
     .shop_over{top: 25%;}
 }
