@@ -21,7 +21,7 @@
 .shoplist .shopli a.shopli_bottom_zhuanxiang {float: right;width: 3.5rem;padding: 0.2rem 0;text-align: center;background-color: #ff5c5c;color: #fff;margin-top: -1.4rem;font-size: 0.6rem;}
 .shoplist .shopli a.shopli_bottom_zhuanxiangs {float: right;width: 3.5rem;padding: 0.2rem 0;text-align: center;background-color: #ff5c5c;color: #fff;margin-top: -1.75rem;font-size: 0.6rem;}
 .shopinfo{margin:20px auto;}
-.shoplist{padding: 0 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;margin-bottom: 0px;}
+.shoplist{padding: 0 0.5rem;box-sizing:border-box;-webkit-box-sizing:border-box;margin-bottom: 0px;background-color: #fff;margin-top: 0;}
 .shoplist .shopli a {width: 100%;height: auto;outline: 0;font-size: 0.6rem;overflow: hidden;text-decoration: none;margin: 0 auto;display: block;}
 .shoplist .shopli {position: relative;float: left;width: 50%;height: auto;overflow: hidden;background: #fff;border: 1px solid #b9b9b9;box-sizing: border-box;-webkit-box-sizing: border-box;}
 .shoplist .shopli:nth-of-type(even) {border-left: none;}
@@ -88,3 +88,8 @@
 .pchart_add a{display: inline-block;}
 .pchart_add_con{text-align: center;}
 .pchart_add_con span{font-size: 0.8rem;}
+.c_daibao{padding: 0.5rem 0;border-bottom: none;background-color: #fff;margin-bottom: 15px;}
+.c_daibao ul{padding-bottom: 0;border-bottom: none;}
+.c_daibao ul li{width: 20%;display: inline-block;text-align: center;}
+.c_guanggao{width: 100%;padding-top: 10px;background-color: #FFF;}
+.c_guanggao img{width: 100%;}
