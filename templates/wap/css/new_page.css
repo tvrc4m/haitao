@@ -998,7 +998,7 @@ ins,a
 .money_d{color: #535353;}
 .shop .shopli p{text-align: left;}
 .shopli_bottom_money{float: left;}
-.money_del{text-decoration: line-through;color: #999;margin-left: 5px;}
+.money_del{text-decoration: line-through;color: #999;}
 /*.shop .shopli.even{margin-left: 2.5%;}*/
 .nearShop {background: #fff;height: auto;text-align: center;}
 .nearShop li{text-align: left;}

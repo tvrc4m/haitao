@@ -91,5 +91,6 @@
 .c_daibao{padding: 0.5rem 0;border-bottom: none;background-color: #fff;margin-bottom: 15px;}
 .c_daibao ul{padding-bottom: 0;border-bottom: none;}
 .c_daibao ul li{width: 20%;display: inline-block;text-align: center;}
+.c_daibao ul li img{width: 40px;height: 40px;}
 .c_guanggao{width: 100%;padding-top: 10px;background-color: #FFF;}
 .c_guanggao img{width: 100%;}
