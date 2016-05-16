@@ -30,7 +30,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .dianpu-on{width:0.5rem;height: 0.9rem;display: inline-block;background: url(../../../image/wap/mayi_wap_icon26.png) no-repeat;background-size: contain;vertical-align: middle;}
 
 /**************space_product_detail*******************/
-#pro_detail .shopli_top_img img{width: 3.5rem;height: 3.5rem;}
+#pro_detail .shopli_top_img img{width: 100%;}
 #pro_detail img{width:100%;}
 
 #pro_detail #pname{min-height: 2.15rem;line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;padding-right: 2.5rem;}
