@@ -27,7 +27,7 @@ em{font-style:normal;}
 
 .banner .user{float:left;display:inline;margin:32px 0 0 20px;width:360px;height:97px;position:relative;}
 .banner .user .wrap{background-color: #fff;padding: 10px;opacity: 0.8;filter:alpha(opacity=50);-moz-opacity:0.5;}
-.banner .img{float:left;display:inline;overflow:hidden;position:relative;border-radius: 36px;}
+.banner .img{float:left;display:inline;overflow:hidden;position:relative;border-radius: 36px;width: 70px;}
 .banner .img-cover{position:absolute;top:0;left:0;z-index:100;width:100px;height:98px;background:url(../image/img-cover.png) no-repeat;}
 .banner .info{float:left;display:inline;margin-left:10px;}
 .banner .user_info{margin-top:12px;line-height:22px;font-size:14px;color:#333;}

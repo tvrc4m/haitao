@@ -118,7 +118,7 @@ class admin{
 		global $buid;
 		if(!empty($uid))
 			$buid=$uid;
-			
+
 		$sql="SELECT * FROM ".SHOP." WHERE userid='$buid'";
 		$this->db->query($sql);
 		$re=$this->db->fetchRow();

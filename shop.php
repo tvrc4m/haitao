@@ -164,7 +164,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			//
 			$PluginManager = Yf_Plugin_Manager::getInstance();
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
-			$dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['dist_id'];
+			$dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['uid'];
 			$tpl->assign("dis",$dis);
 			//-------------------------------------------
 			if($_GET[fx]=='fx')
