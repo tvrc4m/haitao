@@ -87,9 +87,9 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 	
 	if($remote_config['image_remote_storage']==1 and !empty($remote_config['space_name']) and !empty($remote_config['ftp_password']) and !empty($remote_config['ftp_name']))
 	{
-		
+
 		require_once('lib/php-sdk-master/upyun.class.php');
-		
+
 		$upyun = new UpYun("$remote_config[space_name]","$remote_config[ftp_name]","$remote_config[ftp_password]");
 		try
 		{
@@ -152,15 +152,14 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 		}
 		$pw=$_POST['pw']?$_POST['pw']:$_GET['pw'];
 		$ph=$_POST['ph']?$_POST['ph']:$_GET['ph'];
-		
-	
+
 		if(!file_exists($path))
 		{
 			mkdirs($path);
 		}
-		
+
 		if($_GET['m']=='product'||$_GET['m']=='product/property')
-		{	
+		{
 			$size=($_GET['m']=='product/property')?$size1:$size;
 			foreach($size as $key=>$val)
 			{
@@ -171,8 +170,12 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 			$str="window.parent.load_pic();";
 		}
 		else
-		{
-			makethumb($_FILES['pic']['tmp_name'],$path.$pn,$pw,$ph,$watermark);
+		{   if(empty($_GET['ty'])) {
+                makethumb($_FILES['pic']['tmp_name'], $path . $pn, $pw, $ph, $watermark);
+            }else{
+                //makethumb($_FILES['pic']['tmp_name'], $path . $pn,'' , '', $watermark);
+                move_uploaded_file($_FILES['pic']['tmp_name'],$path.$pn);
+            }
 		}
 		
 		$pn=str_replace($config['webroot'],$config['weburl'],$path).$pn;

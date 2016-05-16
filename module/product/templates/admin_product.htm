@@ -307,14 +307,14 @@ var weburl="<{$config.weburl}>";
                 <{section name=name loop=$count*-1+5}>
                 <li id="p<{$key+$smarty.section.name.index+1}>" data-itemid='<{$key+$smarty.section.name.index+1}>'>
                     <div data_type="handle_image">
-                        <div class="image">
+                    <div class="image">
                         <input name="pic[]" type="hidden" id="pic<{$smarty.section.name.index}>" value="" />
                         <img width="60" id="pic<{$smarty.section.name.index}>_img" src="<{$config.weburl}>/image/default/nopicsmall.gif"  />
-                        </div>
-                        <div data_type="handle" class="bg">
-                            <span title="删除" data_type="delete_image" class="delete">删除</span>
-                        </div>
                     </div>
+                    <div data_type="handle" class="bg">
+                        <span title="删除" data_type="delete_image" class="delete">删除</span>
+                    </div>
+                </div>
                     <div class="upload-btn"><div class="upload-button" onclick="uploadfile('上传图片','pic<{$smarty.section.name.index}>',300,300,'product')">上传</div></div>
                 </li>
                 <{/section}>
