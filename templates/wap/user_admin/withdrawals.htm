@@ -1,1 +1,22 @@
-dsfsdfasdfad
+<{include file="../header.htm"}>
+<style type="text/css">
+	body{background: #fff;}
+</style>
+<header>
+    <div class="nav-w">
+        <section class="nav-s" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
+        <section class="nav-c"><span>佣金结算申请</span></section>
+        <section class="nav-e"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+    </div>
+</header>
+<div class="comm_top">
+	<p><a href="">结算记录</a></p>
+	<p><span>尚未结算佣金：</span>￥2222.00</p>
+</div>
+<form id="form" class="comm_form" method="post" enctype="multipart/form-data" action="./main.php?m=distribution&s=admin_distribution_settlement">
+	<p>申请结算佣金
+		<input placeholder="结算最低额度100元" />
+	</p>
+	<input type="submit" value="提交申请" class="submit" />
+</form>
+<{include file="../footer.htm"}>

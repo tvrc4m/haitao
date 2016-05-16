@@ -177,11 +177,11 @@ var weburl="<{$config.weburl}>";
     <tr>
         <th><font color="red">*</font>贸易类型</th>
         <td>
-            <label> <input name="trade" type="radio" class="radio" value="0" checked="checked"/> 一般贸易 </label>
+            <label> <input name="trade" type="radio" class="radio" value="0" <{if $de.trade eq 0}>checked="checked"<{/if}>/> 一般贸易</label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label> <input name="trade" type="radio" class="radio" value="1" />  保税仓 </label>
+                <label> <input name="trade" type="radio" class="radio" value="1" <{if $de.trade eq 1}>checked="checked"<{/if}>/>  保税仓 </label>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label> <input name="trade" type="radio" class="radio" value="2"  />  直邮 </label>
+            <label> <input name="trade" type="radio" class="radio" value="2"  <{if $de.trade eq 2}>checked="checked"<{/if}>/>  直邮 </label>
         </td>
     </tr>
 

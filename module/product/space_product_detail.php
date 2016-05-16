@@ -243,7 +243,7 @@ function namereplace($name, $charset = 'UTF8') {
 }
 //====================================SEO
 $trades = array('0'=>'无','1'=>'郑州保税仓','2'=>'海外商家');
-$company["trade"] = !empty($prode['trade'])?$trades[$prode['trade']]:'海外商家';
+$company["trade"] = $prode['trade']==1?$trades[$prode['trade']]:'海外商家';
 $company["shop_title"] = $prode['name'];
 $company["shop_keywords"] = $prode['keywords'].','.$shopconfig["homedes"];
 $company["shop_description"] = $prode['keywords'].','.$shopconfig["homekeyword"];
