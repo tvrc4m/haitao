@@ -4,7 +4,7 @@
 	<div class="nav-w">
         <section class="nav-s iconfont"><a onclick="history.go(-1)"><i class="fanhui_icon"></i></a></section>
         <section class="nav-c">
-                <span><{if $smarty.get.is_dist eq 1}>发现商品<{else}><{$wapcatname}><{/if}></span>
+                <span><{$wapcatname}></span>
         </section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
@@ -14,7 +14,7 @@
 	<ul class="clearfix">
     	<{assign var=s value=$smarty.get.orderby}>
 		<{assign var=c value=$smarty.get.commission_price}>
-        <li <{if !$s}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>"><span><{if $smarty.get.is_dist eq 1}>成交佣金<{else}>默认<{/if}></span></a></li>
+        <li <{if !$s}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>"><span>默认</span></a></li>
 		<li <{if $s==2}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=2"><span>人气</span></a></li>
         <li <{if $s==1}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=1"><span>销量</span></a></li>
         <li <{if $s==3}>class="current"<{/if}>><a href="<{$config.weburl}>/?<{$url|replace:"&orderby=$s":""}>&orderby=3"><span>信用</span></a></li>
@@ -46,22 +46,11 @@
                             <p class="shopli_bottom_text"><{$list.pname}></p>
                         </div>
                         <div class="shopli_bottom_rob clearfix">
-                            <{if $list.is_dist eq 1}>
-                            <!--<div class="al shopli_bottom_money">
-                                <p class="money"><span>佣金</span><{$config.money}><{$list.commission_product_price_0|number_format:2}></p>
-                                <p class="money money_d"><{$config.money}><{$list.price}></p>
-                            </div>-->
-                            <{else}>
                             <div class="al shopli_bottom_money">
                                 <p class="money"><{$config.money}><{$list.price}></p>
                                 <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                             </div>
-                            <{/if}>
-                            <{if $smarty.get.is_dist eq 1}>
-                                <a href="javascript:distribute_goods('<{$list.id}>');" class="shopli_bottom_zhuanxiang">代销上架</a>
-                            <{else}>
-                                <a href="javascript:void(0);" class="shopli_bottom_zhuanxiang">专享抢购</a>
-                            <{/if}>
+                            <a href="javascript:void(0);" class="shopli_bottom_zhuanxiang">专享抢购</a>
                         </div>
                     </div>
                 </a>
@@ -169,25 +158,6 @@ $(function(){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
                         var nat=msg.data[i].nat;
-                        var nums=msg.data[i].commission_product_price_0;
-                            function toDecimal2(x) {    
-                                var f = parseFloat(x);    
-                                if (isNaN(f)) {    
-                                    return false;    
-                                }    
-                                var f = Math.round(x*100)/100;    
-                                var s = f.toString();    
-                                var rs = s.indexOf('.');    
-                                if (rs < 0) {    
-                                    rs = s.length;    
-                                    s += '.';    
-                                }    
-                                while (s.length <= rs + 2) {    
-                                    s += '0';    
-                                }    
-                                return s;    
-                            } 
-                        var amount_num=toDecimal2(nums);
                         $(".shoplist").append("<li class='shopli clearfix'>"+
                                     "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                     "</span>"+
@@ -200,22 +170,11 @@ $(function(){
                                                 "<p class='shopli_bottom_text'>"+msg.data[i].pname+"</p>"+
                                             "</div>"+
                                             "<div class='shopli_bottom_rob clearfix'>"+
-                                                "<{if $smarty.get.is_dist eq 1}>"+
-                                                 "<div class='al shopli_bottom_money'>"+
-                                                    "<p class='money'><span>佣金</span><{$config.money}>"+amount_num+"</p>"+
-                                                    "<p class='money money_d'><{$config.money}>"+msg.data[i].price+"</p>"+
-                                                "</div>"+
-                                                "<{else}>"+
                                                 "<div class='al shopli_bottom_money'>"+
                                                     "<p class='money'>¥"+msg.data[i].price+"</p>"+
                                                     "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
-                                                "<{/if}>"+
-                                                "<{if $smarty.get.is_dist eq 1}>"+
-                                                    "<a href='javascript:distribute_goods("+msg.data[i].product_id+");' class='shopli_bottom_zhuanxiang'>代销上架</a>"+
-                                                "<{else}>"+
-                                                    "<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
-                                                "<{/if}>"+
+                                                "<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
                                             "</div>"+
                                        "</div>"+
                                     "</a>"+
