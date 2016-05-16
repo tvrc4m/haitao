@@ -431,7 +431,7 @@ html[xmlns] .clearfix{display:block;}
 .pine{border:1px solid #ccc;border-top: none; margin-left:1px;width:198px;margin-bottom: 20px;background-color: #fff;}
 .pine-hd{color:#ff5c5c;height: 40px;line-height: 40px;text-align: center;font-size: 18px;border-top: 3px solid #ff5c5c;border-bottom: 1px dashed #ccc;}
 .hotsell .p-name,.pine .p-name{height: 20px;line-height: 20px;font-size: 12px;}
-.pine .p-name a{display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.hotsell .p-name a,.pine .p-name a{display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .pine-bd li{overflow:hidden;    text-align: center;border-bottom: 1px dashed #ccc;padding: 20px 20px 18px;}
 .pine-bd li:hover .p-img img{-webkit-transform: translateX(-10px);-moz-transform: translateX(-10px);-o-transform: translateX(-10px);transform: translateX(-10px);}
 .pine-bd img{width:80px;transition: all .4s ease-out;}

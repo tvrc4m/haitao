@@ -346,6 +346,10 @@ else
         }
 	//}
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
-	$tpl->display($page);
+    if(isset($_GET['disp']) && $_GET['disp'] == 1) {
+        $tpl->display('Withdrawals.htm');
+    }else{
+        $tpl->display($page);
+    }
 }
 ?>
