@@ -88,7 +88,7 @@
 .pchart_add a{display: inline-block;}
 .pchart_add_con{text-align: center;}
 .pchart_add_con span{font-size: 0.8rem;}
-.c_daibao{padding: 0.5rem 0;border-bottom: none;background-color: #fff;margin-bottom: 15px;}
+.c_daibao{padding: 0.5rem 0;border-bottom: none;background-color: #f1f1f1;margin-bottom: 15px;}
 .c_daibao ul{padding-bottom: 0;border-bottom: none;}
 .c_daibao ul li{width: 20%;display: inline-block;text-align: center;}
 .c_daibao ul li img{width: 40px;height: 40px;}
