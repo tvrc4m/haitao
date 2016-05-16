@@ -96,7 +96,7 @@
 <section class="bom_nav">
     <ul>
         <li><a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon103.png" alt="店铺"><p class="bom_nav_color">店铺</p></a></li><li>
-        <a href="<{$config.weburl}>/partner.php"><img src="../image/wap/wap_haitao_icon104.png" alt="成为合伙人"><p>成为合伙人</p></a></li><li>
+        <a href="<{$config.weburl}>/partner.php<{$dis}>"><img src="../image/wap/wap_haitao_icon104.png" alt="成为合伙人"><p>成为合伙人</p></a></li><li>
         <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li>
     </ul>
 </section>
@@ -149,7 +149,7 @@
 </script>
 <script>
 $(function(){
-    var liIndex=$(".shopli").size();
+    var liIndex=$(".shoplist .shopli").size();
     if(liIndex==0){
         $(".pchart").hide();
         $(".pchart_add").show();

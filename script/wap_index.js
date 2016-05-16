@@ -17,49 +17,6 @@ $jj(function(){
 		$jj(".cc-search-show").addClass("cc-search-hide").removeClass("cc-search-show")
 	})
 
- 	// 幻灯片效果
-	$jj("#owl-demo").owlCarousel({
-	  navigation : false, // Show next and prev buttons
-	  slideSpeed : 200,
-	  singleItem:true,
-	  autoPlay:2000,
-	});
-
-
-	// js获取屏幕宽度，自动调节相应模块的宽高比例
- 	var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
-	if(w <=540)
-	{
-		var rate = w/540;
-		var h = 67*100*rate/100;
-		var h1 = 224*100*rate/100;
-		$jj(".index_icon1").height(h+"px")
-		$jj(".shopli").find("img").height(h1+"px")
-	}
-	else
-	{
-		$jj(".index_icon1").height("60px")
-		$jj(".shopli").find("img").height("224px")
-	}
-	function getHtmlSecond()
-	{
-		$jj.post("ajax_back_end.php",{"act":"getNearInfo"},function(data){
-			if(data == "1")
-			{
-				var t = setTimeout(getHtmlSecond,800);
-			}
-			else
-			{
-				$jj(".nearShop").html(data);
-			}
-		});
-	}
-
-	if($jj(".nearShop").length > 0)
-	{
-		getHtmlSecond();
-	}
-
 	$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
 	$jj(document).scroll(function(){
 		var h = $jj(document).scrollTop();
@@ -79,30 +36,6 @@ $jj(function(){
 			$jj(".filter").eq(0).css({"margin-top":"50px"})
 		}
 	})
-	var dacli=$jj(".da_banner").height();
-	var daHeight=$jj(".da_banner").offset().top;
-	$jj(".da_banner li").click(function(){
-		$jj(".da_banner").addClass("da_list_test");
-		$jj(window).scrollTop(daHeight-dacli);
-		var liSize=$jj(this).index();
-		$jj(this).addClass("current").siblings().removeClass("current");
-		$jj(".da_list>div").eq(liSize).addClass("list_current").siblings().removeClass("list_current");
-		var liIndex= $jj(".shop.list_current .shoplist li").size();
-		console.log(liIndex)
-        if(liIndex<20){
-            $jj(".m_jiazai").hide();
-           $jj(".shop.list_current").css({"margin-bottom":"20px"});
-        }
-	})	
- 	$jj(window).scroll(function(){
-        var wScrotop=$jj(window).scrollTop();
-        if(wScrotop>=daHeight-dacli){
-            $jj(".da_banner").addClass("da_list_test");
-        }
-        else{
-            $jj(".da_banner").removeClass("da_list_test");
-        }
-    })
  	 var liHeight=$jj(".cate-guangimg-right").height();
  	 $(".cate-guangimg-left img").css({"height":liHeight+"px"})
 });

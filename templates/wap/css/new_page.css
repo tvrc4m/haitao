@@ -1016,6 +1016,18 @@ ins,a
 .reload{float: right;margin-right: 6px;}
 .shop_over{width: 4rem;height: 4rem;font-size: 0.7rem; position: absolute;top: 20%;left: 50%;margin-left: -2rem; line-height: 4rem;text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
 .m_main-v9{padding-bottom: 50px;}
+
+.shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}
+.shop_t li.shopli a {border: none;padding: 0;}
+.shopli_top_img {border: 1px solid #e1e1e1;}
+.shop_t .shopli:nth-of-type(3n) {margin-right: 0;}
+.list_tab{padding: 0 0.5rem;}
+.list_tab ul li{width: 25%;display: inline-block;border:1px solid #535353;}
+.list_tab ul li a{width: 90px;display: inline-block;height: 90px;line-height: 90px;text-align: center;background-color: #ff5c5c;color: #fff;margin: 5px;}
+.shopli_top_img img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
 @media screen and (min-width: 600px) and (max-width: 800px) { 
     .shop_over{top: 25%;}
 }
