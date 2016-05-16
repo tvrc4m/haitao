@@ -303,6 +303,7 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .comm_form p input{margin-left: 1rem;border: 0;line-height: 2rem;vertical-align: top;}
 .comm_form .submit{padding: 0.8rem 5rem;margin: 1rem auto 0;background: #ff5c5c;border: 0;color: #fff;border-radius: 5px;font-size: 0.7rem;}
 .shop_t {background-color: #fff;}
+.shop_ts{padding: 0.5rem}
 .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}
 .shop_t li.shopli a {border: none;padding: 0;}
 .shopli_top_imgs {border: 1px solid #e1e1e1;}
