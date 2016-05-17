@@ -117,6 +117,11 @@ function aes($url='',$post_data=''){
     curl_close($ch);
     return json_decode($list,true);
 }
+$sql="select * from pay_member where userid='$buid'";
+$db->query($sql);
+$de=$db->fetchRow();
+$users=$de['real_name'];
+$real=$de['identity_card'];
 //-1真实姓名不能为空！-2身份证号不能为空！-3请填写正确身份证号！-4姓名和身份证不一致！
 $tpl->assign('users',$users);
 $tpl->assign('real',$real);

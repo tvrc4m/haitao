@@ -198,8 +198,8 @@ else
 		$scl.=" and ( a.keywords like '%$key%' or a.name like '%$key%' )";
 	if(!empty($_GET['brand']))
 		$scl.=" and a.brand='".$_GET['brand']."' ";
-	if($dpid)
-		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";
+	/*if($dpid)
+		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";*/
 
 	if(isset($_GET['province']))
 	{
