@@ -7,9 +7,9 @@ class curlUp{
     private $realBack;
     private $time;
     private $pass = 'AiMeiHtBoyWholeSaler100';
-    private $tokenUrl = "http://121.40.31.77:80/Service/Get_Aes.aspx";
-    private $realUrl = "http://121.40.31.77/Service/Get_Exist_Id_Num.aspx";
-    private $imgUpurl = "http://121.40.31.77/Service/Send_Id_Num_Info.aspx";
+    private $tokenUrl = "http://121.40.31.77:80/Service/Get_Aes.aspx";//验证token链接
+    private $realUrl = "http://121.40.31.77/Service/Get_Exist_Id_Num.aspx";//验证身份证是否存在链接
+    private $imgUpurl = "http://121.40.31.77/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
 
 
     public function __construct($id_num='',$id_name='',$realPositive='',$realBack='')
@@ -17,8 +17,8 @@ class curlUp{
         $this->time = '20160329135132';
         $this->id_num = $id_num;
         $this->id_name = $id_name;
-        $this->realPositive = $realPositive;
-        $this->realBack = $realBack;
+        $this->realPositive = ltrim($realPositive,'/');
+        $this->realBack = ltrim($realBack,'/');
     }
 
     /*订单提交
@@ -34,21 +34,20 @@ class curlUp{
         $list['goods_order'][0]['order_code']=$orderList['order_id'];
         $list['goods_order'][0]['order_sum_money']=(string)($orderList['product_price']+$orderList['logistics_price']);//$orlist['order']['logistics_price']);
         $list['goods_order'][0]['order_member_name']=$orderList['consignee'];
-        $list['goods_order'][0]['order_member_id_number']='130429198603041233';
+        $list['goods_order'][0]['order_member_id_number']=$orderList['identity_card'];
         $list['goods_order'][0]['order_member_phone']=$orderList['consignee_mobile'];
         $list['goods_order'][0]['order_member_sheng']=$addr[0];
         $list['goods_order'][0]['order_member_shi']=$addr[1];
         $list['goods_order'][0]['order_member_xian']=$addr[2];
         $list['goods_order'][0]['order_member_address']=$addr[3];
-        $list['goods_order'][0]['order_logistics_name']='中通';//$orderList['logistics_name'];
+        $list['goods_order'][0]['order_logistics_name']='快递';//$orderList['logistics_name'];
         $list['goods_order'][0]['order_logistics_money']=$orderList['logistics_price'];
         $list['goods_order'][0]['order_goods_money']=$orderList['product_price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['id']='';
-        $list['goods_order'][0]['goods_attributes_list'][0]['sku_id']='8809461020266';//$orlist['orpro'][$i]['skuid'];
+        $list['goods_order'][0]['goods_attributes_list'][0]['sku_id']=$orderList['skuid'];
         $list['goods_order'][0]['goods_attributes_list'][0]['price']=$orderList['price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['num']=$orderList['num'];
         $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$orderList['trade'];
-
         $order = json_encode($list);
         $token =  $this->token();
         $type = $this->aes("http://121.40.31.77/Service/Send_Goods_Order.aspx",array ("time" => $time,"pass" => $this->pass,"token" => $token,"order" => $order));
@@ -60,6 +59,7 @@ class curlUp{
      * 返回图片地址
      * */
     public function curlUpload(){
+
         $list = array();
         $list['time']=$this->time;
         //获取token值
@@ -73,7 +73,6 @@ class curlUp{
         $filebei = realpath(mb_convert_encoding($this->realBack,'GBK','utf8'));
         $list['realPositive'] = '@'.$filezheng;
         $list['realBack'] = '@'.$filebei;
-        var_dump(json_encode($list));
         $type =  $this->aes($this->imgUpurl,$list);
         unset($list);
         return $type;
