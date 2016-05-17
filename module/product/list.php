@@ -206,12 +206,12 @@ else
 		$scl.=" and c.provinceid='" . intval($_GET['province']) . "'";
 	}
 
-	if($dcid)
+	/*if($dcid)
 		$scl.=" and c.cityid='".getdistrictid($dcid)."'";
 	if($daid)
 		$scl.=" and c.areaid='".getdistrictid($daid)."'";
 	if($dsid)
-		$scl.=" and c.streetid='".getdistrictid($dsid)."'";
+		$scl.=" and c.streetid='".getdistrictid($dsid)."'";*/
 
 	if(!empty($_GET['ptype']) and $_GET['ptype']>=0 and $_GET['ptype']<count($ptype))
 		$scl.=" and a.type='$_GET[ptype]' ";
