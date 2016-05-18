@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-09 11:06:31
+<?php /* Smarty version 2.6.20, created on 2016-05-18 13:16:30
          compiled from main.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'main.htm', 36, false),)), $this); ?>
@@ -199,7 +199,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
                                     "<p <?php if ($this->_tpl_vars['list']['is_refund'] == 'true'): ?>rowspan='2'<?php endif; ?>>"+
                                     "<?php if ($this->_tpl_vars['list']['statu'] == 1 && $this->_tpl_vars['list']['seller_email'] && ( $this->_tpl_vars['list']['mold'] == 3 || $this->_tpl_vars['list']['mold'] == 0 )): ?>"+
                                         "<a href='<?php echo $this->_tpl_vars['config']['weburl']; ?>
-?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
+/index.php?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
                                     "<?php else: ?>"+
                                         "<a target='_blank' href='<?php if ($this->_tpl_vars['list']['return_url']): ?><?php echo $this->_tpl_vars['list']['return_url']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['config']['weburl']; ?>
