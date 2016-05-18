@@ -7,7 +7,7 @@ $jj(function(){
 	$jj(".s_main").find("input").focus(function(){
 		$jj(".s-page").addClass("open")
 		$jj(".cc-search-hide").addClass("cc-search-show").removeClass("cc-search-hide")
-		$("body,html").css({"overflow":"hidden"});		
+		$(".main_container").hide();		
 	})
 	$jj(".cc-search-tab > li").click(function(){
 		$jj(this).addClass("cur").siblings("li").removeClass("cur");
@@ -17,7 +17,7 @@ $jj(function(){
 	$jj(".cc-back").click(function(){
 		$jj(".s-page").removeClass("open")
 		$jj(".cc-search-show").addClass("cc-search-hide").removeClass("cc-search-show")
-		$("body,html").css({"overflow":"visible"});
+		$(".main_container").show();	
 	})
 
 	$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
