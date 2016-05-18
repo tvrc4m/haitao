@@ -846,8 +846,8 @@ ins,a
 	text-indent: 0.5rem;
 	outline:0;
 }
-.s-page{/*display:none;*/}
-.s-page{overflow: hidden;z-index: 1000;background-color: #f1f1f1;
+.s-page{display:none;}
+/*.s-page{overflow: hidden;z-index: 1000;background-color: #f1f1f1;
 	-webkit-transform: translateX(980px);
     -moz-transform: translateX(980px);
     -o-transform: translateX(980px);
@@ -865,7 +865,7 @@ ins,a
     -moz-transform: none!important;
     -o-transform: none!important;
     transform: none!important;
-}
+}*/
 .cc-search-show{display:block!important}
 .cc-search-tab li{float:left}
 .cc-search-tab{clear:both;height: 34px;}
