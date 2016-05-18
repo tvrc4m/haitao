@@ -234,12 +234,12 @@ else
 	elseif($orderby==8)
 		$scl.=" order by p.commission_product_price_0 desc";
 	else{
-		if($config['temp']=='wap'){
+		$scl.=" order by a.rank desc,a.uptime desc";
+		/*if($config['temp']=='wap'){
 			$scl.=" order by p.commission_product_price_0 desc";
 		}else{
 			$scl.=" order by a.rank desc,a.uptime desc";
-		}
-
+		}*/
 	}
 //--------------------------------------------------
 	include_once("includes/page_utf_class.php");

@@ -10,11 +10,14 @@ class curlUp{
     private $tokenUrl = "http://121.40.31.77:80/Service/Get_Aes.aspx";//验证token链接
     private $realUrl = "http://121.40.31.77/Service/Get_Exist_Id_Num.aspx";//验证身份证是否存在链接
     private $imgUpurl = "http://121.40.31.77/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
+    private $orderUrl = "http://121.40.31.77/Service/Send_Goods_Order.aspx";//订单提交链接
+
+    const EXT='.txt';
 
 
-    public function __construct($id_num='',$id_name='',$realPositive='',$realBack='')
+    public function __construct($id_name='',$id_num='',$realPositive='',$realBack='')
     {
-        $this->time = '20160329135132';
+        $this->time = date("YmdHis",time());
         $this->id_num = $id_num;
         $this->id_name = $id_name;
         $this->realPositive = ltrim($realPositive,'/');
@@ -26,7 +29,6 @@ class curlUp{
     */
     function orderUp($orderList){
 
-        $time = $this->time;//date("YmdHis",$orlist['order']['create_time']);
         $addr = explode(' ',$orderList['consignee_address']);
         $list = array();
         $list['goods_order_count']=1;
@@ -40,7 +42,7 @@ class curlUp{
         $list['goods_order'][0]['order_member_shi']=$addr[1];
         $list['goods_order'][0]['order_member_xian']=$addr[2];
         $list['goods_order'][0]['order_member_address']=$addr[3];
-        $list['goods_order'][0]['order_logistics_name']='快递';//$orderList['logistics_name'];
+        $list['goods_order'][0]['order_logistics_name']=$orderList['logistics_name'];
         $list['goods_order'][0]['order_logistics_money']=$orderList['logistics_price'];
         $list['goods_order'][0]['order_goods_money']=$orderList['product_price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['id']='';
@@ -50,7 +52,7 @@ class curlUp{
         $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$orderList['trade'];
         $order = json_encode($list);
         $token =  $this->token();
-        $type = $this->aes("http://121.40.31.77/Service/Send_Goods_Order.aspx",array ("time" => $time,"pass" => $this->pass,"token" => $token,"order" => $order));
+        $type = $this->aes($this->orderUrl,array ("time" => $this->time,"pass" => $this->pass,"token" => $token,"order" => $order));
     return $type;
     }
 
@@ -115,6 +117,26 @@ class curlUp{
         curl_close($ch);
         unset($ch);
         return json_decode($list,true);
+    }
+    //缓存日志
+    /*
+     * 缓存日志
+     * $key 文件名
+     * $value 存储数据
+     * $path  存储文件路径
+     * */
+    public function cacheLog($key='',$value='',$path=''){
+        global $config;
+        $data = $this->time.'>>>'.json_encode($value)."\r\n";
+        $filename = $config['webroot'].'/'.$path.$key.self::EXT;
+        if($data !== ''){
+            $dir = dirname($filename);
+            if(!is_dir($dir)){
+                mkdir($dir,0777);
+            }
+            return file_put_contents($filename,$data,FILE_APPEND);
+        }
+
     }
 }
 ?>
