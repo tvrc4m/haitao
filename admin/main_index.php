@@ -89,7 +89,7 @@ if(empty($_SESSION["ADMIN_USER"])||empty($_SESSION["ADMIN_PASSWORD"]))
                 <td height="20" align="left" valign="middle" >授权版本</td>
                 <td id="Copyright" height="20" align="left" valign="middle" >
                     <?php echo lang_show('verauth');?>
-                    <script src="http://www.mayizaixian.cn/api.php?url=<?php echo $config[baseurl];?>"></script></td>
+                    <script src="//www.mayizaixian.cn/api.php?url=<?php echo $config[baseurl];?>"></script></td>
             </tr>
         </table>
     </div>
