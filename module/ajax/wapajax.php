@@ -30,14 +30,14 @@
         $scl.=" and a.is_tg='$tg'";
 
     /*---分站---*/
-    if($dpid)
+/*    if($dpid)
         $scl.=" and b.provinceid='".getdistrictid($dpid)."'";
     if($dcid)
         $scl.=" and b.cityid='".getdistrictid($dcid)."'";
     if($daid)
         $scl.=" and b.areaid='".getdistrictid($daid)."'";
     if($dsid)
-        $scl.=" and b.streetid='".getdistrictid($dsid)."'";
+        $scl.=" and b.streetid='".getdistrictid($dsid)."'";*/
 
 
     // -- 手机端屏蔽虚拟商品 bruce 2015-1-22
@@ -80,7 +80,7 @@
     elseif($o=='6')
         $or.=" order by a.status desc,a.uptime desc,id desc";
     else
-        $or=" order by a.uptime DESC,id desc";
+        $scl.=" order by a.rank desc,a.uptime desc";
 
     $sql="select a.id,a.name as pname,a.price,a.market_price,a.national,a.member_id as userid,a.pic,b.user,b.company FROM ".PRODUCT." a left join ".SHOP." b on a.member_id=b.userid WHERE b.shop_statu=1 and is_shelves=1 $scl $or limit $begin,$limit";
     $db->query($sql);

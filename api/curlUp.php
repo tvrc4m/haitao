@@ -15,9 +15,9 @@ class curlUp{
     const EXT='.txt';
 
 
-    public function __construct($id_num='',$id_name='',$realPositive='',$realBack='')
+    public function __construct($id_name='',$id_num='',$realPositive='',$realBack='')
     {
-        $this->time = '20160329135132';
+        $this->time = date("YmdHis",time());
         $this->id_num = $id_num;
         $this->id_name = $id_name;
         $this->realPositive = ltrim($realPositive,'/');
@@ -29,7 +29,6 @@ class curlUp{
     */
     function orderUp($orderList){
 
-        $time = date("YmdHis",$orderList['create_time']);
         $addr = explode(' ',$orderList['consignee_address']);
         $list = array();
         $list['goods_order_count']=1;
@@ -53,7 +52,7 @@ class curlUp{
         $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$orderList['trade'];
         $order = json_encode($list);
         $token =  $this->token();
-        $type = $this->aes($this->orderUrl,array ("time" => $time,"pass" => $this->pass,"token" => $token,"order" => $order));
+        $type = $this->aes($this->orderUrl,array ("time" => $this->time,"pass" => $this->pass,"token" => $token,"order" => $order));
     return $type;
     }
 
@@ -120,11 +119,15 @@ class curlUp{
         return json_decode($list,true);
     }
     //缓存日志
+    /*
+     * 缓存日志
+     * $key 文件名
+     * $value 存储数据
+     * $path  存储文件路径
+     * */
     public function cacheLog($key='',$value='',$path=''){
         global $config;
-        $time = date("Y-m-d H:i:s",time());
-        var_dump($time);
-        $data = $time.'>>>'.$value."\r\n";
+        $data = $this->time.'>>>'.json_encode($value)."\r\n";
         $filename = $config['webroot'].'/'.$path.$key.self::EXT;
         if($data !== ''){
             $dir = dirname($filename);

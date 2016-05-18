@@ -28,17 +28,18 @@ if(!empty($buid)){
         $realUp = $upFile->curlUpload();
         if($realUp['goods_type_count'])
             echo '记录上传失败！';
-    }else{
-        $sql = "select od.order_id,od.create_time,od.consignee_address,od.consignee_mobile,od.logistics_price,od.product_price,od.consignee,od.logistics_name,od.logistics_price,od.product_price,op.order_id,op.skuid,op.price,op.num,op.trade from ".ORDER." od left join ".ORPRO." op on od.order_id=op.order_id where od.order_id='160517021536001' group by od.order_id";
-        $db->query($sql);
-        $list = $db->fetchRow();
-        $list['skuid'] = 'KTH020068';
-        $list['logistics_name']='快递';
-        var_dump($list);die;
-        $list['identity_card'] = $user['identity_card'];
-        $aa = $upFile->orderUp($list);
-        var_dump($aa);
     }
+
+    $sql = "select od.order_id,od.create_time,od.consignee_address,od.consignee_mobile,od.logistics_price,od.product_price,od.consignee,od.logistics_name,od.logistics_price,od.product_price,op.order_id,op.skuid,op.price,op.num,op.trade from ".ORDER." od left join ".ORPRO." op on od.order_id=op.order_id where od.order_id='160517021536001' group by od.order_id";
+    $db->query($sql);
+    $list = $db->fetchRow();
+    $list['skuid'] = 'KTH020068';
+    $list['logistics_name']='快递';
+    var_dump($list);die;
+    $list['identity_card'] = $user['identity_card'];
+    $aa = $upFile->orderUp($list);
+    var_dump($aa);
+
     var_dump($user);
     var_dump($real);
     die;
