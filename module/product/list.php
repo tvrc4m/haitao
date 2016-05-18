@@ -324,11 +324,12 @@ else
 
 //获取当前页的类名
 if(!empty($_GET['id'])){
-    $sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
-    $db->query($sql);
-    $res = $db->fetchField('cat');
-    $tpl->assign("wapcatname",$res);
+	$sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
+	$db->query($sql);
+	$res = $db->fetchField('cat');
+	$tpl->assign("wapcatname",$res);
 }
+if($_GET['national']==7)$tpl->assign("wapcatname",'日本馆');
 
 $tpl->assign("province",GetDistrict1());
 
