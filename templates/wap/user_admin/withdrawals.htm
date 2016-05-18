@@ -10,13 +10,22 @@
     </div>
 </header>
 <div class="comm_top">
-	<p><a href="">结算记录</a></p>
-	<p><span>尚未结算佣金：</span>￥2222.00</p>
+	<p><a href="./main.php?m=distribution&s=admin_distribution_settlement">结算记录</a></p>
+	<p><span>尚未结算佣金：</span><{$config.money}>&nbsp;<{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}> </p>
 </div>
 <form id="form" class="comm_form" method="post" enctype="multipart/form-data" action="./main.php?m=distribution&s=admin_distribution_settlement">
 	<p>申请结算佣金
-		<input placeholder="结算最低额度100元" />
+		<input type="text" name="distribution_user_settlement_value" placeholder="结算最低额度100元" value="" class="text100" onblur="calculateFee(this.value)"/>
 	</p>
-	<input type="submit" value="提交申请" class="submit" />
+	<input type="submit" value="提交申请" class="submit diag_submit" />
 </form>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type=text/javascript></script>
+<script type="text/javascript">
+function calculateFee(val){
+    console.log(val)
+    if(val<100){
+        $(".text100").val("100")
+    }
+}
+</script>
 <{include file="../footer.htm"}>

@@ -49,8 +49,8 @@ function gotoMenu(url)
         <div class="xiaoke_centent">
             <div class="centent_tops">
                 <div class="centent_tops_text clearfix">
-                    <!-- <span>已结算佣金（元）</span><a href="<{$config.weburl}>/main.php?cg_u_type=<{$smarty.get.cg_u_type}>&disp=1">提现</a> -->
-                    <span>已结算佣金（元）</span><a id="pay_dist" href="<{$config.weburl}>/main.php?cg_u_type=<{$smarty.get.cg_u_type}>">提现</a>
+                    <span>已结算佣金（元）</span><a href="<{$config.weburl}>/main.php?cg_u_type=<{$smarty.get.cg_u_type}>&disp=1">提现</a>
+                   <!--  <span>已结算佣金（元）</span><a id="pay_dist" href="<{$config.weburl}>/main.php?cg_u_type=<{$smarty.get.cg_u_type}>">提现</a> -->
                 </div>
                 <div class="centent_tops_money"><{$dist_user_row.distribution_user_settlement_amount|string_format:"%.2f"}></div>
             </div>
