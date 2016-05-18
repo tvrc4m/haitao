@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-13 14:03:33
+<?php /* Smarty version 2.6.20, created on 2016-05-18 13:17:04
          compiled from setpass.htm */ ?>
 <link href="templates/wap/css/pay.css" rel="stylesheet" type="text/css" />
 <div class="block">
@@ -59,7 +59,6 @@
         </form>
     </div>
 </div>
-<script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <script type="text/javascript">  
         $('#form').validate({
