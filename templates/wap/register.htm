@@ -51,7 +51,7 @@
 <header>
 	<div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
-    	<section class="nav-c"><span>注册蚂蚁海淘 快速成为合伙人</span></section>
+    	<section class="nav-c"><span><{if $dist_id eq 1}>快速成为合伙人<{else}>注册蚂蚁海淘<{/if}></span></section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
@@ -76,14 +76,16 @@
         <input class="texts" type="password" maxlength="10" tabindex="4" autocomplete="off" name="password" id="password" placeholder="请输入密码"/>
         <div class="inp_close inp_close_t"><i></i></div>
     </li>
+     <{if $dist_id neq 1}>
     <li class="spe_del">
         <input type="checkbox" name="agreement" value="yes" checked>
         <span>注册即接受<a class="spe_del_xieyi" href="<{$config.weburl}>/agreement.php">《蚂蚁海淘使用协议》</a></span>
     </li>
+     <{/if}>
     <li>
         <input name="action" type="hidden" value="submit">
         <input name="forward" type="hidden" id="forward" value="">
-       <input class="submit" type='submit' name='submitreg' id="submitreg" value='免费注册 马上成为合伙人' />
+       <input class="submit" type='submit' name='submitreg' id="submitreg"  />
     </li>
     <li>
         <a id="regist" href="<{$config.weburl}>/login.php">已有账号？马上登陆</a>

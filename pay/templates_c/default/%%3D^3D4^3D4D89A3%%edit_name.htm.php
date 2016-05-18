@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-05-16 20:20:36
+=======
+<?php /* Smarty version 2.6.20, created on 2016-05-17 18:24:08
+>>>>>>> a92f9ed95d6d4cb449c282906478b0287a6b0185
          compiled from edit_name.htm */ ?>
 <script type="text/javascript" src="script/jquery.validation.min.js"></script>
 <script type="text/javascript" src="script/my_lightbox.js"></script>
@@ -89,16 +93,26 @@ window.onload=function(){
                 <div class="logo_show uplode" style="height: 137px; width: 216px">
                     <input class="text w300 hidden" name="logo" type="text" id="logo" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
 ">
+<<<<<<< HEAD
                     <a href="javascript:uploadfile('LOGO','logo',441,358,'real','','front.jpg')">
                         <img id="logo_img"  src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+=======
+                    <a href="javascript:uploadfile('LOGO','logo',441,358,'member')">
+                        <img id="logo_img" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+>>>>>>> a92f9ed95d6d4cb449c282906478b0287a6b0185
 /pay/templates/default/image/icon9.png">
                     </a>
                 </div>
                 <div class="logo_show uplode" style="height: 137px; width: 216px">
                     <input class="text w300 hidden" name="logo1" type="text" id="logo1" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
 ">
+<<<<<<< HEAD
                     <a href="javascript:uploadfile('LOGO','logo1',441,358,'member','real','','front.jpg')">
                         <img id="logo1_img"  src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+=======
+                    <a href="javascript:uploadfile('LOGO','logo1',441,358,'member')">
+                        <img id="logo1_img" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+>>>>>>> a92f9ed95d6d4cb449c282906478b0287a6b0185
 /pay/templates/default/image/icon8.png">
                     </a>
                 </div>
