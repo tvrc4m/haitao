@@ -847,7 +847,7 @@ ins,a
 	outline:0;
 }
 .s-page{/*display:none;*/}
-.s-page{position: absolute;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden;z-index: 1000;background-color: #f1f1f1; max-width: 725px; margin: 0 auto;
+.s-page{position: fixed;top: 0;bottom: 0;left: 0;right: 0;overflow: hidden;z-index: 1000;background-color: #f1f1f1;
 	-webkit-transform: translateX(980px);
     -moz-transform: translateX(980px);
     -o-transform: translateX(980px);
