@@ -207,21 +207,27 @@ function buy()
                                         <{/foreach}>
                                         <{/if}>
                                         <{if $de.rest==0}>
-                                        <dl>
-                                            <dt>数量</dt>
-                                            <dd class="stock">
-                                                <a href="javascript:void(0);" id="low_num">-</a>
-                                                <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
-                                                <a href="javascript:void(0);" id="add_num">+</a>
-                                                <em>件 （库存 <span id="stock"><{$de.stock}></span> 件）</em>
-                                            </dd>
-                                        </dl>
+                                            <{if $de.stock > 0 }>
+                                                <dl>
+                                                    <dt>数量</dt>
+                                                    <dd class="stock">
+                                                        <a href="javascript:void(0);" id="low_num">-</a>
+                                                        <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
+                                                        <a href="javascript:void(0);" id="add_num">+</a>
+                                                        <em>件 （库存 <span id="stock"><{$de.stock}></span> 件）</em>
+                                                    </dd>
+                                                </dl>
+                                            <{/if}>
                                         <{/if}>
                                     </div>
                                     <div class="choose_btn clearfix">
-                                        <a href="javascript:void(0);" class="btn-buy">立即购买</a>
-                                        <{if $de.is_virtual neq 1}>
-                                        <a href="javascript:void(0);" class="add-cart"><span></span>加入购物车</a>
+                                        <{if $de.stock > 0 }>
+                                            <a href="javascript:void(0);" class="btn-buy">立即购买</a>
+                                            <{if $de.is_virtual neq 1}>
+                                            <a href="javascript:void(0);" class="add-cart"><span></span>加入购物车</a>
+                                            <{/if}>
+                                        <{else}>
+                                             <a href="javascript:void(0);" class=""><span></span>已售完！</a>
                                         <{/if}>
                                     </div>
                                 </form>
