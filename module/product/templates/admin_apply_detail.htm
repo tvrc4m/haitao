@@ -45,7 +45,7 @@
                         <a onclick="return confirm('取消退款申请后，本次退款将关闭，您还可以再次发起退款/退货。确定继续吗？')" href="main.php?m=product&s=admin_apply_detail&act=close&id=<{$de.refund_id}>">取消退款申请</a>
                     </div>
                 <{/if}>
-                
+
                 <{if $type == 'seller'}>
                 	<{if $de.status==4}>
                     	<h2>请等待买家修改退款申请</h2>
@@ -78,14 +78,14 @@
                         </form>
                         <div class="refuse hidden">
                         <form method="post">
-           			 		<input type="hidden" name="act" value="refuse" />	
+           			 		<input type="hidden" name="act" value="refuse" />
                         	<p>
                             	<textarea placeholder="拒绝原因" name="refuse_reason"></textarea>
                             </p>
                             <p>
                             	<input class="btn" type="submit" value="确定拒绝退货申请" />
                         	</p>
-                        </form>    
+                        </form>
                         </div>
                         <script type="text/javascript">
                         $(".white").click(function(){
@@ -108,7 +108,7 @@
             <{if $de.status!=0&&$de.status!=5}>
         	<div class="mc">
             <form method="post">
-            <input type="hidden" name="act" value="review" />	
+            <input type="hidden" name="act" value="review" />
                 <p><textarea name="msg"></textarea></p>
                 <ul><li><img class="hidden" width="60" id="pic_img" /></li></ul>
                 <div class="control-bar">
@@ -117,7 +117,7 @@
                         <a href="javascript:uploadfile('上传凭证','pic',600,600,'apply')">上传凭证</a>
                     </span>
                     <em>单张不超过<{$image_config.image_size}>M，支持<{$image_config.image_extension}>格式</em>
-                    <p><input type="submit" class="btn" value="发表留言" /></p>    
+                    <p><input type="submit" class="btn" value="发表留言" /></p>
                 </div>
             </form>
             </div>
@@ -138,7 +138,7 @@
                 </div>
             <{/foreach}>
             </div>
-        </div>	
+        </div>
     </div>
     <div class="apply_right">
     	<h1><strong><{if $de.order_status==4}>售后申请<{else}>退款/退货申请<{/if}></strong></h1>
@@ -215,6 +215,6 @@
 <script type="text/javascript">
 $("#pic_img").load(function(){
 	var src = $(this).attr("src");
-	if(src) $(this).show();	
+	if(src) $(this).show();
 });
 </script>
