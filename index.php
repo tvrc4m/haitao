@@ -31,7 +31,6 @@ if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
 		$jsApi->setCode($code);
 		$openid = $jsApi->getOpenId();
 		$_SESSION['openid_f'] = $openid;
-
 		//自动根据openid登录操作
 	}
 }
@@ -46,8 +45,7 @@ $original_prefix=str_replace('http://','',str_replace($config['baseurl'],'',$con
 //view:abc.ocm view, baseurl:abc.com, weburl:www.abc.com true_prefix='',original_prefix='www'
 
 if(empty($true_prefix)&&!empty($original_prefix))
-{    
-	
+{
 	header("Location: ".$config['weburl']);exit();
 }
 
