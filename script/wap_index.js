@@ -6,6 +6,8 @@ $jj(function(){
 	$jj(".s-page").css({"-webkit-transform": "translateX("+windowWid+"px)","-moz-transform": "translateX("+windowWid+"px)","-ms-transform": "translateX("+windowWid+"px)","-o-transform": "translateX("+windowWid+"px)","transform": "translateX("+windowWid+"px)"})
 	$jj(".s_main").find("input").focus(function(){
 		$jj(".s-page").addClass("open")
+		// $jj(".s-page").show();
+		
 		$jj(".cc-search-hide").addClass("cc-search-show").removeClass("cc-search-hide")
 		$(".main_container").hide();		
 	})
@@ -15,6 +17,7 @@ $jj(function(){
 		$jj("#s").val($jj(this).attr("data-s"))
 	})
 	$jj(".cc-back").click(function(){
+		// $jj(".s-page").hide();
 		$jj(".s-page").removeClass("open")
 		$jj(".cc-search-show").addClass("cc-search-hide").removeClass("cc-search-show")
 		$(".main_container").show();	
