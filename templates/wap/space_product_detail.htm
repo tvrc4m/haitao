@@ -58,8 +58,8 @@
                 <div class="col">
                     <a href="javascript:collect_goods(<{$de.id}>);" style="color:8b8b8b" class="collect_xin">
                         <div class="col_ttt">
-                            <div id="collect" class="iconfont_min <{if $spro}>collect<{/if}>">&#xe615;</div>
-                            <div style="font-size: .6rem; color:#000;">收藏</div>
+                            <div id="collect" class="iconfont <{if $spro}>collect<{/if}>">&#xe628;</div>
+                            <div class="nav-c" style="font-size: .6rem; color:#000;"><{if $spro}>已收藏<{else}>收藏<{/if}></div>
                         </div>  
                     </a>
                 </div>
@@ -391,11 +391,13 @@ function check_nums()
         {
             if(originalRequest.statu==1){
                 $("#collect").addClass("collect");
+                $(".col .nav-c").html("已收藏");
                 altto('成功添加至我的收藏夹!');
                 wid()
             }
             else if (originalRequest.statu==0){
                 $("#collect").removeClass("collect");
+                $(".col .nav-c").html("收藏");
                 altto('成功取消商品收藏');
                 wid()
             }
