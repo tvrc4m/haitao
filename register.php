@@ -315,6 +315,8 @@ function Return_data($data = null, $type = 'json'){
 		return json_encode($data);
 	}
 }
+$dist_id = !empty($_GET['dist_id'])?1:0;
 include_once("footer.php");
+$tpl->assign("dist_id",$dist_id);
 $tpl->display("register.htm");
 ?>

@@ -198,20 +198,20 @@ else
 		$scl.=" and ( a.keywords like '%$key%' or a.name like '%$key%' )";
 	if(!empty($_GET['brand']))
 		$scl.=" and a.brand='".$_GET['brand']."' ";
-	if($dpid)
-		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";
+	/*if($dpid)
+		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";*/
 
 	if(isset($_GET['province']))
 	{
 		$scl.=" and c.provinceid='" . intval($_GET['province']) . "'";
 	}
 
-	if($dcid)
+	/*if($dcid)
 		$scl.=" and c.cityid='".getdistrictid($dcid)."'";
 	if($daid)
 		$scl.=" and c.areaid='".getdistrictid($daid)."'";
 	if($dsid)
-		$scl.=" and c.streetid='".getdistrictid($dsid)."'";
+		$scl.=" and c.streetid='".getdistrictid($dsid)."'";*/
 
 	if(!empty($_GET['ptype']) and $_GET['ptype']>=0 and $_GET['ptype']<count($ptype))
 		$scl.=" and a.type='$_GET[ptype]' ";
