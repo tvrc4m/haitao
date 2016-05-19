@@ -21,8 +21,8 @@
             </div>       
             <div class="cols" style="padding: 0 10px">
                 <a onclick="javascript:getfavshop()">
-                    <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
-                    <div class="nav-c">收藏</div>
+                    <div class="iconfont <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe628;</div>
+                    <div class="nav-c"><{if $sns_shop == 'yes' }>已收藏<{else}>收藏<{/if}></div>
                 </a>
             </div>
         </div>
@@ -149,13 +149,15 @@
         {
             console.log(originalRequest.statu)
             if(originalRequest.statu==1){
-                $(".iconfont_min").addClass("collect");
+                $(".iconfont").addClass("collect");
                 altto('成功添加至我的收藏夹!');
+                $(".cols .nav-c").html("已收藏");
                 wid()
             }
             else if (originalRequest.statu==0){
-                $(".iconfont_min").removeClass("collect");
+                $(".iconfont").removeClass("collect");
                 altto('成功取消店铺收藏');
+                $(".cols .nav-c").html("收藏");
                 wid()
             }
         }
@@ -214,6 +216,7 @@ $(function(){
     var dlLen=$(".shopli").size();
     if(dlLen<10){
         $(".m_jiazai").hide();
+        $(".pchart_commit").css({"margin-bottom":"15px"})
     }
     var page = 0;
     var uid = "<{$smarty.get.uid}>";

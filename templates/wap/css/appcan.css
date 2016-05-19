@@ -74,7 +74,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .pdetail_show2 li{    display: block;
     border-bottom: 1px solid #f0f0f0;
     padding: 10px 0px;font-size: 14px;width: 100%;}
-.col_ttt{padding: 0.1rem 0.5rem;border-left: 1px solid #e1e1e1;}
+.col_ttt{padding: 0.1rem 0.2rem;border-left: 1px solid #e1e1e1;}
 /***space_index***/
 .hidden{display:none !important;}
 .t-gra-50{color:#505050;}

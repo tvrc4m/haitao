@@ -65,6 +65,8 @@ class pay
         $this->db->query($sql);
         $de=$this->db->fetchRow();
         $de['email'] = $de['pay_email'];
+        $de['real_name'] = $de['real_name'];
+        $de['identity_card'] = $de['identity_card'];
         $de['pay_email'] = hideStr($de['pay_email'], 1, 4);
         return $de;
     }

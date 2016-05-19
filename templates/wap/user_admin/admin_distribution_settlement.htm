@@ -2,8 +2,8 @@
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <header>
     <div class="nav-w">
-        <section class="nav-s"><a href="<{$config.weburl}>/main.php">
-            <nav>分销中心</nav>
+        <section class="nav-s"><a href="<{$config.weburl}>/main.php" >
+            <nav style="font-size: 0.7rem;text-align: left;">赚钱</nav>
         </a></section>
         <section class="nav-c"> <span class="select"> <{if $smarty.get.level=='0'}><{$lang.distribution_settlement_apply}>
 
@@ -18,7 +18,7 @@
             </div>
         </section>
 
-        <section class="nav-e"></section>
+        <section class="nav-e"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <script>
@@ -40,7 +40,7 @@
     });
 </script>
 <section class="order"> <{foreach item=list from=$dist_user_settlement_rows}>
-    <div class="distributionUser">
+    <div class="distributionUser clearfix">
         <dl>
             <dt>申请金额</dt>
             <dd><{$list.distribution_user_settlement_amount|string_format:"%.2f"}></dd>
@@ -60,7 +60,7 @@
     </div>
     <{/foreach}>
 
-    <{$page}>
+<!--     <{$page}> -->
 
 </section>
 

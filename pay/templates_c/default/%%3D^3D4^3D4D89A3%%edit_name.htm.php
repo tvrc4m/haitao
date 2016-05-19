@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-05-19 13:50:22
          compiled from edit_name.htm */ ?>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
     #input{visibility: hidden;}
 </style>
+=======
+<?php /* Smarty version 2.6.20, created on 2016-05-19 11:06:17
+         compiled from edit_name.htm */ ?>
+<script type="text/javascript" src="script/jquery.validation.min.js"></script>
+<script type="text/javascript" src="script/my_lightbox.js"></script>
+<link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
+>>>>>>> b006af89831b11fb5433b6ad18338a3c7adad1e3
 <script>
 function formSubmit() {
     $.ajax({
@@ -87,6 +95,7 @@ window.onload=function(){
         <dl>
             <dt>上传身份证：</dt>
             <dd>
+<<<<<<< HEAD
                 <div class="uplode" >
                     <input id="input" multiple="multiple" type="file" name="fin" accept="image/*">
                     <img id="drag" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
@@ -96,6 +105,23 @@ window.onload=function(){
                     <input id="input" multiple="multiple" type="file" name="fin" accept="image/*">
                     <img id="" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon8.png">
+=======
+                <div class="logo_show uplode" style="height: 137px; width: 216px">
+                    <input class="text w300 hidden" name="logo" type="text" id="logo" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
+">
+                    <a href="javascript:uploadfile('LOGO','logo',441,358,'real','','front.jpg')">
+                        <img id="logo_img"  src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/pay/templates/default/image/icon9.png">
+                    </a>
+                </div>
+                <div class="logo_show uplode" style="height: 137px; width: 216px">
+                    <input class="text w300 hidden" name="logo1" type="text" id="logo1" value="<?php echo $this->_tpl_vars['de']['logo']; ?>
+">
+                    <a href="javascript:uploadfile('LOGO','logo1',441,358,'member','real','','front.jpg')">
+                        <img id="logo1_img"  src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/pay/templates/default/image/icon8.png">
+                    </a>
+>>>>>>> b006af89831b11fb5433b6ad18338a3c7adad1e3
                 </div>
             </dd>
         </dl>
@@ -106,5 +132,9 @@ window.onload=function(){
         <?php endif; ?>
     </form>
     </div>
+<<<<<<< HEAD
 </div>
 <script type="text/javascript" src="script/uplode.js"></script>
+=======
+</div>
+>>>>>>> b006af89831b11fb5433b6ad18338a3c7adad1e3
