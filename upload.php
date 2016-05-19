@@ -2,7 +2,7 @@
 include_once("includes/global.php");
 @include_once("config/remote_config.php");
 @include_once("config/image_config.php");
-
+var_dump($_FILES); die;
 $path="";
 if($remote_config['image_remote_storage']==1 and !empty($remote_config['space_name']) and !empty($remote_config['ftp_password']) and !empty($remote_config['ftp_name']))
 {

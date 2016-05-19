@@ -10,7 +10,7 @@ function setProgress (p) {
     }
 }
 function sendFile (f) {
-    var uploadUrl = 'up.php';
+    var uploadUrl = '/upload.php';
     $.ajax({
         url: uploadUrl,
         type: 'POST',
@@ -19,8 +19,8 @@ function sendFile (f) {
         cache: false,
         data: f,
         success: function (e) {
-            msg = JSON.parse(e);
-             $("#img_show").attr("src", 'images/'+msg.key);
+            //msg = JSON.parse(e);
+            // $("#img_show").attr("src", 'images/'+msg.key);
         },
         error: function (e) {
             alert(1)
