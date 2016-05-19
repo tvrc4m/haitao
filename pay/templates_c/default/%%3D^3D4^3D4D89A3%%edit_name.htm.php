@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-19 16:56:49
+<?php /* Smarty version 2.6.20, created on 2016-05-19 17:27:18
          compiled from edit_name.htm */ ?>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
@@ -88,12 +88,12 @@ window.onload=function(){
             <dt>上传身份证：</dt>
             <dd>
                 <div class="uplode" >
-                    <input class="input" multiple="multiple" type="file" name="fin" accept="image/*" stype="front">
+                    <input class="input" multiple="multiple" type="file" name="img1" accept="image/*" stype="front">
                     <img class="drag" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon9.png">
                 </div>
                 <div class="uplode">
-                    <input class="input" multiple="multiple" type="file" name="fin" accept="image/*" stype="back">
+                    <input class="input" multiple="multiple" type="file" name="img2" accept="image/*" stype="back">
                     <img class="drag" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon8.png">
                 </div>

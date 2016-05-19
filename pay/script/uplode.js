@@ -12,21 +12,6 @@ function setProgress (p) {
 function sendFile (f) {
     var uploadUrl = '/ajaxupload.php';
     $.ajax({
-        xhr: function() {
-            var xhrobj = $.ajaxSettings.xhr();
-            if (xhrobj.upload) {
-                xhrobj.upload.addEventListener('progress', function (e) {
-                    var percent = 0;
-                    var position = e.loaded || e.position;
-                    var total = e.total;
-                    if (e.lengthComputable) {
-                        percent = Math.ceil(position / total * 100);
-                    }
-                    setProgress(percent);
-                }, false);
-            }
-            return xhrobj;
-        },
         url: uploadUrl,
         type: 'POST',
         contentType: false,
@@ -35,7 +20,15 @@ function sendFile (f) {
         data: f,
         success: function (e) {
             msg = JSON.parse(e);
-            $("#img_show").attr("src", 'images/'+msg.key);
+            if(msg.key.indexOf("front") > 0){
+                $("input[stype='front']").attr("value",msg.key);
+                $("input[stype='front']").next().attr("src", '../'+msg.key);
+
+            }else{
+                $("input[stype='back']").attr("value",msg.key);
+                $("input[stype='back']").next().attr("src", '../'+msg.key);
+
+            }
         },
         error: function (e) {
         }
