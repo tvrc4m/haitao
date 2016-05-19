@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>simple upload</title>
+    <style type="text/css">
+        #icon {
+            background-image: url(./image/plus.png);
+            background-repeat: no-repeat;
+            background-size: 176px 120px;
+            width: 176px;
+            height: 120px;
+            z-index: 1;
+        }
+        #iconLoading {
+            background-image: url(./image/loading.png);
+            background-repeat: no-repeat;
+            background-size: 176px 120px;
+            background-position: 0 bottom;
+            position: absolute;
+            bottom: 0;
+            width: 176px;
+            height: 0;
+            z-index: 2;
+            transition: height .7s ease;
+            -webkit-transition: height .7s ease;
+            -moz-transition: height .7s ease;
+            -o-transition: height .7s ease;
+            -ms-transition: height .7s ease;
+        }
+        #title {
+            position: relative;
+            top: 30px;
+            text-align: center;
+            color: #727272;
+            font-size: 20px;
+        }
+        #input {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" multiple="multiple" type="file" name="fin" accept="image/*">
+    <div id="drag">
+        <div class="wrap">
+            <div id="icon"></div>
+        </div>
+    </div>
+    <div ><img id="img_show" src=""/></div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/main.js"></script>
+
+
+</body></html>
