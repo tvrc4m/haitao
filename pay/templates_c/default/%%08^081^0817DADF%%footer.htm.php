@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.20, created on 2016-05-19 14:27:37
+=======
+<?php /* Smarty version 2.6.20, created on 2016-05-19 14:21:16
+>>>>>>> bd94d07d8cd73348cd770090312e4bdc44f6dfc7
          compiled from footer.htm */ ?>
 <div class="footer">
             <p class="copytight">© 2015-2016 蚂蚁在线(北京)科技有限公司 |  京ICP备15039996号-4<br>
