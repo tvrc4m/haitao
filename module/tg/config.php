@@ -33,7 +33,7 @@ $mem['business'][1][0]=array(
 	'',
 	array(
 		'user_order.php,1,product,订单列表',
-        'order_detail.php,1,product,订单详情',
+        'order_detail.php,0,product,订单详情',
 	)
 );
 ?>

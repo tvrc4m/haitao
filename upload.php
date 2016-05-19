@@ -62,7 +62,7 @@ switch ($ist){
 $size=array('60','120','220');
 $size1=array('30');
 //==============================================
-	
+
 if(is_uploaded_file($_FILES['pic']['tmp_name']))
 {
 	$file_name = $_FILES['pic']['name'];
