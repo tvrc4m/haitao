@@ -25,3 +25,24 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .logo_shows{margin-right: 2%;}
 .logo_show{width: 49%;float: left;margin-top: 15px;}
 .logo_show img{width:100%;}
+
+/*上传图片*/  
+#input {
+    visibility: hidden;
+}
+ #icon {
+    background-image: url(./image/plus.png);
+    background-repeat: no-repeat;
+    background-size: 176px 120px;
+    width: 176px;
+    height: 120px;
+    z-index: 1;
+}
+#title {
+    position: relative;
+    top: 30px;
+    text-align: center;
+    color: #727272;
+    font-size: 20px;
+}
+#logo_imgs{border-radius: 50%;width:70px;height:70px}

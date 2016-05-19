@@ -60,8 +60,14 @@ $tpl->assign("relation",$relation);
 
 $score = $shop->score();
 foreach ($score as $key => $value) {
-	$score[$key] = $value?$value:0;
+	$score[$key] = $value?$value:5;
 }
+
+$score['aw']=$score['a']/5*100;
+$score['bw']=$score['b']/5*100;
+$score['cw']=$score['c']/5*100;
+$score['dw']=$score['d']/5*100;
+
 $tpl->assign("score",$score);
 
 $tpl->assign("chat_open_flag", $chat_open_flag);

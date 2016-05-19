@@ -122,6 +122,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     msg($_COOKIE['old_url']);
                 }
                 setcookie("old_url");
+                setcookie("userid",$re['userid']);
             }
         }
         else
@@ -154,6 +155,7 @@ function login($uid,$username,$pid=NULL,$type=NULL)
     //}
     bsetcookie("USERID","$uid\t$re[user]\t$pid",$time,"/",$config['baseurl']);
     setcookie("USER",$re['user'],$time,"/",$config['baseurl']);
+    setcookie("userid",$re['userid']);
 
     //bsetcookie("MEMBERID","$re[pay_id]",$time,"/",$config['baseurl']);
     //setcookie("PAYID",$re['pay_id'],NULL,"/",$config['baseurl']);

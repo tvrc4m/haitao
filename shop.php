@@ -94,6 +94,11 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$score[$key] = $value?$value:5;
 		}
 
+        $score['aw']=$score['a']/5*100;
+        $score['bw']=$score['b']/5*100;
+        $score['cw']=$score['c']/5*100;
+        $score['dw']=$score['d']/5*100;
+
 		$tpl->assign("ulink",$shop->get_user_link());
 		$tpl->assign("score",$score);
 		$tpl->assign("custom_cat",$shop->get_custom_cat_list(1));
