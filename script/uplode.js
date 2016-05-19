@@ -21,12 +21,12 @@ function sendFile (f) {
         success: function (e) {
             msg = JSON.parse(e);
             if(msg.key.indexOf("front") > 0){
-                $("input[name='img1']").attr("value",msg.key);
-                $("input[name='img1']").next().attr("src", '../'+msg.key);
+                $("input[data-id='img1']").attr("value",msg.key);
+                $("input[data-id='img1']").next().attr("src", '../'+msg.key);
 
             }else{
-                $("input[name='img2']").attr("value",msg.key);
-                $("input[name='img2']").next().attr("src", '../'+msg.key);
+                $("input[data-id='img2']").attr("value",msg.key);
+                $("input[data-id='img2']").next().attr("src", '../'+msg.key);
 
             }
         },
