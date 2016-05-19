@@ -557,14 +557,17 @@ fb($sql);
 		global $tpl;
 
 		$rs = array();
-
-		if (is_array($produce_id_row) && $produce_id_row)
-		{
-			$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status,p.national, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, p.member_id, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ')  ORDER BY p.id DESC LIMIT '.$begin.','.$limit;
-
-			$db->query($sql);
-
-			$rs = $db->getRows();
+		if(!empty($produce_id_row)){
+			if (is_array($produce_id_row))
+			{
+				$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status,p.national, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, p.member_id, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id IN (' . implode(',', $produce_id_row) . ')  ORDER BY p.id DESC LIMIT '.$begin.','.$limit;
+				$db->query($sql);
+				$rs = $db->getRows();
+			}else{
+				$sql = 'SELECT p.id, p.name as pname, p.uptime, p.pic, p.status,p.national, p.price, p.stock as amount, p.code, p.shop_rec, p.is_dist, p.member_id, dp.* FROM ' . PRODUCT . ' p LEFT JOIN ' . DISTRIBUTION_PRODUCT . '  dp ON p.id=dp.product_id    WHERE p.id ='.$produce_id_row . ' LIMIT 1';
+				$db->query($sql);
+				$rs = $db->getRows();
+			}
 		}
 
 		return $rs;

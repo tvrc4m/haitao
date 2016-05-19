@@ -23,7 +23,7 @@ weburl="<{$config.weburl}>";
             <input type="submit" value="搜&nbsp;索" class="button">
             </form>
         </div>
-    </div>  
+    </div>
 </div> -->
 
 <{if $smarty.get.type=='login'}>
@@ -52,12 +52,12 @@ weburl="<{$config.weburl}>";
                 <span>寄送至</span>
                 <label>
                 <input <{if $list.default==2||$key==0}>checked <{/if}>type="radio" name="id" value="<{$list.id}>" />
-                <{$list.area}> <{$list.address}>&nbsp;&nbsp;(<{$list.name}>&nbsp;收) 
+                <{$list.area}> <{$list.address}>&nbsp;&nbsp;(<{$list.name}>&nbsp;收)
                  <em><{$consignee.mobile}></em>
                 </label> -->
                 <div>
                     <div class="modify clearfix">
-                        <a href="javascript:;" class="fr">修改</a>
+                        <a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&id=<{$list.id}>&type=edit" class="fr">修改</a>
                     </div>
                     <div class="addressee">
                         <span class="name" op-value="full_name"><{$list.name}></span>
@@ -88,16 +88,16 @@ weburl="<{$config.weburl}>";
                     </div>
                 </div>
             </li> -->
-                       
+
             <{/foreach}>
             <li class="fn-clear">
-                <div class="addAddr"><a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&type=add">+ 添加新地址</a></div>
+                <div class="addAddr"><a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&type=add&url=product-confirm_order.html">+ 添加新地址</a></div>
             </li>
         </ul>
-    </form>  
+    </form>
     </div>
     <div id="cart"></div>
-</div> 
+</div>
 </div>
 
 <div class="waitpay">

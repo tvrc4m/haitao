@@ -32,7 +32,7 @@ class pay
                 {
                     msg($config["web_url"]."/login.php");
                 }
-                else
+               /* else
                 {
                     if($_GET['act']!='logout')
                     {
@@ -50,7 +50,7 @@ class pay
                             msg("$config[weburl]/?m=payment&s=setpass&forword=".$url);
                         }
                     }
-                }
+                }*/
             }
             else
             {
@@ -65,6 +65,8 @@ class pay
         $this->db->query($sql);
         $de=$this->db->fetchRow();
         $de['email'] = $de['pay_email'];
+        $de['real_name'] = $de['real_name'];
+        $de['identity_card'] = $de['identity_card'];
         $de['pay_email'] = hideStr($de['pay_email'], 1, 4);
         return $de;
     }

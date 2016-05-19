@@ -51,9 +51,7 @@
     </div>
 </div>	
 <script type="text/javascript">
-// $(function(){
-//     $(".pay li").eq(0).find("i").addClass("formsh");
-// })
+$(".pay .fn-clear li:first-of-type").find("i").addClass("formsh")
 $(".pay li").bind("click",function(){
 	var data = $(this).children('a').attr('data-param');
 	eval("data = "+data);

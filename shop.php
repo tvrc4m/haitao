@@ -50,13 +50,13 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		//-----------------语言包--------------------
 		include_once("lang/".$config['language']."/user_space.php");
 		$dir=$config['webroot'].'/module/';
-		$handle = opendir($dir); 
+		$handle = opendir($dir);
 		while ($filename = readdir($handle))
-		{ 
+		{
 			if($filename!="."&&$filename!="..")
 			{
 				if(file_exists($dir.$filename.'/config.php'))
-				{ 
+				{
 					include("$dir/$filename/config.php");
 				}
 		   }
@@ -67,34 +67,39 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		$config_file=$config['webroot']."/config/shop_config/shop_config_".$_GET['uid'].'.php';
 		if(file_exists($config_file))
 		{
-			include($config_file);			
+			include($config_file);
 		}
-		
+
 		$company["shop_title"]=($shopconfig["hometitle"]?'':$company['company']);
 		$company["shop_keywords"]=$shopconfig['homedes'].','.$company['main_pro'];
-		$company["shop_description"]=$homekeyword['homekeyword'].','.$company['main_pro'];
-		$company["logo"] = $company['shop_logo'] ? $company['shop_logo'] : $config['weburl'] . "/image/default/nopic.gif";
+		$company["shop_description"]=$company['main_pro'];
+		$company["logo"] = $company['plogo'];
 
 		//-------------使用指定店铺模板。-----------------------------
 		if(!empty($_GET['template']))
 		{
 			if(file_exists($config['webroot']."/templates/$_GET[template]"))
 				$company['template']=$_GET['template'];
-		}		
+		}
 		if(empty($company['template']))	$company['template']='user_templates_default';
 		if($config['temp']=='wap') $company['template']='wap';
 		if($config['temp']=='wap_app') $company['template']='wap_app';
-		
+
 		$tpl -> template_dir = $config['webroot'] . "/templates/".$company['template']."/";
 		$tpl -> compile_dir = $config['webroot'] . "/templates_c/".$company['template']."/";
 		$tpl -> assign("imgurl","templates/".$company['template']."/img/");
 		//-----------------------------------------------------
-		$score = $shop->score();		
+		$score = $shop->score();
 		foreach ($score as $key => $value) {
-			$score[$key] = $value?$value:0;
+			$score[$key] = $value?$value:5;
 		}
 
-		$tpl->assign("ulink",$shop->get_user_link());		
+        $score['aw']=$score['a']/5*100;
+        $score['bw']=$score['b']/5*100;
+        $score['cw']=$score['c']/5*100;
+        $score['dw']=$score['d']/5*100;
+
+		$tpl->assign("ulink",$shop->get_user_link());
 		$tpl->assign("score",$score);
 		$tpl->assign("custom_cat",$shop->get_custom_cat_list(1));
 		$tpl->assign("shop_nav",$shop->get_shop_nav());
@@ -135,7 +140,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 				{
 					$_SESSION['noncestr'] = randomkeys(12);
 
-					$strTmp = "http://".$_SERVER['HTTP_HOST'];
+					$strTmp = "https://".$_SERVER['HTTP_HOST'];
 					if(!empty($_SERVER['REQUEST_URI']))
 					{
 						$strTmp .= $_SERVER['REQUEST_URI'];
@@ -164,9 +169,13 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			//
 			$PluginManager = Yf_Plugin_Manager::getInstance();
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
-
+			$dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['uid'];
+			$tpl->assign("dis",$dis);
 			//-------------------------------------------
-			$page = "space_index.htm";
+			if($_GET[fx]=='fx')
+				$page = "space_index_fx.htm";
+			else
+				$page = "space_index.htm";
 		}
         //--------------------------------------------
         if(!empty($_GET['uid'])){

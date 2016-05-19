@@ -41,7 +41,7 @@
        		<div>
             <h3><{$re.note}></h3>
             <p>
-            收款方： Myzx168@163.com<!--<{if $re.real_name}><{$re.real_name}><{else}><{$re.seller_email}><{/if}>-->
+            收款方：蚂蚁海淘<!--<{if $re.real_name}><{$re.real_name}><{else}><{$re.seller_email}><{/if}>-->
             <span><strong><{$re.price|number_format:2}></strong>元</span>
             </p>
             </div>
@@ -59,11 +59,11 @@
                 <dt style="margin-left:5px;">请选择支付方式：</dt>
                 <dd class="pay">
                     <ul class="fn-clear">
-                    <li>
-                         <{if $config.bw eq "weixin"}>
-                            <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a            
-                        <{/if}>
+                    <{if $config.bw eq "weixin"}>
+                    <li>                       
+                        <a class="form_weixin_btn" data-param="{'id':'weixin'}">微信支付<i></i></a>            
                     </li>
+                    <{/if}>
                     <{foreach item=list key=key from=$pay}>
                         <li>           
                             <a class="form_qianbao_btn" data-param="{'id':'<{$list.payment_type}>'}"><img src="image/payment/<{$list.payment_type}>.gif" class="form_qianbao_img"><{$list.payment_name}><i></i></a>
@@ -106,6 +106,7 @@
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript">
 $(function(){
+    $(".pay .fn-clear li:first-of-type").find("i").addClass("formsh");
    $(".pay li").bind("click",function(){
         var liIndex=$(this).index();
         console.log(liIndex)

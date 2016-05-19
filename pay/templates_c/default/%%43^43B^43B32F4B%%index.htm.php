@@ -1,4 +1,8 @@
-<?php /* Smarty version 2.6.20, created on 2016-04-25 16:13:43
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.20, created on 2016-05-19 12:02:22
+=======
+<?php /* Smarty version 2.6.20, created on 2016-05-19 10:57:36
+>>>>>>> b006af89831b11fb5433b6ad18338a3c7adad1e3
          compiled from index.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'index.htm', 57, false),)), $this); ?>

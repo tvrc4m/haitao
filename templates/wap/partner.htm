@@ -2,50 +2,187 @@
 <header>
     <div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
-        <section class="nav-c"><span>成为合伙人</span></section>
+        <section class="nav-c"><span><{if $button}>邀请合伙人<{else}>成为合伙人<{/if}></span></section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
 <div class="partner_container">
     <div class="partner_container_top">
-        <p>成为我的合伙人</p>
-        <p> 数钱数到手抽筋</p>
     </div>
     <div class="partner_container_content">
-        <h2>合伙人特权</h2>
+        <h2></h2>
         <div style="height:40px;"></div>
         <div class="partner_list">
-            <div class="partner_list_inner">
+            <div class="partner_list_inner icon1">
                 <p>开店0门槛</p>
                 <span>免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱！</span>
             </div>
         </div>
         <div class="partner_list">
-            <div class="partner_list_inner">
+            <div class="partner_list_inner icon2">
                 <p>货源有保障</p>
                 <span>全球尖货，品质保证，正品保障，海外直邮，厂家直供，</span>
             </div>
             <ul>
-                <li><img src="../image/wap/wap_haitao_icon67.png" alt="全球直邮"><p>全球直邮</p></li><li>
-                <img src="../image/wap/wap_haitao_icon27.png" alt="正品保证"><p>正品保证</p></li><li>
-                <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>14天退货</p></li><li>
-                <img src="../image/wap/wap_haitao_icon70.png" alt="购物"><p>闪电发货</p></li>
+                <li><img src="../image/wap/wap_haitao_icon88.png" alt="正品保证"><p>正品保证</p></li><li>
+                <img src="../image/wap/wap_haitao_icon89.png" alt="跨境直发"><p>跨境直发</p></li><li>
+                <img src="../image/wap/wap_haitao_icon90.png" alt="专业配送"><p>专业配送</p></li><li>
+                <img src="../image/wap/wap_haitao_icon91.png" alt="政府监管"><p>政府监管</p></li><li>
+                <img src="../image/wap/wap_haitao_icon92.png" alt="海外优选"><p>海外优选</p></li>
             </ul>
         </div>
         <div class="partner_list">
-            <div class="partner_list_inner">
+            <div class="partner_list_inner icon3">
                 <p>佣金丰厚</p>
                 <span>合伙人越多，佣金赚的越多</span>
             </div>
         </div>
         <div class="partner_botimg">
-            <img src="../image/wap/wap_ceshi.png">
+            <img src="../image/wap/wap_haitao_icon105.png">
         </div>
+        <div class="partner_button">
+         <{if $button}>
+            <a href="javascript:void(0);" class="yp_button">邀请合伙人</a>
+            <{else}>
+            <a href="<{$config.weburl}>/register.php<{$dis}>">成为合伙人</a>
+            <{/if}>
+        </div>
+        <div style="height:20px;"></div>
     </div>
 </div>
-<div class="partner_fixed">
-    <a href="<{$config.weburl}>/register.php">成为合伙人</a>
-</div>
+<div class="hj_share_box" id="share_box"></div>
+<div class='collect_box_contentss'></div>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js"></script>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<{if $smarty.session.appid}>
+<script type="text/javascript">
+define = null;
+require = null;
+</script>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+var cnf = {
+    //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
+    timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
+    nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
+    signature: '<{$smarty.session.signature}>',// 必填，签名，见附录1
+    jsApiList: ['onMenuShareQQ','onMenuShareTimeline','onMenuShareWeibo','onMenuShareAppMessage','downloadImage','checkJsApi'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+};
+wx.config(cnf);
+wx.ready(function(){
+    $(".yp_button").bind("click",function(){
+        $("#share_box").show();
+        setTimeout(function(){
+            $("#share_box").animate({opacity: "1"}, 800)
+        }, 200);
+        wx.onMenuShareTimeline({
+            title: "成为我的合伙人，数钱数到手抽筋", // 分享标题
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
+            imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
+            success: function () {
+                $("#share_box").hide()
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                $("#share_box").hide()
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title:"成为我的合伙人，数钱数到手抽筋", // 分享标题
+            desc: "免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......", // 分享描述
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
+            imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                $("#share_box").hide()
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                $("#share_box").hide()
+                // 用户取消分享后执行的回调函数
+            }
+        })
+
+        wx.onMenuShareQQ({
+            title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
+            desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
+            imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
+            success: function () {
+                $("#share_box").hide()
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                $("#share_box").hide()
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: '成为我的合伙人，数钱数到手抽筋', // 分享标题
+            desc: '免费开店，一键推广，无需囤货，一件代发，自动结算，坐等收钱......', // 分享描述
+            link: "<{$config.weburl}>/partner.php<{$dis}>", // 分享链接
+            imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
+            success: function () {
+                $("#share_box").hide()
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                $("#share_box").hide()
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    })
+    $("#share_box").bind("click", function() {
+        $(this).animate({opacity: "0"}, 800);
+        setTimeout(function() {
+            $("#share_box").hide()
+        }, 800)
+    })
+})
+</script>
+<{else}>
+<script type="text/javascript">
+function altto(co){
+    $(".collect_box_contentss").show();
+    $(".collect_box_contentss").html(co);
+}
+function wid(){
+    var wid=$(".collect_box_contentss").width()/2;
+    $(".collect_box_contentss").css({"margin-left":-wid+"px","padding":"10px"});
+    setTimeout(function(){
+        $(".collect_box_contentss").hide();
+    },2000)
+}
+$(".yp_button").bind("click",function(){
+    altto('只支持在微信端分享');
+    wid();
+})
+</script>
+<{/if}>
 </body>
 </html>

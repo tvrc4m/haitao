@@ -23,7 +23,7 @@ if ($config['bw'] == "weixin")
 	{
 		$_SESSION['noncestr'] = randomkeys(12);
 
-		$strTmp = "http://".$_SERVER['HTTP_HOST'];
+		$strTmp = "https://".$_SERVER['HTTP_HOST'];
 		if(!empty($_SERVER['REQUEST_URI']))
 		{
 			$strTmp .= $_SERVER['REQUEST_URI'];
@@ -60,8 +60,14 @@ $tpl->assign("relation",$relation);
 
 $score = $shop->score();
 foreach ($score as $key => $value) {
-	$score[$key] = $value?$value:0;
+	$score[$key] = $value?$value:5;
 }
+
+$score['aw']=$score['a']/5*100;
+$score['bw']=$score['b']/5*100;
+$score['cw']=$score['c']/5*100;
+$score['dw']=$score['d']/5*100;
+
 $tpl->assign("score",$score);
 
 $tpl->assign("chat_open_flag", $chat_open_flag);
@@ -242,11 +248,16 @@ function namereplace($name, $charset = 'UTF8') {
 	}
 }
 //====================================SEO
+$trades = array('0'=>'无','1'=>'郑州保税仓','2'=>'海外商家');
+$company["trade"] = $prode['trade']==1?$trades[$prode['trade']]:'海外商家';
 $company["shop_title"] = $prode['name'];
 $company["shop_keywords"] = $prode['keywords'].','.$shopconfig["homedes"];
 $company["shop_description"] = $prode['keywords'].','.$shopconfig["homekeyword"];
 $company["logo"] = $prode['pic'] ? $prode['pic'] : $config['weburl'] . "/image/default/nopic.gif";
 //====================================
+//获取商品分销信息
+$distr =$distribution->getProductInfo($_GET['id']);
+$tpl->assign('distr',$distr[0]);
 $tpl->assign("config",$config);
 $tpl->assign("com",$company);
 

@@ -103,8 +103,8 @@ define(["module", "utility"], function(module, Util) {
      * @param  {[type]} title     [description]
      * @return {[type]}           [description]
      */
-    hjBase.prototype.wxShare = function(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil){
-        utility.weixinShare(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil);
-    }
+    // hjBase.prototype.wxShare = function(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil){
+    //     utility.weixinShare(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil);
+    // }
     module.exports = new hjBase();
 });

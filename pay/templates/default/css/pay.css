@@ -65,3 +65,5 @@ ol.step2 li.fore1 i{background-position:0 0;}
 ol.step2 li.fore2 i{background-position:-30px 0;}
 ol.step2 li.fore1 em strong{background-color:#FC9C27;}
 ol.step2 li.fore2 span{color:#F16F20;}
+.hidden{display: none;}
+.uplode{float: left;margin-right: 20px;width: 200px;}

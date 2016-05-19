@@ -174,7 +174,7 @@
                                    "<br>"+
                                     "<p <{if $list.is_refund=='true'}>rowspan='2'<{/if}>>"+
                                     "<{if $list.statu==1&&$list.seller_email&&($list.mold==3||$list.mold==0)}>"+
-                                        "<a href='<{$config.weburl}>?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
+                                        "<a href='<{$config.weburl}>/index.php?m=payment&s=pay&tradeNo="+msg.data[i].order_id+"'>付款</a>"+
                                     "<{else}>"+
                                         "<a target='_blank' href='<{if $list.return_url}><{$list.return_url}><{else}><{$config.weburl}>/index.php?m=payment&s=detail&tradeNo="+msg.data[i].flow_id+"<{/if}>'>详情</a>"+
                                     "<{/if}>"+

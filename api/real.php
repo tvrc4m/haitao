@@ -75,36 +75,36 @@ class real{
  * users 身份证姓名
  * real 身份证号
  * */
-    function idcard_authentication($users='',$real=''){
+    function idcard_authentication($users='',$reals='',$logo='',$logo1=''){
         global $db;
+	    global $buid;
         $partner_id = '20160100136';
         $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
-        $card_id = !empty($post['real']) ? $post['real'] : '';
-        $realname = !empty($post['users']) ? $post['users'] : '';
+        $card_id = !empty($reals) ? $reals : '';
+        $realname = !empty($users) ? $users : '';
+
         $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
-        if(empty($post[users])) $erry = -1;else $users = $post[users];
-        if(empty($post[real])) $erry = -2;else $real = $post[real];
-        if(!empty($post[users])&&!empty($post[real])){
-            $type = self::validation_filter_id_card($post[real]);
+        if(empty($users)){$erry = -1;return $erry;} else $user = $users;
+        if(empty($reals)){$erry = -2;return $erry;}else $real = $reals;
+        if(empty($logo)){$erry = -6;return $erry;} else $img1 = $logo;
+        if(empty($logo1)){$erry = -7;return $erry;} else $img2 = $logo1;
+        if(!empty($user)&&!empty($real)){
+            $type = self::validation_filter_id_card($real);
             if($type){
                 $sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
                 // 判断type为正确身份证再跳转验证身份证真假
                 $tokens = self::aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
                 if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
-                    $sql = "update pay_member set identity_verify=true where userid=".$_COOKIE['dist_id'];
+                    $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$buid;
                     $db -> query($sql);
-                    msg($_COOKIE['old_url']);
-                    setcookie("old_url");
+                    setcookie("identity", 'true', time()+60*60*24*3, "/");
+                    $erry = -5;
                 }else{
-                    $erry = -3;
+                    $erry = -4;
                 }
-                $users = $post[users];
-                $real = $post[real];
             }else{
-                $erry = -2;
+                $erry = -3;
             }
-        }else{
-            $erry = -1;
         }
         return $erry;
     }
@@ -112,17 +112,18 @@ class real{
 include_once("../includes/global.php");
 $real = new real;
 $post = $_POST?$_POST:$_GET;
-$aa = $real->idcard_authentication('130429198702155219');
-echo -1;
-if($config['temp']=='wap'){
+$aa = $real->idcard_authentication($post['real_name'],$post['identity_card'],$post['logo'],$post['logo1']);
+
+echo json_encode(array(
+    "erry"=>$aa,
+    "url"=>$post['url']
+));
+/*if($config['temp']=='wap'){
 die(11);
 }
 if($config['temp'=='default']){
 die(222);
-}
-
-
-
+}*/
 
 //-1真实姓名不能为空！-2身份证号不能为空！-3请填写正确身份证号！-4姓名和身份证不一致！
 

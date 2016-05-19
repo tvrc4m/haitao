@@ -207,6 +207,8 @@ html[xmlns] .clearfix{display:block;}
 .main .table-list-style tbody td.tl p{color:#808080;padding:3px 0;}
 .main .table-list-style tfoot td{background:#FFFFFF;border-top:1px solid #C4D5E0;padding:12px 0 0;}
 .main .table-list-style tfoot td label{color:#555555;cursor:pointer;display:inline-block;}
+.main .table-list-style.info thead tr{border: 1px solid #ccc;}
+.main .table-list-style.info tbody tr{border-bottom: 1px solid #ccc;height: 100px;}
 
 .main .searchbar {padding: 15px 0;border-bottom: 1px solid #AED2FF;}
 .main .top_searchbar {border:none;padding: 0 0 20px}
@@ -644,7 +646,7 @@ input[readonly]{
 .right_con .main .wrap{border:none;}
 /* 导航*/
 .main .wrap .hd ul{height: 40px;line-height: 40px;border-bottom: 2px solid #e0e0e0;color: #666;font-size: 16px;}
-.main .wrap .hd ul li{float: left;width: 125px;border-right: 1px solid #e0e0e0;text-align: center;}
+.main .wrap .hd ul li{float: left;padding:0 15px;border-right: 1px solid #e0e0e0;text-align: center;}
 .main .wrap .hd ul li.active{background-color: #f5f5f5;border-right: none;border-bottom: 2px solid #ff5c5c;}
 .main .wrap .hd ul li.search-box{float:right;width: auto;border-right: none;}
 .main .wrap .hd ul li.search-box .btn2{height:25px;}

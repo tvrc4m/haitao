@@ -24,7 +24,7 @@
                     <{/if}>
                 </span>
                 <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$com.shop_id}>">
-                    <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" width="125" height="125" alt="<{$list.pname}>"/></div>
+                    <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" width="125" height="125" alt="<{$list.pname}>"/></div>
                     <!-- <div class="shop_over">已售完</div> -->
                     <div class="p-name"><{$list.pname}></div>
                 </a>
@@ -64,7 +64,7 @@
                     <{/if}>
                 </span>
                 <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
-                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" width="125" height="125" alt="<{$list.pname}>" /></div>
+                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" width="125" height="125" alt="<{$list.pname}>" /></div>
                 <!-- <div class="shop_over">已售完</div> -->
                 <div class="p-name"><{$list.pname}></div>
                 </a>
@@ -89,7 +89,7 @@
                 <{/if}>
             </span>
             <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$com.shop_id}>">
-                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;" width="125" height="125" alt="<{$list.pname}>" /></div>
+                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" width="125" height="125" alt="<{$list.pname}>" /></div>
                 <div class="p-name"><{$list.pname}></div>
             </a>
              <div class="p-price">
@@ -136,7 +136,7 @@ $(function(){
     var dist_id = "<{$smarty.get.dist_id}>";
     var stop=true; 
     $(window).scroll(function(){
-        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());      
         if($(document).height() <= totalheight){
             if(stop==true){ 
                 $(".m_jiazai").html("正在加载中.....");
@@ -157,7 +157,7 @@ $(function(){
                                     "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                     "</span>"+
                                     "<a target='_blank' title='"+msg.data[i].pname+"' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'>"+
-                                    "<div class='p-pic'><img class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_lodings.gif) no-repeat center;' width='125' height='125' alt='"+msg.data[i].pname+"' /></div>"+
+                                    "<div class='p-pic'><img class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;' width='125' height='125' alt='"+msg.data[i].pname+"' /></div>"+
                                     "<div class='p-name'>"+msg.data[i].pname+"</div>"+
                                     "</a>"+
                                     "<div class='p-price'>"+

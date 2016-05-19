@@ -12,7 +12,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .ub-ac { -webkit-box-align: center;-moz-box-align: center;-ms-box-align: center;-o-box-align: center;box-align: center;}
 .ub-f1 {position: relative; -webkit-box-flex: 1;-moz-box-flex: 1;-ms-box-flex: 1;-o-box-flex: 1; box-flex: 1;}
 .ub-xinxi{border-bottom: 1px dashed #b9b9b9;}
-.kefu_icon1{width:0.75rem;height: 0.65rem;display: inline-block;background: url(../../../image/wap/wap_haitao_icon22.png) no-repeat;background-size: contain;vertical-align: -2px;margin-right: 0.4rem;}
+.kefu_icon1{width:0.75rem;height: 0.65rem;display: inline-block;background: url(../../../image/wap/wap_haitao_icon109.png) no-repeat;background-size: contain;vertical-align: -2px;margin-right: 0.4rem;}
 .kefu_icon2{width:0.75rem;height: 0.65rem;display: inline-block;background: url(../../../image/wap/mayi_wap_icon24.png) no-repeat;background-size: contain;vertical-align: -1px;margin-right: 0.4rem;}
 .ub-kefu ul li a{font-size: 0.6rem;}
 .ub-f2 p{float: left;width: 33.33%;font-size: 0.6rem;color: #999;}
@@ -30,7 +30,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .dianpu-on{width:0.5rem;height: 0.9rem;display: inline-block;background: url(../../../image/wap/mayi_wap_icon26.png) no-repeat;background-size: contain;vertical-align: middle;}
 
 /**************space_product_detail*******************/
-#pro_detail .shopli_top_img img{width: 3.5rem;height: 3.5rem;}
+#pro_detail .shopli_top_img img{width: 100%;}
 #pro_detail img{width:100%;}
 
 #pro_detail #pname{min-height: 2.15rem;line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dashed #b9b9b9;padding-right: 2.5rem;}
@@ -47,6 +47,8 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 #pro_detail .slogote{width:2.5rem;height:2.5rem;border-radius:50%;float: left;}
 #pro_detail .sinfo{padding-left:.5em;color:#000;font-size: 0.6rem;line-height: 1rem;}
 .price_moneys{color: #ff5c5c;}
+.price_moneys2{color: #ff5c5c;font-size: 1rem;}
+#pro_detail .price_moneys2 #price{font-size: 1rem;}
 .price_dels{color: #535353;text-decoration: line-through;}
 /*.price_chas{font-size: 0.7rem;}*/
 .chats{margin: 5px 0;}
@@ -72,7 +74,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .pdetail_show2 li{    display: block;
     border-bottom: 1px solid #f0f0f0;
     padding: 10px 0px;font-size: 14px;width: 100%;}
-.col_ttt{padding: 0.1rem 0.5rem;}
+.col_ttt{padding: 0.1rem 0.2rem;border-left: 1px solid #e1e1e1;}
 /***space_index***/
 .hidden{display:none !important;}
 .t-gra-50{color:#505050;}
@@ -235,9 +237,9 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .c_daixiao{font-size: 0.6rem;height: 2.2rem;
     line-height: 2.2rem;border-bottom:1px dashed #b9b9b9; }
 .c_daixiao .c_daixiao_text{float: left;}
-.c_daixiao .c_daixiao_text span{padding-left: 10px;}
+.c_daixiao .c_daixiao_text span{padding-left: 5px;}
 .c_daixiao .c_daixiao_link{float: right;}
-.c_daixiao .c_daixiao_link a{font-size: 0.65rem;color: #944ce5;border:1px solid #944ce5;padding:0.3rem 0.5rem;border-radius: 5px;}
+.c_daixiao .c_daixiao_link a{font-size: 0.65rem;color: #944ce5;border:1px solid #944ce5;padding:0.3rem 10px;border-radius: 5px;}
 .c_daixiao .c_daixiao_links a{color: #ff6600;border:1px solid #ff6600;padding:0.3rem 0.5rem;border-radius: 5px;}
 .c_daibao{border-bottom: 1px solid #b9b9b9;padding: 0 0.5rem 0.5rem;}
 .c_daibao .c_daibao_title{width: 100%;font-size: 0.7rem;height: 2rem;line-height: 2rem;}
@@ -254,6 +256,8 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .bgw_vi{padding:0 0.5rem;margin-bottom: 0.5rem}
 .c_daixiao_img{padding: 2px;border-radius: 50%;background-color: #944ce5;color: #fff;display: inline-block;width: 0.8rem;height: 0.8rem;text-align: center;line-height: 0.8rem;}
 .c_daixiao_imgs{background-color: #ff6600;}
+.col-money-bot{font-size: 0.7rem;margin: 0.5rem 0;}
+.col-money-bots{font-size: 0.7rem;}
 /*商品推荐*/
 .select_style .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}
 .select_style .shop_t .shopli:nth-of-type(3n){margin-right: 0;}

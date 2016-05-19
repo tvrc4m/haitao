@@ -92,7 +92,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     else
     {
         // no ucenter login
-        $sql="select * from ".MEMBER." where user='$post[user]' or email='$post[user]' or mobile='$post[user]'";
+        //验证手机号登录
+        if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
+             $sql="select * from ".MEMBER." where mobile='$post[user]'";
+        else
+            $sql="select * from ".MEMBER." where  user='$post[user]'";
         $db->query($sql);
         $re=$db->fetchRow();
         if($re["userid"])

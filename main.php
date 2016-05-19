@@ -35,9 +35,9 @@ if($flag=='false'){
 }*/
 
 if(empty($_SESSION['USER_TYPE']))
-	$_SESSION['USER_TYPE'] = $is_company;
+	$_SESSION['USER_TYPE']=$is_company;
 if($_GET['cg_u_type'])
-	$_SESSION['USER_TYPE'] = $_GET['cg_u_type'] * 1;
+	$_SESSION['USER_TYPE']=$_GET['cg_u_type']*1;
 
 $tpl->assign("cg_u_type",$_SESSION['USER_TYPE']);
 
@@ -75,7 +75,7 @@ include("lang/cn/user_admin.php");
 //-----------------------用户菜单加载
 //店铺是否开启
 include_once("module/shop/includes/plugin_shop_class.php");
-$shop=new shop();	
+$shop=new shop();
 $shop_statu=$shop->GetShopStatus($buid);
 
 $cominfo=$shop->get_shop_info($buid);
@@ -88,10 +88,10 @@ if ($distribution_open_flag)
 {
 	//我的佣金总额
 	$dist_user_row = $distribution->getDistributionUser($buid);
-	//var_dump($dist_user_row['distribution_user_amount']);die;
-	/*$dist_user_row['distribution_user_amount'] =  $dist_user_row['distribution_shop_amount_0'] +  $dist_user_row['distribution_shop_amount_1'] +  $dist_user_row['distribution_shop_amount_2']
+
+	$dist_user_row['distribution_user_amount'] =  $dist_user_row['distribution_shop_amount_0'] +  $dist_user_row['distribution_shop_amount_1'] +  $dist_user_row['distribution_shop_amount_2']
 		+ $dist_user_row['distribution_click_amount_0'] +  $dist_user_row['distribution_click_amount_1'] +  $dist_user_row['distribution_click_amount_2']
-		+ $dist_user_row['distribution_reg_amount_0'] +  $dist_user_row['distribution_reg_amount_1'] +  $dist_user_row['distribution_reg_amount_2'];*/
+		+ $dist_user_row['distribution_reg_amount_0'] +  $dist_user_row['distribution_reg_amount_1'] +  $dist_user_row['distribution_reg_amount_2'];
 
 
 	$dist_user_row['distribution_user_unsettlement_amount'] =  $dist_user_row['distribution_user_amount'] - $dist_user_row['distribution_user_settlement_amount'];
@@ -109,16 +109,13 @@ if ($distribution_open_flag)
 	$admin->tpl->assign("click_num", $click_num);
 
 	//7日订单
-
 	//$time = time() - 3600 * 24 * 7;
 	//$time = time() - 3600 * 24 * 1;
 	$time = strtotime(date("Y-m-d"));//当天时间0点
-
 	$order_num = $distribution->getDistributionOrderNum($buid, $time);
 	$admin->tpl->assign("order_num", $order_num);
 	//7日营业额
 	$order_amout = $distribution->getDistributionOrderAmount($buid, $time);
-
 	$admin->tpl->assign("order_amout", $order_amout);
 }
 
@@ -143,7 +140,7 @@ switch ($action)
 		}
 		$_SESSION['USER_TYPE']=NULL;
 		header("Location: ".$config['weburl']);
-		//header("Location: "."$config[weburl]/login.php"	);
+		//header("Location: "."$config[weburl]/login.php");
 		break;
 	}
 	case "msg":
@@ -245,6 +242,11 @@ switch ($action)
 				{
 					if ($distribution_open_flag)
 					{
+						//店铺信息
+						$sql = "select company,main_pro from mallbuilder_shop where userid=".$buid;
+						$db -> query($sql);
+						$shopCon = $db -> fetchRow();
+						$tpl->assign("shopCon",$shopCon);
 						$page="user_admin/admin_main.htm";
 					}
 					else
@@ -280,7 +282,7 @@ switch ($action)
 					//获取当前用户店铺动态评分
                     $shop_comment = $shop->get_shop_comment();
                     foreach($shop_comment as $key => $val){
-                        $shop_comment[$key] = empty($val) ? 0 : $val ;
+                        $shop_comment[$key] = empty($val) ? 5 : $val ;
                     }
 					$admin->tpl->assign("shop_comment",$shop_comment);
 					//获取当前用户产品 评论 订单 数量
@@ -309,6 +311,8 @@ $sql = "select identity_verify from pay_member where userid = $buid";
 $db -> query($sql);
 $num = $db -> fetchRow();
 $num = $num['identity_verify'] == 'true' ? 1 : 0 ;
+
+
 
 $tpl->assign("lang",$lang);
 $tpl->assign("verify",$num);
@@ -342,6 +346,10 @@ else
         }
 	//}
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
-	$tpl->display($page);
+    if(isset($_GET['disp']) && $_GET['disp'] == 1) {
+        $tpl->display('withdrawals.htm');
+    }else{
+        $tpl->display($page);
+    }
 }
 ?>

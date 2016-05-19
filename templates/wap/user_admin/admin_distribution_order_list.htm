@@ -10,13 +10,12 @@
                 <{elseif $smarty.get.status=='3'}>已经发货
                 <{elseif $smarty.get.status=='4'}>已经完成
                 <{elseif $smarty.get.status=='0'}>交易关闭
-              
+
 				<{/if}>
                 <em></em>
             </span>
             <div style="display:none;" class="i-select">
                 <ul>
-                   
                     <li key="1"><a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_order_list&status=1">等待付款</a></li>
                     <li key="2"><a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_order_list&status=2">等待发货</a></li>
                     <li key="3"><a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_order_list&status=3">已经发货</a></li>
@@ -31,7 +30,7 @@
 <script>
 
 $(function(){
-	$(".select").click(function(){ 
+	$(".select").click(function(){
 		var obj=$(this);
 		$(this).next().slideToggle("fast",function(){
 		if($(obj).next().is(":visible")){
@@ -52,10 +51,10 @@ $(function(){
 <section class="order">
 
    <{foreach item=sellist from=$slist.list}>
-   
+
 <div class="item">
- 	<div class="top"><a href="shop.php?uid=<{$sellist.userid}>"><{$sellist.company}></a></div>	 
-		<{foreach item=psellist from=$sellist.product}>      
+ 	<div class="top"><a href="shop.php?uid=<{$sellist.userid}>"><{$sellist.company}></a></div>
+		<{foreach item=psellist from=$sellist.product}>
     <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$psellist.pid}>">
 
        <dl class="clearfix">
@@ -67,43 +66,72 @@ $(function(){
 			<p class="p-commissin">运费 <strong> <{$sellist.logistics_price|number_format:2}> </strong> 元</p>
         </dd>
         </dl>
-		
+
         </a>
 		<{/foreach}>
  	<div class="bottom">
 	   <{if $sellist.status==1}>
-	   
     	待付款:&nbsp;&nbsp;<span class="p-name"><strong><{$config.money}><{$sellist.product_price+$sellist.logistics_price|number_format:2}></strong></span>
         <span>
-        <a class="pay_button" target="_blank" href="<{$config.weburl}>/pay?m=payment&s=pay&tradeNo=<{$sellist.order_id}>">付款</a>             	
+        <a class="pay_button" target="_blank" href="<{$config.weburl}>/pay?m=payment&s=pay&tradeNo=<{$sellist.order_id}>">付款</a>
          </span>
 		 <{elseif $sellist.status==2}>
 		总计:&nbsp;&nbsp;<span class="p-name"><strong><{$config.money}><{$sellist.product_price+$sellist.logistics_price|number_format:2}></strong></span>
          <span>
          <a class="pay_button" target="_blank" href="#">等待发货</a>
          </span>
-		 
+
 		  <{elseif $sellist.status==3}>
 		  总计:&nbsp;&nbsp;<span class="p-name"><strong><{$config.money}><{$sellist.product_price+$sellist.logistics_price|number_format:2}></strong></span>
-		 <span> <a class="pay_button" target="_blank" href="#">已经发货</a> </span> 
-		 
+		 <span> <a class="pay_button" target="_blank" href="#">已经发货</a> </span>
+
 		  <{elseif $sellist.status==4}>
 		  总计:&nbsp;&nbsp;<span class="p-name"><strong><{$config.money}><{$sellist.product_price+$sellist.logistics_price|number_format:2}></strong></span>
-		   <span> <a class="pay_button" target="_blank" href="#">已经完成</a> </span> 
+		   <span> <a class="pay_button" target="_blank" href="#">已经完成</a> </span>
 		  <{elseif $sellist.status==0}>
 		  总计:&nbsp;&nbsp;<span class="p-name"><strong><{$config.money}><{$sellist.product_price+$sellist.logistics_price|number_format:2}></strong></span>
-		   <span> <a class="pay_button" target="_blank" href="#">交易关闭</a> </span> 
+		   <span> <a class="pay_button" target="_blank" href="#">交易关闭</a> </span>
 		 <{/if}>
-		 
-    </div>	   
+
+    </div>
 </div>
    <{foreachelse}>
-<div class="itemsNull">
+<div class="itemsNulls">
     <h3>无相关信息</h3>
 </div>
 
    <{/foreach}>
 
-<a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-
+<!--  <a href="javascript:more_info();" class="m_jiazai">下拉加载更多</a> -->
 </section>
+
+<script>
+    // function more_info(){
+    //     var st = "<{$smarty.get.status}>";
+    //     var page = "<{$smarty.get.p}>";
+    //     var stop=true; 
+    //     $(window).scroll(function(){
+    //         totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());      
+    //         if($(document).height() <= totalheight){
+    //             if(stop==true){ 
+    //                 $(".m_jiazai").html("正在加载中.....");
+    //                 stop=false; 
+    //                 page = page+10;
+    //                 $.ajax({
+    //                     url: "<{$config.weburl}>/main.php",
+    //                     type: 'get',
+    //                     data: {m:'distribution', s:'admin_distribution_order_list',status:st, is_ajax:'yes', p:page},
+    //                     success: function(msg){
+    //                         console.log(msg)
+    //                         // $(".order").append(msg);                  
+    //                         // if(msg==""){
+    //                         //     $(".m_jiazai").html("已到最底部");
+    //                         // }
+    //                         stop=true;        
+    //                     }
+    //                 });
+    //             } 
+    //         } 
+    //     }) 
+    // }
+</script>

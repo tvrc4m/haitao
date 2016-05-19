@@ -9,7 +9,6 @@ $pay=new pay();
 $de=$pay->get_member_info($buid);
 $_SESSION['pay_id'] = $buid;
 $tpl->assign("de",$de);
-
 $sql="select con_group,con_title,con_id from ".WEBCON." where type=1 limit 0,4";
 $db->query($sql);
 $help=$db->getRows();
@@ -29,13 +28,13 @@ switch($act)
 		{
 			case "name":
 			{
-				if($_POST['act']=='name')
+				/*if($_POST['act']=='name')
 				{
 					include_once("../api/real.php");
 					//var_dump($config['webroot']);die;
 					$pay->edit_name($buid);
 					msg("index.php?act=edit&op=name",'修改成功');	
-				}
+				}*/
 				$output=tplfetch("edit_name.htm");
 				break;
 			}

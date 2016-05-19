@@ -11,7 +11,7 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .form_d li input[name="real"]{box-shadow: 0px 0px 3px #b9b9b9;background-color: #fff!important; width: 100%;font-size: .7rem;padding-left: 18%;padding-right: 5%;padding-top: .6rem;padding-bottom: .6rem;vertical-align: middle;
 	background: 0 0;background:url(../../../image/wap/wap_haitao_icon29.png) 5.8% no-repeat;background-size: 1.0rem;margin-bottom: 2px; border: none;border-radius: .2rem;margin-top: .8rem;}
 .spe_del{float: right;margin-top: .5rem;line-height: 1rem;font-size: .6rem;overflow: hidden;}
-.spe_del a{color: #ff5c5d;}
+.spe_del a{color: #ff5c5d; }
 .user_zhi{padding: 0px 5%;margin-bottom: 30px;} 
 .user_zhi_inner{background-color: #ddd;border-radius: 5px;padding: 20px;}
 .user_zhi h3{font-size: 0.7rem;text-align: left;margin-bottom: 10px;}
@@ -22,3 +22,6 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .inp_close {opacity: 0; width: 1rem;height: 1rem;background: url(../../../image/wap/wap_haitao_icon1.png) no-repeat;position: absolute;right: 3%;top:24%;background-size: contain;}
 .inp_close_t{top:45%;}
 .inp_up{opacity: 1;}
+.logo_shows{margin-right: 2%;}
+.logo_show{width: 49%;float: left;margin-top: 15px;}
+.logo_show img{width:100%;}

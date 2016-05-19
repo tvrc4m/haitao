@@ -7,7 +7,7 @@ if($_POST['act']=='act')
 		if(isset($_GET['forword']) && !empty($_GET['forword']))
 			msg($_GET['forword'],'修改成功');
 		else
-			msg("index.php?m=payment&s=setpass",'修改成功');
+			msg("index.php",'修改成功');
 	}
 }
 $tpl->assign("config",$config);

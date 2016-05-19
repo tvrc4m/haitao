@@ -32,6 +32,7 @@ else
 	$path.='all/';
 }
 $ist=$image_config['image_storage_type']?$image_config['image_storage_type']:"1";
+$ist=!empty($_GET['ty'])? 5 : $ist;
 switch ($ist){
 	case "1":
 	{	
@@ -46,6 +47,11 @@ switch ($ist){
 	case "3":
 	{	
 		$path.=date('Y').'/';
+		break;
+	}
+	case "5":
+	{
+		$path.= '';
 		break;
 	}
 	default:
@@ -81,14 +87,19 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 	
 	if($remote_config['image_remote_storage']==1 and !empty($remote_config['space_name']) and !empty($remote_config['ftp_password']) and !empty($remote_config['ftp_name']))
 	{
-		
+
 		require_once('lib/php-sdk-master/upyun.class.php');
-		
+
 		$upyun = new UpYun("$remote_config[space_name]","$remote_config[ftp_name]","$remote_config[ftp_password]");
 		try
 		{
 			$fh = fopen($_FILES['pic']['tmp_name'], 'rb');
-			$pn=time().".jpg";
+			if(!empty($_GET['ty'])){
+				$pn = $_COOKIE['dist_id'].substr(time(),4).'_'.$_GET['ty'];
+			}else{
+				$pn=time().".jpg";
+			}
+
 			$rsp = $upyun->writeFile($path.$pn, $fh, True);   // 上传图片，自动创建目录
 			fclose($fh);
 			if($_GET['m']=='product'||$_GET['m']=='product/property')
@@ -133,19 +144,22 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 			$watermark=false;
 		else
 			$watermark=true;
-			
-		$pn=time().".jpg";
+
+		if(!empty($_GET['ty'])){
+			$pn = $_COOKIE['dist_id'].substr(time(),4).'_'.$_GET['ty'];
+		}else{
+			$pn=time().".jpg";
+		}
 		$pw=$_POST['pw']?$_POST['pw']:$_GET['pw'];
 		$ph=$_POST['ph']?$_POST['ph']:$_GET['ph'];
-		
-	
+
 		if(!file_exists($path))
 		{
 			mkdirs($path);
 		}
-		
+
 		if($_GET['m']=='product'||$_GET['m']=='product/property')
-		{	
+		{
 			$size=($_GET['m']=='product/property')?$size1:$size;
 			foreach($size as $key=>$val)
 			{
@@ -156,8 +170,12 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 			$str="window.parent.load_pic();";
 		}
 		else
-		{
-			makethumb($_FILES['pic']['tmp_name'],$path.$pn,$pw,$ph,$watermark);
+		{   if(empty($_GET['ty'])) {
+                makethumb($_FILES['pic']['tmp_name'], $path . $pn, $pw, $ph, $watermark);
+            }else{
+                //makethumb($_FILES['pic']['tmp_name'], $path . $pn,'' , '', $watermark);
+                move_uploaded_file($_FILES['pic']['tmp_name'],$path.$pn);
+            }
 		}
 		
 		$pn=str_replace($config['webroot'],$config['weburl'],$path).$pn;
@@ -222,7 +240,7 @@ if(str=='')
 	str='图片地址为空，无法预览';
 else
 	str='<img src='+str+'>';
-document.getElementById('preview').innerHTML=str;
+    document.getElementById('preview').innerHTML=str;
 </script>
 <?php } ?>
 </body>

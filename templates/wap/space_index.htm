@@ -1,6 +1,122 @@
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
 <link href="<{$config.weburl}>/templates/wap/css/shop.css" rel="stylesheet" type="text/css" />
+<header>
+	<div class="nav-w">
+        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
+        <section class="nav-c"><span><{$com.company}></span></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+    </div>
+</header>
+<div class='collect_box_content'></div> 
+<section class="clearfix" style="width:100%;">
+    <div class="shopinfo-banner">
+        <img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>">
+       <div class="shopinfo-companys"><{$com.company}></div>
+        <div class="shopinfo-banner-content">
+            <div class="header_topleft">
+                <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
+            </div>
+            <div class="shopinfo-imphost">
+                <p>主营商品：<span><{$com.shop_description}></span></p>
+            </div>       
+            <div class="cols" style="padding: 0 10px">
+                <a onclick="javascript:getfavshop()">
+                    <div class="iconfont <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe628;</div>
+                    <div class="nav-c"><{if $sns_shop == 'yes' }>已收藏<{else}>收藏<{/if}></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="c_daibao clearfix">
+        <ul>
+            <li><img src="../image/wap/wap_haitao_icon88.png" alt="正品保证"><p>正品保证</p></li><li>
+            <img src="../image/wap/wap_haitao_icon89.png" alt="跨境直发"><p>跨境直发</p></li><li>
+            <img src="../image/wap/wap_haitao_icon90.png" alt="专业配送"><p>专业配送</p></li><li>
+            <img src="../image/wap/wap_haitao_icon91.png" alt="政府监管"><p>政府监管</p></li><li>
+            <img src="../image/wap/wap_haitao_icon92.png" alt="海外优选"><p>海外优选</p></li>
+        </ul>
+    </div>
+</section>
+<!-- <section>
+    <div class="c_guanggao">
+        <a href="javascript:void(0);"><img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{/if}>"></a>
+    </div>
+</section> -->
+<section class="pchart">
+    <div class="pchart_con2">最新商品<br><span>Latest product<span></div>
+</section>
+<section class="pchart_add pchart_adds">
+    <a href="javascript:void(0);">
+        <img src="/image/wap/wap_haitao_icon118.png" alt="+">
+        <div class="pchart_add_con"><span>暂无商品</span></div>
+    </a>
+</section>
+<section class="clearfix pchart_commit">
+<{if $com.shop_statu eq 1}>
+    <div class='pchart_last pchart_test'>
+    <div class="plist itemSearchResult">
+        <ul class="shoplist clearfix">
+            <{foreach item=list key=key from=$pro key=num}>
+                <li class="shopli clearfix">
+                    <span class="pname_img">
+                        <{if $list.national }>
+                            <img src="<{$list.img}>" alt="<{$list.title}>">
+                        <{/if}>
+                    </span>
+                    <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
+                        <div class="shopli_top_img">
+                            <img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" alt="<{$list.pname}>"/>
+                        </div>
+                        <!-- <div class="shop_over">已售完</div> -->
+                        <div class="shopli_bottom clearfix">
+                            <div class="shopli_bottom_message">
+                                <p class="shopli_bottom_text"><{$list.pname}></p>
+                            </div>
+                            <div class="shopli_bottom_rob shopli_bottom_rob2 clearfix">
+                                <div class="al shopli_bottom_money">
+                                    <p class="money"><{$config.money}><{$list.price}></p>
+                                    <p class="money money_del"><{$config.money}><{$list.market_price}></p>
+                                </div>
+                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_bottom_zhuanxiang">专享抢购</a>
+                            </div>  
+                        </div>
+                    </a>
+                </li>
+            <{/foreach}>
+        </ul>
+    </div>
+    <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
+    </div>
+<{/if}>
+<div class="leftcate" style="display: none">
+    <{if $custom_cat }>
+    <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
+    <ul>
+        <{foreach item=list from=$custom_cat}>
+        <li>
+            <a <{if $smarty.get.cat==$list.id}>class="current"<{/if}> class="<{if $list.con}>block_ico<{else}>none_ico<{/if}>" href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$list.id}>" title="<{$list.name}>"><{$list.name}></a>
+            <{if $list.con}>
+            <{foreach item=lists from=$list.con}>
+        <li><a <{if $smarty.get.cat==$lists.id}>class="current"<{/if}> href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$lists.id}>" title="<{$lists.name}>">&nbsp;<{$lists.name}></a></li>
+        <{/foreach}>
+        <{/if}>
+        </li>
+        <{/foreach}>
+    </ul>
+    <{/if}>
+</div>
+</section>
+<section class="bom_nav">
+    <ul>
+        <li><a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon103.png" alt="店铺"><p class="bom_nav_color">店铺</p></a></li><li>
+        <a href="<{$config.weburl}>/partner.php<{$dis}>"><img src="../image/wap/wap_haitao_icon104.png" alt="成为合伙人"><p>成为合伙人</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li>
+    </ul>
+</section>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript">
     function altto(co){
         $(".collect_box_content").show();
@@ -33,254 +149,74 @@
         {
             console.log(originalRequest.statu)
             if(originalRequest.statu==1){
-                $(".iconfont_min").addClass("collect");
+                $(".iconfont").addClass("collect");
+                $(".cols .nav-c").html("已收藏");
                 altto('成功添加至我的收藏夹!');
                 wid()
             }
             else if (originalRequest.statu==0){
-                $(".iconfont_min").removeClass("collect");
-                altto('成功取消商品收藏');
+                $(".iconfont").removeClass("collect");
+                altto('成功取消店铺收藏');
+                $(".cols .nav-c").html("收藏");
                 wid()
             }
         }
 
-    }
-    function distribute_goods(id){
-        var url = '<{$config.weburl}>/module/distribution/add.php';
-        var uname='<{$smarty.cookies.USER}>';
-        if(uname=='')
-        {
-            altto('请先登录！');
-            wid();
-            return false;
-        }
-        var pars = 'pid='+id+'&uname='+uname;
-        $.post(url, pars,showResponse);
-        function showResponse(originalRequest)
-        {
-            if(originalRequest>1){
-                altto('成功添加至我的分销!');
-                wid()
-            }
-            else if (originalRequest>0){
-                altto('该内容已经在你的分销中心<br>请勿重复添加！');
-                wid()
-            }
-            else{
-                altto('参数传递错误<br>无法完成操作!');
-                wid()
-            }
-        }
     }
 </script>
-
-<header>
-	<div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
-        <section class="nav-c"><span><{$com.company}></span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
-    </div>
-</header>
-<div class='collect_box_content'></div> 
-<section class="clearfix" style="width:100%;">
-    <div class="shopinfo-banner">
-        <img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{else}>templates/wap/images/bg.jpg<{/if}>">
-        <div class="shopinfo-companys">
-            <{$com.company}>
-        </div>
-        <div class="shopinfo-banner-content">
-            <div class="header_topleft">
-                <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
-            </div>
-            <div class="shopinfo-imphost">
-                <p>主营商品：
-                    <{if $com.shop_description}>
-                    <span><{$com.shop_description}></span>
-                    <{else}>
-                    <span>无</span>
-                    <{/if}>
-                </p>
-            </div>       
-            <div class="cols" style="padding: 0 10px">
-                <a onclick="javascript:getfavshop()">
-                    <div class="iconfont_min <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe615;</div>
-                    <div class="nav-c">收藏</div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="pchart">
-    <ul class="pchart_con clearfix">
-        <li class="active"><img src="../../../image/wap/wap_haitao_icon67.png" alt="最新商品"><p>最新商品</p><i></i></li>
-        <li><img src="../../../image/wap/wap_haitao_icon70.png" alt="分销商品"><p>分销商品</p></li>
-    </ul>
-    <div class="pchart_con2">最新商品</div>
-</section>
-<section class="clearfix pchart_commit">
-    <div class='pchart_last pchart_test'>
-    <{if $com.shop_statu eq 1}>
-    <div class="plist itemSearchResult">
-        <ul class="shoplist clearfix">
-            <{foreach item=list key=key from=$pro key=num}>
-                <li class="shopli clearfix">
-                    <span class="pname_img">
-                        <{if $list.national }>
-                            <img src="<{$list.img}>" alt="<{$list.title}>">
-                        <{/if}>
-                    </span>
-                    <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
-                        <div class="shopli_top_img">
-                            <img height="125" width="125" src="<{$list.pic}>" alt="<{$list.pname}>"/>
-                        </div>
-                        <!-- <div class="shop_over">已售完</div> -->
-                        <div class="shopli_bottom clearfix">
-                            <div class="shopli_bottom_message">
-                                <p class="shopli_bottom_text"><{$list.pname}></p>
-                            </div>
-                            <div class="shopli_bottom_rob shopli_bottom_rob2 clearfix">
-                                <div class="al shopli_bottom_money">
-                                    <p class="money"><{$config.money}><{$list.price}></p>
-                                    <p class="money money_del"><{$config.money}><{$list.market_price}></p>
-                                </div>
-                                <a href="javascript:void(0);" class="shopli_bottom_zhuanxiang">专享抢购</a>
-                            </div>  
-                        </div>
-                    </a>
-                </li>
-            <{/foreach}>
-        </ul>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-    </div>
-    <{/if}>
-    </div>
-    <div class='pchart_first'>
-    <{if $dist_pro}>
-        <div class="plist itemSearchResult">
-            <!-- <h2>推荐商品</h2> -->
-            <ul class="shoplist clearfix">
-                <{foreach item=list key=key from=$dist_pro key=num}>
-                <li class="shopli clearfix">
-                    <span class="pname_img">
-                        <{if $list.pnational }>
-                            <img src="<{$list.pnational.img}>" alt="<{$list.pnational.title}>">
-                        <{/if}>
-                    </span>
-                    <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
-                        <div class="shopli_top_img">
-                            <img height="125" width="125" src="<{$list.pic}>" alt="<{$list.pname}>"/>
-                        </div>
-                        <!-- <div class="shop_over">已售完</div> -->
-                        <div class="shopli_bottom clearfix">
-                            <div class="shopli_bottom_message">
-                                <p class="shopli_bottom_text"><{$list.pname}></p>
-                            </div>
-                            <div class="shopli_bottom_rob shopli_bottom_rob2 clearfix">
-                                <div class="al shopli_bottom_money">
-                                    <p class="money"><{$config.money}><{$list.price}></p>
-                                    <p class="money money_del"><{$config.money}><{$list.market_price}></p>
-                                </div>
-                                <a href="javascript:distribute_goods('<{$list.id}>');" class="shopli_bottom_zhuanxiang">加入分销</a>
-                            </div>  
-                        </div>
-                    </a>
-                </li>
-                <{/foreach}>
-            </ul>
-        </div>
-        <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-    <{/if}>
-    </div> 
-    <div class="leftcate" style="display: none">
-        <{if $custom_cat }>
-        <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
-        <ul>
-            <{foreach item=list from=$custom_cat}>
-            <li>
-                <a <{if $smarty.get.cat==$list.id}>class="current"<{/if}> class="<{if $list.con}>block_ico<{else}>none_ico<{/if}>" href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$list.id}>" title="<{$list.name}>"><{$list.name}></a>
-                <{if $list.con}>
-                <{foreach item=lists from=$list.con}>
-            <li><a <{if $smarty.get.cat==$lists.id}>class="current"<{/if}> href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$lists.id}>" title="<{$lists.name}>">&nbsp;<{$lists.name}></a></li>
-            <{/foreach}>
-            <{/if}>
-            </li>
-            <{/foreach}>
-        </ul>
-        <{/if}>
-    </div>
-</section>
-<section class="bom_nav">
-    <ul>
-        <li><a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon103.png" alt="店铺"><p class="bom_nav_color">店铺</p></a></li><li>
-        <a href="<{$config.weburl}>/partner.php"><img src="../image/wap/wap_haitao_icon104.png" alt="成为合伙人"><p>成为合伙人</p></a></li><li>
-        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li>
-    </ul>
-</section>
 <script>
 $(function(){
-    var a=<{$com.shop_statu}>;
-    var imgSize=$(".pchart_first li").size();
-    var pchart_li=$(".pchart .pchart_con li");
-    var pchart_div=$(".pchart_commit>div");
-    var pchart_con=$(".pchart_con2");
-    if(a!=1){
-        $(".pchart_first").show();
+    var liIndex=$(".shoplist .shopli").size();
+    if(liIndex==0){
         $(".pchart").hide();
+        $(".pchart_add").show();
     }
-    if(imgSize==0){
-        $(".pchart ul").hide();
+    var boHei=$(".shopinfo-imphost").height();
+    $(".cols").css({"bottom":(boHei+10)+"px"});
+    $(".header_topleft").css({"bottom":(boHei/2)+"px"});
+    $(".shopinfo-companys").css({"bottom":(boHei+15)+"px"});
+    function rate(){
+        var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
+        if(w <=540)
+        {
+            var rate = w/540;
+            var h = 405*100*rate/100;
+            $(".shop-bannar").css({"height":h+"px","width":"100%","background-size":"contain","background-repeat":"no-repeat"})
+            var h1 = 224*100*rate/100;
+            $(".shopli").find("img").height(h1+"px")
+        }
+        else
+        {
+            $(".shop-bannar").css({"height":"405px","width":"100%","background-size":"contain","background-repeat":"no-repeat"})
+            $(".shopli").find("img").height("224px")
+        }
+    } 
+    function substr(htm,obj,num){
+        var value_substr=obj.substr(0,num);
+        var pname_len=obj.length;
+        var value_substr_len=value_substr.length+1;
+        if(pname_len>value_substr_len){
+            value_substr=value_substr+"...";                
+        }       
+        htm.html(value_substr);
     }
-    pchart_li.eq(0).click(function(){
-        pchart_li.eq(0).addClass("active");
-        pchart_li.eq(0).find("img").attr("src","../../../image/wap/wap_haitao_icon67.png");
-        pchart_li.eq(1).removeClass("active");
-        pchart_li.eq(1).find("img").attr("src","../../../image/wap/wap_haitao_icon70.png");
-        pchart_div.eq(0).show();
-        pchart_div.eq(1).hide();
-        pchart_con.html("最新商品")
-
-    });
-    pchart_li.eq(1).click(function(){
-        pchart_li.eq(1).addClass("active");
-        pchart_li.eq(0).removeClass("active");
-        pchart_li.eq(0).find("img").attr("src","../../../image/wap/wap_haitao_icon68.png");
-        pchart_li.eq(1).find("img").attr("src","../../../image/wap/wap_haitao_icon69.png");
-        pchart_div.eq(1).show();
-        pchart_div.eq(0).hide();
-        pchart_con.html("分销商品")
-
-    });
-    $("#list").click(function(){
-        window.scroll(0,0);
-        $('.leftcate').show();
-        $('.itemSearchResult').hide();
-        $('.main').append('<div id="leftmask"></div>')
-        $('#leftmask')[0].style.height =$(".main").height()+20;
-    });
-    $('.remove').click(function(){
-        $('.leftcate').hide();
-        $('.itemSearchResult').show();
-        $('#leftmask').remove();
-    });
-
-    var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
-    if(w <=540)
-    {
-        var rate = w/540;
-        var h = 405*100*rate/100;
-        $(".shop-bannar").css({"height":h+"px","width":"100%","background-size":"contain","background-repeat":"no-repeat"})
-        var h1 = 224*100*rate/100;
-        $(".shopli").find("img").height(h1+"px")
+    var shop_htm=$(".shopinfo-imphost p span") , shop_pin=$(".shopinfo-imphost p span").html() , shop_name_htm=$(".shopinfo-companys") ,  shop_name=$(".shopinfo-companys").html();
+    if(shop_pin==""){
+        shop_htm.html("无");
     }
-    else
-    {
-        $(".shop-bannar").css({"height":"405px","width":"100%","background-size":"contain","background-repeat":"no-repeat"})
-        $(".shopli").find("img").height("224px")
+    else{
+        substr(shop_htm,shop_pin,36);
     }
-    var dlLen=$(".plist .shopli").size();
+    if(shop_name==""){
+        shop_name_htm.html("我的店铺");
+    }
+    else{
+        substr(shop_name_htm,shop_name,10);
+    }
+    var dlLen=$(".shopli").size();
     if(dlLen<10){
         $(".m_jiazai").hide();
-        $("footer").css({"margin-top":"20px"})
+        $(".pchart_commit").css({"margin-bottom":"15px"})
     }
     var page = 0;
     var uid = "<{$smarty.get.uid}>";
@@ -288,7 +224,7 @@ $(function(){
     var url = "<{$config.weburl}>/shop.php";
     var stop=true; 
     $(window).scroll(function(){
-        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop())+ parseFloat($("footer").height());      
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());      
         if($(document).height() <= totalheight){
             if(stop==true){ 
                 $(".m_jiazai").html("正在加载中.....");
@@ -310,7 +246,7 @@ $(function(){
                                     "</span>"+
                                     "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'>"+
                                         "<div class='shopli_top_img'>"+
-                                            "<img height='125' width='125' src='"+msg.data[i].pic+"' alt='"+msg.data[i].pname+"'/>"+
+                                            "<img class='scrollLoading' data-url='"+msg.data[i].pic+"_220X220.jpg' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;' alt='"+msg.data[i].pname+"'/>"+
                                         "</div>"+
                                         "<div class='shopli_bottom clearfix'>"+
                                             "<div class='shopli_bottom_message'>"+
@@ -328,12 +264,10 @@ $(function(){
                                 if(pnational!==false){
                                     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].pnational.img+"' alt='"+msg.data[i].pnational.title+"'>")
                                 }
-                                if(shop_statu==1) {
-                                    $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append("<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>")
-                                } else{
-                                    $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append(" <a href='javascript:distribute_goods("+msg.data[i].id+");' class='shopli_bottom_zhuanxiang'>加入分销</a>")
-                                }               
+                                $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append("<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>")           
                         }
+                        $(".scrollLoading").scrollLoading();
+                        rate();
                         stop=true;
                         }else{
                          $(".m_jiazai").html("已到最底部");
@@ -342,7 +276,9 @@ $(function(){
                 });
             } 
         } 
-    })      
+    }) 
+    $(".scrollLoading").scrollLoading();
+    rate();     
 })
 </script>
 <{if $smarty.session.appid}>
