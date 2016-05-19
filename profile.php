@@ -11,6 +11,8 @@ if(!empty($buid)) {
 }else{
     $num = 0;
 }
+
+$tpl->assign('oldUlr',$_SERVER['PHP_SELF']);
 $tpl->assign("verify",$num);
 include_once("footer.php");
 	$tpl->display('profile.htm');

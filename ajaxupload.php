@@ -253,7 +253,8 @@
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
     if($up -> upload("file")) {
         //获取上传后文件名子
-       echo json_encode(array("key"=> $up->path.$up->getFileName()));exit;
+      $imgUrl = '/'.$up->path.$up->getFileName();
+       echo json_encode(array("key"=> $imgUrl));exit;
     } else {
         echo '<pre>';
         //获取上传失败以后的错误提示

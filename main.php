@@ -345,6 +345,7 @@ else
 
         }
 	//}
+	if(!empty($_GET['oldUrl']))$tpl->assign('oldUrl',$_GET['oldUrl']);
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
     if(isset($_GET['disp']) && $_GET['disp'] == 1) {
         $tpl->display('withdrawals.htm');
