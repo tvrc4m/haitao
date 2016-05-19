@@ -1,7 +1,7 @@
 <?php
 	include_once("$config[webroot]/module/shop/includes/plugin_credit_class.php");
 	$credit=new credit();
-	
+
 	//删除中评 差评
 	if(is_numeric($_GET['id']))
 	{
