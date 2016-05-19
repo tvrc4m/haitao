@@ -41,13 +41,14 @@
 	$sql="select avg(item1) as a,avg(item2) as b,avg(item3) as c,avg(item4) as d from ".UCOMMENT." where byid = '$buid'";
 	$db->query($sql);
 	$u=$db->fetchRow();
+        foreach($u as $key => $val){
+            $u[$key] = $val?$val:5;
+        }
 	$u['aw']=$u['a']/5*100;
 	$u['bw']=$u['b']/5*100;
 	$u['cw']=$u['c']/5*100;
 	$u['dw']=$u['d']/5*100;
-	foreach($u as $key => $val){
-			$u[$key] = $val?$val:0;
-	}
+
 	$tpl->assign("u",$u);
 
 //------------------------------------Seo config
