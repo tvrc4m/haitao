@@ -1,6 +1,7 @@
 <script src="script/my_lightbox.js" language="javascript"></script>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/district.js" ></script>
-<script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.4.4.min.js" ></script>
+<script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/uplode.js"></script>
 <link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
 <header>
     <div class="nav-w">
@@ -21,10 +22,13 @@
                 </div>
                 <div class="logo_div">
                     <div class="logo_show">
-                        <input class="text w300 hidden" name="logo" type="text" id="logo" value="<{$de.logo}>">
+                        <input class="input" multiple="multiple" type="file"  accept="image/*" stype="front">
+                        <input type="hidden" data-id="img1" name="logo">
+                        <img class="drag" src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                        <!-- <input class="text w300 hidden" name="logo" type="text" id="logo" value="<{$de.logo}>">
                         <a href="javascript:uploadfile('LOGO','logo',120,120,'member')">
                             <img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 </div>
