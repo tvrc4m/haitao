@@ -216,9 +216,10 @@
     }
   
     /* 设置随机文件名 */
-    private function proRandName() {    
+    private function proRandName() {
+      global $buid;
       //$fileName = date('YmdHis')."_".rand(100,999);
-      $fileName = $_COOKIE['userid'].substr(time(),4).'_'.$_POST['stype'];
+      $fileName = $buid.substr(time(),4).'_'.$_POST['stype'];
       return $fileName.'.'.$this->fileType; 
     }
   
@@ -240,7 +241,7 @@
   }
 
 
-
+include_once("includes/global.php");
    $up = new fileupload;
     //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
     if(!empty($_POST['fileurl'])) {

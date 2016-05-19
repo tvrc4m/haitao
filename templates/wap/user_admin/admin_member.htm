@@ -15,6 +15,7 @@
     <div class="form-style">
         <form action="" method="post" name="form" id="form">
             <input type="hidden" value="edit" name="submit"/>
+            <input type="hidden"  name="oldurl" value="<{$oldUrl}>"/>
             <div class="s_logo">
                 <div class="logo_info">
                     <span class="tit">上传头像</span>
@@ -23,7 +24,7 @@
                 <div class="logo_div">
                     <div class="logo_show">
                         <input class="input" multiple="multiple" type="file"  accept="image/*" stype="front">
-                        <input type="hidden" data-id="img1" name="logo">
+                        <input type="hidden" data-id="img1" name="logo" value="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
                         <img class="drag" src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
                         <!-- <input class="text w300 hidden" name="logo" type="text" id="logo" value="<{$de.logo}>">
                         <a href="javascript:uploadfile('LOGO','logo',120,120,'member')">
