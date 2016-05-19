@@ -6,6 +6,18 @@ ol,ul,li{list-style:none outside none;}
 a{text-decoration:none;color:#535353;cursor:pointer;}
 a:hover{color:#08c;}
 em{font-style:normal;}
+html *
+{
+    outline:0;
+    -webkit-text-size-adjust:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -moz-text-size-adjust:none;
+    -moz-tap-highlight-color:rgba(0,0,0,0);
+    -ms-text-size-adjust:none;
+    -ms-tap-highlight-color:rgba(0,0,0,0);
+    -o-text-size-adjust:none;
+    -o-tap-highlight-color:rgba(0,0,0,0);
+}
 .fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 .fn-clear{zoom:1;}
 .fn-left{display:inline;float:left;}

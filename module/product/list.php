@@ -234,12 +234,12 @@ else
 	elseif($orderby==8)
 		$scl.=" order by p.commission_product_price_0 desc";
 	else{
-		if($config['temp']=='wap'){
+		$scl.=" order by a.rank desc,a.uptime desc";
+		/*if($config['temp']=='wap'){
 			$scl.=" order by p.commission_product_price_0 desc";
 		}else{
 			$scl.=" order by a.rank desc,a.uptime desc";
-		}
-
+		}*/
 	}
 //--------------------------------------------------
 	include_once("includes/page_utf_class.php");
@@ -324,11 +324,12 @@ else
 
 //获取当前页的类名
 if(!empty($_GET['id'])){
-    $sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
-    $db->query($sql);
-    $res = $db->fetchField('cat');
-    $tpl->assign("wapcatname",$res);
+	$sql = "select cat from mallbuilder_product_cat where catid=" . $_GET['id'];
+	$db->query($sql);
+	$res = $db->fetchField('cat');
+	$tpl->assign("wapcatname",$res);
 }
+if($_GET['national']==7)$tpl->assign("wapcatname",'日本馆');
 
 $tpl->assign("province",GetDistrict1());
 

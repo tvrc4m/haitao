@@ -2,10 +2,13 @@
 // 搜索框
 var $jj = jQuery.noConflict();
 $jj(function(){
+	// var windowWid=$(window).width();
+	// $jj(".s-page").css({"-webkit-transform": "translateX("+windowWid+"px)","-moz-transform": "translateX("+windowWid+"px)","-ms-transform": "translateX("+windowWid+"px)","-o-transform": "translateX("+windowWid+"px)","transform": "translateX("+windowWid+"px)"})
 	$jj(".s_main").find("input").focus(function(){
-		$jj(".s-page").show().siblings().hide()
-		$jj(".cc-search-hide").addClass("cc-search-show").removeClass("cc-search-hide")
+		$jj(".s-page").show();
 		
+		$jj(".cc-search-hide").addClass("cc-search-show").removeClass("cc-search-hide")
+		$(".main_container").hide();		
 	})
 	$jj(".cc-search-tab > li").click(function(){
 		$jj(this).addClass("cur").siblings("li").removeClass("cur");
@@ -13,8 +16,9 @@ $jj(function(){
 		$jj("#s").val($jj(this).attr("data-s"))
 	})
 	$jj(".cc-back").click(function(){
-		$jj(".s-page").hide().siblings().show()
+		$jj(".s-page").hide();
 		$jj(".cc-search-show").addClass("cc-search-hide").removeClass("cc-search-show")
+		$(".main_container").show();	
 	})
 
 	$jj(".m_main-v1s").eq(0).css({"margin-top":"0px"});
