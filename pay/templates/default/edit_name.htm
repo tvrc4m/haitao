@@ -1,6 +1,7 @@
-<script type="text/javascript" src="script/jquery.validation.min.js"></script>
-<script type="text/javascript" src="script/my_lightbox.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    #input{visibility: hidden;}
+</style>
 <script>
 function formSubmit() {
     $.ajax({
@@ -80,17 +81,13 @@ window.onload=function(){
         <dl>
             <dt>上传身份证：</dt>
             <dd>
-                <div class="logo_show uplode">
-                    <input class="text w300 hidden" name="logo" type="text" id="logo" value="<{$de.logo}>">
-                    <a href="javascript:uploadfile('LOGO','logo',441,358,'member')">
-                        <img id="logo_img" src="<{$config.weburl}>/pay/templates/default/image/icon9.png">
-                    </a>
+                <div class="uplode" >
+                    <input id="input" multiple="multiple" type="file" name="fin" accept="image/*">
+                    <img id="drag" src="<{$config.weburl}>/pay/templates/default/image/icon9.png">
                 </div>
-                <div class="logo_show uplode">
-                    <input class="text w300 hidden" name="logo1" type="text" id="logo1" value="<{$de.logo}>">
-                    <a href="javascript:uploadfile('LOGO','logo1',441,358,'member')">
-                        <img id="logo1_img" src="<{$config.weburl}>/pay/templates/default/image/icon8.png">
-                    </a>
+                <div class="uplode">
+                    <input id="input" multiple="multiple" type="file" name="fin" accept="image/*">
+                    <img id="" src="<{$config.weburl}>/pay/templates/default/image/icon8.png">
                 </div>
             </dd>
         </dl>
@@ -102,3 +99,4 @@ window.onload=function(){
     </form>
     </div>
 </div>
+<script type="text/javascript" src="script/uplode.js"></script>
