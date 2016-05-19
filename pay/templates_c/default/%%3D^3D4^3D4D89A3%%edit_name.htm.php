@@ -1,3 +1,5 @@
+<?php /* Smarty version 2.6.20, created on 2016-05-19 16:56:49
+         compiled from edit_name.htm */ ?>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .input{visibility: hidden;}
@@ -61,33 +63,39 @@ window.onload=function(){
     <input type="hidden" value='' name="url">
         <fieldset>
         <dl class="email">
-            <dt><{$config.company}>账户名：</dt>
-            <dd><{$de.pay_email}></dd>
+            <dt><?php echo $this->_tpl_vars['config']['company']; ?>
+账户名：</dt>
+            <dd><?php echo $this->_tpl_vars['de']['pay_email']; ?>
+</dd>
         </dl>
 
         <dl>
             <dt>真实姓名：</dt>
-            <dd><input type="text" class="text" name="real_name" id="real_name" value="<{$de.real_name}>" <{if $de.identity_verify=='true'}>readonly<{/if}>/>
+            <dd><input type="text" class="text" name="real_name" id="real_name" value="<?php echo $this->_tpl_vars['de']['real_name']; ?>
+" <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>readonly<?php endif; ?>/>
             <div class="form-error"></div></dd>
         </dl>
 
         <dl>
             <dt>身份证号码：</dt>
-            <dd><input type="text" class="text" name="identity_card" id="identity_card" value="<{$de.identity_card}>" maxlength="18" <{if $de.identity_verify=='true'}>readonly<{/if}> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
+            <dd><input type="text" class="text" name="identity_card" id="identity_card" value="<?php echo $this->_tpl_vars['de']['identity_card']; ?>
+" maxlength="18" <?php if ($this->_tpl_vars['de']['identity_verify'] == 'true'): ?>readonly<?php endif; ?> onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d.]/g,''))" /><div class="form-error"></div></dd>
         </dl>
 
         </fieldset>
-        <{if $de.identity_verify!='true'}>
+        <?php if ($this->_tpl_vars['de']['identity_verify'] != 'true'): ?>
         <dl>
             <dt>上传身份证：</dt>
             <dd>
                 <div class="uplode" >
                     <input class="input" multiple="multiple" type="file" name="fin" accept="image/*" stype="front">
-                    <img class="drag" src="<{$config.weburl}>/pay/templates/default/image/icon9.png">
+                    <img class="drag" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/pay/templates/default/image/icon9.png">
                 </div>
                 <div class="uplode">
                     <input class="input" multiple="multiple" type="file" name="fin" accept="image/*" stype="back">
-                    <img class="drag" src="<{$config.weburl}>/pay/templates/default/image/icon8.png">
+                    <img class="drag" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+/pay/templates/default/image/icon8.png">
                 </div>
             </dd>
         </dl>
@@ -95,9 +103,9 @@ window.onload=function(){
             <dt></dt>
             <dd><input type="submit" class="submit" value="确 定" /></dd>
         </dl>
-        <{/if}>
+        <?php endif; ?>
     </form>
     </div>
 </div>
 <script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="script/uplode.js"></script>
+<script type="text/javascript" src="script/uplode.js"></script>
