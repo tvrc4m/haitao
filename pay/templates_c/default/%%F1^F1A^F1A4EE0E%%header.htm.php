@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-05-19 14:27:37
-=======
-<?php /* Smarty version 2.6.20, created on 2016-05-19 14:21:16
->>>>>>> bd94d07d8cd73348cd770090312e4bdc44f6dfc7
+<?php /* Smarty version 2.6.20, created on 2016-05-19 15:17:18
          compiled from header.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
