@@ -42,11 +42,15 @@ function sendFile (f) {
     });
 }
 function handleFiles (files, stype) {
+    var tim = new Date();
+    var day = tim.getMonth()+1;
+    day = day < 10 ? '0' + day : day;
     for (var i = 0; i < files.length; i++) {
         var fd = new FormData();
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
             fd.append('stype', stype)
+            fd.append('fileurl', "uploadfile/real/"+ day + "/")
             sendFile(fd);
             break;
         }

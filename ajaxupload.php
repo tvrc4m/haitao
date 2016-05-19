@@ -4,7 +4,7 @@
     本类的实例对象用于处理上传文件，可以上传一个文件，也可同时处理多个文件上传
   */
   class FileUpload { 
-    public $path = "./uploads";          //上传文件保存的路径
+    public $path = "./uploadfile";          //上传文件保存的路径
     private $allowtype = array('jpg','gif','png'); //设置限制上传文件的类型
     private $maxsize = 1000000;           //限制文件上传大小（字节）
     private $israndname = true;           //设置是否随机重命名文件， false不随机
@@ -243,7 +243,9 @@
 
    $up = new fileupload;
     //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
-    $up -> set("path", "uploadfile/real/".date("m")."/");
+    if(!empty($_POST['fileurl'])) {
+      $up->set("path", $_POST['fileurl']);
+    }
     $up -> set("maxsize", 2000000);
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
     $up -> set("israndname", true);
