@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-19 17:40:02
+<?php /* Smarty version 2.6.20, created on 2016-05-20 11:54:46
          compiled from edit_name.htm */ ?>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
@@ -88,13 +88,15 @@ window.onload=function(){
             <dt>上传身份证：</dt>
             <dd>
                 <div class="uplode" >
-                    <input class="input" multiple="multiple" type="file" name="img1" accept="image/*" stype="front">
-                    <img class="drag" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+                    <input class="input" multiple="multiple" type="file"  accept="image/*" stype="front" rename="2">
+                    <input type="hidden" data-id="img1" name="img1">
+                    <img class="drag" height="200" width="200"  src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon9.png">
                 </div>
                 <div class="uplode">
-                    <input class="input" multiple="multiple" type="file" name="img2" accept="image/*" stype="back">
-                    <img class="drag" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+                    <input class="input" multiple="multiple" type="file" accept="image/*" stype="back" rename="2">
+                    <input type="hidden" data-id="img2" name="img2">
+                    <img class="drag" height="200" width="200" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon8.png">
                 </div>
             </dd>
