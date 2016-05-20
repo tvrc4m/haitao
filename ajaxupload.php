@@ -216,9 +216,10 @@
     }
   
     /* 设置随机文件名 */
-    private function proRandName() {    
+    private function proRandName() {
+      global $buid;
       //$fileName = date('YmdHis')."_".rand(100,999);
-      $fileName = $_COOKIE['userid'].substr(time(),4).'_'.$_POST['stype'];
+      $fileName = $buid.substr(time(),4).'_'.$_POST['stype'];
       return $fileName.'.'.$this->fileType; 
     }
   
@@ -240,7 +241,7 @@
   }
 
 
-
+include_once("includes/global.php");
    $up = new fileupload;
     //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
     if(!empty($_POST['fileurl'])) {
@@ -253,7 +254,8 @@
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
     if($up -> upload("file")) {
         //获取上传后文件名子
-       echo json_encode(array("key"=> $up->path.$up->getFileName()));exit;
+      $imgUrl = '/'.$up->path.$up->getFileName();
+       echo json_encode(array("key"=> $imgUrl));exit;
     } else {
         echo '<pre>';
         //获取上传失败以后的错误提示

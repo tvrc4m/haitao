@@ -22,7 +22,7 @@ if(!empty($_POST)||!empty($_GET['deid'])||!empty($_GET['rec']))
 //---------------------登录检查,个人或企业会员
 $admin->is_login($action);
 $is_company=$admin->check_myshop();
-
+if(!empty($_GET['oldUrl']))$tpl->assign('oldUrl',$_GET['oldUrl']);
 /*--邮箱验证--*/
 include_once("module/member/includes/plugin_member_class.php");
 $member = new member();
@@ -345,6 +345,7 @@ else
 
         }
 	//}
+	
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
     if(isset($_GET['disp']) && $_GET['disp'] == 1) {
         $tpl->display('withdrawals.htm');

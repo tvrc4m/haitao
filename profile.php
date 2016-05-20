@@ -11,6 +11,8 @@ if(!empty($buid)) {
 }else{
     $num = 0;
 }
+
+$tpl->assign('oldUlr','https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 $tpl->assign("verify",$num);
 include_once("footer.php");
 	$tpl->display('profile.htm');
