@@ -60,7 +60,6 @@ function handleFiles (files, stype,rename) {
     }
 }
 
-
 /*$('#input').on('change', function (e) {
     var stype = $(this).attr('stype');
     var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
