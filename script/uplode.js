@@ -20,20 +20,24 @@ function sendFile (f) {
         data: f,
         success: function (e) {
             msg = JSON.parse(e);
-            $("input[data-id="+a+"]").attr("value" ,msg.key);
-            $("input[data-id="+a+"]").next().attr("src", msg.key);
+            $("input[data-id="+a+"]").attr("value",msg.key);
+            $("input[data-id="+a+"]").next().attr("src", '../'+msg.key);
         },
         error: function (e) {
         }
     });
 }
 function handleFiles (files, stype,rename) {
+    var tim = new Date();
+    var day = tim.getMonth()+1;
+    day = day < 10 ? '0' + day : day;
     for (var i = 0; i < files.length; i++) {
         var fd = new FormData();
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
             fd.append('stype', stype)
             fd.append('rename', rename)
+            fd.append('fileurl', "uploadfile/real/"+ day + "/")
             sendFile(fd);
             break;
         }
@@ -46,7 +50,7 @@ function handleFiles (files, stype,rename) {
     handleFiles(fs,stype);
 })*/
 $(function(){
-    $('.input').bind('change', function (e) {
+    $('.input').on('change', function (e) {
         var stype = $(this).attr('stype');
         var rename = $(this).attr('rename');
         var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
