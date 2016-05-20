@@ -20,21 +20,14 @@ function sendFile (f) {
         data: f,
         success: function (e) {
             msg = JSON.parse(e);
-            if(msg.key.indexOf("front") > 0){
-                $("input[data-id='img1']").attr("value",msg.key);
-                $("input[data-id='img1']").next().attr("src", '../'+msg.key);
-
-            }else{
-                $("input[data-id='img2']").attr("value",msg.key);
-                $("input[data-id='img2']").next().attr("src", '../'+msg.key);
-
-            }
+            $("input[data-id="+a+"]").attr("value",msg.key);
+            $("input[data-id="+a+"]").next().attr("src", '../'+msg.key);
         },
         error: function (e) {
         }
     });
 }
-function handleFiles (files, stype) {
+function handleFiles (files, stype,rename) {
     var tim = new Date();
     var day = tim.getMonth()+1;
     day = day < 10 ? '0' + day : day;
@@ -43,6 +36,7 @@ function handleFiles (files, stype) {
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
             fd.append('stype', stype)
+            fd.append('rename', rename)
             fd.append('fileurl', "uploadfile/real/"+ day + "/")
             sendFile(fd);
             break;
@@ -59,29 +53,30 @@ function handleFiles (files, stype) {
 $(function(){
     $('.input').on('change', function (e) {
         var stype = $(this).attr('stype');
+        var rename = $(this).attr('rename');
         var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
-        handleFiles(fs,stype);
+        handleFiles(fs,stype,rename);
     })
 
-
-    $('.drag').on('click', function (e) {
+    $('.drag').bind('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
         $(this).parent().find("input").trigger('click');
+        a=$(this).attr("data-id");
     });
 
 
-    $('.drag').on('dragenter', function(e) {
+    $('.drag').bind('dragenter', function(e) {
         e.stopPropagation();
         e.preventDefault();
     });
 
-    $('.drag').on('dragover', function(e) {
+    $('.drag').bind('dragover', function(e) {
         e.stopPropagation();
         e.preventDefault();
     });
 
-    $('.drag').on('drop', function(e) {
+    $('.drag').bind('drop', function(e) {
         e.stopPropagation();
         e.preventDefault();
         var a = e.originalEvent;

@@ -1,6 +1,6 @@
 @charset "utf-8";
 .header{background:-moz-linear-gradient(center top,#FFF,#EEE) repeat #EEE;}
-.input{visibility: hidden;!important}
+.input{display: none!important;}
 .logo{text-align:center;padding:25px 0 30px;}
 .search{text-align:center;height:38px;} 
 .search input[type="text"]{border:solid 1px #E4E4E4;border-radius:5px 0 0 5px;width:265px;color:#333;font-size:16px;height:36px;background:#FFF;padding-left:8px;line-height:30px;}

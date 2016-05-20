@@ -2,7 +2,8 @@
 <script src="script/my_lightbox.js" language="javascript"></script>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/district.js" ></script>
 <link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type=text/javascript></script>
+<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type=text/javascript></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/uplode.js"></script>
 <script>
 var weburl="<{$config.weburl}>";
 function chk()
@@ -113,8 +114,13 @@ function msgs(id,msg)
               </div>
 			  <div class="form1">
                <p><input name="old_logo" type="hidden" value="<{$de.logo}>" /></p>
-               <p style="width:95%;text-align:left;position:relative;"><input name="logo" type="text" id="logo" value="<{$de.logo}>"  class="text icon4" style="width:100%" placeholder="店铺logo"/><span class="text_line"></span><a class="upload-button upload-button-test" href="javascript:uploadfile('Style images','logo',300,300,'shop');"><{$lang.upload}></a> </p>
-               <p style="width:95%;text-align:left;position:relative;"><input name="wap_bannar" type="text" id="wap_bannar" value="<{$de.wap_bannar}>"  class="text icon5" style="width:100%;" placeholder="店铺banner"/><span class="text_line"></span><a class="upload-button upload-button-test" href="javascript:uploadfile('Style images','wap_bannar',640,250,'shop');"><{$lang.upload}></a></p>
+               <!-- <p style="width:95%;text-align:left;position:relative;"><input name="logo" type="text" id="logo" value="<{$de.logo}>"  class="text icon4" style="width:100%" placeholder="店铺logo"/><span class="text_line"></span><a class="upload-button upload-button-test" href="javascript:uploadfile('Style images','logo',300,300,'shop');"><{$lang.upload}></a> </p> -->
+               <p style="width:95%;text-align:left;position:relative;">
+               		<input class="input" multiple="multiple" type="file"  accept="image/*" stype="front" rename="2">
+                    <input type="hidden" data-id="3" name="logo">
+	               	<input data-id="3" name="wap_bannar" type="text" id="wap_bannar" value="<{$de.wap_bannar}>"  class="text icon5" style="width:100%;" placeholder="店铺banner"/>
+	               	<span class="text_line"></span>
+	               <a class="upload-button upload-button-test drag" data-id="3" href="javascript:void(0);"><{$lang.upload}></a></p>
                <p style="width:95%;text-align:left;">
                 <input type="hidden" name="t" id="t" value="<{$de.area}>" />
                 <input type="hidden" name="province" id="id_1" value="<{$de.provinceid}>" />

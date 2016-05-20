@@ -34,7 +34,7 @@ function sendFile (f) {
         }
     });
 }
-function handleFiles (files, stype) {
+function handleFiles (files, stype,rename) {
     var tim = new Date();
     var day = tim.getMonth()+1;
     day = day < 10 ? '0' + day : day;
@@ -43,6 +43,7 @@ function handleFiles (files, stype) {
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
             fd.append('stype', stype)
+            fd.append('rename', rename)
             fd.append('fileurl', "uploadfile/real/"+ day + "/")
             sendFile(fd);
             break;
@@ -59,8 +60,9 @@ function handleFiles (files, stype) {
 
 $('.input').on('change', function (e) {
     var stype = $(this).attr('stype');
+    var rename = $(this).attr('rename');
     var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
-    handleFiles(fs,stype);
+    handleFiles(fs,stype,rename);
 })
 
 
