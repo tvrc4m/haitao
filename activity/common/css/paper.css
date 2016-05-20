@@ -1,0 +1,191 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+form,fieldset,input,textarea,p,blockquote,th,td,section,canvas {padding: 0;margin: 0;}
+li{ list-style: none;}
+html,body {font-size: 22px;font-family: 'Microsoft YaHei', Arial;overflow: hidden; width: 100%; height: 100%;background: #000;-webkit-touch-callout:none; /* 禁用长触弹出的下载图片菜单 */
+ -webkit-user-select:none; /* 禁用长触选择文字等功能 */}
+.hide{ display: none;}
+.hide2{ display: none; opacity: 0;}
+.doshake{-webkit-animation:shake-rotate 1.2s infinite linear;animation:shake-rotate 1.2s infinite linear;}
+.main{ width: 100%; height: 100%;position: absolute; overflow: hidden;}
+.page{ width: 100%; height: 100%;  position: absolute; }
+.page>div{ position: absolute; overflow: hidden; width: 100%; height: 100%; background-repeat: no-repeat; background-position: center center;}
+.page1_1{ position: fixed;top: 25px;right: 15px;z-index: 111}
+.page1_6{ position: fixed;bottom: 30px;right: 0px;z-index: 111}
+.page1_8{ position: fixed;bottom: 30px;left: 25px;z-index: 111}
+.page1_6s{ bottom: 10px;}
+.page1_8s{ bottom: 10px;}
+.page1_6ss{ bottom: 0px;}
+.page1_8ss{ bottom: 0px;}
+.page .page1{background-image: url("../images/paper/pg1.jpg");  background-position: center center;}
+.page1>div{ position: absolute; top: 50%; left: 50%;}
+.page1_0_0{ margin: -90px 0 0 -250px;}
+.page1_5_huoqu{margin: -90px 0 0 -250px;text-align: center;}
+.page1_5_huoqu img{margin: 3px 0px;}
+.page5_0_0{ margin: -90px 0 0 -250px;}
+.page5_0_1{ margin: -90px 0 0 -81px;}
+.page5_0_2{ margin: -90px 0 0 88px;}
+.page5_0_3{ margin: 49px 0 0 88px;}
+.page5_0_4{ margin: 189px 0 0 88px;}
+.page5_0_5{ margin: 189px 0 0 -81px;}
+.page5_0_6{ margin: 189px 0 0 -250px;}
+.page5_0_7{ margin: 49px 0 0 -250px;}
+/*.page1_1{ margin: -505px 0 0 178px}*/
+.page1_2{ margin: -547px 0 0 -215px;}
+.page1_2s{margin: -509px 0 0 -215px;}
+.page1_2ss{margin: -480px 0 0 -215px;}
+.page_color{color: #ff5c5c;}
+.page1_3{ margin: -208px 0 0 -150px}
+.page1_4{ margin: -209px 0 0 -38px;color: #fff;font-size: 28px;}
+.page1_4 span{font-size: 38px;color: #ffe822;display: inline-block;
+    margin: 0 5px;vertical-align: -4px;}
+.page1_3s{ margin: -192px 0 0 -150px}
+.page1_4s{ margin: -192px 0 0 -38px;color: #fff;font-size: 28px;}
+.page1_3ss{ margin: -180px 0 0 -150px}
+.page1_4ss{ margin: -180px 0 0 -38px;color: #fff;font-size: 28px;}
+.page1_5{ margin: -122px 0 0 -282px;}
+/*.page1_6{ margin: 422px 0 0 239px;}*/
+.page1_7{ margin: 390px 0 0 -172px;}
+.page1_7 ul li{ color: #fff;font-size: 24px;}
+.page1_5_zs{text-align: center;}
+.page1_5_zs img{margin: 3px 0px;}
+.page1_5_0,.page1_5_z0{ margin: -90px 0 0 -250px;}
+.page1_5_1,.page1_5_z1{ margin: -90px 0 0 -81px;}
+.page1_5_2,.page1_5_z2{ margin: -90px 0 0 88px;}
+.page1_5_3,.page1_5_z3{ margin: 49px 0 0 88px;}
+.page1_5_4,.page1_5_z4{ margin: 189px 0 0 88px;}
+.page1_5_5,.page1_5_z5{ margin: 189px 0 0 -81px;}
+.page1_5_6,.page1_5_z6{ margin: 189px 0 0 -250px;}
+.page1_5_7,.page1_5_z7{ margin: 49px 0 0 -250px;}
+.page1_5_9{ margin: 49px 0 0 -81px;}
+.page1_5_14{ margin: 264px 0 0 -198px;}
+.page1_5_15{ margin: 254px 0 0 -32px;width:60px;height:60px;color:#740207;font-size:44px;text-align: center;line-height: 60px;}
+.am-dialog-mask {position: fixed;top: 0;left: 0;z-index: 200;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);display: none;}
+.am-dialog-mask-test {display: block;}
+.page1_9{display: none; position: absolute;top: 30%;z-index: 210;left: 50%;margin-left: -247.5px;width: 495px;background-color: #ffd100;border-radius: 10px;text-align: center;font-size: 22px;}
+.pag_test{margin-bottom: 10px;font-size:28px;}
+.pag_img{margin: 20px 0;}
+.btn_img{margin-left: 450px;margin-top: -20px;}
+.pag_btn{width: 100%;height: 70px;line-height: 70px;background-color: #c90000;display: inline-block;color: #FFF;text-decoration: none;font-size: 28px;    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;}
+.pag_test span{color: #ff003c;font-weight: bold;}
+/*音乐按钮*/
+.musicicon{ background: url("../images/musicicon.png") no-repeat; width: 42px; height: 43px; position: absolute; top: 20px; right: 20px;}
+/*按钮旋转*/
+.musicrotate{-webkit-animation: xuanzhuan 5s infinite linear; animation: xuanzhuan 5s infinite linear;}
+@keyframes xuanzhuan {
+    0% { transform: rotate(0deg)}
+    100% { transform: rotate(360deg)}
+}
+@-webkit-keyframes xuanzhuan {
+    0% { -webkit-transform: rotate(0deg)}
+    100% { -webkit-transform: rotate(360deg)}
+}
+/*按钮旋转*/
+@keyframes guideTop {
+    0% {
+        transform: translateY(0px);
+        opacity: 1
+    }
+
+    60% {
+        transform: translateY(-20px);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateY(-40px);
+        opacity: 1
+    }
+}
+@-webkit-keyframes guideTop {
+    0% {
+        -webkit-transform: translateY(0px);
+        opacity: 1
+    }
+
+    60% {
+        -webkit-transform: translateY(-20px);
+        opacity: 1
+    }
+
+    100% {
+        -webkit-transform: translateY(-40px);
+        opacity: 1
+    }
+}
+
+/*摇晃*/
+@-webkit-keyframes shake-rotate {
+    0% {
+        -webkit-transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    4% {
+        -webkit-transform: translate(0px, 0px) rotate(30deg);
+    }
+
+    8% {
+        -webkit-transform: translate(0px, 0px) rotate(-30deg);
+    }
+
+    12% {
+        -webkit-transform: translate(0px, 0px) rotate(30deg);
+    }
+
+    16% {
+        -webkit-transform: translate(0px, 0px) rotate(-30deg);
+    }
+
+    20% {
+        -webkit-transform: translate(0px, 0px) rotate(30deg);
+    }
+
+    24% {
+        -webkit-transform: translate(0px, 0px) rotate(-30deg);
+    }
+
+    28% {
+        -webkit-transform: translate(0px, 0px) rotate(0deg);
+    }
+
+}
+@keyframes shake-rotate {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    4% {
+        transform: translate(0px, 0px) rotate(30deg);
+    }
+
+    8% {
+        transform: translate(0px, 0px) rotate(-30deg);
+    }
+
+    12% {
+        transform: translate(0px, 0px) rotate(30deg);
+    }
+
+    16% {
+        transform: translate(0px, 0px) rotate(-30deg);
+    }
+
+    20% {
+        transform: translate(0px, 0px) rotate(30deg);
+    }
+
+    24% {
+        transform: translate(0px, 0px) rotate(-30deg);
+    }
+
+    28% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+}
+@media screen and  (width: 320px) {
+    .page1_2 {
+        margin: -508px 0 0 -215px;
+    }
+}
