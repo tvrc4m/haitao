@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.20, created on 2016-05-20 11:54:46
-=======
 <?php /* Smarty version 2.6.20, created on 2016-05-20 12:00:31
->>>>>>> 0d00edd1955b7ae784f1fa8f7423d794462b29f6
          compiled from edit_name.htm */ ?>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
@@ -114,4 +110,4 @@ window.onload=function(){
     </div>
 </div>
 <script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="script/uplode.js"></script>
+<script type="text/javascript" src="script/uplode.js"></script>
