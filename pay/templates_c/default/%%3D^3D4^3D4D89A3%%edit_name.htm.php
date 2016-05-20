@@ -110,4 +110,4 @@ window.onload=function(){
     </div>
 </div>
 <script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="script/uplode.js"></script>
+<script type="text/javascript" src="script/uplode.js"></script>

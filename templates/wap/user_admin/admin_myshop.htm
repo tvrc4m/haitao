@@ -1,8 +1,8 @@
+<link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
+<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script src="script/my_lightbox.js" language="javascript"></script>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/district.js" ></script>
-<link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type=text/javascript></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/uplode.js"></script>
 <script>
 var weburl="<{$config.weburl}>";
@@ -116,7 +116,7 @@ function msgs(id,msg)
                <p><input name="old_logo" type="hidden" value="<{$de.logo}>" /></p>
                <!-- <p style="width:95%;text-align:left;position:relative;"><input name="logo" type="text" id="logo" value="<{$de.logo}>"  class="text icon4" style="width:100%" placeholder="店铺logo"/><span class="text_line"></span><a class="upload-button upload-button-test" href="javascript:uploadfile('Style images','logo',300,300,'shop');"><{$lang.upload}></a> </p> -->
                <p style="width:95%;text-align:left;position:relative;">
-               		<input class="input" multiple="multiple" type="file"  accept="image/*" stype="front" rename="2">
+               		<input class="input" multiple="multiple" type="file" stype="front" rename="2">
                     <input type="hidden" data-id="3" name="logo">
 	               	<input data-id="3" name="wap_bannar" type="text" id="wap_bannar" value="<{$de.wap_bannar}>"  class="text icon5" style="width:100%;" placeholder="店铺banner"/>
 	               	<span class="text_line"></span>
@@ -130,7 +130,7 @@ function msgs(id,msg)
                 <{if $de.area}><input disabled type="text" value="<{$de.area}>" style="width:80%;" class="inp_hide"/><a class="upload-button" href="javascript:sd();"><img src="image/default/user_admin/edit.png" width="18"/> 编辑</a><{/if}>
                 <div id="d_2" <{if $de.area}>class="hidden"<{/if}>>
 	                <select id="select_1" onChange="district(this);" style="width:95%;margin-bottom:15px;" class="select1 select-common">
-	                <option value="">所在地区（必填）</option>
+	                <option value="" id="option">所在地区（必填）</option>
 	                <img src="/image/wap/wap_haitao_icon42.png">
 	                <{$prov}>
 	                </select>
