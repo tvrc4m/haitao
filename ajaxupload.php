@@ -219,9 +219,14 @@
     private function proRandName() {
       global $buid;
       switch($this -> israndname){
-        case 1: $fileName = date('YmdHis')."_".rand(100,999); break; //随机名
-        case 2: $fileName = $buid.substr(time(),4).'_'.$_POST['stype']; break;  //身份证
-        case 3: $fileName = time(); break;  //用户头像
+        case 1: $fileName = date('YmdHis')."_".rand(100,999);
+            break; //随机名
+        case 2: $fileName = $buid.substr(time(),4).'_'.$_POST['stype'];
+                $this->path = 'uploadfile/real/'.date("Ymd").'/';
+            break;  //身份证
+        case 3: $fileName = time();
+                $this->path = 'uploadfile/member/'.date("Ymd").'/';
+            break;  //用户头像
       }
       //$fileName = date('YmdHis')."_".rand(100,999);
       //$fileName = $buid.substr(time(),4).'_'.$_POST['stype'];
@@ -247,11 +252,9 @@
 
 
 include_once("includes/global.php");
-   $up = new fileupload;
+    $up = new fileupload;
     //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
-    if(!empty($_POST['fileurl'])) {
-      $up->set("path", $_POST['fileurl']);
-    }
+
     $up -> set("maxsize", 2000000);
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
     $up -> set("israndname", $_POST['rename']);
@@ -259,7 +262,7 @@ include_once("includes/global.php");
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
     if($up -> upload("file")) {
         //获取上传后文件名子
-      $imgUrl = '/'.$up->path.$up->getFileName();
+      $imgUrl = $up->path.$up->getFileName();
        echo json_encode(array("key"=> $imgUrl));exit;
     } else {
         echo '<pre>';
