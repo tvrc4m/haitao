@@ -10,9 +10,6 @@ $(function(){
 			name:{
 				required:true
 			},
-            input:{
-                required:false
-            },
             oldpass:{
                 required:true
             },
@@ -298,9 +295,9 @@ $(function(){
                 <dt>当前头像：</dt>
                 <dd>
                <div>
-                <input type="hidden" data-id="1" name="loge" value="<{$de.logo}>">
+                <input type="hidden" data-id="1" name="logo" value="<{$de.logo}>">
                 <img data-id="1" class="drag" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>" height="120" width="120" /></p>
-                <input class="input"  multiple="multiple" type="file" accept="image/*" rename="3" style="visibility: hidden;">
+                <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                 </div>
                 <!-- <p><input class="text w184 drag" type="text" > <a class="upload-button drag"><{$lang.upload}></a></p> -->
                 </dd>
