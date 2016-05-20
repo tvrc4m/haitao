@@ -51,7 +51,7 @@ function handleFiles (files, stype,rename) {
     handleFiles(fs,stype);
 })*/
 $(function(){
-    $('.input').on('change', function (e) {
+    $('.input').bind('change', function (e) {
         var stype = $(this).attr('stype');
         var rename = $(this).attr('rename');
         var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;

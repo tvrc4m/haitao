@@ -42,7 +42,7 @@ function change_district(value){
 			}
 			var str="";
 			$('#id_'+valarray[1]).val(valarray[0]);
-			$.each($('option[value='+value+']'),function(i){
+			$.each($("option[value='"+value+"']"),function(i){
 				$(this).attr('class','classClick');
 			});
 			$.each($('option[class="classClick"]'),function(i){
@@ -76,7 +76,8 @@ function change_district(value){
 		$('#select_'+class_div_id).append(a);
 		$('#select_'+class_div_id).nextAll('select').empty();
 		var str="";
-		$.each($('option[value='+value+']'),function(i){
+		// console.log($("option[value="+value+"]"))
+		$.each($("option[value='"+value+"']"),function(i){
 			$(this).attr('class','classClick');
 		});
 		$.each($('option[class="classClick"]'),function(i){
@@ -84,6 +85,6 @@ function change_district(value){
 		});
 		str=str.substring(0,str.length-1);
 		$('#t').val(str);
-			
+		console.log(str)			
 	}
 }
