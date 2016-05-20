@@ -178,6 +178,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .member_info ul li.yes a{color:#336699;}
 .member_info ul li a strong{margin:0 1px 0 2px;}
 .haitao_user{padding: 32px;float: left;}
+.haitao_user .pic{height: 125px;overflow: hidden;}
 /*.haitao_user2{padding-top: 32px;}*/
 /*--sns--*/
 /*.weibo{clear:both;font-size:12px;position:relative;width: 723px;}*/
@@ -236,7 +237,7 @@ body{/*background:url(../../../image/default/user_admin/buyer_bg.jpg) repeat-x c
 .friendtrace{margin-top:20px;width: 723px;margin-right: auto;margin-left: auto;} 
 .sns-item{border-bottom:1px solid #ccc;clear:both;overflow:hidden;padding-bottom:20px;padding-top:22px;position:relative;}
 .sns-item .sns-wrap a, .sns-item .sns-wrap a:hover{color:#555;}
-.sns-item .sns-avatar{border:1px solid #F3F3F3;margin-top:3px;float:left;height:60px;width:60px;border-radius:10px;}
+.sns-item .sns-avatar{border:1px solid #F3F3F3;margin-top:3px;float:left;height:60px;width:60px;border-radius:10px;overflow: hidden;}
 .sns-item .sns-avatar img{border-radius:4px;}
 .sns-item .sns-wrap{font-size:14px;margin-left:80px;}
 .sns-item .sns-wrap p{width:100%;margin-bottom:7px;display:inline-block;word-break:break-all;word-wrap:break-word;}
