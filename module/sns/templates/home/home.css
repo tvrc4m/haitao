@@ -101,9 +101,9 @@ input[type="text"]:focus{background-color:#FFFFFF;border-color:#CCCCCC;box-shado
 .visitors h4 em{line-height:40px;font-size: 18px;}
 .visitors ul{}
 .visitors ul li{float:left;border-top: 1px dashed #ccc;width: 162px;padding: 20px;}
-.visitor_pic{background-color:#FFFFFF;border:1px solid #E2E2E2;border-radius:4px 4px 4px 4px;height:60px;width:60px;float: left;}
+.visitor_pic{background-color:#FFFFFF;float: left;overflow: hidden;}
 .visitor_pic_rt{float: right;}
-.visitor_pic img{border-radius:4px 4px 4px 4px;}
+.visitor_pic img{border-radius:50%;height: 60px;width: 60px;}
 .visitor_name{display:block;height:25px;line-height:25px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:80px;font-size:14px;margin-top: 5px;}
 .visitor_name a{color: #999;}
 .visitor_time{color:#999999;font-size:14px;line-height:18px;}

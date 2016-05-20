@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-19 17:27:18
+<?php /* Smarty version 2.6.20, created on 2016-05-19 17:40:02
          compiled from edit_name.htm */ ?>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
