@@ -2,14 +2,14 @@
 include_once("$config[webroot]/module/member/includes/plugin_member_class.php");
 $member=new member();
 //===================================================================
-
+$oldUrl = !empty($_POST['oldurl'])?'&oldUrl='.$_POST['oldurl']:'';
 if($_POST['submit']=='edit')
 {	
 	$member->update_member($_POST['uid']);
     if($_GET['from_register']){
         $admin->msg("$config[weburl]");
     }else{
-        $admin->msg("main.php?m=member&s=admin_member");
+        $admin->msg("main.php?m=member&s=admin_member$oldUrl");
     }
 }
 if($_POST['submit']=='password')
@@ -30,7 +30,7 @@ if($_POST['submit']=='email')
 	{
 		$sql = "UPDATE ".MEMBER." SET email='".$_POST['email']."' , email_verify='1' WHERE userid='$buid'";
 		$re = $db->query($sql);
-		$admin->msg("main.php?m=member&s=admin_member");
+		$admin->msg("main.php?m=member&s=admin_member$oldUrl");
 	}
 	else
 	{
@@ -43,7 +43,7 @@ if($_POST['submit']=='mobile')
 	{
 		$sql = "UPDATE ".MEMBER." SET mobile ='".$_POST['mobile']."' , mobile_verify='1' WHERE userid='$buid'";
 		$re = $db->query($sql);
-		$admin->msg("main.php?m=member&s=admin_member");
+		$admin->msg("main.php?m=member&s=admin_member$oldUrl");
 	}
 	else
 	{

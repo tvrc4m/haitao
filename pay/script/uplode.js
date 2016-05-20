@@ -21,12 +21,12 @@ function sendFile (f) {
         success: function (e) {
             msg = JSON.parse(e);
             if(msg.key.indexOf("front") > 0){
-                $("input[stype='front']").attr("value",msg.key);
-                $("input[stype='front']").next().attr("src", '../'+msg.key);
+                $("input[data-id='img1']").attr("value",msg.key);
+                $("input[data-id='img1']").next().attr("src", '../'+msg.key);
 
             }else{
-                $("input[stype='back']").attr("value",msg.key);
-                $("input[stype='back']").next().attr("src", '../'+msg.key);
+                $("input[data-id='img2']").attr("value",msg.key);
+                $("input[data-id='img2']").next().attr("src", '../'+msg.key);
 
             }
         },
@@ -35,11 +35,15 @@ function sendFile (f) {
     });
 }
 function handleFiles (files, stype) {
+    var tim = new Date();
+    var day = tim.getMonth()+1;
+    day = day < 10 ? '0' + day : day;
     for (var i = 0; i < files.length; i++) {
         var fd = new FormData();
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
             fd.append('stype', stype)
+            fd.append('fileurl', "uploadfile/real/"+ day + "/")
             sendFile(fd);
             break;
         }

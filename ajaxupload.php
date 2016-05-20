@@ -4,10 +4,10 @@
     本类的实例对象用于处理上传文件，可以上传一个文件，也可同时处理多个文件上传
   */
   class FileUpload { 
-    public $path = "./uploads";          //上传文件保存的路径
+    public $path = "./uploadfile";          //上传文件保存的路径
     private $allowtype = array('jpg','gif','png'); //设置限制上传文件的类型
     private $maxsize = 1000000;           //限制文件上传大小（字节）
-    private $israndname = true;           //设置是否随机重命名文件， false不随机
+    private $israndname = 1;           //设置是否随机重命名文件， false不随机
   
     private $originName;              //源文件名
     private $tmpFileName;              //临时文件名
@@ -216,9 +216,15 @@
     }
   
     /* 设置随机文件名 */
-    private function proRandName() {    
+    private function proRandName() {
+      global $buid;
+      switch($this -> israndname){
+        case 1: $fileName = date('YmdHis')."_".rand(100,999); break; //随机名
+        case 2: $fileName = $buid.substr(time(),4).'_'.$_POST['stype']; break;  //身份证
+        case 3: $fileName = time(); break;  //用户头像
+      }
       //$fileName = date('YmdHis')."_".rand(100,999);
-      $fileName = $_COOKIE['userid'].substr(time(),4).'_'.$_POST['stype'];
+      //$fileName = $buid.substr(time(),4).'_'.$_POST['stype'];
       return $fileName.'.'.$this->fileType; 
     }
   
@@ -240,18 +246,21 @@
   }
 
 
-
+include_once("includes/global.php");
    $up = new fileupload;
     //设置属性(上传的位置， 大小， 类型， 名是是否要随机生成)
-    $up -> set("path", "uploadfile/real/".date("m")."/");
+    if(!empty($_POST['fileurl'])) {
+      $up->set("path", $_POST['fileurl']);
+    }
     $up -> set("maxsize", 2000000);
     $up -> set("allowtype", array("gif", "png", "jpg","jpeg"));
-    $up -> set("israndname", true);
+    $up -> set("israndname", $_POST['rename']);
   
     //使用对象中的upload方法， 就可以上传文件， 方法需要传一个上传表单的名子 pic, 如果成功返回true, 失败返回false
     if($up -> upload("file")) {
         //获取上传后文件名子
-       echo json_encode(array("key"=> $up->path.$up->getFileName()));exit;
+      $imgUrl = '/'.$up->path.$up->getFileName();
+       echo json_encode(array("key"=> $imgUrl));exit;
     } else {
         echo '<pre>';
         //获取上传失败以后的错误提示

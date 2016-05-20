@@ -25,3 +25,8 @@ input[type="submit"]{background:#ff5c5d;border:0 none;color:#FFFFFF;display:inli
 .logo_shows{margin-right: 2%;}
 .logo_show{width: 49%;float: left;margin-top: 15px;}
 .logo_show img{width:100%;}
+
+/*上传图片*/  
+.input {
+    visibility: hidden;
+}
