@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-19 18:02:28
+<?php /* Smarty version 2.6.20, created on 2016-05-19 19:50:34
          compiled from edit_name.htm */ ?>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
@@ -89,13 +89,13 @@ window.onload=function(){
             <dd>
                 <div class="uplode" >
                     <input class="input" multiple="multiple" type="file"  accept="image/*" stype="front">
-                    <input type="hidden" name="img1">
+                    <input type="hidden" data-id="img1" name="img1">
                     <img class="drag" height="200" width="200"  src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon9.png">
                 </div>
                 <div class="uplode">
                     <input class="input" multiple="multiple" type="file" accept="image/*" stype="back">
-                    <input type="hidden" name="img2">
+                    <input type="hidden" data-id="img2" name="img2">
                     <img class="drag" height="200" width="200" src="<?php echo $this->_tpl_vars['config']['weburl']; ?>
 /pay/templates/default/image/icon8.png">
                 </div>

@@ -20,6 +20,7 @@ function sendFile (f) {
         data: f,
         success: function (e) {
             msg = JSON.parse(e);
+            console.log(msg)
             if(msg.key.indexOf("front") > 0){
                 $("input[data-id='img1']").attr("value",msg.key);
                 $("input[data-id='img1']").next().attr("src", '../'+msg.key);
@@ -57,31 +58,31 @@ function handleFiles (files, stype) {
     handleFiles(fs,stype);
 })*/
 $(function(){
-    $('.input').on('change', function (e) {
+    $('.input').bind('change', function (e) {
         var stype = $(this).attr('stype');
         var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
         handleFiles(fs,stype);
     })
 
 
-    $('.drag').on('click', function (e) {
+    $('.drag').bind('click', function (e) {
         e.stopPropagation();
         e.preventDefault();
         $(this).parent().find("input").trigger('click');
     });
 
 
-    $('.drag').on('dragenter', function(e) {
+    $('.drag').bind('dragenter', function(e) {
         e.stopPropagation();
         e.preventDefault();
     });
 
-    $('.drag').on('dragover', function(e) {
+    $('.drag').bind('dragover', function(e) {
         e.stopPropagation();
         e.preventDefault();
     });
 
-    $('.drag').on('drop', function(e) {
+    $('.drag').bind('drop', function(e) {
         e.stopPropagation();
         e.preventDefault();
         var a = e.originalEvent;
