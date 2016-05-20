@@ -51,8 +51,7 @@ class logistic{
         $data['orderId'] = $this->_order_id;
         $data['logistics_name'] = $this->_logistics_name;
         $data['logistics_id'] = $this->_logistics_id;
-
-        self::cacheLog('gaofei_orider',$data,'api\/');die;
+        self::cacheLog('gaofei_orider',$data,'api\/');
         return self::status('00000');
     }
 
@@ -96,32 +95,41 @@ class logistic{
      * */
     public function cacheLog($key='',$value='',$path=''){
         global $config;
+        $datas = array();
+        $datas['time']=$this->_times;
+        $datas['list'][]=$value;
 
-        $data =json_encode($value);
         $filename = $config['webroot'].'\/'.$path.$key.self::EXT;
         $con = file_get_contents($filename);
-        if(file_get_contents($filename))echo 111;else echo 22;die;
+        if($con){
+            $datas = json_decode($con,true);
+            array_push($datas['list'],$value);
+        }
+        $data =json_encode($datas);
         if($data !== ''){
             $dir = dirname($filename);
             if(!is_dir($dir)){
                 mkdir($dir,0777);
             }
-            return file_put_contents($filename,$data,FILE_APPEND);
+            return file_put_contents($filename,$data);
         }
 
     }
 
 }
 include_once ("../includes/global.php");
-$order_id = '160314030842001';
+
+var_dump($_POST);die;
+/*$order_id = '160314030842001';
 $logistics_name = '中通';
 $logistics_id = '22222222';
 $time = '33333333';
 //$sign = 'aaaaaaaaaaaa';
-$sign = '373b63998f93eefb69d54fce26e8c806';
-$ob = new logistic($order_id,$logistics_name,$logistics_id,$time,$sign);
-var_dump($ob->index());
-
+$sign = '373b63998f93eefb69d54fce26e8c806';*/
+if(!empty($_POST)){
+$ob = new logistic($_POST['order_id'],$_POST['logistics_name'],$_POST['logistics_id'],$_POST['time'],$post['sign']);
+echo $ob->index();
+}
 /*
  * 订单不能为空！   10001
  * 物流公司名称不能为空！   10002
