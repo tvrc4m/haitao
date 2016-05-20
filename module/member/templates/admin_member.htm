@@ -1,4 +1,4 @@
-<script src="script/my_lightbox.js" language="javascript"></script>
+<script src="script/uplode.js" language="javascript"></script>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/district.js" ></script>
 <script>
 $(function(){
@@ -10,6 +10,9 @@ $(function(){
 			name:{
 				required:true
 			},
+            input:{
+                required:false
+            },
             oldpass:{
                 required:true
             },
@@ -272,7 +275,7 @@ $(function(){
         </div>
         <{else}>
         <div class="form-style">
-            <form action="" method="post" name="form" id="form">
+            <form action="" method="post" name="form" id="form" enctype="multipart/form-data">
             <input type="hidden" value="edit" name="submit">
             <h5>亲爱的<span><{$smarty.cookies.USER}></span>，填写真实的资料，有助于好友找到你哦。</h5>
             <dl>
@@ -294,9 +297,12 @@ $(function(){
             <dl>
                 <dt>当前头像：</dt>
                 <dd>
-                <p class="pic" style=" width:120px; height:120px; "><img id="logo_img" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>" height="120" width="120" /></p>
-
-                <p><input class="text w184" name="logo" type="text" id="logo" value="<{$de.logo}>"> <a class="upload-button" href="javascript:uploadfile('LOGO','logo',120,120,'member')"><{$lang.upload}></a></p>
+               <div>
+                <input type="hidden" data-id="1" name="loge" value="<{$de.logo}>">
+                <img data-id="1" class="drag" src="<{if $de.logo}><{$de.logo}><{else}><{$config.weburl}>/image/default/user_admin/default_user_portrait.gif<{/if}>" height="120" width="120" /></p>
+                <input class="input"  multiple="multiple" type="file" accept="image/*" rename="3" style="visibility: hidden;">
+                </div>
+                <!-- <p><input class="text w184 drag" type="text" > <a class="upload-button drag"><{$lang.upload}></a></p> -->
                 </dd>
             </dl>
 
