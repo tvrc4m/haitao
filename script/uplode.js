@@ -20,16 +20,20 @@ function sendFile (f) {
         data: f,
         success: function (e) {
             msg = JSON.parse(e);
-            console.log(msg)
-            if(msg.key.indexOf("front") > 0){
-                $("input[data-id='img1']").attr("value",msg.key);
-                $("input[data-id='img1']").next().attr("src", '../'+msg.key);
+            console.log(a)
+            // if(msg.key.indexOf("front") > 0){
+            //     $("input[data-id='img1']").attr("value",msg.key);
+            //     $("input[data-id='img1']").next().attr("src", '../'+msg.key);
 
-            }else{
-                $("input[data-id='img2']").attr("value",msg.key);
-                $("input[data-id='img2']").next().attr("src", '../'+msg.key);
+            // }else{
+            //     $("input[data-id='img2']").attr("value",msg.key);
+            //     $("input[data-id='img2']").next().attr("src", '../'+msg.key);
 
-            }
+            // }
+            $("input[data-id="+a+"]").attr("value",msg.key);
+            $("input[data-id="+a+"]").next().attr("src", '../'+msg.key);
+
+
         },
         error: function (e) {
         }
@@ -73,6 +77,7 @@ $(function(){
         e.stopPropagation();
         e.preventDefault();
         $(this).parent().find("input").trigger('click');
+        a=$(this).attr("data-id");
     });
 
 
