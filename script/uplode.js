@@ -45,7 +45,9 @@ function handleFiles (files, stype,rename) {
         var fd = new FormData();
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
-            fd.append('stype', stype)
+            if(stype != ''){
+                fd.append('stype', stype)
+            }
             fd.append('rename', rename)
             fd.append('fileurl', "uploadfile/member/"+year+month+day + "/")
             sendFile(fd);
