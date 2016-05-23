@@ -11,9 +11,16 @@ if(!empty($buid)) {
 }else{
     $num = 0;
 }
+$userid = $_COOKIE['userid'];
+if(!empty($userid)) {
+    $sql = "select mobile from mallbuilder_member where userid = $userid";
+    $db->query($sql);
+    $mobile = $db->fetchField('mobile');
+}
 
 $tpl->assign('oldUlr','https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 $tpl->assign("verify",$num);
+$tpl->assign("mobile",$mobile);
 include_once("footer.php");
 	$tpl->display('profile.htm');
 ?>
