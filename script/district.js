@@ -76,7 +76,6 @@ function change_district(value){
 		$('#select_'+class_div_id).append(a);
 		$('#select_'+class_div_id).nextAll('select').empty();
 		var str="";
-		// console.log($("option[value="+value+"]"))
 		$.each($("option[value='"+value+"']"),function(i){
 			$(this).attr('class','classClick');
 		});
@@ -84,7 +83,6 @@ function change_district(value){
 			str+=$(this).text()+" ";
 		});
 		str=str.substring(0,str.length-1);
-		$('#t').val(str);
-		console.log(str)			
+		$('#t').val(str);			
 	}
 }

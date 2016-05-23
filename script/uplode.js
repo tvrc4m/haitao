@@ -20,8 +20,20 @@ function sendFile (f) {
         data: f,
         success: function (e) {
             msg = JSON.parse(e);
-            $("input[data-id="+a+"]").attr("value" ,msg.key);
-            $("input[data-id="+a+"]").next().attr("src", msg.key);
+            console.log(a)
+            // if(msg.key.indexOf("front") > 0){
+            //     $("input[data-id='img1']").attr("value",msg.key);
+            //     $("input[data-id='img1']").next().attr("src", '../'+msg.key);
+
+            // }else{
+            //     $("input[data-id='img2']").attr("value",msg.key);
+            //     $("input[data-id='img2']").next().attr("src", '../'+msg.key);
+
+            // }
+            $("input[data-id="+a+"]").attr("value",msg.key);
+            $("input[data-id="+a+"]").next().attr("src", '../'+msg.key);
+
+
         },
         error: function (e) {
         }
@@ -29,21 +41,24 @@ function sendFile (f) {
 }
 function handleFiles (files, stype,rename) {
     var tim = new Date();
-    var day = tim.getMonth()+1;
-    day = day < 10 ? '0' + day : day;
+    var day = tim.getDate();
+    var year = tim.getFullYear();
+    var month = tim.getMonth()+1;
+    month = month < 10 ? '0' + month : month;
     for (var i = 0; i < files.length; i++) {
         var fd = new FormData();
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
-            fd.append('stype', stype)
+            if(stype != ''){
+                fd.append('stype', stype)
+            }
             fd.append('rename', rename)
-            fd.append('fileurl', "uploadfile/real/"+ day + "/")
+            fd.append('fileurl', "uploadfile/member/"+year+month+day + "/")
             sendFile(fd);
             break;
         }
     }
 }
-
 
 /*$('#input').on('change', function (e) {
     var stype = $(this).attr('stype');
@@ -57,6 +72,7 @@ $(function(){
         var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
         handleFiles(fs,stype,rename);
     })
+
 
     $('.drag').bind('click', function (e) {
         e.stopPropagation();

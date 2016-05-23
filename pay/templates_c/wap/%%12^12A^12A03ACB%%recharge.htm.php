@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-12 16:42:55
+<?php /* Smarty version 2.6.20, created on 2016-05-23 09:25:51
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script type="text/javascript" src="script/jquery-1.4.4.min.js"></script>
@@ -38,7 +38,7 @@
         <fieldset class="d1 <?php if ($this->_tpl_vars['pay']['1']['payment_type'] == 'cards'): ?>fn-hide<?php endif; ?>">
         <dl>
         	<dt>付款金额：</dt>
-            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>Double<?php endif; ?>" placeholder="填写充值金额" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
+            <dd><input type="number" class="text w100 w100_number" name="amount" id="amount" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>Double<?php endif; ?>" placeholder="填写充值金额" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
         </dl>
 		</fieldset>
         <fieldset class="d2 <?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>fn-hide<?php endif; ?>">
