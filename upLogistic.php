@@ -24,6 +24,6 @@ $time = '33333333';
 $sign = 'aaaaaaaaaaaa';
 //$sign = '373b63998f93eefb69d54fce26e8c806';
 $aaa = array ("order_id" => $order_id);
-$tokens = aes("haitao.com/api/gaofei.php",$aaa);
+$tokens = aes("http://haitao.com/api/gaofei.php",$aaa);
 var_dump($tokens);
 ?>

@@ -35,7 +35,7 @@ if ($config['bw'] == "weixin")
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
 }
-$dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['dist_id'];
+$dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['dist_id']."&temp=wap";
 $tpl->assign("dis",$dis);
 $button = isset($_GET['yq'])?1:0;
 $tpl->assign('button',$button);
