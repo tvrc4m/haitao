@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.20, created on 2016-05-20 16:35:05
+         compiled from edit_name.htm */ ?>
+=======
 <?php /* Smarty version 2.6.20, created on 2016-05-20 12:00:31
          compiled from edit_name.htm */ ?>
+>>>>>>> 5f3a9b04d46ad5ed3ce70fc6886c8435195cec08
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .input{visibility: hidden;}

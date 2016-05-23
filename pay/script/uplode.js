@@ -36,15 +36,16 @@ function sendFile (f) {
 }
 function handleFiles (files, stype,rename) {
     var tim = new Date();
-    var day = tim.getMonth()+1;
-    day = day < 10 ? '0' + day : day;
+    var day = tim.getDate();
+    var year = tim.getFullYear();
+    var month = tim.getMonth()+1;
     for (var i = 0; i < files.length; i++) {
         var fd = new FormData();
         if (files[i].type.match('image.*')) {
             fd.append('file', files[i])
             fd.append('stype', stype)
             fd.append('rename', rename)
-            fd.append('fileurl', "uploadfile/real/"+ day + "/")
+            fd.append('fileurl', "uploadfile/real/"+year+month+day + "/")
             sendFile(fd);
             break;
         }
