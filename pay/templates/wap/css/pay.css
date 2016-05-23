@@ -1,4 +1,9 @@
 @charset "utf-8";
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}
 .submit{border:1px solid #F57403;background-color:#ff5c5c;color:#FFF;line-height:22px;height:32px;display:inline-block;*display:inline;text-align:center;vertical-align:middle;font-weight:700;border-radius:5px;*zoom:1;*overflow:visible;}
 .submit:hover{background-color:#FB8318;}
 .text{border-color:#AAAAAA #DDDDDD #DDDDDD #AAAAAA;border-style:solid;border-width:1px;font-family:Tahoma;padding:4px 5px 5px;width:170px;}
@@ -71,6 +76,7 @@ i.fanhui_icon {
 .form dl:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}
 .form dt{font-size:14px;font-weight:normal;margin-top:3px;padding:1px 10px 1px 0;float: left;}
 .form dd .text{color:#000000;padding:5px 10px 4px 0;height:21px;line-height:21px;font-size:14px;margin-top: 3px;border: none;outline: none;}
+.form dd .w100_number{padding:0px 10px 0px 0;}
 .form dd p{line-height:24px;margin-right:10px;padding-top:5px;position:relative;white-space:nowrap;padding-left:20px;}
 .form dd p input[type="radio"]{position:absolute;left:0;}
 .form dd p span{ font-size:14px;}
