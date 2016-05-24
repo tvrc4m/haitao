@@ -19,8 +19,8 @@ function sendFile (f) {
         cache: false,
         data: f,
         success: function (e) {
+            console.log(e)
             msg = JSON.parse(e);
-            console.log(a)
             // if(msg.key.indexOf("front") > 0){
             //     $("input[data-id='img1']").attr("value",msg.key);
             //     $("input[data-id='img1']").next().attr("src", '../'+msg.key);

@@ -3,23 +3,21 @@
 <header>
     <div class="nav-w">
         <section class="nav-s iconfont"><a href="<{$oldUrl}>"> <i class="fanhui_icon"></i></a></section>
-        <section class="nav-c"><span>会员中心</span></section>
+        <section class="nav-c"><span>账户设置</span></section>
         <section class="nav-e"></section>
     </div>
 </header>
 
 <div class="wrap wrap_xin">
-    <div class="form-style">
-        <form action="" method="post" name="form" id="form">
-            <input type="hidden" value="edit" name="submit"/>
-            <input type="hidden"  name="oldurl" value="<{$oldUrl}>"/>
+    <div class="form-style">            
             <div class="sq_logo clearfix">
-                <label>头像</label>
-                <i></i>
-                <a id="logox">
-                <img src="/image/default/user_admin/default_user_portrait.gif">
-                </a>
-                
+                <div class="sq_logo_inner clearfix">
+                    <label>头像</label>
+                    <i></i>
+                    <a id="logox">
+                    <img src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                    </a>
+                </div>             
                <!--  <div class="logo_div">
                     <div class="logo_show">
                         <input class="input" multiple="multiple" type="file"  accept="image/*" stype="" rename="3">
@@ -30,27 +28,33 @@
             </div>
             <div class="sq_list">
                 <ul>
-                    <li class="mforder">
-                        <a href="<{$config.weburl}>/install.php?ip=name">
+                    <li>
+                        <a href="<{$config.weburl}>/install.php">
                         <label>昵称</label><input name='name' type='text' id="name" value="mayi13256487542" class="text" disabled="disabled"><i></i></a>
                     </li>
-                    <li class="mforder" id="divselecty">
+                    <li id="divselecty">
                         <label>性别</label><input name='xb' type='text' id="xb" value="未设置"  class="text" disabled="disabled"><i></i>
                         <div class="mask"></div>
                         <div class="xb_fixed">
                             <p>请选择您的性别</p>
-                            <a href="javascript:;"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:;"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a    
+                            <div class="xb_btns">
+                                <a href="javascript:;"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:;"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a> 
+                            </div>    
                         </div>
                         <input name="" type="hidden" value="" id="inputselecty"/>
                     </li>
                     <li class="mforder">
-                        <a href="<{$config.weburl}>/install.php?ip=qq">
+                        <a href="<{$config.weburl}>/install_qq.php">
                         <label>QQ</label><input name='qq' type='text' id="qq" value="未设置"  class="text" disabled="disabled"><i></i></a>
                     </li>
-                    <li class="mforder">
-                        <label>微信</label>
+                </ul>
+                <div style="height:10px;background-color:#f5f5f5;"></div>
+                <ul>                   
+                    <li class="mforder_weixin">
+                        <{if $wechat_connect_row.userid}><label>微信：</label><span>已经绑定&nbsp;<{$wechat_connect_row.nickname}></span>
+                        <{else}><label>微信：</label><a href="javascript:void(0);"><span class="m_weixin_no">未绑定</span></a><{/if}>
                     </li>
-                </ul>  
+                </ul>    
                <!--  <div class="s_line">
                     <div class="s_text">
                         用户名
@@ -86,8 +90,7 @@
                     </div>
                 </div> -->
             </div>
-            <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p>
-        </form>
+            <!-- <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p> -->
     </div>
 </div>
 <article class="htmleaf-container">
@@ -101,18 +104,21 @@
     </div>
     <div id="view"></div>
 </article>
+<section class="bom_nav">
+    <ul>
+        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="海淘"><p>海淘</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li><li>
+        <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon82.png" alt="我的"><p class="bom_nav_color">我的</p></a></li>
+    </ul>
+</section>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/district.js" ></script>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/iscroll-zoom.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/hammer.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.photoClip.js"></script>
-<script type="text/javascript">
-define = null;
-require = null;
-</script>
+<script type="text/javascript" src="<{$config.weburl}>/script/uplode.js"></script>
 <script>
     var obUrl = ''
-    //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     $("#clipArea").photoClip({
         width: 199,
         height: 166,
@@ -124,6 +130,7 @@ require = null;
         },
         loadComplete: function() {
             console.log("照片读取完成");
+            console.log(imgsource);
         },
         clipFinish: function(dataURL) {
             console.log(dataURL);
@@ -148,20 +155,20 @@ require = null;
             var inputselecty = $(inputselectyid);
             $(divselectyid).click(function(e){
                 e = e || window.event;
-                if (e.stopPropagation) { //W3C阻止冒泡方法
+                if (e.stopPropagation) { 
                     e.stopPropagation();
                 } else {
-                    e.cancelBubble = true; //IE阻止冒泡方法
+                    e.cancelBubble = true;
                 }
                 $("#divselecty .xb_fixed").show();
                 $(".mask").show();
             });
             $(divselectyid+" .xb_fixed a").click(function(e){
                 e = e || window.event;
-                if (e.stopPropagation) { //W3C阻止冒泡方法
+                if (e.stopPropagation) { 
                     e.stopPropagation();
                 } else {
-                    e.cancelBubble = true; //IE阻止冒泡方法
+                    e.cancelBubble = true; 
                 }
                 var txt = $(this).find("span").text();
                 $(divselectyid+" input.text").val(txt);
@@ -177,73 +184,13 @@ require = null;
     $(function(){
        $(".mask").click(function(e){
             e = e || window.event;
-            if (e.stopPropagation) { //W3C阻止冒泡方法
+            if (e.stopPropagation) { 
                 e.stopPropagation();
             } else {
-                e.cancelBubble = true; //IE阻止冒泡方法
+                e.cancelBubble = true; 
             }
             $(".mask").hide();
             $(".xb_fixed").hide();
        })     
-    });
-</script>
-<script>
-    $("#file0").change(function(){
-        var objUrl = getObjectURL(this.files[0]) ;
-         obUrl = objUrl;
-        console.log("objUrl = "+objUrl) ;
-        if (objUrl) {
-            $("#img0").attr("src", objUrl).show();
-        }
-        else{
-            $("#img0").hide();
-        }
-    }) ;
-   function qd(){
-       var objUrl = getObjectURL(this.files[0]) ;
-       obUrl = objUrl;
-       console.log("objUrl = "+objUrl) ;
-       if (objUrl) {
-           $("#img0").attr("src", objUrl).show();
-       }
-       else{
-           $("#img0").hide();
-       }
-   }
-    function getObjectURL(file) {
-        var url = null ;
-        if (window.createObjectURL!=undefined) { // basic
-            url = window.createObjectURL(file) ;
-        } else if (window.URL!=undefined) { // mozilla(firefox)
-            url = window.URL.createObjectURL(file) ;
-        } else if (window.webkitURL!=undefined) { // webkit or chrome
-            url = window.webkitURL.createObjectURL(file) ;
-        }
-        return url ;
-    }
-</script>
-<script type="text/javascript">
-  var subUrl = "";
-    $(function (){
-        $(".file-3").bind('change',function(){
-            subUrl = $(this).val()
-            $(".yulan").show();
-            $(".file-3").val("");
-        });
-
-        $(".file-3").each(function(){
-            if($(this).val()==""){
-                $(this).parents(".uploader").find(".filename").val("营业执照");
-            }
-        });
-$(".btn-3").click(function(){
-    $("#img-1").attr("src", obUrl);
-    $(".yulan").hide();
-    $(".file-3").parents(".uploader").find(".filename").val(subUrl);
-})
-        $(".btn-2").click(function(){
-            $(".yulan").hide();
-        })
-
     });
 </script>
