@@ -281,9 +281,6 @@ switch ($action)
 					//---------------------------------
 					//获取当前用户店铺动态评分
                     $shop_comment = $shop->get_shop_comment();
-                    foreach($shop_comment as $key => $val){
-                        $shop_comment[$key] = empty($val) ? 5 : $val ;
-                    }
 					$admin->tpl->assign("shop_comment",$shop_comment);
 					//获取当前用户产品 评论 订单 数量
 					

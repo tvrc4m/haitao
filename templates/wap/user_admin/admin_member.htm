@@ -3,20 +3,21 @@
 <header>
     <div class="nav-w">
         <section class="nav-s iconfont"><a href="<{$oldUrl}>"> <i class="fanhui_icon"></i></a></section>
-        <section class="nav-c"><span>会员中心</span></section>
+        <section class="nav-c"><span>账户设置</span></section>
         <section class="nav-e"></section>
     </div>
 </header>
 
 <div class="wrap wrap_xin">
-    <div class="form-style">
+    <div class="form-style">            
             <div class="sq_logo clearfix">
-                <label>头像</label>
-                <i></i>
-                <a id="logox">
-                <img src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
-                </a>
-                
+                <div class="sq_logo_inner clearfix">
+                    <label>头像</label>
+                    <i></i>
+                    <a id="logox">
+                    <img src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
+                    </a>
+                </div>             
                <!--  <div class="logo_div">
                     <div class="logo_show">
                         <input class="input" multiple="multiple" type="file"  accept="image/*" stype="" rename="1">
@@ -27,27 +28,33 @@
             </div>
             <div class="sq_list">
                 <ul>
-                    <li class="mforder">
+                    <li>
                         <a href="<{$config.weburl}>/install.php">
                         <label>昵称</label><input name='name' type='text' id="name" value="mayi13256487542" class="text" disabled="disabled"><i></i></a>
                     </li>
-                    <li class="mforder" id="divselecty">
+                    <li id="divselecty">
                         <label>性别</label><input name='xb' type='text' id="xb" value="未设置"  class="text" disabled="disabled"><i></i>
                         <div class="mask"></div>
                         <div class="xb_fixed">
                             <p>请选择您的性别</p>
-                            <a href="javascript:;"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:;"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a    
+                            <div class="xb_btns">
+                                <a href="javascript:;"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:;"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a> 
+                            </div>    
                         </div>
                         <input name="" type="hidden" value="" id="inputselecty"/>
                     </li>
-                    <li class="mforder">
+                    <li>
                         <a href="<{$config.weburl}>/install_qq.php">
                         <label>QQ</label><input name='qq' type='text' id="qq" value="未设置"  class="text" disabled="disabled"><i></i></a>
                     </li>
-                    <li class="mforder">
-                        <label>微信</label><input name='weixin' type='text' id="weixin" value="已经绑定"  class="text" disabled="disabled">
+                </ul>
+                <div style="height:15px;background-color:#f1f1f1;"></div>
+                <ul>                   
+                    <li class="mforder_weixin">
+                        <{if $wechat_connect_row.userid}><label>微信：</label><span>已经绑定&nbsp;<{$wechat_connect_row.nickname}></span>
+                        <{else}><label>微信：</label><a href="javascript:void(0);"><span class="m_weixin_no">未绑定</span></a><{/if}>
                     </li>
-                </ul>  
+                </ul>    
                <!--  <div class="s_line">
                     <div class="s_text">
                         用户名
@@ -83,7 +90,7 @@
                     </div>
                 </div> -->
             </div>
-           <!--  <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p> -->
+            <!-- <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p> -->
     </div>
 </div>
 <article class="htmleaf-container">
@@ -91,12 +98,19 @@
     <div class="foot-use">
         <div class="uploader1 blue">
             <input type="button" name="file" class="button" value="打开"/>
-            <input id="file" type="file" accept="image/*" multiple  />
+            <input id="file" type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
         </div>
         <button id="clipBtn">截取</button>
     </div>
     <div id="view"></div>
 </article>
+<section class="bom_nav">
+    <ul>
+        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="海淘"><p>海淘</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li><li>
+        <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon82.png" alt="我的"><p class="bom_nav_color">我的</p></a></li>
+    </ul>
+</section>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/district.js" ></script>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/iscroll-zoom.js"></script>
@@ -116,6 +130,7 @@
         },
         loadComplete: function() {
             console.log("照片读取完成");
+            console.log(imgsource);
         },
         clipFinish: function(dataURL) {
             console.log(dataURL);
@@ -124,7 +139,6 @@
 </script>
 <script>
     $(function(){
-        console.log(imgsource)
         $("#logox").click(function(){
             $(".htmleaf-container").show();
         })
