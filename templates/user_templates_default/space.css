@@ -447,7 +447,7 @@ html[xmlns] .clearfix{display:block;}
 
 .zoomDiv{z-index:999;position:absolute;top:248px !important;left:0px;width:460px!important;height:460px !important;background:#FFF;border:1px solid #ccc;display:none;text-align:center;overflow:hidden;}
 .zoomMask{position:absolute;background:url(img/mask.png) repeat;cursor:move;z-index:1;width:200px!important;height:200px!important;}
-
+.zoomDiv img{max-width: none;}
 /* 购物车 */
 #cart_show{overflow:hidden;padding:7px;position:absolute;z-index:99999999;}
 .cartbg{background-color:#333333;height:999px;left:0;opacity:0.5;position:absolute;top:0;width:500px;z-index:1;}
