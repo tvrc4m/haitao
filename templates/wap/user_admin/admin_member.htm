@@ -10,14 +10,11 @@
 
 <div class="wrap wrap_xin">
     <div class="form-style">
-        <form action="" method="post" name="form" id="form">
-            <input type="hidden" value="edit" name="submit"/>
-            <input type="hidden"  name="oldurl" value="<{$oldUrl}>"/>
             <div class="sq_logo clearfix">
                 <label>头像</label>
                 <i></i>
                 <a id="logox">
-                <img src="/image/default/user_admin/default_user_portrait.gif">
+                <img src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
                 </a>
                 
                <!--  <div class="logo_div">
@@ -31,7 +28,7 @@
             <div class="sq_list">
                 <ul>
                     <li class="mforder">
-                        <a href="<{$config.weburl}>/install.php?ip=name">
+                        <a href="<{$config.weburl}>/install.php">
                         <label>昵称</label><input name='name' type='text' id="name" value="mayi13256487542" class="text" disabled="disabled"><i></i></a>
                     </li>
                     <li class="mforder" id="divselecty">
@@ -44,11 +41,11 @@
                         <input name="" type="hidden" value="" id="inputselecty"/>
                     </li>
                     <li class="mforder">
-                        <a href="<{$config.weburl}>/install.php?ip=qq">
+                        <a href="<{$config.weburl}>/install_qq.php">
                         <label>QQ</label><input name='qq' type='text' id="qq" value="未设置"  class="text" disabled="disabled"><i></i></a>
                     </li>
                     <li class="mforder">
-                        <label>微信</label>
+                        <label>微信</label><input name='weixin' type='text' id="weixin" value="已经绑定"  class="text" disabled="disabled">
                     </li>
                 </ul>  
                <!--  <div class="s_line">
@@ -86,8 +83,7 @@
                     </div>
                 </div> -->
             </div>
-            <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p>
-        </form>
+           <!--  <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p> -->
     </div>
 </div>
 <article class="htmleaf-container">
@@ -95,7 +91,7 @@
     <div class="foot-use">
         <div class="uploader1 blue">
             <input type="button" name="file" class="button" value="打开"/>
-            <input id="file" type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
+            <input id="file" type="file" accept="image/*" multiple  />
         </div>
         <button id="clipBtn">截取</button>
     </div>
@@ -106,13 +102,9 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/iscroll-zoom.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/hammer.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.photoClip.js"></script>
-<script type="text/javascript">
-define = null;
-require = null;
-</script>
+<script type="text/javascript" src="<{$config.weburl}>/script/uplode.js"></script>
 <script>
     var obUrl = ''
-    //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     $("#clipArea").photoClip({
         width: 199,
         height: 166,
@@ -132,6 +124,7 @@ require = null;
 </script>
 <script>
     $(function(){
+        console.log(imgsource)
         $("#logox").click(function(){
             $(".htmleaf-container").show();
         })
@@ -148,20 +141,20 @@ require = null;
             var inputselecty = $(inputselectyid);
             $(divselectyid).click(function(e){
                 e = e || window.event;
-                if (e.stopPropagation) { //W3C阻止冒泡方法
+                if (e.stopPropagation) { 
                     e.stopPropagation();
                 } else {
-                    e.cancelBubble = true; //IE阻止冒泡方法
+                    e.cancelBubble = true;
                 }
                 $("#divselecty .xb_fixed").show();
                 $(".mask").show();
             });
             $(divselectyid+" .xb_fixed a").click(function(e){
                 e = e || window.event;
-                if (e.stopPropagation) { //W3C阻止冒泡方法
+                if (e.stopPropagation) { 
                     e.stopPropagation();
                 } else {
-                    e.cancelBubble = true; //IE阻止冒泡方法
+                    e.cancelBubble = true; 
                 }
                 var txt = $(this).find("span").text();
                 $(divselectyid+" input.text").val(txt);
@@ -177,73 +170,13 @@ require = null;
     $(function(){
        $(".mask").click(function(e){
             e = e || window.event;
-            if (e.stopPropagation) { //W3C阻止冒泡方法
+            if (e.stopPropagation) { 
                 e.stopPropagation();
             } else {
-                e.cancelBubble = true; //IE阻止冒泡方法
+                e.cancelBubble = true; 
             }
             $(".mask").hide();
             $(".xb_fixed").hide();
        })     
-    });
-</script>
-<script>
-    $("#file0").change(function(){
-        var objUrl = getObjectURL(this.files[0]) ;
-         obUrl = objUrl;
-        console.log("objUrl = "+objUrl) ;
-        if (objUrl) {
-            $("#img0").attr("src", objUrl).show();
-        }
-        else{
-            $("#img0").hide();
-        }
-    }) ;
-   function qd(){
-       var objUrl = getObjectURL(this.files[0]) ;
-       obUrl = objUrl;
-       console.log("objUrl = "+objUrl) ;
-       if (objUrl) {
-           $("#img0").attr("src", objUrl).show();
-       }
-       else{
-           $("#img0").hide();
-       }
-   }
-    function getObjectURL(file) {
-        var url = null ;
-        if (window.createObjectURL!=undefined) { // basic
-            url = window.createObjectURL(file) ;
-        } else if (window.URL!=undefined) { // mozilla(firefox)
-            url = window.URL.createObjectURL(file) ;
-        } else if (window.webkitURL!=undefined) { // webkit or chrome
-            url = window.webkitURL.createObjectURL(file) ;
-        }
-        return url ;
-    }
-</script>
-<script type="text/javascript">
-  var subUrl = "";
-    $(function (){
-        $(".file-3").bind('change',function(){
-            subUrl = $(this).val()
-            $(".yulan").show();
-            $(".file-3").val("");
-        });
-
-        $(".file-3").each(function(){
-            if($(this).val()==""){
-                $(this).parents(".uploader").find(".filename").val("营业执照");
-            }
-        });
-$(".btn-3").click(function(){
-    $("#img-1").attr("src", obUrl);
-    $(".yulan").hide();
-    $(".file-3").parents(".uploader").find(".filename").val(subUrl);
-})
-        $(".btn-2").click(function(){
-            $(".yulan").hide();
-        })
-
     });
 </script>

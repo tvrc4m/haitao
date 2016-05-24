@@ -1,14 +1,3 @@
-function setProgress (p) {
-    if (p < 0) {
-        $('#iconLoading').height(0);
-        $('#process').text('');
-    }
-    else {
-        p = p+'%';
-        $('#iconLoading').height(p);
-        $('#process').text('文件已上传'+p);
-    }
-}
 function sendFile (f) {
     var uploadUrl = '/ajaxupload.php';
     $.ajax({
@@ -20,16 +9,6 @@ function sendFile (f) {
         data: f,
         success: function (e) {
             msg = JSON.parse(e);
-            console.log(a)
-            // if(msg.key.indexOf("front") > 0){
-            //     $("input[data-id='img1']").attr("value",msg.key);
-            //     $("input[data-id='img1']").next().attr("src", '../'+msg.key);
-
-            // }else{
-            //     $("input[data-id='img2']").attr("value",msg.key);
-            //     $("input[data-id='img2']").next().attr("src", '../'+msg.key);
-
-            // }
             $("input[data-id="+a+"]").attr("value",msg.key);
             $("input[data-id="+a+"]").next().attr("src", '../'+msg.key);
 
@@ -55,6 +34,7 @@ function handleFiles (files, stype,rename) {
             fd.append('rename', rename)
             fd.append('fileurl', "uploadfile/member/"+year+month+day + "/")
             sendFile(fd);
+            console.log(fd)
             break;
         }
     }
@@ -70,6 +50,7 @@ $(function(){
         var stype = $(this).attr('stype');
         var rename = $(this).attr('rename');
         var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
+        console.log(fs)
         handleFiles(fs,stype,rename);
     })
 
