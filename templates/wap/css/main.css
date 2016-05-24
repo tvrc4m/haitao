@@ -36,9 +36,9 @@
 .m_fore ul li a span.fore_b{background: url(../../../image/wap/wap_haitao_icon134.png) left no-repeat;background-size: contain;}
 .m_fore ul li a span.fore_d{background: url(../../../image/wap/wap_haitao_icon132.png) left no-repeat;background-size: contain;}
 .m_fore ul li a span.fore_c{background: url(../../../image/wap/wap_haitao_icon135.png) left no-repeat;background-size: contain;}
-.m_fore ul li a span.fore_e{background: url(../../../image/wap/wap_haitao_icon137.png) left no-repeat;background-size: contain;}
+.m_fore ul li a span.fore_e{background: url(../../../image/wap/wap_haitao_icon137.png) 4% no-repeat;background-size: contain;}
 .m_fore ul li a span.fore_f{background: url(../../../image/wap/wap_haitao_icon114.png) left no-repeat;background-size: contain;}
-.m_fore ul li a span.fore_g{background: url(../../../image/wap/wap_haitao_icon138.png) left no-repeat;background-size: contain;}
+.m_fore ul li a span.fore_g{background: url(../../../image/wap/wap_haitao_icon138.png) 2% no-repeat;background-size: contain;}
 .m_tuichu{text-align: center;padding: 0.7rem 0px;border-bottom: 1px solid #b9b9b9;border-top: 1px solid #b9b9b9;}
 .m_tuichu a{font-size: 0.7rem;color: #ff5c5c;width: 100%;}
 .m_btn{background-color: #fff;}
@@ -105,7 +105,7 @@ i.home_icons {
     padding-left: 0px;
 }
 .mforder_f{position: absolute;right: 40px;font-size: 0.6rem;color: #ff5c5c;}
-.mforder_fs{position: absolute;right: 0.5rem;font-size: 0.6rem;color: #999;}
+.mforder_fs{position: absolute;right: 0.9rem;font-size: 0.6rem;color: #999;}
 .duser_left{display: inline-block;margin-right: 10px;vertical-align: top;}
 .duser_right{display: inline-block;}
 .duser_left .shoplogo{width: 70px;height: 70px;border-radius: 50%;}
