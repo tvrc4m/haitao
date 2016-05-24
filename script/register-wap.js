@@ -16,6 +16,12 @@ function do_login()
         document.getElementById('password').focus();
         return false;
     }
+    if(document.getElementById('user_ni').value.length < 1)
+    {
+        document.getElementById('user_ni').focus();
+        return false;
+    }
+
 }
 $(function(){
     // $("form").find("input").each(function(){
@@ -28,6 +34,7 @@ $(function(){
 });
 var phnumber=/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/;
 var password=/^[A-Za-z0-9]{6,10}$/;
+var userni=/^[A-Za-z0-9]{2,16}$/;
 var phcode=/^[0-9]{6}$/;
 $(document).ready(function(){
     jQuery.focusblur = function(focusid) {
@@ -54,6 +61,9 @@ $(document).ready(function(){
                 }
                 if(focusid == "#password"){
                     tip.find(".tipcon").text("长度为6-10个字符，建议使用字母加数字组合");
+                }
+                if(focusid == "#user_ni"){
+                    tip.find(".tipcon").text("长度为2-16个字符，建议使用字母加数字组合");
                 }
                 tip.css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
             }
@@ -94,4 +104,5 @@ $(document).ready(function(){
     $.focusblur("#mobile");
     $.focusblur("#smsvode");
     $.focusblur("#password");
+    $.focusblur("#user_ni");
 });

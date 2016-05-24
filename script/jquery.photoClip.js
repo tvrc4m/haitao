@@ -3,10 +3,6 @@
  * 依赖插件
  * - iscroll-zoom.js
  * - hammer.js
- *
- * @author 白俊杰 625603381@qq.com 2014/07/31
- * https://github.com/baijunjie/jQuery-photoClip
- *
  * @brief	支持手势的裁图插件
  *			在移动设备上双指捏合为缩放，双指旋转可根据旋转方向每次旋转90度
  *			在PC设备上鼠标滚轮为缩放，每次双击则顺时针旋转90度
