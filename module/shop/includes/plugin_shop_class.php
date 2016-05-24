@@ -533,6 +533,9 @@ class shop
 		$sql="select avg(item1) as a,avg(item2) as b,avg(item3) as c,avg(item4) as d from ".UCOMMENT." where byid = '$buid'";
 		$this->db->query($sql);
 		$u=$this->db->fetchRow();
+		foreach($u as $key => $val){
+			$u[$key] = empty($val) ? 5 : $val ;
+		}
 		$u['aw']=$u['a']/5*100;
 		$u['bw']=$u['b']/5*100;
 		$u['cw']=$u['c']/5*100;
