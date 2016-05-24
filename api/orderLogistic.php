@@ -17,7 +17,7 @@ class logistic{
 
     const EXT = '.txt';
 
-    public function __construct($order_id='',$logistics_name='',$logistics_id,$time,$sign)
+    public function __construct($order_id='',$logistics_name='',$logistics_id='',$time='',$sign='')
     {
         $this->_order_id = $order_id;
         $this->_logistics_name = $logistics_name;
@@ -83,8 +83,8 @@ class logistic{
      * statu 状态编号
      * */
     public function status($statu){
-        //return json_encode(array('code'=>$statu,'msg'=>$this->_status[$statu]));
-        return array('code'=>$statu,'msg'=>$this->_status[$statu]);
+        return json_encode(array('code'=>$statu,'msg'=>$this->_status[$statu]));
+        //return array('code'=>$statu,'msg'=>$this->_status[$statu]);
     }
 
     /*
@@ -119,7 +119,7 @@ class logistic{
 }
 include_once ("../includes/global.php");
 
-var_dump($_POST);die;
+
 /*$order_id = '160314030842001';
 $logistics_name = '中通';
 $logistics_id = '22222222';
