@@ -204,7 +204,9 @@ input[type='submit'].btn2{border: 0;background: #7B95FF;width: 80px;line-height:
 .sq_list ul li i{background: url(../../../image/wap/wap_haitao_icon18.png) center right no-repeat;background-size: 58%;
 	width:5%;height: 2.5rem;display: inline-block;}
 .sq_list ul li{height: 2.5rem;line-height: 2.5rem; border-bottom: 1px solid #e1e1e1;}
-
+.mforder_weixin i{float: right;}
+.mforder_weixin span{color: #999;}
+.mforder_weixin .m_weixin_no{color: #ff5c5c}
 /*设置昵称*/
 .setup{margin: auto;text-align: center;position: relative;}
 .form_ds ul {padding:5%;}
