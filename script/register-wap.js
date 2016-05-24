@@ -21,6 +21,11 @@ function do_login()
         document.getElementById('user_ni').focus();
         return false;
     }
+    if(document.getElementById('user_qq').value.length < 1)
+    {
+        document.getElementById('user_qq').focus();
+        return false;
+    }
 
 }
 $(function(){
@@ -35,6 +40,7 @@ $(function(){
 var phnumber=/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/;
 var password=/^[A-Za-z0-9]{6,10}$/;
 var userni=/^[A-Za-z0-9]{2,16}$/;
+var userqq=/^[1-9]\d{4,10}$/
 var phcode=/^[0-9]{6}$/;
 $(document).ready(function(){
     jQuery.focusblur = function(focusid) {
@@ -52,6 +58,10 @@ $(document).ready(function(){
                 flag = phcode.test(thisval);
             if(focusid == "#password")
                 flag = password.test(thisval);
+            if(focusid == "#user_ni")
+                flag = userni.test(thisval);
+            if(focusid == "#user_qq")
+                flag = userqq.test(thisval);
             if(!flag){
                 if(focusid == "#mobile"){
                     tip.find(".tipcon").text("请输入正确的手机号码，且为11位纯数字格式");
@@ -64,6 +74,9 @@ $(document).ready(function(){
                 }
                 if(focusid == "#user_ni"){
                     tip.find(".tipcon").text("长度为2-16个字符，建议使用字母加数字组合");
+                }
+                if(focusid == "#user_qq"){
+                    tip.find(".tipcon").text("输入正确qq号");
                 }
                 tip.css({"display":"block","margin-top": "10px","color":"#ff5c5c"});
             }
@@ -105,4 +118,5 @@ $(document).ready(function(){
     $.focusblur("#smsvode");
     $.focusblur("#password");
     $.focusblur("#user_ni");
+    $.focusblur("#user_qq");
 });
