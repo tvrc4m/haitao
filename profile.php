@@ -22,5 +22,6 @@ $tpl->assign('oldUlr','https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 $tpl->assign("verify",$num);
 $tpl->assign("mobile",$mobile);
 include_once("footer.php");
-	$tpl->display('profile.htm');
+$tpl->display('profile.htm');
+
 ?>
