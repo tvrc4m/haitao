@@ -40,7 +40,7 @@ $(function(){
 var phnumber=/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/;
 var password=/^[A-Za-z0-9]{6,10}$/;
 var userni=/^[A-Za-z0-9]{2,16}$/;
-var userqq=/^[1-9]\d{4,10}$/
+var userqq=/^[1-9]\d{4,10}$/;
 var phcode=/^[0-9]{6}$/;
 $(document).ready(function(){
     jQuery.focusblur = function(focusid) {
@@ -102,6 +102,37 @@ $(document).ready(function(){
                     data: {smsvode: thisval, check_sms: 'check'},
                     dataType: 'json',
                     success: function(datainfo){
+                        if(datainfo.status_code!=200) {
+                            tip.find(".tipcon").text(datainfo.message);
+                            tip.css("display","block");
+                        }else{
+                            tip.css("display","none");
+                        }
+                    }
+                });
+            }else if(flag&&focusid == "#user_qq"){
+                $.ajax({
+                    url: 'register.php',
+                    type: 'post',
+                    data: {user_qq: thisval, check_qq: 'check'},
+                    dataType: 'json',
+                    success: function(datainfo){
+                        if(datainfo.status_code!=200) {
+                            tip.find(".tipcon").text(datainfo.message);
+                            tip.css("display","block");
+                        }else{
+                            tip.css("display","none");
+                        }
+                    }
+                });
+            }else if(flag&&focusid == "#user_ni"){
+                $.ajax({
+                    url: 'register.php',
+                    type: 'post',
+                    data: {user_ni: thisval, check_ni: 'check'},
+                    dataType: 'json',
+                    success: function(datainfo){
+                        console.log(datainfo)
                         if(datainfo.status_code!=200) {
                             tip.find(".tipcon").text(datainfo.message);
                             tip.css("display","block");
