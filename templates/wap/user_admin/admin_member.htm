@@ -45,8 +45,8 @@
                         <label>QQ</label><input name='qq' type='text' id="qq" value="未设置"  class="text" disabled="disabled"><i></i></a>
                     </li>
                     <li class="mforder mforder_weixin">
-                        <{if $wechat_connect_row.userid}><label>微信</label><span>已经绑定 <{$wechat_connect_row.nickname}></span>
-                        <{else}><a href="javascript:void(0);"><label>微信</label><i></i><span class="m_weixin_no">未绑定</span></a><{/if}>
+                        <{if $wechat_connect_row.userid}><label>微信：</label><span>已经绑定 <{$wechat_connect_row.nickname}></span>
+                        <{else}><a href="javascript:void(0);"><label>微信：</label><i></i><span class="m_weixin_no">未绑定</span></a><{/if}>
                     </li>
                 </ul>  
                <!--  <div class="s_line">
