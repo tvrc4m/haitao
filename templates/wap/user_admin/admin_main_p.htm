@@ -36,10 +36,19 @@
 	<div class="info clearfix">
         <ul>
             <!-- <li><a <{if $shop_count.0}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder"><strong><{$shop_count.4}></strong>全部订单</a></li> -->
-            <li><a <{if $shop_count.0}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=1"><strong><{$shop_count.0}></strong>待付款</a></li>
-            <li><a <{if $shop_count.1}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=2"><strong><{$shop_count.1}></strong>待发货</a></li>
-            <li><a <{if $shop_count.2}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=3"><strong><{$shop_count.2}></strong>待收货</a></li>
-            <li><a <{if $shop_count.3}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder&status=4"><strong><{$shop_count.3}></strong>已完成</a></li>
+            <li>
+            <img src="../image/wap/wap_haitao_icon139.png" alt="待付款">
+            <a href="main.php?m=product&s=admin_buyorder&status=1">待付款<span <{if $shop_count.0}>class="color"<{/if}>>(<{$shop_count.0}>)</span></a>
+            </li><li>
+            <img src="../image/wap/wap_haitao_icon140.png" alt="待发货">
+            <a href="main.php?m=product&s=admin_buyorder&status=2">待发货<span <{if $shop_count.1}>class="color"<{/if}>>(<{$shop_count.1}>)</span></a>
+            </li><li>
+            <img src="../image/wap/wap_haitao_icon141.png" alt="待收货">
+            <a href="main.php?m=product&s=admin_buyorder&status=3">待收货<span <{if $shop_count.2}>class="color"<{/if}>>(<{$shop_count.2}>)</a>
+            </li><li>
+            <img src="../image/wap/wap_haitao_icon142.png" alt="已完成">
+            <a href="main.php?m=product&s=admin_buyorder&status=4">已完成<span <{if $shop_count.3}>class="color"<{/if}>>(<{$shop_count.3}>)</a>
+            </li>
         </ul>
     </div>
 </section>
