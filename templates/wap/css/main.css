@@ -23,7 +23,8 @@
 .duser-auth li a.duser-auth-mob-j{color: #272636;background: url(../../../image/wap/wap_haitao_icon37.png) center left no-repeat;background-size: 29%;}
 .duser-auth li a.duser-auth-ema{background: url(../../../image/wap/wap_haitao_icon40.png) center left no-repeat;background-size: 48%;}
 .duser-auth li a.duser-auth-ema-j{color: #272636;background: url(../../../image/wap/wap_haitao_icon39.png) center left no-repeat;background-size: 48%;}
-.m_fore{padding: 0px 0.5rem 0rem;background-color: #fff;}
+.m_fore{}
+.m_fore ul{padding: 0px 0.5rem 0rem;background-color: #fff;}
 .m_fore ul li{height: 2.5rem;line-height: 2.5rem;}
 .m_fore ul li.mforder{border-bottom: 1px dashed #b9b9b9;}
 .m_fore ul li a span{padding-left: 30px;}
