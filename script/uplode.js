@@ -50,7 +50,6 @@ $(function(){
         var stype = $(this).attr('stype');
         var rename = $(this).attr('rename');
         var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
-        console.log(fs)
         handleFiles(fs,stype,rename);
     })
 
