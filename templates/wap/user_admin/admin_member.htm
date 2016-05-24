@@ -3,13 +3,13 @@
 <header>
     <div class="nav-w">
         <section class="nav-s iconfont"><a href="<{$oldUrl}>"> <i class="fanhui_icon"></i></a></section>
-        <section class="nav-c"><span>会员中心</span></section>
+        <section class="nav-c"><span>账户设置</span></section>
         <section class="nav-e"></section>
     </div>
 </header>
 
 <div class="wrap wrap_xin">
-    <div class="form-style">
+    <div class="form-style">            
             <div class="sq_logo clearfix">
                 <label>头像</label>
                 <i></i>
@@ -83,7 +83,7 @@
                     </div>
                 </div> -->
             </div>
-           <!--  <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p> -->
+            <!-- <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p> -->
     </div>
 </div>
 <article class="htmleaf-container">
@@ -91,7 +91,7 @@
     <div class="foot-use">
         <div class="uploader1 blue">
             <input type="button" name="file" class="button" value="打开"/>
-            <input id="file" type="file" accept="image/*" multiple  />
+            <input id="file" type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
         </div>
         <button id="clipBtn">截取</button>
     </div>
@@ -116,6 +116,7 @@
         },
         loadComplete: function() {
             console.log("照片读取完成");
+            console.log(imgsource);
         },
         clipFinish: function(dataURL) {
             console.log(dataURL);
@@ -124,7 +125,6 @@
 </script>
 <script>
     $(function(){
-        console.log(imgsource)
         $("#logox").click(function(){
             $(".htmleaf-container").show();
         })

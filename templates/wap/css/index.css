@@ -209,7 +209,7 @@ input[type='submit'].btn2{border: 0;background: #7B95FF;width: 80px;line-height:
 .setup{margin: auto;text-align: center;position: relative;}
 .form_ds ul {padding:5%;}
 .user_rela {position: relative;}
-.form_ds li input[name="user"], .form_ds li input[name="user_qq"]{
+.form_ds li input[name="user_ni"], .form_ds li input[name="user_qq"]{
     box-shadow: 0px 0px 3px #b9b9b9;
     background-color: #fff!important;
     width: 100%;
@@ -225,7 +225,8 @@ input[type='submit'].btn2{border: 0;background: #7B95FF;width: 80px;line-height:
     border: none;
     border-radius: .2rem;
 }
-
+.form_ds li input[name="user_qq"]{background: url(../../../image/wap/wap_haitao_icon130.png) 5.8% no-repeat;
+    background-size: .9rem;}
 input[type="submit"] {
     background: #ff5c5d;
     border: 0 none;
