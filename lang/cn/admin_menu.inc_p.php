@@ -189,7 +189,7 @@ if(isset($tpl))
 	$smenu=!empty($cmenu)?($cmenu=='friend'||$cmenu=='inquire'?'main':$cmenu):'main';
     $menus = $menu[$smenu];
 	foreach($menus['sub'] as $key => $val){
-		if($val['name'] != '我的代金券' && $val['name'] != '我的会员卡' && $val['name'] != '我的积分') {
+		//if($val['name'] != '我的代金券' && $val['name'] != '我的会员卡' && $val['name'] != '我的积分') {
 			if(is_string($val['action'])){
 				if(strlen($val['action'])>5){
 					$data = explode("&", $val['action']);
@@ -219,9 +219,9 @@ if(isset($tpl))
 					}
 				}
 			}
-		}else{
+		/*}else{
 			unset($menus['sub'][$key]);
-		}
+		}*/
 	}
 
     $i = 0;
