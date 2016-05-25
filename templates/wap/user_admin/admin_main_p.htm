@@ -37,32 +37,33 @@
         <ul>
             <!-- <li><a <{if $shop_count.0}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder"><strong><{$shop_count.4}></strong>全部订单</a></li> -->
             <li>
-            <img src="../image/wap/wap_haitao_icon139.png" alt="待付款">
+            <a href="main.php?m=product&s=admin_buyorder&status=1"><img src="../image/wap/wap_haitao_icon139.png" alt="待付款"></a>
             <a href="main.php?m=product&s=admin_buyorder&status=1">待付款<span <{if $shop_count.0}>class="color"<{/if}>>(<{$shop_count.0}>)</span></a>
             </li><li>
-            <img src="../image/wap/wap_haitao_icon140.png" alt="待发货">
+            <a href="main.php?m=product&s=admin_buyorder&status=2"><img src="../image/wap/wap_haitao_icon140.png" alt="待发货"></a>
             <a href="main.php?m=product&s=admin_buyorder&status=2">待发货<span <{if $shop_count.1}>class="color"<{/if}>>(<{$shop_count.1}>)</span></a>
             </li><li>
-            <img src="../image/wap/wap_haitao_icon141.png" alt="待收货">
+            <a href="main.php?m=product&s=admin_buyorder&status=3"><img src="../image/wap/wap_haitao_icon141.png" alt="待收货"></a>
             <a href="main.php?m=product&s=admin_buyorder&status=3">待收货<span <{if $shop_count.2}>class="color"<{/if}>>(<{$shop_count.2}>)</a>
             </li><li>
-            <img src="../image/wap/wap_haitao_icon142.png" alt="已完成">
+            <a href="main.php?m=product&s=admin_buyorder&status=4"><img src="../image/wap/wap_haitao_icon142.png" alt="已完成"></a>
             <a href="main.php?m=product&s=admin_buyorder&status=4">已完成<span <{if $shop_count.3}>class="color"<{/if}>>(<{$shop_count.3}>)</a>
             </li>
         </ul>
     </div>
 </section>
-<div style="height:10px;background-color:#f5f5f5;"></div>
+<div style="height:0.5rem;background-color:#f5f5f5;"></div>
 <section class="m_fore clearfix">
     <ul>
-        <li><a href="<{$config.weburl}>/pay/index.php"><span class="fore_d">蚂蚁钱包</span><i></i></a></li>
+        <li class="mforder"><a href="<{$config.weburl}>/pay/index.php"><span class="fore_d">蚂蚁钱包</span><i></i></a></li>
+        <li><a href="main.php?m=voucher&s=admin_buyvoucher"><span class="fore_h">优惠券</span><i></i></a></li>
     </ul>
-    <div style="height:10px;background-color:#f5f5f5;"></div> 
+    <div style="height:0.5rem;background-color:#f5f5f5;"></div> 
     <ul>
         <li class="mforder"><a href="main.php?m=sns&s=admin_share_product"><span class="fore_b">商品收藏</span><i></i></a></li>
         <li><a href="main.php?m=sns&s=admin_share_shop"><span class="fore_c">店铺收藏</span><i></i></a></li>
     </ul> 
-    <div style="height:10px;background-color:#f5f5f5;"></div> 
+    <div style="height:0.5rem;background-color:#f5f5f5;"></div> 
     <ul>
         <li class="mforder"><a href="tel:4000101977"><span class="fore_e">联系客服</span><i></i></a></li>
         <li><a href="<{$config.weburl}>/help.php"><span class="fore_g">帮助中心</span><i></i></a></li>

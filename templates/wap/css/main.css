@@ -25,7 +25,7 @@
 .duser-auth li a.duser-auth-mob-j{color: #272636;background: url(../../../image/wap/wap_haitao_icon37.png) center left no-repeat;background-size: 29%;}
 .duser-auth li a.duser-auth-ema{background: url(../../../image/wap/wap_haitao_icon40.png) center left no-repeat;background-size: 48%;}
 .duser-auth li a.duser-auth-ema-j{color: #272636;background: url(../../../image/wap/wap_haitao_icon39.png) center left no-repeat;background-size: 48%;}
-.m_fore{margin-top: 0.5rem;}
+/*.m_fore{margin-top: 0.5rem;}*/
 .m_fore ul{padding: 0px 0.5rem 0rem;background-color: #fff;}
 .m_fore ul li{height: 2rem;line-height: 2rem;}
 .m_fore ul li.mforder{border-bottom: 1px dotted #b9b9b9;}
@@ -33,6 +33,7 @@
 .m_fore ul li a{float: left;font-size: 0.6rem;width: 100%;height: 2rem;}
 .m_fore ul li a i{content: "";float: right;background: url(../../../image/wap/wap_haitao_icon131.png) center right no-repeat;background-size: 70%;width: 0.9rem;height: 2rem;margin-right: 0.3rem;}
 .m_fore ul li a span.fore_a{background: url(../../../image/wap/wap_haitao_icon28.png) left no-repeat;background-size: contain;}
+.m_fore ul li a span.fore_h{background: url(../../../image/wap/wap_haitao_icon133.png) left no-repeat;background-size: 0.9rem;}
 .m_fore ul li a span.fore_b{background: url(../../../image/wap/wap_haitao_icon134.png) left no-repeat;background-size: contain;}
 .m_fore ul li a span.fore_d{background: url(../../../image/wap/wap_haitao_icon132.png) left no-repeat;background-size: contain;}
 .m_fore ul li a span.fore_c{background: url(../../../image/wap/wap_haitao_icon135.png) left no-repeat;background-size: contain;}
