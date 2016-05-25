@@ -8,13 +8,19 @@
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
 <section class="setup form_ds">
-<form id="setup" name="setup" action="" method="post">
+<form id="setup" name="setup" action="<{$config.weburl}>/install.php" method="post">
     <ul>
         <li class='user_names user_rela'>
             <input class='texts' name='user_ni' maxlength="16" type='text' id='user_ni' placeholder='昵称' value=''/>
             <div class='inp_close'><i></i></div>
         </li>
-        <p class="registerNotice1"><span class="tipcon"></span></p>
+        <p class="registerNotice1"><span class="tipcon"></span>
+            <{if $smarty.get.err ==2 }>
+                <span class="tipcon">格式错误</span>
+            <{elseif $smarty.get.err == 1 }>
+                <span class="tipcon">修改失败</span>
+            <{/if}>
+        </p>
         <li>
             <input name="action" type="hidden" value="submit" />
             <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />

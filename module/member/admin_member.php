@@ -51,7 +51,7 @@ if($_POST['submit']=='mobile')
 	}
 }
 include_once("lang/".$config['language']."/company_type_config.php");
-$tpl->assign("de",$de=$member->get_member_detail($_GET['editid']));
+$tpl->assign("de",$member->get_member_detail($_GET['editid']));
 $tpl->assign("prov",GetDistrict());
 
 
