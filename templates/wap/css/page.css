@@ -307,9 +307,9 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .shopli_top_imgs {border: 1px solid #e1e1e1;}
 .shop_t .shopli:nth-of-type(3n) {margin-right: 0;}
 .shopli_top_imgs img {width: 100%;}
-.shopli_bottom_rob {
+/*.shopli_bottom_rob {
     padding-right: 5px;
-}
+}*/
 .shopli_bottom_robs{
     padding-left: 5px;padding-right: 5px;
 }
@@ -329,6 +329,7 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .wareli_bottom_text{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;\text-overflow: ellipsis;
     white-space: nowrap;margin-bottom: 0.25rem;}
 .wareli_money_del{text-decoration: line-through;}
+/*主页列表新样式*/
 .animate3{
 -webkit-animation:bounceIn 1s .2s ease both;
 -moz-animation:bounceIn 1s .2s ease both;}
