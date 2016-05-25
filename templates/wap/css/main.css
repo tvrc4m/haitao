@@ -111,6 +111,19 @@ i.home_icons {
 .duser_right{display: inline-block;}
 .duser_left .shoplogo{width: 70px;height: 70px;border-radius: 50%;}
 .duser_name{font-size: 14px;color: #fff;margin-bottom: 10px;margin-top: 8px;text-align: left;}
+/*代金劵样式*/
+.roll_banner{text-align: center;padding: 0.8rem 0;background-color: #0b9afd;color: #fff;}
+.roll_banner .roll_banner_top span{font-size: 0.8rem;padding-left: 30px;background: url(../../../image/wap/wap_haitao_icon144.png) left no-repeat;background-size: 1.1rem;}
+.roll_banner .roll_banner_center{font-size: 2rem;line-height: 0.9;margin: 5px 0 20px 0;}
+.roll_banner_bottom{font-size: 0.7rem;}
+.roll_banner_bottom span{display: inline-block;margin: 0 5px;}
+.roll_container{background-color: #f0f0f0;padding: 0 0.5rem;}
+.roll_container .roll_rule{padding: 0.5rem 0;font-size: 0.7rem;}
+.roll_container .roll_rule span{float: right;padding-right: 24px;background: url(../../../image/wap/wap_haitao_icon143.png) right no-repeat;background-size: contain;}
+.roll_container .roll_list{padding-top: 0.8rem;padding-bottom: 0.5rem;}
+.roll_list_top .roll_list_tl{float: left;font-size: 0.7rem;color: #ff5c5c;}
+.roll_list_top .roll_list_tr{float: right;font-size: 0.6rem;color: #999;}
+
 @media screen and (min-width: 600px){ 
     .mforder_f{right: 2.8rem;}
 }

@@ -4,7 +4,7 @@
 .dis_dl{width: 100%;height:auto;}
 .dis_dl dl{padding: 0.5rem 0; width: 33.33%;background: #fff;float: left;border: 1px solid #b9b9b9;border-right:none;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .dis_dl dl.dis_dl3{border-right: 1px solid #b9b9b9;}
-.dis_dl dl dt{width: 100%;float: left;text-align: center;font-size: 1.1rem;color: #999;line-height: 0.9;}
+.dis_dl dl dt{width: 100%;float: left;text-align: center;font-size: 1rem;color: #999;line-height: 0.9;}
 .dis_dl dl dd{width: 100%;float: left;text-align: center;font-size: 0.6rem;margin-top: 0.3rem}
 #pay_dist{color: #ff5c5c;}
 .dis_dl dl.dis_dl_bottom{border:none;padding: 0;width: 25%;}
