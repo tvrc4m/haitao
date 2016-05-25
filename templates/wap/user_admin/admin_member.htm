@@ -9,7 +9,7 @@
 </header>
 
 <div class="wrap wrap_xin">
-    <div class="form-style">            
+    <div class="form-style">
             <div class="sq_logo clearfix">
                 <div class="sq_logo_inner clearfix">
                     <label>头像</label>
@@ -17,7 +17,7 @@
                     <a id="logox">
                     <img src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
                     </a>
-                </div>             
+                </div>
                <!--  <div class="logo_div">
                     <div class="logo_show">
                         <input class="input" multiple="multiple" type="file"  accept="image/*" stype="" rename="1">
@@ -30,31 +30,32 @@
                 <ul>
                     <li>
                         <a href="<{$config.weburl}>/install.php">
-                        <label>昵称</label><input name='name' type='text' id="name" value="mayi13256487542" class="text" disabled="disabled"><i></i></a>
+                        <label>昵称</label><input name='name' type='text' id="name" value="<{$de.user}>" class="text" disabled="disabled"><i></i></a>
                     </li>
                     <li id="divselecty">
-                        <label>性别</label><input name='xb' type='text' id="xb" value="未设置"  class="text" disabled="disabled"><i></i>
+                        <label>性别</label><input name='xb' type='text' id="xb" value="<{if $de.sex == 1}>男<{elseif $de.sex ==2 }>女<{else}> 未设置<{/if}>"  class="text" disabled="disabled"><i></i>
                         <div class="mask"></div>
                         <div class="xb_fixed">
                             <p>请选择您的性别</p>
                             <div class="xb_btns">
-                                <a href="javascript:;"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:;"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a> 
-                            </div>    
+                                <a href="javascript:;"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a>
+                                <a href="javascript:;"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a>
+                            </div>
                         </div>
                         <input name="" type="hidden" value="" id="inputselecty"/>
                     </li>
                     <li class="mforder">
                         <a href="<{$config.weburl}>/install_qq.php">
-                        <label>QQ</label><input name='qq' type='text' id="qq" value="未设置"  class="text" disabled="disabled"><i></i></a>
+                        <label>QQ</label><input name='qq' type='text' id="qq" value="<{if $de.qq}><{$de.qq}><{else}>未设置<{/if}>"  class="text" disabled="disabled"><i></i></a>
                     </li>
                 </ul>
                 <div style="height:0.5rem;background-color:#f5f5f5;"></div>
-                <ul>                   
+                <ul>
                     <li class="mforder_weixin">
                         <{if $wechat_connect_row.userid}><label>微信：</label><span>已经绑定&nbsp;<{$wechat_connect_row.nickname}></span>
                         <{else}><label>微信：</label><a href="javascript:void(0);"><span class="m_weixin_no">未绑定</span></a><{/if}>
                     </li>
-                </ul>    
+                </ul>
                <!--  <div class="s_line">
                     <div class="s_text">
                         用户名
@@ -155,7 +156,7 @@
             var inputselecty = $(inputselectyid);
             $(divselectyid).click(function(e){
                 e = e || window.event;
-                if (e.stopPropagation) { 
+                if (e.stopPropagation) {
                     e.stopPropagation();
                 } else {
                     e.cancelBubble = true;
@@ -165,10 +166,10 @@
             });
             $(divselectyid+" .xb_fixed a").click(function(e){
                 e = e || window.event;
-                if (e.stopPropagation) { 
+                if (e.stopPropagation) {
                     e.stopPropagation();
                 } else {
-                    e.cancelBubble = true; 
+                    e.cancelBubble = true;
                 }
                 var txt = $(this).find("span").text();
                 $(divselectyid+" input.text").val(txt);
@@ -184,13 +185,13 @@
     $(function(){
        $(".mask").click(function(e){
             e = e || window.event;
-            if (e.stopPropagation) { 
+            if (e.stopPropagation) {
                 e.stopPropagation();
             } else {
-                e.cancelBubble = true; 
+                e.cancelBubble = true;
             }
             $(".mask").hide();
             $(".xb_fixed").hide();
-       })     
+       })
     });
 </script>
