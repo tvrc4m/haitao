@@ -15,6 +15,7 @@ function aes($url='',$post_data=''){
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
     $list = curl_exec($ch);
+    var_dump($list);die;
     curl_close($ch);
     return json_decode($list,true);
 }

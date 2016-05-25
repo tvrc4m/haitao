@@ -51,7 +51,7 @@ class logistic{
         $data['orderId'] = $this->_order_id;
         $data['logistics_name'] = $this->_logistics_name;
         $data['logistics_id'] = $this->_logistics_id;
-        self::cacheLog('gaofei_orider',$data,'api\/');
+        self::cacheLog('gaofei_orider',$data,'api/');
         return self::status('00000');
     }
 
@@ -98,12 +98,14 @@ class logistic{
         $datas = array();
         $datas['time']=$this->_times;
         $datas['list'][]=$value;
-
-        $filename = $config['webroot'].'\/'.$path.$key.self::EXT;
-        $con = file_get_contents($filename);
-        if($con){
-            $datas = json_decode($con,true);
-            array_push($datas['list'],$value);
+        $context = stream_context_create(array('http'=>array('ignore_errors'=>true)));
+        $filename = $config['webroot'].'/'.$path.$key.self::EXT;
+        if(file_exists($filename)){
+            $con = file_get_contents($filename,$context);
+            if($con){
+                $datas = json_decode($con,true);
+                array_push($datas['list'],$value);
+            }
         }
         $data =json_encode($datas);
         if($data !== ''){
@@ -127,7 +129,7 @@ $time = '33333333';
 //$sign = 'aaaaaaaaaaaa';
 $sign = '373b63998f93eefb69d54fce26e8c806';*/
 if(!empty($_POST)){
-$ob = new logistic($_POST['order_id'],$_POST['logistics_name'],$_POST['logistics_id'],$_POST['time'],$post['sign']);
+$ob = new logistic($_POST['order_id'],$_POST['logistics_name'],$_POST['logistics_id'],$_POST['time'],$_POST['sign']);
 echo $ob->index();
 }
 /*
