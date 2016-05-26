@@ -25,7 +25,7 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
         msg('install.php?err=2');
     }
 }elseif(isset($_POST['user_id']) && $_POST['user_id'] != null){
-    if(preg_match('/^[12]$/', $_POST['user_id'])){
+    if(preg_match('/^[12]{1}$/', $_POST['user_id'])){
         $sql = "update mallbuilder_member set sex = '".$_POST['user_id']."' where userid = ".$buid;
         if($db->query($sql)){
             echo json_encode(array(
