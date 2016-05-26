@@ -26,7 +26,7 @@ class voucher{
      * discount  折扣
      * price    面额
      * */
-    public function subDiscount(){
+    public function subDiscount(){ 
 
     }
 }
