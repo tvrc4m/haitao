@@ -3,7 +3,7 @@
 	$.fn.snsinit = function(options){
 		var dataContainer = $(this);
 		//实现好友动态分页		
-		$(this).find('.more').find('a').live('click',function(){
+		$(this).find('.more').find('a').on('click',function(){
 			var url = $(this).attr('urls');
 			$(dataContainer).snsshow({url:url,iIntervalId:false});
 		});
