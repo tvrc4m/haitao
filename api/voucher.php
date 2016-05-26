@@ -37,19 +37,28 @@ class voucher{
     public function algorithm($price='',$discount=''){
 
         if(is_int($price/100)){
-
-            foreach($this->_dis as $k=>$v){
-                $sums[$k] = $price*$k/$this->_dis[$k];
+            if($price<=300){
+                echo  $price/100;
             }
-            var_dump($sums);
+            if($price>300&&$price<800){
+                echo $price*0.5/200;
+                echo $price*0.5/100;
+            }
+            if($price>800){
+                echo $price*0.5/500;
+                echo $price*0.3/200;
+                echo $price*0.2/100;
+            }
+
         }
     }
 
     public function price($price,$k){
-        return $price-$price*intval($price*$k/$this->_dis[$k]);
+        return $price-$price*intval
+        ($price*$k/$this->_dis[$k]);
     }
 }
 
 include_once("../includes/global.php");
 $obj = new voucher();
-$obj->algorithm('1100');
+$obj->algorithm('200');
