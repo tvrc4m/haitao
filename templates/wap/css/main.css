@@ -117,13 +117,29 @@ i.home_icons {
 .roll_banner .roll_banner_center{font-size: 2rem;line-height: 0.9;margin: 5px 0 20px 0;}
 .roll_banner_bottom{font-size: 0.7rem;}
 .roll_banner_bottom span{display: inline-block;margin: 0 5px;}
-.roll_container{background-color: #f0f0f0;padding: 0 0.5rem;}
+.roll_container{background-color: #f0f0f0;padding: 0 0.5rem 0.8rem;}
 .roll_container .roll_rule{padding: 0.5rem 0;font-size: 0.7rem;}
 .roll_container .roll_rule span{float: right;padding-right: 24px;background: url(../../../image/wap/wap_haitao_icon143.png) right no-repeat;background-size: contain;}
-.roll_container .roll_list{padding-top: 0.8rem;padding-bottom: 0.5rem;}
+.roll_container .roll_list{padding-bottom: 0.5rem;}
+.roll_list_top{padding: 0.5rem 0;margin-top: 1rem;}
 .roll_list_top .roll_list_tl{float: left;font-size: 0.7rem;color: #ff5c5c;}
 .roll_list_top .roll_list_tr{float: right;font-size: 0.6rem;color: #999;}
-
+.roll_list_content{}
+.roll_list_content li{position: relative;margin-bottom: 0.5rem;}
+.roll_list_content li img{width: 100%;}
+.roll_list_content .roll_list_content_t{position: absolute;top: 0;width: 100%;padding: 0.4rem 0.7rem 0;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.roll_list_content .roll_list_content_tl{float: left;font-size: 0.7rem;color: #0b9afd;}
+.roll_list_content .roll_list_content_tr{float: right;font-size: 0.6rem;color: #999;}
+.roll_list_content .roll_list_content_b{position: absolute;bottom: 0;width: 100%;padding: 0rem 0.7rem 0.8rem;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.roll_list_content .roll_list_content_bl{float: left;font-size: 0.6rem;text-align: center;margin-left: 1.5rem;}
+.roll_list_content .roll_list_content_bl .moneys{color: #0b9afd;}
+.roll_list_content .roll_list_content_bl p{color: #999;margin-top: 5px;}
+.roll_list_content .roll_list_content_bl .moneys span{font-size: 1rem;}
+.roll_list_content .roll_list_content_br{float: right;font-size: 0.7rem;margin-top: 24px;}
+.roll_list_content .roll_list_content_br span{color: #999;}
+.roll_list_content .roll_list_content_br a{padding-right: 15px;background: url(../../../image/wap/wap_haitao_icon145.png) right no-repeat;background-size: 7%;}
+.roll_btn{width: 100%;}
+.roll_btn a{width: 100%;display: inline-block;height: 2.2rem;line-height: 2.2rem;text-align: center;font-size: 0.8rem;background-color:#0b9afd;color: #fff;border-radius: 5px; }
 @media screen and (min-width: 600px){ 
     .mforder_f{right: 2.8rem;}
 }
