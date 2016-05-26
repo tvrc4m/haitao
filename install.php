@@ -35,7 +35,7 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
         }else{
             echo json_encode(array(
                 'code' => '修改失败',
-                'status' => 301
+                'status' => 300
             ));
         }
     }else{
