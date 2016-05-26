@@ -14,11 +14,13 @@
             <input class='texts' name='user_ni' maxlength="16" type='text' id='user_ni' placeholder='昵称' value=''/>
             <div class='inp_close'><i></i></div>
         </li>
-        <p class="registerNotice1"><span class="tipcon"></span>
+        <p class="registerNotice1">
             <{if $smarty.get.err ==2 }>
                 <span class="tipcon">格式错误</span>
             <{elseif $smarty.get.err == 1 }>
                 <span class="tipcon">修改失败</span>
+            <{else}>  
+                <span class="tipcon"></span>
             <{/if}>
         </p>
         <li>
