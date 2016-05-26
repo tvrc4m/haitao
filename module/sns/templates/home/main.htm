@@ -1,148 +1,39 @@
-<div class="head">
-    <div class="info clearfix">
-        <div class="info-left">
-            <div class="basic-info">
-                <h2 class="name"><div class="nick"><{if $member.name }><{$member.name}><{else}><{$member.user}><{/if}></div></h2>
-                <span class="realy-info">
-                    <span class="credit">TA的信誉</span>
-                    <img class="points" align="absmiddle" title="<{$member.buyerpoints}>个买家信用积分" src="image/points/<{$member.buyerpointsimg}>">
-                </span>
-                <span class="meta">
-                    <span class="sex<{if $member.sex==2}> female<{/if}>"><{if $member.sex==2}>女<{else}>男<{/if}></span>
-                    <span><a href="javascript:void(0)">逛TA商铺</a></span>
-                </span>
-            </div>
-            <div class="user-avatar">
-                <img width="160" height="160" src="<{if $member.logo}><{$member.logo}><{else}>image/default/avatar.png<{/if}>">
-            </div>
-        </div>
-        <div class="info-right">
-            <div class="attention-box">
-                <div class="attention">
-                    <ul  class="clearfix">
-                        <li><b class="large"><{$count.g}></b><span>关注</span></li>
-                        <li><b class="large"><{$count.f}></b><span>粉丝</span></li>
-                        <li><b class="large"><{$count.v}></b><span>访问</span></li>
-                    </ul>
-                </div>
-            </div>
-            <{if $smarty.get.uid!=$userid}>
-                <div class="follow-widget">
-                    <{if $friend}>
-                        <span class="<{if $fan}>all_gz<{else}>have_gz<{/if}>">
-                            <b style="margin-left:25px;">已关注</b> &nbsp;&nbsp;
-                            <a href="main.php?m=message&s=admin_message_sed&uid=<{$smarty.get.uid}>">发私信</a>
-                        </span>
-                    <{else}>
-                        <a genre="followbtn" data-param="{'mid':'<{$smarty.get.uid}>'}" href="javascript:void(0)"></a>
-                    <{/if}>
-                </div>
-            <{/if}>
-        </div>
-    </div>
-    <div class="nav">
-        <ul class="clearfix">
-            <li class="<{if $smarty.get.act==''}>current <{/if}>first">
-                <a class="front" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>">首页</a>
-            </li>
-            <li <{if $smarty.get.act=='product'}>class="current"<{/if}> >
-                <a class="product" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">宝贝</a>
-            </li>
-            <li class="<{if $smarty.get.act=='trace'}>current <{/if}>last">
-                <a class="trace" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">新鲜事</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<{include file="head.htm"}>
+<!-- 分享宝贝start -->
 <div class="main-widget">
-    <h3 class="item-hd">
+    <h3>
         <a class="read-more" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">查看全部</a>
-        <span><a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">我分享的宝贝</a></span>
+        <a class="title" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">我分享的宝贝</a>
     </h3>
     <div class="item-bd">
-        <ul class="clearfix">
-            <{foreach item=list name=name from=$sharegoods}>
+        <ul class="itemlist clearfix">
+        <{foreach item=list name=name from=$sharegoods}>
             <li <{if $smarty.foreach.name.iteration==3}>class="last"<{/if}>>
-                <div class="sitem">
-                    <div class="pic">
-                        <a title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank">
-                            <img width="226" height="210" src="<{if $list.image}><{$list.image}><{else}>image/default/nopic.gif<{/if}>" />
-                        </a>
-                    </div>
-                    <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><{$list.pname}></a>
-                    <p class="p-price"><strong>¥<{$list.price}></strong></p>
+                <div class="good <{if ($num+1)%4==0}>mr0<{/if}>">
+                    <a title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" class="goods_img" target="_blank"><img src="<{$list.image}>" alt="分享商品图片"></a>
+                    <p class="goods_text">
+                        <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>" target="_blank"><{$list.pname}></a>
+                    </p>
+                    <p class="good_price">￥<{$list.price}></p>
                 </div>
             </li>
-            <{/foreach}>
+        <{/foreach}>
         </ul>
     </div>
 </div>
+<!-- 分享宝贝end-->
+<!-- 新鲜事start -->
 <div class="main-widget clearfix">
-    <h3 class="item-hd">
-        <a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace" class="read-more">查看全部</a>
-        <span><a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">我的新鲜事</a></span>
+    <h3>
+        <a class="read-more" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">查看全部</a>
+        <a class="title" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">我的新鲜事</a>
     </h3>
     <div class="item-bd">
-    <{foreach item=list key=num from=$blog}>
-        <div class="sns-item" <{if !$num}>style="padding-top:5px"<{/if}> >
-            <div class="sns-wrap">
-            <p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.member_id}>"><{$list.member_name}></a></p>
-            <div class="sns-text"><span><{$list.title}></span></div>
-            <{if $list.original_id }>
-                <div class="quote-wrap">
-                    <{if $list.original_status==1}>
-                    原文已删除
-                    <{else}>
-                    <p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.ouid}>"><{$list.ouser}></a></p>
-                    <div class="sns-text"><span><{$list.otitle}></span></div>
-                    <{if $list.oimg}>
-                    <div class="sns-img clearfix">
-                        <ul>
-                            <{foreach item=p from=$list.opic}>
-                                <{if $list.otype==2}>
-                                    <li><img class="small" src="<{$p}>_120X120.jpg"></li>
-                                <{else}>
-                                    <li><img src="<{$p}>"></li>
-                                <{/if}>
-                            <{/foreach}>
-                        </ul>
-                    </div>
-                    <{/if}>
-                    <div class="sns-extra">
-                        <span class="sns-time"><{$list.ocreate_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
-                    </div>
-                    <{/if}>
-                </div>
-            <{else}>
-                <{if $list.img}>
-                    <div class="sns-img clearfix">
-                        <ul>
-                            <{foreach item=p from=$list.pic}>
-                                <{if $list.type==2}>
-                                    <li><img class="small" src="<{$p}>_120X120.jpg"></li>
-                                <{else}>
-                                    <li><img src="<{$p}>"></li>
-                                <{/if}>
-                            <{/foreach}>
-                        </ul>
-                    </div>
-                <{/if}>
-            <{/if}>
-                <div class="sns-extra">
-                    <span class="sns-time"><{$list.create_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
-                    <span class="sns-action">
-                        <span>
-                            <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_forward" href="javascript:void(0);" class="sns-action-forward">转发</a>
-                            <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_comment" href="javascript:void(0);" class="sns-action-comment">评论</a>
-                        </span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    <{/foreach}>
-        <div class="sns-next"><a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">去看更多新鲜事<i></i></a></div>
+        <{include file="trace_child.htm"}>
+        <div class="sns-next"><a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">去看更多新鲜事</a></div>
     </div>
 </div>
+<!-- 新鲜事end -->
 <script type="text/javascript" src="<{$config.weburl}>/script/dialog/dialog.js" id="dialog_js"></script>
 <script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<{$config.weburl}>/script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
