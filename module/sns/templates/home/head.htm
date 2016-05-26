@@ -1,0 +1,36 @@
+<div class="head">
+    <div class="info clearfix">
+        <div class="info-left">
+            <div class="basic-info">
+                <h2><{if $member.name }><{$member.name}><{else}><{$member.user}><{/if}></h2>
+                <span class="realy-info">TA的信誉<img title="<{$member.buyerpoints}>个买家信用积分" src="image/points/<{$member.buyerpointsimg}>">
+                </span>
+                <span class="sex<{if $member.sex==2}> female<{/if}>"><{if $member.sex==2}>女<{else}>男<{/if}></span>
+                <a href="javascript:void(0)">逛TA商铺</a>
+            </div>
+            <div class="user-avatar">
+                <img src="<{if $member.logo}><{$member.logo}><{else}>image/default/avatar.png<{/if}>">
+            </div>
+        </div>
+        <div class="info-right">
+            <ul  class="clearfix">
+                <li><b><{$count.g}></b><span>关注</span></li>
+                <li><b><{$count.f}></b><span>粉丝</span></li>
+                <li><b><{$count.v}></b><span>访问</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="nav">
+        <ul class="clearfix">
+            <li class="<{if $smarty.get.act==''}>current <{/if}>">
+                <a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>">首页</a>
+            </li>
+            <li <{if $smarty.get.act=='product'}>class="current"<{/if}> >
+                <a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">宝贝</a>
+            </li>
+            <li class="<{if $smarty.get.act=='trace'}>current <{/if}>">
+                <a href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">新鲜事</a>
+            </li>
+        </ul>
+    </div>
+</div>

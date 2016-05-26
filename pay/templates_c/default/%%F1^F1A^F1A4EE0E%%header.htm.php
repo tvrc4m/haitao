@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-19 17:03:25
+<?php /* Smarty version 2.6.20, created on 2016-05-26 09:46:21
          compiled from header.htm */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -34,7 +34,7 @@
             <?php if ($this->_tpl_vars['current'] != 'index'): ?>
             <li class="nav">
                 <div class="nav-fore1">
-                    <a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+                    <a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
 "><?php echo $this->_tpl_vars['config']['company']; ?>
 首页</a>
                 </div>
@@ -42,7 +42,8 @@
             <?php endif; ?>
             <li class="nav drop-down">
                 <div class="nav-fore1">
-                    <a href="main.php?cg_u_type=1">我的商城</a>
+                    <a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/main.php?cg_u_type=1">我的商城</a>
                     <i><em></em></i>
                 </div>
                 <div class="nav-fore2">
@@ -114,11 +115,12 @@ $('.drop-down').hover(function(){
 /image/default/Logo.png<?php endif; ?>" /></a></h2>
               	<ul class="nav">
             	<li <?php if (! $this->_tpl_vars['current']): ?>class="current"<?php endif; ?>>
-                	<a href="index.php">我的<?php echo $this->_tpl_vars['config']['company']; ?>
+                	<a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
+/index.php">我的<?php echo $this->_tpl_vars['config']['company']; ?>
 </a>
                 </li>
             	<li <?php if ($this->_tpl_vars['current'] == 'record'): ?>class="current"<?php endif; ?>>
-                	<a href="<?php echo $this->_tpl_vars['config']['weburl']; ?>
+                	<a href="<?php echo $this->_tpl_vars['config']['web_url']; ?>
 /?m=payment&s=record">交易记录</a>
                 </li>
             </ul>

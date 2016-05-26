@@ -1,128 +1,7 @@
-<div class="head">
-    <div class="info clearfix">
-        <div class="info-left">
-            <div class="basic-info">
-                <h2 class="name"><div class="nick"><{$member.name}></div></h2>
-                <span class="realy-info">
-                    <span class="credit">买家信用</span>
-                    <img class="points" align="absmiddle" title="<{$member.buyerpoints}>个买家信用积分" src="image/points/<{$member.buyerpointsimg}>">
-                </span>
-                <span class="meta">
-                    <span class="sex<{if $member.sex==2}> female<{/if}>"><{if $member.sex==2}>女<{else}>男<{/if}></span>
-                    <!-- <span><{$member.area}></span> -->
-                    <span><a href="<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>">逛TA商铺</a></span>
-                </span>
-            </div>
-            <div class="user-avatar"><img width="160" height="160" src="<{if $member.logo}><{$member.logo}><{else}>image/default/avatar.png<{/if}>"></div>
-        </div>
-        <div class="info-right">
-            <div class="attention-box">
-                <div class="attention clearfix">
-                    <ul>
-                        <li><b class="large"><{$count.f}></b><span>粉丝</span></li>
-                        <li><b class="large"><{$count.g}></b><span>关注</span></li>
-                        <li><b class="large"><{$count.v}></b><span>访问</span></li><li class="clear"></li>
-                    </ul>
-                </div>
-            </div>
-            <{if $smarty.get.uid!=$userid}>
-                <div class="follow-widget">
-                    <{if $friend}>
-                        <span class="<{if $fan}>all_gz<{else}>have_gz<{/if}>">
-                        <b style="margin-left:25px;">已关注</b> &nbsp;&nbsp;
-                        <a href="main.php?m=message&s=admin_message_sed&uid=<{$smarty.get.uid}>">发私信</a></span>
-                    <{else}>
-                        <a genre="followbtn" data-param="{'mid':'<{$smarty.get.uid}>'}" href="javascript:void(0)"></a>
-                    <{/if}>
-                </div>
-            <{/if}>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div class="nav">
-        <ul class="clearfix">
-            <li class="<{if $smarty.get.act==''}>current <{/if}>first">
-                <a class="front" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>">首页</a>
-            </li>
-            <li <{if $smarty.get.act=='product'}>class="current"<{/if}> >
-                <a class="product" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=product">宝贝</a>
-            </li>
-            <li class="<{if $smarty.get.act=='trace'}>current <{/if}>last">
-                <a class="trace" href="<{$config.weburl}>/home.php?uid=<{$smarty.get.uid}>&act=trace">新鲜事</a>
-            </li>
-        </ul>
-    </div>
-</div>
+<{include file="head.htm"}>
 <div class="main-widget">
-	<div class="item-bd pt0">
-    	<{foreach item=list key=num from=$blog}>
-        <div class="sns-item" <{if !$num}>style="padding-top:5px"<{/if}> >
-            <div class="sns-wrap">
-           		<p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.member_id}>"><{$list.member_name}></a></p>
-                <div class="sns-text"><span><{$list.title}></span></div>
-                <{if $list.original_id }>
-                <div class="quote-wrap">
-                     <{if $list.original_status==1}>
-                     原文已删除
-                     <{else}>
-                     <p class="sns-title"><a target="_blank" href="home.php?uid=<{$list.ouid}>"><{$list.ouser}></a></p>
-                    <div class="sns-text"><span><{$list.otitle}></span></div>
-                    <{if $list.oimg}>
-                    <div class="sns-img clearfix">
-                        <ul>
-                            <{foreach item=p from=$list.opic}>
-                                <{if $list.otype==2}>
-                                    <li><img class="small" src="<{$p}>_120X120.jpg"></li>
-                                <{else}>
-                                    <li><img src="<{$p}>"></li>
-                                <{/if}>
-                            <{/foreach}>
-                        </ul>
-                    </div>
-                	<{/if}>
-                    <div class="sns-extra">
-                    	<span class="sns-time"><{$list.ocreate_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
-                    </div>
-                    <{/if}>
-                </div>
-                <{else}>
-                	<{if $list.img}>
-                    <div class="sns-img clearfix">
-                        <ul>
-                            <{foreach item=p from=$list.pic}>
-                                <{if $list.type==2}>
-                                    <li><img class="small" src="<{$p}>_120X120.jpg"></li>
-                                <{else}>
-                                    <li><img src="<{$p}>"></li>
-                                <{/if}>
-                            <{/foreach}>
-                        </ul>
-                    </div>
-                	<{/if}>
-                    <{if $list.comment}>
-                    <div class="commnet">
-                    <{foreach item = slist from = $list.comment}>
-                    	<div class="commnet_list">
-                            <dl>
-                                <dt><a target="_blank" href="home.php?uid=<{$slist.member_id}>"><{$slist.member_name}></a><{$slist.content}></dt><dd><{$slist.addtime|date_format}></dd>
-                            </dl>
-                        </div>
-                    <{/foreach}>
-                    </div>
-                    <{/if}>
-                <{/if}>
-                <div class="sns-extra">
-                    <span class="sns-time"><{$list.create_time|date_format:"%m-%d&nbsp;%H:%M"}></span>
-                    <span class="sns-action">
-                        <span>
-                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_forward" href="javascript:void(0);" class="sns-action-forward">转发</a>
-                        <a data-param="{&quot;bid&quot;:&quot;<{$list.id}>&quot;}" genre="sns_comment" href="javascript:void(0);" class="sns-action-comment">评论</a>
-                        </span>
-                    </span>
-                </div>
-			</div>
-        </div>
-        <{/foreach}>
+    <div class="item-bd">
+        <{include file="trace_child.htm"}>
     </div>
 </div>
 <script type="text/javascript" src="<{$config.weburl}>/script/dialog/dialog.js" id="dialog_js"></script>
@@ -139,15 +18,17 @@ $("[genre='sns_comment']").on('click',function(){
 	ajax_form("comment_form", '评论', '<{$config.weburl}>/main.php?m=sns&s=sns&op=comment&bid='+data.bid, 500);
 	return false;
 });
-$('.small').on('click',function(){
-	$(this).addClass('large').removeClass('small');	
-	var url=$(this).attr("src")
-	url = url.substr(0,url.lastIndexOf('_'));
-	$(this).attr("src",url);
+$('.small').on('click',function(e){
+	$(this).addClass('large').removeClass('small');
+	var a=$(this)[0].src;
+	var b = a.substr(0,a.lastIndexOf('_'));
+	$(this).attr("src",b);
+    e.stopPropagation();
 });
-$('.large').on('click',function(){
-	$(this).addClass('small').removeClass('large');	
+$('.large').on('click',function(e){
+	$(this).addClass('small').removeClass('large');
 	var url=$(this).attr("src")
 	$(this).attr("src",url+"_120X120.jpg");
+    e.stopPropagation();
 });
 </script>
