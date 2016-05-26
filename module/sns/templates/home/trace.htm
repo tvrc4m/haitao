@@ -23,12 +23,10 @@ $('.small').on('click',function(e){
 	var a=$(this)[0].src;
 	var b = a.substr(0,a.lastIndexOf('_'));
 	$(this).attr("src",b);
-    e.stopPropagation();
 });
 $('.large').on('click',function(e){
 	$(this).addClass('small').removeClass('large');
 	var url=$(this).attr("src")
 	$(this).attr("src",url+"_120X120.jpg");
-    e.stopPropagation();
 });
 </script>
