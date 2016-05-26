@@ -129,7 +129,7 @@ face_array[2] =
 	]
 ];
 var STATICURL = 'image/face/';
-$("#insertFace").live('click',function(){
+$("#insertFace").on('click',function(){
 	if(!$(".faceWrap")[0]){
 		var div = document.createElement("div");
 		div.className = "faceWrap";
@@ -153,14 +153,14 @@ $("#insertFace").live('click',function(){
 		}
 	}
 })
-$(".faceWrap .close").live('click',function(){
+$(".faceWrap .close").on('click',function(){
 	$(".faceWrap").hide();
 });
-$(".faceWrap .mt li").live('click',function(){
+$(".faceWrap .mt li").on('click',function(){
 	$(this).addClass("selected").siblings().removeClass("selected");
 });
 
-$(".faceWrap td img").live('click',function(){
+$(".faceWrap td img").on('click',function(){
 	insertsmilie(this,$('#content'));
 });
 function insertsmilie(id,obj){

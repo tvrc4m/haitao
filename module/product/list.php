@@ -199,14 +199,14 @@ else
 	if(!empty($_GET['brand']))
 		$scl.=" and a.brand='".$_GET['brand']."' ";
 	/*if($dpid)
-		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";*/
+		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";
 
 	if(isset($_GET['province']))
 	{
 		$scl.=" and c.provinceid='" . intval($_GET['province']) . "'";
 	}
 
-	/*if($dcid)
+	if($dcid)
 		$scl.=" and c.cityid='".getdistrictid($dcid)."'";
 	if($daid)
 		$scl.=" and c.areaid='".getdistrictid($daid)."'";
@@ -245,7 +245,7 @@ else
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page->url=$config['weburl'].'/';
-	$page->listRows=10;
+	$page->listRows=20;
 	if(empty($cat['ext_field_cat']))
 		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.stock,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
