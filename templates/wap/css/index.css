@@ -354,3 +354,6 @@ input[type="submit"] {
     left: 0;
     display: none;
 }
+.collect_box_content {
+    top: 35%;
+}

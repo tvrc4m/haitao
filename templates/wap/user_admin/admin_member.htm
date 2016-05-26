@@ -7,7 +7,7 @@
         <section class="nav-e"></section>
     </div>
 </header>
-
+<div class='collect_box_content'></div>
 <div class="wrap wrap_xin">
     <div class="form-style">
             <div class="sq_logo clearfix">
@@ -55,42 +55,7 @@
                         <{else}><label>微信：</label><a href="javascript:void(0);"><span class="m_weixin_no">未绑定</span></a><{/if}>
                     </li>
                 </ul>
-               <!--  <div class="s_line">
-                    <div class="s_text">
-                        用户名
-                    </div>
-                    <div class="s_input">
-                        <input type='text' value="<{$de.user}>" class="text cq_text" style="width:100%" disabled="disabled">
-                    </div>
-                </div>
-                <{if $de.mobile}>
-                <div class="s_line">
-                    <div class="s_text">
-                        手机
-                    </div>
-                    <div class="s_input">
-                        <input type='text' value="<{$de.mobile}>" class="text cq_text" style="width:100%" disabled="disabled">
-                    </div>
-                </div>
-                <{/if}>
-                <div class="s_line">
-                    <div class="s_text">
-                        昵称
-                    </div>
-                    <div class="s_input">
-                        <input name='name' type='text' id="name" value="<{$de.name}>"  class="text cq_text" style="width:100%">
-                    </div>
-                </div>
-                <div class="s_line">
-                    <div class="s_text">
-                        QQ
-                    </div>
-                    <div class="s_input">
-                        <input name='qq' type='text' id="qq" value="<{$de.qq}>"  class="text cq_text" style="width:100%">
-                    </div>
-                </div> -->
             </div>
-            <!-- <p class="shop_step_title"><input type="submit" value="<{$lang.submit}>" class="submit"></p> -->
     </div>
 </div>
 <article class="htmleaf-container">
@@ -151,7 +116,17 @@
 </script>
 <script type="text/javascript">
     $(function(){
-
+        function altto(co){
+            $(".collect_box_content").show();
+            $(".collect_box_content").html(co);
+            var wid=$(".collect_box_content").width()/2;
+            $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
+        }
+        function wid(){
+            setTimeout(function(){
+                $(".collect_box_content").hide();
+            },2000)
+        }
         jQuery.divselecty = function(divselectyid,inputselectyid) {
             var inputselecty = $(inputselectyid);
             $(divselectyid).click(function(e){
@@ -173,17 +148,22 @@
                 }               
                 var txt = $(this).find("span").text();
                 var data_id=$(this).attr("data-id");
-                console.log(data_id)
                 $.ajax({
                     url: 'install.php',
                     type: 'post',
                     data: {user_sex: txt,user_id: data_id},
                     dataType: 'json',
                     success: function(data){
-                        console.log(data);
+                        if(data.status==200){
+                            $(divselectyid+" input.text").val(txt);
+                            altto('性别修改成功');
+                            wid();
+                        }else{
+                            altto('性别修改失败');
+                            wid();
+                        }
                     }
-                });
-                $(divselectyid+" input.text").val(txt);
+                });               
                 inputselecty.val(txt);
                 $(divselectyid+" .xb_fixed").hide();
                 $(".mask").hide();
