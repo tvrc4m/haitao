@@ -117,20 +117,20 @@ $('.qd a').click(function(){
 	}
 });
 <{/if}>
-$('.small').live('click',function(){
+$('.small').on('click',function(){
 	$(this).addClass('large').removeClass('small');	
 	var url=$(this).attr("src")
 	url = url.substr(0,url.lastIndexOf('_'));
 	$(this).attr("src",url);
 });
-$('.large').live('click',function(){
+$('.large').on('click',function(){
 	$(this).addClass('small').removeClass('large');	
 	var url=$(this).attr("src")
 	$(this).attr("src",url+"_120X120.jpg");
 });
-$('.weibo_con textarea').live('blur',function(){
+$('.weibo_con textarea').on('blur',function(){
 	$(this).parent().removeClass('focus');
-}).live('focus',function(){
+}).on('focus',function(){
 	$(this).parent().addClass('focus');
 });
 
@@ -148,19 +148,19 @@ $('#shareStore').click(function(){
 	ajax_form("shareshop", '<{$lang.share_shop}>', '<{$config.weburl}>/main.php?m=sns&s=sns&op=shareshop', 500);
 	return false;
 });
-$("[genre='sns_forward']").live('click',function(){
+$("[genre='sns_forward']").on('click',function(){
 	var data = $(this).attr('data-param');
 	eval("data = "+data);
 	ajax_form("forward_form", '<{$lang.forwarding}>', '<{$config.weburl}>/main.php?m=sns&s=sns&op=forward&bid='+data.bid, 500);
 	return false;
 });
-$("[genre='sns_comment']").live('click',function(){
+$("[genre='sns_comment']").on('click',function(){
 	var data = $(this).attr('data-param');
 	eval("data = "+data);
 	ajax_form("comment_form", '评论', '<{$config.weburl}>/main.php?m=sns&s=sns&op=comment&bid='+data.bid, 500);
 	return false;
 });
-$("[data_type='fd_del']").live('click',function(){
+$("[data_type='fd_del']").on('click',function(){
 	var data_str = $(this).attr('data-param');
 	eval("data_str = "+data_str);
 	var url = "<{$config.weburl}>/main.php?m=sns&s=sns";

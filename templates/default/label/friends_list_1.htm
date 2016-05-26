@@ -10,7 +10,7 @@
 <script>
 $(function(){
 	//加关注
-	$("[data_type='followbtn']").live('click',function(){
+	$("[data_type='followbtn']").on('click',function(){
 		var url = '<{$config.weburl}>/module/sns/ajax_update.php';
 		var uname='<{$smarty.cookies.USER}>';
 		var data_str = $(this).attr('data-param');
