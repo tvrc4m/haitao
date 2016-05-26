@@ -29,7 +29,7 @@
             <div class="sq_list">
                 <ul>
                     <li>
-                        <a href="<{$config.weburl}>/install.php?ip=name">
+                        <a href="<{$config.weburl}>/install.php">
                         <label>昵称</label><input name='name' type='text' id="name" value="<{$de.user}>" class="text" disabled="disabled"><i></i></a>
                     </li>
                     <li id="divselecty">
@@ -44,7 +44,7 @@
                         <input name="" type="hidden" value="" id="inputselecty"/>
                     </li>
                     <li class="mforder">
-                        <a href="<{$config.weburl}>/install_qq.php?ip=qq">
+                        <a href="<{$config.weburl}>/install_qq.php">
                         <label>QQ</label><input name='qq' type='text' id="qq" value="<{if $de.qq}><{$de.qq}><{else}>未设置<{/if}>"  class="text" disabled="disabled"><i></i></a>
                     </li>
                 </ul>
@@ -173,16 +173,16 @@
                 }               
                 var txt = $(this).find("span").text();
                 var data_id=$(this).attr("data-id");
-                // console.log(data_id)
-                // $.ajax({
-                //     url: 'install.php',
-                //     type: 'post',
-                //     data: {user_sex: txt,user_id: data_id},
-                //     dataType: 'json',
-                //     success: function(data){
-                //         alert(data)
-                //     }
-                // });
+                console.log(data_id)
+                $.ajax({
+                    url: 'install.php',
+                    type: 'post',
+                    data: {user_sex: txt,user_id: data_id},
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+                    }
+                });
                 $(divselectyid+" input.text").val(txt);
                 inputselecty.val(txt);
                 $(divselectyid+" .xb_fixed").hide();
