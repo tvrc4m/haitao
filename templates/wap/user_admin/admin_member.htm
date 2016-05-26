@@ -29,7 +29,7 @@
             <div class="sq_list">
                 <ul>
                     <li>
-                        <a href="<{$config.weburl}>/install.php">
+                        <a href="<{$config.weburl}>/install.php?ip=name">
                         <label>昵称</label><input name='name' type='text' id="name" value="<{$de.user}>" class="text" disabled="disabled"><i></i></a>
                     </li>
                     <li id="divselecty">
@@ -38,14 +38,13 @@
                         <div class="xb_fixed">
                             <p>请选择您的性别</p>
                             <div class="xb_btns">
-                                <a href="javascript:;"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a>
-                                <a href="javascript:;"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a>
+                                <a href="javascript:void(0);" data-id="1"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:void(0);" data-id="2"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a>
                             </div>
                         </div>
                         <input name="" type="hidden" value="" id="inputselecty"/>
                     </li>
                     <li class="mforder">
-                        <a href="<{$config.weburl}>/install_qq.php">
+                        <a href="<{$config.weburl}>/install_qq.php?ip=qq">
                         <label>QQ</label><input name='qq' type='text' id="qq" value="<{if $de.qq}><{$de.qq}><{else}>未设置<{/if}>"  class="text" disabled="disabled"><i></i></a>
                     </li>
                 </ul>
@@ -99,7 +98,7 @@
     <div class="foot-use">
         <div class="uploader1 blue">
             <input type="button" name="file" class="button" value="打开"/>
-            <input id="file" type="file" onchange="javascript:setImagePreview();" accept="image/*" multiple  />
+            <input id="file" type="file" accept="image/*" multiple  />
         </div>
         <button id="clipBtn">截取</button>
     </div>
@@ -131,10 +130,9 @@
         },
         loadComplete: function() {
             console.log("照片读取完成");
-            console.log(imgsource);
         },
         clipFinish: function(dataURL) {
-            console.log(dataURL);
+            // console.log(dataURL);
         }
     });
 </script>
@@ -145,6 +143,7 @@
         })
         $("#clipBtn").click(function(){
             $("#logox").empty();
+
             $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: 2.5rem;height: 2.5rem;">');
             $(".htmleaf-container").hide();
         })
@@ -152,6 +151,7 @@
 </script>
 <script type="text/javascript">
     $(function(){
+
         jQuery.divselecty = function(divselectyid,inputselectyid) {
             var inputselecty = $(inputselectyid);
             $(divselectyid).click(function(e){
@@ -170,8 +170,19 @@
                     e.stopPropagation();
                 } else {
                     e.cancelBubble = true;
-                }
+                }               
                 var txt = $(this).find("span").text();
+                var data_id=$(this).attr("data-id");
+                // console.log(data_id)
+                // $.ajax({
+                //     url: 'install.php',
+                //     type: 'post',
+                //     data: {user_sex: txt,user_id: data_id},
+                //     dataType: 'json',
+                //     success: function(data){
+                //         alert(data)
+                //     }
+                // });
                 $(divselectyid+" input.text").val(txt);
                 inputselecty.val(txt);
                 $(divselectyid+" .xb_fixed").hide();

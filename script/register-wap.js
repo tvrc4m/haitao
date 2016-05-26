@@ -110,37 +110,6 @@ $(document).ready(function(){
                         }
                     }
                 });
-            }else if(flag&&focusid == "#user_qq"){
-                $.ajax({
-                    url: 'register.php',
-                    type: 'post',
-                    data: {user_qq: thisval, check_qq: 'check'},
-                    dataType: 'json',
-                    success: function(datainfo){
-                        if(datainfo.status_code!=200) {
-                            tip.find(".tipcon").text(datainfo.message);
-                            tip.css("display","block");
-                        }else{
-                            tip.css("display","none");
-                        }
-                    }
-                });
-            }else if(flag&&focusid == "#user_ni"){
-                $.ajax({
-                    url: 'register.php',
-                    type: 'post',
-                    data: {user_ni: thisval, check_ni: 'check'},
-                    dataType: 'json',
-                    success: function(datainfo){
-                        console.log(datainfo)
-                        if(datainfo.status_code!=200) {
-                            tip.find(".tipcon").text(datainfo.message);
-                            tip.css("display","block");
-                        }else{
-                            tip.css("display","none");
-                        }
-                    }
-                });
             }
         });
     };

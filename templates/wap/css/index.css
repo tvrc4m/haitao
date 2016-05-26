@@ -220,8 +220,7 @@ input[type='submit'].btn2{border: 0;background: #7B95FF;width: 80px;line-height:
     background-color: #fff!important;
     width: 100%;
     font-size: .7rem;
-    padding-left: 18%;
-    padding-right: 5%;
+    text-indent: 15%;
     padding-top: .6rem;
     padding-bottom: .6rem;
     vertical-align: middle;
