@@ -8,10 +8,10 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
         if($db->query($sql)){
             msg('main.php?m=member&s=admin_member&cg_u_type');
         }else{
-            msg('install.php?err=1');
+             die('<script>alert("格式不正确");history.go(-1);</script>;');
         }
     }else{
-        msg('install.php?err=2');
+        die('<script>alert("格式不正确");history.go(-1);</script>;');
     }
 }elseif(isset($_POST['user_qq']) && $_POST['user_qq'] != null){
     if(preg_match('/^[1-9][0-9]{4,9}$/', $_POST['user_qq'])){
@@ -19,14 +19,14 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
         if($db->query($sql)){
             msg('main.php?m=member&s=admin_member&cg_u_type');
         }else{
-            msg('install.php?err=1');
+            die('<script>alert("格式不正确");history.go(-1);</script>;');
         }
     }else{
-        msg('install.php?err=2');
+        die('<script>alert("格式不正确");history.go(-1);</script>;');
     }
-}elseif(isset($_POST['user_sex']) && $_POST['user_sex'] != null){
-    if(preg_match('/^1|2{1}$/', $_POST['user_sex'])){
-        $sql = "update mallbuilder_member set sex = '".$_POST['user_sex']."' where userid = ".$buid;
+}elseif(isset($_POST['user_id']) && $_POST['user_id'] != null){
+    if(preg_match('/^[12]{1}$/', $_POST['user_id'])){
+        $sql = "update mallbuilder_member set sex = '".$_POST['user_id']."' where userid = ".$buid;
         if($db->query($sql)){
             echo json_encode(array(
                 'code' => '修改成功',
@@ -44,9 +44,9 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
             'status' => 300
         ));
     }
+
+    die;
 }
 include_once("footer.php");
 	$tpl->display('install.htm');
-echo $buid;
-var_dump($_POST['user_sex']);
 ?>

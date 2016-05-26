@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-05-25 09:20:33
+<?php /* Smarty version 2.6.20, created on 2016-05-25 18:51:54
          compiled from pay.htm */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'number_format', 'pay.htm', 6, false),)), $this); ?>
