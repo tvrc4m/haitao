@@ -24,9 +24,9 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
     }else{
         msg('install.php?err=2');
     }
-}elseif(isset($_POST['user_sex']) && $_POST['user_sex'] != null){
-    if(preg_match('/^1|2{1}$/', $_POST['user_sex'])){
-        $sql = "update mallbuilder_member set sex = '".$_POST['user_sex']."' where userid = ".$buid;
+}elseif(isset($_POST['user_id']) && $_POST['user_id'] != null){
+    if(preg_match('/^[12]$/', $_POST['user_id'])){
+        $sql = "update mallbuilder_member set sex = '".$_POST['user_id']."' where userid = ".$buid;
         if($db->query($sql)){
             echo json_encode(array(
                 'code' => '修改成功',
@@ -35,7 +35,7 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
         }else{
             echo json_encode(array(
                 'code' => '修改失败',
-                'status' => 300
+                'status' => 301
             ));
         }
     }else{
@@ -44,9 +44,9 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
             'status' => 300
         ));
     }
+
+    die;
 }
 include_once("footer.php");
 	$tpl->display('install.htm');
-echo $buid;
-var_dump($_POST['user_sex']);
 ?>
