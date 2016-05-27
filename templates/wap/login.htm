@@ -1,12 +1,5 @@
 <{include file="header.htm"}>
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/base.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/login.js" type="text/javascript"></script>
-<script type=text/javascript>
-var nousername='<{$lang.nouname}>';
-var nouserpass='<{$lang.noupass}>';
-var norandcode='<{$lang.nocode}>';
-</script>
+<link href="<{$config.weburl}>/templates/wap/css/login.css" rel="stylesheet" type="text/css" />
 <header>
 	<div class="nav-w">
     	<section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
@@ -14,7 +7,6 @@ var norandcode='<{$lang.nocode}>';
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
-<link href="<{$config.weburl}>/templates/wap/css/login.css" rel="stylesheet" type="text/css" />
 <section class="login form_d">
 <form id="login" name="login" action="login.php" method="post">
     <ul>
@@ -38,39 +30,45 @@ var norandcode='<{$lang.nocode}>';
             <a id="regist" href="<{$config.weburl}>/register.php">新用户注册</a>
         </li>
     </ul>
-
-<{if $wechat_url}>
-<div class="other">
-    <span>合作网站账号登录：</span>
-    <a href="<{$wechat_url}>">微信</a>
-    <br />
-    <br />
-</div>
-<{/if}>
-
-<{if $smarty.get.erry}>
-	<script>
-    $('.form-error').offset();
-    function closefunc()
-    {
-        $('.form-error').remove();
-    }
-    setTimeout(closefunc,2000); 
-    </script>
-    <div class="form-error">
-        <{if $smarty.get.erry=="-1"}>
-            <{$lang.noname}>
-        <{elseif $smarty.get.erry=="-4"}>
-            <{$lang.have_restpass}>
-        <{elseif $smarty.get.erry=="-2"}>
-            <{$lang.passerr}>
-        <{elseif $smarty.get.erry=="-3"}>
-            <{$lang.codeerr}>
-        <{/if}>
+    <{if $wechat_url}>
+    <div class="other">
+        <span>合作网站账号登录：</span>
+        <a href="<{$wechat_url}>">微信</a>
+        <br />
+        <br />
     </div>
-<{/if}>
+    <{/if}>
+    <{if $smarty.get.erry}>
+    	<script>
+        $('.form-error').offset();
+        function closefunc()
+        {
+            $('.form-error').remove();
+        }
+        setTimeout(closefunc,2000); 
+        </script>
+        <div class="form-error">
+            <{if $smarty.get.erry=="-1"}>
+                <{$lang.noname}>
+            <{elseif $smarty.get.erry=="-4"}>
+                <{$lang.have_restpass}>
+            <{elseif $smarty.get.erry=="-2"}>
+                <{$lang.passerr}>
+            <{elseif $smarty.get.erry=="-3"}>
+                <{$lang.codeerr}>
+            <{/if}>
+        </div>
+    <{/if}>
 </form>
 </section>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/base.js" type="text/javascript"></script>
+<script src="<{$config.weburl}>/script/login.js" type="text/javascript"></script>
+<script type=text/javascript>
+var nousername='<{$lang.nouname}>';
+var nouserpass='<{$lang.noupass}>';
+var norandcode='<{$lang.nocode}>';
+</script>
 <script type="text/javascript">
 $(function(){
     $("form").find(".texts").each(function(){
