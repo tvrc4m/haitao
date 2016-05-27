@@ -37,6 +37,11 @@
 .i-select ul{background-color:#333333;border-radius:8px 8px 8px 8px;overflow:hidden;}
 .i-select li{color:#FFFFFF;height:40px;padding:0 5px;cursor:pointer;}
 .i-select a{color:#FFFFFF;padding:5px 0;display:block;height:30px;line-height:30px;}
+/*新下拉列表样式*/
+.buyorder-list{width: 100%;background-color: #FFF;border-top: 2px solid #7753ff;}
+.buyorder-list ul li{width: 20%;float: left;height: 40px;line-height: 40px;text-align: center;font-size: 0.6rem;}
+.buyorder-list ul li.current{background-color: #7753ff;}
+.buyorder-list ul li.current a{color: #fff;}
 
 .tg h2{margin:12px 0 10px;}
 .mt0{margin-top:0px !important;}
