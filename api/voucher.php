@@ -9,17 +9,34 @@
 class voucher{
 
     private $_dis = array('200'=>'0.3','500'=>'0.5','100' => '0.2');
+
+    private $_list = array(array('id'=>1,'shop_id'=>'41','shop_name'=>'test','discount'=>'0.9','time'=>'30'));
+
+    public function __construct()
+    {
+        $this->generateVoucher();
+    }
+
     /*
      * 获取代金卷列表
      * */
     public function showVoucher(){
         global $db;
-        $sql = "select `id`,`shop_id`,`shop_name`,`limit`,`price`,`start_time`,`end_time` from mallbuilder_voucher_temp where status=1";
+        /*$sql = "select `id`,`shop_id`,`shop_name`,`limit`,`price`,`start_time`,`end_time` from mallbuilder_voucher_temp where status=1";
         $db->query($sql);
         $list = $db->getRows();
-        return json_encode($list);
+        return json_encode($list);*/
+        var_dump($this->_list);
     }
 
+    public function generateVoucher(){
+        var_dump($this->_list[0]);
+        foreach($this->_dis as $v){
+
+        }
+        $sql = "insert into ".VOUTEMO." (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`) values ('$name','$desc',".time().",'$end_time','$price','$limit',$id,'$re[shop_name]','$total','$eachlimit','$logo',1,'$points')";
+
+    }
     /*
      * 生成对应比例的代金卷
      * id       优惠卷id
@@ -89,4 +106,4 @@ class voucher{
 //var_dump(make_coupon_num($arr, 800));
 include_once("../includes/global.php");
 $obj = new voucher();
-$obj->algorithm('1000','0.1');
+//$obj->algorithm('1000','0.1');
