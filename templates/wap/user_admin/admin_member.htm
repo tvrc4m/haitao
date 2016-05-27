@@ -1,5 +1,5 @@
 <script src="script/my_lightbox.js" language="javascript"></script>
-<link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
+<link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
 <header>
     <div class="nav-w">
         <section class="nav-s iconfont"><a href="<{$oldUrl}>"> <i class="fanhui_icon"></i></a></section>
@@ -9,58 +9,52 @@
 </header>
 <div class='collect_box_content'></div>
 <div class="wrap wrap_xin">
-    <div class="form-style">
-            <div class="sq_logo clearfix">
-                <div class="sq_logo_inner clearfix">
-                    <label>头像</label>
-                    <i></i>
-                    <a id="logox">
-                    <img src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>">
-                    </a>
+    <div class="sq_logo clearfix">
+        <div class="sq_logo_inner clearfix">
+            <span>头像</span><i></i>
+            <a id="logox"><img src="<{if $de.logo}><{$de.logo}><{else}>/image/default/user_admin/default_user_portrait.gif<{/if}>"></a>
+        </div>
+    </div>
+    <div class="sq_list order_two_list">
+        <ul>
+            <li class="order_dotted">
+                <a href="<{$config.weburl}>/install.php">
+                <span class="order_indents">昵称</span><span class="order_indents_fss "><{$de.user}></span><i></i></a>
+            </li>
+            <li id="divselecty" class="order_dotted">
+                <a href="javascript:void(0);">
+                <span class="order_indents">性别</span><span class="order_indents_fss"><{if $de.sex == 1}>男神<{elseif $de.sex ==2 }>女神<{else}> 未设置<{/if}></span><i></i></a>
+                <div class="mask"></div>
+                <div id="xb_fixed">
+                    <p>请选择您的性别</p>
+                    <div class="xb_btns">
+                        <a href="javascript:void(0);" data-id="1"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:void(0);" data-id="2"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a>
+                    </div>
                 </div>
-            </div>
-            <div class="sq_list">
-                <ul>
-                    <li>
-                        <a href="<{$config.weburl}>/install.php">
-                        <label>昵称</label><input name='name' type='text' id="name" value="<{$de.user}>" class="text" disabled="disabled"><i></i></a>
-                    </li>
-                    <li id="divselecty">
-                        <label>性别</label><input name='xb' type='text' id="xb" value="<{if $de.sex == 1}>男神<{elseif $de.sex ==2 }>女神<{else}> 未设置<{/if}>"  class="text" disabled="disabled"><i></i>
-                        <div class="mask"></div>
-                        <div class="xb_fixed">
-                            <p>请选择您的性别</p>
-                            <div class="xb_btns">
-                                <a href="javascript:void(0);" data-id="1"><img src="../image/wap/wap_haitao_icon128.png" alt="男神"><span>男神</span></a><a href="javascript:void(0);" data-id="2"><img src="../image/wap/wap_haitao_icon129.png" alt="女神"><span>女神</span></a>
-                            </div>
-                        </div>
-                        <input name="" type="hidden" value="" id="inputselecty"/>
-                    </li>
-                    <li class="mforder">
-                        <a href="<{$config.weburl}>/install_qq.php">
-                        <label>QQ</label><input name='qq' type='text' id="qq" value="<{if $de.qq}><{$de.qq}><{else}>未设置<{/if}>"  class="text" disabled="disabled"><i></i></a>
-                    </li>
-                </ul>
-                <div style="height:0.5rem;background-color:#f5f5f5;"></div>
-                <ul>
-                    <li class="mforder_weixin">
-                        <{if $wechat_connect_row.userid}><label>微信：</label><span>已经绑定&nbsp;<{$wechat_connect_row.nickname}></span>
-                        <{else}><label>微信：</label><a href="javascript:void(0);"><span class="m_weixin_no">未绑定</span></a><{/if}>
-                    </li>
-                </ul>
-            </div>
+                <input name="" type="hidden" value="" id="inputselecty"/>
+            </li>
+            <li>
+                <a href="<{$config.weburl}>/install_qq.php">
+                <span class="order_indents">QQ</span><span class="order_indents_fss"><{if $de.qq}><{$de.qq}><{else}>未设置<{/if}></span><i></i></a>
+            </li>
+        </ul>
+        <ul>
+            <li id="mforder_weixin">
+                <{if $wechat_connect_row.userid}><span class="order_indents">微信：</span><span>已经绑定&nbsp;<{$wechat_connect_row.nickname}></span>
+                <{else}><span class="order_indents">微信：</span><a href="javascript:void(0);"><span class="m_weixin_no">未绑定</span></a><{/if}>
+            </li>
+        </ul>
     </div>
 </div>
-<article class="htmleaf-container">
-    <div id="clipArea"></div>
-    <div class="foot-use">
-        <div class="uploader1 blue">
+<article class="ception-container">
+    <div id="ception-container-bg"></div>
+    <div class="ception-foot">
+        <div class="ception-foot-top">
             <input type="button" name="file" class="button" value="相册"/>
             <input id="file" type="file" accept="image/*" multiple  />
         </div>
-        <button id="clipBtn">截取</button>
+        <button id="ception-btn">截取</button>
     </div>
-    <div id="view"></div>
 </article>
 <section class="bom_nav">
     <ul>
@@ -75,13 +69,14 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/hammer.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.photoClip.js"></script>
 <script>
+$(function(){
     var obUrl = ''
-    $("#clipArea").photoClip({
+    $("#ception-container-bg").photoClip({
         width: 199,
         height: 199,
         file: "#file",
         view: "#view",
-        ok: "#clipBtn",
+        ok: "#ception-btn",
         loadStart: function() {
             // console.log("照片读取中");
         },
@@ -92,98 +87,91 @@
             // console.log(dataURL);
         }
     });
-</script>
-<script>
-    $(function(){
-        $("#logox").click(function(){
-            $(".htmleaf-container").show();
+    $("#logox").click(function(){
+            $(".ception-container").show();
         })
-        $("#clipBtn").click(function(){
-            var a=imgsource;
-            $.ajax({
-                    url: 'install.php',
-                    type: 'post',
-                    data: {user_img: a},
-                    dataType: 'json',
-                    success: function(data){
-                        console.log(data)
-                    }
-                });
-            $("#logox").empty();
-            $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: 2.5rem;height: 2.5rem;">');
-            $(".htmleaf-container").hide();
-        })
-    });
-</script>
-<script type="text/javascript">
-    $(function(){
-        function altto(co){
-            $(".collect_box_content").show();
-            $(".collect_box_content").html(co);
-            var wid=$(".collect_box_content").width()/2;
-            $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
-        }
-        function wid(){
-            setTimeout(function(){
-                $(".collect_box_content").hide();
-            },2000)
-        }
-        jQuery.divselecty = function(divselectyid,inputselectyid) {
-            var inputselecty = $(inputselectyid);
-            $(divselectyid).click(function(e){
-                e = e || window.event;
-                if (e.stopPropagation) {
-                    e.stopPropagation();
-                } else {
-                    e.cancelBubble = true;
+    $("#ception-btn").click(function(){
+        var a=imgsource;
+        $.ajax({
+                url: 'install.php',
+                type: 'post',
+                data: {user_img: a},
+                dataType: 'json',
+                success: function(data){
+                    console.log(data)
                 }
-                $("#divselecty .xb_fixed").show();
-                $(".mask").show();
             });
-            $(divselectyid+" .xb_fixed a").click(function(e){
-                e = e || window.event;
-                if (e.stopPropagation) {
-                    e.stopPropagation();
-                } else {
-                    e.cancelBubble = true;
-                }               
-                var txt = $(this).find("span").text();
-                var data_id=$(this).attr("data-id");
-                $.ajax({
-                    url: 'install.php',
-                    type: 'post',
-                    data: {user_sex: txt,user_id: data_id},
-                    dataType: 'json',
-                    success: function(data){
-                        if(data.status==200){
-                            $(divselectyid+" input.text").val(txt);
-                            altto('性别修改成功');
-                            wid();
-                        }else{
-                            altto('性别修改失败');
-                            wid();
-                        }
-                    }
-                });               
-                inputselecty.val(txt);
-                $(divselectyid+" .xb_fixed").hide();
-                $(".mask").hide();
-            });
-        };
-        $.divselecty("#divselecty","#inputselecty");
-    });
+        $("#logox").empty();
+        $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: 2.5rem;height: 2.5rem;">');
+        $(".ception-container").hide();
+    })
+});
 </script>
 <script type="text/javascript">
-    $(function(){
-       $(".mask").click(function(e){
+$(function(){
+    function altto(co){
+        $(".collect_box_content").show();
+        $(".collect_box_content").html(co);
+        var wid=$(".collect_box_content").width()/2;
+        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
+    }
+    function wid(){
+        setTimeout(function(){
+            $(".collect_box_content").hide();
+        },2000)
+    }
+    jQuery.divselecty = function(divselectyid,inputselectyid) {
+        var inputselecty = $(inputselectyid);
+        $(divselectyid).click(function(e){
             e = e || window.event;
             if (e.stopPropagation) {
                 e.stopPropagation();
             } else {
                 e.cancelBubble = true;
             }
+            $("#divselecty #xb_fixed").show();
+            $(".mask").show();
+        });
+        $(divselectyid+" #xb_fixed a").click(function(e){
+            e = e || window.event;
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else {
+                e.cancelBubble = true;
+            }               
+            var txt = $(this).find("span").text();
+            var data_id=$(this).attr("data-id");
+            $.ajax({
+                url: 'install.php',
+                type: 'post',
+                data: {user_sex: txt,user_id: data_id},
+                dataType: 'json',
+                success: function(data){
+                    if(data.status==200){
+                        $(divselectyid+" .order_indents_fss").html(txt);
+                        altto('性别修改成功');
+                        wid();
+                    }else{
+                        altto('性别修改失败');
+                        wid();
+                    }
+                }
+            });               
+            inputselecty.val(txt);
+            $(divselectyid+" #xb_fixed").hide();
             $(".mask").hide();
-            $(".xb_fixed").hide();
-       })
-    });
+        });
+    };
+    $.divselecty("#divselecty","#inputselecty");
+    $(".mask").click(function(e){
+        e = e || window.event;
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+        $(".mask").hide();
+        $("#xb_fixed").hide();
+   })
+});
 </script>
