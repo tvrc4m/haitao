@@ -40,6 +40,7 @@
 /*新下拉列表样式*/
 .buyorder-list{width: 100%;background-color: #FFF;border-top: 2px solid #7753ff;}
 .buyorder-list ul li{width: 20%;float: left;height: 40px;line-height: 40px;text-align: center;font-size: 0.6rem;}
+.distribu-list ul li{width: 33.33%;float: left;height: 40px;line-height: 40px;text-align: center;font-size: 0.6rem;}
 .buyorder-list ul li a{width: 100%;display: inline-block;}
 .buyorder-list ul li.current{background-color: #7753ff;}
 .buyorder-list ul li.current a{color: #fff;}
