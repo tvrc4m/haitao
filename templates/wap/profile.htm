@@ -1,4 +1,5 @@
 <{include file="header.htm"}>
+<link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
 <header>
     <div class="nav-w">
         <section class="nav-s" ><a href="<{$config.weburl}>/main.php?cg_u_type=1"><i class="fanhui_icon"></i></a></section>
@@ -6,29 +7,26 @@
         <section class="nav-e"><a href="<{$config.weburl}>"><i class="home_icons"></i></a></section>
     </div>
 </header>
-<link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
-<div style="height:0.5rem;background-color:#f5f5f5;"></div>
-<section class="order_two_list clearfix">
+<section class="order_two_list order_twos_list clearfix">
     <ul>
-        <li class="order_dotted"><a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1&oldUrl=<{$oldUlr}>"><span class="mforders">账户管理</span><i></i></a></li>
+        <li class="order_dotted"><a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1&oldUrl=<{$oldUlr}>"><span class="order_indents">账户管理</span><i></i></a></li>
         <li class="order_dotted">
             <{if $verify }>
-            <a><span class="mforders">实名认证</span><span class="mforder_fs">已认证</span></a>
+            <a><span class="order_indents">实名认证</span><span class="order_indents_fs">已认证</span></a>
             <{else}>
-            <a href="<{$config.weburl}>/real.php"><span class="mforders">实名认证</span><span class="mforder_f">未认证</span><i></i></a>
+            <a href="<{$config.weburl}>/real.php"><span class="order_indents">实名认证</span><span class="order_indents_f">未认证</span><i></i></a>
             <{/if}>
         </li>
         <li class="order_dotted">
-            <a><span class="mforders">手机绑定</span><span class="mforder_fs">已绑定 <{$mobile}></span></a>
+            <a><span class="order_indents">手机绑定</span><span class="order_indents_fs">已绑定 <{$mobile}></span></a>
         </li>
-        <li class="order_dotted"><a href="<{$config.weburl}>/lostpass.php"><span class="mforders">修改登录密码</span><i></i></a></li>
-        <li class="order_dotted"><a href="main.php?m=member&s=admin_orderadder"><span class="mforders">收货地址</span><i></i></a></li>
-        <li><a href="<{$config.weburl}>/agreement.php"><span class="mforders">注册协议</span><i></i></a></li>
+        <li class="order_dotted"><a href="<{$config.weburl}>/lostpass.php"><span class="order_indents">修改登录密码</span><i></i></a></li>
+        <li class="order_dotted"><a href="main.php?m=member&s=admin_orderadder"><span class="order_indents">收货地址</span><i></i></a></li>
+        <li><a href="<{$config.weburl}>/agreement.php"><span class="order_indents">注册协议</span><i></i></a></li>
     </ul>
 </section>
-<div style="height:1rem;background-color:#f5f5f5;"></div>
-<section class="m_btn">
-    <div class="m_tuichu"><a href="<{$config.weburl}>/main.php?action=logout">退出登录</a></div>
+<section class="order_btn">
+    <div class="order_btn_tuichu"><a href="<{$config.weburl}>/main.php?action=logout">退出登录</a></div>
 </section>
 <section class="bom_nav">
     <ul>
