@@ -81,7 +81,6 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/iscroll-zoom.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/hammer.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.photoClip.js"></script>
-<script type="text/javascript" src="<{$config.weburl}>/script/uplode.js"></script>
 <script>
     var obUrl = ''
     $("#clipArea").photoClip({
@@ -107,8 +106,17 @@
             $(".htmleaf-container").show();
         })
         $("#clipBtn").click(function(){
+            var a=imgsource;
+            $.ajax({
+                    url: 'install.php',
+                    type: 'post',
+                    data: {user_img: a},
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data)
+                    }
+                });
             $("#logox").empty();
-
             $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: 2.5rem;height: 2.5rem;">');
             $(".htmleaf-container").hide();
         })
