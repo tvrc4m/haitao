@@ -1,5 +1,4 @@
 <link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
-</head>
 <body class="um-vp bc-bg" ontouchstart>
 <header>
     <div class="nav-w">
@@ -269,18 +268,18 @@
     }
     $("#hj_slide").on("swipeLeft", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { //W3C阻止冒泡方法
+        if (e.stopPropagation) { 
             e.stopPropagation();
         } else {
-            e.cancelBubble = true; //IE阻止冒泡方法
+            e.cancelBubble = true; 
         }
     });
     $("#hj_slide").on("swipeRight", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { //W3C阻止冒泡方法
+        if (e.stopPropagation) { 
             e.stopPropagation();
         } else {
-            e.cancelBubble = true; //IE阻止冒泡方法
+            e.cancelBubble = true;
         }
     });
     $("#hj_slide").swipeSlide({
