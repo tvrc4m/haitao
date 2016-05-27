@@ -1,21 +1,26 @@
 @charset "utf-8";
 .cart-empty{background:url(../../../image/wap/no_car.png) top center no-repeat;background-size:95px;display;block;padding-top:85px;margin:80px auto 20px;text-align:center;color:#535353;font-size: 0.6rem;}
 .cart-empty a{color:#ff5c5c;}
-
-.cart-con{padding: 0.5rem 0.5rem 70px;}
-.cart-checkbox-first1{margin-top: 0.4rem;background-color: #fff;padding-left: 10px; color: #696969;text-align: left;font-weight: normal;height: 1.4rem;line-height: 1.4rem;border: 1px solid #ccc;border-bottom: 1px solid #ff5c5c;}
-.cart-checkbox-first1 a{font-size: 0.6rem;}
-.cart-checkbox-first2{border: 1px solid #ccc;padding: 0.5rem 0.5rem;border-top: 0px;background-color: #fff;}
-
-.toolbar{margin:20px auto 0;height:50px;line-height:50px;background-color:#F5F5F5;box-shadow: 0px 0px 1px #999;padding:0px 0 0 0.5rem;font-size:12px;text-align:left;position: fixed;bottom: 0;
-	width: 100%;z-index: 99999;box-sizing: border-box;-webkit-box-sizing: border-box;left: 0;}
+.cart-list{padding: 0.5rem 0.5rem 70px;}
+.cart-list .cart-checkbox-first1{margin-top: 0.4rem;background-color: #fff;padding-left: 10px; color: #696969;text-align: left;font-weight: normal;height: 1.4rem;line-height: 1.4rem;border: 1px solid #ccc;border-bottom: 1px solid #ff5c5c;}
+.cart-list .cart-checkbox-first1 a{font-size: 0.6rem;}
+.cart-list .cart-checkbox-first2{border: 1px solid #ccc;padding: 0.5rem 0.5rem;border-top: 0px;background-color: #fff;}
+.cart-list .cart-checkbox-first2 .check-left{float: left;}
 .cart-checkbox{position:relative;display:inline-block;height:15px;line-height:15px;overflow:hidden;_overflow:hidden;}
 .cart-checkboxs{margin-top: 20px;}
 .cart-checkbox input{position:absolute;z-index:0;left:-20px;_left:0;top:-20px;_top:0;}
 .cart-checkbox em{position:relative;z-index:1;float:left;height:15px;background:url(../../../image/wap/wap_haitao_icon73.png) no-repeat;background-size: contain;_background:none; overflow:hidden;cursor:pointer;padding-left:25px;}
 .cart-checkbox-checked em{background:url(../../../image/wap/wap_haitao_icon72.png) no-repeat;background-size: contain;}
+.cart-list .pro-img{float:left;height:80px;margin-right:10px;padding:0;width:80px;overflow:hidden;border:1px solid #e1e1e1;}
+.cart-list .pro-name{line-height:20px;word-break:break-all;word-wrap:break-word;overflow:hidden;text-align:left;height: 40px;}
+.cart-list .pro-name a{font-size: 0.6rem;}
+.cart-list .pro-name p{color:#666;margin-top:5px;line-height:16px;}
+.cart-list .pro-name span{background:#fff;color:#fff;height:12px;line-height:12px;padding:4px 5px;display:inline-block;margin-right:5px;}
+.cart-list .price{color:#000;font-weight:bold;font-family:Verdana,Arial;}
+.cart-list .org{color:#FF4400;}
+.toolbar{margin:20px auto 0;height:50px;line-height:50px;background-color:#F5F5F5;box-shadow: 0px 0px 1px #999;padding:0px 0 0 0.5rem;font-size:12px;text-align:left;position: fixed;bottom: 0;
+	width: 100%;z-index: 99999;box-sizing: border-box;-webkit-box-sizing: border-box;left: 0;}
 .select-bots{float: left;margin-right: 30px;}
-.check-left{float: left;}
 .cart-sum{float: left;}
 .Price{font-size: 16px;color: #ff5c5c;}
 .submit-btn{display: inline-block;background:#FF5c5c;border:0 none;color:#FFFFFF !important;font-size:16px;height:50px;line-height:50px;min-width:85px;text-align:center;}
@@ -23,15 +28,8 @@
 .cart-checkbox-first2 label{margin-top: 33px;}
 .cart-checkbox-first1 label{vertical-align: -3px;}
 .pro-name-rq{float: left;}
-.cart-con .pro-img{float:left;height:80px;margin-right:10px;padding:0;width:80px;overflow:hidden;border:1px solid #e1e1e1;}
-.cart-con .pro-name{line-height:20px;word-break:break-all;word-wrap:break-word;overflow:hidden;text-align:left;height: 40px;}
-.cart-con .pro-name a{font-size: 0.6rem;}
-.cart-con .pro-name p{color:#666;margin-top:5px;line-height:16px;}
-.cart-con .pro-name span{background:#fff;color:#fff;height:12px;line-height:12px;padding:4px 5px;display:inline-block;margin-right:5px;}
 .pro-content{margin-top: 5px;}
 .pro-content strong{color: #ff5c5c;font-size: 16px;}
-.cart-con .price{color:#000;font-weight:bold;font-family:Verdana,Arial;}
-.cart-con .org{color:#FF4400;}
 .pro-name-rb{float: right;}
 #nums{width:24px;float:left;height:18px;line-height:18px;margin:0;padding:0;font-size:14px;text-align:center;color:#666;background-color:#fff;border:1px solid #ccc;outline:0;ime-mode:disabled;}
 .reduce{width: 20px;height: 20px;outline:none;font-size: 14px;float: left;background-color: #fff;border: 1px solid #ccc;border-right: none;border-top-left-radius: 3px;border-bottom-left-radius: 3px;}

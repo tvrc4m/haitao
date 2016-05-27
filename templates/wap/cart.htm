@@ -22,7 +22,7 @@
     <{/if}>   
     <form id="form" method="post" action="">
         <input type="hidden" id="act" name="act" />
-        <ul class="cart-con">
+        <ul class="cart-list">
             <{foreach item=list from=$cart.cart}>
             <li class="cart-checkbox-first1">
                 <div>
@@ -32,7 +32,7 @@
             </li>
             <{foreach item=pro key=n from=$list.prolist}>
             <li class="clearfix cart-checkbox-first2" data-uid="<{$list.seller_id}>">
-                <div class="first check-left">
+                <div class="check-left">
                     <label class="cart-checkbox"><input type="checkbox" data-value="<{$list.seller_id}>" name="product_id[]" value="<{$pro.id}>"><em></em></label>
                 </div>
                 <div class="pro-name-rq clearfix">
