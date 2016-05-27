@@ -263,68 +263,23 @@ input[type="submit"] {
     display: none;
     z-index: 9999999;
 }
-#clipArea {
-    height: 90%;
-}
-.foot-use{
-    background: #fff;
-    height: 10%;
-    width: 100%;
-	position: relative;
-}
-#clipBtn{
-    float: right;
-    height: 100%;
-    width: 4rem;
-    background: #ff5c5c;
-    border: 0;
-    outline: none;
-    color: #fff;
-    font-size: 1.2rem;
-    z-index: 999;
-}
+#clipArea {height: 92%;}
+.foot-use{background: #f5f5f5;height: 8%;width: 100%;position: relative;}
+#clipBtn{width: 3rem;background: #ff5c5c;border: 0;outline: none;color: #fff;font-size: 0.7rem;z-index: 999;position: absolute;
+    right: 0.5rem;top: 50%;margin-top: -0.75rem;height: 1.5rem;border-radius: 5px;}
 .uploader1 {
     position: absolute;
-    width: 50%;
     height: 8rem;
     cursor: default;
     height: 100%;
     float: left;
 }
-.blue .button {
-    color: #fff;
-    background: #ff5c5c;
-    height: 100%;
-}
-.button {
-    float: left;
-    height: 100%;
-    display: inline-block;
-    outline: 0 none;
-    margin: 0;
-    cursor: pointer;
-    border: 0;
-    width: 4rem;
-    font-size: 1.2rem;
-}
-.uploader1 input[type=file] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    height: 8rem;
-    width: 50%;
-    cursor: pointer;
-    border: solid 1px #ddd;
-    opacity: 0;
-}
-#file {
-    float: left;
-    height: 100%;
-}
+.blue .button {color: #ff5c5c;}
+.button {display: inline-block;outline: 0 none;margin: 0;cursor: pointer;border: 0;
+    width: 2rem;font-size: 0.7rem;position: absolute;left: 0.5rem;top: 50%;margin-top: -0.75rem;height: 1.5rem;background-color: #F5F5F5;}
+.uploader1 input[type=file] {border: 0;padding: 0;margin: 0;cursor: pointer;opacity: 0;width: 2rem;
+    position: absolute;left: 0.5rem;top: 50%;margin-top: -0.75rem;height: 1.5rem;}
+/*#file {float: left; height: 100%;}*/
 
 /*性别选择样式*/
 .xb_fixed{display: none;
