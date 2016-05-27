@@ -47,15 +47,26 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
 
     die;
 }elseif(isset($_POST['user_img']) && $_POST['user_img'] != null){
-    var_dump($_POST); die;
-        $sql = "update mallbuilder_member set qq = '".$_POST['user_img']."' where userid = ".$buid;
-        if($db->query($sql)){
-            msg('main.php?m=member&s=admin_member&cg_u_type');
-        }else{
-            die('<script>alert("格式不正确");history.go(-1);</script>;');
+        $user_img = $_POST['user_img'];
+        $user_img = substr($user_img, strripos($user_img,'base64')+7);
+        $img = base64_decode(str_pad(strtr($user_img, '-_', '+/'), strlen($user_img) % 4, '=', STR_PAD_RIGHT));
+        $path = './uploadfile/member/'.date('Ymd').'/';
+        if(!file_exists($path)){
+            mkdir($path);
+        }
+        $img_path = $path.time().'.jpg';
+        $a = file_put_contents($img_path, $img);
+        if($a) {
+            $sql = "update mallbuilder_member set logo = '" . $img_path . "' where userid = " . $buid;
+            if ($db->query($sql)) {
+                msg('main.php?m=member&s=admin_member&cg_u_type');
+            } else {
+                die('<script>alert("格式不正确");history.go(-1);</script>;');
+            }
+        }else {
+            die('<script>alert("请重新上传图片");history.go(-1);</script>;');
         }
 }
-
 include_once("footer.php");
 	$tpl->display('install.htm');
 ?>
