@@ -107,9 +107,18 @@
             $(".htmleaf-container").show();
         })
         $("#clipBtn").click(function(){
-            $("#logox").empty();
-
-            $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: 2.5rem;height: 2.5rem;">');
+            var a=imgsource;
+            $.ajax({
+                    url: 'install.php',
+                    type: 'post',
+                    data: {user_img: a},
+                    dataType: 'json',
+                    success: function(data){
+                        console.log(data)
+                    }
+                });           
+            // $("#logox").empty();
+            // $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: 2.5rem;height: 2.5rem;">');
             $(".htmleaf-container").hide();
         })
     });
