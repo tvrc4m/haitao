@@ -32,7 +32,6 @@ em{font-style:normal;}
 .hidden{display:none;}
 .clear{clear:both;display:block;font-size:0;height:0;line-height:0;overflow:hidden;}
 .clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
-.clearfix{display:inline-table;}
 .clearfix{display:block;}
 * + html .clearfix{min-height:1%;}
 .w1{margin-bottom:10px;padding-top:10px;}
@@ -261,7 +260,6 @@ em{font-style:normal;}
 .til_1004 a{color: #3c67fe}
 
 article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body div,body p{margin:0 auto;word-break:normal}
 address,cite,dfn,em,var,i{font-style:normal}
 var{font-family:Verdana,Arial}
 sup{vertical-align:text-top}

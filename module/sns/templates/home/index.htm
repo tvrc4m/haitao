@@ -1,70 +1,30 @@
 <{include file="../../../../templates/default/site_nav.htm"}>
 <{include file="../../../../templates/default/header_nonav.htm"}>
 <link href="<{$config.weburl}>/module/sns/templates/home/home.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<{$config.weburl}>/script/jquery.ui.js"></script>
-<script type="text/javascript" src="<{$config.weburl}>/script/jquery.validation.min.js"></script>
-<script type="text/javascript" src="<{$config.weburl}>/script/jquery.charCount.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/sns.js"></script>
-
-<script>
-$(function(){
-	//加关注
-	$("[genre='followbtn']").on('click',function(){
-		
-		var url = '<{$config.weburl}>/module/sns/ajax_update.php';
-		var uname='<{$smarty.cookies.USER}>';
-		if(uname=='')
-		{
-			alert('<{$lang.no_logo}>');
-			window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-			return false;
-		}
-		var data_str = $(this).attr('data-param');
-        eval( "data_str = "+data_str);
-		var pars = 'mid='+data_str.mid+'&uname='+uname+'&op=add';
-		$.post(url, pars,showResponse);
-		function showResponse(originalRequest)
-		{
-			if(originalRequest>1)
-				alert('成功添加');
-			else if (originalRequest>0)
-				alert('已添加');
-			else
-				alert('参数传递错误，无法完成操作');
-		}
-	});
-});
-</script>
-<div id="append_parent"></div>
-<div id="ajaxwaitid"></div>
-<div id="container">
-	<div id="content" class="wrapper">
-        <div class="body clearfix">
-        	<div class="body-main <{if $smarty.get.act=='product'}>pro<{/if}>"><{$output}></div>
-        	<{if $smarty.get.act!='product'}>
-            <div class="body-side">
-            	<div class="visitors">
-					<h4><em>最近访客</em></h4>
-					<ul class="visitlist clearfix">
-                    	<{foreach item=list key=nums from=$visitors}>
-                        <li class="clearfix">
-                            <p class="visitor_pic">
-                                <a target="_blank" href="home.php?uid=<{$list.userid}>"><img height="60" width="60" src="<{if $list.logo!=''&&$list.logo!='0'}><{$list.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" /></a>
-                            </p>
-                            <div class="visitor_pic_rt">
-                                <p class="visitor_name"><a target="_blank" href="home.php?uid=<{$list.userid}>"><{$list.user}></a></p>
-                                <p class="visitor_time"><{$list.dtime}></p>
-                            </div>  
-                        </li>
-                        <{foreachelse}>
-                        <span>&nbsp;&nbsp;暂无访客</span>
-                        <{/foreach}>
-                    </ul>
-                </div>
-            </div>
-            <{/if}>
-        </div>
-    </div>
+<div class="container">
+<div class="content clearfix">
+	<div class="body-main <{if $smarty.get.act=='product'}>pro<{/if}>"><{$output}></div>
+	<{if $smarty.get.act!='product'}>
+	<div class="body-side">
+		<div class="visitors">
+			<h2>最近访客</h2>
+			<ul>
+				<{foreach item=list key=nums from=$visitors}>
+				<li class="clearfix">
+					<a class="fl" target="_blank" href="home.php?uid=<{$list.userid}>"><img src="<{if $list.logo!=''&&$list.logo!='0'}><{$list.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" /></a>
+					<div class="fr">
+						<a class="name" target="_blank" href="home.php?uid=<{$list.userid}>"><{$list.user}></a>
+						<p><{$list.dtime}></p>
+					</div>
+				</li>
+				<{foreachelse}>
+				<p>&nbsp;&nbsp;暂无访客</p>
+				<{/foreach}>
+			</ul>
+		</div>
+	</div>
+	<{/if}>
 </div>
-
+</div>
 <{include file="../../../../../templates/default/footer.htm"}>
