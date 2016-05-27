@@ -8,21 +8,21 @@
 </header>
 <link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
 <div style="height:0.5rem;background-color:#f5f5f5;"></div>
-<section class="m_fore clearfix">
+<section class="order_two_list clearfix">
     <ul>
-        <li class="mforder"><a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1&oldUrl=<{$oldUlr}>"><span class="mforders">账户管理</span><i></i></a></li>
-        <li class="mforder">
+        <li class="order_dotted"><a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1&oldUrl=<{$oldUlr}>"><span class="mforders">账户管理</span><i></i></a></li>
+        <li class="order_dotted">
             <{if $verify }>
             <a><span class="mforders">实名认证</span><span class="mforder_fs">已认证</span></a>
             <{else}>
             <a href="<{$config.weburl}>/real.php"><span class="mforders">实名认证</span><span class="mforder_f">未认证</span><i></i></a>
             <{/if}>
         </li>
-        <li class="mforder">
+        <li class="order_dotted">
             <a><span class="mforders">手机绑定</span><span class="mforder_fs">已绑定 <{$mobile}></span></a>
         </li>
-        <li class="mforder"><a href="<{$config.weburl}>/lostpass.php"><span class="mforders">修改登录密码</span><i></i></a></li>
-        <li class="mforder"><a href="main.php?m=member&s=admin_orderadder"><span class="mforders">收货地址</span><i></i></a></li>
+        <li class="order_dotted"><a href="<{$config.weburl}>/lostpass.php"><span class="mforders">修改登录密码</span><i></i></a></li>
+        <li class="order_dotted"><a href="main.php?m=member&s=admin_orderadder"><span class="mforders">收货地址</span><i></i></a></li>
         <li><a href="<{$config.weburl}>/agreement.php"><span class="mforders">注册协议</span><i></i></a></li>
     </ul>
 </section>
