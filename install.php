@@ -46,7 +46,16 @@ if(isset($_POST['user_ni']) && $_POST['user_ni'] != null){
     }
 
     die;
+}elseif(isset($_POST['user_img']) && $_POST['user_img'] != null){
+    var_dump($_POST); die;
+        $sql = "update mallbuilder_member set qq = '".$_POST['user_img']."' where userid = ".$buid;
+        if($db->query($sql)){
+            msg('main.php?m=member&s=admin_member&cg_u_type');
+        }else{
+            die('<script>alert("格式不正确");history.go(-1);</script>;');
+        }
 }
+
 include_once("footer.php");
 	$tpl->display('install.htm');
 ?>
