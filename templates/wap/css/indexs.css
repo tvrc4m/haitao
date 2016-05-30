@@ -43,7 +43,7 @@
 .centent_list .centent_cennum_add{font-size: 0.8rem;text-align: center;padding:0.8rem 0;}
 .centent_list .centent_cennum_add a{display: inline-block;color: #ff5c5c;}
 .centent_list .centent_cennum_add a span{display: inline-block;width: 0.8rem;height: 0.8rem;border: 1px solid #ff5c5c;text-align: center;
-		border-radius: 50%;margin-right: 0.4rem;position: relative;vertical-align: top;}
+		border-radius: 50%;margin-right: 0.4rem;position: relative;vertical-align: -3px;}
 .centent_list .centent_cennum_add a span strong{font-weight: normal;height: 0.8rem;line-height: 0.8rem;font-size: 0.7rem;position: absolute;top: 0;
     left: 50%;margin-left: -0.4rem;width: 0.8rem;}
 .hj_share_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;opacity:0;display: none;
@@ -58,6 +58,6 @@
 	padding-left: 1.2rem;display: inline-block;margin-right: 10px;}
 .comm_form {text-align: center;}
 .comm_form p{border-top: 1px solid #ccc;border-bottom:1px solid #ccc;line-height: 2rem;font-size: 0.7rem;
-	padding-left: 0.8rem;text-align: left;}
+	padding-left: 0.8rem;text-align: left;background-color: #fff;}
 .comm_form p input{margin-left: 1rem;border: 0;line-height: 2rem;vertical-align: top;font-size: 0.6rem}
 .comm_form .submit{padding: 0.8rem 5rem;margin: 1rem auto 0;background: #ff5c5c;border: 0;color: #fff;border-radius: 5px;font-size: 0.7rem;}
