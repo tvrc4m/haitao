@@ -11,12 +11,17 @@ class passport extends Uc_server{
 
     private $_mobile;
 
+    private $_action;
+
     public function __construct()
     {
         $config['uc_appid']='201605270933';
         $config['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
         $config['uc_server']='http://t.mayionline.cn/apis/uc';
         parent:: __construct($config);
+
+        $this->_action = !empty($_GET['action'])?$_GET['action']:'';
+        echo $this->_action;
         var_dump($this->login(array('phone'=>'15011426118','password'=>'123456')));
 
     }
