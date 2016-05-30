@@ -108,9 +108,8 @@ i.home_icons{display: inline-block;height: 50px;width: 50px;background: url(../.
 .sq_logo{padding:0 0.5rem;background-color: #fff;}
 .sq_logo_inner{border-bottom: 1px dotted #b9b9b9;height: 2.5rem;line-height: 2.5rem;padding: 0.5rem 0;}
 .sq_logo span{float: left;}
-.sq_logo img{float: right;width: 2.5rem;height: 2.5rem;border-radius: 50%;}
-.sq_logo i{float: right;background: url(../../../image/wap/wap_haitao_icon131.png) center right no-repeat;background-size: 70%;
-	width: 0.8rem;height: 2.5rem;}
+#logox{float: right;padding-right: 0.9rem;background: url(../../../image/wap/wap_haitao_icon131.png) center right no-repeat;background-size: 0.65rem;margin-right: 0.3rem;}
+.sq_logo img{width: 2.5rem;height: 2.5rem;border-radius: 50%;}
 #mforder_weixin{border-bottom: none;}
 #mforder_weixin a{margin-left: 0.5rem;width: 70%;}
 #mforder_weixin span{color: #999; padding-left: 0;}
