@@ -1,5 +1,4 @@
 <link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
 <header>
 	<div class="nav-w">
     	<section class="nav-s iconfont"><a  onclick="javascript:history.back(-1)" ><i class="fanhui_icon"></i></a></section>
@@ -7,68 +6,53 @@
     	<section class="nav-e"><!--<a href="#"><nav>设置</nav></a>--></section>
     </div>
 </header>
-<div class="roll_banner">
-	<div class="roll_banner_top"><span>总面值(元)</span></div>
-	<div class="roll_banner_center">1000</div>
-	<div class="roll_banner_bottom">已赚得蚂蚁海淘代金劵<span class="">3</span>张</div>
-</div>
 <div class="roll_container">
-	<!-- <div class="roll_rule clearfix"><span>海淘劵使用规则</span></div> -->
-	<div class="roll_list">
-		<div class="roll_list_top clearfix">
-			<div class="roll_list_tl">最高相当于8.5折优惠</div>
-			<div class="roll_list_tr"><span>2016.10.12 18:13:34</span><span>赚取</span></div>
-		</div>
+	<div class="roll_list">	
 		<ul class="roll_list_content">
-			<li>
-				<img src="../image/wap/wap_haitao_img1.png">
-				<div class="roll_list_content_t clearfix"><span class="roll_list_content_tl">蚂蚁海淘代金劵</span><span class="roll_list_content_tr">2016.10.12前有效</span></div>
-				<div class="roll_list_content_b clearfix">
-					<div class="roll_list_content_bl">
-						<div class="moneys">￥<span>123</span></div>
-						<p>满<span>100</span>元可用</p>
-					</div>
-					<div class="roll_list_content_br">
-						<a href="<{$config.weburl}>/index.php">去蚂蚁海淘使用</a>
-					</div>				
+			<{foreach from=$list.list item=vo key=key}><li class="clearfix">
+				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
+				<div class="roll_list_left">
+					<span><{$config.money}></span><span class="roll_list_money"><{$vo.price|string_format:"%.2f"}></span>
 				</div>
-			</li><li>
-				<img src="../image/wap/wap_haitao_img1.png">
-				<div class="roll_list_content_t clearfix"><span class="roll_list_content_tl">蚂蚁海淘代金劵</span><span class="roll_list_content_tr">2016.10.12前有效</span></div>
-				<div class="roll_list_content_b clearfix">
-					<div class="roll_list_content_bl">
-						<div class="moneys">￥<span>123</span></div>
-						<p>满<span>100</span>元可用</p>
-					</div>
-					<div class="roll_list_content_br">
-						<span>已过期</span>
-					</div>				
+				<div class="roll_list_right">
+					<p class="roll_list_name"><{$vo.shop_name}></p>
+					<p class="roll_list_limit">店内满<span><{$vo.limit}></span>元可用</p>
+					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
 				</div>
-			</li>
+			</li><{foreachelse}>
+			<div class="itemsNull">
+		    	<h3>暂无符合条件的数据记录</h3>
+			</div>
+			<{/foreach}>
 		</ul>
-<!-- test -->
-		<div class="roll_list_top clearfix">
-			<div class="roll_list_tl">最高相当于8.5折优惠</div>
-			<div class="roll_list_tr"><span>2016.10.12 18:13:34</span><span>赚取</span></div>
-		</div>
-		<ul class="roll_list_content">
-			<li>
-				<img src="../image/wap/wap_haitao_img1.png">
-				<div class="roll_list_content_t clearfix"><span class="roll_list_content_tl">蚂蚁海淘代金劵</span><span class="roll_list_content_tr">2016.10.12前有效</span></div>
-				<div class="roll_list_content_b clearfix">
-					<div class="roll_list_content_bl">
-						<div class="moneys">￥<span>123</span></div>
-						<p>满<span>100</span>元可用</p>
-					</div>
-					<div class="roll_list_content_br">
-						<a href="<{$config.weburl}>/index.php">去蚂蚁海淘使用</a>
-					</div>				
-				</div>
-			</li>
-		</ul>
-<!-- test -->
 	</div>
-	<div class="roll_btn">
-		<a href="<{$config.weburl}>/index.php">赚取更多海淘劵</a>
+	<div class="roll_center">一个月内已使用、已过期的优惠券</div>
+	<div class="roll_list">	
+		<ul class="roll_list_content ">
+			<li class="clearfix">
+				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
+				<div class="roll_list_left roll_list_left_test">
+					<span><{$config.money}></span><span class="roll_list_money">122</span>
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">蚂蚁海淘旗航店</p>
+					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
+					<p class="roll_list_time">2016.05.30~2016.06.20</p>
+					<div class="roll_list_status">已过期</div>
+				</div>
+			</li><li class="clearfix">
+				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
+				<div class="roll_list_left roll_list_left_test">
+					<span><{$config.money}></span><span class="roll_list_money">122</span>
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">蚂蚁海淘旗航店</p>
+					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
+					<p class="roll_list_time">2016.05.30~2016.06.20</p>
+					<div class="roll_list_status">已使用</div>
+				</div>
+			</li>
+		</ul>
 	</div>
 </div>
+<script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
