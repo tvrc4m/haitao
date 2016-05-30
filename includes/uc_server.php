@@ -53,7 +53,6 @@ class Uc_server
      * 验证失败返回 array('status'=>int,'errmsg'=>string,'data'=>'')
      */
     public function login($params){
-
         $this->action='login';
     	$result=$this->http_post($this->server,$params);
     	if($result===false){
@@ -139,8 +138,7 @@ class Uc_server
         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         $result = curl_exec($curl);
         $header = curl_getinfo($curl);
-
-        print_r($result);exit;
+         print_r($result);exit;
         curl_close($curl);
         if (intval($header["http_code"]) == 200) {
             return json_decode($result);
