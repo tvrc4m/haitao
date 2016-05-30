@@ -273,14 +273,14 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .partner_container_top{padding: 2.5rem 0rem;background: url(../../../image/wap/wap_haitao_icon106.png) no-repeat;background-size: 100%;margin-top: 1rem;margin-bottom: -1.8rem;}
 .partner_container_content{border-radius: 5px;margin-top: 1.5rem;background-color: #fff;position: relative;}
 .partner_container_content h2{width: 160px;height: 50px;position: absolute;top: -0.8rem;left: 50%;margin-left: -80px;background: url(../../../image/wap/wap_haitao_icon98.png) no-repeat;background-size:100%;}
-.partner_list{padding: 0.8rem 0;border-bottom: 1px dashed #b9b9b9;}
+.partner_list{padding: 0.8rem 0;border-bottom: 1px dotted #b9b9b9;}
 .partner_list_inner{padding-right: 0.5rem;padding-left: 85px;}
 .partner_list_inner.icon1{background: url(../../../image/wap/wap_haitao_icon97.png) 10px no-repeat;background-size: contain;}
 .partner_list_inner.icon2{background: url(../../../image/wap/wap_haitao_icon96.png) 10px no-repeat;background-size: contain;}
 .partner_list_inner.icon3{background: url(../../../image/wap/wap_haitao_icon95.png) 10px no-repeat;background-size: contain;}
 .partner_list_inner p{font-size: 0.8rem;margin-bottom: 0.4rem;font-weight: 600;color: #ff9226;}
 .partner_list_inner span{font-size: 0.6rem;display: inline-block;min-height: 37px;}
-.partner_list ul{padding-top: 0.8rem;margin-top: 0.5rem;border-top: 1px dashed #b9b9b9;}
+.partner_list ul{padding-top: 0.8rem;margin-top: 0.5rem;border-top: 1px dotted #b9b9b9;}
 .partner_list ul li {width: 20%;display: inline-block;text-align: center;}
 .partner_list ul li img {width: 40px;height: 40px;}
 .partner_list ul li p {margin-top: 5px;}
