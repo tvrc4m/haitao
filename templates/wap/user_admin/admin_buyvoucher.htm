@@ -29,29 +29,21 @@
 	<div class="roll_center">一个月内已使用、已过期的优惠券</div>
 	<div class="roll_list">	
 		<ul class="roll_list_content ">
-			<li class="clearfix">
+			<{foreach from=$list.list item=vo key=key}><li class="clearfix">
 				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
-				<div class="roll_list_left roll_list_left_test">
-					<span><{$config.money}></span><span class="roll_list_money">122</span>
+				<div class="roll_list_left">
+					<span><{$config.money}></span><span class="roll_list_money"><{$vo.price|string_format:"%.2f"}></span>
 				</div>
 				<div class="roll_list_right">
-					<p class="roll_list_name">蚂蚁海淘旗航店</p>
-					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
-					<p class="roll_list_time">2016.05.30~2016.06.20</p>
-					<div class="roll_list_status">已过期</div>
+					<p class="roll_list_name"><{$vo.shop_name}></p>
+					<p class="roll_list_limit">店内满<span><{$vo.limit}></span>元可用</p>
+					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
 				</div>
-			</li><li class="clearfix">
-				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
-				<div class="roll_list_left roll_list_left_test">
-					<span><{$config.money}></span><span class="roll_list_money">122</span>
-				</div>
-				<div class="roll_list_right">
-					<p class="roll_list_name">蚂蚁海淘旗航店</p>
-					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
-					<p class="roll_list_time">2016.05.30~2016.06.20</p>
-					<div class="roll_list_status">已使用</div>
-				</div>
-			</li>
+			</li><{foreachelse}>
+			<div class="itemsNull">
+		    	<h3>暂无符合条件的数据记录</h3>
+			</div>
+			<{/foreach}>
 		</ul>
 	</div>
 </div>
