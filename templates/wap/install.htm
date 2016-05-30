@@ -6,7 +6,7 @@
         <section class="nav-e"><a href="<{$config.weburl}>"><i class="home_icons"></i></a></section>
     </div>
 </header>
-<link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
+<link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
 <section class="setup form_ds">
 <form id="setup" name="setup" action="<{$config.weburl}>/install.php" method="post">
     <ul>
@@ -35,22 +35,6 @@
 <script src="<{$config.weburl}>/script/register-wap.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function(){
-	// var searchW= location.search.split("=")[1]
-	// console.log(searchW)
-	// if(searchW=="qq"){
-	// 	$(".nav-w .nav-c span").html("QQ设置");
-	// 	$("#setup ul").prepend("<li class='user_names user_rela'>"+
- //            "<input class='texts' name='user_qq' type='text' id='user_qq' placeholder='QQ' value=''/>"+
- //            "<div class='inp_close'><i></i></div>"+
- //        "</li>")
-	// }
-	// if(searchW=="name"){
-	// 	$(".nav-w .nav-c span").html("昵称设置");
-	// 	$("#setup ul").prepend("<li class='user_names user_rela'>"+
- //            "<input class='texts' name='user' type='text' id='user' placeholder='昵称' value=''/>"+
- //            "<div class='inp_close'><i></i></div>"+
- //        "</li>")
-	// }
     $("form").find(".texts").each(function(){
         $(this).bind('input propertychange', function(){
             var val=$(this).val();

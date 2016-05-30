@@ -23,7 +23,7 @@
 .district{top:5px;right:10px;position:absolute;z-index:100;}
 .area{float:right;background:-moz-linear-gradient(center top , #FFFFFF, #F1F1F1) repeat;position:relative;border:1px solid #CCCCCC;cursor:pointer;height:20px;max-width:100px;min-width:35px;overflow:hidden;padding:0 20px 0 10px;}
 .area span{color:#666666;line-height:20px;padding-right:5px;border-right:1px solid #CCCCCC;display:inline-block;font-size:12px;overflow:hidden;}
-.area b{border-color:#CCCCCC transparent transparent;border-style:solid dashed dashed;border-width:5px;height:0;overflow:hidden;position:absolute;right:5px;top:8px;width:0;}
+.area b{border-color:#CCCCCC transparent transparent;border-style:solid dotted dotted;border-width:5px;height:0;overflow:hidden;position:absolute;right:5px;top:8px;width:0;}
 .i-area{display:none;right:0; position:absolute;top:23px;z-index:100;}
 .i-area ul{background:none repeat scroll 0 0 #FFFFFF;border-color:#BBBBBB #999999 #999999 #BBBBBB;border-style:solid;border-width:1px;overflow-x:hidden;padding:10px;width:330px;}
 .i-area ul li{float:left;height:auto;line-height:1.7;padding:0 5px;white-space:nowrap;width:100px;cursor:pointer;}

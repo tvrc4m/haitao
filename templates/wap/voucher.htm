@@ -1,0 +1,80 @@
+<{include file="header.htm"}>
+<link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
+<header>
+	<div class="nav-w">
+    	<section class="nav-s iconfont"><a  onclick="javascript:history.back(-1)" ><i class="fanhui_icon"></i></a></section>
+    	<section class="nav-c"><span>我的代金券</span></section>
+    	<section class="nav-e"></section>
+    </div>
+</header>
+<div class="roll_container">
+	<div class="roll_list">	
+		<ul class="roll_list_content">
+			<li class="clearfix">
+				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
+				<div class="roll_list_left">
+					<span><{$config.money}></span><span class="roll_list_money">5</span>
+				</div>
+				<div class="roll_list_right roll_list_right_test">
+					<p class="roll_list_name">蚂蚁在线</p>
+					<p class="roll_list_limit">店内满<span>100</span>元可用</p>
+					<p class="roll_list_time">2016.01.06~2016.03.30</p>
+					<img src="../image/wap/checked.png" class="roll_list_checked">
+				</div>
+			</li><li class="clearfix">
+				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
+				<div class="roll_list_left">
+					<span><{$config.money}></span><span class="roll_list_money">10</span>
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">蚂蚁在线</p>
+					<p class="roll_list_limit">店内满<span>200</span>元可用</p>
+					<p class="roll_list_time">2016.01.06~2016.03.30</p>
+				</div>
+			</li><li class="clearfix">
+				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
+				<div class="roll_list_left">
+					<span><{$config.money}></span><span class="roll_list_money">15</span>
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">蚂蚁在线</p>
+					<p class="roll_list_limit">店内满<span>300</span>元可用</p>
+					<p class="roll_list_time">2016.01.06~2016.03.30</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class='collect_box_content'></div>
+<script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
+<script type="text/javascript">
+	$(function(){
+		function altto(co){
+	        $(".collect_box_content").show();
+	        $(".collect_box_content").html(co);
+	        var wid=$(".collect_box_content").width()/2;
+	        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
+	    }
+		$(".roll_list_content li").bind("click",function(){
+			var thisMoney=$(this).find(".roll_list_money").html() , _this=$(this) , maxMoney=$(this).find(".roll_list_limit span").html();
+			console.log(thisMoney);console.log(maxMoney);
+			_this.find(".roll_list_right").addClass("roll_list_right_test").end().siblings().find(".roll_list_right").removeClass("roll_list_right_test");
+			_this.find(".roll_list_right").prepend("<img src='../image/wap/checked.png' class='roll_list_checked'>").end().siblings().find("img").remove();
+			$(".collect_box_content").hide();
+			$.ajax({
+                url: 'voucher.php',
+                type: 'post',
+                data: {voucher_money: thisMoney,voucher_max: maxMoney},
+                dataType: 'json',
+                success: function(data){
+                	console.log(data)
+                	var zonMoney=data.status;
+                   	if(150<maxMoney){
+						altto("满"+maxMoney+"可用");
+					}
+                }
+            });               
+		})
+	})
+</script>
+<{include file="footer.htm"}>

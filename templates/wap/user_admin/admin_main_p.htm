@@ -1,3 +1,4 @@
+<link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
 <header>
 	<div class="nav-w">
         <section class="nav-s"><a href="<{$config.weburl}>"><i class="fanhui_icon"></i></a></section>
@@ -5,37 +6,22 @@
         <section class="nav-e"><a href="<{$config.weburl}>/profile.php"><i class="home_icon"></i></a></section>
     </div>
 </header>
-<link href="<{$config.weburl}>/templates/wap/css/main.css" rel="stylesheet" type="text/css" />
 <section>
-    <div class="duser clearfix">
-      <!--   <dl class="duser-user">
-         <dt><a href="<{$config.weburl}>/main.php?m=member&s=admin_member&cg_u_type=1"><img width="70" height="70" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>"></a></dt>
-        <dd><{$cominfo.user}></dd>
-    </dl> -->
+<div class="duser clearfix">
     <div class="duser_left">
-        <img class="ub-img shoplogo" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>">
+        <img class="duser_left_logo" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>">
     </div>
     <div class="duser_right">
-        <div class="duser_name"><{$cominfo.user}></div>
-        <ul class="duser-auth">
-            <li><a href="javascript:void(0);" class="duser-auth-mob duser-auth-mob-j">已认证</a></li>
-            <!-- <li class="duser-auth-line"></li> -->
-            <li>
-                <{if $verify }>
-                    <a href="javascript:void(0);" class="duser-auth-ema duser-auth-ema-j">已认证</a>
-                <{else}>
-                    <a href="<{$config.weburl}>/real.php" class="duser-auth-ema ">未认证</a>
-                <{/if}>
-            </li>
-        </ul>
+        <div class="duser_right_name"><{$cominfo.user}></div>
+        <div class="duser_right_auth">
+            <a href="<{$config.weburl}>/profile.php" class="">实名认证、收货地址&nbsp;></a>
+        </div>
     </div>   
-    </div>   
-</section>
-<section>
-    <div class="info_top"><span>我的订单</span><a href="main.php?m=product&s=admin_buyorder">查看全部订单</a></div>
-	<div class="info clearfix">
+</div>   
+<div class="order">
+    <div class="order_top"><span>我的订单</span><a href="main.php?m=product&s=admin_buyorder">查看全部订单</a></div>
+	<div class="order_one_list clearfix">
         <ul>
-            <!-- <li><a <{if $shop_count.0}>class="color"<{/if}> href="main.php?m=product&s=admin_buyorder"><strong><{$shop_count.4}></strong>全部订单</a></li> -->
             <li>
             <a href="main.php?m=product&s=admin_buyorder&status=1"><img src="../image/wap/wap_haitao_icon139.png" alt="待付款"></a>
             <a href="main.php?m=product&s=admin_buyorder&status=1">待付款<span <{if $shop_count.0}>class="color"<{/if}>>(<{$shop_count.0}>)</span></a>
@@ -51,26 +37,23 @@
             </li>
         </ul>
     </div>
-</section>
-<div style="height:0.5rem;background-color:#f5f5f5;"></div>
-<section class="m_fore clearfix">
-    <ul>
-        <li class="mforder"><a href="<{$config.weburl}>/pay/index.php"><span class="fore_d">蚂蚁钱包</span><i></i></a></li>
-        <li><a href="main.php?m=voucher&s=admin_buyvoucher"><span class="fore_h">优惠券</span><i></i></a></li>
-    </ul>
-    <div style="height:0.5rem;background-color:#f5f5f5;"></div> 
-    <ul>
-        <li class="mforder"><a href="main.php?m=sns&s=admin_share_product"><span class="fore_b">商品收藏</span><i></i></a></li>
-        <li><a href="main.php?m=sns&s=admin_share_shop"><span class="fore_c">店铺收藏</span><i></i></a></li>
-    </ul> 
-    <div style="height:0.5rem;background-color:#f5f5f5;"></div> 
-    <ul>
-        <li class="mforder"><a href="tel:4000101977"><span class="fore_e">联系客服</span><i></i></a></li>
-        <li><a href="<{$config.weburl}>/help.php"><span class="fore_g">帮助中心</span><i></i></a></li>
-        <!-- <li><a href="main.php?m=member&s=admin_orderadder"><span class="fore_f">关于蚂蚁海淘</span></a></li> -->
-    </ul>  
-</section>
+    <div class="order_two_list clearfix">
+        <ul>
+            <li class="order_dotted"><a href="<{$config.weburl}>/pay/index.php"><span class="fore_d">蚂蚁钱包</span><i></i></a></li>
+            <li><a href="main.php?m=voucher&s=admin_buyvoucher"><span class="fore_h">优惠券</span><i></i></a></li>
+        </ul>
+        <ul>
+            <li class="order_dotted"><a href="main.php?m=sns&s=admin_share_product"><span class="fore_b">商品收藏</span><i></i></a></li>
+            <li><a href="main.php?m=sns&s=admin_share_shop"><span class="fore_c">店铺收藏</span><i></i></a></li>
+        </ul> 
+        <ul>
+            <li class="order_dotted"><a href="tel:4000101977"><span class="fore_e">联系客服</span><i></i></a></li>
+            <li><a href="<{$config.weburl}>/help.php"><span class="fore_g">帮助中心</span><i></i></a></li>
+        </ul>  
+    </div>
+</div>
 <div style="height:70px;background-color:#f5f5f5;"></div>
+</section>
 <section class="addcarts">
     <a class="carts" href="/?m=product&s=cart">
         <span class="cart-num-conts" id='cart_num'>
@@ -87,17 +70,3 @@
     </ul>
 </section>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.11.2.min.js"></script>
-<script>
-    // js获取屏幕宽度，自动调节相应模块的宽高比例
-    // var w=window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth;
-    // if(w <=540)
-    // {
-    //     var rate = w/540;
-    //     var h = 152*100*rate/100;
-    //     $(".user").height(h+"px")
-    // }
-    // else
-    // {
-    //    $(".user").height("151px")
-    // }
-</script>

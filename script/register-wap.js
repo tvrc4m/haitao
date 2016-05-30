@@ -49,7 +49,6 @@ $(document).ready(function(){
         focusblurid.blur(function(){
             var thisval = $(this).val();
             var tip = $(this).parentsUntil("form").find("p");
-            console.log(tip)
             var flag;
             if(focusid == "#mobile"){
                 flag = phnumber.test(thisval);
