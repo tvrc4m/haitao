@@ -1,8 +1,8 @@
 <div class="path">
     <div>
         <span class="shop"></span>
-    	<a href="main.php">买家中心</a> <span>&gt;</span> 
-		已兑换的商品 
+        <a href="main.php">买家中心</a> <span>&gt;</span>
+		已兑换的商品
     </div>
 </div>
 <div class="main">
@@ -133,51 +133,48 @@
         <{/if}>
         <{else}>
         <table class="table-list-style exchange">
-        	<thead>
-            <tr>
-            	<th width="10"></th>
-				<th width="150" class="tl">订单编号</th>
-            	<th class="tl">商品名称</th>
-            	<th width="160">下单日期</th>
-            	<th width="150" style="border-right:1px solid #ccc;">订单状态</th>
-            </tr>
+            <thead>
+                <tr>
+                <th width="150">订单编号</th>
+                <th>商品名称</th>
+                <th width="160">下单日期</th>
+                <th width="150">订单状态</th>
+                </tr>
             </thead>
             <tbody>
             <{foreach item=list key=num from=$de}>
-            <tr>
-	  			<td></td>
+                <tr>
                 <td class="tl"><a href="<{$config.weburl}>/main.php?m=points&s=admin_points_order&id=<{$list.id}>&type=show"><{$list.order_id}></a></td>
-            	<td class="tl">
-				<a target="_blank" href="<{$config.weburl}>/?m=points&s=detail&id=<{$list.product_id}>"><{$list.product_name}></a>
-				</td>
-				<td><{$list.create_time|date_format:"%Y-%m-%d&nbsp;%H:%M:%S"}></td>
+                <td class="tl">
+                <a target="_blank" href="<{$config.weburl}>/?m=points&s=detail&id=<{$list.product_id}>"><{$list.product_name}></a>
+                </td>
+                <td><{$list.create_time|date_format:"%Y-%m-%d&nbsp;%H:%M:%S"}></td>
                 <td class='td<{$list.id}>'>
                 <{if $list.status==10}>未发货<{/if}>
                 <{if $list.status==20}>已发货，<a href="javascript:void(0);" data_type="pick_up" data-param="{'id':'<{$list.id}>'}">确定收货</a><{/if}>
                 <{if $list.status==30}>订单完成<{/if}>
                 <{if $list.status==0}>订单取消<{/if}>
                 </td>
-            </tr>
-            <{foreachelse}>
-            <tr>
-            	<td colspan="20" class="norecord">
-                	<i></i><span>暂无符合条件的数据记录</span>	
+                </tr>
+                <{foreachelse}>
+                <tr>
+                <td colspan="4" class="norecord">
+                <i></i><span>暂无符合条件的数据记录</span>	
                 </td>
-            </tr>
+                </tr>
             <{/foreach}>
             </tbody>
             <tfoot>
-            <tr>
-                <td></td>
-                <td colspan="20"><div class="pagination"><{$tg.page}></div></td>
-            </tr>
+                <tr>
+                <td colspan="4"><div class="pagination"><{$tg.page}></div></td>
+                </tr>
             </tfoot>
         </table>
         <{/if}> 
     </div>
 </div>
 <script>
-$("[data_type='pick_up']").live('click',function(){
+$("[data_type='pick_up']").on('click',function(){
 	var data_str = $(this).attr('data-param');
 	eval("data_str = "+data_str);
 	var url = "<{$config.weburl}>/main.php?m=points&s=admin_points_order";

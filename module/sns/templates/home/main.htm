@@ -50,18 +50,19 @@ $("[genre='sns_comment']").on('click',function(){
 	ajax_form("comment_form", '评论', '<{$config.weburl}>/main.php?m=sns&s=sns&op=comment&cg_u_type=1&bid='+data.bid, 500);
 	return false;
 });
-$('.small').on('click',function(){
-	$(this).addClass('large').removeClass('small');	
-	var url=$(this).attr("src")
-	url = url.substr(0,url.lastIndexOf('_'));
-	$(this).attr("src",url);
+$(".sns-img").find("ul").on('click', 'img', function(){
+    if(this.className=="large"){
+        $(this).addClass('small').removeClass('large'); 
+        var url=$(this).attr("src")
+        $(this).attr("src",url+"_120X120.jpg");
+    }else{
+        $(this).addClass('large').removeClass('small'); 
+        var url=$(this).attr("src")
+        url = url.substr(0,url.lastIndexOf('_'));
+        $(this).attr("src",url);
+    }
 });
-$('.large').on('click',function(){
-	$(this).addClass('small').removeClass('large');	
-	var url=$(this).attr("src")
-	$(this).attr("src",url+"_120X120.jpg");
-});
-$('.meta a').on('click',function(){
+$('.basic-info a').on('click',function(){
     $.ajax({
         type: 'GET',
         url: "<{$config.weburl}>/shop.php?sAjax=sAjax&uid=<{$smarty.get.uid}>",

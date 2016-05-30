@@ -34,7 +34,7 @@ $(function(){
 <div class="path">
     <div>
         <span class="shop"></span>
-    	<a href="main.php?cg_u_type=1">买家中心</a> <span>&gt;</span>
+        <a href="main.php?cg_u_type=1">买家中心</a> <span>&gt;</span>
         收藏店铺
     </div>
 </div>
@@ -58,7 +58,7 @@ $(function(){
             <tr>
                 <th width="30"></th>
                 <th width="70"></th>
-                <th class="tl" style="padding-left:90px;text-align:left;">店铺</th>
+                <th>店铺</th>
                 <th width="180">收藏时间</th>
                 <th width="180">收藏人气</th>
                 <th width="180" class="br">操作</th>
@@ -67,32 +67,29 @@ $(function(){
             <tbody>
             <{foreach item=slist key=num from=$re.list}>
             <tr>
-            	<td><input type="checkbox" value="<{$slist.id}>" class="checkitem" name="chk[]"></td>
+                <td><input type="checkbox" value="<{$slist.id}>" class="checkitem" name="chk[]"></td>
                 <td><div class="pic_small"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><img height="60" width="60" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>" /></a></div></td>
-                <td class="tl" style="text-align:left;padding-left:10px;"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a><p><{$slist.area}></p><p><{$slist.user}></p></td>
-                <td class="tl"><{$slist.addtime|date_format}></td>
-                <td class="tl" style="color:#ff5c5c;"><{$slist.shop_collect}></td>
-                <td class="br">
+                <td class="tl" style="padding-left:10px;"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a><p><{$slist.area}></p><p><{$slist.user}></p></td>
+                <td><{$slist.addtime|date_format}></td>
+                <td style="color:#ff5c5c;"><{$slist.shop_collect}></td>
+                <td>
                 <p><a href="main.php?m=sns&s=admin_share_shop&type=del&id=<{$slist.id}>">删除</a></p>
                 </td>
             </tr>
             <{foreachelse}>
             <tr>
-            	<td colspan="20" class="norecord">
-                	<i></i><span>暂无符合条件的数据记录</span>
+                <td colspan="6" class="norecord">
+                <i></i><span>暂无符合条件的数据记录</span>
                 </td>
             </tr>
             <{/foreach}>
-            <!--  <tfoot>
+             <tfoot>
             <tr>
-                <td class="tc"><input type="checkbox" class="checkall"></td>
-                <td colspan="20">
-                <label for="del" class="btn2">全选</label>
-                <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
+                <td colspan="6">
                 <div class="pagination"><{$re.page}></div>
                 </td>
             </tr>
-            </tfoot> -->
+            </tfoot>
             </tbody>
         </table>
      </div>
