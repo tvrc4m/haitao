@@ -7,24 +7,6 @@
 
 <div class="main">
     <div class="wrap">
-        <div class="searchbar">
-            <form method="post">
-                <div>
-                <input type="text" name="serial" value="" class="w250" placeholder="请输入商家提供的序列号"/>
-                <input type="hidden" name="act" value="add_bind_card"/>
-                <span class="search-btn"><input type="submit" name="submit" value="搜索"/></span>
-                </div>
-            </form>
-            <script>
-                $("input[name='submit']").click(function(){
-                    if(!$("input[name='serial']").val())
-                    {
-                        $("input[name='serial']").focus();
-                        return false;
-                    }
-                })
-            </script>
-        </div>
        <table class="table-list-style order voucher_list">
             <thead>
                 <tr>

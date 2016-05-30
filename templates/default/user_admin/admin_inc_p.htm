@@ -317,7 +317,7 @@ $(document).ready(function(){
             <{if $cmenu=='user'}>
                 <{foreach name=name item=list from=$submenu.sub}>
                     <div class="business_handle selfinfo" id="my_menu">
-                        <h3 style="text-indent:20px;"><{$list.name}></h3>
+                        <h3><{$list.name}></h3>
                         <ul>
                             <{foreach item=slist key=akey from=$list.action}>
                             <{if $slist}>

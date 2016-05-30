@@ -63,17 +63,6 @@ $(function(){
                 <li class="active"><a href="main.php?m=sns&s=admin_share_product">收藏商品</a></li>
                 <li class="normal"><a href="main.php?m=sns&s=admin_share_shop">收藏店铺</a></li>
                 <li class="normal"><a href="main.php?m=product&s=admin_footprint">我的足迹</a></li>
-                <!--<div class="search">
-                    <div class="i-search ld">
-                    <form method="get">
-                        <input type="hidden" name="m" value="sns" />
-                        <input type="hidden" name="s" value="admin_share_product" />
-                        <input type="hidden" name="act" value="search" />
-                        <input name="key" class="text" type="text" value="<{$smarty.get.key}>" />
-                        <input class="search_button" type="submit" value="搜索" />
-                    </form>
-                    </div>
-                </div>-->
             </ul>
         </div>
         <div class="delete">
@@ -82,7 +71,6 @@ $(function(){
             <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
             <div class="pagination"><{$re.page}></div>
         </div>
-        <!-- <hr style="border: none;border-top: 1px solid #ccc;"> -->
         <table class="table-list-style share-pro">
             <tr>
                 <td colspan="20" class="pic_model">
@@ -91,10 +79,9 @@ $(function(){
                     	<li>
                             <label class="pro-checkbox">
                                 <input type="checkbox" value="<{$list.id}>" class="checkitem" name="chk[]">
-                                <em></em>
                             </label>
                             <dl>
-                                <strong>¥<em class="price"><{$list.price}></em></strong>
+                                <strong>¥<{$list.price}></strong>
                                 <dt>
                                 <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>"><{$list.pname}></a></dt>
                                 <dd class="picture">

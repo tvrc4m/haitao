@@ -18,15 +18,16 @@ $("[genre='sns_comment']").on('click',function(){
 	ajax_form("comment_form", '评论', '<{$config.weburl}>/main.php?m=sns&s=sns&op=comment&bid='+data.bid, 500);
 	return false;
 });
-$('.small').on('click',function(){
-	$(this).addClass('large').removeClass('small');
-	var a=$(this)[0].src;
-	var b = a.substr(0,a.lastIndexOf('_'));
-	$(this).attr("src",b);
-});
-$('.large').on('click',function(){
-	$(this).addClass('small').removeClass('large');
-	var url=$(this).attr("src")
-	$(this).attr("src",url+"_120X120.jpg");
+$(".sns-img").find("ul").on('click', 'img', function(){
+    if(this.className=="large"){
+        $(this).addClass('small').removeClass('large'); 
+        var url=$(this).attr("src")
+        $(this).attr("src",url+"_120X120.jpg");
+    }else{
+        $(this).addClass('large').removeClass('small'); 
+        var url=$(this).attr("src")
+        url = url.substr(0,url.lastIndexOf('_'));
+        $(this).attr("src",url);
+    }
 });
 </script>
