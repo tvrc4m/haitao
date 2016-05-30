@@ -1,42 +1,4 @@
-<link href="<{$config.weburl}>/templates/wap/css/page.css" rel="stylesheet" type="text/css" />
-<link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
 <link href="<{$config.weburl}>/templates/wap/css/indexs.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type=text/javascript></script>
-<script type="text/javascript" src="<{$config.weburl}>/script/dialog/dialog.js" id="dialog_js"></script>
-
-<script type="text/javascript">
-function gotoMenu(url)
-{
-  if(/zmobile/.test(navigator.userAgent)){
-    if(context.loadUrl(url))
-    {
-    }
-    else
-    {
-      window.location.href=url;
-    }
-  }
-  else
-  {
-    window.location.href=url;
-  }
-}
-</script>
-<div class="help hidden">
-    <div class="xiaoke_header">
-        <div class="header_left iconfont" onclick="hide_help();"></a></div>
-        <div class="header_font">
-            <a href="#">赚钱</a>
-        </div>
-    </div>
-    <section>
-        <div class="xiaoke_centent">
-            <div class="centent_cen">
-                赚钱帮助中心
-            </div>
-        </div>
-    </section>
-</div>
 <header>
     <div class="nav-w">
         <section class="nav-s" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
@@ -44,94 +6,75 @@ function gotoMenu(url)
         <section class="nav-e"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></section>      
     </div>
 </header>
-<div class="xiaoke clearfix">
-    <section>
-        <div class="xiaoke_centent">
-            <div class="centent_tops">
-                <div class="centent_tops_text clearfix">
+<div class="make">
+    <div class="make_centent">
+        <div class="make_centent_header">
+            <div class="centent_top">
+                <div class="centent_top_text clearfix">
                     <span>已结算佣金（元）</span><a href="<{$config.weburl}>/main.php?cg_u_type=<{$smarty.get.cg_u_type}>&disp=1">提现</a>
                 </div>
-                <div class="centent_tops_money"><{$dist_user_row.distribution_user_settlement_amount|string_format:"%.2f"}></div>
+                <div class="centent_top_money"><{$dist_user_row.distribution_user_settlement_amount|string_format:"%.2f"}></div>
             </div>
-            <div class="centent_yongjin clearfix">
+            <div class="centent_bkge clearfix">
                 <div>
                     <p>累计佣金（元）</p><span><{$dist_user_row.distribution_user_amount|string_format:"%.2f"}></span>
                 </div>
                 <div>
-                    <div class="centent_yongjin_dw"> 
+                    <div class="centent_bkge_dw"> 
                         <p>未结算佣金（元）</p><span><{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}></span>  
                     </div>                 
                 </div>
             </div>
-            <div style="background-color:#f5f5f5;height:15px;"></div>
-            <div class="centent_cennum_container">
-                <div class="centent_shop">
-                    <div class="centent_ten_buluo"><a href="javascript:void(0);">我的海淘店</a></div>
-                    <div class="centent_shop_cont clearfix">
-                        <div class="centent_left">
-                            <img class="ub-img shoplogo" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>">
-                        </div>
-                        <div class="centent_right">
-                            <div class="centent_shop_dian">
-                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" style="color:#ff5c5c;"><span class="centent_shop_name"><{$shopCon.company}></span></a>
-                                <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" class="centent_shop_yan"><img src="/image/wap/wap_haitao_icon85.png" alt="店铺"></a>
-                            </div>
-                            <div class="centent_shop_pin">主营商品：<span><{$shopCon.main_pro}></span></div>
-                        </div>    
+        </div>      
+        <div class="make_centent_cennum">
+            <div class="centent_shop centent_list">
+                <div class="centent_list_title"><a href="javascript:void(0);">我的海淘店</a></div>
+                <div class="centent_cennum_shop clearfix">
+                    <div class="cennum_shop_left">
+                        <img class="ub-img shoplogo" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>">
                     </div>
-                    <div class="cen_shop_add">
-                        <a href="<{$config.weburl}>/index.php?m=product&s=list&is_dist=1&fx=fx"><span><strong>+</strong></span>添加商品</a>
-                    </div>
-                    <div class="centent_cen clearfix">
-                        <div class="cen_shop cen_shop2">
-                            <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list">
-                                <p class="iconfont"><img src="/image/wap/wap_haitao_icon75.png" alt="商品管理"></p>
-                                <dd>商品管理</dd>
-                            </a>
+                    <div class="cennum_shop_right">
+                        <div class="cennum_shop_name">
+                            <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" class="org"><span><{$shopCon.company}></span></a>
+                            <a href="<{$config.weburl}>/shop.php?uid=<{$buid}>&fx=fx" class="cennum_shop_yan"><img src="/image/wap/wap_haitao_icon85.png" alt="店铺"></a>
                         </div>
-                        <div class="cen_shop cen_shop5">
-                            <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_order_list">
-                                <p class="iconfont"><img src="/image/wap/wap_haitao_icon76.png" alt="代销业绩"></p>
-                                <dd>收益统计</dd>
-                            </a>
-                        </div>
-                        <div class="cen_shop cen_shop6">
-                          <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution">
-                              <p class="iconfont"><img src="/image/wap/wap_haitao_icon77.png" alt="代销明细"></p>
-                              <dd>收益明细</dd>
-                          </a>
-                        </div>
-                         <div class="cen_shop cen_shop3">
-                            <a href="<{$config.weburl}>/main.php?m=shop&s=myshop">
-                                <p class="iconfont"><img src="/image/wap/wap_haitao_icon78.png" alt="店铺设置"></p>
-                                <dd>店铺设置</dd></a>
-                        </div>
-                    </div>
-                </div>           
-                <div style="background-color:#f5f5f5;height:15px;"></div>
-                <div class="centent_ten">
-                    <div class="centent_ten_buluo">
-                       <a href="javascript:void(0);">我的团队</a>
-                    </div>
-                    <dl class="cen_shop cen_shop4 clearfix">
-                        <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_user">
-                            <dt>我的合伙人</dt>
-                            <dd></dd>
-                        </a>
-                    </dl>
-                    <dl class="cen_shop cen_shop10 clearfix">
-                        <!-- <a href="javascript:void(0);">
-                            <dt id="shop_img">二维码分享 <img style="display:none" src="api/share_qrcode.php?type=shop&shop_id=<{$cominfo.userid}>&rand=<{math equation=rand(1,10000)}>"></dt>
-                            <dd></dd>
-                        </a> -->
-                        <dt>邀请合伙人</dt>
-                        <dd></dd>
-                    </dl>
+                        <div class="cennum_shop_list">主营商品：<span><{$shopCon.main_pro}></span></div>
+                    </div>    
                 </div>
+                <div class="centent_cennum_add">
+                    <a href="<{$config.weburl}>/index.php?m=product&s=list&is_dist=1&fx=fx"><span><strong>+</strong></span>添加商品</a>
+                </div>
+                <div class="cennum_list">
+                    <ul class="cennum_list_menu clearfix">
+                        <li><a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_list">
+                            <img src="/image/wap/wap_haitao_icon75.png" alt="商品管理">
+                            <span>商品管理</span>
+                        </a></li><li><a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_order_list">
+                            <img src="/image/wap/wap_haitao_icon76.png" alt="代销业绩">
+                            <span>收益统计</span>
+                        </a></li><li><a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution">
+                            <img src="/image/wap/wap_haitao_icon77.png" alt="代销明细">
+                            <span>收益明细</span>
+                        </a></li><li><a href="<{$config.weburl}>/main.php?m=shop&s=myshop">
+                            <img src="/image/wap/wap_haitao_icon78.png" alt="店铺设置">
+                            <span>店铺设置</span>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>           
+            <div class="centent_list">
+                <div class="centent_list_title"><a href="javascript:void(0);">我的团队</a></div>
+                <ul class="centent_list_menu">
+                    <li><a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_user">
+                    <span class="list_menu_i1">我的合伙人</span><i></i></a></li><li class="list_menu_btn">
+                    <a href="javascript:void(0);"><span class="list_menu_i2">邀请合伙人</span><i></i></a></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
 </div>
+<div class="hj_share_box" id="share_box"></div>
+<div class='collect_box_contentss'></div>
 <section class="bom_nav">
     <ul>
         <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="海淘"><p>海淘</p></a></li><li>
@@ -139,47 +82,9 @@ function gotoMenu(url)
         <a href="<{$config.weburl}>/main.php?cg_u_type=1"><img src="../image/wap/wap_haitao_icon81.png" alt="我的"><p>我的</p></a></li>
     </ul>
 </section>
-<div style="clear:both"></div>
-<div class="hj_share_box" id="share_box"></div>
-<div class='collect_box_contentss'></div>
-<!--个人中心主页-->
- 
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type=text/javascript></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/dialog/dialog.js" id="dialog_js"></script>
 <script type="text/javascript">
-function show_help(){
-    $('.xiaoke').addClass('hidden');
-    $('.help').removeClass('hidden');
-}
-function hide_help(){
-    $('.xiaoke').removeClass('hidden');
-    $('.help').addClass('hidden');
-}
-function show_menu(){
-    var arrow = $(this).find("em");
-    if(arrow.hasClass("up")){
-        arrow.removeClass("up");
-        arrow.addClass("down");
-        $(this).css('color','#959595');
-    }else if(arrow.hasClass("down")){
-        arrow.removeClass("down");
-        arrow.addClass("up");
-        $(this).css('color','#333');
-    }
-    $(this).parent().find(".animate").slideToggle();
-
-}
-$(function(){
-    $(".info_list1").click(show_menu);
-
-    $(".info_list1").each(
-        show_menu
-    );
-
-});
-function sc1(){
-document.getElementById("shop_img").style.top=(document.documentElement.scrollTop+(document.documentElement.clientHeight-document.getElementById("Javascript.Div1").offsetHeight)/2)+"px";
-document.getElementById("shop_img").style.left=(document.documentElement.scrollLeft+(document.documentElement.clientWidth-document.getElementById("Javascript.Div1").offsetWidth)/2)+"px";
-}
-$(function(){
     function substr(htm,obj,num){
         var value_substr=obj.substr(0,num);
         var pname_len=obj.length;
@@ -202,55 +107,6 @@ $(function(){
     else{
         substr(shop_name_htm,shop_name,10);
     }
-    $("#shop_img").click(function(){
-        var width = $(this).find("img").width();
-        var height = $(this).find("img").height();
-
-        var w = 164 - 6;
-        var h = 164 + 60;
-
-        alertWin('让朋友扫一扫便可以完成分销', '', w, h, 'api/share_qrcode.php?type=shop&shop_id=<{$cominfo.userid}>&rand=<{math equation=rand(1,10000)}>');
-
-        /*
-        if(width==45)
-        {
-            $(this).width(250);
-            $(this).height(250);
-            $(this).css("position","absolute");
-            $(this).css("top", ( $(window).height() - $(this).height() ) / 2+$(window).scrollTop() + "px");
-            $(this).css("left", ( $(window).width() - $(this).width() ) / 2+$(window).scrollLeft() + "px");
-            $(this).animate({opacity:0.7},0);
-        }
-        else
-        {
-            $(this).width(45);
-            $(this).height(45);
-            $(this).removeAttr("style");
-        }
-        */
-    });
-
-
-
-    var html = '\
-    <div class="wrap" style="width:96%;margin:0px auto">\
-    <div class="form-style">\
-        <form id="form" method="post" enctype="multipart/form-data" action="./main.php?m=distribution&s=admin_distribution_settlement">\
-            <p class="shop_step_title shop_step_title3">尚未结算佣金：<{$config.money}>&nbsp;<{$dist_user_row.distribution_user_unsettlement_amount|string_format:"%.2f"}> &nbsp;&nbsp;(结算最低额度：<{$distribution_config.distribution_commission_min|floor}>)&nbsp;&nbsp; <a href="./main.php?m=distribution&s=admin_distribution_settlement">结算记录</a></p>\
-            <p class="shop_step_title">申请结算佣金：<{$config.money}>&nbsp;<input type="text" name="distribution_user_settlement_value" value="<{$distribution_config.distribution_commission_min|floor}>" class="text diag_text"  style="width:50%; "/></p>\
-            <p class="shop_step_title shop_step_title2"><input type="submit" value="提交" class="submit diag_submit" /></p>\
-        </form>\
-    </div></div>\
-    ';
-
-    $("#pay_dist").click(function(e){
-        e.preventDefault();
-
-        html_form("buy", ' 提交佣金结算申请 ', html, 500);
-    });
-});
-
-
 </script>
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -337,7 +193,7 @@ wx.ready(function(){
             // 用户取消分享后执行的回调函数
         }
     });
-    $(".cen_shop10").bind("click",function(){
+    $(".list_menu_btn").bind("click",function(){
         $("#share_box").show();
         setTimeout(function(){
             $("#share_box").animate({opacity: "1"}, 800)
@@ -444,7 +300,7 @@ function wid(){
         $(".collect_box_contentss").hide();
     },2000)
 }
-$(".cen_shop10").bind("click",function(){
+$(".list_menu_btn").bind("click",function(){
     altto('只支持在微信端分享');
     wid();
 })

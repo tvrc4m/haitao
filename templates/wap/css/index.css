@@ -89,8 +89,8 @@ footer{margin-top:30px;}
 .info_list2{position:relative;border-top:none; cursor:pointer;color: rgb(149, 149, 149)}
 .link_to{position:absolute;right:8px;top:11px;}
 .arrow2{float:left;position:relative;width:12px;height:16px;overflow:hidden; }
-.arrow2 em{width:0;position:absolute;right:0;top:-1px;height:0;line-height:0;border-width:9px 0 9px 9px;border-color:transparent transparent transparent #666;border-style:dashed dashed dashed solid;}
-.arrow2 i{position:absolute;right:3px;top:-1px;width:0;height:0;line-height:0;border-width:9px 0 9px 9px;border-color:transparent transparent transparent #fff;border-style:dashed dashed dashed solid;}
+.arrow2 em{width:0;position:absolute;right:0;top:-1px;height:0;line-height:0;border-width:9px 0 9px 9px;border-color:transparent transparent transparent #666;border-style:dotted dotted dotted solid;}
+.arrow2 i{position:absolute;right:3px;top:-1px;width:0;height:0;line-height:0;border-width:9px 0 9px 9px;border-color:transparent transparent transparent #fff;border-style:dotted dotted dotted solid;}
 
 .info_list .animate{display:none;}
 .info_list1 .up{position:absolute;top:13px;right:10px;display:block;width:11px;height:11px;background:url(../../../image/wap/icon_add.png) no-repeat;background-size:11px 18px;}
