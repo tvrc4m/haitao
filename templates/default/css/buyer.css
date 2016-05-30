@@ -188,6 +188,7 @@ body{background-color: #fff;}
 .right_module.interest dt{float: left;width: 50px;height: 50px;overflow: hidden;}
 .right_module.interest dd{margin-left:70px;}
 .right_module.interest dd p{line-height: 25px;}
+.right_module.interest dd p a{text-overflow: ellipsis;overflow: hidden;white-space: nowrap;width: 100%;}
 .right_module.interest dd span{background-color: #ff8800;color: #fff;width: 60px;height: 25px;line-height: 25px;text-align: center;border-radius: 5px;display: inline-block;}
 .right_module.interest dd span.alforcus{background: #999;cursor: default;}
 /*----买家中心结束---*/
@@ -223,7 +224,8 @@ body{background-color: #fff;}
 .pic_model dl{height:60px;padding:170px 0 0;position:relative;text-align:left;width:150px;}
 .pic_model dl dt{height:40px;overflow:hidden;width:150px;word-break:break-all;word-wrap:break-word;}
 .pic_model dl dt a{white-space: nowrap;text-overflow:ellipsis;overflow: hidden;width: 100%;}
-.pic_model dl dd.picture{height:150px;left:0;position:absolute;top:18px;width:150px;}
+.pic_model dl dd.picture{left:0;position:absolute;top:18px;}
+.pic_model dl dd.picture img{width: 150px;height: 150px;}
 .pic_model dl dd.picture .handle{display:none;}
 .pic_model dl dd.picture:hover .handle{background:rgba(0, 0, 0, 0.5);display:block;height:30px;left:0;position:absolute;top:120px;width:150px;z-index:99;}
 .pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/del.png) no-repeat 0 0;display:block;float:right;height:16px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:16px;}
