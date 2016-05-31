@@ -32,7 +32,7 @@ class Uc_server
     }
     /**
      * 向用户中心进行注册
-     * @param  array $params=array('phone'=>$phone,'password'=>$password) 
+     * @param  array $params=array('phone'=>$phone,'password'=>$password,'salt'=>$salt)
      * @return array | boolean    
      * 验证成功返回 array('status'=>1100,'data'=>'')
      * 验证失败返回 array('status'=>int,'errmsg'=>string,'data'=>'')  

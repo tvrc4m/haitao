@@ -29,6 +29,11 @@ $member = new member();
 $flag_vemial=$member->email_reg();
 $tpl->assign("flag_vemial",$flag_vemial);
 
+include_once ("includes/uc_server.php");
+$data['uc_appid']='201605270933';
+$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+$data['uc_server']='http://t.mayionline.cn/apis/uc';
+$obj = new Uc_server($data);
 /*$flag=$member->email_reg();
 if($flag=='false'){
 	header("Location:index.php?m=member&s=new_email_reg_two");
@@ -127,6 +132,14 @@ switch ($action)
 {
 	case "logout":
 	{
+		$sql = "select mobile from mallbuilder_member where userid=".$buid;
+		$db->query($sql);
+		$list = $db->fetchRow();
+		$script = $obj->logout(array('phone'=>$list['mobile']));
+		$tpl->assign('forward',$config['weburl']);
+		$tpl->assign('script',$script->data);
+		$tpl->display("script.htm");
+		/*
 		global $config;
 		include_once("$config[webroot]/config/reg_config.php");
 		$config = array_merge($config,$reg_config);
@@ -140,7 +153,7 @@ switch ($action)
 		}
 		$_SESSION['USER_TYPE']=NULL;
 		header("Location: ".$config['weburl']);
-		//header("Location: "."$config[weburl]/login.php");
+		//header("Location: "."$config[weburl]/login.php");*/
 		break;
 	}
 	case "msg":

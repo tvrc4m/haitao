@@ -2,6 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("config/reg_config.php");
+include_once ("includes/uc_server.php");
 
 if($reg_config)
 {
@@ -179,11 +180,14 @@ else
 		die('<script>alert("请填写正确的注册数据!");history.go(-1);</script>;');
 	}
 }
-
+$data['uc_appid']='201605270933';
+$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+$data['uc_server']='http://t.mayionline.cn/apis/uc';
+$obj = new Uc_server($data);
 //数据入库
 function doreg($guid=NULL)
 {
-	global $db,$config,$ip;
+	global $db,$config,$ip,$obj;
     $user = 'mayi'.$_POST['mobile'];
 	$pass = addslashes($_POST['password']);
 	$mobile = $_POST['mobile'];
@@ -205,7 +209,10 @@ function doreg($guid=NULL)
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
 	$userid=$db->lastid();
-	
+	$salt = rand_pwd();
+	$obj->register(array('phone'=>$mobile,'password'=>md5(md5($pass).$salt),'salt'=>$salt));
+	/* $aa = $this->register(array('phone'=>'15011426119','password'=>md5(md5(123456).'abcabc'),'salt'=>'abcabc'));
+  var_dump($aa);die;*/
 	if($userid)
 	{
 
@@ -276,6 +283,18 @@ function Check_only($data = null, $key = null, $table = null){
     $sql="select * from ".$table." where $key = '$data'";
     $db->query($sql);
     return $db->num_rows();
+}
+
+function rand_pwd(){
+	$str = null;
+	$strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+	$max = strlen($strPol)-1;
+
+	for($i=0;$i<5;$i++){
+		$str.=$strPol[rand(0,$max)];
+	}
+
+	return $str;
 }
 
 /**

@@ -171,7 +171,7 @@ class voucher extends Uc_server{
             else
                 $this->_response_code='10006';
         }else{
-            $sql = "insert into mallbuilder_voucher_temp (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`,`TYPE`) values ('$this->_name','消费{$list['limit']}可用',".$this->_startTime.",'6898435688','{$list['price']}','{$list['limit']}','{$list['shop_id']}','{$this->_shopinfo['company']}','999999999','0','','1','','2')";
+            $sql = "insert into mallbuilder_voucher_temp (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`,`TYPE`) values ('$this->_name','消费{$list['limit']}可用',".$this->_startTime.",'6898435688','{$list['price']}','{$list['limit']}','{$list['shop_id']}','{$this->_shopinfo['company']}','999999999','0','','1','https://www.mayihaitao.com/image/red/{$list['price']}.png','2')";
             $db->query($sql);
             $id = $db->lastid();
             $this->voucher($list,$id);

