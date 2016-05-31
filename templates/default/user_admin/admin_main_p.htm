@@ -1,39 +1,27 @@
 <div class="wrap_buyer clearfix">
     <div class="layout_l">
-        <div class="member_info">
-        	<dl class="user haitao_user clearfix">
-                <dd>
-                    <div class="pic">
-                   		<a href="main.php?m=member&s=admin_member">
-                    		<img height="125" width="125" src="<{if !$cominfo.plogo}>image/default/user_admin/default_user_portrait.gif<{else}><{$cominfo.plogo}><{/if}>" />
-                    		<!-- <img height="125" width="125" src="<{if !$cominfo.plogo}>image/default/user_admin/default_user_portrait.gif<{else}>image/default/user_admin/mayi_username.png<{/if}>" /> -->
-						</a>
-                    </div>
-                </dd>
-            </dl>
-            <div class="haitao_user_ri">
-	            <dl class="haitao_user2">
-	                <dt>
-	                	<a title="编辑用户信息" href="main.php?m=member&s=admin_member"><{$cominfo.name}></a>&nbsp;亲爱的<span><{$smarty.cookies.USER}></span>，欢迎您！
-	                </dt>
-	                <dd class="qd">
-	                    <a href="main.php?m=member&s=admin_member&type=email" class="qd_icon1"><{if $cominfo.email&&$cominfo.email_verify==1}>已认证<{else}>未认证<{/if}></a>
-	                    <a href="main.php?m=member&s=admin_member&type=mobile" class="qd_icon2"><{if $cominfo.mobile&&$cominfo.mobile_verify==1}>已认证<{else}>未认证<{/if}></a>
-	                    <a target="_blank" href="<{$config.pay_url}>" class="qd_icon3"><{$config.pay_name}></a>
-	                    <a href="javascript:void(0)" class="qd_icon4"><{if $is_qd}>已签到<{else}>每日签到</a><{/if}>
-	                    <a href="main.php?m=points&s=admin_points" class="qd_icon5">积分明细</a></dd>
-	        	</dl>
-	        	<div class="user_atten clearfix">
-		            <ul>
-		                <li><a href="main.php?m=sns&s=admin_friends"><strong><{$count.friend}></strong><span>关注 </span></a></li>
-		                <li><a href="main.php?m=sns&s=admin_friends&type=fan"><strong><{$count.fan}></strong><span>粉丝 </span></a></li>
-		                <li class="li"><a href=""><strong><{$count.blog}></strong><span>微博 </span></a></li>
-		            </ul>
-		        </div>
-	        </div>
-            <div class="clear"></div>
-        </div>
-        
+		<div class="member_info">
+			<a class="user_pic" href="main.php?m=member&s=admin_member">
+			<img src="<{if !$cominfo.plogo}>image/default/user_admin/default_user_portrait.gif<{else}><{$cominfo.plogo}><{/if}>" /></a>
+			<div class="user_rt">
+				<dl>
+					<dt>亲爱的<span><{$smarty.cookies.USER}></span>，欢迎您！</dt>
+					<dd class="qd">
+					<a href="main.php?m=member&s=admin_member&type=email" class="qd_icon1"><{if $cominfo.email&&$cominfo.email_verify==1}>已认证<{else}>未认证<{/if}></a>
+					<a href="main.php?m=member&s=admin_member&type=mobile" class="qd_icon2"><{if $cominfo.mobile&&$cominfo.mobile_verify==1}>已认证<{else}>未认证<{/if}></a>
+					<a target="_blank" href="<{$config.pay_url}>" class="qd_icon3"><{$config.pay_name}></a>
+					<a href="javascript:void(0)" class="qd_icon4"><{if $is_qd}>已签到<{else}>每日签到</a><{/if}>
+					<a href="main.php?m=points&s=admin_points" class="qd_icon5">积分明细</a></dd>
+				</dl>
+				<div class="user_atten">
+					<ul class="clearfix">
+						<li><a href="main.php?m=sns&s=admin_friends"><span><{$count.friend}></span>关注</a></li>
+						<li><a href="main.php?m=sns&s=admin_friends&type=fan"><span><{$count.fan}></span>粉丝</a></li>
+						<li class="li"><a href=""><span><{$count.blog}></span>微博</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
         <div class="weibo">
         <form action="main.php?m=sns&s=sns" name="shareform" id="shareform" method="post">
             <div class="clearfix">
@@ -54,53 +42,25 @@
 			</div>
         </form>
         </div>
-        
-        <!-- <div class="tabmenu">
-            <ul class="tab">
-                <li class="active"><a href="javascript:void(0)">&nbsp;&nbsp;&nbsp;动态</a><div></div></li>
-            </ul>
-        </div> -->
         <div class="friendtrace" id="friendtrace"></div>
     </div>
-    
-    <div class="layout_r">
-    	<div class="right_module">            
-            <form class="right_module_title">
-                 <div class="haitao_legend">公告栏</div>
-            </form>
-            <div class="right_module_content con">
-            <{insert name="label" type="announcement" temp="notice_list" limit=5}>
-            </div>
-        </div>
-
-        <div class="right_module">            
-            <form class="right_module_title">
-                 <div class="haitao_legend">商品推荐</div>
-            </form>
-            <div class="right_module_content ad174">
-            <script src='<{$config.weburl}>/api/ad.php?id=9&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-            </div>
-        </div>
-
-       <!--  <div class="right_module">            
-            <form class="right_module_title">
-                 <div class="haitao_legend">热门活动</div>
-            </form>
-            <div class="right_module_content ad174">
-            <script src='<{$config.weburl}>/api/ad.php?id=8&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-            </div>
-        </div> -->
-
-        <div class="right_module right_module_test">            
-            <form class="right_module_title">
-                 <div class="haitao_legend haitao_legend_test">可能感兴趣的人</div>
-            </form>
-            <div class="right_module_content friends">
-            <{insert name="label" type="sns_friends" temp="friends_list_1" limit=3}>
-            </div>
-        </div>      
-    </div>
-</div>
+	<div class="layout_r">
+		<div class="right_module">
+			<h2>公告栏</h2>
+			<{insert name="label" type="announcement" temp="notice_list" limit=5}>
+		</div>
+		<div class="right_module">
+			<h2>商品推荐</h2>
+			<div class="good">
+			<script src='<{$config.weburl}>/api/ad.php?id=9&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
+			</div>
+		</div>
+		<div class="right_module interest">
+			<h2>可能感兴趣的人</h2>
+			<{insert name="label" type="sns_friends" temp="friends_list_1" limit=3}>
+		</div>
+		</div>
+	</div>
 </div>
 <script src="script/jquery.caretInsert.js"></script>
 <script>
@@ -112,55 +72,41 @@ $('.qd a').click(function(){
 	var pars = 'shuiji=' + sj+'&qd=1&id=<{$cominfo.userid}>'; 
 	$.post(url, pars,showResponse);
 	function showResponse(originalRequest)
-	{	
+	{
 		$('.qd .qd_icon4').html("已签到");
 	}
 });
 <{/if}>
-$('.small').on('click',function(){
-	$(this).addClass('large').removeClass('small');	
-	var url=$(this).attr("src")
-	url = url.substr(0,url.lastIndexOf('_'));
-	$(this).attr("src",url);
-});
-$('.large').on('click',function(){
-	$(this).addClass('small').removeClass('large');	
-	var url=$(this).attr("src")
-	$(this).attr("src",url+"_120X120.jpg");
-});
 $('.weibo_con textarea').on('blur',function(){
 	$(this).parent().removeClass('focus');
 }).on('focus',function(){
 	$(this).parent().addClass('focus');
 });
-
 $('#friendtrace').snsinit();
 $('#friendtrace').snsshow({url:"<{$config.weburl}>/main.php?m=sns&s=sns&curpage=1",'iIntervalId':true});
-
-//显示分享商品页面	
-$('#shareGoods').click(function(){	
+//显示分享商品页面
+$('#shareGoods').click(function(){
 	ajax_form("sharegoods", '<{$lang.share_buy_and_collection_of_baby}>', '<{$config.weburl}>/main.php?m=sns&s=sns&op=sharegoods', 500);
 	return false;
 });
-
 //显示分享店铺页面
 $('#shareStore').click(function(){
 	ajax_form("shareshop", '<{$lang.share_shop}>', '<{$config.weburl}>/main.php?m=sns&s=sns&op=shareshop', 500);
 	return false;
 });
-$("[genre='sns_forward']").on('click',function(){
+$("#friendtrace").on('click','[genre="sns_forward"]',function(){
 	var data = $(this).attr('data-param');
 	eval("data = "+data);
 	ajax_form("forward_form", '<{$lang.forwarding}>', '<{$config.weburl}>/main.php?m=sns&s=sns&op=forward&bid='+data.bid, 500);
 	return false;
 });
-$("[genre='sns_comment']").on('click',function(){
+$("#friendtrace").on('click','[genre="sns_comment"]',function(){
 	var data = $(this).attr('data-param');
 	eval("data = "+data);
 	ajax_form("comment_form", '评论', '<{$config.weburl}>/main.php?m=sns&s=sns&op=comment&bid='+data.bid, 500);
 	return false;
 });
-$("[data_type='fd_del']").on('click',function(){
+$("#friendtrace").on('click','[data_type="fd_del"]',function(){
 	var data_str = $(this).attr('data-param');
 	eval("data_str = "+data_str);
 	var url = "<{$config.weburl}>/main.php?m=sns&s=sns";
@@ -181,12 +127,10 @@ $("[data_type='fd_del']").on('click',function(){
 		setTimeout(closefunc,1000);
 	}
 });
-
-
 function $$(id) {
 	return !id ? null : document.getElementById(id);
 }
-$("#btn").bind('click',function(){		
+$("#btn").bind('click',function(){
 	formid='shareform';
 	var ajaxframeid = 'ajaxframe';
 	var ajaxframe = $$(ajaxframeid);
@@ -201,7 +145,7 @@ $("#btn").bind('click',function(){
 	$('#'+formid).validate({
 		errorPlacement: function(error, element){
 			element.next('.form-error').append(error)
-		},  
+		},
 		rules : {
 			content : {
 				required: true,
@@ -213,8 +157,8 @@ $("#btn").bind('click',function(){
 				required: '不能为空!',
 				maxlength: '不能超过140字'
 			}
-		}, 
-		submitHandler:function(form){  
+		},
+		submitHandler:function(form){
 			form.submit();
 			function closefunc()
 			{

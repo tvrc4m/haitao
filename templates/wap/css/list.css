@@ -12,7 +12,11 @@
 /*更改的地方*/
 .itemSearchList dd .p-name b span{float: right;padding-right:20px;}
 .itemSearchList dd .p-name b span a{color: #DD0101;}
-
+.share-shouc-list{width: 100%;background-color: #FFF;border-top: 2px solid #7753ff;}
+.share-shouc-list ul li{width: 50%;float: left;height: 40px;line-height: 40px;text-align: center;font-size: 0.6rem;}
+.share-shouc-list ul li a{width: 100%;display: inline-block;}
+.share-shouc-list ul li.current{background-color: #7753ff;}
+.share-shouc-list ul li.current a{color: #fff;}
 
 .itemSearchList dd .p-price {font-size:12px;}
 .itemSearchList dd .p-detail{font-size:12px;color:#ABABAB;margin-top:3px;}

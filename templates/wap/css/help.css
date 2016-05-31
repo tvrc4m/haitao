@@ -15,10 +15,10 @@ ul.cat-banner li a {display:block;height: 50px;line-height: 50px;font-size: 0.6r
 .cat-container-list ul li p{margin-top: 10px;color: #999;font-size: 0.6rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 /*帮助中心样式*/
 .help_container{padding: 0.5rem 0.5rem 1rem;}
-.help_list>li>a{display: inline-block;width: 100%;padding: 0.5rem 0; font-size: 0.6rem;color: #535353;border-bottom: 1px dashed #b9b9b9; }
+.help_list>li>a{display: inline-block;width: 100%;padding: 0.5rem 0; font-size: 0.6rem;color: #535353;border-bottom: 1px dotted #b9b9b9; }
 .help_list>li>a>i{float: right;width: 10px;height: 10px;border-left:1px solid #999;border-bottom:1px solid #999;transform:rotate(-135deg);-webkit-transform:rotate(-135deg);margin-right: 5px;margin-top: 5px; }
 .help_list>li>a>i.current{transform:rotate(-45deg);-webkit-transform:rotate(-45deg);margin-top: 0px;}
-.help_list ul>li>a{display: inline-block;width: 100%;padding: 0.5rem 0; font-size: 0.6rem;color: #535353;border-bottom: 1px dashed #b9b9b9;text-indent: 2em; }
+.help_list ul>li>a{display: inline-block;width: 100%;padding: 0.5rem 0; font-size: 0.6rem;color: #535353;border-bottom: 1px dotted #b9b9b9;text-indent: 2em; }
 .help_list ul{display: none;}
 .help_list ul.hide{display:block;}
 .help_container .con{margin-top: 0;padding: 0;line-height: 1.9;font-size: 0.6rem;}

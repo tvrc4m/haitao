@@ -17,7 +17,7 @@
 .body-side .visitors li{border-top: 1px dotted #ccc;width: 160px;padding: 20px;}
 .body-side .visitors li img{border-radius:50%;height: 60px;width: 60px;}
 .body-side .visitors .name{height:30px;line-height:30px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:90px;}
-.body-side .visitors p{border-top: 1px dotted #ccc;line-height: 30px;text-align: center;}
+.body-side .visitors p{border-top: 1px dotted #ccc;line-height: 30px;}
 /*头部买家信息*/
 .head{position:relative;}
 .head .info{height:145px;border-bottom: 1px dotted #ccc;}

@@ -1,42 +1,21 @@
 <link href="<{$config.weburl}>/templates/wap/css/buyorder.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <header>
 <div class="nav-w">
   <section class="nav-s iconfont"><a href="<{$config.weburl}>/main.php"><i class="fanhui_icon"></i></a></section>
-  <section class="nav-c"> <span class="select"> <{if $smarty.get.level=='1'}>I级合伙人
-    
+  <section class="nav-c"><span><{if $smarty.get.level=='1'}>I级合伙人   
     <{elseif $smarty.get.level=='2'}>Ⅱ级合伙人
-    <{else}>所有<{/if}> <em></em> </span>
-    <div style="display:none;" class="i-select">
-      <ul>
-        <li key="" class="sub-line"><a href="main.php?m=distribution&s=admin_distribution_user">所有</a></li>
-        <li key="1"><a href="main.php?m=distribution&s=admin_distribution_user&level=1">I级合伙人</a></li>
-        <li key="2"><a href="main.php?m=distribution&s=admin_distribution_user&level=2">Ⅱ级合伙人</a></li>
-      </ul>
-    </div>
+    <{else}>所有<{/if}></span>
   </section>
-
-    <section class="nav-e"></section>
+  <section class="nav-e"></section>
 </div>
 </header>
-<script>
-$(function(){
-	$(".select").click(function(){ 
-		var obj=$(this);
-		$(this).next().slideToggle("fast",function(){
-		if($(obj).next().is(":visible")){
-			$(document).one('click',function(){
-				$(".select").next().slideUp("fast");
-			});
-		}});
-	});
-	$(".i-select li").click(function(){
-		var str=$(this).html();
-		$(this).parent().parent().prev().html(str+" <em class='up'></em>");
-		$(this).parent().parent().slideToggle();
-	});
-});
-</script>
+<div class="buyorder-list distribu-list">
+    <ul class="clearfix">
+        <li <{if $smarty.get.level!='1' && $smarty.get.level!='2'}>class="current"<{/if}>><a href="main.php?m=distribution&s=admin_distribution_user">所有</a></li>
+        <li <{if $smarty.get.level=='1'}>class="current"<{/if}>><a href="main.php?m=distribution&s=admin_distribution_user&level=1">I级合伙人</a></li>
+        <li <{if $smarty.get.level=='2'}>class="current"<{/if}>><a href="main.php?m=distribution&s=admin_distribution_user&level=2">Ⅱ级合伙人</a></li>
+    </ul>
+</div>
 <section class="order"> <{foreach item=list from=$re}>
   <div class="distributionUser clearfix">
     <dl>
@@ -60,6 +39,25 @@ $(function(){
   <{/foreach}>
    </section>
 <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
+<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script>
+$(function(){
+  $(".select").click(function(){ 
+    var obj=$(this);
+    $(this).next().slideToggle("fast",function(){
+    if($(obj).next().is(":visible")){
+      $(document).one('click',function(){
+        $(".select").next().slideUp("fast");
+      });
+    }});
+  });
+  $(".i-select li").click(function(){
+    var str=$(this).html();
+    $(this).parent().parent().prev().html(str+" <em class='up'></em>");
+    $(this).parent().parent().slideToggle();
+  });
+});
+</script>
 <script>
 $(function(){
     var divLen=$(".order .distributionUser").size();

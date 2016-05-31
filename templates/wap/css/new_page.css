@@ -985,7 +985,7 @@ ins,a
 .lianjiea {float: right;display: block;width: 20px;height: 20px;}
 .shoptbot {color: rgb(176,176,176);font-size: 12px;}
 .liapo {float: right;display: block;height: 20px;overflow: hidden;}
-.zhoushop {background: #fff;overflow: hidden;padding: 3px 6px 3px 2px;border-bottom: 1px dashed #b9b9b9;}
+.zhoushop {background: #fff;overflow: hidden;padding: 3px 6px 3px 2px;border-bottom: 1px dotted #b9b9b9;}
 
 /*** 更多精彩 ****/
 .shop{position: relative;border-bottom:none;}

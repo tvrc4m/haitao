@@ -153,14 +153,13 @@ $("#insertFace").on('click',function(){
 		}
 	}
 })
-$(".faceWrap .close").on('click',function(){
+$(".weibo_button").on('click','.faceWrap .close',function(){
 	$(".faceWrap").hide();
 });
-$(".faceWrap .mt li").on('click',function(){
+$(".weibo_button").on('click','.faceWrap .mt li',function(){
 	$(this).addClass("selected").siblings().removeClass("selected");
 });
-
-$(".faceWrap td img").on('click',function(){
+$(".weibo_button").on('click','.faceWrap td img',function(){
 	insertsmilie(this,$('#content'));
 });
 function insertsmilie(id,obj){

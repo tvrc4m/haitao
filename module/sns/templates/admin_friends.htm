@@ -1,8 +1,3 @@
-<style>
-.black_overlay{display: none; position: absolute; top: 0%;left: 0%;width: 100%;height: 100%;background-color: rgb(0, 0, 0);opacity: 0.5;z-index:1001;-moz-opacity: 0.8;filter:alpha(opacity=80);}
-.white_content{
-    display: none;position: absolute;top: 25%;left: 37%;width: 300px;height: 200px;padding: 16px;border: 1px solid orange;background-color: white;  z-index:1002;  overflow: auto;}
-</style>
 <link href="script/dialog/dialog.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="script/my_lightbox.js"></script>
 <script type="text/javascript" src="script/dialog/dialog.js"></script>
@@ -20,7 +15,7 @@ $(function(){
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
         var uname='<{$smarty.cookies.USER}>';
         var data_str = $(this).attr('data-param');
-        var index=$(this).parent().parent().parent().parent().index();
+        var index=$(this).parent().parent().parent().parent().index()+1;
         eval( "data_str = "+data_str);
         var pars = 'mid='+data_str.mid+'&uname='+uname+'&op=add';
         $.post(url, pars,showResponse);
@@ -75,12 +70,12 @@ $(function(){
                 <tbody>
                 <{if $re.list}>
                 <tr>
-                    <td style="border-top:none">
+                    <td style="padding: 0;">
                         <ul class="friend_list">
                             <{if $smarty.get.type!=fan}>
                             <span style="width: 100%;height:30px;border-bottom: 1px solid #C4D5E0;float: left;padding-bottom:10px;">
                                 <p  style="line-height: 30px;width:110px;height:30px;font-weight: 400;float: left">好友分组</p>
-                                <p style="line-height: 25px;height:25px;float: left;margin-left: 399px;margin-top: 3px;">
+                                <p style="line-height: 25px;height:25px;float: left;margin-left: 396px;margin-top: 3px;">
                                     移动到&nbsp;&nbsp;&nbsp;
                                     <select id="btn_getValue"  name="">
                                         <option value="">--组名--</option>
@@ -93,7 +88,7 @@ $(function(){
                                     <a class="message" id="mess" href="#">&nbsp;</a>
                                 </p>
                             </span>
-                            <div style="width: 100%;height:40px;background:#f5f5f5;float: left;margin-top: 5px;margin-bottom:15px;">
+                            <div style="width: 100%;height:40px;background:#f5f5f5;float: left;">
                                 <dl>
                                     <dd style="float: left;line-height: 40px;font-weight: 500;font-size: 15px;width: 10%">
                                         <input style="margin-top:14px" type="checkbox" class="checkall" name="">
@@ -107,7 +102,7 @@ $(function(){
                                 </dl>
                             </div>
                             <{else}>
-                                 <div style="text-align: left;line-height: 40px;border: 1px solid #ccc;"><span style="width: 60px;display: inline-block;text-align: center;">头像</span><span style="margin-left: 150px;">好友名称</span><span style="float: right;margin-right: 35px;">操作</span></div>
+                                 <div style="text-align: left;line-height: 40px;background: #f5f5f5;"><span style="width: 60px;display: inline-block;text-align: center;">头像</span><span style="margin-left: 150px;">好友名称</span><span style="float: right;margin-right: 35px;">操作</span></div>
                             <{/if}>
                             <div  id="shows">
                             <{foreach item=slist from=$re.list}>
@@ -115,7 +110,7 @@ $(function(){
                                 <li class="bt">
                                     <div class="friend_img">
                                         <a target="_blank" href="<{$config.weburl}>/home.php?uid=<{$slist.uid}>">
-                                            <img width="100" height="100" src="<{if $slist.uimg}><{$slist.uimg}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>">
+                                            <img src="<{if $slist.uimg}><{$slist.uimg}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>">
                                         </a>
                                     </div>
                                     <div class="attme">
@@ -135,9 +130,9 @@ $(function(){
                                     <div style="float: left;width: 76px;">
                                         <input style="margin-top:15px" name="duoxuan" class="checkitem" value="<{$slist.id}>" type="checkbox">
                                     </div>
-                                    <div class="friend_img" style="margin-left: 20px;border: 1px solid #E7EFF8;border-radius: 5px 5px 5px 5px;float: left;height: 40px;padding: 1px;width: 40px;">
+                                    <div class="friend_img" style="margin-left: 20px;float: left;height: 40px;width: 40px;">
                                         <a target="_blank" href="<{$config.weburl}>/home.php?uid=<{$slist.fuid}>">
-                                            <img width="40" height="40" src="<{if $slist.fuimg}><{$slist.fuimg}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>">
+                                            <img src="<{if $slist.fuimg}><{$slist.fuimg}><{else}>image/default/user_admin/default_user_portrait.gif<{/if}>">
                                         </a>
                                     </div>
                                     <div style="margin-left: 40px;float: left;">
@@ -181,7 +176,7 @@ $(function(){
                                             <a class="message" target="_blank" href="main.php?m=message&s=admin_message_sed&uid=<{$slist.fuid}>">&nbsp;</a>
                                         </span>
                                     </dd>
-                                    <hr style="width: 100%;float:left">
+                                  
                                 </li>
                             <{/if}>
                             <{/foreach}>
@@ -205,7 +200,7 @@ $(function(){
 </div>
 
 <div class="groupMan">
-<p class="hua">全部好友(<{$cou}>)</p>
+<p>全部好友(<{$cou}>)</p>
 <div style="text-align:center;">
     <dl>
         <{foreach item=list from=$gronmame}>
