@@ -2,6 +2,7 @@
 /* CSS Document*/
 i.home_icon {background: url(../../../image/wap/wap_haitao_icon116.png) right no-repeat;background-size: 50%;}
 i.home_icons{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_icon9.png) right no-repeat;background-size: 50%;}
+i.roll_icon{display: inline-block;height: 50px;width: 50px;background: url(../../../image/wap/wap_haitao_roll.png) right no-repeat;background-size: 70%;}
 /*个人中心样式&&账户管理*/
 .duser{background:url(../../../image/wap/wap_haitao_usebg.jpg) no-repeat;background-size: 100% 100%;overflow:hidden;padding: 1.5rem 0.5rem;text-align: center;}
 .duser_left{display: inline-block;margin-right: 10px;vertical-align: top;}
@@ -141,3 +142,8 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
     background-color: rgba(0,0,0,0.3);position: absolute;right: 0.5rem;top: 0.5rem;border-radius: 50%;}
 .collect_box_content {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;
     font-size: 14px;}
+.roll_fixed{display: none;width: 14rem;position: fixed;top: 40%;left: 50%;overflow: auto;background: #fff;z-index: 99999;
+    border-radius: 5px;margin-left: -7rem;text-align: center;}
+.roll_fixed .roll_title{font-size: 0.7rem;line-height: 1.4;padding: 0.5rem;background-color: #ff5c5c;color: #fff;}
+.roll_fixed .roll_content{background-color: #fff;text-align: left;padding: 0.5rem 1rem;}
+.roll_fixed .roll_content p{font-size: 0.6rem;line-height: 1.7;}

@@ -3,7 +3,7 @@
 	<div class="nav-w">
     	<section class="nav-s iconfont"><a  onclick="javascript:history.back(-1)" ><i class="fanhui_icon"></i></a></section>
     	<section class="nav-c"><span>我的代金券</span></section>
-    	<section class="nav-e"></section>
+    	<section class="nav-e"><i class="roll_icon"></i></section>
     </div>
 </header>
 <div class="roll_container">
@@ -43,4 +43,36 @@
 		</ul>
 	</div>
 </div>
+<div class="mask"></div>
+<div class="roll_fixed">
+    <div class="roll_title">
+       <span>代金券使用规则</span>
+    </div>
+    <div class="roll_content">
+     	<p>1.代金券只能在指定店铺使用；<br>
+		2.每次只能使用一张，不可叠加使用；<br>
+		3.代金券应在规定期限内使用；<br>
+		4.优惠券一经使用，不可退回；<br>
+		5.退款退货时，仅退还非优惠劵部分金额；<br>
+		</p>
+    </div>
+</div>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
+<script type="text/javascript">
+	$(function(){
+		$(".roll_icon").bind("click",function(e){
+			e = e || window.event;
+	        if (e.stopPropagation) { //W3C阻止冒泡方法
+	            e.stopPropagation();
+	        } else {
+	            e.cancelBubble = true; //IE阻止冒泡方法
+	        }
+			$(".mask").show();
+			$(".roll_fixed").show();
+		})
+		$(window).bind("click",function(){
+			$(".mask").hide();
+			$(".roll_fixed").hide();
+		})
+	})
+</script>
