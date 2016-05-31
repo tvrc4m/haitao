@@ -52,7 +52,7 @@
 		$(".roll_list_content li").bind("click",function(){
 			var thisMoney=$(this).find(".roll_list_money").html() , _this=$(this) , maxMoney=$(this).find(".roll_list_limit span").html();
 			console.log(thisMoney);console.log(maxMoney);
-			_this.find(".roll_list_right").prepend("<img src='../image/wap/wap_haitao_icon157.png' class='roll_list_checked'>").end().siblings().find("img").remove();
+			_this.find(".roll_list_right").prepend("<img src='../image/wap/wap_haitao_icon157.png' class='roll_list_checked'>").end().siblings().find(".roll_list_right img").remove();
 			_this.find(".roll_mark").show().end().siblings().find(".roll_mark").hide();
 			$(".collect_box_content").hide();
 			$.ajax({
