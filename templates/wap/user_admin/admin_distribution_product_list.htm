@@ -12,27 +12,27 @@
     <dl>
         <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>"><img alt="<{$list.pname}>"  class="shop_src scrollLoading" data-url="<{if !$list.pic }><{$config.weburl}>/image/wap/avatar.png<{else}><{$list.pic}>_120X120.jpg<{/if}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;"></a> </dt>
         <dd>
-            <p class="p-name">
+            <p class="manage-name">
                 <{if $list.p_national }>
-                    <span class="pname_img">
+                    <span class="manage-name-img">
                         <img src="<{$list.p_national.img}>" alt="<{$list.p_national.title}>">&nbsp;&nbsp;<{$list.p_national.title}>
                     </span>               
                 &nbsp;&nbsp;
                 <{/if}>
-                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:34:"..."}></a>
-                <span class="price">（剩<{$list.amount}>件）</span>
+                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>" class="shop_name"><{$list.pname|truncate:30:"..."}></a>
+                <span class="manage-num">（剩<{$list.amount}>件）</span>
             </p>
-            <p class="p-name color">
-				<span class="price-w">
-				价格：<span class="price-tests"><{$config.money}><{$list.price|number_format:2}></span>
+            <p class="manage-name">
+				<span class="manage-price">
+				价格：<span class="manage-price-test"><{$config.money}><{$list.price|number_format:2}></span>
 				</span>
-				<span class="complateMoney">
-					<{if $list.is_dist}>佣金: <span class="price-tests"><{$config.money}><{$list.commission_product_price_0|number_format:2}></span><{/if}>
+				<span class="manage-complate">
+					<{if $list.is_dist}>佣金: <span class="manage-price-test"><{$config.money}><{$list.commission_product_price_0|number_format:2}></span><{/if}>
 				</span>
 			</p>
 			<div class="price-btns">
 				<span class="price-delate" data-id='<{$list.id}>'><a href="javascript:void(0);">删除</a></span>
-				<{if $list.is_dist}><span class="price-fenxiang price">分享</span><{/if}>
+				<{if $list.is_dist}><span class="price-fenxiang">分享</span><{/if}>
 			</div>
         </dd>
     </dl>
@@ -76,7 +76,7 @@ $(function(){
                             var dataLen=msg.data.length;
                             for(var i=0;i<dataLen;i++){
                                 var pnational=msg.data[i].p_national;
-                                var value_substr=msg.data[i].pname.substr(i,24);
+                                var value_substr=msg.data[i].pname.substr(i,20);
                                 var pname_len=msg.data[i].pname.length;
                                 var value_substr_len=value_substr.length+1;
                                 if(pname_len>value_substr_len){
@@ -103,27 +103,27 @@ $(function(){
                                 var amount_num=toDecimal2(nums);
                                  $(".itemSearchResult").append("<dl><dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>'>  <img alt='"+msg.data[i].pname+"' class='shop_src scrollLoading' data-url='<{if !$list.pic }><{$config.weburl}>/image/wap/avatar.png<{else}>"+msg.data[i].pic+"_120X120.jpg<{/if}>' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;'></a></dt>"+
                                     "<dd>"+
-                                       "<p class='p-name'>"+
-                                                "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
+                                       "<p class='manage-name'>"+
+                                                "<span class='manage-name-img' data-id='"+msg.data[i].id+"'>"+
                                                 "</span>"+
-                                            "<a target='_blank' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
-                                            "<span class='price'>（剩"+msg.data[i].amount+"件）</span>"+
+                                            "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"&shop_id=<{$shop_id}>' class='shop_name'>"+value_substr+"</a>"+
+                                            "<span class='manage-num'>（剩"+msg.data[i].amount+"件）</span>"+
                                         "</p>"+
-                                        "<p class='p-name color'>"+
-                                           "<span class='price-w'>"+
-                                            "价格：<span class='price-tests'><{$config.money}>"+msg.data[i].price+"</span>"+
+                                        "<p class='manage-name'>"+
+                                           "<span class='manage-price'>"+
+                                            "价格：<span class='manage-price-test'><{$config.money}>"+msg.data[i].price+"</span>"+
                                             "</span>"+
-                                            "<span class='complateMoney'>"+
-                                                "<{if $list.is_dist}>佣金: <span class='price-tests'><{$config.money}>"+amount_num+"</span><{/if}>"+
+                                            "<span class='manage-complate'>"+
+                                                "<{if $list.is_dist}>佣金: <span class='manage-price-test'><{$config.money}>"+amount_num+"</span><{/if}>"+
                                             "</span>"+
                                         "</p>"+
                                         "<div class='price-btns'>"+
                                             "<span class='price-delate' data-id='"+msg.data[i].id+"'><a href='javsccript:void(0);'>删除</a></span>"+
-                                            "<{if $list.is_dist}><span class='price-fenxiang price'>分享</span><{/if}>"+
+                                            "<{if $list.is_dist}><span class='price-fenxiang'>分享</span><{/if}>"+
                                         "</div>"+
                                     "</dd></dl>")
                                 if(pnational!==false){
-                                    $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].p_national.img+"' alt='"+msg.data[i].p_national.title+"'>&nbsp;&nbsp;"+msg.data[i].p_national.title+"&nbsp;&nbsp;")
+                                    $(".manage-name-img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].p_national.img+"' alt='"+msg.data[i].p_national.title+"'>&nbsp;&nbsp;"+msg.data[i].p_national.title+"&nbsp;&nbsp;")
                                 }
                             }
                             $(".scrollLoading").scrollLoading();
