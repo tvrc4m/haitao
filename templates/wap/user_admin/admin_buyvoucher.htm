@@ -9,15 +9,53 @@
 <div class="roll_container">
 	<div class="roll_list">	
 		<ul class="roll_list_content">
-			<{foreach from=$list.list item=vo key=key}><li class="clearfix">
-				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
-				<div class="roll_list_left">
-					<span><{$config.money}></span><span class="roll_list_money"><{$vo.price|string_format:"%.2f"}></span>
+			<li class="clearfix">
+				<div class="roll_list_left clearfix">
+					<p class="roll_list_lai">蚂蚁在线</p>
+					<div class="roll_list_money">10</div>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon151.png">
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">111</p>
+					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
+					<p class="roll_list_time">2013.10.10~2013.01.01</p>
+					<img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status">
+				</div>
+			</li><li class="clearfix">
+				<div class="roll_list_left clearfix">
+					<p class="roll_list_lai">蚂蚁在线</p>
+					<div class="roll_list_money">10</div>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon151.png">
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">111</p>
+					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
+					<p class="roll_list_time">2013.10.10~2013.01.01</p>
+					<img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status">
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="roll_container">
+	<div class="roll_list">	
+		<ul class="roll_list_content">
+			<{foreach from=$list.list item=vo key=key}><li class="<{if $vo.status eq 3 && $vo.status eq 2}>roll_list_content_test<{/if}> clearfix">
+				<div class="roll_list_left clearfix">
+					<p class="roll_list_lai">蚂蚁在线</p>
+					<div class="roll_list_money <{if $vo.status eq 3 && $vo.status eq 2}>roll_list_money_test<{/if}>">10</div>
+					<{if $vo.status eq 3 && $vo.status eq 2}>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon150.png">
+					<{else}>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon151.png">
+					<{/if}>
 				</div>
 				<div class="roll_list_right">
 					<p class="roll_list_name"><{$vo.shop_name}></p>
 					<p class="roll_list_limit">店内满<span><{$vo.limit}></span>元可用</p>
 					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
+					<{if $vo.status eq 3}><img src="../image/wap/wap_haitao_icon154.png" class="roll_list_status"><{/if}>
+					<{if $vo.status eq 2}><img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status"><{/if}>
 				</div>
 			</li><{foreachelse}>
 			<div class="itemsNull">
@@ -26,40 +64,11 @@
 			<{/foreach}>
 		</ul>
 	</div>
-	<div class="roll_center">一个月内已使用、已过期的代金券</div>
-	<div class="roll_list">	
-		<ul class="roll_list_content ">
-			<li class="clearfix">
-				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
-				<div class="roll_list_left">
-					<span><{$config.money}></span><span class="roll_list_money">5</span>
-				</div>
-				<div class="roll_list_right">
-					<p class="roll_list_name">蚂蚁在线</p>
-					<p class="roll_list_limit">店内满<span>100</span>元可用</p>
-					<p class="roll_list_time">2016.01.06~2016.03.30</p>
-					<!-- <p><{if $vo.status eq 1}><a href="<{$config.weburl}>/shop.php?uid=<{$vo.shop_id}>">立即使用</a><{elseif $vo.status eq 2}>已使用<{elseif $vo.status eq 3}>过期<{else}>收回<{/if}></p> -->
-					<img src="../image/wap/wap_haitao_icon146.png" class="roll_list_status">
-				</div>
-			</li><li class="clearfix">
-				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
-				<div class="roll_list_left">
-					<span><{$config.money}></span><span class="roll_list_money">10</span>
-				</div>
-				<div class="roll_list_right">
-					<p class="roll_list_name">蚂蚁在线</p>
-					<p class="roll_list_limit">店内满<span>200</span>元可用</p>
-					<p class="roll_list_time">2016.01.06~2016.03.30</p>
-					<img src="../image/wap/wap_haitao_icon147.png" class="roll_list_status">
-				</div>
-			</li>
-		</ul>
-	</div>
 </div>
 <div class="mask"></div>
 <div class="roll_fixed">
     <div class="roll_title">
-       <span>代金券使用规则</span>
+       <span>代金券使用规则</span><img src="../image/wap/wap_haitao_icon156.png" class="deleat-btn">
     </div>
     <div class="roll_content">
      	<p>1.代金券只能在指定店铺使用；<br>
@@ -83,7 +92,7 @@
 			$(".mask").show();
 			$(".roll_fixed").show();
 		})
-		$(window).bind("click",function(){
+		$(".deleat-btn").bind("click",function(){
 			$(".mask").hide();
 			$(".roll_fixed").hide();
 		})
