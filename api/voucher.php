@@ -38,6 +38,8 @@ class voucher{
 
     private $_params = array();
 
+    private $_serials = array();
+
     const TIME=600;
 
     private $_error = array(
@@ -48,7 +50,8 @@ class voucher{
         '10004'=>'ip受限',
         '10005'=>'参数不完整',
         '10006'=>'优惠卷已发放完',
-        '10007'=>'该用户已领取优惠卷'
+        '10007'=>'该用户已领取优惠卷',
+        '10008'=>'用户不存在'
     );
 
     private $_apps = array(
@@ -96,8 +99,8 @@ class voucher{
     public function shop($shop_id=''){
         global $db;
         if(empty($shop_id)){
-            //$sql = "select userid,company from mallbuilder_shop WHERE userid in(49,44,48,91)";
-            $sql = "select userid,company from mallbuilder_shop WHERE userid in(15,44,40,91)";
+            $sql = "select userid,company from mallbuilder_shop WHERE userid in(49,44,48,91)";
+            //$sql = "select userid,company from mallbuilder_shop WHERE userid in(15,44,40,91)";
             $db->query($sql);
             $list = $db->getRows();
             $this->_response_data = $list;
@@ -130,8 +133,10 @@ class voucher{
             if($this->_userinfo)
                 $this->shopRule($this->_params[$i]);
             else
-                echo '该用户不存在需要创建创建用户';
+                $this->_response_code='10008';
+                //echo '该用户不存在需要创建创建用户';
         }
+        $this->_response_data = json_encode((array)$this->_serials);
     }
 
     /*
@@ -139,8 +144,8 @@ class voucher{
      * */
     public function shopRule($list){
         global $db;
-        $this->_endTime = $this->_startTime+1000000;
-        $sql = "select id,total,giveout from mallbuilder_voucher_temp where shop_id=".$list['shop_id'];
+        $this->shop($list['shop_id']);
+        $sql = "select id,total,giveout from mallbuilder_voucher_temp where `shop_id`='".$list['shop_id']."' and `price`='".$list['price']."' and `limit`='".$list['limit']."'";
         $db->query($sql);
         $data = $db->fetchRow();
         if($data){
@@ -149,7 +154,7 @@ class voucher{
             else
                 $this->_response_code='10006';
         }else{
-            $sql = "insert into mallbuilder_voucher_temp (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`,`TYPE`) values ('$this->_name','消费{$list['limit']}可用',".$this->_startTime.",'$this->_endTime','{$list['price']}','{$list['limit']}','{$this->_userinfo['userid']}','{$this->_shopinfo['company']}','{$list['shop_number']}','0','','1','','2')";
+            $sql = "insert into mallbuilder_voucher_temp (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`,`TYPE`) values ('$this->_name','消费{$list['limit']}可用',".$this->_startTime.",'6898435688','{$list['price']}','{$list['limit']}','{$list['shop_id']}','{$this->_shopinfo['company']}','999999999','0','','1','','2')";
             $db->query($sql);
             $id = $db->lastid();
             $this->voucher($list,$id);
@@ -162,14 +167,24 @@ class voucher{
      * */
     public function voucher($list,$id=''){
         global $db;
-        $this->_serial = time().rand(100000,999999);
-        $this->_endTime = $this->_startTime+$list['time'];
-        $this->shop($list['shop_id']);
-        $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('$this->_serial','{$id}','$this->_name','消费{$list['limit']}可用','$this->_startTime','$this->_endTime','{$list['price']}','{$list['limit']}','{$list['shop_id']}',1,'".time()."','{$this->_userinfo['userid']}','{$this->_userinfo['user']}','','{$this->_shopinfo['company']}') ";
+        $sql = "select id from mallbuilder_voucher_order where `mobile`=".$list['mobile']." and `order`='".$list['order_id']."'";
         $db->query($sql);
-        $sql = "update mallbuilder_voucher_temp set `giveout` = giveout+1 where id=".$id;
-        $db -> query($sql);
-        $this->order($list['mobile'],$list['order_id'],$this->_serial);
+        if($db->num_rows()){
+            $this->_response_code='10007';
+        }else{
+            for($i=0;$i<$list['user_number'];$i++){
+                $this->_serial = time().rand(100000,999999);
+                $this->_serials[$list['voucher_id']]=(string)$this->_serial;
+                //array_push($this->_serials,array($list['voucher_id']=>$this->_serial));
+                $this->_endTime = $this->_startTime+$list['time'];
+                $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('$this->_serial','{$id}','$this->_name','消费{$list['limit']}可用','$this->_startTime','$this->_endTime','{$list['price']}','{$list['limit']}','{$list['shop_id']}',1,'".time()."','{$this->_userinfo['userid']}','{$this->_userinfo['user']}','','{$this->_shopinfo['company']}') ";
+                $db->query($sql);
+                $sql = "update mallbuilder_voucher_temp set `giveout` = giveout+1 where id=".$id;
+                $db -> query($sql);
+                $this->order($list['mobile'],$list['order_id'],$this->_serial);
+            }
+        }
+
     }
 
     /*
@@ -178,7 +193,7 @@ class voucher{
      * */
     public function order($mobile='',$order_id='',$serial=''){
         global $db;
-        $sql = "select serial,mobile from mallbuilder_voucher_order where mobile=".$mobile;
+        $sql = "select `serial`,`mobile` from mallbuilder_voucher_order where `order`='".$order_id."'";
         $db->query($sql);
         $order = $db->fetchRow();
         if($order['serial']){
@@ -202,7 +217,7 @@ class voucher{
                 $sql="update mallbuilder_voucher_order set serial='$serialJson' where mobile='$mobile'";
                 $db->query($sql);
             }
-
+            $this->_response_code='00000';
         }
     }
 

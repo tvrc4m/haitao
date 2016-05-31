@@ -138,23 +138,20 @@ class Curl
 
 $list = array(
     array(
-        'shop_id'=>'45',
-        'price'=>'5',
-        'limit'=>'100',
-        'shop_number'=>'100',
-        'time'=>'1464582337',
-        'order_id'=>'2222222',
-        'mobile'=>'150114261181111',
-        'voucher_id'=>'11111111',
-        'endtime'=>'1483203661',
-        'user_number'=>'2',
+        'shop_id'=>'1',
+        'price'=>'5.00',
+        'limit'=>'12.00',
+        'time'=>'1465567697',
+        'order_id'=>'763',
+        'mobile'=>'15763951212',
+        'voucher_id'=>'13',
+        'user_number'=>'1',
     )
 );
-include_once("includes/global.php");
 $data['appid']='1464427700';
 $data['secret']='10cf1fdf6ad958eeffa9853f6885cec9';
-$data['uc_server']='http://www.haitao.com/';
+$data['uc_server']='https://www.mayihaitao.com/';
 $data['action']='generate';
 $obj = new Curl($data);
-$aa =  $obj->http_post('http://haitao.com/api/voucher.php',$list);
+$aa =  $obj->http_post('https://www.mayihaitao.com/api/voucher.php',$list);
 var_dump($aa);
