@@ -131,17 +131,17 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
 .roll_list .roll_list_content li{margin-bottom: 0.5rem;}
 .roll_list .roll_list_content .roll_list_left{float: left;width: 25%;height: 3.4rem;line-height: 3.4rem;color: #fff;background-color: #FF5C5C;}
 .roll_list .roll_list_content .roll_list_left_test{background-color: #999;}
-.roll_list .roll_list_content .roll_list_left .roll_list_money{font-size: 1.0rem;}
+.roll_list .roll_list_content .roll_list_left .roll_list_money{font-size: 1.2rem;margin-left: 2px;}
 .roll_list .roll_list_content .roll_list_right{width: 75%;float: left;height: 3.4rem;background-color: #FFF;position: relative;}
 .roll_list .roll_list_content .roll_list_right_test{border: 1px solid #ff5c5c;border-left: none;box-sizing: border-box;
     -webkit-box-sizing: border-box;}
-.roll_list .roll_list_content .roll_list_right .roll_list_img{width: 2.5rem;height: 2.5rem;position: absolute;right: 0.5rem;top: 0.5rem;}
+.roll_list .roll_list_content .roll_list_right .roll_list_status{width: 2.5rem;height: 2.5rem;position: absolute;right: 0.5rem;top: 0.5rem;}
 .roll_list .roll_list_content .roll_list_right p{line-height: 1.5;}
 .roll_list .roll_list_content .roll_list_right .roll_list_name{margin-top: 0.4rem;}
 .roll_list .roll_list_content .roll_list_right .roll_list_checked{position:absolute;bottom: 0;right: 0;}
 .collect_box_content {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;
     font-size: 14px;}
-.roll_fixed{display: none;width: 14rem;position: fixed;top: 40%;left: 50%;overflow: auto;background: #fff;z-index: 99999;
+.roll_fixed{display: none;width: 14rem;position: fixed;top: 20%;left: 50%;overflow: auto;background: #fff;z-index: 99999;
     border-radius: 5px;margin-left: -7rem;text-align: center;}
 .roll_fixed .roll_title{font-size: 0.7rem;line-height: 1.4;padding: 0.5rem;background-color: #ff5c5c;color: #fff;}
 .roll_fixed .roll_content{background-color: #fff;text-align: left;padding: 0.5rem 1rem;}
