@@ -9,7 +9,7 @@
 <div class="roll_container">
 	<div class="roll_list">	
 		<ul class="roll_list_content">
-			<{foreach from=$list.list item=vo key=key}><li class="<{if $vo.status eq 3 && $vo.status eq 2}>roll_list_content_test<{/if}> clearfix">
+			<{foreach from=$list.list item=vo key=key}><li class="<{if $vo.status eq 3 && $vo.status eq 2}>roll_list_content_test<{/if}> clearfix"><a href="javascript:void(0);">
 				<div class="roll_list_left clearfix">
 					<p class="roll_list_lai">蚂蚁在线</p>
 					<div class="roll_list_money <{if $vo.status eq 3 && $vo.status eq 2}>roll_list_money_test<{/if}>">10</div>
@@ -25,7 +25,7 @@
 					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
 					<{if $vo.status eq 3}><img src="../image/wap/wap_haitao_icon154.png" class="roll_list_status"><{/if}>
 					<{if $vo.status eq 2}><img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status"><{/if}>
-				</div>
+				</div></a>
 			</li><{foreachelse}>
 			<div class="itemsNull">
 		    	<h3>暂无可用代金券</h3>
