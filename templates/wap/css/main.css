@@ -138,7 +138,7 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
 .roll_list .roll_list_content .roll_list_right .roll_list_status{width: 2.5rem;height: 2.5rem;position: absolute;right: 0.5rem;top: 0.5rem;}
 .roll_list .roll_list_content .roll_list_right p{line-height: 1.5;}
 .roll_list .roll_list_content .roll_list_right .roll_list_name{margin-top: 0.4rem;}
-.roll_list .roll_list_content .roll_list_right .roll_list_checked{position:absolute;bottom: 0;right: 0;}
+.roll_list .roll_list_content .roll_list_right .roll_list_checked{position:absolute;bottom: -4px;right: -4px;width: 1.3rem;}
 .collect_box_content {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;
     font-size: 14px;}
 .roll_fixed{display: none;width: 14rem;position: fixed;top: 20%;left: 50%;overflow: auto;background: #fff;z-index: 99999;

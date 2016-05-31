@@ -19,7 +19,7 @@
 					<p class="roll_list_name">蚂蚁在线</p>
 					<p class="roll_list_limit">店内满<span>100</span>元可用</p>
 					<p class="roll_list_time">2016.01.06~2016.03.30</p>
-					<img src="../image/wap/checked.png" class="roll_list_checked">
+					<img src="../image/wap/wap_haitao_icon148.png" class="roll_list_checked">
 				</div>
 			</li><li class="clearfix">
 				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
@@ -59,7 +59,7 @@
 			var thisMoney=$(this).find(".roll_list_money").html() , _this=$(this) , maxMoney=$(this).find(".roll_list_limit span").html();
 			console.log(thisMoney);console.log(maxMoney);
 			_this.find(".roll_list_right").addClass("roll_list_right_test").end().siblings().find(".roll_list_right").removeClass("roll_list_right_test");
-			_this.find(".roll_list_right").prepend("<img src='../image/wap/checked.png' class='roll_list_checked'>").end().siblings().find("img").remove();
+			_this.find(".roll_list_right").prepend("<img src='../image/wap/wap_haitao_icon148.png' class='roll_list_checked'>").end().siblings().find("img").remove();
 			$(".collect_box_content").hide();
 			$.ajax({
                 url: 'voucher.php',
