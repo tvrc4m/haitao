@@ -123,10 +123,10 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
 .for_3{background: #72ABF3}
 /*代金劵样式新版1*/
 .roll_container{padding: 0.5rem;}
-.roll_center{text-align: center;font-size: 0.65rem;margin-bottom: 0.5rem;}
+.roll_center{text-align: center;font-size: 0.65rem;margin-bottom: 0.5rem;margin-top: 1.1rem;}
 .roll_list .roll_list_origin{font-size: 0.6rem;}
-.roll_list .roll_list_origin span{float: right;margin-right: 0.5rem;background-color: #fff;padding: 0.1rem 0.3rem 0;
-    border-top-left-radius: 5px;border-top-right-radius: 5px;color: #999;}
+.roll_list .roll_list_origin span{float: right;margin-right: 0.5rem;color: #999;width: 120px;height: 25px;line-height: 25px;
+    background: url(../../../image/wap/wap_haitao_icon149.png) no-repeat;background-size: cover;font-size: 12px;}
 .roll_list .roll_list_content{text-align: center;font-size: 0.6rem;}
 .roll_list .roll_list_content li{margin-bottom: 0.5rem;}
 .roll_list .roll_list_content .roll_list_left{float: left;width: 25%;height: 3.4rem;line-height: 3.4rem;color: #fff;background-color: #FF5C5C;}
@@ -137,7 +137,7 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
     -webkit-box-sizing: border-box;}
 .roll_list .roll_list_content .roll_list_right .roll_list_status{width: 2.5rem;height: 2.5rem;position: absolute;right: 0.5rem;top: 0.5rem;}
 .roll_list .roll_list_content .roll_list_right p{line-height: 1.5;}
-.roll_list .roll_list_content .roll_list_right .roll_list_name{margin-top: 0.4rem;}
+.roll_list .roll_list_content .roll_list_right .roll_list_name{margin-top: 0.3rem;}
 .roll_list .roll_list_content .roll_list_right .roll_list_checked{position:absolute;bottom: -4px;right: -4px;width: 1.3rem;}
 .collect_box_content {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;
     font-size: 14px;}
