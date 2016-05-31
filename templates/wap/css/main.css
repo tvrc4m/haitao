@@ -126,7 +126,7 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
 /*代金劵样式新版2*/
 .roll_container{padding: 0.5rem;}
 .roll_center{text-align: center;font-size: 0.65rem;margin-bottom: 0.5rem;margin-top: 1.1rem;}
-.roll_list .roll_list_content{text-align: center;font-size: 0.6rem;}
+.roll_list .roll_list_content{text-align: center;font-size: 0.6rem;position: relative;}
 .roll_list .roll_list_content li{margin-bottom: 0.5rem;padding: 0.6rem 0 0;position: relative;
     background: url(../../../image/wap/wap_haitao_icon153.png) no-repeat;background-size: 100%;}
 .roll_list .roll_list_content li.roll_list_content_test{background: url(../../../image/wap/wap_haitao_icon152.png) no-repeat;background-size: 100%;}
@@ -137,7 +137,12 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
 .roll_list .roll_list_content .roll_list_left .roll_list_img{float: left;margin-left: 4px;width: 10px;margin-top: 0.8rem;}
 .roll_list .roll_list_content .roll_list_right{float: left;text-align: left;padding-left: 0.8rem;}
 .roll_list .roll_list_content .roll_list_right .roll_list_status{width: 2.5rem;position: absolute;right: 0.5rem;top: 0.8rem;}
-.roll_list .roll_list_content .roll_list_right p{line-height: 1.5;}
+.roll_list .roll_list_content .roll_list_right .roll_list_checked{width: 2rem;position: absolute;right: 0.5rem;top: 0.9rem;z-index: 999;}
+.roll_list .roll_list_content .roll_list_right p{line-height: 1.3;}
+.roll_list .roll_list_content .roll_list_right .roll_list_name{font-size: 0.7rem}
+.roll_list .roll_list_content .roll_list_right .roll_list_time{margin-top: 8px;}
+.roll_list .roll_list_content .roll_mark{width:100%;position: absolute;top: 0;left: 0;height: 100%;
+    background-color: rgba(255,255,255,0.5);z-index: 99;display: none; }
 .collect_box_content {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;
     font-size: 14px;}
 .roll_fixed{display: none;width: 14rem;position: fixed;top: 20%;left: 50%;overflow: auto;background: #fff;z-index: 99999;
