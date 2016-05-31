@@ -52,40 +52,7 @@ class passport extends Uc_server{
         global $db;
         $aa = parent::login(array('phone'=>'15011426118','password'=>'123456'));
         var_dump($aa);die;
-        //验证手机号登录
-        if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
-            $sql="select * from ".MEMBER." where mobile='$post[user]'";
-        else
-            $sql="select * from ".MEMBER." where  user='$post[user]'";
-        $db->query($sql);
-        $re=$db->fetchRow();
 
-        if($re["userid"])
-        {
-            if($re['statu']=='-2'){
-                msg("login.php?erry=-5&connect_id=$post[connect_id]");
-            }
-            if(substr($re['password'],0,4)=='lock')
-                msg("login.php?erry=-4&connect_id=$post[connect_id]");
-            if($re['password']!=md5($post['password']))
-                msg("login.php?erry=-2&connect_id=$post[connect_id]");
-
-            if($re["password"]==md5($post['password']))
-            {
-                if($re['pid'])
-                    login($re['pid'],$re['user'],$re['userid']);
-                else
-                    login($re['userid'],$re['user']);
-                if(!empty($post['forward'])){
-                    $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
-                    msg($forward);
-                }else{
-                    msg($_COOKIE['old_url']);
-                }
-                setcookie("old_url");
-                setcookie("userid",$re['userid']);
-            }
-        }
     }
 
     /*

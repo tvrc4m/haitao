@@ -27,7 +27,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         exit();
     } */
     $config = array_merge($config,$reg_config);
-    if($config['openbbs']!=2)
+    if($config['openbbs']==2)
     {
         //验证手机号登录
         if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
@@ -37,16 +37,20 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         $db->query($sql);
         $re=$db->fetchRow();
         if($re){
+            $re['mobile']='15763951212';
             $us = $obj->userinfo(array('phone'=>$re['mobile']));
-            $list = $obj->login(array('phone'=>$re['mobile'],'password'=>md5(md5(123456)+$us['salt'])));
-            echo md5(md5($post['password'])+$us['salt']);
-            var_dump($list);die;
-            if($us['password']==md5(md5($post['password'])+$us['salt'])){echo 11111;
-               $list = $obj->login(array('phone'=>$re['mobile'],'password'=>$us['password']));
-            }else{echo 222;die;
+            if($us['password']==md5(md5($post['password'])+$us['salt'])){
+                $obj->login(array('phone'=>$re['mobile'],'password'=>$us['password']));
+                if($re['pid'])
+                    login($re['pid'],$re['user'],$re['userid']);
+                else
+                    login($re['userid'],$re['user']);
+                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+                msg($forward);
+            }else{
                 msg("login.php?erry=-2&connect_id=$post[connect_id]");
             }
-            var_dump($list);die;
+
             if($re['password']!=md5($post['password']))
                 msg("login.php?erry=-2&connect_id=$post[connect_id]");
 
