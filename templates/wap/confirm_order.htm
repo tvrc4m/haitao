@@ -112,13 +112,12 @@
             </div>
             <p class="v_order">
                 <span class="v_order_juan">优惠券/代金券</span>
-                <!-- <select name="voucher_<{$list.seller_id}>" uid="<{$list.seller_id}>" class="d_select">
+                <select name="voucher_<{$list.seller_id}>" uid="<{$list.seller_id}>" class="d_select">
                 <option value="" item=0>不使用代金券</option>
                 <{foreach from=$list.voucher item=vo}>
                 <option item="<{$vo.price}>" value="<{$vo.id}>"><{$vo.name}></option>
                 <{/foreach}>
-                </select> -->
-                <a href="<{$config.weburl}>/voucher.php"><span name="voucher_<{$list.seller_id}>" uid="<{$list.seller_id}>" data-id="<{$vo.price}>" class="d_select">不使用代金券</span></a>
+                </select>
             </p>
             <p style="text-align:left" class="replenish"><span class="replenish_buchong">补充说明：</span><input placeholder="选填，可告诉卖家您的特殊要求" name="msg_<{$list.seller_id}>" class="replenish-btn"></p>
             <{if $list.reduce_price}>
@@ -189,9 +188,7 @@ function count_price(id,flag)
     else
     {
         //单店总价-物流 - 代金券=商品总价
-        // var vp = $("select[name='voucher_"+id+"']").find("option:selected").attr("item")
-        // vp = vp ? vp*1 : 0;
-        var vp = $("span[name='voucher_"+id+"']").attr("data-id")
+        var vp = $("select[name='voucher_"+id+"']").find("option:selected").attr("item")
         vp = vp ? vp*1 : 0;
 
         zj=$('#s_csumprice_'+id).attr("orgprice").replace(',','')*1-vp  ;
@@ -211,14 +208,10 @@ function count_all_price()
     
     $('#s_sumprice').html(roundAmount(total));
 }
-$("span[name^='voucher_']").change(function(){
+$("select[name^='voucher_']").change(function(){
     var id = $(this).attr("name").replace("voucher_","");
     count_price(id,true);
 })
-// $("select[name^='voucher_']").change(function(){
-//     var id = $(this).attr("name").replace("voucher_","");
-//     count_price(id,true);
-// })
 count_all_price();
 function roundAmount(n)
 {  
@@ -283,3 +276,8 @@ $(function(){
 <{/if}>
 </section>
 <{/if}>
+<script type="text/javascript">
+$(function(){
+    $("footer").css({"margin-bottom":"50px"})
+})
+</script>
