@@ -22,7 +22,7 @@
 				<div class="roll_list_right">
 					<p class="roll_list_name"><{$vo.shop_name}></p>
 					<p class="roll_list_limit">店内满<span><{$vo.limit}></span>元可用</p>
-					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
+					<p class="roll_list_time"><{$vo.start_time|date_format:"%Y.%m.%d"}>~<{$vo.end_time|date_format:"%Y.%m.%d"}></p>
 					<{if $vo.status eq 3}><img src="../image/wap/wap_haitao_icon154.png" class="roll_list_status"><{/if}>
 					<{if $vo.status eq 2}><img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status"><{/if}>
 				</div></a>
