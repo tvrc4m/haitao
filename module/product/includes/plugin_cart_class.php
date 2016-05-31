@@ -347,7 +347,7 @@ class cart
 		$re = $this->db->getRows();
 
 		foreach($re as $key => $v)
-		{	
+		{
 		    //获取单个店铺商品及商品总价格、平邮、快递、EMS、总邮费
 			$pro = $this->get_prolist($v['seller_id'],$area,$product_id,$provinceid);
             $voucher = $this->get_voucher($v['seller_id'],$pro['sumprice']);

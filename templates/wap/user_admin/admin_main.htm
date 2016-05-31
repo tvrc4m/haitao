@@ -85,7 +85,8 @@
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type=text/javascript></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/dialog/dialog.js" id="dialog_js"></script>
 <script type="text/javascript">
-    function substr(htm,obj,num){
+$(function(){
+     function substr(htm,obj,num){
         var value_substr=obj.substr(0,num);
         var pname_len=obj.length;
         var value_substr_len=value_substr.length+1;
@@ -107,6 +108,7 @@
     else{
         substr(shop_name_htm,shop_name,10);
     }
+})   
 </script>
 <{if $smarty.session.appid}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

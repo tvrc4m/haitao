@@ -17,7 +17,7 @@ if(isset($_GET['del_v_id']) && $_GET['del_v_id'] > 0)
 
 $list = $voucher -> buyvoucher();
 $tpl->assign("list",$list);
-        
+
 $tpl->assign("config",$config);
 $tpl->assign("lang",$lang);
 $output=tplfetch("admin_buyvoucher.htm");
