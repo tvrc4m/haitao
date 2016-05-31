@@ -49,7 +49,8 @@ span.p-price strong{font-size:20px;}
 .p-detail-user{float: right;color: #535353;}
 .p-detail-test{float: left;color: #535353;}
 /*** bruce 2015.01.16 修改 ****/
-.d_select{float: right;margin-top: 0.9rem;font-size: 0.7rem;color: #535353; border: none;-webkit-appearance: none;padding-right: 15px;background: url(../../../image/wap/wap_haitao_icon71.png) no-repeat right center;}
+.d_select{float: right;margin-top: 0.9rem;font-size: 0.7rem;color: #535353; border: none;-webkit-appearance: none;padding-right: 15px;
+    background: url(../../../image/wap/wap_haitao_icon71.png) no-repeat right center;line-height: 1.2;}
 .replenish_buchong{color: #535353;margin-right: 5px;}
 .v_order_juan{float: left;}
 .fr-gong{margin-right: 10px;}

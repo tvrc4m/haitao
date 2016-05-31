@@ -42,31 +42,17 @@ $(function(){
 		var h = $(document).scrollTop();
 		if(h > 50)
 		{
-			$(".cat-banner-out").css({"position":"fixed","top":"50px","width":"100%","z-index":"9999","background-color":"#fff","margin-top":"0px"})
-			$(".cat-container").eq(0).css({"margin-top":"65px"})
+			$(".cat-banner-out").css({"position":"fixed","top":"50px","width":"100%","z-index":"9999","background-color":"#fff","margin-top":"0px"});
+			$(".cat-container").eq(0).css({"margin-top":"65px"});
 		}
 	})
 	$(".cat-container div").hide();
-	$(".cat-container div[pid=a1000]").show();
+	$(".cat-container div[pid=a1000]").show();  
 	$(".cat-banner li").click(function(){
-		var liSize=$(this).index();
-		$(this).addClass("current").siblings().removeClass("current");
-		if(liSize==0){
-			$(".cat-container div[pid=a1000]").show();
-			$(".cat-container div[pid!=a1000]").hide()
-		}
-		if(liSize==1){
-			$(".cat-container div[pid=a1001]").show();
-			$(".cat-container div[pid!=a1001]").hide();
-		}
-		if(liSize==2){
-			$(".cat-container div[pid=a1002]").show();
-			$(".cat-container div[pid!=a1002]").hide()
-		}
-		if(liSize==3){
-			$(".cat-container div[pid=a1003]").show();
-			$(".cat-container div[pid!=a1003]").hide()
-		}
+		var _this=$(this) , liSize=$(this).index() , linum="a"+Number(1000+liSize);
+		_this.addClass("current").siblings().removeClass("current");
+		$(".cat-container div[pid='"+linum+"']").show();
+		$(".cat-container div[pid!='"+linum+"']").hide();
 	})
 })	
 </script>

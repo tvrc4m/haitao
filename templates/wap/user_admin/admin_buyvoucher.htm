@@ -3,21 +3,59 @@
 	<div class="nav-w">
     	<section class="nav-s iconfont"><a  onclick="javascript:history.back(-1)" ><i class="fanhui_icon"></i></a></section>
     	<section class="nav-c"><span>我的代金券</span></section>
-    	<section class="nav-e"></section>
+    	<section class="nav-e"><i class="roll_icon"></i></section>
     </div>
 </header>
 <div class="roll_container">
 	<div class="roll_list">	
 		<ul class="roll_list_content">
-			<{foreach from=$list.list item=vo key=key}><li class="clearfix">
-				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
-				<div class="roll_list_left">
-					<span><{$config.money}></span><span class="roll_list_money"><{$vo.price|string_format:"%.2f"}></span>
+			<li class="clearfix">
+				<div class="roll_list_left clearfix">
+					<p class="roll_list_lai">蚂蚁在线</p>
+					<div class="roll_list_money">10</div>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon151.png">
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">111</p>
+					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
+					<p class="roll_list_time">2013.10.10~2013.01.01</p>
+					<img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status">
+				</div>
+			</li><li class="clearfix">
+				<div class="roll_list_left clearfix">
+					<p class="roll_list_lai">蚂蚁在线</p>
+					<div class="roll_list_money">10</div>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon151.png">
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">111</p>
+					<p class="roll_list_limit">店内满<span>150</span>元可用</p>
+					<p class="roll_list_time">2013.10.10~2013.01.01</p>
+					<img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status">
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="roll_container">
+	<div class="roll_list">	
+		<ul class="roll_list_content">
+			<{foreach from=$list.list item=vo key=key}><li class="<{if $vo.status eq 3 && $vo.status eq 2}>roll_list_content_test<{/if}> clearfix">
+				<div class="roll_list_left clearfix">
+					<p class="roll_list_lai">蚂蚁在线</p>
+					<div class="roll_list_money <{if $vo.status eq 3 && $vo.status eq 2}>roll_list_money_test<{/if}>">10</div>
+					<{if $vo.status eq 3 && $vo.status eq 2}>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon150.png">
+					<{else}>
+					<img class="roll_list_img" src="../image/wap/wap_haitao_icon151.png">
+					<{/if}>
 				</div>
 				<div class="roll_list_right">
 					<p class="roll_list_name"><{$vo.shop_name}></p>
 					<p class="roll_list_limit">店内满<span><{$vo.limit}></span>元可用</p>
 					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
+					<{if $vo.status eq 3}><img src="../image/wap/wap_haitao_icon154.png" class="roll_list_status"><{/if}>
+					<{if $vo.status eq 2}><img src="../image/wap/wap_haitao_icon155.png" class="roll_list_status"><{/if}>
 				</div>
 			</li><{foreachelse}>
 			<div class="itemsNull">
@@ -26,21 +64,37 @@
 			<{/foreach}>
 		</ul>
 	</div>
-	<div class="roll_center">一个月内已使用、已过期的代金券</div>
-	<div class="roll_list">	
-		<ul class="roll_list_content ">
-			<{foreach from=$list.list item=vo key=key}><li class="clearfix">
-				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
-				<div class="roll_list_left">
-					<span><{$config.money}></span><span class="roll_list_money"><{$vo.price|string_format:"%.2f"}></span>
-				</div>
-				<div class="roll_list_right">
-					<p class="roll_list_name"><{$vo.shop_name}></p>
-					<p class="roll_list_limit">店内满<span><{$vo.limit}></span>元可用</p>
-					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
-				</div>
-			</li><{/foreach}>
-		</ul>
-	</div>
+</div>
+<div class="mask"></div>
+<div class="roll_fixed">
+    <div class="roll_title">
+       <span>代金券使用规则</span><img src="../image/wap/wap_haitao_icon156.png" class="deleat-btn">
+    </div>
+    <div class="roll_content">
+     	<p>1.代金券只能在指定店铺使用；<br>
+		2.每次只能使用一张，不可叠加使用；<br>
+		3.代金券应在规定期限内使用；<br>
+		4.代金券一经使用，不可退回；<br>
+		5.退款退货时，仅退还非代金券部分金额；<br>
+		</p>
+    </div>
 </div>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
+<script type="text/javascript">
+	$(function(){
+		$(".roll_icon").bind("click",function(e){
+			e = e || window.event;
+	        if (e.stopPropagation) { //W3C阻止冒泡方法
+	            e.stopPropagation();
+	        } else {
+	            e.cancelBubble = true; //IE阻止冒泡方法
+	        }
+			$(".mask").show();
+			$(".roll_fixed").show();
+		})
+		$(".deleat-btn").bind("click",function(){
+			$(".mask").hide();
+			$(".roll_fixed").hide();
+		})
+	})
+</script>
