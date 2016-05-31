@@ -145,7 +145,7 @@
                 <{if $list.voucher}>
                     <select name="voucher_<{$list.seller_id}>" uid="<{$list.seller_id}>">
                     <option value="" item=0>不使用代金券</option>
-                    <{foreach from=$list.voucher item=vo}>
+                    <{foreach from=$list.voucher item=vo}>limit
                     <option item="<{$vo.price}>" value="<{$vo.id}>"><{$vo.name}></option>
                     <{/foreach}>
                     </select>
