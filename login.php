@@ -13,6 +13,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     include_once("includes/global.php");
     include_once("includes/smarty_config.php");
     include_once("config/reg_config.php");
+    include_once ("includes/uc_server.php");
+    $data['uc_appid']='201605270933';
+    $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+    $data['uc_server']='http://t.mayionline.cn/apis/uc';
+    $obj = new Uc_server($data);
     /**
      * @验证码 操作
      */
@@ -22,8 +27,49 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         exit();
     } */
     $config = array_merge($config,$reg_config);
-    if($config['openbbs']==2)
+    if($config['openbbs']!=2)
     {
+        //验证手机号登录
+        if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
+            $sql="select * from ".MEMBER." where mobile='$post[user]'";
+        else
+            $sql="select * from ".MEMBER." where  user='$post[user]'";
+        $db->query($sql);
+        $re=$db->fetchRow();
+        if($re){
+            $us = $obj->userinfo(array('phone'=>$re['mobile']));
+            $list = $obj->login(array('phone'=>$re['mobile'],'password'=>md5(md5(123456)+$us['salt'])));
+            echo md5(md5($post['password'])+$us['salt']);
+            var_dump($list);die;
+            if($us['password']==md5(md5($post['password'])+$us['salt'])){echo 11111;
+               $list = $obj->login(array('phone'=>$re['mobile'],'password'=>$us['password']));
+            }else{echo 222;die;
+                msg("login.php?erry=-2&connect_id=$post[connect_id]");
+            }
+            var_dump($list);die;
+            if($re['password']!=md5($post['password']))
+                msg("login.php?erry=-2&connect_id=$post[connect_id]");
+
+            if($re["password"]==md5($post['password']))
+            {
+                if($re['pid'])
+                    login($re['pid'],$re['user'],$re['userid']);
+                else
+                    login($re['userid'],$re['user']);
+                if(!empty($post['forward'])){
+                    $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+                    msg($forward);
+                }else{
+                    msg($_COOKIE['old_url']);
+                }
+                setcookie("old_url");
+                setcookie("userid",$re['userid']);
+            }
+        }else
+            msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
+
+
+        /*
         //ucenter1.5 login
         $sql="select userid,user,password,email from ".MEMBER." a where user='$post[user]' or mobile='$post[mobile]'";
         $db->query($sql);
@@ -87,7 +133,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         {
             header("Location: login.php?erry=-1&connect_id=".$post['connect_id'].'&user='.$_POST['user']);//没
             exit();
-        }
+        }*/
     }
     else
     {
@@ -99,6 +145,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             $sql="select * from ".MEMBER." where  user='$post[user]'";
         $db->query($sql);
         $re=$db->fetchRow();
+
         if($re["userid"])
         {
             if($re['statu']=='-2'){

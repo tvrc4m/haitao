@@ -143,7 +143,7 @@ $list = array(
         'limit'=>'12.00',
         'time'=>'1465567697',
         'order_id'=>'763',
-        'mobile'=>'15763951212',
+        'mobile'=>'15763951211',
         'voucher_id'=>'13',
         'user_number'=>'1',
     )
@@ -153,5 +153,5 @@ $data['secret']='10cf1fdf6ad958eeffa9853f6885cec9';
 $data['uc_server']='https://www.mayihaitao.com/';
 $data['action']='generate';
 $obj = new Curl($data);
-$aa =  $obj->http_post('https://www.mayihaitao.com/api/voucher.php',$list);
+$aa =  $obj->http_post('http://www.haitao.com/api/voucher.php',$list);
 var_dump($aa);

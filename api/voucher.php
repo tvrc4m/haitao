@@ -5,8 +5,9 @@
  * Date: 2016/5/25
  * Time: 13:26
  */
+include_once("../includes/uc_server.php");
 
-class voucher{
+class voucher extends Uc_server{
 
     private $_appid;
 
@@ -64,6 +65,11 @@ class voucher{
     );
     public function __construct($config)
     {
+        $data['uc_appid']='201605270933';
+        $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+        $data['uc_server']='http://t.mayionline.cn/apis/uc';
+        //$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
+        parent::__construct($data);
         $this->_startTime = time();
         $this->_appid=$config['appid'];
         $this->_secret=$config['secret'];
@@ -130,11 +136,22 @@ class voucher{
         //生成代金卷
         for($i=0;$i<count($this->_params);$i++){
             $this->userInfo($this->_params[$i]['mobile']);
-            if($this->_userinfo)
+            if($this->_userinfo){
                 $this->shopRule($this->_params[$i]);
-            else
-                $this->_response_code='10008';
-                //echo '该用户不存在需要创建创建用户';
+            }else{
+                $user =parent::userinfo(array('phone'=>$this->_params[$i]['mobile']));
+                if($user['status']=='1100'){
+                    $this->doreg($user['phone'],$user['password']);
+                    $this->userInfo($this->_params[$i]['mobile']);
+                    $this->shopRule($this->_params[$i]);
+                }else{
+                    $this->_response_code='10008';
+                    $this->_response_data=json_encode(array('phone'=>$this->_params[$i]['mobile']));
+                    return false;
+                }
+
+            }
+
         }
         $this->_response_data = json_encode((array)$this->_serials);
     }
@@ -176,7 +193,7 @@ class voucher{
                 $this->_serial = time().rand(100000,999999);
                 $this->_serials[$list['voucher_id']]=(string)$this->_serial;
                 //array_push($this->_serials,array($list['voucher_id']=>$this->_serial));
-                $this->_endTime = $this->_startTime+$list['time'];
+                $this->_endTime = $list['time'];
                 $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('$this->_serial','{$id}','$this->_name','消费{$list['limit']}可用','$this->_startTime','$this->_endTime','{$list['price']}','{$list['limit']}','{$list['shop_id']}',1,'".time()."','{$this->_userinfo['userid']}','{$this->_userinfo['user']}','','{$this->_shopinfo['company']}') ";
                 $db->query($sql);
                 $sql = "update mallbuilder_voucher_temp set `giveout` = giveout+1 where id=".$id;
@@ -312,6 +329,51 @@ class voucher{
             }
         } else {
             return $keyc.str_replace('=', '', base64_encode($result));
+        }
+    }
+
+    //数据入库
+    public function doreg($mobile=null,$password=null)
+    {
+        global $db;
+        $user = 'mayi'.$mobile;
+        $pass = addslashes($password);
+        $mobile = $mobile;
+        $lastLoginTime = time();
+        $regtime = date("Y-m-d H:i:s");
+        $user_reg = "2";
+
+        $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".$pass."','NULL','$lastLoginTime','','$mobile','$regtime','$user_reg','0','1')";
+        $re=$db->query($sql);
+        $userid=$db->lastid();
+
+        if($userid)
+        {
+            $sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
+            $re=$db->query($sql);
+            if($re)
+            {
+                $post['userid'] = $userid;
+                $post['email'] = $user;
+                $pay_id = member_get_url($post,true);
+                if($pay_id)
+                {
+                    $sql="update ".MEMBER." set pay_id='$pay_id' where userid='$userid'";
+                    $re=$db->query($sql);
+                }
+                //-------------绑定一键连接
+
+                if(!empty($_REQUEST['connect_id']))
+                {
+                    $sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";
+                    $db->query($sql);
+                }
+
+                $sql="update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=".$userid;
+                $db->query($sql);
+                $sql="update ". MEMBER ." set mobile_verify = 1 where userid=".$userid;
+                $db->query($sql);
+            }
         }
     }
 

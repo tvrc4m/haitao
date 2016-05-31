@@ -89,7 +89,7 @@ class Uc_server
         $result=$this->http_post($this->server,$params);
         if($result->status==1100){
             $timestamp=$result->data->timestamp;
-            $str=authcode($result->data->params,'DECODE',$this->secret);
+            $str=$this->authcode($result->data->params,'DECODE',$this->secret);
             parse_str($str,$arr);
             if($arr['timestamp']==$timestamp && !empty($arr['phone']) && !empty($arr['password']) && !empty($arr['salt'])){
                 return array_merge(array('status'=>$result->status),$arr);
@@ -138,7 +138,7 @@ class Uc_server
         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
         $result = curl_exec($curl);
         $header = curl_getinfo($curl);
-         print_r($result);exit;
+        // print_r($result);exit;
         curl_close($curl);
         if (intval($header["http_code"]) == 200) {
             return json_decode($result);
