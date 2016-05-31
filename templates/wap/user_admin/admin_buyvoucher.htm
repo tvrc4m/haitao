@@ -29,17 +29,29 @@
 	<div class="roll_center">一个月内已使用、已过期的代金券</div>
 	<div class="roll_list">	
 		<ul class="roll_list_content ">
-			<{foreach from=$list.list item=vo key=key}><li class="clearfix">
+			<li class="clearfix">
 				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
 				<div class="roll_list_left">
-					<span><{$config.money}></span><span class="roll_list_money"><{$vo.price|string_format:"%.2f"}></span>
+					<span><{$config.money}></span><span class="roll_list_money">5</span>
 				</div>
 				<div class="roll_list_right">
-					<p class="roll_list_name"><{$vo.shop_name}></p>
-					<p class="roll_list_limit">店内满<span><{$vo.limit}></span>元可用</p>
-					<p class="roll_list_time"><{$vo.start_time|date_format:"%m.%d"}>~<{$vo.end_time|date_format:"%m.%d"}></p>
+					<p class="roll_list_name">蚂蚁在线</p>
+					<p class="roll_list_limit">店内满<span>100</span>元可用</p>
+					<p class="roll_list_time">2016.01.06~2016.03.30</p>
+					<img src="../image/wap/wap_haitao_icon146.png" class="roll_list_img">
 				</div>
-			</li><{/foreach}>
+			</li><li class="clearfix">
+				<div class="roll_list_origin clearfix"><span>来自蚂蚁在线</span></div>
+				<div class="roll_list_left">
+					<span><{$config.money}></span><span class="roll_list_money">10</span>
+				</div>
+				<div class="roll_list_right">
+					<p class="roll_list_name">蚂蚁在线</p>
+					<p class="roll_list_limit">店内满<span>200</span>元可用</p>
+					<p class="roll_list_time">2016.01.06~2016.03.30</p>
+					<img src="../image/wap/wap_haitao_icon147.png" class="roll_list_img">
+				</div>
+			</li>
 		</ul>
 	</div>
 </div>
@@ -52,8 +64,8 @@
      	<p>1.代金券只能在指定店铺使用；<br>
 		2.每次只能使用一张，不可叠加使用；<br>
 		3.代金券应在规定期限内使用；<br>
-		4.优惠券一经使用，不可退回；<br>
-		5.退款退货时，仅退还非优惠劵部分金额；<br>
+		4.代金券一经使用，不可退回；<br>
+		5.退款退货时，仅退还非代金券部分金额；<br>
 		</p>
     </div>
 </div>
