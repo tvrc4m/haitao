@@ -378,6 +378,7 @@ class cart
 		}
 		$res['cart'] = $de;
 		$res['sumprice'] = $sumprice;
+
 		return $res;
 	}
 	
