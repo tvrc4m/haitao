@@ -69,7 +69,7 @@ $(document).ready(function(){
                     tip.find(".tipcon").text("请输入正确的验证码，且为6位纯数字格式");
                 }
                 if(focusid == "#password"){
-                    tip.find(".tipcon").text("长度为6-10个字符");
+                    tip.find(".tipcon").text("长度为6-16个字符");
                 }
                 tip.css("display","block");
             }
