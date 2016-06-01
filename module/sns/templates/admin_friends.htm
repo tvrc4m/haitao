@@ -233,10 +233,10 @@ $(function(){
         $('.checkitem').each(function(){
             if (!this.disabled)
             {
-                $(this).attr('checked', _self.checked);
+                $(this).prop('checked', _self.checked);
             }
         });
-        $('.checkall').attr('checked', this.checked);
+        $('.checkall').prop('checked', this.checked);
     });
     $(function(){
         $("#btn_getValue").change(function(){
