@@ -16,7 +16,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     include_once ("includes/uc_server.php");
     $data['uc_appid']='201605270933';
     $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
-    $data['uc_server']='http://t.mayionline.cn/apis/uc';
+    $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
     $obj = new Uc_server($data);
     /**
      * @验证码 操作
@@ -29,37 +29,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     $config = array_merge($config,$reg_config);
     if($config['openbbs']!=2)
     {
-        //验证手机号登录
-        if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
-            $sql="select * from ".MEMBER." where mobile='$post[user]'";
-        else
-            $sql="select * from ".MEMBER." where  user='$post[user]'";
-        $db->query($sql);
-        $re=$db->fetchRow();
-        if($re){
-            $re['mobile']='15763951212';
-            $post['password']='812988018';
-            $us = $obj->userinfo(array('phone'=>$re['mobile']));
-            if($us['password']==md5(md5($post['password']).$us['salt'])){
-                $script = $obj->login(array('phone'=>$re['mobile'],'password'=>$us['password']));
-                if(!empty($post['forward'])){
-                    $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
-                }else{
-                    $forward = $_COOKIE['old_url'];
-                }
-                setcookie("old_url");
-                setcookie("userid",$re['userid']);
-                $tpl->assign('forward',$forward);
-                $tpl->assign('script',$script->data);
-                $tpl->display("script.htm");
-                die;
-            }
 
-        }else
-            msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
-
-
-        /*
         //ucenter1.5 login
         $sql="select userid,user,password,email from ".MEMBER." a where user='$post[user]' or mobile='$post[mobile]'";
         $db->query($sql);
@@ -123,11 +93,58 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         {
             header("Location: login.php?erry=-1&connect_id=".$post['connect_id'].'&user='.$_POST['user']);//没
             exit();
-        }*/
+        }
     }
     else
     {
-        // no ucenter login
+        //验证手机号登录
+        if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
+            $sql="select * from ".MEMBER." where mobile='$post[user]'";
+        else
+            $sql="select * from ".MEMBER." where  user='$post[user]'";
+        $db->query($sql);
+        $re=$db->fetchRow();
+        $us = $obj->userinfo(array('phone'=>$post[user]));
+        if($re){
+            /*$re['mobile']='15763951212';
+            $post['password']='812988018';*/
+
+            if($us['password']==md5(md5($post['password']).$us['salt'])){
+                $script = $obj->login(array('phone'=>$re['mobile'],'password'=>$post['password']));
+                if(!empty($post['forward'])){
+                    $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+                }else{
+                    $forward = $_COOKIE['old_url'];
+                }
+                setcookie("old_url");
+                setcookie("userid",$re['userid']);
+                $tpl->assign('con','正在登录...');
+                $tpl->assign('forward',$forward);
+                $tpl->assign('script',$script->data);
+                $tpl->display("script.htm");
+                die;
+            }
+
+        }else if($us['status']=='1100'){
+            doreg($post[user],md5(md5($post['password']).$us['salt']));
+            if($us['password']==md5(md5($post['password']).$us['salt'])){
+                $script = $obj->login(array('phone'=>$re['mobile'],'password'=>$post['password']));
+                if(!empty($post['forward'])){
+                    $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+                }else{
+                    $forward = $_COOKIE['old_url'];
+                }
+                setcookie("old_url");
+                setcookie("userid",$re['userid']);
+                $tpl->assign('con','正在登录...');
+                $tpl->assign('forward',$forward);
+                $tpl->assign('script',$script->data);
+                $tpl->display("script.htm");
+                die;
+            }
+        }else
+            msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
+        /*// no ucenter login
         //验证手机号登录
         if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
              $sql="select * from ".MEMBER." where mobile='$post[user]'";
@@ -163,7 +180,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             }
         }
         else
-            msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
+            msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没*/
     }
 }
 //========================================================
@@ -224,6 +241,50 @@ function login($uid,$username,$pid=NULL,$type=NULL)
     {
         $sql = "update " . MEMBER . " SET `open_id`='" . $_SESSION['openid_f'] . "' WHERE `userid`='$uid' AND open_id = ''";
         $re = $db -> query($sql);
+    }
+}
+//数据入库
+function doreg($mobile=null,$password=null)
+{
+    global $db;
+    $user = 'mayi'.$mobile;
+    $pass = addslashes($password);
+    $mobile = $mobile;
+    $lastLoginTime = time();
+    $regtime = date("Y-m-d H:i:s");
+    $user_reg = "2";
+
+    $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".$pass."','NULL','$lastLoginTime','','$mobile','$regtime','$user_reg','0','1')";
+    $re=$db->query($sql);
+    $userid=$db->lastid();
+
+    if($userid)
+    {
+        $sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
+        $re=$db->query($sql);
+        if($re)
+        {
+            $post['userid'] = $userid;
+            $post['email'] = $user;
+            $pay_id = member_get_url($post,true);
+            if($pay_id)
+            {
+                $sql="update ".MEMBER." set pay_id='$pay_id' where userid='$userid'";
+                $re=$db->query($sql);
+            }
+            //-------------绑定一键连接
+
+            if(!empty($_REQUEST['connect_id']))
+            {
+                $sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";
+                $db->query($sql);
+            }
+
+            $sql="update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=".$userid;
+            $db->query($sql);
+            $sql="update ". MEMBER ." set mobile_verify = 1 where userid=".$userid;
+            $db->query($sql);
+        }
     }
 }
 function do_post($url, $data)
@@ -625,4 +686,5 @@ if(!empty($_GET['connect_id']))
     $tpl->display("user_connect.htm");
 else
     $tpl->display("login.htm");
+
 ?>

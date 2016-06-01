@@ -180,14 +180,15 @@ else
 		die('<script>alert("请填写正确的注册数据!");history.go(-1);</script>;');
 	}
 }
-$data['uc_appid']='201605270933';
-$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
-$data['uc_server']='http://t.mayionline.cn/apis/uc';
-$obj = new Uc_server($data);
+
 //数据入库
 function doreg($guid=NULL)
 {
-	global $db,$config,$ip,$obj;
+	global $db,$config,$ip;
+	$data['uc_appid']='201605270933';
+	$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+	$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
+	$obj = new Uc_server($data);
     $user = 'mayi'.$_POST['mobile'];
 	$pass = addslashes($_POST['password']);
 	$mobile = $_POST['mobile'];
@@ -209,6 +210,8 @@ function doreg($guid=NULL)
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
 	$userid=$db->lastid();
+	$list = $obj->userinfo($mobile);
+
 	$salt = rand_pwd();
 	$obj->register(array('phone'=>$mobile,'password'=>md5(md5($pass).$salt),'salt'=>$salt));
 	/* $aa = $this->register(array('phone'=>'15011426119','password'=>md5(md5(123456).'abcabc'),'salt'=>'abcabc'));
@@ -306,7 +309,7 @@ function Check_data($data = null, $keyval = null){
         case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
         case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
         case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
-        case 'password' : $res = preg_match('/^[\s\S]{6,10}$/', $data);  break;
+        case 'password' : $res = preg_match('/^[\s\S]{6,16}$/', $data);  break;
         //case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
     }
     return $res;

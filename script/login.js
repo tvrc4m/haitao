@@ -41,7 +41,7 @@ $(function(){
 });
 
 var phnumber=/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/;
-var password=/^[\s\S]{6,10}$/;
+var password=/^[\s\S]{6,16}$/;
 var phcode=/^[0-9]{6}$/;
 $(document).ready(function(){
     jQuery.focusblur = function(focusid) { 

@@ -32,9 +32,9 @@ class passport extends Uc_server{
     {
         $config['uc_appid']='201605270933';
         $this->_secret =  $config['uc_secret'] = 'g23fa33gbsd1gdd03152ed213c52ed6d1';
-        $config['uc_server']='http://t.mayionline.cn/apis/uc';
+        $config['uc_server']='https://m.mayizaixian.cn/apis/uc';
         parent:: __construct($config);
-        $this->_action = !empty($_GET['action'])?$_GET['action']:'';
+        $this->_action = !empty($_REQUEST['action'])?$_REQUEST['action']:'';
 
         if (method_exists($this,$this->_action)) {
             call_user_func(array($this,$this->_action));
@@ -49,9 +49,10 @@ class passport extends Uc_server{
      * 登陆
      * */
     public function uc_login(){
+        file_put_contents("/web/uploadfile/login.txt",var_export($_REQUEST,true),FILE_APPEND);
         global $db;
-        $time = $_GET['time'];
-        $code = $_GET['code'];
+        $time = $_REQUEST['time'];
+        $code = $_REQUEST['code'];
         $str = $this->authcode($code, DECODE, $this->_secret);
         parse_str($str, $arr);
         if($time===$arr['time']&&!empty($arr['phone'])){
@@ -64,16 +65,25 @@ class passport extends Uc_server{
      * */
     public function uc_register()
     {
+		//file_put_contents("/web/uploadfile/register.txt",var_export($_REQUEST,true),FILE_APPEND);
         global $db;
-        $code = $_GET['code'];
-        $timestamp = $_GET['time'];
+        $_REQUEST = array (
+            'time' => '1464728785',
+            'code' => 'accdaZ4zZbv3YfIyIfPs8mfgPhYe1gtud6RMeJ+lHlGAB9Rrfv1btKMaXjDvMug8eB421SC/kiNQUkeD4CPO9RRySJ3vqFmBz2cGFyyrRWHfKYDmDAy/3qOEUOafddCUaiqxYPll8Nhc4pQLd1CbE5r/J/8',
+            'action' => 'uc_register',
+        );
+        $code = $_REQUEST['code'];
+        $timestamp = $_REQUEST['time'];
         $str = $this->authcode($code, DECODE, $this->_secret);
         parse_str($str, $arr);
+
         $sql = "select userid from ".MEMBER." where mobile=".$arr['phone'];
         $db->query($sql);
         $list = $db->fetchRow();
+
         if($list)return false;
-        if ($arr['time'] === $timestamp && !empty($arr['phone']) && !empty($arr['password']) && !empty($salt)) {
+
+        if ($arr['time'] === $timestamp && !empty($arr['phone']) && !empty($arr['password']) && !empty($arr['salt'])) {
             $user = parent::userinfo(array('phone' => $arr['phone']));
             if ($user['status'] == '1100') {
                 $this->doreg($arr['phone'], $arr['password']);
@@ -99,6 +109,13 @@ class passport extends Uc_server{
         $_SESSION['USER_TYPE']=NULL;
         header("Location: ".$config['weburl']);
         die;
+    }
+
+    /*
+     * 找回密码
+     * */
+    public function lostpass(){
+
     }
 
     public function login($mobile)
