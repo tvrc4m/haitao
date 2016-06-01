@@ -1034,7 +1034,7 @@ ins,a
 .flag_l s{width: 11px;border: 2px solid #fff;border-radius: 8;height: 11px;margin: 0 auto;display: inline-block;background: #1A8527;}
 #wlocate{float: left;}
 .reload{float: right;margin-right: 6px;}
-.shop_over{width: 4rem;height: 4rem;font-size: 0.7rem; position: absolute;top: 20%;left: 50%;margin-left: -2rem; line-height: 4rem;text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
+.shop_over{width: 3rem;height: 3rem;font-size: 0.7rem; position: absolute;top: 20%;left: 50%;margin-left: -1.5rem; line-height: 3rem;text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
 .m_main-v9{padding-bottom: 50px;}
 .c_daibaos{padding: 0.5rem 0;background-color: #fff;}
 .c_daibaos ul{padding-bottom: 0rem;}
