@@ -6,7 +6,7 @@ $(function(){
         $('.checkitem').each(function(){
             if (!this.disabled)
             {
-                $(this).attr('checked', _self.checked);
+                $(this).prop('checked', _self.checked);
             }
         });
         if(this.checked){
@@ -14,7 +14,7 @@ $(function(){
         }else{
             $(".pro-checkbox").removeClass("pro-checkbox-checked");
         }
-        $('.checkall').attr('checked', this.checked);
+        $('.checkall').prop('checked', this.checked);
     });
 	 
 	$('#del').click(function(){
