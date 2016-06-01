@@ -74,7 +74,7 @@ body{background-color: #fff;}
 /*买家中心个人信息*/
 .wrap_buyer .member_info{height: 185px;border-bottom: 1px dotted #ccc;}
 .wrap_buyer .member_info .user_pic{padding: 30px;float: left;}
-.wrap_buyer .member_info .user_pic img{width: 125px;height: 125px;}
+.wrap_buyer .member_info .user_pic img{width: 125px;height: 125px;border-radius: 50%;}
 .wrap_buyer .member_info .user_rt{float: left;padding-top: 30px;}
 .wrap_buyer .member_info dl dt{margin-bottom: 10px;}
 .wrap_buyer .member_info dt span{color: #ff5c5c;}
@@ -231,7 +231,7 @@ body{background-color: #fff;}
 .pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/del.png) no-repeat 0 0;display:block;float:right;height:16px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:16px;}
 .pic_model dl dd .price{color:#555555;font-family:Tahoma;font-size:12px;font-weight:700;color:#FF6600;}
 .pic_model strong{font-weight: normal;font-size:18px;color:#ff5c5c;line-height:25px;}
-.pic_model .pro-checkbox input{position: absolute;left: 10px;}
+.pic_model .pro-checkbox input{position: absolute;left: 10px;z-index: 1}
 .admin_share_product .delete{padding: 10px;margin-top: 10px;border: 1px solid #ccc;}
 /* table列表*/
 .table-list-style{border-collapse:collapse;line-height:20px;width:100%;margin-top: 10px;font-size: 14px;border:1px solid #e0e0e0;}
