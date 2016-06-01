@@ -75,7 +75,10 @@ $(function(){
                             <{if $smarty.get.type!=fan}>
                             <span style="width: 100%;height:30px;border-bottom: 1px solid #C4D5E0;float: left;padding-bottom:10px;">
                                 <p  style="line-height: 30px;width:110px;height:30px;font-weight: 400;float: left">好友分组</p>
-                                <p style="line-height: 25px;height:25px;float: left;margin-left: 396px;margin-top: 3px;">
+                                <p style="line-height: 25px;height:25px;float: right;width:100px;margin-top: 3px;">群发信息
+                                    <a class="message" id="mess" href="#">&nbsp;</a>
+                                </p>
+                                <p style="line-height: 25px;height:25px;float: right;margin-top: 3px;">
                                     移动到&nbsp;&nbsp;&nbsp;
                                     <select id="btn_getValue"  name="">
                                         <option value="">--组名--</option>
@@ -83,10 +86,7 @@ $(function(){
                                             <option value="<{$list.group_id}>"><{$list.name}></option>
                                         <{/foreach}>
                                     </select>
-                                </p>
-                                <p style="line-height: 25px;height:25px;float: left;width:100px;margin-top: 3px;">群发信息
-                                    <a class="message" id="mess" href="#">&nbsp;</a>
-                                </p>
+                                </p>         
                             </span>
                             <div style="width: 100%;height:40px;background:#f5f5f5;float: left;">
                                 <dl>
@@ -206,7 +206,7 @@ $(function(){
         <{foreach item=list from=$gronmame}>
             <span class="zuu">
                 <dd class="group hua" fid="<{$list.group_id}>">
-                    <a href="#"><{$list.name}>(<{$list.group_id|get_num}>)</a>
+                    <a href="#"><{$list.name|truncate:10:""}>(<{$list.group_id|get_num}>)</a>
                     <span class="zu1" >
                         <a  href="javascript:alertWin('修改分组','',300,180,'main.php?m=sns&s=admin_friends_group&ope=upda&editid=<{$list.group_id}>'); ">
                             <img src="<{$config.weburl}>/image/default/edi.png" alt="修改">
