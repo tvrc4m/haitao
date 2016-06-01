@@ -27,7 +27,7 @@ $(function(){
     });
 });
 var phnumber=/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/;
-var password=/^[A-Za-z0-9]{6,10}$/;
+var password=/^[A-Za-z0-9]{6,16}$/;
 var phcode=/^[0-9]{6}$/;
 $(document).ready(function(){
     jQuery.focusblur = function(focusid) {
@@ -55,7 +55,7 @@ $(document).ready(function(){
                     tip.find(".tipcon").parent().css({"margin-top":"10px"});
                 }
                 if(focusid == "#password"){
-                    tip.find(".tipcon").text("长度为6-10个字符，建议使用字母加数字组合");
+                    tip.find(".tipcon").text("长度为6-16个字符，建议使用字母加数字组合");
                     tip.find(".tipcon").css({"color":"#ff5c5c"});
                     tip.find(".tipcon").parent().css({"margin-top":"10px"});
                 }
