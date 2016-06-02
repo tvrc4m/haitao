@@ -1,166 +1,163 @@
 <link href="<{$config.weburl}>/templates/wap/css/index.css" rel="stylesheet" type="text/css" />
+<header>
+    <div class="nav-w">
+        <section class="nav-s"><a onclick="history.go(-1)"><i class="fanhui_icon"></i></a></section>
+        <section class="nav-c"><span>店铺设置</span></section>
+        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+    </div>
+</header>
+<div class="store-container">
+    <form id="form" method="post" enctype="multipart/form-data" onsubmit="return chk()">
+        <input type="hidden" value="edit" name="submit">
+        <input type="hidden" name="shop_statu" value="<{$de.shop_statu}>">
+        <div class="store-list">
+            <p class="store-list-rela"><input id="company" name='company' type='text' placeholder="店铺名称" value="<{$de.company}>" class="text icon1 texts" style="width:95%"><span class='inp_closes'></span></p>
+            <p class="store-list-rela">
+            <input id="main_pro" name='main_pro' type='text' placeholder="主营商品（多词之间用半角,隔开）" value="<{$de.main_pro}>" class="text icon2 texts" style="width:95%"><span class='inp_closes'></span></p>
+            <p class="store-list-rela">
+			<input id="main_pro" name='main_pro' type="text" class="icon3 texts" placeholder="店铺分类" value="<{$de.cat}>" style="width:95%;"/><span class='inp_closes'></span></p>
+        </div>
+		<div class="store-list">
+           	<p><input name="old_logo" type="hidden" value="<{$de.logo}>" /></p>
+           	<!-- <p style="width:95%;text-align:left;position:relative;"><input name="logo" type="text" id="logo" value="<{$de.logo}>"  class="text icon4" style="width:100%" placeholder="店铺logo"/><span class="text_line"></span><a class="upload-button upload-button-test" href="javascript:uploadfile('Style images','logo',300,300,'shop');"><{$lang.upload}></a> </p> -->
+           	<p style="width:95%;text-align:left;position:relative;">
+           		<input class="input" multiple="multiple" type="file" stype="front" rename="2">
+                <input type="hidden" data-id="3" name="logo">
+               	<input data-id="3" name="wap_bannar" type="text" id="wap_bannar" value="<{$de.wap_bannar}>"  class="text icon5" style="width:100%;" placeholder="店铺banner"/>
+               	<span class="text_line"></span>
+               <a class="upload-button upload-button-test drag" data-id="3" href="javascript:void(0);"><{$lang.upload}></a></p>
+           	<p style="width:95%;text-align:left;">
+            <input type="hidden" name="t" id="t" value="<{$de.area}>" />
+            <input type="hidden" name="province" id="id_1" value="<{$de.provinceid}>" />
+            <input type="hidden" name="city" id="id_2" value="<{$de.cityid}>" />
+            <input type="hidden" name="area" id="id_3" value="<{$de.areaid}>" />
+            <input type="hidden" name="street" id="id_4" value="<{$de.streetid}>" />
+            <{if $de.area}><input disabled type="text" value="<{$de.area}>" style="width:80%;" class="inp_hide"/><a class="upload-button" href="javascript:sd();"><img src="image/default/user_admin/edit.png" width="18"/> 编辑</a><{/if}>
+            <div id="d_2" <{if $de.area}>class="hidden"<{/if}>>
+                <select id="select_1" onChange="district(this);" style="width:95%;margin-bottom:15px;" class="select1 select-common">
+                <option value="" id="option">所在地区（必填）</option>
+                <img src="/image/wap/wap_haitao_icon42.png">
+                <{$prov}>
+                </select>
+                <select id="select_2" onChange="district(this);" class="hidden select-common select2" style="width:95%;margin-bottom:15px;"></select>
+                <select id="select_3" onChange="district(this);" class="hidden select-common select3" style="width:95%;margin-bottom:15px;"></select>
+                <select id="select_4" onChange="district(this);" class="hidden select-common select4" style="width:95%;margin-bottom:15px;"></select>	
+            </div>
+      		</p>
+        </div>
+        <div class="store-list">
+           <p class="store-list-rela"><input type='text' name='addr' placeholder="详细地址（必填）" id='addr' value="<{$de.addr}>" maxlength="200" class="text icon7 texts" style="width:95%;"><span class='inp_closes'></span></p>
+        </div>
+        <div class="store-list">
+	        <dd class="store-list-rela"><input type='text' name='tel' id='tel' value="<{$de.tel}>" maxlength="11" placeholder="手机号（必填）" class="text icon8 texts" style="width:95%;"><span class='inp_closes'></span></dd>  
+	        <textarea name="intro" style="width:95%; height:150px;border-radius:4px;"onfocus="if(value=='店铺简介'){value=''}"onblur="if (value ==''){value='店铺简介'}">店铺简介<{$de.con}></textarea>       
+	        <p class="store-list-rela"><input type="text" name="shop_title" placeholder="SEO标题" value="<{$de.shop_title}>" class="text texts text-b" style="width:95%; "/><span class='inp_closes'></span></p>
+	        <p class="store-list-rela"><input type="text" name="shop_keywords" placeholder="SEO关键字" value="<{$de.shop_keywords}>" class="text texts text-b"  style="width:95%;"/><span class='inp_closes'></span></p>    
+	        <p class="store-list-rela"><input type="text" name="shop_description" placeholder="SEO描述"  value="<{$de.shop_description}>" class="text texts text-b" style="width:95%;"><span class='inp_closes'></span></p>
+        </div>
+        <p class="shop_step_title" style="width:95%;"><input type="submit" value="提交设置" class="submit" /></p>   
+    </form>         
+</div>
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="script/Validator.js"></script>
 <script src="script/my_lightbox.js" language="javascript"></script>
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/district.js" ></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/uplode.js"></script>
 <script>
-var weburl="<{$config.weburl}>";
-function chk()
-{
-	var flag = true;
-	
-	if(!require("company","请填写店铺名称。"))
-	{
-		return false;
+$(function(){
+	var weburl="<{$config.weburl}>";
+	function chk(){
+		var flag = true;	
+		if(!require("company","请填写店铺名称。")){
+			return false;
+		}
+		if(!require("addr","请填写详细地址。")){	
+			return false;
+		}
+		if(!require("tel","请填写联系电话。")){
+			return false;
+		}
+		if(!limit("company",20,"店铺名称请控制长度不超过20字。")){
+			return false;
+		}
+		if($("#d_2").css('display')!='none' && !$("#select_1").val()){	
+			id="select_1";
+			flag = false;
+		}
+		else if($("#select_2").find("option").length>0 && !$("#select_2").val()){	
+			id="select_2";
+			flag = false;
+		}
+		else if($("#select_3").find("option").length>0 && !$("#select_3").val()){	
+			id="select_3";
+			flag = false;
+		}
+		else if($("#select_4").find("option").length>0 && !$("#select_4").val()){	
+			id="select_4";
+			flag = false;
+		}
+		if(!flag){
+			document.getElementById(id).focus();
+			if($("#d_2 .form-error").html())
+				$("#d_2 .form-error").html("请选择所在地区。")
+			else
+				$('#d_2').append("<span class='form-error'>请选择所在地区。</span>")
+			return false;	
+		}	
+			
 	}
-	if(!require("addr","请填写详细地址。"))
-	{	
-		return false;
+	function require(id,msg){	
+		if(!$("#"+id).val()){
+			msgs(id,msg);
+			return false;
+		}
+		else{
+			$("#"+id).next('span').html("");
+			return true;	
+		}
 	}
-	if(!require("tel","请填写联系电话。"))
-	{
-		return false;
+	function limit(id,m,msg){	
+		if((($("#"+id).val()).length)>m){
+			msgs(id,msg);
+			return false;
+		}
+		else{
+			$("#"+id).next('span').html("");
+			return true;	
+		}
 	}
-	if(!limit("company",20,"店铺名称请控制长度不超过20字。"))
-	{
-		return false;
-	}
-	if($("#d_2").css('display')!='none' && !$("#select_1").val())
-	{	
-		id="select_1";
-		flag = false;
-	}
-	else if($("#select_2").find("option").length>0 && !$("#select_2").val())
-	{	
-		id="select_2";
-		flag = false;
-	}
-	else if($("#select_3").find("option").length>0 && !$("#select_3").val())
-	{	
-		id="select_3";
-		flag = false;
-	}
-	else if($("#select_4").find("option").length>0 && !$("#select_4").val())
-	{	
-		id="select_4";
-		flag = false;
-	}
-	if(!flag)
-	{
-		document.getElementById(id).focus();
-		if($("#d_2 .form-error").html())
-			$("#d_2 .form-error").html("请选择所在地区。")
+	function msgs(id,msg){
+		if($("#"+id).next('span').attr('class'))
+			$("#"+id).next('span').html(msg)
 		else
-			$('#d_2').append("<span class='form-error'>请选择所在地区。</span>")
-		return false;	
-	}	
-		
-}
-function require(id,msg)
-{	
-	if(!$("#"+id).val())
-	{
-		msgs(id,msg);
-		return false;
+			$("#"+id).after("<span class='form-error'>"+msg+"</span>")	
+		document.getElementById(id).focus();
 	}
-	else
-	{
-		$("#"+id).next('span').html("");
-		return true;	
-	}
-}
-function limit(id,m,msg)
-{	
-	if((($("#"+id).val()).length)>m)
-	{
-		msgs(id,msg);
-		return false;
-	}
-	else
-	{
-		$("#"+id).next('span').html("");
-		return true;	
-	}
-}
-function msgs(id,msg)
-{
-	if($("#"+id).next('span').attr('class'))
-		$("#"+id).next('span').html(msg)
-	else
-		$("#"+id).after("<span class='form-error'>"+msg+"</span>")	
-	document.getElementById(id).focus();
-}
+    $("form").find(".texts").each(function(){
+        $(this).bind('input propertychange', function(){
+            var val=$(this).val();
+            if(val !=""){
+                $(this).parent().find(".inp_closes").addClass("inp_up");
+            }
+            else{
+                 $(this).parent().find(".inp_closes").removeClass("inp_up");
+            }           
+        }); 
+        $(this).bind("focus",function(){
+            var val=$(this).val();
+            if(val !=""){
+                $(this).parent().find(".inp_closes").addClass("inp_up");
+            }else{
+                $(this).parent().find(".inp_closes").removeClass("inp_up");
+            }
+        });
+        $(this).bind("blur",function(){
+            $(this).parent().find(".inp_closes").removeClass("inp_up");
+        });  
+    });
+    $(".inp_closes").bind('click', function(){  
+        $(this).prev().val("");
+        $(this).removeClass("inp_up");
+    });  
+});
 </script>
-<header>
-    <div class="nav-w">
-        <section class="nav-s iconfont"><a onclick="history.go(-1)"><i class="fanhui_icon"></i></a></section>
-        <section class="nav-c"><span>店铺设置</span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
-    </div>
-</header>
-	<div class="wrap" style="width:100%;padding:0px 0.5rem 0.8rem;margin-top:1rem;">
-   
-        <div class="form-style">
-            <form id="form" method="post" enctype="multipart/form-data" onsubmit="return chk()">
-            <input type="hidden" value="edit" name="submit">
-            <input type="hidden" name="shop_statu" value="<{$de.shop_statu}>">
-              <div class="form1">
-                <p><input id="company" name='company' type='text' placeholder="店铺名称" value="<{$de.company}>" class="text icon1" style="width:95%"></p>
-                <p>
-                <input id="main_pro" name='main_pro' type='text' placeholder="主营商品（多词之间用半角,隔开）" value="<{$de.main_pro}>" class="text icon2" style="width:95%"></p>
-                <p >
-				<input id="main_pro" name='main_pro' type="text" class="icon3" placeholder="店铺分类" value="<{$de.cat}>" style="width:95%;"/></p>
-              </div>
-			  <div class="form1">
-               <p><input name="old_logo" type="hidden" value="<{$de.logo}>" /></p>
-               <!-- <p style="width:95%;text-align:left;position:relative;"><input name="logo" type="text" id="logo" value="<{$de.logo}>"  class="text icon4" style="width:100%" placeholder="店铺logo"/><span class="text_line"></span><a class="upload-button upload-button-test" href="javascript:uploadfile('Style images','logo',300,300,'shop');"><{$lang.upload}></a> </p> -->
-               <p style="width:95%;text-align:left;position:relative;">
-               		<input class="input" multiple="multiple" type="file" stype="front" rename="2">
-                    <input type="hidden" data-id="3" name="logo">
-	               	<input data-id="3" name="wap_bannar" type="text" id="wap_bannar" value="<{$de.wap_bannar}>"  class="text icon5" style="width:100%;" placeholder="店铺banner"/>
-	               	<span class="text_line"></span>
-	               <a class="upload-button upload-button-test drag" data-id="3" href="javascript:void(0);"><{$lang.upload}></a></p>
-               <p style="width:95%;text-align:left;">
-                <input type="hidden" name="t" id="t" value="<{$de.area}>" />
-                <input type="hidden" name="province" id="id_1" value="<{$de.provinceid}>" />
-                <input type="hidden" name="city" id="id_2" value="<{$de.cityid}>" />
-                <input type="hidden" name="area" id="id_3" value="<{$de.areaid}>" />
-                <input type="hidden" name="street" id="id_4" value="<{$de.streetid}>" />
-                <{if $de.area}><input disabled type="text" value="<{$de.area}>" style="width:80%;" class="inp_hide"/><a class="upload-button" href="javascript:sd();"><img src="image/default/user_admin/edit.png" width="18"/> 编辑</a><{/if}>
-                <div id="d_2" <{if $de.area}>class="hidden"<{/if}>>
-	                <select id="select_1" onChange="district(this);" style="width:95%;margin-bottom:15px;" class="select1 select-common">
-	                <option value="" id="option">所在地区（必填）</option>
-	                <img src="/image/wap/wap_haitao_icon42.png">
-	                <{$prov}>
-	                </select>
-	                <select id="select_2" onChange="district(this);" class="hidden select-common select2" style="width:95%;margin-bottom:15px;"></select>
-	                <select id="select_3" onChange="district(this);" class="hidden select-common select3" style="width:95%;margin-bottom:15px;"></select>
-	                <select id="select_4" onChange="district(this);" class="hidden select-common select4" style="width:95%;margin-bottom:15px;"></select>
-	               <!--  <div class="select_icon"></div>	 -->		
-                </div>
-          		</p>
-               </div>
-               <div class="form1">
-               <p><input type='text' name='addr' placeholder="详细地址（必填）" id='addr' value="<{$de.addr}>" maxlength="200" class="text icon7" style="width:95%;"></p>
-            </div>
-            <div class="form1">
-            <dd><input type='text' name='tel' id='tel' value="<{$de.tel}>" maxlength="11" placeholder="手机号（必填）" class="text icon8" style="width:95%;"></dd>
-       
-            <!-- <p class="shop_step_title">店铺简介：</p> -->
-            <textarea name="intro" style="width:95%; height:150px;border-radius:4px;"onfocus="if(value=='店铺简介'){value=''}"
-    onblur="if (value ==''){value='店铺简介'}">店铺简介<{$de.con}></textarea>
-            
-
-  
-            <p><input type="text" name="shop_title" placeholder="SEO标题" value="<{$de.shop_title}>" class="text text-b" style="width:95%; "/></p>
-
-            <p><input type="text" name="shop_keywords" placeholder="SEO关键字" value="<{$de.shop_keywords}>" class="text text-b"  style="width:95%; "/></p>
-         
-            <p><input type="text" name="shop_description" placeholder="SEO描述"  value="<{$de.shop_description}>" class="text text-b" style="width:95%;"></p>
-              </div>
-            <p class="shop_step_title" style="width:95%;"><input type="submit" value="提交设置" class="submit" /></p>
-        
-            </form>
-        </div>          
-   </div>
