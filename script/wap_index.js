@@ -35,11 +35,9 @@ $jj(function(){
 		}
 		if(h > 50)
 		{
-			$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999"})
+			$jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999","left":0})
 			$jj(".m_main-v1s").eq(0).css({"margin-top":"50px"});
 			$jj(".filter").eq(0).css({"margin-top":"50px"})
 		}
 	})
- 	 var liHeight=$jj(".cate-guangimg-right").height();
- 	 $(".cate-guangimg-left img").css({"height":liHeight+"px"})
 });

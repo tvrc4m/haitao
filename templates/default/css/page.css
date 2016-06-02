@@ -17,7 +17,6 @@ em{font-style:normal;}
 .fn-right{display:inline;float:right;}
 .fn-hide{display:none;}
 .fl{float:left;}
-.fr{float:right;}
 .fn{float:none;}
 .al{text-align:left;}
 .ac{text-align:center;}
@@ -311,7 +310,7 @@ sub{vertical-align:text-bottom}
 
 /*float*/
 .fl,.l{float:left}
-.fr,.r{float:right}
+.fr,.r{float:right !important;}
 .newclear{overflow:hidden;zoom:1}
 /*Pages Width*/
 .w{width:1212px}

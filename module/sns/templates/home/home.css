@@ -40,6 +40,7 @@
 /*切换*/
 .head .nav{border-bottom:2px solid #ccc;height:35px;width:950px;margin: 50px auto 20px;}
 .head .nav ul li{float:left;font-size:14px;height:35px;line-height: 35px;width: 145px;text-align: center;border-right: 1px solid #ccc;}
+.head .nav ul li a{float:left;font-size:14px;height:35px;line-height: 35px;width: 145px;text-align: center;border-right: 1px solid #ccc;}
 .head .nav ul li.current{background-color:#f5f5f5;border-bottom: 2px solid #ff5c5c;margin-left:-1px;}
 .head .nav ul li.current a{color:#ff5c5c;}
 /*标题*/
