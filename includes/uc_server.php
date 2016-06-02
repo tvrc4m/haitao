@@ -32,7 +32,7 @@ class Uc_server
     }
     /**
      * 向用户中心进行注册
-     * @param  array $params=array('phone'=>$phone,'password'=>$password,'salt'=>$salt)
+     * @param  array $params=array('phone'=>$phone,'password'=>$password,'salt'=>$salt) 
      * @return array | boolean    
      * 验证成功返回 array('status'=>1100,'data'=>'')
      * 验证失败返回 array('status'=>int,'errmsg'=>string,'data'=>'')  
@@ -75,6 +75,39 @@ class Uc_server
 
     		
     	}
+        return $result;
+    }
+    /**
+     * 找回密码
+     * @param  string $phone    
+     * @param  string $password 
+     * @return array           
+     */
+    public function findpwd($phone,$password){
+        $this->action='findpwd';
+        $result=$this->http_post($this->server,array('phone'=>$phone,'password'=>$password));
+
+        if($result===false){
+            
+            
+        }
+        return $result;
+    }
+    /**
+     * 更改密码
+     * @param  string $phone   
+     * @param  string $old_pwd 
+     * @param  string $new_pwd 
+     * @return array
+     */
+    public function changepwd($phone,$old_pwd,$new_pwd){
+        $this->action='changepwd';
+        $result=$this->http_post($this->server,array('phone'=>$phone,'old_pwd'=>$old_pwd,'new_pwd'=>$new_pwd));
+
+        if($result===false){
+            
+            
+        }
         return $result;
     }
     /**

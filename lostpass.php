@@ -2,6 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include("config/nav_menu.php");
+include_once ("includes/uc_server.php");
 //=========================================
 
 $page="lostpass.htm";
@@ -106,10 +107,16 @@ if(!empty($_POST["action"])&&$_POST["action"]=="com")
 	}
 	else
 	{
-		$userid = $re['userid'];
-		$re = $db->query("update ".MEMBER." set password='".md5(addslashes($_POST['password']))."' where userid='$userid'");
+		$data['uc_appid']='201605270933';
+		$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+		$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
+		$obj = new Uc_server($data);
+		$statu = $obj->findpwd($_POST['mobile'],addslashes($_POST['password']));
 
-		if($re){
+		/*$userid = $re['userid'];
+		$re = $db->query("update ".MEMBER." set password='".md5(addslashes($_POST['password']))."' where userid='$userid'");*/
+
+		if($statu->status=='1100'){
 			msg('login.php','密码修改成功！');
 		}else{
 			msg('lostpass.php','系统繁忙，请稍后修改！');
