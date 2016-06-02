@@ -103,42 +103,6 @@ background:#fefefe;border:1px solid #d4d4d4;border-radius:5px;
 background:-webkit-gradient(linear, 0 0, 0 100%, from(#fefefe), to(#e9e9e9));
 background: -moz-linear-gradient(top, #fefefe, #e9e9e9);}
 .upload-button-test{position: absolute;right: 0.6rem;top: 0.8rem;font-size: 0.7rem;color: #999;padding-right: 0.9rem;background:url(../../../image/wap/wap_haitao_icon5.png) right center no-repeat;background-size: contain;}
-.wrap input[type="text"],.wrap_all input[type="text"]{padding: 0.7rem 0;margin-bottom: 15px; box-sizing: border-box;-webkit-box-sizing: border-box;padding-left: 2.3rem;border-radius: 4px; border: 1px solid #b9b9b9;background-color: #fff;font: 0.6rem "Microsoft YaHei";color: #999;}
-.company-dianming{position: relative;}
-.wrap input[type="number"]{padding: 0.7rem 0;margin-bottom: 15px; box-sizing: border-box;-webkit-box-sizing: border-box;padding-left: 2.3rem;border-radius: 4px; border: 1px solid #b9b9b9;background-color: #fff;font: 0.6rem "Microsoft YaHei";color: #999;}
-.wrap input[type="text"].diag_text{padding: 0;margin-bottom: 0;padding-left: 10px;}
-.wrap input[type="text"].cq_text{padding: 0;margin-bottom: 0;padding-left: 10px;margin-top: 3px;}
-.wrap input.icon1{background: #fff url(../../../image/wap/wap_haitao_icon31.png) 0.7rem center no-repeat;background-size: 0.9rem;}
-.wrap input.icon2{background: #fff url(../../../image/wap/wap_haitao_icon32.png) 0.7rem center no-repeat;background-size: 0.9rem;}
-.wrap input.icon3{background: #fff url(../../../image/wap/wap_haitao_icon33.png) 0.7rem center no-repeat;background-size: 0.9rem;}
-.wrap input.icon4{background: #fff url(../../../image/wap/wap_haitao_icon34.png) 0.7rem center no-repeat;background-size: 1.1rem;padding-right: 3.7rem;}
-.wrap input.icon5{background: #fff url(../../../image/wap/wap_haitao_icon35.png) 0.7rem center no-repeat;background-size: 0.9rem;padding-right: 3.7rem;}
-select.icon6{background: #fff url(../../../image/wap/wap_haitao_icon36.png) 0.7rem center no-repeat;background-size: 0.9rem;}
-.wrap input.icon7{background: #fff url(../../../image/wap/wap_haitao_icon41.png) 0.7rem center no-repeat;background-size: 1.0rem;}
-.wrap input.icon8{background: #fff url(../../../image/wap/wap_haitao_icon7.png) 0.9rem center no-repeat;background-size: 0.6rem;}
-.wrap input.text-b{padding-left: 0.9rem;}
-.text_line{position: absolute;right: 3.4rem;top: 0.4rem;display: inline-block;width: 1px;height: 1.6rem;background-color: #b9b9b9;}
-
-
-.shop_step_title2{text-align: center;}
-.wrap textarea,.wrap_all textarea{box-sizing: border-box;-webkit-box-sizing: border-box;padding: 0.4rem 0.9rem;margin-bottom: 15px; border-radius: 4px;border: 1px solid #b9b9b9;background-color: #fff;font: 0.7rem "Microsoft YaHei";color: #999}
-.submit{width:90%;height: 43px;margin:15px auto 0px;font: 0.8rem "Microsoft YaHei";color: #333;background-color: #ff5c5c;border: 1px solid #ff5c5c;border-radius: 5px;text-align: cente;color: #fff;}
-.diag_submit{margin:10px auto 10px;font-size: 0.6rem;width:60%!important;height: 35px;}
-.wrap select,.select1 {width: 100%;color: #909090;font: 0.7rem "Microsoft Yahei";-webkit-appearance: button;border: 0;padding: 0.7rem 0;margin: 0;outline: 0;border-radius: 0;padding-left:0.5rem;}
-#d_2{position: relative;}
-.wrap .select-common{border:1px solid #b9b9b9;border-radius:4px;}
-.inp_hide{background: #fff url(../../../image/wap/wap_haitao_icon36.png) 6% center no-repeat;background-size: 0.9rem;}
-.wrap .select1{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;}
-.wrap .select2{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;}
-.wrap .select3{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;}
-.wrap .select4{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;/*margin-left: 5%*/}
-
-/*.select_icon{position: absolute;left: 0.8rem;top:0.7rem;width: 0.9rem;height: 1.2rem;display: inline-block; background:url(../../../image/wap/wap_haitao_icon36.png) center right no-repeat;background-size: contain;}*/
-.wrap select{width: 90%;font:12px;}
-.mobile_shop_step0{width: 98%;margin: 0 auto;border: 0;}
-
-.mobile_shop_step0 .wrap_shadow {width:96%;margin: 0 auto}
-
 
 .notes {background-color: #fefeda;border: 1px solid #ffe8c2;clear: both;margin: 0 auto 10px;padding: 8px;}
 .notes p {clear: both;font-size: 12px;line-height: 24px;padding-left: 24px;}
@@ -152,6 +116,39 @@ select.icon6{background: #fff url(../../../image/wap/wap_haitao_icon36.png) 0.7r
 .closeBtn {background: url("../../../image/default/close.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);cursor: pointer;float: right;height: 9px;margin-top: -1px;width: 9px;}
 
 .m_center{text-align: center;margin: 0px auto;}
+/* 店铺设置*/
+.store-container{width:100%;padding:0px 0.5rem 0.8rem;margin-top:1rem;}
+.store-list .store-list-rela{position: relative;}
+.store-container input[type="text"],.wrap_all input[type="text"]{padding: 0.7rem 0;margin-bottom: 15px; box-sizing: border-box;-webkit-box-sizing: border-box;padding-left: 2.3rem;border-radius: 4px; border: 1px solid #b9b9b9;background-color: #fff;font: 0.6rem "Microsoft YaHei";color: #999;}
+.store-container input[type="number"]{padding: 0.7rem 0;margin-bottom: 15px; box-sizing: border-box;-webkit-box-sizing: border-box;padding-left: 2.3rem;border-radius: 4px; border: 1px solid #b9b9b9;background-color: #fff;font: 0.6rem "Microsoft YaHei";color: #999;}
+.store-container input[type="text"].diag_text{padding: 0;margin-bottom: 0;padding-left: 10px;}
+.store-container input[type="text"].cq_text{padding: 0;margin-bottom: 0;padding-left: 10px;margin-top: 3px;}
+.store-container input.icon1{background: #fff url(../../../image/wap/wap_haitao_icon31.png) 0.7rem center no-repeat;background-size: 0.9rem;}
+.store-container input.icon2{background: #fff url(../../../image/wap/wap_haitao_icon32.png) 0.7rem center no-repeat;background-size: 0.9rem;}
+.store-container input.icon3{background: #fff url(../../../image/wap/wap_haitao_icon33.png) 0.7rem center no-repeat;background-size: 0.9rem;}
+.store-container input.icon4{background: #fff url(../../../image/wap/wap_haitao_icon34.png) 0.7rem center no-repeat;background-size: 1.1rem;padding-right: 3.7rem;}
+.store-container input.icon5{background: #fff url(../../../image/wap/wap_haitao_icon35.png) 0.7rem center no-repeat;background-size: 0.9rem;padding-right: 3.7rem;}
+select.icon6{background: #fff url(../../../image/wap/wap_haitao_icon36.png) 0.7rem center no-repeat;background-size: 0.9rem;}
+.store-container input.icon7{background: #fff url(../../../image/wap/wap_haitao_icon41.png) 0.7rem center no-repeat;background-size: 1.0rem;}
+.store-container input.icon8{background: #fff url(../../../image/wap/wap_haitao_icon7.png) 0.9rem center no-repeat;background-size: 0.6rem;}
+.store-container input.text-b{padding-left: 0.9rem;}
+.text_line{position: absolute;right: 3.4rem;top: 0.4rem;display: inline-block;width: 1px;height: 1.6rem;background-color: #b9b9b9;}
+.shop_step_title2{text-align: center;}
+.store-container textarea,.wrap_all textarea{box-sizing: border-box;-webkit-box-sizing: border-box;padding: 0.4rem 0.9rem;margin-bottom: 15px; border-radius: 4px;border: 1px solid #b9b9b9;background-color: #fff;font: 0.7rem "Microsoft YaHei";color: #999}
+.submit{width:90%;height: 43px;margin:15px auto 0px;font: 0.8rem "Microsoft YaHei";color: #333;background-color: #ff5c5c;border: 1px solid #ff5c5c;border-radius: 5px;text-align: cente;color: #fff;}
+.diag_submit{margin:10px auto 10px;font-size: 0.6rem;width:60%!important;height: 35px;}
+.store-container select,.select1 {width: 100%;color: #909090;font: 0.7rem "Microsoft Yahei";-webkit-appearance: button;border: 0;padding: 0.7rem 0;margin: 0;outline: 0;border-radius: 0;padding-left:0.5rem;}
+#d_2{position: relative;}
+.store-container .select-common{border:1px solid #b9b9b9;border-radius:4px;}
+.inp_hide{background: #fff url(../../../image/wap/wap_haitao_icon36.png) 6% center no-repeat;background-size: 0.9rem;}
+.store-container .select1{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;}
+.store-container .select2{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;}
+.store-container .select3{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;}
+.store-container .select4{background: #fff url(../../../image/wap/wap_haitao_icon42.png) 96% center no-repeat;background-size: 0.9rem;padding-left:0.7rem;/*margin-left: 5%*/}
+.store-container select{width: 90%;font:12px;}
+.mobile_shop_step0{width: 98%;margin: 0 auto;border: 0;}
+.mobile_shop_step0 .wrap_shadow {width:96%;margin: 0 auto}
+
 /* 商品发布*/
 .w90{width: 90%;}
 .wrap select.w80,.w80{width: 80%;}
