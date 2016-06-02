@@ -40,6 +40,4 @@ $jj(function(){
 			$jj(".filter").eq(0).css({"margin-top":"50px"})
 		}
 	})
- 	 var liHeight=$jj(".cate-guangimg-right").height();
- 	 $(".cate-guangimg-left img").css({"height":liHeight+"px"})
 });
