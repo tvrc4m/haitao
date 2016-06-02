@@ -77,7 +77,9 @@ if($_GET['ajax'] == 'deal-record')
 	$product_id = $_GET['id']*1;	//产品ID
 
 	$sql="select a.name,a.price,a.spec_name,a.spec_value,a.num,a.time,b.user,b.buyerpoints,b.name as uname from ".ORPRO." a left join ".MEMBER." b on a.buyer_id=b.userid where status = 3 and a.pid='$product_id' order by a.id desc";
-
+	$numSql = "select count(*) as num from ".ORPRO." a left join ".MEMBER." b on a.buyer_id=b.userid where status = 3 and a.pid='$product_id' order by a.id desc";
+	$db -> query($numSql);
+	$nums = $db->fetchField('num');
 	include_once("includes/page_utf_class.php");
 	$page = new Page;
 	$page -> url = $config['weburl'].'/';
@@ -110,7 +112,7 @@ if($_GET['ajax'] == 'deal-record')
 	$db -> query($sql);
 	$re["total3"] = $db -> num_rows();
 
-	$tpl->assign("chengjiao", count($re['list']));
+	$tpl->assign("chengjiao", $nums);
 	$tpl->assign("re",$re);
 	$tpl->assign("config",$config);
 	echo $output=tplfetch("space_record.htm",$flag);

@@ -75,7 +75,7 @@ if(!empty($_POST['smsvode'])&&$_POST['check_sms']=='check'){
 }
 
 //找回密码页
-if(!empty($_POST["action"])&&$_POST["action"]=="com")
+if(!empty($_POST["action"])&&$_POST["action"]=="submit")
 {//根据用户名和密码确定是哪一个公司在找回密码
 
 	//定义所有正则

@@ -34,7 +34,7 @@ function ajaxpost(formid) {
 		DialogManager.close(formid);
 		var d = DialogManager.create('notice');
 		d.setTitle('<{$lang.message}>');
-		d.setContents('message', { type: 'notice', text: "<{$lang.share_successful}>" });
+		d.setContents('message', { type: 'notice', text: "评论成功" });
 		d.setWidth(270);
 		d.show('center');
 		setTimeout(closefunc,800);
