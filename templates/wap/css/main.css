@@ -151,6 +151,16 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
 .roll_fixed .roll_title img{float: right;width: 20px;}
 .roll_fixed .roll_content{background-color: #fff;text-align: left;padding: 0.5rem 1rem;}
 .roll_fixed .roll_content p{font-size: 0.6rem;line-height: 1.7;}
-
-
+@media screen and (min-width: 600px) and (max-width: 800px) { 
+    .roll_list .roll_list_content .roll_list_left{height: 5.9rem;}
+    .roll_list .roll_list_content li{padding: 1.9rem 0 0;}
+    .roll_list .roll_list_content .roll_list_left .roll_list_money{margin-left: 2.8rem;}
+    .roll_list .roll_list_content .roll_list_left .roll_list_lai{margin-left: 0.6rem;}
+}
+@media screen and  (height: 960px) {
+    .roll_list .roll_list_content .roll_list_left{height: 4.2rem;}
+    .roll_list .roll_list_content li{padding: 1.2rem 0 0;}
+    .roll_list .roll_list_content .roll_list_left .roll_list_money{margin-left: 1.5rem;}
+    .roll_list .roll_list_content .roll_list_left .roll_list_lai{margin-left: 0.5rem;}
+}
 
