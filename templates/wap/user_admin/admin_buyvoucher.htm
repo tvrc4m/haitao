@@ -9,7 +9,9 @@
 <div class="roll_container">
 	<div class="roll_list">	
 		<ul class="roll_list_content">
-			<{foreach from=$list.list item=vo key=key}><li class="<{if $vo.status eq 3 || $vo.status eq 2}>roll_list_content_test<{/if}> clearfix"><a href="<{$config.weburl}>/shop.php?uid=<{$vo.shop_id}>">
+			<{foreach from=$list.list item=vo key=key}>
+			<li class="<{if $vo.status eq 3 || $vo.status eq 2}>roll_list_content_test<{/if}> clearfix">
+				<a href="<{$config.weburl}>/shop.php?uid=<{$vo.shop_id}>">
 				<div class="roll_list_left clearfix">
 					<p class="roll_list_lai">蚂蚁在线</p>
 					<div class="roll_list_money <{if $vo.status eq 3 || $vo.status eq 2}>roll_list_money_test<{/if}>">10</div>
