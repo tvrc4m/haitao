@@ -27,9 +27,8 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         exit();
     } */
     $config = array_merge($config,$reg_config);
-    if($config['openbbs']!=2)
+    if($config['openbbs']==2)
     {
-
         //ucenter1.5 login
         $sql="select userid,user,password,email from ".MEMBER." a where user='$post[user]' or mobile='$post[mobile]'";
         $db->query($sql);
@@ -99,9 +98,9 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     {
         //验证手机号登录
         if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
-            $sql="select * from ".MEMBER." where mobile='$post[user]'";
+            $sql="select userid from ".MEMBER." where mobile='$post[user]'";
         else
-            $sql="select * from ".MEMBER." where  user='$post[user]'";
+            $sql="select userid from ".MEMBER." where  user='$post[user]'";
         $db->query($sql);
         $re=$db->fetchRow();
         $us = $obj->userinfo(array('phone'=>$post[user]));
@@ -110,7 +109,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             $post['password']='812988018';*/
 
             if($us['password']==md5(md5($post['password']).$us['salt'])){
-                $script = $obj->login(array('phone'=>$re['mobile'],'password'=>$post['password']));
+                $script = $obj->login(array('phone'=>$post['user'],'password'=>$post['password']));
                 if(!empty($post['forward'])){
                     $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                 }else{
@@ -127,8 +126,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
 
         }else if($us['status']=='1100'){
             doreg($post[user],md5(md5($post['password']).$us['salt']));
+            $sql="select userid from ".MEMBER." where  mobile='$post[user]'";
+            $db->query($sql);
+            $re=$db->fetchRow();
             if($us['password']==md5(md5($post['password']).$us['salt'])){
-                $script = $obj->login(array('phone'=>$re['mobile'],'password'=>$post['password']));
+                $script = $obj->login(array('phone'=>$post['user'],'password'=>$post['password']));
                 if(!empty($post['forward'])){
                     $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                 }else{
@@ -686,5 +688,4 @@ if(!empty($_GET['connect_id']))
     $tpl->display("user_connect.htm");
 else
     $tpl->display("login.htm");
-
 ?>
