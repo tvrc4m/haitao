@@ -22,10 +22,24 @@ if(isset($_GET['ptype']) && $_GET['ptype'] == 'ajax'){
 
 $tpl->assign("re",$share->GetShareShopList(0,10));
 //删除
-if($_GET['type']=='del' and is_numeric($_GET['id']))
+/*if($_GET['type']=='del' and is_numeric($_GET['id']))
 {
 	$share->DelShareShop($_GET['id']);
 	$admin->msg("main.php?m=sns&s=admin_share_shop");
+}*/
+if($_GET['type']=='del' and is_numeric($_GET['id']))
+{
+	if($share->DelShareShop($_GET['id'])){
+		return json_encode(array(
+			'data' => 'OK',
+			'status' => 200
+		));
+	}else{
+		return json_encode(array(
+			'data' => 'NO',
+			'status' => 300
+		));
+	}
 }
 //批量删除
 if($_GET['pid'])
