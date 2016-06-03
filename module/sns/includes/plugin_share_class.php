@@ -42,6 +42,11 @@ class share
 
 		$this->db->query($sql);
 		$re["list"]=$this->db->getRows();
+        foreach($re['list'] as $key => $val){
+            $sql = "select id,`name`,market_price,price,pic from mallbuilder_product where member_id = ".$val['userid']." ORDER BY sales DESC limit 3";
+            $this->db->query($sql);
+            $re['list'][$key]['products'] = $this->db->getRows();
+        }
 		$re["page"]=$page->prompt();
 		return $re;
 	}
@@ -53,7 +58,7 @@ class share
 		{
 			$sql=" and b.pname like '%$_GET[key]%'";	
 		}
-		$sql="select a.id,a.pid,a.commentcount,b.image,b.pname,b.price,b.collectnum,c.sales from ".SPRO." a left join ".SPROINFO." b on a.pid = b.pid left join ".PRODUCT." c on a.pid=c.id where c.id and a.uid=$buid $sql order by a.addtime desc";
+		$sql="select a.id,a.pid,a.commentcount,b.image,b.pname,b.price,b.collectnum,c.sales,c.price,c.market_price,d.img,d.title from mallbuilder_sns_shareproduct a left join mallbuilder_sns_shareproduct_info b on a.pid = b.pid left join mallbuilder_product c on a.pid=c.id left join mallbuilder_national_pavilions d on c.national = d.id where c.id and a.uid=44 order by a.addtime desc ";
 		
 		include_once($config['webroot']."/includes/page_utf_class.php");
 		$page = new Page;
@@ -71,9 +76,10 @@ class share
         }else{
             $sql .= "  limit ".$page->listRows;
         }
-
 		$this->db->query($sql);
 		$re["list"]=$this->db->getRows();
+//        echo "<pre>";
+//        var_export($re['list']); die;
 		$re["page"]=$page->prompt();
 		return $re;
 	}
@@ -113,7 +119,7 @@ class share
 		//修改收藏人气
 		$this->db->query("update ".SHOP." set shop_collect=shop_collect-1 where userid='$shopid'");	
 		
-		$this->db->query("delete from ".SSHOP." where id='$id'");
+		return $this->db->query("delete from ".SSHOP." where id='$id'");
 	}
 	
 	function DelShareProduct($id)
@@ -124,7 +130,7 @@ class share
 		//修改收藏人气
 		$this->db->query("update ".SPROINFO." set collectnum=collectnum-1 where pid='$pid'");	
 		
-		$this->db->query("delete from ".SPRO." where id='$id'");
+		return $this->db->query("delete from ".SPRO." where id='$id'");
 	}
 }
 
