@@ -62,7 +62,6 @@
 .distributionUser dl dd.distribu-name{padding-left:5px;}
 .distributionUser dl dt{ height:1.8rem; line-height:1.8rem; font-size:0.6rem; text-align:center; font-family:"微软雅黑";border-bottom: 1px dotted #666;}
 .distributionUser dl dd{ height:1.8rem; line-height:1.8rem; font-size:0.6rem; text-align:center; font-family:"微软雅黑";}
-
 .deliver_table{ width:100%; margin:20px auto;}
 .deliver_table tr td{ height:30px; line-height:30px;}
 .deliver_table tr td input{ height:25px;}
@@ -79,3 +78,15 @@
 .adv .advlist .table-adv-list tr th{ width:33.3%; line-height:30px; font-size:14px; font-family:"微软雅黑"; overflow:hidden; }
 .adv .advlist .table-adv-list tr td{ width:33.3%; line-height:30px; font-size:14px; font-family:"微软雅黑"; overflow:hidden; text-align:center;}
 
+.fwin_buyer_order_cancel_orders {z-index: 999;position: fixed;top: 30%;left: 0;width: 80%;display: block;margin-left: 10%;}
+#order_cancel_form dl{padding: 0.8rem 0.5rem 0.6rem;border-bottom: none;}
+#order_cancel_form dl dd{margin-left: 0.5rem;}
+#order_cancel_form dl dd li{margin-bottom: 5px;}
+#dialog_container .dialog_body {background: #fff;border: none;border-radius: 5px;}
+.form_submit_btn input{display: inline-block;width: 50%;border:none; font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;
+	letter-spacing: 1px;border-bottom-left-radius: 5px;border-right: 1px solid #fff;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.form_submit_btn span{display: inline-block;width: 50%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;
+	letter-spacing: 1px;border-bottom-right-radius: 5px;background-color: #ddd;box-sizing: border-box;-webkit-box-sizing: border-box;text-align: center;}
+.form_submit_trs{padding: 1.2rem 0.9rem 0.2rem;text-align: left;line-height: 1.2;font-size: 0.7rem;}
+.form_submit_trp{padding: 0rem 0.9rem 1.2rem;text-align: left;line-height: 1.2;color: #999;font-size: 0.6rem;}
+.am-dialog-mask {position: fixed;top: 0;left: 0;z-index: 200;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);display: none;}
