@@ -129,7 +129,7 @@ body{background-color: #fff;}
 .friendtrace{margin-top:20px;width: 723px;}
 .sns-item{border-bottom:1px solid #ccc;padding:20px 0;position:relative;}
 .sns-item .sns-avatar{float:left;height:60px;width:60px;border-radius:10px;overflow: hidden;}
-.sns-item .sns-avatar img{border-radius:4px;}
+.sns-item .sns-avatar img{border-radius:50%;width: 60px;height: 60px;}
 .sns-item .sns-wrap{font-size:14px;margin-left:80px;}
 .sns-item .sns-wrap p{margin-bottom:7px;display:inline-block;word-break:break-all;word-wrap:break-word;}
 .sns-item .sns-wrap p a{color: #ff5c5c;}
@@ -243,8 +243,7 @@ body{background-color: #fff;}
 .norecord i{background:url(../../../image/default/user_admin/norecord.gif) no-repeat ;display:inline-block;float:left;height:44px;margin-right:16px;width:44px;}
 .norecord span{display:inline-block;float:left;font-size:1.3em;font-weight:700;line-height:44px;}
 /* 分页*/
-.pagination{float:right;padding:2px;margin-top: -10px;}
-.pagination a ,.pagination b{float:left;min-width:35px;height:35px;border:solid 1px #e0e0e0;line-height:35px;text-align: center;}
+.pagination a ,.pagination b{display:inline-block;min-width:35px;height:35px;border:solid 1px #e0e0e0;line-height:35px;text-align: center;}
 .pagination b{background:#FF5c5c;color:#FFFFFF;cursor:default;font-weight: normal;}
 .pagination .nextPage,.pagination .prePage{padding:0 10px;}
 /*订单管理 */
@@ -338,10 +337,11 @@ body{background-color: #fff;}
 .admin_message_list_outbox .delete,.admin_message_list_inbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
 /*收货地址*/
 .acpt_add input.submit{width: 302px;}
-.table-list-add tbody tr td{border-right: 1px solid #e0e0e0;}
 .table-list-add tbody tr{border:1px solid #e0e0e0;height: 60px;}
 /*评价管理 */
 .credit,.comment{width:98%!important;margin:0 auto 4px;}
+/*积分*/
+.points tbody tr{border-bottom: 1px solid #e0e0e0;}
 /* 弹出框 */
 #msgObj{border:1px solid #BED3F1;background-color:#FFF;-webkit-box-shadow:1px 1px 2px 0 rgba(0,0,0,.3);-moz-box-shadow:1px 1px 2px 0 rgba(0,0,0,.3);box-shadow:1px 1px 2px 0 rgba(0,0,0,.3);}
 .titleBar{font-size:14px; background: #E8F0FB;}
