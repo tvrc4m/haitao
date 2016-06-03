@@ -14,7 +14,7 @@
 				<a href="<{$config.weburl}>/shop.php?uid=<{$vo.shop_id}>">
 				<div class="roll_list_left clearfix">
 					<p class="roll_list_lai">蚂蚁在线</p>
-					<div class="roll_list_money <{if $vo.status eq 3 || $vo.status eq 2}>roll_list_money_test<{/if}>">10</div>
+					<div class="roll_list_money <{if $vo.status eq 3 || $vo.status eq 2}>roll_list_money_test<{/if}>"><{$vo.price}></div>
 					<{if $vo.status eq 3 || $vo.status eq 2}>
 					<img class="roll_list_img" src="../image/wap/wap_haitao_icon150.png">
 					<{else}>

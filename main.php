@@ -30,10 +30,10 @@ $flag_vemial=$member->email_reg();
 $tpl->assign("flag_vemial",$flag_vemial);
 
 include_once ("includes/uc_server.php");
-$data['uc_appid']='201605270933';
+/*$data['uc_appid']='201605270933';
 $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
-$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
-$obj = new Uc_server($data);
+$data['uc_server']='https://m.mayizaixian.cn/apis/uc';*/
+$obj = new Uc_server($_SESSION['ucenter_data']);
 /*$flag=$member->email_reg();
 if($flag=='false'){
 	header("Location:index.php?m=member&s=new_email_reg_two");

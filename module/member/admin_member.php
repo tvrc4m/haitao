@@ -1,5 +1,6 @@
 <?php
 include_once("$config[webroot]/module/member/includes/plugin_member_class.php");
+include_once ("$config[webroot]/includes/uc_server.php");
 $member=new member();
 //===================================================================
 $oldUrl = !empty($_POST['oldurl'])?'&oldUrl='.$_POST['oldurl']:'';
@@ -13,16 +14,29 @@ if($_POST['submit']=='edit')
     }
 }
 if($_POST['submit']=='password')
-{	
-	$flag=$member->resetpass($buid);
-	if($flag=='0')
-		$admin->msg("main.php?m=member&s=admin_member&type=password",'参数错误','failure');
-	elseif($flag=='1')
-		$admin->msg("main.php?m=member&s=admin_member&type=password",'密码错误','failure');
-	elseif($flag=='2')
-		$admin->msg("main.php?m=member&s=admin_member&type=password",'新密码两次输入不正确','failure');
-	else
-		$admin->msg("main.php?m=member&s=admin_member&type=password");
+{
+
+	if($_SESSION['ucenter']){
+		$sql="SELECT mobile FROM ".MEMBER." WHERE userid='$buid'";
+		$db->query($sql);
+		$user = $db->fetchRow('mobile');
+		$obj = new Uc_server($_SESSION['ucenter_data']);
+		$list = $obj->changepwd($user['mobile'],$_POST['oldpass'],$_POST['newpass']);
+		if($list->status==1117)
+			$admin->msg("main.php?m=member&s=admin_member&type=password",'密码错误','failure');
+		if($list->status==1100)
+			$admin->msg("main.php?m=member&s=admin_member&type=password");
+	}else{
+		$flag=$member->resetpass($buid);
+		if($flag=='0')
+			$admin->msg("main.php?m=member&s=admin_member&type=password",'参数错误','failure');
+		elseif($flag=='1')
+			$admin->msg("main.php?m=member&s=admin_member&type=password",'密码错误','failure');
+		elseif($flag=='2')
+			$admin->msg("main.php?m=member&s=admin_member&type=password",'新密码两次输入不正确','failure');
+		else
+			$admin->msg("main.php?m=member&s=admin_member&type=password");
+	}
 }
 if($_POST['submit']=='email')
 {

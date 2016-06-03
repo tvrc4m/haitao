@@ -14,10 +14,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     include_once("includes/smarty_config.php");
     include_once("config/reg_config.php");
     include_once ("includes/uc_server.php");
-    $data['uc_appid']='201605270933';
-    $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
-    $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
-    $obj = new Uc_server($data);
+
     /**
      * @验证码 操作
      */
@@ -96,6 +93,8 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     }
     else
     {
+        if($_SESSION['ucenter']){
+            $obj = new Uc_server($_SESSION['ucenter_data']);
         //验证手机号登录
         if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
             $sql="select userid from ".MEMBER." where mobile='$post[user]'";
@@ -146,43 +145,46 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             }
         }else
             msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
-        /*// no ucenter login
-        //验证手机号登录
-        if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
-             $sql="select * from ".MEMBER." where mobile='$post[user]'";
-        else
-            $sql="select * from ".MEMBER." where  user='$post[user]'";
-        $db->query($sql);
-        $re=$db->fetchRow();
+        }else{
+            // no ucenter login
+            //验证手机号登录
+            if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
+                $sql="select * from ".MEMBER." where mobile='$post[user]'";
+            else
+                $sql="select * from ".MEMBER." where  user='$post[user]'";
+            $db->query($sql);
+            $re=$db->fetchRow();
 
-        if($re["userid"])
-        {
-            if($re['statu']=='-2'){
-                msg("login.php?erry=-5&connect_id=$post[connect_id]");
-            }
-            if(substr($re['password'],0,4)=='lock')
-                msg("login.php?erry=-4&connect_id=$post[connect_id]");
-            if($re['password']!=md5($post['password']))
-                msg("login.php?erry=-2&connect_id=$post[connect_id]");
-
-            if($re["password"]==md5($post['password']))
+            if($re["userid"])
             {
-                if($re['pid'])
-                    login($re['pid'],$re['user'],$re['userid']);
-                else
-                    login($re['userid'],$re['user']);
-                if(!empty($post['forward'])){
-                    $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
-                    msg($forward);
-                }else{
-                    msg($_COOKIE['old_url']);
+                if($re['statu']=='-2'){
+                    msg("login.php?erry=-5&connect_id=$post[connect_id]");
                 }
-                setcookie("old_url");
-                setcookie("userid",$re['userid']);
+                if(substr($re['password'],0,4)=='lock')
+                    msg("login.php?erry=-4&connect_id=$post[connect_id]");
+                if($re['password']!=md5($post['password']))
+                    msg("login.php?erry=-2&connect_id=$post[connect_id]");
+
+                if($re["password"]==md5($post['password']))
+                {
+                    if($re['pid'])
+                        login($re['pid'],$re['user'],$re['userid']);
+                    else
+                        login($re['userid'],$re['user']);
+                    if(!empty($post['forward'])){
+                        $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+                        msg($forward);
+                    }else{
+                        msg($_COOKIE['old_url']);
+                    }
+                    setcookie("old_url");
+                    setcookie("userid",$re['userid']);
+                }
             }
+            else
+                msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
         }
-        else
-            msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没*/
+
     }
 }
 //========================================================
