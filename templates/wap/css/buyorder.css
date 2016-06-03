@@ -87,6 +87,6 @@
 	letter-spacing: 1px;border-bottom-left-radius: 5px;border-right: 1px solid #fff;box-sizing: border-box;-webkit-box-sizing: border-box;}
 .form_submit_btn span{display: inline-block;width: 50%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;
 	letter-spacing: 1px;border-bottom-right-radius: 5px;background-color: #ddd;box-sizing: border-box;-webkit-box-sizing: border-box;text-align: center;}
-.form_submit_trs{padding: 1.2rem 0.9rem 0.2rem;text-align: left;line-height: 1.2;font-size: 0.7rem;}
-.form_submit_trp{padding: 0rem 0.9rem 1.2rem;text-align: left;line-height: 1.2;color: #999;font-size: 0.6rem;}
+.form_submit_trs{padding: 1.5rem 1rem 0.5rem;text-align: left;line-height: 1.2;font-size: 0.8rem;}
+.form_submit_trp{padding: 0rem 1rem 1.5rem;text-align: left;line-height: 1.2;color: #999;font-size: 0.6rem;}
 .am-dialog-mask {position: fixed;top: 0;left: 0;z-index: 200;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);display: none;}
