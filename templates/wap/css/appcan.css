@@ -33,7 +33,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 #pro_detail .shopli_top_img img{width: 100%;}
 #pro_detail img{width:100%;}
 
-#pro_detail #pname{min-height: 2.15rem;line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dotted #b9b9b9;padding-right: 2.5rem;}
+#pro_detail #pname{min-height: 2.15rem;line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dotted #666;padding-right: 2.5rem;}
 #pro_detail #price{font-family: 'microsoft yahei';font-size:0.6rem;border-bottom: 1px dotted #666;height: 50px;line-height: 50px;}
 #pro_detail span#price{border-bottom: none;}
 #pro_detail #price span{color:#535353;}
