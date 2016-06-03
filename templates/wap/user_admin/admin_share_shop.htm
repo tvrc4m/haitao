@@ -8,7 +8,7 @@
                 <{else}>收藏店铺<{/if}>
             </span>
         </section>
-    	<section class="nav-e"></section>
+    	<section class="nav-e" style="text-align:right;"><a href="javascript:void(0);">编辑</a></section>
     </div>
 </header>
 <div class="share-shouc-list">
@@ -17,55 +17,182 @@
         <li <{if $smarty.get.s=='admin_share_product'}>class="current"<{/if}>><a href="main.php?m=sns&s=admin_share_product">收藏商品</a></li>
     </ul>
 </div>
-<section class="itemSearchList">
-<{if $re.list}>
-<div class="itemSearchResult clearfix">
-    <{foreach item=slist key=num from=$re.list}>
-    <dl>
-        <dt><a class="p-img" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>">  <img height="80" width="80" alt="<{$list.pname}>" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>templates/wap/images/user.png<{/if}>"></a> </dt>
-        <dd>
-            <p class="p-name"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a></p>
-            <p class="p-name color"><{$slist.area}></p>
-            <p class="p-name color">店主：<{$slist.user}></p>
-            <!-- <div class="handle"><a href="main.php?m=sns&s=admin_share_shop&type=del&id=<{$slist.id}>">删除</a></div> -->
-            <div class="handle price-delate" data-id='<{$slist.id}>'><a href="javascript:void(0);">删除</a></div>
-        </dd>
-    </dl>
-    <{/foreach}>
-</div>
-<{else}>
-<div class="itemsNulls">
-    <h3>暂无符合条件的数据记录</h3>
-</div>
-<{/if}>
-<a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
+<section class="shareshop-container">
+    <!-- <{if $re.list}> -->
+  <!--   <div class="itemSearchResult clearfix">
+        <{foreach item=slist key=num from=$re.list}>
+        <dl>
+            <dt><a class="p-img" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>">  <img height="80" width="80" alt="<{$list.pname}>" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>templates/wap/images/user.png<{/if}>"></a> </dt>
+            <dd>
+                <p class="p-name"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.shopid}>"><{$slist.company}></a></p>
+                <p class="p-name color"><{$slist.area}></p>
+                <p class="p-name color">店主：<{$slist.user}></p>
+                <div class="handle price-delate" data-id='<{$slist.id}>'><a href="javascript:void(0);">删除</a></div>
+            </dd>
+        </dl>
+        <{/foreach}>
+    </div> -->
+    <!--  <{else}>
+    <div class="itemsNulls">
+        <h3>暂无符合条件的数据记录</h3>
+    </div>
+    <{/if}> -->
+    <div class="shareshop-content">
+        <div class="shareshop-detail clearfix">
+            <div class="shareshop-detail-lt">
+                <a class="p-img" href="http://haitao.com/shop.php?uid=5&amp;dist_id=41"><img alt="蚂蚁海淘旗航店" src="templates/wap/images/user.png"></a>
+            </div>
+            <div class="shareshop-detail-rt">
+                <p class="shareshop-detail-name"><a target="_blank" href="http://haitao.com/shop.php?uid=5&amp;dist_id=41">蚂蚁海淘旗航店</a></p>
+                <p class="shareshop-detail-addres">北京市 朝阳区 呼家楼街道</p>
+            </div>
+            <div class="shareshop-detail-delate" data-id='<{$slist.id}>'><a href="javascript:void(0);">删除</a></div>
+        </div>
+        <div class="main_list_ware">
+            <div class="shareshop-list-title">
+                <h2>热销单品</h2>
+            </div>
+            <ul class="main_warelist clearfix">
+                <li class="wareli clearfix">
+                    <a href="https://www.mayihaitao.com/?m=product&amp;s=detail&amp;id=422&amp;dist_id=48" class="shopli_top_as">
+                        <div class="wareli_img">
+                            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="皇后爱抗氧化面膜"/>
+                        </div>
+                        <div class="wareli_bottom clearfix">
+                            <div class="wareli_bottom_message">
+                                <p class="wareli_bottom_text">皇后爱抗氧化面膜</p>
+                            </div>
+                            <div class="wareli_bottom_ro clearfix">
+                                <span class="org"><{$config.money}>35.20</span><span class="gre wareli_money_del"><{$config.money}>14.20</span>
+                            </div>
+                        </div>
+                    </a>
+                </li><li class="wareli clearfix">
+                    <a href="https://www.mayihaitao.com/?m=product&amp;s=detail&amp;id=422&amp;dist_id=48" class="shopli_top_as">
+                        <div class="wareli_img">
+                            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg_220X220.jpg"" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.name}>"/>
+                        </div>
+                        <div class="wareli_bottom clearfix">
+                            <div class="wareli_bottom_message">
+                                <p class="wareli_bottom_text">皇后爱抗氧化面膜</p>
+                            </div>
+                            <div class="wareli_bottom_ro clearfix">
+                                <span class="org"><{$config.money}>35.20</span><span class="gre wareli_money_del"><{$config.money}>14.20</span>
+                            </div>
+                        </div>
+                    </a>
+                </li><li class="wareli clearfix">
+                    <a href="https://www.mayihaitao.com/?m=product&amp;s=detail&amp;id=422&amp;dist_id=48" class="shopli_top_as">
+                        <div class="wareli_img">
+                            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg_220X220.jpg"" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.name}>"/>
+                        </div>
+                        <div class="wareli_bottom clearfix">
+                            <div class="wareli_bottom_message">
+                                <p class="wareli_bottom_text">皇后爱抗氧化面膜</p>
+                            </div>
+                            <div class="wareli_bottom_ro clearfix">
+                                <span class="org"><{$config.money}>35.20</span><span class="gre wareli_money_del"><{$config.money}>14.20</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="shareshop-content">
+        <div class="shareshop-detail clearfix">
+            <div class="shareshop-detail-lt">
+                <a class="p-img" href="http://haitao.com/shop.php?uid=5&amp;dist_id=41"><img alt="蚂蚁海淘旗航店" src="templates/wap/images/user.png"></a>
+            </div>
+            <div class="shareshop-detail-rt">
+                <p class="shareshop-detail-name"><a target="_blank" href="http://haitao.com/shop.php?uid=5&amp;dist_id=41">蚂蚁海淘旗航店</a></p>
+                <p class="shareshop-detail-addres">北京市 朝阳区 呼家楼街道</p>
+            </div>
+            <div class="shareshop-detail-delate" data-id='<{$slist.id}>'><a href="javascript:void(0);">删除</a></div>
+        </div>
+        <div class="main_list_ware">
+            <div class="shareshop-list-title">
+                <h2>热销单品</h2>
+            </div>
+            <ul class="main_warelist clearfix">
+                <li class="wareli clearfix">
+                    <a href="https://www.mayihaitao.com/?m=product&amp;s=detail&amp;id=422&amp;dist_id=48" class="shopli_top_as">
+                        <div class="wareli_img">
+                            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="皇后爱抗氧化面膜"/>
+                        </div>
+                        <div class="wareli_bottom clearfix">
+                            <div class="wareli_bottom_message">
+                                <p class="wareli_bottom_text">皇后爱抗氧化面膜</p>
+                            </div>
+                            <div class="wareli_bottom_ro clearfix">
+                                <span class="org"><{$config.money}>35.20</span><span class="gre wareli_money_del"><{$config.money}>14.20</span>
+                            </div>
+                        </div>
+                    </a>
+                </li><li class="wareli clearfix">
+                    <a href="https://www.mayihaitao.com/?m=product&amp;s=detail&amp;id=422&amp;dist_id=48" class="shopli_top_as">
+                        <div class="wareli_img">
+                            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg_220X220.jpg"" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.name}>"/>
+                        </div>
+                        <div class="wareli_bottom clearfix">
+                            <div class="wareli_bottom_message">
+                                <p class="wareli_bottom_text">皇后爱抗氧化面膜</p>
+                            </div>
+                            <div class="wareli_bottom_ro clearfix">
+                                <span class="org"><{$config.money}>35.20</span><span class="gre wareli_money_del"><{$config.money}>14.20</span>
+                            </div>
+                        </div>
+                    </a>
+                </li><li class="wareli clearfix">
+                    <a href="https://www.mayihaitao.com/?m=product&amp;s=detail&amp;id=422&amp;dist_id=48" class="shopli_top_as">
+                        <div class="wareli_img">
+                            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg_220X220.jpg"" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.name}>"/>
+                        </div>
+                        <div class="wareli_bottom clearfix">
+                            <div class="wareli_bottom_message">
+                                <p class="wareli_bottom_text">皇后爱抗氧化面膜</p>
+                            </div>
+                            <div class="wareli_bottom_ro clearfix">
+                                <span class="org"><{$config.money}>35.20</span><span class="gre wareli_money_del"><{$config.money}>14.20</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 </section>
 <div class='am-dialog-mask'></div>
+<section class="bom_nav">
+    <ul>
+        <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="海淘"><p>海淘</p></a></li><li>
+        <a href="<{$config.weburl}>/main.php?cg_u_type=2&st=0"><img src="../image/wap/wap_haitao_icon83.png" alt="赚钱"><p>赚钱</p></a></li><li>
+        <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon82.png" alt="我的"><p class="bom_nav_color">我的</p></a></li>
+    </ul>
+</section>
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
-<script>
-    $(function(){
-        $(".select").click(function(){
-            var obj=$(this);
-            $(this).next().slideToggle("fast",function(){
-                if($(obj).next().is(":visible")){
-                    $(document).one('click',function(){
-                        $(".select").next().slideUp("fast");
-                    });
-                }});
-        });
-        $(".i-select li").click(function(){
-            var str=$(this).html();
-            $(this).parent().parent().prev().html(str+" <em class='up'></em>");
-            $(this).parent().parent().slideToggle();
-        });
-    });
-</script>
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script>
 $(function(){
-    var dlLen=$(".itemSearchResult dl").size();
+    var flag=true , delate_a=$(".shareshop-detail-delate a") , nav_e=$(".nav-e a");
+    nav_e.bind("click",function(){
+        var _this=$(this);
+        if(flag){
+            _this.html("完成");
+            delate_a.show();
+            flag=false;
+        }
+        else{
+            _this.html("编辑");
+            delate_a.hide();
+            flag=true;
+        }
+       
+    })
+    var dlLen=$(".shareshop-container .shareshop-content").size() , m_jiazai=$(".m_jiazai");
     if(dlLen<10){
-        $(".m_jiazai").hide();
-        $(".itemSearchResult").css({"margin-bottom":"15px"});
+        m_jiazai.hide();
     }
     var page = 0;
     var url = "<{$config.weburl}>/main.php";
@@ -86,33 +213,34 @@ $(function(){
                     dataType: "json",
                     success: function(msg){
                         console.log(msg)
-                        if(msg.status==2){
-                        var dataLen=msg.data.length;
-                        for(var i=0;i<dataLen;i++){
-                            $(".itemSearchResult").append("<dl>"+
-                                    "<dt><a class='p-img' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>  <img height='80' width='80' alt='<{$list.pname}>' src='<{if $slist.logo!=''}><{$slist.logo}><{else}>templates/wap/images/user.png<{/if}>'></a> </dt>"+
-                                    "<dd>"+
-                                        "<p class='p-name'><a target='_blank' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>"+msg.data[i].company+"</a></p>"+
-                                        "<p class='p-name color'>"+msg.data[i].area+"</p>"+
-                                        "<p class='p-name color'>店主："+msg.data[i].user+"</p>"+
-                                        "<div class='handle price-delate' data-id='"+msg.data[i].id+"'><a href='javascript:void(0);'>删除</a></div>"+
-                                    "</dd>"+
-                                "</dl>")                      
-                        }
-                        stop=true;
-                        }else{
-                         $(".m_jiazai").html("已到最底部");
-                        }
+                        // if(msg.status==2){
+                        // var dataLen=msg.data.length;
+                        // for(var i=0;i<dataLen;i++){
+                        //     $(".itemSearchResult").append("<dl>"+
+                        //             "<dt><a class='p-img' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>  <img height='80' width='80' alt='<{$list.pname}>' src='<{if $slist.logo!=''}><{$slist.logo}><{else}>templates/wap/images/user.png<{/if}>'></a> </dt>"+
+                        //             "<dd>"+
+                        //                 "<p class='p-name'><a target='_blank' href='<{$config.weburl}>/shop.php?uid="+msg.data[i].uid+"'>"+msg.data[i].company+"</a></p>"+
+                        //                 "<p class='p-name color'>"+msg.data[i].area+"</p>"+
+                        //                 "<p class='p-name color'>店主："+msg.data[i].user+"</p>"+
+                        //                 "<div class='handle price-delate' data-id='"+msg.data[i].id+"'><a href='javascript:void(0);'>删除</a></div>"+
+                        //             "</dd>"+
+                        //         "</dl>")                      
+                        // }
+                        // stop=true;
+                        // $(".scrollLoading").scrollLoading();
+                        // }else{
+                        //  $(".m_jiazai").html("已到最底部");
+                        // }
                     }
                 });
             } 
         } 
     }) 
-    $(".price-delate").live("click",function(){
+    $(".shareshop-detail-delate").live("click",function(){
         var data_id=$(this).attr("data-id");
-        $(".itemSearchList").append("<div class='price-btns-contexts'>"+
+        $(".shareshop-content").append("<div class='price-btns-contexts'>"+
                     "<div class='price-btns-context-tops clearfix'>"+
-                        "<p>确信删除?</P>"+
+                        "<p>确定要删除已收藏的店铺吗?</P>"+
                     "</div>"+
                     "<div class='detate-btns-context-bot'><a href='javascript:void(0);'>确定</a><a href='javascript:void(0);'>取消</a></div>"+
                 "</div>");
@@ -126,6 +254,7 @@ $(function(){
             dialog_mask.removeClass("am-dialog-mask-test");
             btns_contexts.removeClass('price-btns-contexts_test');
         })
-    })          
+    }) 
+    $(".scrollLoading").scrollLoading();         
 })
 </script>
