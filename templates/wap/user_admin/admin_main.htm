@@ -86,7 +86,7 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/dialog/dialog.js" id="dialog_js"></script>
 <script type="text/javascript">
 $(function(){
-     function substr(htm,obj,num){
+    function substr(htm,obj,num){
         var value_substr=obj.substr(0,num);
         var pname_len=obj.length;
         var value_substr_len=value_substr.length+1;
@@ -95,7 +95,7 @@ $(function(){
         }       
         htm.html(value_substr);
     }
-    var shop_htm=$(".centent_shop_pin span") , shop_pin=$(".centent_shop_pin span").html() , shop_name_htm=$(".centent_shop_name") ,  shop_name=$(".centent_shop_name").html();
+    var shop_htm=$(".cennum_shop_list span") , shop_pin=$(".cennum_shop_list span").html() , shop_name_htm=$(".cennum_shop_name span") ,  shop_name=$(".cennum_shop_name span").html();
     if(shop_pin==""){
         shop_htm.html("无");
     }
@@ -205,17 +205,10 @@ wx.ready(function(){
         link: "<{$config.weburl}>/partner.php?dist_id=<{$buid}>", // 分享链接
         imgUrl: "<{$config.weburl}>/image/wap/share_dianpu.jpg", // 分享图标
         success: function () {
-            $("#share_box").hide()
-            // 用户确认分享后执行的回调函数
-            /*
-            var url = "<{$config.weburl}>/ajax_back_end.php";
-            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-            })
-            */
+            $("#share_box").hide();
         },
         cancel: function () {
-            $("#share_box").hide()
-            // 用户取消分享后执行的回调函数
+            $("#share_box").hide();
         }
     });
 
@@ -227,17 +220,10 @@ wx.ready(function(){
         type: '', // 分享类型,music、video或link，不填默认为link
         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
         success: function () {
-            $("#share_box").hide()
-            // 用户确认分享后执行的回调函数
-            /*
-            var url = "<{$config.weburl}>/ajax_back_end.php";
-            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-            })
-            */
+            $("#share_box").hide();
         },
         cancel: function () {
-            $("#share_box").hide()
-            // 用户取消分享后执行的回调函数
+            $("#share_box").hide();
         }
     })
 
@@ -247,17 +233,10 @@ wx.ready(function(){
         link: "<{$config.weburl}>/partner.php?uid=<{$buid}>&dist_id=<{$buid}>", // 分享链接
         imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
         success: function () {
-            $("#share_box").hide()
-            // 用户确认分享后执行的回调函数
-            /*
-            var url = "<{$config.weburl}>/ajax_back_end.php";
-            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-            })
-            */
+            $("#share_box").hide();
         },
         cancel: function () {
-            $("#share_box").hide()
-            // 用户取消分享后执行的回调函数
+            $("#share_box").hide();
         }
     });
 
@@ -267,17 +246,10 @@ wx.ready(function(){
         link: "<{$config.weburl}>/partner.php?uid=<{$buid}>&dist_id=<{$buid}>", // 分享链接
         imgUrl: '<{$config.weburl}>/image/wap/share_dianpu.jpg', // 分享图标
         success: function () {
-            $("#share_box").hide()
-            // 用户确认分享后执行的回调函数
-            /*
-            var url = "<{$config.weburl}>/ajax_back_end.php";
-            $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
-            })
-            */
+            $("#share_box").hide();
         },
         cancel: function () {
-            $("#share_box").hide()
-            // 用户取消分享后执行的回调函数
+            $("#share_box").hide();
         }
     });
     })
