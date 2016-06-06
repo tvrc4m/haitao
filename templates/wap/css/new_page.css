@@ -1002,7 +1002,7 @@ ins,a
 .select_style li a.shopli_top_as{border-radius: 0px!important;}
 
 /*底部公共导航栏*/
-.bom_nav{position: fixed;bottom: 0;left:0;background-color: #fff;width: 100%;padding: 5px 0;box-sizing:border-box;-webkit-box-sizing:border-box;border-top: 2px solid #ff5c5c;}
+.bom_nav{position: fixed;bottom: 0;left:0;z-index: 9999;background-color: #fff;width: 100%;padding: 5px 0;box-sizing:border-box;-webkit-box-sizing:border-box;border-top: 2px solid #ff5c5c;}
 .bom_nav ul li{width: 33.33%;text-align: center;display:inline-block;}
 .bom_nav ul li a{width: 100%;text-align: center;display:inline-block;}
 .bom_nav ul li a img{width: 20px;height: 20px;}
