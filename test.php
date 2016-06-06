@@ -134,7 +134,10 @@ class Curl
         }
     }
 }
+$list = array(array('logistics_id'=>'123','logistics_name'=>'中通快递','sku'=>'111111','trade'=>'1'));
+var_dump(json_encode($list));
 
+die;
 $list = array(
     array(
         'shop_id'=>'1',
