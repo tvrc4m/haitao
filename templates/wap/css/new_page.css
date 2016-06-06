@@ -1025,7 +1025,7 @@ ins,a
 /*.guanggao_kong{margin-bottom: 6.75rem!important;}*/
 .g_wei{width: 100%;position: absolute;left: 0px;margin-top: 0.5rem;}
 .g_wei img{width: 100%;}
-.m_jiazai{text-align: center;padding: 0px;width: 100%;display: inline-block;height: 1.75rem;line-height:1.75rem;border-radius: 0.25rem;font-size: 0.6rem;color: #535353;margin-bottom: 1px;}
+.m_jiazai{text-align: center;padding: 0px;width: 100%;display: inline-block;height: 40px;line-height:39px;border-radius: 0.25rem;font-size: 0.6rem;color: #535353;margin-bottom: 1px;}
 .m_jiazai i{display: inline-block;width: 0.9rem;height: 0.55rem; background: url(../../../image/wap/wap_haitao_icon11.png) no-repeat 0 0;background-size:cover;margin-right: 0.5rem;vertical-align: middle;}
 /*** 附近的店铺 ****/
 .locate_self{width: 100%;height: auto;overflow: hidden;margin: 10px 0;}
@@ -1053,16 +1053,6 @@ ins,a
 .shopli_top_img{margin-bottom: 1px;margin: 1rem 0.5rem 0;border-bottom: 1px dotted #666;}
 .shopli_top_imgs{margin-bottom: 1px;margin: 0;border-bottom:1px solid #e1e1e1;}
 .select_style li a.shopli_top_as{border-radius: 0px!important;}*/
-
-
-
-
-
-
-
-
-
-
 @media screen and (min-width: 600px) and (max-width: 800px) { 
     .shop_over{top: 25%;}
 }
