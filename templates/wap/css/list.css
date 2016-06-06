@@ -8,7 +8,7 @@
 .itemSearchList dd .p-name span.price{ display:block; width:60%; float:left;}
 .itemSearchList dd .p-name span.complateMoney{ display:block; width:40%; float:left;}
 /*收藏店铺新样式*/
-.shareshop-container{margin-bottom: 53px;}
+.shareshop-container{margin-bottom: 52px;margin-top: 50px;}
 .shareshop-content{background-color: #fff;padding:0 0.5rem;margin-top: 0.5rem;}
 .shareshop-detail{padding:0.5rem 0;position: relative;}
 .shareshop-detail .shareshop-detail-lt{float: left;margin-right:0.4rem;}
@@ -35,10 +35,12 @@
     overflow: hidden;max-height: 1.7rem;line-height: 1.2;}
 .wareli_money_dels{margin-left: 0.8rem;}
 .manage-name-img img{width: 1rem;vertical-align: -3px;height: auto!important;margin-right: 5px;}
+.wareli_bottom {background-color: #fff;}
 /*更改的地方*/
 .itemSearchList dd .p-name b span{float: right;padding-right:20px;}
 .itemSearchList dd .p-name b span a{color: #DD0101;}
-.share-shouc-list{width: 100%;background-color: #FFF;border-top: 2px solid #7753ff;}
+.share-shouc-list{width: 100%;background-color: #FFF;border-top: 2px solid #7753ff;    position: fixed;
+    top: 50px;left: 0;z-index: 999;}
 .share-shouc-list ul li{width: 50%;float: left;height: 40px;line-height: 40px;text-align: center;font-size: 0.6rem;}
 .share-shouc-list ul li a{width: 100%;display: inline-block;}
 .share-shouc-list ul li.current{background-color: #7753ff;}
@@ -77,8 +79,9 @@
 .price-btns-context-top>p{padding: 30px 0;letter-spacing: 1px;}
 .detate-btns-context-bot a{display: inline-block;width:50%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;letter-spacing: 1px;}
 .detate-btns-context-bot a:first-of-type{border-bottom-left-radius: 5px;border-right: 1px solid #fff;box-sizing:border-box;-webkit-box-sizing:border-box;}
-.detate-btns-context-bot a:last-of-type{border-bottom-right-radius: 5px;background-color: #999;}
-.price-btns-contexts{text-align: center; display: none; transform:scale(1);-webkit-transform:scale(1);padding: 0 50px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
+.detate-btns-context-bot a:last-of-type{border-bottom-right-radius: 5px;background-color: #ddd;}
+.price-btns-contexts{text-align: center; display: none; transform:scale(1);-webkit-transform:scale(1);width: 80%;margin-left: 10%;
+    box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;left: 0;color: #535353;}
 .price-btns-context-tops p{font-size: 16px}
 .price-btns-contexts_test{animation: myfirst .1s linear ;-webkit-animation: myfirst .1s linear ;display: block;}
 @-webkit-keyframes myfirst {
