@@ -146,7 +146,9 @@ switch ($action)
 		$_SESSION['USER_TYPE']=NULL;
 
 		//header("Location: "."$config[weburl]/login.php");
-		$sql = "select mobile from mallbuilder_member where userid=".$buid;
+		$tpl->assign('test','1111111');
+		header("Location:"."$config[weburl]");
+	/*	$sql = "select mobile from mallbuilder_member where userid=".$buid;
 		$db->query($sql);
 		$list = $db->fetchRow();
 		$script = $obj->logout(array('phone'=>$list['mobile']));
@@ -154,7 +156,7 @@ switch ($action)
 		$tpl->assign('forward',$config['weburl']);
 		$tpl->assign('script',$script->data);
 		$tpl->display("script.htm");
-		die;
+		die;*/
 		break;
 	}
 	case "msg":
