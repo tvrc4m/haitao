@@ -1,5 +1,5 @@
 <?php
-include_once("includes/waf.php");
+
 include_once("includes/global.php");
 include_once("includes/admin_global.php");
 include_once("includes/admin_class.php");
