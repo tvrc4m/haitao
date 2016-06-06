@@ -27,10 +27,12 @@
                     <a class="p-img" href="<{$config.weburl}>/?m=product&amp;s=detail&amp;id=<{$list.pid}>"><img class="scrollLoading shareshop-img" data-url="<{$list.image}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.pname}>"/></a>
                 </div>
                 <div class="shareshop-detail-rt shareshop-detail-rts">
-                    <p class="shareshop-detail-title">
+                    <p class="shareshop-detail-title" data-id='"+msg.data[i].id+"'>
+                        <{if $list.img }>
                         <span class="manage-name-img">
                             <img src="<{$list.img}>" alt="<{$list.title}>">
                         </span>
+                        <{/if}>                      
                         <a href="<{$config.weburl}>/?m=product&amp;s=detail&amp;id=<{$list.pid}>"><{$list.pname}></a>
                     </p>
                     <div class="wareli_bottom_ro clearfix">
@@ -109,16 +111,14 @@ $(function(){
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
+                            var imgLen=msg.data[i].img
                             $(".shareshop-container .shareshop-inner").append("<div class='shareshop-content'>"+
                                 "<div class='shareshop-detail clearfix'>"+
                                     "<div class='shareshop-detail-lt'>"+
                                         "<a class='p-img' href='<{$config.weburl}>/?m=product&amp;s=detail&amp;id="+msg.data[i].pid+"'><img class='scrollLoading shareshop-img' data-url='"+msg.data[i].image+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;' alt='"+msg.data[i].pname+"'/></a>"+
                                     "</div>"+
                                     "<div class='shareshop-detail-rt shareshop-detail-rts'>"+
-                                        "<p class='shareshop-detail-title'>"+
-                                            "<span class='manage-name-img'>"+
-                                                "<img src='"+msg.data[i].img+"' alt='"+msg.data[i].title+"'>"+
-                                            "</span>"+
+                                        "<p class='shareshop-detail-title' data-id='"+msg.data[i].id+"'>"+
                                             "<a href='<{$config.weburl}>/?m=product&amp;s=detail&amp;id="+msg.data[i].pid+"'>"+msg.data[i].pname+"</a>"+
                                         "</p>"+
                                         "<div class='wareli_bottom_ro clearfix'>"+
@@ -128,8 +128,14 @@ $(function(){
                                     "<div class='shareshop-detail-delates' data-id='"+msg.data[i].id+"'><a href='javascript:void(0);'>删除</a></div>"+
                                 "</div>"+
                             "</div>")
+                            if(imgLen!=""){
+                                $(".shareshop-detail-title[data-id="+msg.data[i].id+"]").prepend("<span class='manage-name-img'>"+
+                                    "<img src='"+msg.data[i].img+"' alt='"+msg.data[i].title+"'>"+
+                                "</span>")
+                            }
                         }
                         stop=true;
+                        
                         var flag=true , delate_a=$(".shareshop-detail-delates a") , nav_e=$(".nav-e a") , nav_jia=$(".nav-e a").html();
                         if(nav_jia=="完成"){
                             delate_a.show();
