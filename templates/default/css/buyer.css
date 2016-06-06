@@ -211,6 +211,8 @@ body{background-color: #fff;}
 .team-list .delete{position:absolute;top:0;right:0;padding-left:20px;padding-right:10px;height:23px;line-height:23px;color:#fff;visibility:hidden;background: url(../../../image/default/user_admin/delete.png) no-repeat 5px;background-color:rgba(0,0,0,.8);}
 .team-list .p-pic:hover .delete{visibility:visible;}
 .team-list .delete:hover{background-color:rgba(243,102,82,.8);filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#ccf36652', endColorstr='#ccf36652');text-decoration:none;}
+/*代金券*/
+.voucher_list td img{width: 80px;height: 80px;}
 /*商品问答*/
 .admin_consult .table-list-style tbody a{color: #ff5c5c;padding-left: 9px;}
 .admin_consult .table-list-style tbody tr.name{border: 1px solid #e0e0e0;text-align: left !important;}
