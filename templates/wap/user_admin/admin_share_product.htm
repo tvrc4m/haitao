@@ -42,7 +42,7 @@
         </div>
         <{/foreach}>
         <{else}>
-        <div class="itemsNull">
+        <div class="itemsNull itemsNulls_bot">
             <h3>暂无符合条件的数据记录</h3>
         </div>
         <{/if}>
@@ -61,27 +61,29 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script>
 $(function(){
-    var flag=true , delate_a=$(".shareshop-detail-delates a") , nav_e=$(".nav-e a");
-    nav_e.live("click",function(){
-        var _this=$(this);
-        if(flag){
-            _this.html("完成");
-            delate_a.show();
-            flag=false;
-        }
-        else{
-            _this.html("编辑");
-            delate_a.hide();
-            flag=true;
-        }
-        if(_this.html()=="完成"){
-            delate_a.show();
-        }
-        if(_this.html()=="编辑"){
-            delate_a.hide();
-        }
+    var flag=true , delate_a=$(".shareshop-detail-delates a") , nav_e=$(".nav-e a") , na_num=$(".shareshop-inner .shareshop-content").html();
+    if(na_num != null){
+        nav_e.live("click",function(){
+            var _this=$(this);
+            if(flag){
+                _this.html("完成");
+                delate_a.show();
+                flag=false;
+            }
+            else{
+                _this.html("编辑");
+                delate_a.hide();
+                flag=true;
+            }
+            if(_this.html()=="完成"){
+                delate_a.show();
+            }
+            if(_this.html()=="编辑"){
+                delate_a.hide();
+            }
 
-    })
+        })
+    }
     var dlLen=$(".shareshop-container .shareshop-content").size() , m_jiazai=$(".m_jiazai");
     if(dlLen<10){
         m_jiazai.hide();

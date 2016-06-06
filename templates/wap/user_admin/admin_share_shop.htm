@@ -28,7 +28,7 @@
                 </div>
                 <div class="shareshop-detail-rt">
                     <p class="shareshop-detail-name"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.userid}>&amp;dist_id=<{$slist.uid}>"><{$slist.company}></a></p>
-                    <p class="shareshop-detail-addres"><{$slist.area}></p>
+                    <p class="shareshop-detail-addres"><{$slist.area|truncate:32:"..."}></p>
                 </div>
                 <div class="shareshop-detail-delate" data-id='<{$slist.id}>'><a href="javascript:void(0);">删除</a></div>
             </div>
@@ -66,7 +66,7 @@
         </div>
         <{/foreach}>
         <{else}>
-        <div class="itemsNulls">
+        <div class="itemsNulls itemsNulls_bot">
             <h3>暂无符合条件的数据记录</h3>
         </div>
         <{/if}>
@@ -85,27 +85,28 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script>
 $(function(){
-    var flag=true , delate_a=$(".shareshop-detail-delate a") , nav_e=$(".nav-e a");
-    nav_e.bind("click",function(){
-        var _this=$(this);
-        if(flag){
-            _this.html("完成");
-            delate_a.show();
-            flag=false;
-        }
-        else{
-            _this.html("编辑");
-            delate_a.hide();
-            flag=true;
-        }
-        if(_this.html()=="完成"){
-            delate_a.show();
-        }
-        if(_this.html()=="编辑"){
-            delate_a.hide();
-        }
-
-    })
+    var flag=true , delate_a=$(".shareshop-detail-delate a") , nav_e=$(".nav-e a") , na_num=$(".shareshop-inner .shareshop-content").html();
+    if(na_num != null){
+        nav_e.bind("click",function(){
+            var _this=$(this);
+            if(flag){
+                _this.html("完成");
+                delate_a.show();
+                flag=false;
+            }
+            else{
+                _this.html("编辑");
+                delate_a.hide();
+                flag=true;
+            }
+            if(_this.html()=="完成"){
+                delate_a.show();
+            }
+            if(_this.html()=="编辑"){
+                delate_a.hide();
+            }
+        })
+    }    
     var dlLen=$(".shareshop-container .shareshop-content").size() , m_jiazai=$(".m_jiazai");
     if(dlLen<10){
         m_jiazai.hide();
