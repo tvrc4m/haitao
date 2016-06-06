@@ -1,4 +1,6 @@
 <?php
+
+
 error_reporting(E_ERROR|E_WARNING|E_PARSE|E_USER_ERROR|E_USER_WARNING);//6143
 if (function_exists('session_cache_limiter'))
 {
@@ -21,7 +23,7 @@ if(@function_exists('date_default_timezone_set'))
 $config['version']='MallBuilder_v7.3.4';
 $config['webroot']=substr(dirname(__FILE__), 0, -9);
 ini_set('include_path',$config['webroot'].'/');
-
+include_once($config['webroot']."/includes/waf.php");
 include_once($config['webroot']."/config/config.inc.php");
 include_once($config['webroot']."/config/web_config.php");
 include_once($config['webroot']."/config/table_config.php");
