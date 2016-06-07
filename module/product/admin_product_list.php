@@ -26,7 +26,7 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 	}
 	$de = $pro -> product_detail($id);
 	if($de['id'])
-	{	
+	{
 		$sql = "select taobao_type_id,ext_table from ".PCAT." a left join ".TYPE." b on a.ext_field_cat = b.id where catid = '$de[classid]'";
 		$db->query($sql);
 		$re = $db->fetchRow();
@@ -44,7 +44,7 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 		$province = $area[0];
 		$city = $area[1];
 		$pic = $de['pic_more'];
-			
+
 		if($de['porperty'])
 		{
 			foreach($de['porperty'] as $val)
@@ -57,14 +57,14 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 					$db->query($sql);
 					$re = $db->fetchRow();
 					$taobao_spec_value_id = $re['taobao_spec_id'];
-					
+
 					$sql = "select taobao_spec_id from ".SPEC." where id = '$re[spec_id]'";
 					$db->query($sql);
 					$taobao_spec_id = $db->fetchField('taobao_spec_id');
 					$spec_1[] = $taobao_spec_id.":".$taobao_spec_value_id;
-					
+
 					$property_select[] = $taobao_spec_id.":".$taobao_spec_value_id;
-						
+
 					if($re['name'] != $v[$spec_value_id])
 						$property_alias[] = $taobao_spec_id.":".$taobao_spec_value_id.":".$v[$spec_value_id];
 					if($property_alias)
@@ -75,7 +75,7 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 				$spec_price[] = $val['price'];
 				$spec_sku[] = $val['sku'];
 			}
-			
+
 			$property_alias = $property_alias ? implode(';',$property_alias) : "";
 			$spec_stock = $spec_stock ? implode(',',$spec_stock) : "";
 			$spec_price = $spec_price ? implode(',',$spec_price) : "";
@@ -93,12 +93,12 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 				if($field['0'] == 'property')
 				{
 					$property_id = $field[1];
-					
+
 					$sql = "select taobao_property_id,format from ".PROPERTY." where id = '$property_id'";
 					$db->query($sql);
 					$re = $db->fetchRow();
 					$taobao_property_id = $re['taobao_property_id'];
-					
+
 					if($taobao_property_id)
 					{
 						if($re['format'] == 'text')
@@ -106,14 +106,14 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 							//$property_text[] = $taobao_property_id;
 						}
 						if($re['format'] == 'select')
-						{	
+						{
 							$sql = "select taobao_property_id from ".PROPERTYVALUE." where id = '$val'";
 							$db->query($sql);
 							$taobao_property_value_id = $db->fetchField('taobao_property_id');
 							$property_select[] = $taobao_property_id.":".$taobao_property_value_id;
 						}
 						if($re['format'] == 'checkbox')
-						{	
+						{
 							$val = $val ? explode(",",$val) : "";
 							foreach($val as $l)
 							{
@@ -132,9 +132,9 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 		$property_select = $property_select ? implode(';',$property_select) : "";
 		$property_text = $property_text ? implode(',',$property_text) : "";
 		$spec = $spec ? implode(',',$spec) : "";
-	
+
 		include_once($config['webroot']."/lib/taobao/TopSdk.php");
-		$c = new TopClient;		
+		$c = new TopClient;
 		$c->appkey = $appKey;
 		$c->secretKey = $appSecret;
 		$sessionKey = $sessions;
@@ -166,7 +166,7 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 			{
 				$arr = (array)$resp['item'];
 				$iid = $arr['iid'];
-			
+
 				$req = new ItemImgUploadRequest;
 				foreach($pic as $k => $v)
 				{
@@ -175,7 +175,7 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 					$req->setNumIid($iid);
 					if($k == 0)
 						$req->setIsMajor("true");
-					$resp = $c->execute($req, $sessionKey);	
+					$resp = $c->execute($req, $sessionKey);
 				}
 			}
 		}
@@ -188,21 +188,21 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 			}
 			else
 			{
-				$admin->msg("main.php?m=product&s=admin_product_list",$resp['sub_msg']? $resp['sub_msg'] : $resp['msg']);	
+				$admin->msg("main.php?m=product&s=admin_product_list",$resp['sub_msg']? $resp['sub_msg'] : $resp['msg']);
 			}
 		}
 		else
 		{
 			$sql="insert into ".TAOBAO." (member_id,product_id) values ('$buid','$id')";
 			$db->query($sql);
-			$admin->msg("main.php?m=product&s=admin_product_list","同步成功");		
+			$admin->msg("main.php?m=product&s=admin_product_list","同步成功");
 		}
 	}
 	else
 	{
-		$admin->msg("404.php","此商品不存在");	
-	}	
-	
+		$admin->msg("404.php","此商品不存在");
+	}
+
 }
 //==================================
 $nocheck=true;

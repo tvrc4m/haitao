@@ -2,12 +2,12 @@
 ul{padding:20px 0 15px;}
 ul li{border:1px solid #b9b9b9;margin-bottom:10px;position:relative;}
 ul li p:first-child{border-bottom:1px solid #ff5c5c;padding:0.5rem;}
-ul li p:first-child span{color:#6E6E6E;font-size:0.65rem;}
+ul li p:first-child span{color:#535353;font-size:0.65rem;}
 ul li p:first-child span:nth-child(2){color:#ff5c5c;padding-left:10px;}
 ul li p:first-child span:last-child{float:right;}
 ul li p:last-child{padding:0 0.5rem;clear:both;display:block;overflow:hidden;word-break:break-all;word-wrap:break-word;height:1.8rem;line-height:1.8rem;}
-ul li p:last-child span{color:#6E6E6E;font-size:0.65rem;}
-ul li .del{background:url(../../../image/wap/del.png) center no-repeat #EEE;position:absolute;right:0;bottom:0;display:block;height:1.8rem;overflow:hidden;padding:0;text-indent:-9876px;top:auto;width:45px;z-index:100;}
+ul li p:last-child span{color:#535353;font-size:0.65rem;}
+ul li .del{background:url(../../../image/wap/wap_haitao_icon159.png) center no-repeat #EEE;background-size: 0.9rem;position:absolute;right:0;bottom:0;display:block;height:1.8rem;overflow:hidden;padding:0;text-indent:-9876px;top:auto;width:45px;z-index:100;}
 .add{padding:0 0 20px;}
 .add a{height:1.8rem;font-size:0.6rem;line-height:1.8rem;border-radius:5px 5px 5px 5px;width:100%;display:block;background:#ff5c5c;color:#FFFFFF!important;border:1px solid #ff5c5c;text-align:center;}
 dl dt{color:#535353;display:block;font-size:0.7rem;padding:10px 0;}
@@ -21,7 +21,7 @@ select{width:100%;margin-top:10px;height:30px;line-height:30px;color: #ff5353;}
 input[type="submit"]{height:40px;font-size:0.6rem;line-height:40px;border-radius:5px 5px 5px 5px;width:100%;display:block;background:#ff5c5c;color:#FFFFFF!important;border:1px solid #ff5c5c;text-align:center;margin:15px auto;}
 .form-error{color:#F00;padding:0 10px;}
 .taoplus{display: none!important}
-.price-btns-context-tops{background-color: #fff;border-top-left-radius: 5px;border-top-right-radius: 5px;padding: 15px;}
+.price-btns-context-tops{background-color: #fff;border-top-left-radius: 5px;border-top-right-radius: 5px;padding:25px 15px;}
 .price-btns-context-top .context-top-list{width: 80px;height: 80px;border: none;padding:5px 0;text-align: center;
     box-sizing: border-box;-webkit-box-sizing: border-box;background-color: #fff;border-radius: 50%;margin-bottom: 10px;}
 /*.price-btns-context-top .context-top-listb{border: 1px solid #ff5c5c;}*/
@@ -32,7 +32,7 @@ input[type="submit"]{height:40px;font-size:0.6rem;line-height:40px;border-radius
 .detate-btns-context-bot a{display: inline-block;width:50%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;color: #fff;letter-spacing: 1px;}
 .detate-btns-context-bot a:first-of-type{border-bottom-left-radius: 5px;border-right: 1px solid #fff;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .detate-btns-context-bot a:last-of-type{border-bottom-right-radius: 5px;background-color: #ddd;}
-.price-btns-contexts{text-align: center; display: none; transform:scale(1);-webkit-transform:scale(1);padding: 0 50px;box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 100%;left: 0;color: #535353;}
+.price-btns-contexts{text-align: center; display: none; transform:scale(1);-webkit-transform:scale(1);box-sizing: border-box;position: fixed;top: 35%;z-index: 2001;width: 80%;margin-left: 10%;left: 0;color: #535353;}
 .price-btns-context-tops p{font-size: 16px}
 .price-btns-contexts_test{animation: myfirst .1s linear ;-webkit-animation: myfirst .1s linear ;display: block;}
 @-webkit-keyframes myfirst {
