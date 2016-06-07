@@ -17,13 +17,13 @@
 .cart-list .pro-name p{color:#666;margin-top:5px;line-height:16px;}
 .cart-list .pro-name span{background:#fff;color:#fff;height:12px;line-height:12px;padding:4px 5px;display:inline-block;margin-right:5px;}
 .cart-list .price{color:#000;font-weight:bold;font-family:Verdana,Arial;}
-.cart-list .org{color:#FF4400;}
+.cart-list .org{color:#ff5c5c;font-size: 16px;}
 .toolbar{margin:20px auto 0;height:50px;line-height:50px;background-color:#F5F5F5;box-shadow: 0px 0px 1px #999;padding:0px 0 0 0.5rem;font-size:12px;text-align:left;position: fixed;bottom: 0;
 	width: 100%;z-index: 99999;box-sizing: border-box;-webkit-box-sizing: border-box;left: 0;}
 .select-bots{float: left;margin-right: 30px;}
 .cart-sum{float: left;}
 .Price{font-size: 16px;color: #ff5c5c;}
-.submit-btn{display: inline-block;background:#FF5c5c;border:0 none;color:#FFFFFF !important;font-size:16px;height:50px;line-height:50px;min-width:85px;text-align:center;}
+.submit-btn{display: inline-block;background:#ff5c5c;border:0 none;color:#fff!important;font-size:16px;height:50px;line-height:50px;min-width:85px;text-align:center;}
 .submit-btn_cj{float:right;height:50px;line-height:50px;text-align:center;}
 .cart-checkbox-first2 label{margin-top: 33px;}
 .cart-checkbox-first1 label{vertical-align: -3px;}

@@ -1,64 +1,18 @@
 <{if !$no_taoplus}>
 <link href="<{$config.weburl}>/templates/<{$config.temp}>/css/new_page.css" type="text/css" rel="stylesheet"/>
-<!-- <div id="J_Taojia" class="taoplus">
-	<div class="circle hide">
-		<div class="tpicons">
-			<ul>
-				<li class="more"><a dataurl="<{$config.weburl}>/?m=product&s=list"></a><span class="bg"></span></li>
-				<li class="logis"><a dataurl="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&cg_u_type=1"></a><span class="bg"></span></li>
-				<li class="ww"><a dataurl="<{$config.weburl}>/main.php?m=sns&s=admin_share_product&cg_u_type=1"></a><span class="bg"></span></li>
-				<li class="individ"><a dataurl="<{$config.weburl}>/main.php?cg_u_type=1"></a><span class="bg"></span></li>
-				<li class="car"><a dataurl="<{$config.weburl}>/?m=product&s=cart"></a><span class="bg"></span></li>
-				<li class="search"><a dataurl="<{$config.weburl}>/?m=tg"></a><span class="bg"></span></li>
-			</ul>
-		</div>
-		<div class="tplogo">
-			<a href="<{$config.weburl}>"></a><span class="bg"></span>
-		</div>
-	</div>
-	<div class="tpbtn on">
-		<div>
-			<ul>
-				<li class="icontao p"></li>
-			</ul>
-		</div>
-		<p class="num none">
-		</p>
-	</div>
-</div> -->
 <{/if}>
-<!-- <footer>
-    <section>
-    <div class="fl"><script src="<{$config.weburl}>/login_statu.php"></script></div>
-    <div class="fr"><a href="javascript:scroll(0,0)">返回顶部<b></b></a></div>
-    </section>
-    <nav>
-        <a href="<{$config.weburl}>/?temp=default" class="footer_diannao">电脑版</a><{if $smarty.session.USER_TYPE==2}><a href="<{$config.weburl}>/main.php?cg_u_type=1" class="footer_maijia">买家中心</a><{else}><a href="<{$config.weburl}>/main.php?cg_u_type=2&st=1" class="footer_maijia">卖家中心</a><{/if}>　<a href="<{$config.weburl}>/help.php" class="footer_bangzhu">帮助</a>
-    </nav>
-    <p><{$bt}></p>
-</footer> -->
-</div>
-<script type="text/javascript" src="<{$config.weburl}>/script/libs.js"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_taoplus.js"></script>
 <script src="<{$config.weburl}>/script/jquery.cookie.js" type="text/javascript"></script>
 <script src="<{$config.weburl}>/script/my_lightbox.js" type="text/javascript"></script>
-<!-- <script type="text/javascript" src="<{$config.weburl}>/script/chat.js"></script> -->
-
-
-
 <{if $config.jpush_app_key and $config.jpush_app_secret and $buid}>
 <script>
     window.buid = '<{$buid}>';
 </script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jpush.js"></script>
 <{/if}>
-
-
 <{if $smarty.cookies.USER and  $chat_open_flag}>
-
     <div id="chat_box_icon" class="chat_box_icon"><span class="iconfont" style="color: #FF6600;font-size: 34px;">&#xe635;</span></div>
-
-
     <dl id="chat_icon" class="msg_notice_icon"></dl>
     <div id="page_0" class="um-vp up ub-ver bc-bg" tabindex="0" style="z-index: 99999;display: none;">
         <!--header开始-->
