@@ -1,7 +1,7 @@
 /**space_product_detail**/
-body{font-family: 'microsoft yahei' !important;color: #525252;font-size: 16px;}
+body{font-family: 'microsoft yahei'!important;color: #525252;}
 .up .uh, .up .uf, .pos_re {position: relative;}
-div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 .bc-text-head {color: white;}
 .bc-head {background-color: #dd3030;}
 .uh, .uf {width: 100%;font-size: 1.2em;}
@@ -15,6 +15,7 @@ div {outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highligh
 .kefu_icon1{width:0.75rem;height: 0.65rem;display: inline-block;background: url(../../../image/wap/wap_haitao_icon109.png) no-repeat;background-size: contain;vertical-align: -2px;margin-right: 0.4rem;}
 .kefu_icon2{width:0.75rem;height: 0.65rem;display: inline-block;background: url(../../../image/wap/mayi_wap_icon24.png) no-repeat;background-size: contain;vertical-align: -1px;margin-right: 0.4rem;}
 .ub-kefu ul li a{font-size: 0.6rem;}
+.ub-f2{position: relative; -webkit-box-flex: 2;-moz-box-flex: 2;box-flex: 2;}
 .ub-f2 p{float: left;width: 33.33%;font-size: 0.6rem;color: #999;}
 .ub-f2-test{text-align: center;}
 .ub-kefu_first{margin-right: 4%;}

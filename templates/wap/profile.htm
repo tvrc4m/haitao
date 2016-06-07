@@ -18,7 +18,7 @@
             <{/if}>
         </li>
         <li class="order_dotted">
-            <a><span class="order_indents">手机绑定</span><span class="order_indents_fs">已绑定 <{$mobile}></span></a>
+            <a><span class="order_indents">手机绑定</span><span class="order_indents_fs">已绑定 <var class="mobile_spi"><{$mobile}></var></span></a>
         </li>
         <li class="order_dotted"><a href="<{$config.weburl}>/lostpass.php"><span class="order_indents">修改登录密码</span><i></i></a></li>
         <li class="order_dotted"><a href="main.php?m=member&s=admin_orderadder"><span class="order_indents">收货地址</span><i></i></a></li>
@@ -36,4 +36,10 @@
     </ul>
 </section>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    var mobile_spi=$(".mobile_spi") , mobile_spihtm=$(".mobile_spi").html();
+    mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"))
+})
+</script>
 <{include file="footer.htm"}>

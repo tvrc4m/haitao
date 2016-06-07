@@ -72,6 +72,7 @@
 .order_wrap .order .step{margin: 20px;}
 .order_wrap .order .selectadd{height: 40px;border-bottom: 1px solid #e0e0e0;line-height: 40px;font-size: 16px;}
 .order_wrap .order .selectadd span{display: inline-block;padding: 0 15px;background-color: #f5f5f5;color: #ff5c5c;margin-right: 30px;border-bottom:2px solid #ff5c5c }
+.order_wrap .order .tip{line-height: 40px;background: #f5f5f5;border: 1px solid #ccc;text-indent: 10px;margin-bottom: 10px;}
 .step ul{padding: 20px 0;color: #666;font-size: 14px;padding-bottom:0;}
 .step .modify{visibility:hidden;line-height: 30px;}
 .step .selected .modify{visibility:visible;}
