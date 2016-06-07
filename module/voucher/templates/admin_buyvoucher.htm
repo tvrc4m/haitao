@@ -21,7 +21,7 @@
             <{foreach from=$list.list item=vo}>
             <tr>
                 <td><img src="<{$vo.logo}>" class="w70b1"/></td>
-                <td class="al">名　称：<{$vo.name}>(已领<{$vo.getnum}>张<{if $vo.type neq 2}>/限领<{$vo.eachlimit}>张<{/if}>)<br/>使用范围：<{$vo.shop_name}>　<i>使用条件：订单满<{$vo.limit}>元</i><br/>序列号：<{$vo.serial}></td>
+                <td class="al">名　称：<{$vo.name}>(已领<{$vo.getnum}>张<{if $vo.eachlimit neq 0}>/限领<{$vo.eachlimit}>张<{/if}>)<br/>使用范围：<{$vo.shop_name}>　<i>使用条件：订单满<{$vo.limit}>元</i><br/>序列号：<{$vo.serial}></td>
                 <td><{$vo.price}></td>
                 <td><{$vo.start_time|date_format:"%Y-%m-%d"}> ~ <{$vo.end_time|date_format:"%Y-%m-%d"}></td>
                 <td><{if $vo.status eq 1}>未使用<{elseif $vo.status eq 2}>已用<{elseif $vo.status eq 3}>过期<{else}>收回<{/if}></td>

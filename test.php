@@ -134,9 +134,10 @@ class Curl
         }
     }
 }
-$list = array(array('logistics_id'=>'123','logistics_name'=>'中通快递','sku'=>'111111','trade'=>'1'));
-var_dump(json_encode($list));
-
+$str = "10";
+$num = (int)$str;
+if ($str === 10) echo "String";
+if ($num === 10) echo "Integer";
 die;
 $list = array(
     array(
