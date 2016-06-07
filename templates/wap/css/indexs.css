@@ -52,7 +52,7 @@
 .collect_box_contentss {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;
     font-size: 14px;}
 /*佣金结算申请*/
-.comm_top{padding: 0.5rem 0 1rem;background: #ff5c5c;color: #fff;font-size: 0.7rem;margin-bottom: 1rem;border-top: 1px solid #f5f5f5;}
+.comm_top{padding: 0.5rem 0 1rem;background: #ff5c5c;color: #fff;font-size: 0.7rem;margin-bottom: 1rem;border-top: 1px solid #ffaeae;}
 .comm_top a{color: #fff;text-decoration: underline;float: right;padding-right: 1rem;font-size: 0.6rem}
 .comm_top p{line-height: 1.2rem;height: 1.2rem;text-align: center;}
 .comm_top p span{background: url(../../../image/wap/wap_haitao_icon117.png)0 0.1rem no-repeat;background-size: 16%;
