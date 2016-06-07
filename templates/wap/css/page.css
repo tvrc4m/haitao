@@ -67,7 +67,6 @@ i.fanhui_icon{display: inline-block;height: 50px;width: 50px;background: url(../
 .i-select ul{background-color:#333333;border-radius:8px 8px 8px 8px;overflow:hidden;}
 .i-select li{color:#FFFFFF;height:40px;padding:0 5px;cursor:pointer;}
 .i-select a{color:#FFFFFF;padding:5px 0;display:block;height:30px;line-height:30px;}
-
 footer{font-size:14px;text-align:center;margin: 0 auto 0px;background-color: #fff;padding-bottom: 20px;}
 footer section{height:40px;line-height:41px;border-bottom:1px solid #ff5c5c;border-top:1px solid #ccc;padding:0 1rem;}
 footer section .fl{float:left;width:70%;text-align:left;}
@@ -83,23 +82,18 @@ footer p,footer p a{color:#A6A6A6;font-size:12px;line-height:16px;margin-top: 15
 .footer_diannao{padding-left: 25px;background: url(../../../image/wap/wap_haitao_icon13.png) no-repeat 0px 0px;background-size: contain; }
 .footer_maijia{padding-left: 25px;background: url(../../../image/wap/wap_haitao_icon15.png) no-repeat 0px 0px;background-size: contain;margin-left: 20px;}
 .footer_bangzhu{padding-left: 25px;background: url(../../../image/wap/wap_haitao_icon16.png) no-repeat 0px 0px;background-size: contain;}
-
-
 .p-img,.p-name,.p-price,.p-detail{overflow:hidden;}
 .p-name,.p-detail{word-break:break-all;word-wrap:break-word;}
 .p-price{color:#eb5211;font-size: 16px;font-weight: normal;}
 .p-price strong,.p-market strong{color:#FF5c5c;}
 .p-commissin{ font-family:"微软雅黑"; margin-bottom:5px;}
 .p-commissin strong{color:#FF5353;}
-
 .page{color:#999999;height:32px;line-height:32px;margin:16px 0 20px;text-align:center;}
 .page div{background:#F9F9F9;border:1px solid #E0E1E1;min-width:88px;}
 .page .pre{border-right:1px solid #E0E1E1;width:88px;float:left;border-radius:4px 0 0 4px;}
 .page .next{border-left:1px solid #E0E1E1;width:88px;float:right;border-radius:0 4px 4px 0;}
 .page .cur{background:none;z-index: -1;}
 .page .grey{background:#E6E6E6;color:#C2C2C2;}
-
-
 .mc{width: 95%;margin: 0 auto;clear: both;}
 .voucher{background-color: #fffbf3;border: 1px dotted #ffcfbf;display: block;height: 162px;position: relative;z-index: 1;}
 .voucher .cut{background: url("../../../image/default/points/point_bg.png") no-repeat scroll -140px 0 rgba(0, 0, 0, 0);height: 18px;left: 5px;position: absolute;top: -9px;width: 20px;z-index: 2;}
@@ -126,144 +120,41 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .m .mc .voucher-list li.fl_left{margin-left: 0;}
 .m .mc .voucher-list li.fl_middle{margin-left: 42px;}
 #fwin_buy{width: 70%!important;left: 15%!important;top: 45%!important;}
-
 .m-tags{width: 15px;height: 15px;border: 1px solid rgb(19,208,179);border-radius: 13px; float: left;}
 .m-tags div{border-radius: 13px; width: 90%;height: 90%;background: rgb(19,208,179)}
-
 .m-position{width: 60%;float: left;}
 .m-bp{width: 95%;height: auto;overflow: hidden;border-radius:5px;background: #fff;margin: 10px auto;}
 .m-reload{float: right;}
 .itemsNull{margin: 20px 0 15px;text-align: center;font-size: 0.7rem;}
 .itemsNulls{margin: 20px 0 15px;text-align: center;font-size: 0.7rem;}
-
-
-
-
 /*自己加的分销尾部*/
 .footer_centent{width: 100%;min-height: 65px;background: #fff;  position: fixed; bottom: 0px;margin-top:30px;}
 .footer_num{width: 33%;height: 65px;padding: 2px 0px;text-align: center;float: left;position: relative;}
 .footer_num img{max-width: 30px;max-height: 25px;margin-top:10px;}
 .footer_num a dd{color: #878787;font-family: "微软雅黑";}
-
-
-
-
-.chat_icon {
-    position: absolute;
-
-    right: 0; bottom: 0;
-    background: url(../../../image/chat_icon.png);
-    background-size:100% 100%;
-    background-color: transparent;
-
-    width:60px;
-    height:60px;
-
-    z-index: 10000;
-}
-
-.chat_header
-{
-    position:fixed;
-    top:0px;
-    width: 100%;
-    z-index: 10000;
-}
-
-.msg_notice_icon {
-    position:fixed;
-    bottom:10px;
-    right:55px;
-
-    tap-highlight-color: rgba(0, 0, 0, 0);
-    margin-bottom:.3em;
-
-    background-size:100% 100%;
-    background-color: transparent;
-
-    z-index: 10000;
-}
-
-.chat_box_icon {
-    position:fixed;
-    bottom:20px;
-    right:15px;
-
-    tap-highlight-color: rgba(0, 0, 0, 0);
-    margin-bottom:.3em;
-
-    background-size:100% 100%;
-    background-color: transparent;
-
-    z-index: 90000;
-}
-
+.chat_icon {position: absolute;right: 0; bottom: 0;background: url(../../../image/chat_icon.png);background-size:100% 100%;
+    background-color: transparent; width:60px;height:60px;z-index: 10000;}
+.chat_header{position:fixed;top:0px;width: 100%;z-index: 10000;}
+.msg_notice_icon {position:fixed;bottom:10px;right:55px;tap-highlight-color: rgba(0, 0, 0, 0);margin-bottom:.3em;
+    background-size:100% 100%;background-color: transparent;z-index: 10000;}
+.chat_box_icon {position:fixed;bottom:20px;right:15px;tap-highlight-color: rgba(0, 0, 0, 0);margin-bottom:.3em;background-size:100% 100%;
+    background-color: transparent;z-index: 90000;}
 .msg_notice_icon dt{float:right;margin-left:.65em}
 .msg_notice_icon dd{background-color:#ed1c23; border:1px #e8e8e8 solid;color:#fff;border-radius:.5em;padding:.65em;font-size:.8em;float:right;max-width:60%}
 .msg_notice_icon img{width:3em;height:3em;-webkit-border-radius: 2.8125em;border-radius: 2.8125em;}
-
-.badge {
-    position: absolute;
-    top: 4px;
-    left: 14px;
-}
+.badge {position: absolute;top: 4px;left: 14px;}
 /*主页样式*/
-.cate-guang{width: 100%;background-color: #fff;position: relative;
-    display: inline-block;vertical-align: middle;height: 40px;overflow: hidden;}
-.cate-guang-img{position: relative;top: 10px;right: -18px; width: 20px;height: 20px; background:url(../../../image/wap/wap_haitao_icon57.png) center no-repeat;background-size:contain;display: inline-block;}
-.cate-guang ul{position: absolute;left: 0;top: 0;width: 100%;padding-left: 1.5rem;}
-.cate-guang ul li{position: relative;height: 40px;line-height: 40px;font-size: 13px;margin-left: 1rem;}
-.cate-guangimg{padding: 0.5rem 0.5rem;border-top: 2px solid #ff5c5c;}
-.cate-guangimg .cate-guangimg-left{float: left;width: 33.33%;}
-.cate-guangimg .cate-guangimg-left img{width: 100%;}
-.cate-guangimg .cate-guangimg-right{float: left;width: 66.66%;}
-.cate-guangimg .cate-guangimg-right ul li{float: left;width: 50%;}
-.cate-guangimg .cate-guangimg-right ul li img{width: 100%;}
-.cate-guanglist{padding: 0rem 0.5rem;}
-.cate-guanglist ul li{width: 25%;float: left;}
-.cate-guanglist ul li a{width: 100%;display: inline-block;border: 1px solid #f1f1f1;}
-.cate-guanglist ul li:nth-child(n+5) a{border-top: none;}
-.cate-guanglist ul li img{width: 100%;}
 .m_main-v4{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 55px;background-color: #fff;}
 .m_main-v44{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 0.4rem;}
 .w100s{width: 100%}
 .w100s img{width: 100%;}
-.da_banner {border-top: 2px solid #7753ff;background-color: #fff;margin-bottom:10px;}
-.da_banner ul li{width: 25%;float: left;box-sizing: border-box;height: 40px;line-height: 40px;text-align: center;}
-.da_banner ul li a {display: block;height: 40px;line-height: 40px;font-size: 0.6rem;}
-.da_banner ul li.current {background-color: #7753ff;}
-.da_banner ul li.current a {color: #fff;}
 .pname_img {position: absolute;top: 0;left: 1.2rem;}
 .pname_img img {width: 1.5rem;height: 0.75rem!important;}
 .da_list div.shop{display: none;}
-.da_list div.list_current{display: block;/*border-top: 1px solid #b9b9b9;*/}
+.da_list div.list_current{display: block;}
 .da_list_test {position: fixed;top: 50px;z-index: 999999999999;width: 93.3%;}
-.addcarts {position: fixed;bottom: 4rem;left: 0rem;padding: 8px;background-color: rgba(0,0,0,0.7);border-radius: 50%;z-index: 11;}
-.addcarts .carts{float: left; background: url(../../../image/wap/wap_haitao_icon61.png) no-repeat;position: relative;width: 24px;height:22.5px;background-size: contain;}
-.carts .cart-num-conts {position: absolute;top: -12px;right: -15px;color: #fff;background: #ff5c5c;border-radius: 50%;
-    text-align: center;width: 18px;height: 18px;line-height: 18px;overflow: hidden;}
+.iconfont{color:#999;font-size: 2.2em!important;}
 .collect_box_content{position: fixed;z-index: 9999; left: 50%;top: 65%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;font-size: 14px;}
-.addtop{display: none; position: fixed;bottom: 3rem;right: 0rem;padding: 8px;background-color:#ff5c5c;border-radius: 50%;opacity: 0.7;filter:alpha(opacity=70);z-index: 9999}
-.addtop .top{float: left; background: url(../../../image/wap/wap_haitao_icon62.png) no-repeat;position: relative;width: 24px;height:22.5px;background-size: contain;}
-.error404{text-align: center;margin: 40px 0;}
-.error404 div img{width: 40%;margin-top: 20px;}
-.error404 div p{margin-top: 15px;font-size: 14px;}
-.error404 div p:last-of-type{margin-top: 5px;}
-.error404 div p a{color: #ff5c5c;}
-.shop_over {
-    width: 4rem;
-    height: 4rem;
-    font-size: 0.7rem;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    margin-left: -2rem;
-    line-height: 4rem;
-    text-align: center;
-    color: #fff;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 50%;
-}
 /*合伙人页面*/
 .partner_container{background: url(../../../image/wap/bg.png) no-repeat;padding: 0px 0.5rem;padding-bottom: 0.5rem;background-size:100% 100%;overflow: hidden;}
 .partner_container_top{padding: 2.5rem 0rem;background: url(../../../image/wap/wap_haitao_icon106.png) no-repeat;background-size: 100%;margin-top: 1rem;margin-bottom: -1.8rem;}
@@ -286,6 +177,8 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .partner_button a{display: inline-block;font-size: 0.7rem;padding: 0.7rem 0;color: #fff;}
 .hj_share_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size:70%;opacity:0;display: none;}
 .collect_box_contentss{position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;font-size: 14px;}
+.shop_over {width: 4rem;height: 4rem;font-size: 0.7rem;position: absolute;top: 20%;left: 50%;margin-left: -2rem;line-height: 4rem;
+    text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
 .shop_t {background-color: #fff;}
 .shop_ts{padding: 0.5rem}
 .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}
@@ -293,13 +186,14 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .shopli_top_imgs {border: 1px solid #e1e1e1;}
 .shop_t .shopli:nth-of-type(3n) {margin-right: 0;}
 .shopli_top_imgs img {width: 100%;}
-/*.shopli_bottom_rob {
-    padding-right: 5px;
-}*/
-.shopli_bottom_robs{
-    padding-left: 5px;padding-right: 5px;
-}
-/*主页列表新样式*/
+.shopli_bottom_robs{padding-left: 5px;padding-right: 5px;}
+/*加载出错页面样式 新*/
+.error_container{text-align: center;margin: 40px 0;}
+.error_container .error_img img{width: 40%;margin-top: 20px;}
+.error_container .error_btn p{margin-top: 15px;font-size: 14px;}
+.error_container .error_btn p:last-of-type{margin-top: 5px;}
+.error_container .error_btn p a{color: #ff5c5c;}
+/*列表公共样式 新*/
 .main_list{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;margin-bottom: 55px;background-color: #f5f5f5;}
 .main_list_banner{width: 100%;}
 .main_list_banner img{width: 100%;}
@@ -312,10 +206,28 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .wareli_bottom{text-align: center;background-color: #f5f5f5;padding: 0.5rem 0;font-size: 0.6rem;}
 .wareli_bottom_message{width:100%;font-size: 0.6rem;}
 .wareli_bottom_rob{font-size: 0.6rem;}
-.wareli_bottom_text{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;\text-overflow: ellipsis;
+.wareli_bottom_text{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;text-overflow: ellipsis;
     white-space: nowrap;margin-bottom: 0.25rem;}
 .wareli_money_del{text-decoration: line-through;}
-/*主页列表新样式*/
+/*悬停购物车公共样式 新*/
+.addcarts {position: fixed;bottom: 4rem;left: 0rem;padding: 8px;background-color: rgba(0,0,0,0.7);border-radius: 50%;z-index: 11;}
+.addcarts .carts{float: left; background: url(../../../image/wap/wap_haitao_icon61.png) no-repeat;position: relative;width: 24px;
+    height:22.5px;background-size: contain;}
+.carts .cart-num-conts {position: absolute;top: -12px;right: -15px;color: #fff;background: #ff5c5c;border-radius: 50%;
+    text-align: center;width: 18px;height: 18px;line-height: 18px;overflow: hidden;}
+/*悬停返回顶部公共样式 新*/
+.addtop{display: none; position: fixed;bottom: 3rem;right: 0rem;padding: 8px;background-color:#ff5c5c;border-radius: 50%;opacity: 0.7;
+    filter:alpha(opacity=70);z-index: 9999}
+.addtop .top{float: left; background: url(../../../image/wap/wap_haitao_icon62.png) no-repeat;position: relative;width: 24px;height:22.5px;
+    background-size: contain;}
+/*底部导航栏公共样式 新*/
+.bom_nav{position: fixed;bottom: 0;left:0;z-index: 9999;background-color: #fff;width: 100%;padding: 5px 0;box-sizing:border-box;-webkit-box-sizing:border-box;border-top: 2px solid #ff5c5c;}
+.bom_nav ul li{width: 33.33%;text-align: center;display:inline-block;}
+.bom_nav ul li a{width: 100%;text-align: center;display:inline-block;}
+.bom_nav ul li a img{width: 20px;height: 20px;}
+.bom_nav ul li a p{margin-top: 2px;font-size: 12px;color: #999;}
+.bom_nav ul li a p.bom_nav_color{color: #ff5c5c;}
+/*css3动画公共样式 新*/
 .animate3{
 -webkit-animation:bounceIn 1s .2s ease both;
 -moz-animation:bounceIn 1s .2s ease both;}

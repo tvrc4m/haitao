@@ -58,7 +58,7 @@ class share
 		{
 			$sql=" and b.pname like '%$_GET[key]%'";	
 		}
-		$sql="select a.id,a.pid,a.commentcount,b.image,b.pname,b.price,b.collectnum,c.sales,c.price,c.market_price,d.img,d.title from mallbuilder_sns_shareproduct a left join mallbuilder_sns_shareproduct_info b on a.pid = b.pid left join mallbuilder_product c on a.pid=c.id left join mallbuilder_national_pavilions d on c.national = d.id where c.id and a.uid=44 order by a.addtime desc ";
+		$sql="select a.id,a.pid,a.commentcount,b.image,b.pname,b.price,b.collectnum,c.sales,c.price,c.market_price,d.img,d.title from mallbuilder_sns_shareproduct a left join mallbuilder_sns_shareproduct_info b on a.pid = b.pid left join mallbuilder_product c on a.pid=c.id left join mallbuilder_national_pavilions d on c.national = d.id where c.id and a.uid=$buid order by a.addtime desc ";
 		
 		include_once($config['webroot']."/includes/page_utf_class.php");
 		$page = new Page;
@@ -128,8 +128,8 @@ class share
 		$this->db->query($sql);
 		$pid=$this->db->fetchField('pid');
 		//修改收藏人气
-		$this->db->query("update ".SPROINFO." set collectnum=collectnum-1 where pid='$pid'");	
-		
+		$this->db->query("update ".SPROINFO." set collectnum=collectnum-1 where pid='$pid'");
+
 		return $this->db->query("delete from ".SPRO." where id='$id'");
 	}
 }

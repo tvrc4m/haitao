@@ -123,7 +123,9 @@ if(is_mobile())
 	}
 	else
 	{
-		$config['temp']="wap";	
+		$config['temp']="wap";
+		require_once $config['webroot'].'/cs.php';
+		echo '<img src="'._cnzzTrackPageView(1259417015).'" width="0" height="0"/>';
 	}
 }
 else
@@ -139,7 +141,12 @@ else
 }
 
 $_SESSION['temp'] = $config['temp'];
-
+$data['uc_appid']='201605270933';
+$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
+$_SESSION['ucenter_data'] = $data;
+//ucenter 0 平台登录 1 用户中心uc登陆
+$_SESSION['ucenter']=0;
 magic();//魔术调用
 
 //是否启用聊天

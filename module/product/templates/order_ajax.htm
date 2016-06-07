@@ -67,9 +67,9 @@
                 
                 <input type="hidden" name="invoice_<{$list.seller_id}>" value="<{$list.is_invoice}>" />
                 
-                <{if $list.is_invoice>0}>
+                <!-- <{if $list.is_invoice>0}>
                 <p>发票抬头: <input style="width:100px;" type="text" name="invoice_title_<{$list.seller_id}>" value="<{$re}>" /></p>
-                <{/if}>
+                <{/if}> -->
                 
                 </td>
             	<td>运费方式：</td>
@@ -180,6 +180,7 @@
             <input type="hidden" name="hidden_consignee_id" id="hidden_consignee_id" value="<{if $consignee_id}><{$consignee_id}><{else}><{$consignee.0.id}><{/if}>" />
             <tr class="seg-entry"></tr>
 		</table>
+        <p class="tip">海关规定：由海外邮寄的物品，每单限额1000元；由港澳台邮寄的物品，每单限额800元；由保税区邮寄的物品，每单限额2000元。</p>
    		<input type="submit" value="" class="order_submit">
         <div class="order_sum">实付款&nbsp&nbsp<b><{$config.money}> <span id="s_sumprice"></span></b></div>
    </div>

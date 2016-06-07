@@ -17,58 +17,40 @@
         <li <{if $smarty.get.s=='admin_share_product'}>class="current"<{/if}>><a href="main.php?m=sns&s=admin_share_product">收藏商品</a></li>
     </ul>
 </div>
-<!-- <section class="itemSearchList">
-<{if $re.list}>
-<div class="itemSearchResult clearfix">
-    <{foreach item=list key=num from=$re.list}>
-    <dl>
-        <dt><a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>">  <img height="80" width="80" alt="<{$list.pname}>" src="<{$list.image}>_60X60.jpg"></a> </dt>
-        <dd>
-            <p class="p-name"><a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.pid}>"><{$list.pname}></a></p>
-            <p class="p-price"><strong><{$config.money}><{$list.price}></strong></p>
-            <div class="handle price-delate" data-id='<{$list.id}>'><a href="javascript:void(0);">删除</a></div>
-        </dd>
-    </dl>
-    <{/foreach}>
-</div>
-<a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-<{else}>
-<div class="itemsNull">
-    <h3>暂无符合条件的数据记录</h3>
-</div>
-<{/if}>
-</section> -->
 <section class="shareshop-container">
-    <{if $re.list}>
-    <{foreach item=list key=num from=$re.list}>
-    <div class="shareshop-content">
-        <div class="shareshop-detail clearfix">
-            <div class="shareshop-detail-lt">
-                <a class="p-img" href="<{$config.weburl}>/?m=product&amp;s=detail&amp;id=<{$list.pid}>"><img class="scrollLoading shareshop-img" data-url="<{$list.image}>" src="<{$list.image}>" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.pname}>"/></a>
-            </div>
-            <div class="shareshop-detail-rt shareshop-detail-rts">
-                <p class="shareshop-detail-title">
-                    <span class="manage-name-img">
-                        <img src="<{$list.img}>" alt="<{$list.title}>">
-                    </span>
-                    <a target="_blank" href="<{$config.weburl}>/?m=product&amp;s=detail&amp;id=<{$list.pid}>"><{$list.pname}></a>
-                </p>
-                <div class="wareli_bottom_ro clearfix">
-                    <span class="org"><{$config.money}><{$list.price}></span><span class="gre wareli_money_del wareli_money_dels"><{$config.money}><{$list.market_price}></span>
+    <div class="shareshop-inner">
+        <{if $re.list}>
+        <{foreach item=list key=num from=$re.list}>
+        <div class="shareshop-content">
+            <div class="shareshop-detail clearfix">
+                <div class="shareshop-detail-lt">
+                    <a class="p-img" href="<{$config.weburl}>/?m=product&amp;s=detail&amp;id=<{$list.pid}>"><img class="scrollLoading shareshop-img" data-url="<{$list.image}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$list.pname}>"/></a>
                 </div>
+                <div class="shareshop-detail-rt shareshop-detail-rts">
+                    <p class="shareshop-detail-title" data-id='"+msg.data[i].id+"'>
+                        <{if $list.img }>
+                        <span class="manage-name-img">
+                            <img src="<{$list.img}>" alt="<{$list.title}>">
+                        </span>
+                        <{/if}>                      
+                        <a href="<{$config.weburl}>/?m=product&amp;s=detail&amp;id=<{$list.pid}>"><{$list.pname}></a>
+                    </p>
+                    <div class="wareli_bottom_ro clearfix">
+                        <span class="org"><{$config.money}><{$list.price}></span><span class="gre wareli_money_del wareli_money_dels"><{$config.money}><{$list.market_price}></span>
+                    </div>
+                </div>
+                <div class="shareshop-detail-delates" data-id='<{$list.id}>'><a href="javascript:void(0);">删除</a></div>
             </div>
-            <div class="shareshop-detail-delates" data-id='<{$list.id}>'><a href="javascript:void(0);">删除</a></div>
         </div>
+        <{/foreach}>
+        <{else}>
+        <div class="itemsNull itemsNulls_bot">
+            <h3>暂无符合条件的数据记录</h3>
+        </div>
+        <{/if}>
     </div>
-    <{/foreach}>
-    <{else}>
-    <div class="itemsNull">
-        <h3>暂无符合条件的数据记录</h3>
-    </div>
-    <{/if}>
     <a href="javascript:void(0);" class="m_jiazai">下滑加载更多</a>
 </section>
-<div class='am-dialog-mask'></div>
 <section class="bom_nav">
     <ul>
         <li><a href="<{$config.weburl}>/index.php"><img src="../image/wap/wap_haitao_icon79.png" alt="海淘"><p>海淘</p></a></li><li>
@@ -76,25 +58,34 @@
         <a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon82.png" alt="我的"><p class="bom_nav_color">我的</p></a></li>
     </ul>
 </section>
+<div class='am-dialog-mask'></div>
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script>
 $(function(){
-    var flag=true , delate_a=$(".shareshop-detail-delates a") , nav_e=$(".nav-e a");
-    nav_e.bind("click",function(){
-        var _this=$(this);
-        if(flag){
-            _this.html("完成");
-            delate_a.show();
-            flag=false;
-        }
-        else{
-            _this.html("编辑");
-            delate_a.hide();
-            flag=true;
-        }
+    var flag=true , delate_a=$(".shareshop-detail-delates a") , nav_e=$(".nav-e a") , na_num=$(".shareshop-inner .shareshop-content").html();
+    if(na_num != null){
+        nav_e.live("click",function(){
+            var _this=$(this);
+            if(flag){
+                _this.html("完成");
+                delate_a.show();
+                flag=false;
+            }
+            else{
+                _this.html("编辑");
+                delate_a.hide();
+                flag=true;
+            }
+            if(_this.html()=="完成"){
+                delate_a.show();
+            }
+            if(_this.html()=="编辑"){
+                delate_a.hide();
+            }
 
-    })
+        })
+    }
     var dlLen=$(".shareshop-container .shareshop-content").size() , m_jiazai=$(".m_jiazai");
     if(dlLen<10){
         m_jiazai.hide();
@@ -117,24 +108,58 @@ $(function(){
                 data: {page:page, key:key, m:'sns', s:'admin_share_product', dist_id:dist_id, ptype:'ajax'},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
-                        // if(msg.status==2){
-                        // var dataLen=msg.data.length;
-                        // for(var i=0;i<dataLen;i++){
-                        //     $(".itemSearchResult").append("<dl>"+
-                        //         "<dt><a class='p-img' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].pid+"'><img height='80' width='80' alt='"+msg.data[i].pname+"' src='"+msg.data[i].image+"'></a></dt>"+
-                        //         "<dd>"+
-                        //             "<p class='p-name'><a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].pid+"'>"+msg.data[i].pname+"</a></p>"+
-                        //             "<p class='p-price'><strong><{$config.money}>"+msg.data[i].price+"</strong></p>"+
-                        //             "<div class='handle price-delate' data-id='"+msg.data[i].id+"'><a href='javascript:void(0);'>删除</a></div>"+
-                        //         "</dd>"+
-                        //     "</dl>")
-                        // }
-                        // stop=true;
-                        // $(".scrollLoading").scrollLoading();
-                        // }else{
-                        //  $(".m_jiazai").html("已到最底部");
-                        // }
+                        if(msg.status==2){
+                        var dataLen=msg.data.length;
+                        for(var i=0;i<dataLen;i++){
+                            var imgLen=msg.data[i].img
+                            $(".shareshop-container .shareshop-inner").append("<div class='shareshop-content'>"+
+                                "<div class='shareshop-detail clearfix'>"+
+                                    "<div class='shareshop-detail-lt'>"+
+                                        "<a class='p-img' href='<{$config.weburl}>/?m=product&amp;s=detail&amp;id="+msg.data[i].pid+"'><img class='scrollLoading shareshop-img' data-url='"+msg.data[i].image+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;' alt='"+msg.data[i].pname+"'/></a>"+
+                                    "</div>"+
+                                    "<div class='shareshop-detail-rt shareshop-detail-rts'>"+
+                                        "<p class='shareshop-detail-title' data-id='"+msg.data[i].id+"'>"+
+                                            "<a href='<{$config.weburl}>/?m=product&amp;s=detail&amp;id="+msg.data[i].pid+"'>"+msg.data[i].pname+"</a>"+
+                                        "</p>"+
+                                        "<div class='wareli_bottom_ro clearfix'>"+
+                                            "<span class='org'><{$config.money}>"+msg.data[i].price+"</span><span class='gre wareli_money_del wareli_money_dels'><{$config.money}>"+msg.data[i].market_price+"</span>"+
+                                        "</div>"+
+                                    "</div>"+
+                                    "<div class='shareshop-detail-delates' data-id='"+msg.data[i].id+"'><a href='javascript:void(0);'>删除</a></div>"+
+                                "</div>"+
+                            "</div>")
+                            if(imgLen!=""){
+                                $(".shareshop-detail-title[data-id="+msg.data[i].id+"]").prepend("<span class='manage-name-img'>"+
+                                    "<img src='"+msg.data[i].img+"' alt='"+msg.data[i].title+"'>"+
+                                "</span>")
+                            }
+                        }
+                        stop=true;
+                        
+                        var flag=true , delate_a=$(".shareshop-detail-delates a") , nav_e=$(".nav-e a") , nav_jia=$(".nav-e a").html();
+                        if(nav_jia=="完成"){
+                            delate_a.show();
+                        }
+                        if(nav_jia=="编辑"){
+                            delate_a.hide();
+                        }
+                        nav_e.live("click",function(){
+                            var _this=$(this);
+                            if(flag){
+                                _this.html("完成");
+                                delate_a.show();
+                                flag=false;
+                            }
+                            else{
+                                _this.html("编辑");
+                                delate_a.hide();
+                                flag=true;
+                            }
+                        })
+                        $(".scrollLoading").scrollLoading();
+                        }else{
+                         $(".m_jiazai").html("已到最底部");
+                        }
                     }
                 });
             }
@@ -143,6 +168,7 @@ $(function(){
     $(".scrollLoading").scrollLoading();
     $(".shareshop-detail-delates").live("click",function(){
         var data_id=$(this).attr("data-id");
+        var thishtm=$(this).parent().parent();
         $(".shareshop-content").append("<div class='price-btns-contexts'>"+
                     "<div class='price-btns-context-tops clearfix'>"+
                         "<p>确定要删除已收藏的商品吗?</P>"+
@@ -153,7 +179,11 @@ $(function(){
         dialog_mask.addClass("am-dialog-mask-test");
         btns_contexts.addClass('price-btns-contexts_test');
         $(".detate-btns-context-bot a:first-child").bind("click",function(){
-            location.href="<{$config.weburl}>/main.php?m=sns&s=admin_share_product&type=del&id="+data_id+"";
+            $.get("main.php?m=sns&s=admin_share_product&type=del&id="+data_id+"", function(data){
+                thishtm.remove();               
+                dialog_mask.removeClass("am-dialog-mask-test");
+                btns_contexts.removeClass('price-btns-contexts_test');
+            });
         })
         $(".detate-btns-context-bot a:last-child").bind("click",function(){
             dialog_mask.removeClass("am-dialog-mask-test");
