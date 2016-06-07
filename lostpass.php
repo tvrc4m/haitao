@@ -2,6 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include("config/nav_menu.php");
+include_once ("includes/uc_server.php");
 //=========================================
 
 $page="lostpass.htm";
@@ -106,14 +107,24 @@ if(!empty($_POST["action"])&&$_POST["action"]=="submit")
 	}
 	else
 	{
-		$userid = $re['userid'];
-		$re = $db->query("update ".MEMBER." set password='".md5(addslashes($_POST['password']))."' where userid='$userid'");
-
-		if($re){
-			msg('login.php','密码修改成功！');
+		if($_SESSION['ucenter']){
+			$obj = new Uc_server($_SESSION['ucenter_data']);
+			$statu = $obj->findpwd($_POST['mobile'],addslashes($_POST['password']));
+			if($statu->status=='1100'){
+				msg('login.php','密码修改成功！');
+			}else{
+				msg('lostpass.php','系统繁忙，请稍后修改！');
+			}
 		}else{
-			msg('lostpass.php','系统繁忙，请稍后修改！');
+			$userid = $re['userid'];
+			$re = $db->query("update ".MEMBER." set password='".md5(addslashes($_POST['password']))."' where userid='$userid'");
+			if($re){
+				msg('login.php','密码修改成功！');
+			}else{
+				msg('lostpass.php','系统繁忙，请稍后修改！');
+			}
 		}
+
 	}
 	$page="lostpass_steptwo.htm";
 }
@@ -155,7 +166,7 @@ function Check_data($data = null, $keyval = null){
 		case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
 		case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
 		case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
-		case 'password' : $res = preg_match('/^[\s\S]{6,10}$/', $data);  break;
+		case 'password' : $res = preg_match('/^[\s\S]{6,16}$/', $data);  break;
 		//case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
 	}
 	return $res;
