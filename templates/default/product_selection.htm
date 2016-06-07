@@ -15,9 +15,9 @@
                 </tr>
             </thead>
             <tbody>
-                <{foreach item=list from=$products}>
+                <{foreach item=list key=key from=$products}>
                     <tr>
-                        <td><input type="checkbox" name="id[]" value="<{$list.id}>"></td>
+                        <td><input type="checkbox" name="pro[<{$key}>][id]" value="<{$list.id}>"></td>
                         <td>
                             <div class="info">
                                 <div class="img"><img src="<{$list.pic}>" alt="<{$list.name}>"></div>
@@ -28,7 +28,7 @@
                         <td>
                             <div class="stock clearfix">
                             <a href="javascript:void(0);" class="low_num">-</a>
-                            <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="<{$list.stock}>">
+                            <input onkeyup="check_nums();" size="3" name="pro[<{$key}>][num]" id="nums" type="text" value="<{$list.stock}>">
                             <a href="javascript:void(0);" class="add_num">+</a>
                             </div>
                         </td>
@@ -43,6 +43,7 @@
                 <{/foreach}>
             </tbody>
         </table>
+        <input type="hidden" name="nums" value="">
         <div class="foot"><span>共选择<i>0</i>类商品</span><input type="submit" class="submit-btn" /></div>
         </form>
     </div>
