@@ -46,6 +46,7 @@ $mem = array(
 					'search_word.php,1',
 					'district.php,1',
 					'national_pavilions.php,1,,国家馆设置',
+					'voucher.php,1,,代金卷规则管理',
 					//'sphinx_config.php,1,,Sphinx搜索设置',
 					'to_login.php,0,,登录会员后台',
 				)

@@ -2,6 +2,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("config/reg_config.php");
+include_once ("includes/uc_server.php");
 
 if($reg_config)
 {
@@ -184,6 +185,10 @@ else
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
+	/*$data['uc_appid']='201605270933';
+	$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+	$data['uc_server']='https://m.mayizaixian.cn/apis/uc';*/
+	$obj = new Uc_server($_SESSION['ucenter_data']);
     $user = 'mayi'.$_POST['mobile'];
 	$pass = addslashes($_POST['password']);
 	$mobile = $_POST['mobile'];
@@ -205,7 +210,12 @@ function doreg($guid=NULL)
 	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
 	$re=$db->query($sql);
 	$userid=$db->lastid();
-	
+	$list = $obj->userinfo($mobile);
+
+	$salt = rand_pwd();
+	$obj->register(array('phone'=>$mobile,'password'=>md5(md5($pass).$salt),'salt'=>$salt));
+	/* $aa = $this->register(array('phone'=>'15011426119','password'=>md5(md5(123456).'abcabc'),'salt'=>'abcabc'));
+  var_dump($aa);die;*/
 	if($userid)
 	{
 
@@ -278,6 +288,18 @@ function Check_only($data = null, $key = null, $table = null){
     return $db->num_rows();
 }
 
+function rand_pwd(){
+	$str = null;
+	$strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+	$max = strlen($strPol)-1;
+
+	for($i=0;$i<5;$i++){
+		$str.=$strPol[rand(0,$max)];
+	}
+
+	return $str;
+}
+
 /**
  * 数据格式验证
  */
@@ -287,7 +309,7 @@ function Check_data($data = null, $keyval = null){
         case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;
         case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
         case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
-        case 'password' : $res = preg_match('/^[\s\S]{6,10}$/', $data);  break;
+        case 'password' : $res = preg_match('/^[\s\S]{6,16}$/', $data);  break;
         //case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
     }
     return $res;
