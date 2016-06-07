@@ -113,7 +113,7 @@ var weburl="<{$config.weburl}>";
     </tr>
 
     <tr>
-        <th>市场价</th>
+        <th><font color="red">*</font>市场价</th>
         <td><input type="text" name="market_price" id="market_price" onblur="this.value=isNaN(this.value*1)?0:this.value*1" maxlength="10" value="<{$de.market_price}>" /> 元 </td>
     </tr>
 
@@ -580,11 +580,17 @@ function check_value()
 	}
 	if(!$('#price').val())
 	{
-		alert('请填写价格');
+		alert('请填销售价格');
 		$('#price').focus();
 		return false;
 	}
 
+    if(!$('#market_price').val())
+    {
+        alert('请填市场价');
+        $('#market_price').focus();
+        return false;
+    }
 	if($('#amount').val()<=0)
 	{
 		alert('请填写数量');

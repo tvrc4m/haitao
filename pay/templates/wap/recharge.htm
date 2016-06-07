@@ -12,7 +12,7 @@
     	<dl>
         	<dt style="margin-left:5px;">请选择充值方式：</dt>
             <dd class="pay">
-                <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.1.payment_type}>" />
+                <input type="hidden" name="payment_type" id="payment_type" value="<{$pay.0.payment_type}>" />
                 <ul class="fn-clear">  
                 <{foreach item=list key=key from=$pay}>
                     <{if $list.payment_type!='account'}>

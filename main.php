@@ -29,6 +29,7 @@ $member = new member();
 $flag_vemial=$member->email_reg();
 $tpl->assign("flag_vemial",$flag_vemial);
 
+
 /*$flag=$member->email_reg();
 if($flag=='false'){
 	header("Location:index.php?m=member&s=new_email_reg_two");
@@ -127,8 +128,12 @@ switch ($action)
 {
 	case "logout":
 	{
+
 		global $config;
 		include_once("$config[webroot]/config/reg_config.php");
+		include_once ("$config[webroot]/includes/uc_server.php");
+
+		$obj = new Uc_server($_SESSION['ucenter_data']);
 		$config = array_merge($config,$reg_config);
 		bsetcookie("USERID",NULL,time(),"/",$config['baseurl']);
 		setcookie("USER",NULL,time(),"/",$config['baseurl']);
@@ -139,8 +144,19 @@ switch ($action)
 			echo uc_user_synlogout();
 		}
 		$_SESSION['USER_TYPE']=NULL;
-		header("Location: ".$config['weburl']);
+
 		//header("Location: "."$config[weburl]/login.php");
+		$tpl->assign('test','1111111');
+		header("Location:"."$config[weburl]");
+	/*	$sql = "select mobile from mallbuilder_member where userid=".$buid;
+		$db->query($sql);
+		$list = $db->fetchRow();
+		$script = $obj->logout(array('phone'=>$list['mobile']));
+		$tpl->assign('con','正在退出...');
+		$tpl->assign('forward',$config['weburl']);
+		$tpl->assign('script',$script->data);
+		$tpl->display("script.htm");
+		die;*/
 		break;
 	}
 	case "msg":
@@ -190,7 +206,7 @@ switch ($action)
 		{
 			$s=$_GET['s'];
             $_GET['m'] = preg_replace('#[^a-z]#iuU', '',$_GET['m']);
-			if(($shop_statu=='0' || $shop_statu== '-1' || $shop_statu== '-2' || $shop_statu== '-3') and ($s=="admin_product" || $s=="admin_product_list" || $s=="admin_product_storage" || $s=="admin_product_batch"))
+			if(($shop_statu=='0' || $shop_statu== '-1' || $shop_statu== '-2' || $shop_statu== '-3') and ($s=="product_selection" || $s=="admin_product" || $s=="admin_product_list" || $s=="admin_product_storage" || $s=="admin_product_batch"))
 			{
 				$admin->msg('main.php','shop_statu','failure&n='.$shop_statu);die;
 			}
@@ -342,7 +358,7 @@ else
 
         }
 	//}
-	
+
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
     if(isset($_GET['disp']) && $_GET['disp'] == 1) {
         $tpl->display('withdrawals.htm');

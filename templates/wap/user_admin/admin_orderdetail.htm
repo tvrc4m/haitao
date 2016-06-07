@@ -53,6 +53,9 @@
     <div class="list">
 		<p>物流名称：<{$de.logistics_name}></p>
         <p>物流单号：<{$de.invoice_no}></p>
+        <{if $de.logistics_name&&$de.invoice_no&&$logistics_config.logistics_connect==1}>
+        <dl><script src="<{$config.weburl}>/api/logistic.php?com=<{$de.logistics_name}>&nu=<{$de.invoice_no}>&sigin=<{$logistics_sigin}>"></script></dl>
+        <{/if}>
     </div>
 	<{/if}>
 </div>

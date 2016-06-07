@@ -1,6 +1,6 @@
 <script type="text/javascript">
 function ref(id,type,v)
-{	
+{
 	var url = 'module/product/ajax_update.php';
 	var sj = new Date();
 	var pars = 'shuiji=' + sj+'&'+v;
@@ -60,7 +60,7 @@ $(function(){
 </script>
 <div class="path">
     <div>
-    	<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span> 
+    	<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span>
         出售中的商品
     </div>
 </div>
@@ -102,10 +102,10 @@ $(function(){
                 <a href="main.php?m=product&s=admin_product_list&id=<{$list.id}>&act=taobao">发布到淘宝</a>
                 <{/if}>
 
-                
+
                 </th>
             </tr>
-            <tr> 
+            <tr>
                 <td></td>
                 <td>
                 <div class="pic-small">
@@ -120,7 +120,7 @@ $(function(){
                 <td><{$list.uptime|date_format}></td>
                 <td>
                 <span <{if $list.shop_rec==0 }>style="display:none"<{/if}> id="rec1_<{$list.id}>"><a href="javascript:ref(<{$list.id}>,'unrec','rec=<{$list.id}>&action=admin_list&type=0')">点击取消推荐</a></span>
-               
+
                 <span <{if $list.shop_rec==1 }>style="display:none"<{/if}> id="rec2_<{$list.id}>"><a href="javascript:ref(<{$list.id}>,'rec','rec=<{$list.id}>&action=admin_list&type=1')">点击橱窗推荐</a></span>
                 </td>
                 <td>
@@ -133,7 +133,7 @@ $(function(){
             <{foreachelse}>
             <tr>
             	<td colspan="20" class="norecord">
-                	<i></i><span>暂无符合条件的数据记录</span>	
+                	<i></i><span>暂无符合条件的数据记录</span>
                 </td>
             </tr>
             <{/foreach}>
@@ -149,6 +149,6 @@ $(function(){
             </tr>
             </tfoot>
         </table>
-        
-    </div>    
+
+    </div>
 </div>
