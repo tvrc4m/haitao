@@ -1,30 +1,73 @@
-<table border="1" width="100%">
-    <tr align="center">
-        <th><input type="checkbox">全选</th>
-        <th>商品图片</th>
-        <th>商品信息</th>
-        <th>单价（元）</th>
-        <th>商品库存</th>
-        <th>选择库存</th>
-        <th>操作</th>
-    </tr>
-    <form action="">
-    <{foreach item=list from=$products}>
-    <tr align="center">
-        <td><input type="checkbox" name="id[]" value="<{$list.id}>"></td>
-        <td><img src="<{$list.pic}>" alt="<{$list.name}>" height="150" width="200"></td>
-        <td><{$list.name}></td>
-        <td><{$list.price}></td>
-        <td><{$list.stock}>（件）</td>
-        <td><input type="text"style="width: 50px;"></td>
-        <td><a href="">上架</a>||<a href="">下架</a></td>
-    </tr>
-    <{foreachelse}>
-    <tr>
-        <td colspan="20" class="norecord">
-            <i></i><span>暂无符合条件的数据记录</span>
-        </td>
-    </tr>
-    <{/foreach}>
-    </form>
-</table>
+<div class="path">
+    <div>选品上架</div><div class="fr">*商品均来自总店大都国际</div>
+</div>
+<div class="main dadu_select">
+    <div class="wrap">
+        <form action="">
+        <table class="table-list-style">
+            <thead>
+                <tr>
+                    <th width="100"><input type="checkbox" id="checkAll">全选</th>
+                    <th>商品信息</th>
+                    <th width="100">单价（元）</th>
+                    <th width="150">库存</th>
+                    <th width="150">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <{foreach item=list from=$products}>
+                    <tr>
+                        <td><input type="checkbox" name="id[]" value="<{$list.id}>"></td>
+                        <td>
+                            <div class="info">
+                                <div class="img"><img src="<{$list.pic}>" alt="<{$list.name}>"></div>
+                                <div class="text"><{$list.name}></div>
+                            </div>
+                        </td>
+                        <td><{$list.price}></td>
+                        <td>
+                            <div class="stock clearfix">
+                            <a href="javascript:void(0);" class="low_num">-</a>
+                            <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="<{$list.stock}>">
+                            <a href="javascript:void(0);" class="add_num">+</a>
+                            </div>
+                        </td>
+                        <td><a href="">上架</a>&nbsp&nbsp&nbsp&nbsp<a href="">下架</a></td>
+                    </tr>
+                    <{foreachelse}>
+                    <tr>
+                        <td colspan="5" class="norecord">
+                        <i></i><span>暂无符合条件的数据记录</span>
+                        </td>
+                    </tr>
+                <{/foreach}>
+            </tbody>
+        </table>
+        <div class="foot"><span>共选择<i>0</i>类商品</span><input type="submit" class="submit-btn" /></div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+$(function() {
+    $("#checkAll").click(function() {
+        $('input[name="id[]"]').attr("checked",this.checked);
+        $(".dadu_select .foot i").text($("input[name='id[]']:checked").length);
+    });
+    var $subBox = $("input[name='id[]']");
+    $subBox.click(function(){
+        $("#checkAll").attr("checked",$subBox.length == $("input[name='id[]']:checked").length ? true : false);
+        $(".dadu_select .foot i").text($("input[name='id[]']:checked").length);
+    });
+    $(".low_num").click(function(){
+        var num=$(this).next().val()*1;
+        if(num>1)
+        $(this).next().val(num-1);
+        // check_nums()
+    });
+    $(".add_num").click(function(){
+        var num=$(this).prev().val()*1;
+        $(this).prev().val(num+1);
+        // check_nums()
+    });
+});
+</script>
