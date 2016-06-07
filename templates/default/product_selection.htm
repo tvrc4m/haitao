@@ -8,7 +8,7 @@
         <th>选择库存</th>
         <th>操作</th>
     </tr>
-    <form action="">
+    <form action="" method="post">
     <{foreach item=list from=$products}>
     <tr align="center">
         <td><input type="checkbox" name="id[]" value="<{$list.id}>"></td>
@@ -16,7 +16,7 @@
         <td><{$list.name}></td>
         <td><{$list.price}></td>
         <td><{$list.stock}>（件）</td>
-        <td><input type="text"style="width: 50px;"></td>
+        <td><input type="text"style="width: 50px;" name="nums[]"></td>
         <td><a href="">上架</a>||<a href="">下架</a></td>
     </tr>
     <{foreachelse}>
@@ -26,5 +26,7 @@
         </td>
     </tr>
     <{/foreach}>
+        <input type="submit" value="提交">
+        <input type="hidden" name="act" value="insert">
     </form>
 </table>
