@@ -190,7 +190,7 @@ switch ($action)
 		{
 			$s=$_GET['s'];
             $_GET['m'] = preg_replace('#[^a-z]#iuU', '',$_GET['m']);
-			if(($shop_statu=='0' || $shop_statu== '-1' || $shop_statu== '-2' || $shop_statu== '-3') and ($s=="admin_product" || $s=="admin_product_list" || $s=="admin_product_storage" || $s=="admin_product_batch"))
+			if(($shop_statu=='0' || $shop_statu== '-1' || $shop_statu== '-2' || $shop_statu== '-3') and ($s=="product_selection" || $s=="admin_product" || $s=="admin_product_list" || $s=="admin_product_storage" || $s=="admin_product_batch"))
 			{
 				$admin->msg('main.php','shop_statu','failure&n='.$shop_statu);die;
 			}
@@ -342,7 +342,7 @@ else
 
         }
 	//}
-	
+
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
     if(isset($_GET['disp']) && $_GET['disp'] == 1) {
         $tpl->display('withdrawals.htm');

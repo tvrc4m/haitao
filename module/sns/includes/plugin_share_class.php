@@ -128,8 +128,8 @@ class share
 		$this->db->query($sql);
 		$pid=$this->db->fetchField('pid');
 		//修改收藏人气
-		$this->db->query("update ".SPROINFO." set collectnum=collectnum-1 where pid='$pid'");	
-		
+		$this->db->query("update ".SPROINFO." set collectnum=collectnum-1 where pid='$pid'");
+
 		return $this->db->query("delete from ".SPRO." where id='$id'");
 	}
 }
