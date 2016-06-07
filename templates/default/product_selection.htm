@@ -17,7 +17,7 @@
             <tbody>
                 <{foreach item=list key=key from=$products}>
                     <tr>
-                        <td><input type="checkbox" name="pro[<{$key}>][id]" value="<{$list.id}>"></td>
+                        <td><input type="checkbox" name="pro[<{$key}>][id]" ids="id[]" value="<{$list.id}>"></td>
                         <td>
                             <div class="info">
                                 <div class="img"><img src="<{$list.pic}>" alt="<{$list.name}>"></div>
@@ -50,13 +50,13 @@
 <script type="text/javascript">
 $(function() {
     $("#checkAll").click(function() {
-        $('input[name="id[]"]').attr("checked",this.checked);
-        $(".dadu_select .foot i").text($("input[name='id[]']:checked").length);
+        $('input[ids="id[]"]').attr("checked",this.checked);
+        $(".dadu_select .foot i").text($("input[ids='id[]']:checked").length);
     });
-    var $subBox = $("input[name='id[]']");
+    var $subBox = $("input[ids='id[]']");
     $subBox.click(function(){
-        $("#checkAll").attr("checked",$subBox.length == $("input[name='id[]']:checked").length ? true : false);
-        $(".dadu_select .foot i").text($("input[name='id[]']:checked").length);
+        $("#checkAll").attr("checked",$subBox.length == $("input[ids='id[]']:checked").length ? true : false);
+        $(".dadu_select .foot i").text($("input[ids='id[]']:checked").length);
     });
     $(".low_num").click(function(){
         var num=$(this).next().val()*1;
