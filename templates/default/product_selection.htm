@@ -1,0 +1,30 @@
+<table border="1" width="100%">
+    <tr align="center">
+        <th><input type="checkbox">全选</th>
+        <th>商品图片</th>
+        <th>商品信息</th>
+        <th>单价（元）</th>
+        <th>商品库存</th>
+        <th>选择库存</th>
+        <th>操作</th>
+    </tr>
+    <form action="">
+    <{foreach item=list from=$products}>
+    <tr align="center">
+        <td><input type="checkbox" name="id[]" value="<{$list.id}>"></td>
+        <td><img src="<{$list.pic}>" alt="<{$list.name}>" height="150" width="200"></td>
+        <td><{$list.name}></td>
+        <td><{$list.price}></td>
+        <td><{$list.stock}>（件）</td>
+        <td><input type="text"style="width: 50px;"></td>
+        <td><a href="">上架</a>||<a href="">下架</a></td>
+    </tr>
+    <{foreachelse}>
+    <tr>
+        <td colspan="20" class="norecord">
+            <i></i><span>暂无符合条件的数据记录</span>
+        </td>
+    </tr>
+    <{/foreach}>
+    </form>
+</table>

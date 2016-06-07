@@ -48,6 +48,7 @@ $menu=array(
 								'?m=shop&s=admin_shop_set'=>'',
 								'?m=shop&s=admin_wechat'=>'',
 								'?m=shop&s=admin_wapset'=>'',
+								'?m=product&s=product_selection'=>'',
 							)
 						),
 						array(
