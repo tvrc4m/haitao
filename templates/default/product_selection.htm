@@ -3,7 +3,7 @@
 </div>
 <div class="main dadu_select">
     <div class="wrap">
-        <form action="">
+        <form action="" method="post">
         <table class="table-list-style">
             <thead>
                 <tr>
@@ -15,7 +15,7 @@
                 </tr>
             </thead>
             <tbody>
-                <{foreach item=list from=$products}>
+                <{foreach item=list key=key from=$products}>
                     <tr>
                         <td><input type="checkbox" name="id[]" value="<{$list.id}>"></td>
                         <td>
@@ -43,7 +43,7 @@
                 <{/foreach}>
             </tbody>
         </table>
-        <div class="foot"><span>共选择<i>0</i>类商品</span><input type="submit" class="submit-btn" /></div>
+        <div class="foot"><span>共选择<i>0</i>类商品</span><input type="hidden" name="act" value="insert"><input type="submit" class="submit-btn" /></div>
         </form>
     </div>
 </div>
