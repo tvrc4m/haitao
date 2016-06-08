@@ -15,8 +15,8 @@ include_once($config["webroot"]."/lib/smarty/Smarty.class.php");
 $tpl =  new Smarty();
 $tpl -> left_delimiter  = "<{";
 $tpl -> right_delimiter = "}>";
-$tpl -> template_dir    = $config["webroot"] . "/module/$_GET[m]/shop/templates/";
-$tpl -> compile_dir     = $config["webroot"] . "/templates_c/shop/";
+$tpl -> template_dir    = $config["webroot"] . "/module/$_GET[m]/manage/templates/";
+$tpl -> compile_dir     = $config["webroot"] . "/templates_c/manage/";
 $tpl -> assign("lang",$lang);
 //================================================
 $tpl->assign("delimg",$delimg);
@@ -29,5 +29,5 @@ $tpl->assign("stopimg",$stopimg);
 $tpl->assign("setimg",$setimg);
 $tpl->assign("mailimg",$mailimg);
 //====================================
-include("../module/$_GET[m]/shop/$_GET[s]");
+include("../module/$_GET[m]/manage/$_GET[s]");
 ?>

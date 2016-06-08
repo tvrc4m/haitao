@@ -7,8 +7,8 @@ include_once($config["webroot"]."/lib/smarty/Smarty.class.php");
 $tpl =  new Smarty();
 $tpl -> left_delimiter  = "<{";
 $tpl -> right_delimiter = "}>";
-$tpl -> template_dir    = $config["webroot"] . "/shop/templates/".$config['temp'].'/';
-$tpl -> compile_dir     = $config["webroot"] . "/templates_c/shop/";
+$tpl -> template_dir    = $config["webroot"] . "/manage/templates/".$config['temp'].'/';
+$tpl -> compile_dir     = $config["webroot"] . "/templates_c/manage/";
 $tpl->assign("delimg",$delimg);
 $tpl->assign("editimg",$editimg);
 

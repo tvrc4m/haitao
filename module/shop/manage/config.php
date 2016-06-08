@@ -16,6 +16,7 @@
 		'',
 		array(
 			'shop.php,1,shop,店铺管理',
+			'shop_application.php,1,shop,开店申请',
 		)
 	)
 ?>

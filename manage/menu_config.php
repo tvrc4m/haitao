@@ -47,9 +47,9 @@ while ($filename = readdir($handle))
 { 
 	if($filename!="."&&$filename!="..")
 	{
-	  if(file_exists($dir.$filename.'/shop/config.php'))
+	  if(file_exists($dir.$filename.'/manage/config.php'))
 	  {
-		include("$dir/$filename/shop/config.php");
+		include("$dir/$filename/manage/config.php");
 	  }
    }
 }
