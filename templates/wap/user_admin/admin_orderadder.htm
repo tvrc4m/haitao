@@ -82,6 +82,7 @@ $(function(){
     var mobile_spi=$(".mobile_spi") , mobile_spihtm=$(".mobile_spi").html();
     mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"))
     $(".del_context").live("click",function(){
+        var thishtm=$(this).parent();
         var data_id=$(this).attr("data-id");
         $(".orderadder").append("<div class='price-btns-contexts'>"+
                     "<div class='price-btns-context-tops clearfix'>"+
@@ -93,7 +94,11 @@ $(function(){
         dialog_mask.addClass("am-dialog-mask-test");
         btns_contexts.addClass('price-btns-contexts_test');
         $(".detate-btns-context-bot a:first-child").bind("click",function(){
-            location.href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&edid="+data_id+""
+            $.get("/main.php?m=member&s=admin_orderadder&edid="+data_id+"", function(data){
+                thishtm.remove();               
+                dialog_mask.removeClass("am-dialog-mask-test");
+                btns_contexts.removeClass('price-btns-contexts_test');
+            });
         })
         $(".detate-btns-context-bot a:last-child").bind("click",function(){
             dialog_mask.removeClass("am-dialog-mask-test");

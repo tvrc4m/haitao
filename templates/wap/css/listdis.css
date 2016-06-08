@@ -29,7 +29,7 @@
 .price-btns-context-bot a{display: inline-block;width: 100%;font-size: 0.7rem;background-color: #ff5c5c;height: 50px;line-height: 50px;
     color: #fff;letter-spacing: 1px;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;}
 .price-btns-context-top>p{padding: 30px 0;letter-spacing: 1px;}
-.detate-btns-context-bot a{display: inline-block;width:50%;font-size: 16px;background-color: #ff5c5c;height: 50px;line-height: 50px;
+.detate-btns-context-bot a{display: inline-block;width:50%;font-size: 0.7rem;background-color: #ff5c5c;height: 50px;line-height: 50px;
     color: #fff;letter-spacing: 1px;}
 .detate-btns-context-bot a:first-of-type{border-bottom-left-radius: 5px;border-right: 1px solid #fff;box-sizing:border-box;-webkit-box-sizing:border-box;}
 .detate-btns-context-bot a:last-of-type{border-bottom-right-radius: 5px;background-color: #ddd;}
