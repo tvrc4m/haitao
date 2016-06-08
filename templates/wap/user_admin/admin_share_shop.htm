@@ -27,7 +27,7 @@
                     <a class="p-img" href="<{$config.weburl}>/shop.php?uid=<{$slist.userid}>&amp;dist_id=<{$slist.uid}>"><img alt="<{$list.pname}>" src="<{if $slist.logo!=''}><{$slist.logo}><{else}>templates/wap/images/user.png<{/if}>"></a>
                 </div>
                 <div class="shareshop-detail-rt">
-                    <p class="shareshop-detail-name"><a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$slist.userid}>&amp;dist_id=<{$slist.uid}>"><{$slist.company}></a></p>
+                    <p class="shareshop-detail-name"><a href="<{$config.weburl}>/shop.php?uid=<{$slist.userid}>&amp;dist_id=<{$slist.uid}>"><{$slist.company}></a></p>
                     <p class="shareshop-detail-addres"><{$slist.area|truncate:32:"..."}></p>
                 </div>
                 <div class="shareshop-detail-delate" data-id='<{$slist.id}>'><a href="javascript:void(0);">删除</a></div>
