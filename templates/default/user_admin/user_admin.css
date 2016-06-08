@@ -678,6 +678,7 @@ input.submit{border:0 none;border-radius:4px 4px 4px 4px;color:#fff;cursor:point
 /*大都选品上架*/
 .dadu_select table{border:1px solid #e0e0e0;}
 .dadu_select thead tr{line-height: 30px;background: #f5f5f5;}
+.dadu_select #checkAll{float: left;margin: 9px -30px 0 20px;}
 .dadu_select .info .img{width: 85px;height: 85px;float: left;border: 1px solid #e0e0e0;}
 .dadu_select .info img{max-width: 100%;}
 .dadu_select .info .text{float: left;padding: 10px 20px;}

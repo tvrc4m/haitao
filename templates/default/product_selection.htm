@@ -3,7 +3,7 @@
 </div>
 <div class="main dadu_select">
     <div class="wrap">
-        <form action="">
+        <form action="" method="post">
         <table class="table-list-style">
             <thead>
                 <tr>
@@ -15,9 +15,9 @@
                 </tr>
             </thead>
             <tbody>
-                <{foreach item=list from=$products}>
+                <{foreach item=list key=key from=$products}>
                     <tr>
-                        <td><input type="checkbox" name="id[]" value="<{$list.id}>"></td>
+                        <td><input type="checkbox" name="pro[<{$key}>][id]" ids="id[]" value="<{$list.id}>"></td>
                         <td>
                             <div class="info">
                                 <div class="img"><img src="<{$list.pic}>" alt="<{$list.name}>"></div>
@@ -28,7 +28,7 @@
                         <td>
                             <div class="stock clearfix">
                             <a href="javascript:void(0);" class="low_num">-</a>
-                            <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="<{$list.stock}>">
+                            <input onkeyup="check_nums();" size="3" name="pro[<{$key}>][num]" id="nums" type="text" value="<{$list.stock}>">
                             <a href="javascript:void(0);" class="add_num">+</a>
                             </div>
                         </td>
@@ -43,20 +43,20 @@
                 <{/foreach}>
             </tbody>
         </table>
-        <div class="foot"><span>共选择<i>0</i>类商品</span><input type="submit" class="submit-btn" /></div>
+        <div class="foot"><span>共选择<i>0</i>类商品</span><input type="hidden" name="act" value="insert"><input type="submit" class="submit-btn" /></div>
         </form>
     </div>
 </div>
 <script type="text/javascript">
 $(function() {
     $("#checkAll").click(function() {
-        $('input[name="id[]"]').attr("checked",this.checked);
-        $(".dadu_select .foot i").text($("input[name='id[]']:checked").length);
+        $('input[ids="id[]"]').attr("checked",this.checked);
+        $(".dadu_select .foot i").text($("input[ids='id[]']:checked").length);
     });
-    var $subBox = $("input[name='id[]']");
+    var $subBox = $("input[ids='id[]']");
     $subBox.click(function(){
-        $("#checkAll").attr("checked",$subBox.length == $("input[name='id[]']:checked").length ? true : false);
-        $(".dadu_select .foot i").text($("input[name='id[]']:checked").length);
+        $("#checkAll").attr("checked",$subBox.length == $("input[ids='id[]']:checked").length ? true : false);
+        $(".dadu_select .foot i").text($("input[ids='id[]']:checked").length);
     });
     $(".low_num").click(function(){
         var num=$(this).next().val()*1;

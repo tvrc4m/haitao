@@ -86,14 +86,17 @@
             	<th>单　　价：</th>
             	<td><{$de.price}>元 * <{$de.num}>（数量）</td>
             </tr>
+			<!-------2016/6/7 START------>
         	<tr>
             	<th>宝贝优惠：</th>
-            	<td>无优惠</td>
+            	<td><{$de.refund_voucher}></td>
             </tr>
             <tr>
             	<th>宝贝实付：</th>
-            	<td><{$de.price*$de.num}>元</td>
+            	<td><{($de.price*$de.num-$de.refund_voucher)|number_format:2}>元</td>
             </tr>
+			<!-------2016/6/7 END------>
+
         	<tr>
             	<th>运　　费：</th>
             	<td><{if $de.status==4}><{$de.logistics_price|number_format:2}><{else}>0.00<{/if}>元</td>

@@ -41,7 +41,29 @@ class refund
 		unset($de['status']);
 		if($de) @$re = array_merge($re,$de);
 
+		
+		/******************2016/6/7 start*******************/
+		//是否第一次退款，将代金券的金额扣除，第二次退款，直接远看
+
+		$sql = "select * , status as refund_status from ".REFUND." where order_id = '$order_id' $str1 and status > 0 ";
+		$this -> db -> query($sql);
+        $de_re = $this -> db -> fetchRow();
+		
+		if(empty($de_re))
+		{
+			$re['refund_price'] = $re['price'] * $re['num']-$re['voucher_price'];
+		}
+		else
+		{
+			
+			$re['refund_price'] = $re['price'] * $re['num'];
+		}
+
+		/**
 		$re['refund_price'] = ($re['product_price'] - $re['voucher_price']) * ($re['price'] * $re['num']) / $re['product_price'];
+		*/
+
+		/******************2016/6/7 end*******************/
 
 		return $re;
 	}	
