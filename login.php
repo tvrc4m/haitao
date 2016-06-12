@@ -96,19 +96,25 @@ if(!empty($post["action"])&&$post["action"]=="submit")
         if($_SESSION['ucenter']){
             $obj = new Uc_server($_SESSION['ucenter_data']);
         //验证手机号登录
+		$login_phone = "";
         if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
-            $sql="select * from ".MEMBER." where mobile='$post[user]'";
+		{
+			$sql="select * from ".MEMBER." where mobile='$post[user]'";
+			$login_phone = $post['user'];
+		}
         else
             $sql="select * from ".MEMBER." where  user='$post[user]'";
+
         $db->query($sql);
         $re=$db->fetchRow();
-        $us = $obj->userinfo(array('phone'=>$post[user]));
+		$login_phone = empty($login_phone)?(!empty($re)?$re["mobile"]:''):$login_phone;
+        $us = $obj->userinfo(array('phone'=>$login_phone));
         if($re){
             /*$re['mobile']='15763951212';
             $post['password']='812988018';*/
             if($us['password']==md5(md5($post['password']).$us['salt'])){
                 login($re['userid'],$re['user']);
-                $script = $obj->login(array('phone'=>$post['user'],'password'=>$post['password']));
+                $script = $obj->login(array('phone'=>$login_phone,'password'=>$post['password']));
                 if(!empty($post['forward'])){
                     $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                 }else{
