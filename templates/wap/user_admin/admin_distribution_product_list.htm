@@ -53,7 +53,6 @@ $(function(){
     var dlLen=$(".itemSearchResult dl").size();
     if(dlLen<10){
         $(".m_jiazai").hide();
-        $("footer").css({"margin-top":"20px"})
     }
     var page = 0;
     var url = "<{$config.weburl}>/";
@@ -139,6 +138,7 @@ $(function(){
     $(".scrollLoading").scrollLoading();
     $(".price-delate").live("click",function(){
         var data_id=$(this).attr("data-id");
+        var thishtm=$(this).parent().parent().parent();
         $(".itemSearchList").append("<div class='price-btns-contexts'>"+
                     "<div class='price-btns-context-tops clearfix'>"+
                         "<p>确定要删除该商品吗?</P>"+
@@ -149,7 +149,11 @@ $(function(){
         dialog_mask.addClass("am-dialog-mask-test");
         btns_contexts.addClass('price-btns-contexts_test');
         $(".detate-btns-context-bot a:first-child").bind("click",function(){
-            location.href="<{$config.weburl}>/main.php?deid="+data_id+"&m=distribution&s=admin_distribution_product_list"
+            $.get("main.php?deid="+data_id+"&m=distribution&s=admin_distribution_product_list", function(data){
+                thishtm.remove();               
+                dialog_mask.removeClass("am-dialog-mask-test");
+                btns_contexts.removeClass('price-btns-contexts_test');
+            });
         })
         $(".detate-btns-context-bot a:last-child").bind("click",function(){
             dialog_mask.removeClass("am-dialog-mask-test");

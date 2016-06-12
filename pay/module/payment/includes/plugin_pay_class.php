@@ -152,7 +152,7 @@ class pay
         {
             $str = " and payment_type != 'wap_alipay' and payment_type != 'wx_pay'";
         }
-
+		$str = " and payment_type = 'cards' ";
 
 
         $sql = "select * from ".PAYMENT." where active=1 $str order by nums , payment_id ";
