@@ -135,7 +135,7 @@ ins,a{text-decoration:none;}
 .shop .shopli:nth-of-type(even){border-left:none;}
 .shop .shopli:last-of-type(){border-bottom:1px solid #b9b9b9;}
 .shop .shopli .shopli_bottom{padding: 0.5rem;}
-.shopli_bottom_message{width:100%;font-size: 0.6rem;float: left;}
+.shopli_bottom_message{width:100%;font-size: 0.6rem;}
 .shopli_top_img{margin-bottom: 1px;margin: 1rem 0.5rem 0;border-bottom: 1px dotted #666;padding-bottom: 0.2rem;}
 .shopli_top_imgs{margin-bottom: 1px;margin: 0;border-bottom:1px solid #e1e1e1;}
 .select_style li a.shopli_top_as{border-radius: 0px!important;}
@@ -151,7 +151,7 @@ ins,a{text-decoration:none;}
 .money{color: #ff5c5c;text-align: left;}
 .money_d{color: #535353;font-size: 0.6rem;}
 .shop .shopli p{text-align: left;}
-.shopli_bottom_money{float: left;font-size: 0.5rem;}
+.shopli_bottom_money{font-size: 0.5rem;}
 .money_del{text-decoration: line-through;color: #999;}
 /*.shop .shopli.even{margin-left: 2.5%;}*/
 .nearShop {background: #fff;height: auto;text-align: center;}
