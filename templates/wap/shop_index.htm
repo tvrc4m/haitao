@@ -45,17 +45,19 @@
         }       
         htm.html(value_substr);
     }
-    var shop_htm=$(".p-shangpin span") , shop_pin=$(".p-shangpin span").html() , shop_name_htm=$(".p-name a") ,  shop_name=$(".p-name a").html();
-    if(shop_pin==""){
-        shop_htm.html("无");
-    }
-    else{
-        substr(shop_htm,shop_pin,28);
-    }
-    if(shop_name==""){
-        shop_name_htm.html("我的店铺");
-    }
-    else{
-        substr(shop_name_htm,shop_name,16);
-    }
+    var shop_htm=$(".p-shangpin span") , shop_pin=$(".p-shangpin span").html() , shop_name_htm=$(".p-name a") ,  shop_name=$(".p-name a").html() , itemSearchResult=$(".itemSearchList .itemSearchResult").html();
+    if(itemSearchResult != null){
+        if(shop_pin==""){
+            shop_htm.html("无");
+        }
+        else{
+            substr(shop_htm,shop_pin,28);
+        }
+        if(shop_name==""){
+            shop_name_htm.html("我的店铺");
+        }
+        else{
+            substr(shop_name_htm,shop_name,16);
+        }
+    }    
 </script>
