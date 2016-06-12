@@ -1,0 +1,95 @@
+/*public*/
+html,body,address,blockquote,div,dl,form,h1,h2,h3,h4,h5,h6,ol,p,ul,dd,dt,li,object,a,b,em,i,img,samp,span,strong,sub,sup,tt,var,input,select{margin:0;padding:0}
+body{font:12px/1.5 'Microsoft YaHei','Heiti SC',simhei,'Lucida Sans Unicode','Myriad Pro','Hiragino Sans GB',Verdana;color:#333;word-wrap:break-word;word-break:break-all;-webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;}
+html,body{overflow-y:auto;overflow-x:hidden;}
+input,button,img,fieldset{border:0;outline:none}
+input,select{outline:none}
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner{
+border:none;padding:0;
+}
+/* set image max width to 100% */
+img,video{max-width:100%;height:auto;width:auto\9;/* ie8 */}
+/* set html5 elements to block */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body div,body p{margin:0 auto;word-break:normal}
+address,cite,dfn,em,var,i{font-style:normal}
+var{font-family:Verdana,Arial}
+sup{vertical-align:text-top}
+sub{vertical-align:text-bottom}
+/* a */
+a{display:inline-block;color:#333;text-decoration:none;outline:none}
+a:hover{color:#ff5c5c;text-decoration:none}
+/* list */
+ul,ol{list-style:none;}
+/*float*/
+.fl{float:left}
+.fr{float:right}
+.clear{zoom:1;}
+.clear:after{display:block; content:""; height:0; clear:both;visibility:hidden;}
+
+/*Pages Width*/
+.w{width:1212px}
+.w242{width: 242px !important;}
+.w243{width: 243px !important;}
+
+.buyer-shop{background: #f5f5f5;overflow: hidden;}
+.buyer-shop .banner{position: relative;top: 0;left: 50%;margin-left: -960px;}
+.buyer-shop .promise{background: #fff;}
+.buyer-shop .promise ul{border:1px solid #ccc;border-right: none;margin-top: 20px;}
+.buyer-shop .promise li{float: left;width: 241px;height: 100px;border-right: 1px solid #ccc;line-height: 100px;text-align: center;font-size: 18px;}
+.buyer-shop .promise li span{padding-left: 60px;height: 50px;background: url(image/haitao_icon6.png) no-repeat;line-height: 50px;display: inline-block;margin-top: 25px;}
+.buyer-shop .promise li span.icon1{background-position:0 0;}
+.buyer-shop .promise li span.icon2{background-position:0 -64px;}
+.buyer-shop .promise li span.icon3{background-position:0 -127px;}
+.buyer-shop .promise li span.icon4{background-position:0 -191px;}
+.buyer-shop .promise li span.icon5{background-position:0 -250px;}
+
+.buyer-shop .hotclass{width: 1212px;font-size: 0;margin-top: 20px;position: relative;}
+.buyer-shop .hotclass a{width: 20%;}
+.buyer-shop .hotclass span{position: absolute;left: -30px;top: 0;width: 14px;padding: 8px;font-size: 14px;background: #ffa23e;color: #fff;}
+
+.buyer-shop .hotpro{width: 1212px;margin-top: 20px;background: #fff;position: relative;}
+.buyer-shop .hotpro span{position: absolute;left: -30px;top: 0;width: 14px;padding: 8px;font-size: 14px;background: #ffa23e;color: #fff;}
+.buyer-shop .hotpro ul{border-left:1px solid #ccc;}
+.buyer-shop .hotpro li{float: left;width: 242px;height: 334px;position: relative;font-size: 14px;margin-bottom:-1px;}
+.buyer-shop .hotpro li div{padding: 20px;border: 1px solid #ccc;border-left: none;}
+.buyer-shop .hotpro li .goods_img{display: block;width: 200px;height: 200px;}
+.buyer-shop .hotpro p.goods_text img{width: 30px;float: left;}
+.buyer-shop .hotpro p.goods_text a{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 170px;}
+.buyer-shop .hotpro p.goods_price {line-height: 40px;height: 40px;}
+.buyer-shop .hotpro p.goods_price var{font-size: 24px;color: #ff5c5c;}
+.buyer-shop .hotpro p.goods_price s{font-size: 18px;color: #999;float: right;}
+.buyer-shop .hotpro p.goods_option a.fl{background: url(image/icon-com.png) no-repeat 0;padding-left: 20px;}
+.buyer-shop .hotpro p.goods_option a.fr{background: url(image/icon-cart.png) no-repeat 0;padding-left: 20px;}
+.buyer-shop .hotpro i{position: absolute;top: 0;left: 10px;width: 30px;height: 30px;padding: 10px;background: #ff5c5c;font-size: 14px;color: #fff;line-height: 15px;}
+.buyer-shop .hotpro p.goods_text,.buyer-shop .hotpro p.goods_option{line-height: 16px;margin-top: 10px;height:16px;}
+
+.buyer-shop .ad{width: 1212px;margin: 20px auto;}
+.buyer-shop .section{margin-bottom: 20px;width: 1212px;}
+.buyer-shop .section .title{height: 48px;line-height:48px;text-indent: 10px;font-size: 18px;}
+.buyer-shop .section .title span{float: right;margin-right: 10px;font-size: 16px;color: #333;}
+.buyer-shop .section .title.znk{border-left: 20px solid #0096ff;border-bottom: 3px solid #0096ff;color: #0096ff;}
+.buyer-shop .section .title.jknf{border-left: 20px solid #ff758e;border-bottom: 3px solid #ff758e;color: #ff758e;}
+.buyer-shop .section .title.bbxh{border-left: 20px solid #ff875d;border-bottom: 3px solid #ff875d;color: #ff875d;}
+.buyer-shop .section .title.aqwy{border-left: 20px solid #58bc5a;border-bottom: 3px solid #58bc5a;color: #58bc5a;}
+.buyer-shop .section .title.yyfs{border-left: 20px solid #24ccce;border-bottom: 3px solid #24ccce;color: #24ccce;}
+.buyer-shop .section .title.bbhf{border-left: 20px solid #924ee6;border-bottom: 3px solid #924ee6;color: #924ee6;}
+
+.buyer-shop .section{background: #fff;}
+.buyer-shop .section ul{border-left: 1px solid #ccc;}
+.buyer-shop .section li{float: left;width: 242px;height: 333px;position: relative;font-size: 14px;}
+.buyer-shop .section li div{padding: 20px;border: 1px solid #ccc;border-left: none;border-top: none;}
+.buyer-shop .section li .goods_img{display: block;width: 200px;height: 200px;}
+.buyer-shop .section p.goods_text img{width: 30px;float: left;}
+.buyer-shop .section p.goods_text a{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 170px;}
+.buyer-shop .section p.goods_price {line-height: 40px;height: 40px;}
+.buyer-shop .section p.goods_price var{font-size: 24px;color: #ff5c5c;}
+.buyer-shop .section p.goods_price s{font-size: 18px;color: #999;float: right;}
+.buyer-shop .section p.goods_option a.fl{background: url(image/icon-com.png) no-repeat 0;padding-left: 20px;}
+.buyer-shop .section p.goods_option a.fr{background: url(image/icon-cart.png) no-repeat 0;padding-left: 20px;}
+.buyer-shop .section i{position: absolute;top: 0;left: 10px;width: 30px;height: 30px;padding: 10px;background: #ff5c5c;font-size: 14px;color: #fff;line-height: 15px;}
+.buyer-shop .section p.goods_text,.buyer-shop .section p.goods_option{line-height: 16px;margin-top: 10px;height: 16px;}

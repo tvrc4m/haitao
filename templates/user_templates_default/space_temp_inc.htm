@@ -1,68 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><{if $com.shop_title!=''}><{$com.shop_title}> - <{$config.company}><{else}><{$title}> - <{$config.company}><{/if}></title>
-<meta name="description" content="<{if $com.shop_keywords!=''}><{$com.shop_keywords}><{else}><{$keyword}><{/if}>">
-<meta name="keywords" content="<{if $com.shop_description!=''}><{$com.shop_description}><{else}><{$de.description|truncate:100:"...":true}><{/if}>">
-<link rel="stylesheet" type="text/css" href="<{$config.weburl}>/templates/user_templates_default/space.css"/>
-<link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page.css" rel="stylesheet" type="text/css" />
-<script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
-<script language="javascript" src="<{$config.weburl}>/templates/user_templates_default/jquery.Sonline.js"></script>
-<script language="javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
-<script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
-<link rel="stylesheet" href="<{$config.weburl}>/script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
-<script type="text/javascript">
-function getfavshop()
-{	
-	var url = '<{$config.weburl}>/module/sns/ajax_update.php';
-	
-	var uname='<{$smarty.cookies.USER}>';
-	if(uname=='')
-	{
-		alert('<{$lang.no_logo}>');
-		window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-		return false;
-	}
-	var shopid='<{$smarty.get.uid}>';
-	var shopname="<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
-	var pars = 'uname='+uname+'&shopid='+shopid+'&shopname='+shopname;
-	$.post(url, pars,showResponse);
-	function showResponse(originalRequest)
-	{
-		if(originalRequest>1)
-			// alert('<{$lang.fav_ok}>');
-            layer.msg('<{$lang.fav_ok}>', {icon: 0});
-		else if (originalRequest>0)
-			// alert('<{$lang.fav_isbing}>');
-            layer.msg('<{$lang.fav_isbing}>', {icon: 0});
-		else
-			alert('<{$lang.error}>');
-	 }
-	
-}
-// $(function(){
-// 	$("body").Sonline({
-// 		<{if !$cs}>
-// 		DefaultsOpen:false,
-// 		<{/if}>
-// 		Qqlist:"<{$cs}>" //多个QQ用','隔开，QQ和客服名用'|'隔开
-// 	});
-// })
-</script>
-
-<script type='text/javascript'>
-var _vds=_vds||[];window._vds=_vds;(function(){_vds.push(["setAccountId","aa62fdecb181b0b9"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://":"http://")+"dn-growing.qbox.me/vds.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})()})();
-</script>
+  <meta charset="UTF-8">
+  <title>蚂蚁在线</title>
+  <link rel="stylesheet" type="text/css" href="<{$config.weburl}>/templates/user_templates_default/style.css"/>
+  <link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page.css" rel="stylesheet" type="text/css" />
+  <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
 </head>
 <body>
-
 <div class="site-nav">
     <div class="w fn-clear">
         <ul class="fn-left">
             <li class="nav">
-                    <span class="icon4"></span>
-                    <div class="nav-fore1"><a href="<{$config.weburl}>/?temp=wap">手机蚂蚁</a></div>
+                <span class="icon4"></span>
+                <div class="nav-fore1"><a href="<{$config.weburl}>/?temp=wap">手机蚂蚁</a></div>
             </li>
             <li class="nav">
                 <span class="icon7"></span>
@@ -125,449 +76,699 @@ var _vds=_vds||[];window._vds=_vds;(function(){_vds.push(["setAccountId","aa62fd
                     </ul>
                 </div>
             </li>
-            
         </ul>
     </div>
 </div>
 <script type="text/javascript">
 $('.drop-down').hover(function(){
-    $(this).addClass("hover");                   
+    $(this).addClass("hover");
     if($(this).hasClass("cart"))
     {
         $('.cart .nav-fore2').load('<{$config.weburl}>/?m=product&s=cart_number&act=list');
     }
 },function(){
-    $(this).removeClass("hover");   
+    $(this).removeClass("hover");
 });
-$(".fn-left li:first").bind("mouseenter mouseleave",function(){
-       $(".fn-left .sjmy").toggleClass("fn-hide");
-    });
 </script>
-    <div class="newheader">
-        <!--顶部广告位 start-->
-        <div class="m_top_ban"></div>
-        <!--顶部广告位 end-->
-        <!--head start-->
-        <div class="w head newclear">
-            <a href="<{$config.weburl}>" class="icon_logo ml10 mid"></a>
-            <ul class="m_commitment ml60 newclear mid">
-                <li><i class="icon_commitment_01"></i><em class="mid">品质<br>保证</em></li>
-                <li><i class="icon_commitment_02"></i><em class="mid">全球<br>直供</em></li>
-                <li><i class="icon_commitment_03"></i><em class="mid">无忧<br>售后</em></li>
-            </ul>
-            <div class="m_t_search ml40 mid">
-                <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
-                    <input type="hidden" value="product" name="m" id="m">
-                    <input type="hidden" value="list" name="s" id="s">
-                    <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
-                </form>
-            </div>
-            <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" ><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
-                <div class="cart_list">
-                </div>
+<div class="newheader">
+    <!--顶部广告位 start-->
+    <div class="m_top_ban"></div>
+    <!--顶部广告位 end-->
+    <!--head start-->
+    <div class="w head newclear">
+        <a href="<{$config.weburl}>" class="icon_logo ml10 mid"></a>
+        <ul class="m_commitment ml60 newclear mid">
+            <li><i class="icon_commitment_01"></i><em class="mid">品质<br>保证</em></li>
+            <li><i class="icon_commitment_02"></i><em class="mid">全球<br>直供</em></li>
+            <li><i class="icon_commitment_03"></i><em class="mid">无忧<br>售后</em></li>
+        </ul>
+        <div class="m_t_search ml40 mid">
+            <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
+                <input type="hidden" value="product" name="m" id="m">
+                <input type="hidden" value="list" name="s" id="s">
+                <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
+            </form>
+        </div>
+        <div class="m_shop_cart mid pos_re">
+            <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num" ><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
+            <div class="cart_list">
             </div>
         </div>
-        <!--head end-->
-        <!--导航 start-->
-        <div class="m_nav">
-            <div class="w pos_re">
-                <!--menu start-->
-                <dl class="m_menu">
-                    <dt><i class="icon_menu"></i><span class="mid">全部商品分类</span></dt>
-                    <dd class="newclear hidden">
-                        <div class="m_goods_list">
-                            <ul <{if $smarty.get.m=='product' && $smarty.get.s=='index'}><{/if}>>
-                                <{insert name="label" type="cat" temp="pro_cat_shop_left"}>
-                            </ul>
-                        </div>
-                    </dd>
-                </dl>
-                <!--menu end-->
-                <!--nav start-->
-                <ul class="nav ml20 newclear">
-                    <{foreach item=list key=num from=$menus name=nav}>
-                    <li <{if $list.identifier==$current}>class="current"<{/if}>>
-                    <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
-                    <{if $list.scat}>
-                    <div class="i-items">
-                        <{foreach item=slist from=$list.scat}>
-                        <a href="<{if $slist.url|truncate:4:''=='http'}><{$slist.url}><{else}><{$config.weburl}>/<{$slist.url}><{/if}>"><{$slist.name}></a>
-                        <{/foreach}>
-                    </div>
-                    <{/if}>
-                    </li>
-                    <{/foreach}>
-                </ul>
-                <!--nav end-->
-                <div class="m_gz">
-                    <span class="mid money">马上赚钱</span>
-                    <div class="sjmy fn-hide">
-                        <img src="../../../image/default/cash.png" />
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--导航 end-->
     </div>
-    <!--header end-->
+    <!--head end-->
+    <!--导航 start-->
+    <div class="m_nav">
+        <div class="w pos_re">
+            <!--menu start-->
+            <dl class="m_menu">
+                <dt><i class="icon_menu"></i><span class="mid">全部商品分类</span></dt>
+                <dd class="newclear hidden">
+                    <div class="m_goods_list">
+                        <ul <{if $smarty.get.m=='product' && $smarty.get.s=='index'}><{/if}>>
+                            <{insert name="label" type="cat" temp="pro_cat_shop_left"}>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <!--menu end-->
+            <!--nav start-->
+            <ul class="nav ml20 newclear">
+                <{foreach item=list key=num from=$menus name=nav}>
+                <li <{if $list.identifier==$current}>class="current"<{/if}>>
+                <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
+                <{if $list.scat}>
+                <div class="i-items">
+                    <{foreach item=slist from=$list.scat}>
+                    <a href="<{if $slist.url|truncate:4:''=='http'}><{$slist.url}><{else}><{$config.weburl}>/<{$slist.url}><{/if}>"><{$slist.name}></a>
+                    <{/foreach}>
+                </div>
+                <{/if}>
+                </li>
+                <{/foreach}>
+            </ul>
+            <!--nav end-->
+            <div class="m_gz">
+                <span class="mid money">马上赚钱</span>
+                <div class="sjmy fn-hide">
+                    <img src="../../../image/default/cash.png" />
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--导航 end-->
+</div>
+<!--header end-->
 <script>
-$('.menu-items li').hover(function(){                    
+$('.menu-items li').hover(function(){
     $(this).addClass("hover");
 },function(){
-    $(this).removeClass("hover");   
+    $(this).removeClass("hover");
 });
 $(".m_gz").bind("mouseenter mouseleave",function(){
     $(".m_gz .sjmy").toggleClass("fn-hide");
 });
-function get_search_word(k)
-{
-    if(k!='')
-    {
-        var url = '<{$config.weburl}>/ajax_back_end.php';
-        var sj = Math.random();
-        var pars = 'shuiji=' + sj+'&search_flag=1&key='+k;
-        $.post(url, pars,showResponse);
-    }
-
-    function showResponse(originalRequest)
-    {
-        if(originalRequest)
-        {
-            $('#key_select').show();
-            //$('#key_select').css("display",'block');
-            $('#key_select').html(originalRequest);
-        }
-        else
-            $('#key_select').hide();
-    }
-
-}
-function select_word(v)
-{
-    $('#key').val(v);
-    $('#key_select').hide();
-}
 $(".m_menu").bind("mouseenter mouseleave",function(){
     $(".m_menu dd").toggleClass("hidden");
 });
 </script>
-
-<!-- <div class="site-nav">
-	<div class="w">
-    	<ul class="left">
-			<li><script src="<{$config.weburl}>/login_statu.php"></script></li>
-        </ul>
-    	<ul class="right">
-			<li class="nbr"><a href="<{$config.weburl}>/main.php?m=message&s=admin_message_list_inbox" class="note"><{$lang.news_station}></a></li>
-			<li><a href="<{$config.weburl}>/main.php?m=sns&s=admin_share_product">收藏夹</a></li>
-			<li><a href="<{$config.weburl}>/?m=product&s=cart" class="shopping">购物车<span><script src="<{$config.weburl}>/?m=product&s=cart_number"></script></span>件</a></li>
-            <li><a href="<{$config.weburl}>/main.php?cg_u_type=2">卖家中心</a></li>
-            <li><a href="<{$config.weburl}>/main.php?cg_u_type=1">我的商城</a></li>
-            <li><a href="<{$config.weburl}>" class="index"><{$config.company}>首页</a></li>
-        </ul>
-    </div>
+<!-- 内容开始 -->
+<div class="buyer-shop">
+<!--banner start-->
+<div class="pos_re newclear">
+    <script src='<{$config.weburl}>/api/ad.php?id=1&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
 </div>
-
-
-<div class="header">
-	<div class="w">
-        <div class="logo">
-        <a href="<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>">
-       
-        <img width="180" height="40" src="<{if $com.shop_logo}><{$com.shop_logo}><{else}><{if $config.logo}><{$config.logo}><{else}><{$config.weburl}>/image/logo.gif<{/if}><{/if}>" >
-        </a>
-        </div>
-         
-         <div class="shop_info">
-        	<div class="shop_info_simple">
-            	<p><a class="shop_name" href="#"><{$com.company}></a> <{if $chat_open_flag}>&nbsp; <a href="javascript:void(0);" onclick="return chat(<{$com.shop_id}>);"><span class="iconfont" style="color: #FF6600;font-size: 16px;">&#xe635;</span></a><{/if}></p>
-                <div class="shop_credit">
-                    <span><{if $com.sellerpointsimg}><img alt="<{$com.sellerpoints}>" title="<{$com.sellerpoints}>" align="absmiddle" src="<{$config.weburl}>/image/points/<{$com.sellerpointsimg}>"><{else}><{$com.sellerpoints}><{/if}></span>
-                </div>
-            </div>
-            <div class="shop_info_details">
-            	<dl style="width:190px">
-                	<dt>描述相符：</dt>
-                    <dd><span class="star"><em style=" width:<{$score.aw}>%"><{$score.a|number_format:1}></em></span><span class="num"><{$score.a|number_format:1}>分</span></dd>
-                    <dt>服务态度：</dt>
-                    <dd><span class="star"><em style=" width:<{$score.bw}>%"><{$score.b|number_format:1}></em></span><span class="num"><{$score.b|number_format:1}>分</span></dd>
-                    <dt>发货速度：</dt>
-                    <dd><span class="star"><em style=" width:<{$score.cw}>%"><{$score.c|number_format:1}></em></span><span class="num"><{$score.c|number_format:1}>分</span></dd>
-                </dl>
-                <dl style="width:160px">
-                	<{if $com.name}>
-                    <dt>店主：</dt>
-                    <dd><{$com.name}></dd>
-                    <{/if}>
-                    <dt>创店时间：</dt>
-                    <dd><{$com.regtime|strip_tags|truncate:10:""}></dd>
-				</dl>
-              	<dl style="width:150px">
-					<dt>商品数量：</dt>
-                    <dd><{$com.count}></dd>
-                   
-                </dl>
-                <dl style="width:320px">
-                    <dt>所在地区：</dt>
-                    <dd><{$com.area}></dd>
-                </dl>
-            </div>
-        </div>
-        
-		<div class="shop-search">
+<!--banner end-->
+<!-- 承诺开始 -->
+<div class="w promise">
+    <ul class="clear">
+        <li><span class="icon1">海外优选</span></li>
+        <li><span class="icon2">正品保证</span></li>
+        <li><span class="icon3">跨境直发</span></li>
+        <li><span class="icon4">专业配送</span></li>
+        <li class="w242"><span class="icon5">售后保障</span></li>
+    </ul>
+</div>
+<!-- 承诺结束 -->
+<!-- 热门品牌开始 -->
+<div class="hotclass">
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg1.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg2.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg3.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg4.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg5.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg6.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg7.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg8.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg9.jpg"></a>
+    <a><img src="<{$config.weburl}>/templates/user_templates_default/image/haitao_bg10.jpg"></a>
+    <span>热门品牌分类</span>
+</div>
+<!-- 热门品牌结束 -->
+<!-- 热门商品开始 -->
+<div class="hotpro">
+    <ul class="clear">
+        <li>
             <div>
-            <form action="<{$config.weburl}>/shop.php" method="get" id="search_form">
-                <input type="text" autocomplete="off" onkeyup="get_search_word(this.value);" value="<{$smarty.get.keyword}>" id="keyword"  name="keyword" class="search_input">
-                <input type="submit" value="搜本店" class="search_btn">
-                <input type="submit" value="搜平台" class="search_btn_platform">
-                <input id="search" type="hidden" name="search" value="search" />
-                <input id="uid" name="uid" type="hidden" value="<{$smarty.get.uid}>" />
-                <input id="action" name="action" type="hidden" value="product_list" />
-                <input id="s" name="s" type="hidden" value="list" />
-                <input id="m" name="m" type="hidden" value="product" />
-
-            </form>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
             </div>
-            <div id="key_select"></div>
-		</div>
-    </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li class="w243">
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+    </ul>
+    <span>热卖推荐</span>
 </div>
-
-<div style="background:url(<{if $com.shop_banner}><{$com.shop_banner}><{else}><{$config.weburl}>/templates/user_templates_default/img/ad.gif<{/if}>) center top no-repeat;">
-	<div id="nav">
-		<div class="banner"></div>
-		<div class="nav_bg">
-            <div class="w">
-            <ul class="clearfix">
-                <a href="javascript:getfavshop();" class="collection"></a>
-                <{foreach item=list from=$nav_menu}>
-                <{if $list.menu_show=='1'}>
-                    <{if $list.menu_link!=''}>
-                        <li class="<{if $list.menu_link==$smarty.get.action}>active<{else}>normal<{/if}>"  ><a href="shop.php?uid=<{$com.userid}>&action=<{$list.menu_link}>&m=<{$list.module}>"><span><{$list.menu_name}></span></a></li>
-                        <{else}>
-                        <li class="<{if $smarty.get.action==''}>active<{else}>normal<{/if}>" ><a href="<{geturl user=$com.number uid=$com.userid com=$com.company}>"><span><{$list.menu_name}></span></a></li>
-                    <{/if}>
-                <{/if}>
-                <{/foreach}>
-                <{foreach item=list key=key from=$shop_nav}>
-                	<{if $key < 4}>
-                    <li class="<{if $smarty.get.action=='public' and $smarty.get.id==$list.id }>active<{else}>normal<{/if}>"  ><a <{if $list.new_open==1}>target="_blank"<{/if}> href="<{if $list.url}><{$list.url}><{else}>shop.php?uid=<{$com.userid}>&action=public&m=shop&id=<{$list.id}><{/if}>"><span><{$list.title}></span></a></li>
-                    <{/if}>
-                <{/foreach}>
-            </ul>
-            </div>
-        </div>
-    </div>
-</div> -->
-<div class="bgcolor">
-<div class="w">
-    <{if $smarty.get.m=='product' and $smarty.get.s=='detail'}>
-    <{$output}>
-    <{else}>
-    <{if !$smarty.get.action}>
-    <div class="flexslider clearfix" style="margin-left: 0;left: 0;">
-        <ul class="slides">
-            <{if $com.slide.0}>
-            <{foreach item=list key=num from=$com.slide}>
-            <li style="width: 100%; float: left; margin-right: -100%; display: <{if $num==0}>list-item<{else}>none<{/if}>;"><{if $com.slideurl.$num}><a target="_blank" href="<{$com.slideurl.$num}>"><img src="<{$list}>"></a><{else}><img src="<{$list}>"><{/if}></li>
-            <{/foreach}>  
-            <{else}> 
-            <li style="width: 100%; float: left; margin-right: -100%; display: list-item;"> <img src="<{$config.weburl}>/templates/user_templates_default/img/f01.jpg"> </li>
-            <li style="width: 100%; float: left; margin-right: -100%; display: none;"> <img src="<{$config.weburl}>/templates/user_templates_default/img/f02.jpg"> </li>
-            <li style="width: 100%; float: left; margin-right: -100%; display: none;"> <img src="<{$config.weburl}>/templates/user_templates_default/img/f03.jpg"> </li>
-            <li style="width: 100%; float: left; margin-right: -100%; display: none;"> <img src="<{$config.weburl}>/templates/user_templates_default/img/f04.jpg"> </li>
-           <{/if}>
-        </ul>
-    </div>
-    <script type="text/javascript">
-	$(window).load(function() {
-		$('.flexslider').flexslider();
-	}); 
-	</script> 
-    <{/if}>
-    <div id="left">
-        <div class="user-shop clearfix">
-            <div class="user_photo">
-                <h2><{$com.company}> <{if $chat_open_flag}>&nbsp; <a href="javascript:void(0);" onclick="return chat(<{$com.shop_id}>);"><span class="iconfont" style="color: #FF6600;font-size: 18px;">&#xe635;</span></a><{/if}></h2>
-                <dl>
-                    <dt>
-                        <{if $com.logo}>
-                            <img width="65" height="60" src="<{$com.logo}>">
-                        <{else}>
-                            <img src="image/default/nopic.gif" width="65" height="60" />
-                        <{/if}>
-                    </dt>
-                    <dd><b><a target="_blank" href="home.php?uid=<{$com.userid}>"><{$com.name}></a></b></dd>
-					<dd><img title="<{$lang.credit_of_seller}><{$com.sellerpoints}>" align="absmiddle" src="<{$config.weburl}>/image/points/<{$com.sellerpointsimg}>"></dd>
-                    <dd>好评率：<{if $com.favorablerate=='100'}><{$com.favorablerate|number_format:0}><{else}><{$com.favorablerate|number_format:2}><{/if}>%</dd>
-                </dl> 
-            </div>
-            <div class="clear"></div>
-            <div class="user_data">
-                <h2>动态评价</h2>
-                <p>描述相符：<span class="star"><em style=" width:<{$score.aw}>%"><{$score.a|number_format:1}></em></span><span class="num"><{$score.a|number_format:1}>分</span></p>
-                <p>服务态度：<span class="star"><em style=" width:<{$score.bw}>%"><{$score.b|number_format:1}></em></span><span class="num"><{$score.b|number_format:1}>分</span></p>
-                <p>发货速度：<span class="star"><em style=" width:<{$score.cw}>%"><{$score.c|number_format:1}></em></span><span class="num"><{$score.c|number_format:1}>分</span></p>
-                <p>物流速度：<span class="star"><em style=" width:<{$score.dw}>%"><{$score.d|number_format:1}></em></span><span class="num"><{$score.d|number_format:1}>分</span></p>			
-				<h2>店铺信息</h2>
-                <p>认证信息：
-                <img src="image/default/certification<{if $com.shop_auth!='1'}>_no<{/if}>.gif" />
-                <img src="image/default/certautonym<{if $com.shopkeeper_auth!='1'}>_no<{/if}>.gif" />
-                </p>
-                <p>保证金：<{$com.earnest}></p>
-                <p>商品数量：<{$com.count}></p>
-                <p>创店时间：<{$com.regtime|strip_tags|truncate:10:""}></p>
-            </div>
-            <div class="shop_other">
-                <ul>
-                    <li class="info_qrcode">
-                        <a href="javascript:void(0)">
-                        <span>店铺二维码</span><b></b>
-                        <!--<p class="qrcode"><img src="<{$config.weburl}>/uploadfile/phpqrcode/<{$smarty.get.uid}>.jpg"></p>-->
-                        <p class="qrcode"><img src="api/share_qrcode.php?type=shop&shop_id=<{$smarty.get.uid}>&rand=<{math equation=rand(1,10000)}>"></p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="i-search">
-            <h2>店内搜索</h2>
-            <div class="con">
-                <form method="get" action="shop.php" name="" id="">
-                	<table>
-                    	<tr>
-                        	<td width="40">商品：</td>
-                        	<td><input type="text" name="keyword" value="<{$smarty.get.keyword}>" class="text w112"></td>
-                        </tr>
-                    	<tr>
-                        	<td>价格：</td>
-                        	<td>
-                            <input type="text" name="price1" value="<{$smarty.get.price1}>" class="text w48">
-                            -
-                            <input type="text" name="price2" value="<{$smarty.get.price2}>" class="text w48">
-                            </td>
-                        </tr>
-                    	<tr>
-                        	<td></td>
-                        	<td><input type="submit" value="搜索" class="btn"></td>
-                        </tr>
-                    </table>
-                    <input id="search" type="hidden" value="search" />
-                    <input id="uid" name="uid" type="hidden" value="<{$smarty.get.uid}>" />
-                    <input id="action" name="action" type="hidden" value="product_list" />
-                    <input id="m" name="m" type="hidden" value="product" />
-                </form>
-            </div>
-        </div>
-        <{if $custom_cat}>
-        <div class="module_common">
-            <h2>分类</h2>
-            <div class="con">
-                <ul class="submenu">
-                    <li><a class="block_ico" href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product" title="<{$lang.whole}>">全部</a>
-                    </li></li>
-                    <{foreach item=list from=$custom_cat}>
-                    <li>
-                    <a class="<{if $list.con}>none_ico<{else}>block_ico<{/if}>" href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$list.id}>" title="<{$list.name}>"><{$list.name}></a>
-                    <{if $list.con}>
-                    <ul>
-                        <{foreach item=lists from=$list.con}>
-                            <li><a href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product&cat=<{$lists.id}>" title="<{$lists.name}>"><{$lists.name}></a></li>
-                        <{/foreach}>
-                    </ul>
-                    <{/if}>
-                    </li>
-                    <{/foreach}>
-                </ul>
-            </div>
-        </div>
-        <{/if}>
-        <{if count($ulink)>0}>
-        <div class="module_common">
-            <h2>友情链接</h2>
-            <div class="con">
-                <div class="con_child">
-                    <ul class="submenu">
-                        <{foreach item=link from=$ulink}>
-                        <li><a target="_blank" class="link_ico" href="<{$link.url}>" title="<{$link.desc}>"><{$link.name}></a></li>
-                        <{/foreach}>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <{/if}>
-    </div>
-	<div id="right"><{$output}></div>
-    <div class="clear"></div>
-	<{/if}>
+<!-- 热门商品结束 -->
+<!-- 广告位开始 -->
+<div class="ad">
+    <img src="https://www.mayihaitao.com/uploadfile/adv/91349497_undefined">
 </div>
+<!-- 广告位结束 -->
+<!-- 纸尿裤专区开始 -->
+<div class="section">
+    <div class="title znk">纸尿裤专区<span>查看分类</span></div>
+    <ul class="clear">
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li class="w243">
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+    </ul>
 </div>
+<!-- 纸尿裤专区结束 -->
+<!-- 进口奶粉专区开始 -->
+<div class="section">
+    <div class="title jknf">进口奶粉专区<span>查看分类</span></div>
+    <ul class="clear">
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li class="w243">
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+    </ul>
+</div>
+<!-- 进口奶粉专区结束 -->
+<!--宝宝洗护专区开始 -->
+<div class="section">
+    <div class="title bbxh">宝宝洗护专区<span>查看分类</span></div>
+    <ul class="clear">
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li class="w243">
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+    </ul>
+</div>
+<!-- 宝宝洗护专区结束 -->
+<!-- 安全喂养专区开始 -->
+<div class="section">
+    <div class="title aqwy">安全喂养专区<span>查看分类</span></div>
+    <ul class="clear">
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li class="w243">
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+    </ul>
+</div>
+<!-- 安全喂养专区结束 -->
+<!-- 营养辅食专区开始 -->
+<div class="section">
+    <div class="title yyfs">营养辅食专区<span>查看分类</span></div>
+    <ul class="clear">
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li class="w243">
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+    </ul>
+</div>
+<!-- 营养辅食专区结束 -->
+<!-- 宝宝护肤专区开始 -->
+<div class="section">
+    <div class="title bbhf">宝宝护肤专区<span>查看分类</span></div>
+    <ul class="clear">
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li class="w243">
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+        <li>
+            <div>
+            <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
+            <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+            <p class="goods_text">
+                <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
+                <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+            </p>
+            <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+            </div>
+            <i>免税包邮</i>
+        </li>
+    </ul>
+</div>
+<!-- 宝宝护肤专区结束 -->
+</div>
+<!-- 内容结束 -->
+<script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
-    $(".block_ico,.none_ico").click(function(e){
-        var xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
-        var lo = $(this).offset().left
-
-        if($(this).parents("li").find("ul").length > 0)
-        {
-            if($(this).parents("li").find("ul").is(":visible"))
-            {
-
-                $(this).parents("li").find("ul").slideUp()
-                $(this).removeClass("none_ico").addClass("block_ico")
-            }
-            else
-            {
-                $(this).parents("li").find("ul").slideDown()
-                 $(this).removeClass("block_ico").addClass("none_ico")
-            }
-        }
-        
-        if(xx*1 - lo*1 < 22)
-        {
-            return false
-        }
-    })
-
-
-    $(".search_btn").mouseover(function(e){
-        $('#search_form').attr('action', "<{$config.weburl}>/shop.php");
-    })
-
-    $(".search_btn_platform").mouseover(function(e){
-        $('#search_form').attr('action', "<{$config.weburl}>/?m=product&s=list");
-    })
-
-
-    function get_search_word(k)
-    {
-        if(k!='')
-        {
-            var url = '<{$config.weburl}>/ajax_back_end.php';
-            var sj = Math.random();
-            var pars = 'shuiji=' + sj+'&search_flag=1&key='+k;
-            $.post(url, pars,showResponse);
-        }
-
-        function showResponse(originalRequest)
-        {
-            if(originalRequest)
-            {
-                $('#key_select').show();
-                //$('#key_select').css("display",'block');
-                $('#key_select').html(originalRequest);
-            }
-            else
-                $('#key_select').hide();
-        }
-
-    }
-    function select_word(v)
-    {
-        $('#keyword').val(v);
-        $('#key_select').hide();
-    }
-
+$(window).load(function(){
+    $(".flexslider").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true});
+});
 </script>
 <{include file="../../templates/default/footer.htm"}>
