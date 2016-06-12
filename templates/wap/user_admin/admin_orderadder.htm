@@ -80,7 +80,9 @@
 <script type="text/javascript">
 $(function(){
     var mobile_spi=$(".mobile_spi") , mobile_spihtm=$(".mobile_spi").html();
-    mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"))
+    if(mobile_spihtm != null){
+        mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3")) 
+    }   
     $(".del_context").live("click",function(){
         var thishtm=$(this).parent();
         var data_id=$(this).attr("data-id");

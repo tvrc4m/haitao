@@ -40,22 +40,22 @@
                     <div class="shopli_top_img">
                         <img  class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" height="125" width="125" alt="<{$list.pname}>"/>
                     </div>
-                   <!--  <{if $list.stock <= 0}>
-                    <div class="shop_over">已售完</div>
-                    <{/if}> -->
-                    <div class="shopli_bottom clearfix">
+                    <div class="shopli_bottom">
                         <div class="shopli_bottom_message">
                             <p class="shopli_bottom_text"><{$list.pname}></p>
                         </div>
-                        <div class="shopli_bottom_rob clearfix">
+                        <div class="shopli_bottom_rob">
                             <div class="al shopli_bottom_money">
                                 <p class="money"><{$config.money}><{$list.price}></p>
                                 <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                             </div>
-                            <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="shopli_bottom_zhuanxiang">专享抢购</a>
+                            <div class="shopli_bottom_sales">销量<span>1001</span></div>
                         </div>
                     </div>
                 </a>
+               <!--  <{if $list.stock <= 0}>
+                <div class="shop_over">已售完</div>
+                <{/if}> -->
             </li><{/foreach}>
        </ul>
     </div>
@@ -176,7 +176,7 @@ $(function(){
                                                     "<p class='money'>¥"+msg.data[i].price+"</p>"+
                                                     "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
-                                                "<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>"+
+                                                "<div class='shopli_bottom_sales'>销量<span>1001</span></div>"+
                                             "</div>"+
                                        "</div>"+
                                     "</a>"+

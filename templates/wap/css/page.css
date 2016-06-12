@@ -208,7 +208,7 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .wareli_bottom_rob{font-size: 0.6rem;}
 .wareli_bottom_text{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;text-overflow: ellipsis;
     white-space: nowrap;margin-bottom: 0.25rem;}
-.wareli_money_del{text-decoration: line-through;}
+.wareli_money_del{text-decoration: line-through;margin-left: 5px;}
 /*悬停购物车公共样式 新*/
 .addcarts {position: fixed;bottom: 4rem;left: 0rem;padding: 8px;background-color: rgba(0,0,0,0.7);border-radius: 50%;z-index: 11;}
 .addcarts .carts{float: left; background: url(../../../image/wap/wap_haitao_icon61.png) no-repeat;position: relative;width: 24px;

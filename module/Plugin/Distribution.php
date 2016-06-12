@@ -104,21 +104,15 @@ class Plugin_Distribution implements Yf_Plugin_Interface
 		global $shop_statu;
 		global $cominfo;
 		$company = $cominfo;
-
-
 		if (!$distribution_open_flag)
 		{
 			return true;
 		}
-
-
 		//if (!((1==$company['shop_type'] && $company['shop_statu']==-3) || 3==$company['shop_type']))
 		if (!((1==$company['shop_type']) || 3==$company['shop_type']))
 		{
 			return true;
 		}
-
-
 		$menu['distribution'] = array(
 			'name'=>'分销系统',
 			'action'=>'distribution',
@@ -179,6 +173,7 @@ class Plugin_Distribution implements Yf_Plugin_Interface
 		global $lang;
 		if (-3 == $shop_statu || -4 == $shop_statu || -5 == $shop_statu || -6 == $shop_statu)
 		{
+
 			foreach ($menu['main']['sub'] as $id => $val)
 			{
 				if ('商品管理' == $val['name']
