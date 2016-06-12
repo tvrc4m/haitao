@@ -125,7 +125,7 @@ if(is_mobile())
 	{
 		$config['temp']="wap";
 		require_once $config['webroot'].'/cs.php';
-		echo '<img src="'._cnzzTrackPageView(1259417015).'" width="0" height="0"/>';
+		//echo '<img src="'._cnzzTrackPageView(1259417015).'" width="0" height="0"/>';
 	}
 }
 else

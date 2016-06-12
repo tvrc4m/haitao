@@ -39,16 +39,11 @@
         </ul>
     </div>
 </section>
-<!-- <section>
-    <div class="c_guanggao">
-        <a href="javascript:void(0);"><img src="<{if $com.wap_bannar}><{$com.wap_bannar}><{/if}>"></a>
-    </div>
-</section> -->
 <section class="pchart">
     <div class="pchart_con2">最新商品<br><span>Latest product<span></div>
 </section>
 <section class="pchart_add">
-    <a href="<{$config.weburl}>/main.php?m=distribution&s=admin_distribution_product_find">
+    <a href="<{$config.weburl}>/index.php?m=product&s=list&is_dist=1&fx=fx">
         <img src="/image/wap/wap_haitao_icon110.png" alt="+">
         <div class="pchart_add_con"><span>添加商品</span></div>
     </a>
@@ -110,6 +105,17 @@
     <{/if}>
 </div>
 </section>
+<div class="addcarts">
+    <a class="carts" href="/?m=product&s=cart">
+        <span class="cart-num-conts" id='cart_num'>
+            <span class="cart-num"></span>
+            <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+        </span>
+    </a>
+</div>
+<div class="addtop">
+    <a class="top" href="javascript:void(0);"></a>
+</div>
 <section class="bom_nav">
     <ul>
         <li><a href="javascript:void(0);"><img src="../image/wap/wap_haitao_icon103.png" alt="店铺"><p class="bom_nav_color">店铺</p></a></li><li>
@@ -168,6 +174,18 @@
 </script>
 <script>
 $(function(){
+    $(document).scroll(function(){
+        var h = $(document).scrollTop();
+        var wHeight=$(window).height();
+        if(h>wHeight){
+            $(".addtop").show()
+            $(".addtop").click(function(){
+                $(window).scrollTop(0);
+            })
+        }else{
+            $(".addtop").hide()
+        }
+    })
     var liIndex=$(".shoplist .shopli").size();
     if(liIndex==0){
         $(".pchart").hide();
