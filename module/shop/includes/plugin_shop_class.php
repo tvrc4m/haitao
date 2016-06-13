@@ -121,7 +121,7 @@ class shop
 			$scl.=" and grade in ($grade)";
 		}
 		//==================================
-		$sql="SELECT * from ".SHOP."  WHERE 1 $scl $str order by userid desc";
+		$sql="SELECT * from ".SHOP."  WHERE 1 $scl $str and pid=40 order by userid desc";
 		//分页
 		$page = new Page;
 		$page->listRows=20;
@@ -362,8 +362,8 @@ class shop
 			if(!empty($_POST['pid'])){
 				$pid = ",ptype='2',pid='".$_POST['pid']."'";
 			}
-			$sql="UPDATE ".SHOP." SET $lng_lat user='$buser',company='$_POST[company]',tel='$_POST[tel]',provinceid='$_POST[province]',addr='$_POST[addr]',cityid='$_POST[city]',areaid='$_POST[area]',streetid='$_POST[street]',area='$_POST[t]',main_pro='$_POST[main_pro]',uptime='$pn',create_time='$pn',logo='$_POST[logo]',shop_statu='$shop_statu',shop_type='$shop_type'{$pid}  $str $ssql WHERE userid='$buid'";
-			
+			$sql="UPDATE ".SHOP." SET $lng_lat user='$buser',company='$_POST[company]',tel='$_POST[tel]',provinceid='$_POST[province]',addr='$_POST[addr]',cityid='$_POST[city]',areaid='$_POST[area]',streetid='$_POST[street]',area='$_POST[t]',main_pro='$_POST[main_pro]',uptime='$pn',create_time='$pn',logo='$_POST[logo]',shop_statu='$shop_statu',shop_type='$shop_type' {$pid}  $str $ssql WHERE userid='$buid'";
+			echo $sql;die;
 			$re=$this->db->query($sql);
 			
 			$sql="update ".SSET." set  wap_bannar='$_POST[wap_bannar]',shop_logo='$_POST[shop_logo]',shop_banner='$_POST[shop_banner]',shop_title='$_POST[shop_title]',shop_keywords='$_POST[shop_keywords]',shop_description='$_POST[shop_description]' where shop_id='$buid'";
