@@ -129,13 +129,13 @@
 .activity_wareli_bottom_text{overflow: hidden;height: 24px;line-height: 24px;background-color: #ff5c5c;color: #fff;
 	margin: 0 auto;border-radius: 10px;width: 90%;position: absolute;left: 50%;margin-left: -45%;font-size: 0.6rem;}
 .shopinfo_header{position: relative;}
-.shopinfo_header .header_topleft{position: absolute;bottom: 0px;left: 10px;width: 70px;height: 70px;border-radius: 50%;}
+.shopinfo_header .header_topleft{position: absolute;bottom: 0px;left: 10px;width: 75px;height: 75px;border-radius: 50%;}
 .shopinfo_header .header_topleft img{width: 100%;border-radius: 50%;}
-.shopinfo_header .shopinfo-companys{font-size: 0.7rem;color: #ff5c5c;padding-left: 90px;height: 35px;line-height: 35px;background-color: #fff;}
+.shopinfo_header .shopinfo-companys{font-size: 0.7rem;color: #ff5c5c;padding-left: 95px;height: 40px;line-height: 40px;background-color: #fff;}
 .shopinfo_header .shopinfo-companys .shopinfo-titl{float: left;}
-.shopinfo_header .shopinfo-companys .shopinfo-cols{float: right;padding-right: 0.5rem;height: 35px;line-height: 35px;font-size: 0.6rem;}
+.shopinfo_header .shopinfo-companys .shopinfo-cols{float: right;padding-right: 0.5rem;height: 40px;line-height: 40px;font-size: 0.6rem;}
 .shopinfo_header .shopinfo-companys .shopinfo-cols .nav-c{vertical-align: 7px;}
-.shopinfo_header .shopinfo-imphosts{font-size: 0.6rem;color: #fff;padding-left: 90px;height: 35px;line-height: 35px;background-color: #999;}
+.shopinfo_header .shopinfo-imphosts{font-size: 0.6rem;color: #fff;padding-left: 95px;height: 35px;line-height: 35px;background-color: rgba(0,0,0,.7);}
 
 .head a.user_icon {left: 0.5rem;}
 #y_menu_icon {right: 0.5rem;}
