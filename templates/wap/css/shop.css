@@ -136,3 +136,16 @@
 .shopinfo_header .shopinfo-companys .shopinfo-cols{float: right;padding-right: 0.5rem;height: 35px;line-height: 35px;font-size: 0.6rem;}
 .shopinfo_header .shopinfo-companys .shopinfo-cols .nav-c{vertical-align: 7px;}
 .shopinfo_header .shopinfo-imphosts{font-size: 0.6rem;color: #fff;padding-left: 90px;height: 35px;line-height: 35px;background-color: #999;}
+
+.head a.user_icon {left: 0.5rem;}
+#y_menu_icon {right: 0.5rem;}
+.main95{margin:0 auto;overflow:hidden;width: 80%;}
+.s_main{width:93%;overflow:hidden;display:inline-block;vertical-align: top;position: relative;}
+.s_main input.s_images{width:0.7rem;height: 0.7rem;overflow: hidden;background:url(../../../image/wap/wap_haitao_icon56.png) no-repeat;
+	background-size:contain;display:inline-block;position: absolute;right: 10px;top: 21px;}
+.s_main input:-moz-placeholder{color:#555;}
+.s_main input::-moz-placeholder{color:#555;}
+.s_main input:-ms-input-placeholder{color:#555;}
+.s_main input::-webkit-input-placeholder{color:#555;}
+.s_main input {color:#555!important;height: 36px;line-height: 36px;width:100%;border:0;background:#fff;font-size: 0.6rem;
+	margin: 0 auto;margin-top:-3px;border-radius:5px;text-indent: 0.5rem;outline:0;}
