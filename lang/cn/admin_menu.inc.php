@@ -15,6 +15,7 @@ $menu=array(
 								'?m=product&s=admin_product_cat'=>'分类管理',
                                 '?m=product&s=admin_product_count'=>'',
                                 '?m=product&s=admin_product_note'=>'',
+								'?m=product&s=product_selection'=>'点选商品',
 							)
 						 ),
 						 array(
@@ -48,7 +49,7 @@ $menu=array(
 								'?m=shop&s=admin_shop_set'=>'',
 								'?m=shop&s=admin_wechat'=>'',
 								'?m=shop&s=admin_wapset'=>'',
-								'?m=product&s=product_selection'=>'',
+
 							)
 						),
 						array(
@@ -151,6 +152,7 @@ if($flag=='1')
 		}
 	}
 }
+
 if(isset($tpl))
 {
 	$cmenu=!empty($cmenu)?$cmenu:'main';
@@ -158,4 +160,5 @@ if(isset($tpl))
 	$tpl->assign("menu",$menu);
 	$tpl->assign("cmenu",$cmenu);
 }
+
 ?>

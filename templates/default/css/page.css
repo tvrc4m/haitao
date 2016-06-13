@@ -28,7 +28,8 @@ em{font-style:normal;}
 .pr0{padding-right:0px !important;}
 .nbr{border-right:none !important;}
 .hidden{display:none;}
-.clear{clear:both;display:block;font-size:0;height:0;line-height:0;overflow:hidden;}
+.clear{zoom:1;}
+.clear:after{display:block; content:""; height:0; clear:both;visibility:hidden;}
 .clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden;}
 .clearfix{display:block;}
 * + html .clearfix{min-height:1%;}
