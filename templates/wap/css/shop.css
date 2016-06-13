@@ -129,8 +129,8 @@
 .activity_wareli_bottom_text{overflow: hidden;height: 24px;line-height: 24px;background-color: #ff5c5c;color: #fff;
 	margin: 0 auto;border-radius: 10px;width: 90%;position: absolute;left: 50%;margin-left: -45%;font-size: 0.6rem;}
 .shopinfo_header{position: relative;}
-.shopinfo_header .header_topleft{position: absolute;bottom: 0px;left: 10px;width: 70px;height: 70px;}
-.shopinfo_header .header_topleft img{width: 100%;}
+.shopinfo_header .header_topleft{position: absolute;bottom: 0px;left: 10px;width: 70px;height: 70px;border-radius: 50%;}
+.shopinfo_header .header_topleft img{width: 100%;border-radius: 50%;}
 .shopinfo_header .shopinfo-companys{font-size: 0.7rem;color: #ff5c5c;padding-left: 90px;height: 35px;line-height: 35px;background-color: #fff;}
 .shopinfo_header .shopinfo-companys .shopinfo-titl{float: left;}
 .shopinfo_header .shopinfo-companys .shopinfo-cols{float: right;padding-right: 0.5rem;height: 35px;line-height: 35px;font-size: 0.6rem;}
