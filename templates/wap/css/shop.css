@@ -12,7 +12,7 @@
 .cols .nav-c{color: #fff;font-size: 12px;}
 .iconfont_min{color: #999;}
 .collect {
-    color: #f00;
+    color: #ff5c5c;
 }
 .shopinfo-banner-content .header_topleft img {width: 3rem;height: 3rem;border-radius: 50%;}
 .shopli_bottom_rob2{padding-right: 0px!important;}
@@ -89,9 +89,63 @@
 .pchart_add a{display: inline-block;}
 .pchart_add_con{text-align: center;}
 .pchart_add_con span{font-size: 0.8rem;}
-.c_daibao{padding: 0.5rem 0;border-bottom: none;background-color: #fff;}
+.c_daibao{padding: 0.5rem 0;border-bottom: none;background-color: #f5f5f5;}
 .c_daibao ul{padding-bottom: 0;border-bottom: none;}
 .c_daibao ul li{width: 20%;display: inline-block;text-align: center;}
 .c_daibao ul li img{width: 40px;height: 40px;}
+.c_daibao ul li p{margin-top: 5px;}
 .c_guanggao{width: 100%;padding-top: 10px;background-color: #FFF;}
 .c_guanggao img{width: 100%;}
+/*新版店铺样式*/
+.main_container .main_crousel{width:100%;height: 6.65rem;}
+.main_container .main_crousel_inner{overflow: hidden;position: relative;width: 100%;height: 6.65rem;}
+.main_container .t_slide {position: relative;max-width: 720px;height: 6.65rem!important;overflow: hidden;text-align: center;line-height: 0;margin: 0px auto;}
+.main_container .t_slide .slides {position: absolute;width: 100%;top: 0;left: 0;height: 100%;}
+.main_container .t_slide .slides li {position: absolute;width: 100%;top: 0;left: 0;line-height: 0;z-index: 400;}
+.main_container .t_slide .slides li img {width:100%;height: auto;width: auto\9;}
+.main_container .dot {bottom: .2rem;text-align: center;z-index: 400;position: absolute;width: 100%;}
+.main_container .dot span {display: inline-block;width: 8px;height: 8px;margin: 0 2px;background-color: #ccc; border-radius: 100%;}
+.main_container .dot .cur {background-color: #ff5c5c;}
+.main_list_ware .wareli_img{width: 100%;background-color: #fff;padding: 0.5rem 0;border: 1px solid #dadada;
+	box-sizing: border-box;-webkit-box-sizing: border-box;}
+.shop_main_nav{margin: 0.5rem 0;}
+.shop_main_nav ul li{width: 20%;float: left;}
+.shop_main_nav ul li a img{width: 100%;border:none;outline: none;}
+.main_activity{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;background-color: #f5f5f5;}
+.main_activity .main_activity_banner{width: 100%;}
+.main_activity .main_activity_banner img{width: 100%;}
+.main_activity_ware{padding: 0.5rem 7px 0;}
+.main_activity_ware .activity_wareli{position: relative; float:left;width:32%!important;text-align:center;height: auto;overflow: hidden;
+	background: #fff;margin-right:2%;margin-top: 0!important}
+.main_activity_ware .activity_wareli:nth-of-type(3){margin-right:0;}
+.main_activity_ware .activity_wareli a {border: none;padding: 0;}
+.main_activity_ware .activity_wareli_img{width: 100%;background-color: #fff;padding: 0.5rem 0;border: 1px solid #dadada;
+	box-sizing: border-box;-webkit-box-sizing: border-box;position: relative;}
+.main_activity_ware .activity_wareli_img img{width: 80%;padding: 0rem 0 0.3rem;}
+.activity_wareli_bottom{text-align: center;background-color: #fff;padding: 0.9rem 0 0.5rem;font-size: 0.65rem;border: 1px solid #dadada;
+	border-top: none;}
+.activity_wareli_bottom_message{width:100%;font-size: 0.6rem;}
+.activity_wareli_bottom_rob{font-size: 0.6rem;}
+.activity_wareli_bottom_text{overflow: hidden;height: 24px;line-height: 24px;background-color: #ff5c5c;color: #fff;
+	margin: 0 auto;border-radius: 10px;width: 90%;position: absolute;left: 50%;margin-left: -45%;font-size: 0.6rem;}
+.shopinfo_header{position: relative;}
+.shopinfo_header .header_topleft{position: absolute;bottom: 0px;left: 10px;width: 70px;height: 70px;border-radius: 50%;}
+.shopinfo_header .header_topleft img{width: 100%;border-radius: 50%;}
+.shopinfo_header .shopinfo-companys{font-size: 0.7rem;color: #ff5c5c;padding-left: 90px;height: 35px;line-height: 35px;background-color: #fff;}
+.shopinfo_header .shopinfo-companys .shopinfo-titl{float: left;}
+.shopinfo_header .shopinfo-companys .shopinfo-cols{float: right;padding-right: 0.5rem;height: 35px;line-height: 35px;font-size: 0.6rem;}
+.shopinfo_header .shopinfo-companys .shopinfo-cols .nav-c{vertical-align: 7px;}
+.shopinfo_header .shopinfo-imphosts{font-size: 0.6rem;color: #fff;padding-left: 90px;height: 35px;line-height: 35px;background-color: #999;}
+
+.head a.user_icon {left: 0.5rem;}
+#y_menu_icon {right: 0.5rem;}
+.main95{margin:0 auto;overflow:hidden;width: 80%;}
+.s_main{width:93%;overflow:hidden;display:inline-block;vertical-align: top;position: relative;}
+.s_main input.s_images{width:0.7rem;height: 0.7rem;overflow: hidden;background:url(../../../image/wap/wap_haitao_icon56.png) no-repeat;
+	background-size:contain;display:inline-block;position: absolute;right: 10px;top: 21px;}
+.s_main input:-moz-placeholder{color:#555;}
+.s_main input::-moz-placeholder{color:#555;}
+.s_main input:-ms-input-placeholder{color:#555;}
+.s_main input::-webkit-input-placeholder{color:#555;}
+.s_main input {color:#555!important;height: 36px;line-height: 36px;width:100%;border:0;background:#fff;font-size: 0.6rem;
+	margin: 0 auto;margin-top:-3px;border-radius:5px;text-indent: 0.5rem;outline:0;}
