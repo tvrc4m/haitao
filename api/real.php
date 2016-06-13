@@ -88,13 +88,13 @@ class real{
         if(empty($reals)){$erry = -2;return $erry;}else $real = $reals;
         if(empty($logo)){$erry = -6;return $erry;} else $img1 = $logo;
         if(empty($logo1)){$erry = -7;return $erry;} else $img2 = $logo1;
-        if(!empty($user)&&!empty($real)){
+        if(!empty($user)&&!empty($real)&&!empty($logo)&&!empty($logo1)){
             $type = self::validation_filter_id_card($real);
             if($type){
                 $sigin = md5($card_id."|~".$realname."|~".$partner_id."|~".$secret);
                 // 判断type为正确身份证再跳转验证身份证真假
                 $tokens = self::aes($url,array ("card_id" =>$card_id,"realname"=>$realname,"partner_id"=>$partner_id,"sigin"=>$sigin));
-                if($tokens['code'] == "00000" && !empty($_COOKIE['old_url'])){
+                if($tokens['code'] == "00000"){
                     $sql = "update pay_member set identity_verify=true, real_name='".$realname."', identity_card='".$card_id."', real_img1='".$img1."', real_img2='".$img2."' where userid=".$buid;
                     $db -> query($sql);
                     setcookie("identity", 'true', time()+60*60*24*3, "/");
@@ -112,7 +112,7 @@ class real{
 include_once("../includes/global.php");
 $real = new real;
 $post = $_POST?$_POST:$_GET;
-$aa = $real->idcard_authentication($post['real_name'],$post['identity_card'],$post['logo'],$post['logo1']);
+$aa = $real->idcard_authentication($post['real_name'],$post['identity_card'],$post['img1'],$post['img2']);
 
 echo json_encode(array(
     "erry"=>$aa,

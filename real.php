@@ -15,14 +15,15 @@ if(!empty($_POST['action'])){
     $secret = 'da3f333fb4d18dd0181fedb28c9ed6b7';
     $card_id = !empty($post['real']) ? $post['real'] : '';
     $realname = !empty($post['users']) ? $post['users'] : '';
-    $img1 = !empty($post['logo']) ?str_replace($config['weburl'], '',$post['logo'] ) : '';
-    $img2 = !empty($post['logo1']) ? str_replace($config['weburl'], '',$post['logo1'] ) : '';
+
+
 
     $url = "https://m.mayizaixian.cn/apis/api/check_card_info";
     if(empty($post[users])) $erry = -1;else $users = $post[users];
     if(empty($post[real])) $erry = -2;else $real = $post[real];
-    if(empty($img1) || empty($img1)) $erry = -4;else $real = $post[real];
-    if(!empty($post[users])&&!empty($post[real])){
+    if(empty($post['img1'])) $erry = -4;else $img1 = !empty($post['img1']) ?str_replace($config['weburl'], '',$post['img1'] ) : '';
+    if(empty($post['img2'])) $erry = -4;else $img2 = !empty($post['img2']) ? str_replace($config['weburl'], '',$post['img2'] ) : '';
+    if(!empty($post[users])&&!empty($post[real])&&!empty($post['img1'])&&!empty($post['img2'])){
 
         $type = validation_filter_id_card($post[real]);
         if($type){
@@ -43,8 +44,6 @@ if(!empty($_POST['action'])){
         }else{
             $erry = -2;
         }
-    }else{
-        $erry = -1;
     }
     $forward = true;
 }

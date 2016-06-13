@@ -121,7 +121,7 @@ class shop
 			$scl.=" and grade in ($grade)";
 		}
 		//==================================
-		$sql="SELECT * from ".SHOP."  WHERE 1 $scl $str order by userid desc";
+		$sql="SELECT * from ".SHOP."  WHERE 1 $scl $str and pid=40 order by userid desc";
 		//分页
 		$page = new Page;
 		$page->listRows=20;
@@ -359,9 +359,11 @@ class shop
 			{
 				$lng_lat = "`lng` = '$lng',`lat` = '$lat' ,";
 			}
-
-			$sql="UPDATE ".SHOP." SET $lng_lat user='$buser',company='$_POST[company]',tel='$_POST[tel]',provinceid='$_POST[province]',addr='$_POST[addr]',cityid='$_POST[city]',areaid='$_POST[area]',streetid='$_POST[street]',area='$_POST[t]',main_pro='$_POST[main_pro]',uptime='$pn',create_time='$pn',logo='$_POST[logo]',shop_statu='$shop_statu',shop_type='$shop_type' $str $ssql WHERE userid='$buid'";
-			
+			if(!empty($_POST['pid'])){
+				$pid = ",ptype='2',pid='".$_POST['pid']."'";
+			}
+			$sql="UPDATE ".SHOP." SET $lng_lat user='$buser',company='$_POST[company]',tel='$_POST[tel]',provinceid='$_POST[province]',addr='$_POST[addr]',cityid='$_POST[city]',areaid='$_POST[area]',streetid='$_POST[street]',area='$_POST[t]',main_pro='$_POST[main_pro]',uptime='$pn',create_time='$pn',logo='$_POST[logo]',shop_statu='$shop_statu',shop_type='$shop_type' {$pid}  $str $ssql WHERE userid='$buid'";
+			echo $sql;die;
 			$re=$this->db->query($sql);
 			
 			$sql="update ".SSET." set  wap_bannar='$_POST[wap_bannar]',shop_logo='$_POST[shop_logo]',shop_banner='$_POST[shop_banner]',shop_title='$_POST[shop_title]',shop_keywords='$_POST[shop_keywords]',shop_description='$_POST[shop_description]' where shop_id='$buid'";
@@ -375,7 +377,15 @@ class shop
 				$shop_type = 1;
 			}
 
-			$sql="insert into ".SHOP." (company,tel,provinceid,addr,cityid,areaid,streetid,area,userid,user,logo,main_pro,grade,catid,uptime,create_time,shop_statu,shop_type,`lng`,`lat`) VALUES ('$_POST[company]','$_POST[tel]','$_POST[province]','$_POST[addr]','$_POST[city]','$_POST[area]','$_POST[street]','$_POST[t]','$buid','$buser','$_POST[logo]','$_POST[main_pro]','$_POST[grade]','$catid','$pn','$pn',$shop_statu,$shop_type,'$lng','$lat')";
+			if(!empty($_POST['pid'])){
+				$pid = $_POST['pid'];
+				$ptype = 2;
+			}else{
+				$pid = '';
+				$ptype = '';
+			}
+
+			$sql="insert into ".SHOP." (company,tel,provinceid,addr,cityid,areaid,streetid,area,userid,user,logo,main_pro,grade,catid,uptime,create_time,shop_statu,shop_type,pid,ptype,`lng`,`lat`) VALUES ('$_POST[company]','$_POST[tel]','$_POST[province]','$_POST[addr]','$_POST[city]','$_POST[area]','$_POST[street]','$_POST[t]','$buid','$buser','$_POST[logo]','$_POST[main_pro]','$_POST[grade]','$catid','$pn','$pn',$shop_statu,$shop_type,$pid,$ptype,'$lng','$lat')";
 			$re=$this->db->query($sql);
 			
 			$sql="insert into ".SSET." (shop_id,shop_logo,shop_banner,shop_title,shop_keywords,shop_description,wap_bannar) values ('$buid','$_POST[shop_logo]','$_POST[shop_banner]','$_POST[shop_title]','$_POST[shop_keywords]','$_POST[shop_description]','$_POST[wap_bannar]')";
