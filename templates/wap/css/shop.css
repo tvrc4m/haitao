@@ -97,6 +97,15 @@
 .c_guanggao{width: 100%;padding-top: 10px;background-color: #FFF;}
 .c_guanggao img{width: 100%;}
 /*新版店铺样式*/
+.nav_shop{background-color: transparent;width:100%;font-size:12px;height:50px;line-height:50px;
+	display:-webkit-box;left:0;position:fixed;top:0;z-index:1999;}
+.nav_shop_s{width: 50%;text-align: left;}
+.nav_shop_e{width: 50%;text-align: right;}
+.nav_shop i{display: inline-block;height: 35px;width: 35px;margin-top: 7.5px;border-radius: 50%;}
+i.fanhui_icon_shop{background: url(../../../image/wap/wap_haitao_icon10.png) center no-repeat;background-size: 75%;
+	background-color: rgba(0,0,0,.5);margin-left: 0.5rem;}
+i.home_icon_shop {background: url(../../../image/wap/wap_haitao_icon9.png) center 3px no-repeat;background-size: 75%;
+	background-color: rgba(0,0,0,.5);margin-right: 0.5rem;}
 .main_container .main_crousel{width:100%;height: 6.65rem;}
 .main_container .main_crousel_inner{overflow: hidden;position: relative;width: 100%;height: 6.65rem;}
 .main_container .t_slide {position: relative;max-width: 720px;height: 6.65rem!important;overflow: hidden;text-align: center;line-height: 0;margin: 0px auto;}
