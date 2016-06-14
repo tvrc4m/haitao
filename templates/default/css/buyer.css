@@ -355,3 +355,32 @@ td.al i{color:#000;font-size:11px;}
 .btn2{cursor: pointer;padding: 0 5px;}
 .delete .checkall{margin-top: -3px;vertical-align: middle;margin-left: 0;}
 .tl{text-align: left !important;}
+/*申请退款页面*/
+.layout .path span.tel{float: right;color: #ff5c5c;font-size: 16px;font-family: "微软雅黑"; margin: 0;padding-left: 20px;background:url(../../../image/default/user_admin/mayi_icon10.png) 0 no-repeat;}
+.apply_left{width: 610px;float: left;}
+.apply_left h1{color: #ff5c5c;font-size: 18px;line-height: 40px;padding-left: 30px;background: url(../../../image/default/user_admin/mayi_icon8.png) 0 no-repeat;}
+.apply_left table{margin-top: 20px;}
+.apply_left table tr{vertical-align: top;display: block;min-height: 40px;}
+.apply_left table select{width: 200px;line-height: 20px;height: 20px;}
+.apply_left table textarea{width: 500px;min-height: 60px;}
+.apply_left table em{font-size: 14px;color: #ff5c5c;}
+.apply_left input[type='submit']{font-family: "微软雅黑";width: 170px;height: 40px;background: #ff5c5c;border-radius: 5px;color: #fff;font-size: 16px;}
+.apply_left td ul li{float: left;width: 70px;height: 70px;margin-right: 20px;}
+.apply_left .problem{margin: 40px auto;padding-top: 20px;border-top: 1px dotted #e0e0e0;}
+.apply_left .problem h1{background: url(../../../image/default/user_admin/mayi_icon9.png) 0 no-repeat;}
+.apply_left .problem  li{line-height: 30px;}
+.apply_left .problem  li span{width: 10px;display: inline-block;}
+.apply_right{width:300px;float: right;border:1px solid #e0e0e0;}
+.apply_right h1{font-size: 16px;color: #ff5c5c;height: 40px;line-height: 40px;padding-left: 20px;border-bottom: 1px solid #e0e0e0;}
+.apply_right table{margin: 20px;}
+.apply_right table em{color: #ff5c5c;font-size: 14px;}
+.apply_right p{margin: 20px;}
+.apply_right p img{width: 85px;height: 85px;border:1px solid #e0e0e0;float: left;}
+.apply_right p a{float: right;width: 160px;margin-top: 20px;}
+/*退款申请详情*/
+.apply_detail .apply_left table h1{background: url(../../../image/default/user_admin/mayi_icon11.png) 0 no-repeat;}
+.apply_detail .apply_left .button{padding-top: 40px;border-top: 1px dotted #e0e0e0;}
+.apply_detail .apply_left .button a{width: 170px;height: 40px;line-height:40px;color: #fff;background: #ff5c5c;text-align: center;margin: 0 10px;border-radius: 5px;}
+.apply_detail .apply_left table{margin: 20px 0;}
+.apply_detail .apply_left table tr{min-height: auto;line-height: 25px;}
+.apply_detail .apply_right hr{border:none;border-bottom: 1px dotted #e0e0e0;}
