@@ -5,7 +5,7 @@ if(empty($_SESSION["ADMIN_USER"])||empty($_SESSION["ADMIN_PASSWORD"]))
 	top.location.href="index.php";   
 	</SCRIPT>';
 	die;
-}	
+}
 if(empty($sctiptName))
 {
 	msg("noright.php");
@@ -25,7 +25,7 @@ if(!empty($_POST)&&is_array($_POST))
 			$p.=','.$v;
 	}
 }
-	
+
 if($p!='')
 	$p=csubstr($_SERVER['REQUEST_URI'].'&post='.$p,0,30);
 else
@@ -39,12 +39,22 @@ if(!empty($sctiptName))
 {
 	if($_SESSION["ADMIN_TYPE"]=="1")
 	{
-		$sql="SELECT * FROM ".MEMBER."  WHERE mobile='".$_SESSION["ADMIN_USER"]."' AND password='".$_SESSION["ADMIN_PASSWORD"]."'";
+		$sql="SELECT * FROM ".ADMIN."  WHERE user='".$_SESSION["ADMIN_USER"]."' AND password='".$_SESSION["ADMIN_PASSWORD"]."'";
+	}
+	else
+	{
+		$sql="
+			SELECT
+			  a.province,a.city,a.area,a.id,b.group_perms
+			FROM
+			  ".ADMIN." a left join ".GROUP." b on a.group_id=b.group_id
+			WHERE
+			    a.user='".$_SESSION["ADMIN_USER"]."' AND a.password='".$_SESSION["ADMIN_PASSWORD"]."'";
 	}
 	$db->query($sql);unset($sql);
 	$re=$db->fetchRow();
 	if(!$re["id"])
-	{	
+	{
 		msg("index.php");//用户名或密码错误
 	}
 	else
