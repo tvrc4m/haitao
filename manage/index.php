@@ -25,6 +25,9 @@ if(!empty($_POST["user"]))
 
         $db->query($sql);
         $re=$db->fetchRow();
+        $sql = "select * from mallbuilder_shop where userid={$re[userid]}";
+        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
+var_dump($db);die;
         $login_phone = empty($login_phone)?(!empty($re)?$re["mobile"]:''):$login_phone;
         $us = $obj->userinfo(array('phone'=>$login_phone));
         if($us['password']==md5(md5($_POST['password']).$us['salt']))
