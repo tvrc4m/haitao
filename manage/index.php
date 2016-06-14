@@ -1,5 +1,6 @@
 <?php
 include_once("../includes/global.php");
+include_once ("../includes/uc_server.php");
 //================================================
 if(!empty($_POST["user"]))
 {
@@ -10,92 +11,29 @@ if(!empty($_POST["user"]))
     }
     else
     {
-        $user=trim($_POST["user"]);
-        $ps=md5(trim($_POST["password"]));
-        $sql="
-			SELECT
-			   a.province,a.city,a.area,a.street,a.type,a.lang,b.group_perms,a.id,a.logonums
-			FROM
-			  ".ADMIN." a left join ".GROUP." b on a.group_id=b.group_id
-			WHERE
-			    a.user='$user' AND a.password='$ps'";
+        $obj = new Uc_server($_SESSION['ucenter_data']);
+        $ps=md5(md5($_POST['password']).$us['salt']);
+        //验证手机号登录
+        $login_phone = "";
+        if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $_POST['user']))
+        {
+            $sql="select * from ".MEMBER." where mobile='$_POST[user]'";
+            $login_phone = $_POST['user'];
+        }
+        else
+            $sql="select * from ".MEMBER." where  user='$_POST[user]'";
+
         $db->query($sql);
         $re=$db->fetchRow();
-        if($re["id"])
+        $login_phone = empty($login_phone)?(!empty($re)?$re["mobile"]:''):$login_phone;
+        $us = $obj->userinfo(array('phone'=>$login_phone));
+        if($us['password']==md5(md5($_POST['password']).$us['salt']))
         {
-            $_SESSION["ADMIN_USER_ID"]=$re['id'];
-            $_SESSION["ADMIN_USER"]=$user;
+            $_SESSION["ADMIN_USER"]=$_POST["user"];
             $_SESSION["ADMIN_PASSWORD"]=$ps;
-            $_SESSION["ADMIN_TYPE"]=$re['type'];//是否管理员
-            $_SESSION["ADMIN_LANG"]=$re['lang']==''?$config['language']:$re['lang'];
-            if(!empty($re["province"]))
-                $_SESSION["province"]=$re["province"];
-            else
-                $_SESSION["province"]=NULL;
+            $_SESSION["ADMIN_TYPE"]=1;//是否管理员
+            $_SESSION["ADMIN_LANG"]='cn';
 
-            if(!empty($re["city"]))
-                $_SESSION["city"]=$re["city"];
-            else
-                $_SESSION["city"]=NULL;
-
-            if(!empty($re["area"]))
-                $_SESSION["area"]=$re["area"];
-            else
-                $_SESSION["area"]=NULL;
-
-            if(!empty($re["street"]))
-                $_SESSION["street"]=$re["street"];
-            else
-                $_SESSION["street"]=NULL;
-
-            $sql="update ".ADMIN." set logonums=logonums+1 where user='".$user."'";
-            $db->query($sql);
-
-            if($re['logonums'] == 0)
-            {
-                $time = time();
-                @set_time_limit(0);
-                $dir="../install/data/";
-                $files = scandir($dir);
-                foreach($files as $val)
-                {
-                    if($val!="." and $val!="..")
-                    {
-                        $fp=fopen($dir.$val,"r");
-                        if($val == "district.sql")
-                        {
-                            $sql=fread($fp,filesize($dir.$val));
-                            fclose($fp);
-                            $ar=explode(";",$sql);
-                            foreach($ar as $k=>$ve)
-                            {
-                                if($k<(count($ar)-1))
-                                {
-                                    $ve=str_replace("mallbuilder_",$config['table_pre'],$ve);
-
-                                    $qre=$db->query($ve);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            while(!feof($fp))
-                            {
-                                $sql=fgets($fp);
-                                if($sql)
-                                {
-                                    $ve=str_replace("mallbuilder_",$config['table_pre'],$sql);
-                                    $ve=str_replace("[WEBURL]",$config['weburl'],$ve);
-                                    $ve=str_replace("[TIME]",$time,$ve);
-                                    $ve=str_replace("[DATE]",date("Y-m-d H:i:s",$time),$ve);
-                                    $qre=$db->query($ve);
-                                }
-                            }
-                            fclose($fp);
-                        }
-                    }
-                }
-            }
             header("location:main.php");
             exit();
         }

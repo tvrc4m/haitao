@@ -43,7 +43,7 @@ if($_GET['orderstatus']!=''){
     }
 }
 //buyer_id='0' and
-$sql="select * from ".ORDER." where pid='40' and userid!=''  $subsql order by id desc";
+$sql="select * from ".ORDER." where pid='149' and userid!=''  $subsql order by id desc";
 //=============================
 $page = new Page;
 $page->listRows=20;
