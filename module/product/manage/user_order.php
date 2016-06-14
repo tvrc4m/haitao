@@ -2,7 +2,7 @@
 include_once("../includes/page_utf_class.php");
 //=============================================
 if(!empty($_GET['deid']))
-{	
+{
 	$sql="update ".ORDER." set status='-1' where order_id='$_GET[deid]'";
 	$db->query($sql);
 }
@@ -43,7 +43,7 @@ if($_GET['orderstatus']!=''){
     }
 }
 //buyer_id='0' and
-$sql="select * from ".ORDER." where userid!=''  $subsql  order by id desc";
+$sql="select * from ".ORDER." where pid='40' and userid!=''  $subsql order by id desc";
 //=============================
 $page = new Page;
 $page->listRows=20;
@@ -117,13 +117,13 @@ $re=$db->getRows();
         <td width="27%"><?php echo $v['consignee']?>/<?php echo $v['consignee_tel']?><?php echo $v['consignee_mobile']?></td>
         <td width="12%" align="left"><?php echo date("Y-m-d H:i",$v['create_time']); ?></td>
         <td width="12%" align="center"><a href="sendmail.php?userid=<?php echo $v['seller_id']; ?>"><?php echo $mailimg;?></a> <a href="?m=product&s=order_detail.php&oid=<?php echo $v['order_id'];?>"><?php echo $editimg; ?></a>
-       
+
           <?php if($v['status']==0||$v['status']==4||$v['status']==6){?>
           <a onClick="return confirm('确信删除吗？');" href="?m=product&s=user_order.php&deid=<?php echo $v['order_id'];?>"><?php echo $delimg;?></a>
           <?php } ?>
         </td>
       </tr>
-      <?php 
+      <?php
         }
 	?>
       <tr>

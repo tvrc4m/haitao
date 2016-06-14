@@ -1,8 +1,8 @@
 <?php
 include_once("config.php");
 include_once("menu_config.php");
-if(!is_file($config['webroot']."/image/phpqrcode.jpg")) 
-{	
+if(!is_file($config['webroot']."/image/phpqrcode.jpg"))
+{
 	include "lib/phpqrcode/phpqrcode.php";
 	$value=$config['weburl'];
 	$errorCorrectionLevel = 'L';

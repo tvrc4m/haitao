@@ -10,7 +10,7 @@ if(empty($sctiptName))
 {
 	msg("noright.php");
 	exit();
-}	
+}
 if(!isset($_SESSION["ADMIN_USER"]))
 	$_SESSION["ADMIN_USER"]=NULL;
 //=================================
@@ -39,17 +39,7 @@ if(!empty($sctiptName))
 {
 	if($_SESSION["ADMIN_TYPE"]=="1")
 	{
-		$sql="SELECT * FROM ".ADMIN."  WHERE user='".$_SESSION["ADMIN_USER"]."' AND password='".$_SESSION["ADMIN_PASSWORD"]."'";
-	}
-	else
-	{
-		$sql="
-			SELECT
-			  a.province,a.city,a.area,a.id,b.group_perms
-			FROM
-			  ".ADMIN." a left join ".GROUP." b on a.group_id=b.group_id
-			WHERE
-			    a.user='".$_SESSION["ADMIN_USER"]."' AND a.password='".$_SESSION["ADMIN_PASSWORD"]."'";
+		$sql="SELECT * FROM ".MEMBER."  WHERE mobile='".$_SESSION["ADMIN_USER"]."' AND password='".$_SESSION["ADMIN_PASSWORD"]."'";
 	}
 	$db->query($sql);unset($sql);
 	$re=$db->fetchRow();
