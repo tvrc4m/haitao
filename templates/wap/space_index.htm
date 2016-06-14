@@ -1,9 +1,8 @@
 <link href="<{$config.weburl}>/templates/wap/css/shop.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-    /*.mains{height: 0;}
-    .main_crousel_inner .t_slide{height: 6.65rem!important;}*/
+    .mains{height: 0;}
 </style>
-<!-- <section class="main_container">
+<section class="main_container">
 <div class="main">
     <header class="head clearfix">
         <section id="J_search" class="in-search cc-search showoff clearfix">
@@ -22,14 +21,14 @@
         </section>
     </header>
 </div>
-</section> -->
-<header>
+</section>
+<!-- <header>
     <div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
         <section class="nav-c"><span><{$com.company}></span></section>
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
-</header>
+</header> -->
 <div class='collect_box_content'></div>
 <div class="shopinfo_header">
     <div class="shopinfo-companys clearfix">
@@ -442,6 +441,10 @@ $(function(){
             })
         }else{
             $jj(".addtop").hide()
+        }
+        if(h > 50){
+            $jj(".main").css({"position":"fixed","top":0,"width":"100%","z-index":"999","left":0})
+            $jj(".shopinfo_header").eq(0).css({"margin-top":"50px"});
         }
     })
     $jj(".scrollLoading").scrollLoading();
