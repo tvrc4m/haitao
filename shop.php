@@ -20,7 +20,7 @@ if($action!="mail"&&$action!="comments"&&empty($_GET['template'])&&$buid!=$_GET[
 	$dir=get_userdir($_GET['uid']);//根据会员ID生成缓存目录
 	useCahe('shop/'.$dir,true);
 }
-if(!$tpl->is_cached("space_temp_inc.htm",$flag))
+if(!$tpl->is_cached("space_temp_inca.htm",$flag))
 {
 	//重新定向
 	if (isset($_REQUEST['shop_id']))
