@@ -12,14 +12,16 @@ if(!empty($act) && $act == 'insert'){
         }
     }
     $id = trim($id,',');
-    $sql = "select member_id,member_name,catid,type,`name`,subhead,keywords,brand,market_price,price,stock,sales,`code`,pic,pic_more,start_time_type,start_time,valid_time,weight,cubage,province_id,city_id,area_id,street_id,area,freight_id,freight_type,post_price,express_price,ems_price,clicks,rank,uptime,`status`,is_shelves,custom_cat_id,promotion_id,goodbad,shop_rec,is_invoice,is_tg,con,is_virtual,national,is_dist,down_reason,ship_free_id,skuid,trade,pid,ptype from mallbuilder_product where id in($id)";
+    $sql = "select id,member_id,member_name,catid,type,`name`,subhead,keywords,brand,market_price,price,stock,sales,`code`,pic,pic_more,start_time_type,start_time,valid_time,weight,cubage,province_id,city_id,area_id,street_id,area,freight_id,freight_type,post_price,express_price,ems_price,clicks,rank,uptime,`status`,is_shelves,custom_cat_id,promotion_id,goodbad,shop_rec,is_invoice,is_tg,con,is_virtual,national,is_dist,down_reason,ship_free_id,skuid,trade,pid,ptype from mallbuilder_product where id in($id)";
     $db->query($sql);
     $pro = $db->getRows();
     foreach($pro as $key => $val){
-        $in_sql ="insert into mallbuilder_product(member_id,member_name,catid,type,`name`,subhead,keywords,brand,market_price,price,stock,sales,`code`,pic,pic_more,start_time_type,start_time,valid_time,weight,cubage,province_id,city_id,area_id,street_id,area,freight_id,freight_type,post_price,express_price,ems_price,clicks,rank,uptime,`status`,is_shelves,custom_cat_id,promotion_id,goodbad,shop_rec,is_invoice,is_tg,con,is_virtual,national,is_dist,down_reason,ship_free_id,skuid,trade,pid,ptype) VALUE (";
+        $in_sql ="insert into mallbuilder_product(member_id,member_name,catid,type,`name`,subhead,keywords,brand,market_price,price,stock,sales,`code`,pic,pic_more,start_time_type,start_time,valid_time,weight,cubage,province_id,city_id,area_id,street_id,area,freight_id,freight_type,post_price,express_price,ems_price,clicks,rank,uptime,`status`,is_shelves,custom_cat_id,promotion_id,goodbad,shop_rec,is_invoice,is_tg,con,is_virtual,national,is_dist,down_reason,ship_free_id,skuid,trade,pid,ptype,proid) VALUE (";
         $str = '';
         foreach($val as $k => $v){
-            if($k=='pid'){
+            if($k=='id'){
+                continue;
+            }elseif($k=='pid'){
                 $str .= "'".$val['member_id']."',";
             }elseif($k=='stock'){
                 $str .= $nums[$key].",";
@@ -36,7 +38,7 @@ if(!empty($act) && $act == 'insert'){
             }
         }
         $str = trim($str,',');
-        $in_sql = $in_sql.$str.")";
+        $in_sql = $in_sql.$str.','.$val['id'].")";
         $db->query($in_sql);
     }
     msg('main.php?m=product&s=product_selection');
