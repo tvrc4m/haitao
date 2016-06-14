@@ -11,7 +11,7 @@ if(!empty($_POST["user"]))
     }
     else
     {
-        //验证手机号登录
+       /* //验证手机号登录
         $login_phone = "";
         if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $_POST['user']))
         {
@@ -28,14 +28,20 @@ if(!empty($_POST["user"]))
         $login_phone = empty($login_phone)?(!empty($re)?$re["mobile"]:''):$login_phone;
         $obj = new Uc_server($_SESSION['ucenter_data']);
         $us = $obj->userinfo(array('phone'=>$login_phone));
-        $ps=md5(md5($_POST['password']).$us['salt']);
-        if($us["status"])
+        $ps=md5(md5($_POST['password']).$us['salt']);*/
+        $user=trim($_POST["user"]);
+        $ps=md5(trim($_POST["password"]));
+    /*    $obj = new Uc_server($_SESSION['ucenter_data']);
+        $us = $obj->userinfo(array('phone'=>$user));
+        var_dump($us);die;*/
+        if(1)
         {
-            $_SESSION["ADMIN_USER_ID"]=1;
-            $_SESSION["ADMIN_USER"]=$login_phone;
+
+            $_SESSION["ADMIN_USER"]=$user;
             $_SESSION["ADMIN_PASSWORD"]=$ps;
             $_SESSION["ADMIN_TYPE"]=1;//是否管理员
-            $_SESSION["ADMIN_LANG"]='cn';
+            $_SESSION["ADMIN_LANG"]='cn';//$re['lang']==''?$config['language']:$re['lang'];
+
 
             header("location:main.php");
             exit();
