@@ -34,7 +34,7 @@ class curlUp{
         $list['goods_order_count']=1;
         $list['msg'] = '';
         $list['goods_order'][0]['order_code']=$orderList['order_id'];
-        $list['goods_order'][0]['order_sum_money']=(string)($orderList['product_price']+$orderList['logistics_price']);//$orlist['order']['logistics_price']);
+        $list['goods_order'][0]['order_sum_money']=(string)($orderList['price']+$orderList['logistics_price']);//$orlist['order']['logistics_price']);
         $list['goods_order'][0]['order_member_name']=$orderList['consignee'];
         $list['goods_order'][0]['order_member_id_number']=$orderList['identity_card'];
         $list['goods_order'][0]['order_member_phone']=$orderList['consignee_mobile'];
@@ -44,7 +44,7 @@ class curlUp{
         $list['goods_order'][0]['order_member_address']=$addr[3];
         $list['goods_order'][0]['order_logistics_name']=$orderList['logistics_name'];
         $list['goods_order'][0]['order_logistics_money']=$orderList['logistics_price'];
-        $list['goods_order'][0]['order_goods_money']=$orderList['product_price'];
+        $list['goods_order'][0]['order_goods_money']=$orderList['price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['id']='';
         $list['goods_order'][0]['goods_attributes_list'][0]['sku_id']=$orderList['skuid'];
         $list['goods_order'][0]['goods_attributes_list'][0]['price']=$orderList['price'];

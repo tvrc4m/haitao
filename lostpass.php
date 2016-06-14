@@ -23,7 +23,7 @@ if(!empty($_GET['md5'])&&!empty($_GET['userid']))
 
 //验证手机号
 if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
-	if(Check_data($_POST['mobile'], 'mobile')){
+	if(checkData($_POST['mobile'], 'mobile')){
         if(Check_only($_POST['mobile'], 'mobile', MEMBER)){
             $_SESSION['lost_yzm']['ph'] = 1;
             die(Return_data(array('status_code' => '200', 'message' => '该手机号已存在！', 'data' => null )));
@@ -39,7 +39,7 @@ if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
 
 //发送验证码
 if(!empty($_POST['m_send'])&&$_POST['m_send']=='m_send'&&$_SESSION['lost_yzm']['ph']==1){
-    if(Check_data($_POST['mobile'], 'mobile')){
+    if(checkData($_POST['mobile'], 'mobile')){
         if(empty($_SESSION['lost_yzm'])||$_SESSION['lost_yzm']['ltime']<time()) {
             if($_SESSION['lost_yzm']['lasttime']<=time()){
                 $_SESSION['lost_yzm']['lnum'] = 1;
@@ -81,7 +81,7 @@ if(!empty($_POST["action"])&&$_POST["action"]=="submit")
 	//定义所有正则
     $str_check = array( 'mobile', 'smsvode', 'password');
     foreach($str_check as $key => $val){
-        if(empty($_POST[$val])||!Check_data($_POST[$val], $val)){
+        if(empty($_POST[$val])||!checkData($_POST[$val], $val)){
             die('<script>alert("请填写正确格式的数据");history.go(-1);</script>;');
         }
     }
@@ -160,7 +160,7 @@ function Check_only($data = null, $key = null, $table = null){
 /**
  * 数据格式验证
  */
-function Check_data($data = null, $keyval = null){
+function checkData($data = null, $keyval = null){
 	$res = null;
 	switch($keyval){
 		case 'user' : $res = preg_match('/^[A-Za-z0-9\x{4e00}-\x{9fa5}]{4,16}$/u', $data);  break;

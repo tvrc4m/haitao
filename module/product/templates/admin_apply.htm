@@ -1,129 +1,124 @@
-<script src="script/my_lightbox.js" language="javascript"></script>
+<script src="script/uplode.js" language="javascript"></script>
 <div class="path">
     <div>
-    	<a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span>	已买到的商品 
+        <span class="shop"></span>
+        <a href="main.php?cg_u_type=1">我的商城</a> <span>&gt;</span>已买到的商品
+        <span class="tel">海淘客服热线：400-010-1977</span>
     </div>
 </div>
 <div class="main">
 <div class="wrap">
-<div class="apply clearfix">
+<div class="apply">
     <div class="apply_left">
-    	<h1 class="clearfix">
-        <em>申请服务：</em>
-            <strong>
-            <{if $de.status==2}>
-            	仅退款
-            <{else}>
-            	退款退货
-            <{/if}>
-        </strong>
-        <span class="s"><b>*</b> 为必填项</span>
-        </h1>
+        <h1>我要退款（无需退货）</h1>
         <form action="" method="post">
         <input type="hidden" value="<{if $de.refund_id}>edit<{else}>add<{/if}>" name="act" />
         <input type="hidden" value="<{$smarty.get.order_id}>" name="order_id" />
         <input type="hidden" value="<{$smarty.get.id}>" name="id" />
         <input type="hidden" value="<{$de.seller_id}>" name="seller_id" />
-       
-    	<table>
-        	<{if $de.status == 3 }>
-        	<tr>
-            	<th>是否收到货：<em>*</em></th>
-                <td>
-                <label><input type="radio" name="goods_status" value="0" checked="checked" /> 未收到货</label>&nbsp;
-                <label><input type="radio" name="goods_status" value="1" <{if $de.goods_status==1}>checked="checked"<{/if}> /> 已收到货</label>
-                
-                </td>
-            </tr>
-            <{/if}>
-            
+        <table>
             <tr>
-            	<th>需要退款金额：<em>*</em></th>
+                <td width="80"><em>*</em>退款原因：</td>
                 <td>
-					<font class="org"><{$de.refund_price|number_format:2}><!--<{$de.price*$de.num|number_format:2}>--></font> 元
-                	<input type="hidden" name="price" value="<{$de.refund_price|number_format:2}>" />
-                </td>
-            </tr>
-        	<tr>
-            	<th>退款原因：<em>*</em></th>
-                <td>
-                <textarea name="reason"><{$de.reason}></textarea>
-                </td>
-            </tr>
-        	<tr>
-            	<th>上传凭证：</th>
-                <td>
-                <ul class="pic_list"><li><img class="hidden" width="60" id="pic_img" /></li></ul>
-                <input type="hidden" name="pic" id="pic" value="" />
-                <a class="upload-button" href="javascript:uploadfile('上传凭证','pic',600,600,'apply')">选择凭证图片</a> 
+                    <select>
+                        <option value="0">请选择退款原因</option>
+                        <option value="1">物流中损坏的商品</option>
+                        <option value="2">商品有质量问题</option>
+                    </select>
                 </td>
             </tr>
             <tr>
-            	<th></th>
+                <td><em>*</em>退款金额：</td>
                 <td>
-                <input type="submit" class="btn" value="提交申请" />
+                    <em><{$de.refund_price|number_format:2}>元</em>
+                    <input type="hidden" name="price" value="<{$de.refund_price|number_format:2}>" />
+                </td>
+            </tr>
+            <tr>
+                <td><em>*</em>退款原因：</td>
+                <td>
+                    <textarea name="reason"><{$de.reason}></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><em>*</em>上传凭证：</td>
+                <td>
+                    <ul class="clear">
+                    <li>
+                    <input type="hidden" data-id="1" name="pic" value="./uploadfile/member/20160612/1465697909.jpg">
+                    <img data-id="1" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" height="70" width="70">
+                    <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
+                    </li>
+                     <li>
+                    <input type="hidden" data-id="2" name="pic" value="./uploadfile/member/20160612/1465697909.jpg">
+                    <img data-id="2" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" height="70" width="70">
+                    <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
+                    </li>
+                     <li>
+                    <input type="hidden" data-id="3" name="pic" value="./uploadfile/member/20160612/1465697909.jpg">
+                    <img data-id="3" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" height="70" width="70">
+                    <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
+                    </li>
+                    </ul>
+                    <p style="color: #999;margin: 5px 0 20px 0;">每张图片大小不得超过5M，最多三张，支持GIF，JPG，PNG，BMP格式</p>
+                </td>
+            </tr>
+            <tr>
+                <td width="80"></td>
+                <td>
+                <input type="submit" value="提交退款申请" />
                 </td>
             </tr>
         </table>
         </form>
+        <div class="problem">
+            <h1>常见问题</h1>
+            <ul>
+                <li><a href=""><span>·</span>我确认收货了，还可以收货吗？</a></li>
+                <li><a href=""><span>·</span>申请售后，我使用的积分会退回吗？</a></li>
+                <li><a href=""><span>·</span>商家拒绝售后申请，我要怎么办？</a></li>
+                <li><a href=""><span>·</span>收到货出现破损少货怎么办？</a></li>
+                <li><a href=""><span>·</span>卖家同意承担退货邮费但一直没有退还怎么办？</a></li>
+            </ul>
+        </div>
     </div>
     <div class="apply_right">
-    	<h1><strong><{if $de.status==4}>售后申请<{else}>退款/退货申请<{/if}></strong></h1>
+        <h1>商品详情</h1>
+            <p class="clear">
+                <img src="<{$de.pic}>_60X60.jpg" />
+                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$de.pid}>"><{$de.name}></a>
+            </p>
         <table>
-        	<tr>
-            	<th><img src="<{$de.pic}>_60X60.jpg" /></th>
-                <td><a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$de.pid}>"><{$de.name}></a></td>
-            </tr>
-            <tr class="empty dotted">
-            	<th></th>
-            	<td></td>
-            </tr>
-            <tr class="empty">
-            	<th></th>
-            	<td></td>
-            </tr>
-        	<tr>
-            	<th>单　　价：</th>
-            	<td><{$de.price}>元 * <{$de.num}>（数量）</td>
-            </tr>
-			<!-------2016/6/7 START------>
-        	<tr>
-            	<th>宝贝优惠：</th>
-            	<td><{$de.refund_voucher}></td>
+            <tr>
+                <td>单　　价：</th>
+                <td><em><{$de.price}></em>元 * <em><{$de.num}></em>（数量）</td>
             </tr>
             <tr>
-            	<th>宝贝实付：</th>
-            	<td><{($de.price*$de.num-$de.refund_voucher)|number_format:2}>元</td>
-            </tr>
-			<!-------2016/6/7 END------>
-
-        	<tr>
-            	<th>运　　费：</th>
-            	<td><{if $de.status==4}><{$de.logistics_price|number_format:2}><{else}>0.00<{/if}>元</td>
+                <td>商品优惠：</th>
+                <td><{$de.refund_voucher}></td>
             </tr>
             <tr>
-            	<th>订单编号：</th>
-            	<td><a target="_blank" href=""><{$de.order_id}></a></td>
-            </tr>
-        </table>
-        <table class="seller">
-            <tr class="empty">
-            	<th></th>
-            	<td></td>
+                <td>商品实付：</th>
+                <td><{($de.price*$de.num-$de.refund_voucher)|number_format:2}>元</td>
             </tr>
             <tr>
-            	<th>卖　　家：</th>
-            	<td><{$de.user}></td>
+                <td>运　　费：</th>
+                <td><{if $de.status==4}><{$de.logistics_price|number_format:2}><{else}>0.00<{/if}>元</td>
+            </tr>
+            <tr>
+                <td>关　　税：</th>
+                <td>10.00元</td>
+            </tr>
+            <tr>
+                <td>商　　家：</th>
+                <td><em>蚂蚁海淘</em></td>
+            </tr>
+            <tr>
+                <td>订单编号：</th>
+                <td><a target="_blank" href=""><{$de.order_id}></a></td>
             </tr>
         </table>
     </div>
 </div>
 </div>
 </div>
-
-<script type="text/javascript">
-$("#pic_img").load(function(){
-	var src = $(this).attr("src");
-	if(src) $(this).show();	
-});
-</script>

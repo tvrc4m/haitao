@@ -22,6 +22,7 @@ $tpl->assign("cat",$shop->GetShopCatList());
 include_once("footer.php");
 if(isset($_GET['grade']) and is_numeric($_GET['grade']))
 {
+	$tpl->assign('pid',$_GET['pid']);
 	$tpl->assign("prov",GetDistrict());
 	$output=tplfetch("admin_step1.htm",$flag,true);
 }
