@@ -206,6 +206,11 @@ if(is_numeric($_GET['id']) && $_GET['act'] == 'taobao')
 }
 //==================================
 $nocheck=true;
+//判断商铺类型
+$sh_sql = "SELECT userid,`user`,ptype from mallbuilder_shop WHERE userid=".$buid;
+$db->query($sh_sql);
+$shop_info = $db->fetchRow();
+$tpl->assign("ptype",$shop_info);
 $tpl->assign("taobao_config",$taobao_config);
 $tpl->assign("config",$config);
 $tpl->assign("lang",$lang);
