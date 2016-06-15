@@ -3,7 +3,6 @@
 function get_log_price($lgid,$area)
 {
 	global $db;
-    global $buid;
 	if(strlen($area)>6) $city=substr($area,6,strlen($area)-6);
 	else $city=$area;
 	$city=$city?','.$city:$city;
@@ -47,18 +46,7 @@ function get_log_price($lgid,$area)
 //-----------------------------------产品详情
 include_once($config['webroot']."/module/product/includes/plugin_product_class.php");
 $id=$_GET["id"]*1;
-//商品父id
 
-if((!empty($buid)) && $buid>0){
-
-    $sql = "SELECT b.id AS pro_id FROM ".PRODUCT." b INNER JOIN ".MECART." a ON a.shop_id = b.member_id WHERE a.blind_member_id =".$buid ." AND b.proid=".$id;
-    $db->query($sql);
-
-    $child_pro_obj = $db->fetchRow();
-    if(!empty($child_pro_obj) && $child_pro_obj['pro_id'] >0){
-        $id = $child_pro_obj['pro_id'];
-    }
-}
 //-----------------------------------
 user_read_rec($buid,$id,1);//记录会员查看商品
 //-----------------------------------    20150624 lemons 商品被删除后从订单点进去，进入快照
