@@ -48,20 +48,15 @@ function get_log_price($lgid,$area)
 include_once($config['webroot']."/module/product/includes/plugin_product_class.php");
 $id=$_GET["id"]*1;
 //商品父id
-$sql = "SELECT pid from mallbuilder_product WHERE id =".$id;
-$db->query($sql);
-$pshop = $db->fetchRow();
-if(($pshop['pid'] != null) && ($pshop['pid'] == 44) && (!empty($buid))){
-    //商店id
-    $sql = "SELECT shop_id FROM mallbuilder_member a INNER JOIN mallbuilder_member_card b ON a.userid = b.blind_member_id WHERE a.userid =".$buid;
+
+if((!empty($buid)) && $buid>0){
+
+    $sql = "SELECT b.id AS pro_id FROM ".PRODUCT." b INNER JOIN ".MECART." a ON a.shop_id = b.member_id WHERE a.blind_member_id =".$buid ." AND b.proid=".$id;
     $db->query($sql);
-    $pshopid = $db->fetchRow();
-    if($pshopid['shop_id'] != null){
-        //获取分店下的商品
-        $sql = "SELECT id FROM mallbuilder_product WHERE ptype =2 AND member_id = ".$pshopid['shop_id']." AND proid =".$id;
-        $db->query($sql);
-        $proid = $db->fetchRow();
-        $id = $proid['id'];
+
+    $child_pro_obj = $db->fetchRow();
+    if(!empty($child_pro_obj) && $child_pro_obj['pro_id'] >0){
+        $id = $child_pro_obj['pro_id'];
     }
 }
 //-----------------------------------

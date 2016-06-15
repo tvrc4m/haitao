@@ -124,9 +124,13 @@ $(function(){
                 <span <{if $list.shop_rec==1 }>style="display:none"<{/if}> id="rec2_<{$list.id}>"><a href="javascript:ref(<{$list.id}>,'rec','rec=<{$list.id}>&action=admin_list&type=1')">点击橱窗推荐</a></span>
                 </td>
                 <td>
+                <{if $ptype.ptype != 2}>
                 <p><a href="<{$config.weburl}>?m=product&s=admin_product_copy&id=<{$list.id}>">产品复制</a></p>
+                <{/if}>
                 <p><a href="?m=product&s=admin_product_list&cstatu=0&pid=<{$list.id}>">下架</a></p>
+                <{if $ptype.ptype != 2}>
                 <p><a href="?edit=<{$list.id}>&m=product&s=admin_product">编辑</a></p>
+                <{/if}>
                 <p><a href="?deid=<{$list.id}>&m=product&s=admin_product_list" onClick="return confirm('<{$lang.sure_del}>');">删除</a></p>
                 </td>
             </tr>
