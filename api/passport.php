@@ -31,7 +31,7 @@ class passport extends Uc_server{
     public function __construct()
     {
         $config['uc_appid']='201605270933';
-        $this->_secret =  $config['uc_secret'] = 'g23fa33gbsd1gdd03152ed213c52ed6d1';
+        $this->_secret =  $config['uc_secret'] = 'jindsf83nsdvi3n0ejj91jnlnapfnas92nvb';
         $config['uc_server']='https://m.mayizaixian.cn/apis/uc';
         parent:: __construct($config);
         $this->_action = !empty($_REQUEST['action'])?$_REQUEST['action']:'';
