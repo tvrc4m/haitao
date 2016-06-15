@@ -18,5 +18,17 @@
 			'shop.php,1,shop,店铺管理',
 			'shop_application.php,1,shop,开店申请',
 		)
-	)
+	);
+	$mem['business'][1][0]=array(
+		'',
+		array(
+			'user_order.php,1,product,交易记录',
+		)
+	);
+	$mem['relation'][1][0]=array(
+		'',
+		array(
+			'branch.php,1,product,添加分店',
+		)
+	);
 ?>

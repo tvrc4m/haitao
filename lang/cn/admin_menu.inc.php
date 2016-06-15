@@ -107,7 +107,7 @@ foreach($menu as $key=>$v)
                 $sql = "SELECT userid,ptype,pid FROM mallbuilder_shop WHERE userid = ".$buid;
                 $db->query($sql);
                 $res = $db->fetchRow();
-                if(($res['ptype']!=2) || ($res['pid'] != 44)){
+                if(($res['ptype']!=2)){
                     unset($menu[$key]['sub'][$sk]['action']['?m=product&s=product_selection']);
                 }elseif($res['ptype']==2){
                     unset($menu[$key]['sub'][$sk]['action']['?m=product&s=admin_product']);

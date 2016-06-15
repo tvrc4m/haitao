@@ -1,12 +1,7 @@
 <?php
 	include_once("config.php");
 	//删除
-	if($_GET['delid'])
-	{
-		$sql="delete from ".ADMINMENU."  where id='$_GET[delid]'";
-		$db->query($sql);
-		msg("admin_menu.php");
-	}
+
 	if($_POST['act']=='op')
 	{
 		$uid=$_SESSION['ADMIN_USER_ID'];
@@ -45,9 +40,5 @@
 		}
 		msg("admin_menu.php");
 	}
-	$sql="select * from ".ADMINMENU." where uid='$_SESSION[ADMIN_USER_ID]' order by displayorder,id ";
-	$db->query($sql);
-	$de=$db->getRows();
-	$tpl->assign("de",$de);
 	$tpl->display("admin_menu.htm");
 ?>
