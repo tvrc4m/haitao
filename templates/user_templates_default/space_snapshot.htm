@@ -8,7 +8,7 @@
                     	<div class="main-pic">
                         <a target="_blank" href="<{$de.pic}>"><img class="jqzoom" height="400" width="400" alt="<{$de.pname}>" src="<{$de.pic}>" title="<{$de.pname}>"></a>
                         </div>
-                        <ul id="jqzoom" class="clearfix">         
+                        <ul id="jqzoom" class="clearfix">
                             <{foreach item=pic key=num from=$de.pic_more}>
                             <li class="<{if $num==0}>hover<{/if}>"><img src="<{$pic}>_60X60.jpg" big="<{$pic}>" height="60" width="60"></li>
                             <{/foreach}>
@@ -33,7 +33,7 @@
                                 <em><{$config.money}></em> <{$de.freight|number_format:2}>
                             </li>
                         </ul>
-                        
+
                         <{if $de.spec}>
                         <ul class="properties clearfix">
                             <{foreach item = slist from = $de.spec}>
@@ -100,7 +100,7 @@
 
 <div class="tabbar-wrap clearfix">
 	<div class="inner-wrap clearfix">
-        <ul class="clearfix"> 
+        <ul class="clearfix">
             <li class="cur"><a href="javascript:void(0);">商品详情</a></li>
         </ul>
     </div>

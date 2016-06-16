@@ -142,7 +142,7 @@ else
 
 $_SESSION['temp'] = $config['temp'];
 $data['uc_appid']='201605270933';
-$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+$data['uc_secret']='jindsf83nsdvi3n0ejj91jnlnapfnas92nvb';
 $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
 $_SESSION['ucenter_data'] = $data;
 //ucenter 0 平台登录 1 用户中心uc登陆

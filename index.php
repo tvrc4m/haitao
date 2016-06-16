@@ -128,11 +128,21 @@ else
 				header("Location: 404.php");
 			if(!empty($out))
 			{	
+				if(($_GET['s']=='index'|| empty($_GET['s'])) && $m=='product' && !file_exists($config['webroot']."/templates_c/".$config['temp']."/index.html")){
+					$is_cahe_index = true;
+					 ob_start();
+					 
+				}
 				$tpl->assign("out",$out);unset($out);unset($tpl->statu);
 				$tpl->template_dir = $config['webroot']."/templates/".$config['temp']."/";
 				$tpl->caching = false; //设置缓存方式
-
 				$tpl->display("m.htm");
+				if($is_cahe_index)
+				{
+					$contents = ob_get_contents();
+					file_put_contents($config['webroot']."/templates_c/".$config['temp']."/index.html",$contents);
+					ob_flush();
+				}
 			}
 		}
 		else

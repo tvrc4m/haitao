@@ -71,252 +71,49 @@
         <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
     </div>    
 </div>
-<div class="main_activity">
-    <div class="main_activity_banner">
-        <a href="https://www.mayihaitao.com/product-list-100103.html&amp;dist_id=91">
-            <img  src="https://www.mayihaitao.com/uploadfile/adv/2016/05/16/1463389704.jpg" alt="" border="0">
-        </a>
-    </div>
-    <div class="clearfix">
-        <ul class="main_activity_ware clearfix">
-            <li class="activity_wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=392">
-                <div class="activity_wareli_img">
-                    <img src="https://www.mayihaitao.com/uploadfile/product/44/2016/05/13/1463120766.jpg_220X220.jpg" alt="">
-                    <div class="activity_wareli_bottom_message">
-                        <p class="activity_wareli_bottom_text">安全喂养专场</p>
-                    </div>
-                </div>
-                <div class="activity_wareli_bottom clearfix">
-                    
-                    <div class="activity_wareli_bottom_ro clearfix">
-                        <span class="org">满190减100起</span>
-                    </div>
-                </div>
-            </a></li><li class="activity_wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=392">
-                <div class="activity_wareli_img">
-                    <img src="https://www.mayihaitao.com/uploadfile/product/44/2016/05/13/1463120766.jpg_220X220.jpg" alt="">
-                    <div class="activity_wareli_bottom_message">
-                        <p class="activity_wareli_bottom_text">安全喂养专场</p>
-                    </div>
-                </div>
-                <div class="activity_wareli_bottom clearfix">
-                    
-                    <div class="activity_wareli_bottom_ro clearfix">
-                        <span class="org">满190减100起</span>
-                    </div>
-                </div>
-            </a></li><li class="activity_wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=392">
-                <div class="activity_wareli_img">
-                    <img src="https://www.mayihaitao.com/uploadfile/product/44/2016/05/13/1463120766.jpg_220X220.jpg" alt="">
-                    <div class="activity_wareli_bottom_message">
-                        <p class="activity_wareli_bottom_text">安全喂养专场</p>
-                    </div>
-                </div>
-                <div class="activity_wareli_bottom clearfix">
-                    <div class="activity_wareli_bottom_ro clearfix">
-                        <span class="org">满190减100起</span>
-                    </div>
-                </div>
-            </a></li>
-        </ul>
-    </div>
+
 </div>
 <div class="shop_main_nav">
     <ul class="clearfix">
-        <li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg1.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg2.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg3.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg4.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg5.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg6.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg7.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg8.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg9.jpg" alt="" />
-            </a>
-        </li><li>
-            <a href="javascript:void(0);">
-                <img src="../image/wap/wap_haitao_bg10.jpg" alt="" />
-            </a>
-        </li>
+        <{foreach item=list from=$brand}>
+            <li>
+                <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
+                    <img src="<{$list.logo}>" alt="<{$list.name}>" />
+                </a>
+            </li>
+        <{/foreach}>
     </ul>
 </div>
 <div class="main_list">
+    <{foreach item=list from=$products key=key}>
     <div class="main_list_banner">
-        <a href="https://www.mayihaitao.com/product-list-100103.html&amp;dist_id=91">
-            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/adv/2016/05/16/1463389704.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="" border="0">
+        <a href="<{$config.weburl}>/product-list-<{$key}>.html">
+            <img class="scrollLoading" data-url="<{$catids.$key.wpic}>" src="" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$catids.$key.cat}>" border="0">
         </a>
     </div>
+
     <div class="clearfix main_list_ware">
         <ul class="main_warelist clearfix">
+            <{foreach item=lists from=$list}>
             <li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=392" class="shopli_top_as">
+            <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" class="shopli_top_as">
                 <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/13/1463120766.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
+                    <img class="scrollLoading" data-url="<{$lists.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="<{$lists.name}>">
                 </div>
                 <div class="wareli_bottom clearfix">
                     <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">MANDOM LUCIDO-L染</p>
+                        <p class="wareli_bottom_text"><{$lists.name}></p>
                     </div>
                     <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥69.00</span><span class="gre wareli_money_del">¥89.00</span>
-                    </div>
-                </div>
-            </a></li><li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=386" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/13/1463119209.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">尤妮佳CENTER-IN棉</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥54.00</span><span class="gre wareli_money_del">¥65.00</span>
-                    </div>
-                </div>
-            </a></li><li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=398" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/13/1463121951.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">cosme大赏 大岛椿山</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥84.00</span><span class="gre wareli_money_del">¥95.00</span>
+                        <span class="org">¥<{$lists.price}></span><span class="gre wareli_money_del">¥<{$lists.market_price}></span>
                     </div>
                 </div>
             </a></li>
+        <{/foreach}>
         </ul>
     </div>
-    <div class="main_list_banner">
-        <a href="https://www.mayihaitao.com/product-list-10030502.html&amp;dist_id=91">
-            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/adv/2016/05/16/1463389561.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="" border="0">
-        </a>
-    </div>
-    <div class="clearfix main_list_ware">
-        <ul class="main_warelist clearfix">
-            <li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=406" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">韩国TROO有机无花果</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥83.00</span><span class="gre wareli_money_del">¥95.00</span>
-                    </div>
-                </div>
-            </a></li><li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=401" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463131789.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">韩国TROO有机冻干苹</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥83.00</span><span class="gre wareli_money_del">¥95.00</span>
-                    </div>
-                </div>
-            </a></li><li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=402" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463131913.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">韩国TROO有机冻干草</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥83.00</span><span class="gre wareli_money_del">¥95.00</span>
-                    </div>
-                </div>
-            </a></li>
-        </ul>
-    </div>
-    <div class="main_list_banner">
-        <a href="https://www.mayihaitao.com/product-list-10010104.html&amp;dist_id=91">
-            <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/adv/2016/05/16/1463389495.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="" border="0">
-        </a>
-    </div>
-    <div class="clearfix main_list_ware">
-        <ul class="main_warelist clearfix">
-            <li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=422" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">皇后爱抗氧化面膜</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥40.00</span><span class="gre wareli_money_del">¥60.00</span>
-                    </div>
-                </div>
-            </a></li><li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=421" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463209782.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">皇后爱七日面膜</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥102.00</span><span class="gre wareli_money_del">¥126.00</span>
-                    </div>
-                </div>
-            </a></li><li class="wareli clearfix">
-            <a href="http://haitao.com/?m=product&amp;s=detail&amp;id=417" class="shopli_top_as">
-                <div class="wareli_img">
-                    <img class="scrollLoading" data-url="https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463209065.jpg_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding1.jpg) no-repeat center;" alt="">
-                </div>
-                <div class="wareli_bottom clearfix">
-                    <div class="wareli_bottom_message">
-                        <p class="wareli_bottom_text">COTTA  如花 黄金水</p>
-                    </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <span class="org">¥63.00</span><span class="gre wareli_money_del">¥75.00</span>
-                    </div>
-                </div>
-            </a></li>
-        </ul>
-    </div>
+    <{/foreach}>
+
 </div>
 <div class="addcarts">
     <a class="carts" href="/?m=product&s=cart">
