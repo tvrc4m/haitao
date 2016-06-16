@@ -121,7 +121,7 @@ class shop
 			$scl.=" and grade in ($grade)";
 		}
 		//==================================
-		$sql="SELECT * from ".SHOP."  WHERE 1 $scl $str and pid=40 order by userid desc";
+		$sql="SELECT * from ".SHOP."  WHERE 1 $scl $str order by userid desc";
 		//分页
 		$page = new Page;
 		$page->listRows=20;

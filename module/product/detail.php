@@ -3,6 +3,7 @@
 function get_log_price($lgid,$area)
 {
 	global $db;
+	global $buid;
 	if(strlen($area)>6) $city=substr($area,6,strlen($area)-6);
 	else $city=$area;
 	$city=$city?','.$city:$city;
@@ -47,6 +48,23 @@ function get_log_price($lgid,$area)
 include_once($config['webroot']."/module/product/includes/plugin_product_class.php");
 $id=$_GET["id"]*1;
 
+//商品父id
+$sql = "SELECT pid from mallbuilder_product WHERE id =".$id;
+$db->query($sql);
+$pshop = $db->fetchRow();
+if(($pshop['pid'] != null) && ($pshop['pid'] == 44) && (!empty($buid))){
+	//商店id
+	$sql = "SELECT shop_id FROM mallbuilder_member a INNER JOIN mallbuilder_member_card b ON a.userid = b.blind_member_id WHERE a.userid =".$buid;
+	$db->query($sql);
+	$pshopid = $db->fetchRow();
+	if($pshopid['shop_id'] != null){
+		//获取分店下的商品
+		$sql = "SELECT id FROM mallbuilder_product WHERE ptype =2 AND member_id = ".$pshopid['shop_id']." AND proid =".$id;
+		$db->query($sql);
+		$proid = $db->fetchRow();
+		$id = $proid['id'];
+	}
+}
 //-----------------------------------
 user_read_rec($buid,$id,1);//记录会员查看商品
 //-----------------------------------    20150624 lemons 商品被删除后从订单点进去，进入快照
@@ -120,4 +138,7 @@ else
 {
 	msg($config['weburl'].'/404.php');
 }
+
 ?>
+
+

@@ -9,13 +9,14 @@ $menu=array(
 							'type'=>array(2),
 							'action'=>array(
 								'?m=product&s=admin_product'=>'商品发布',
+                                '?m=product&s=product_selection'=>'点选商品',
 								'?m=product&s=admin_product_list'=>'出售中的商品',
 								'?m=product&s=admin_product_storage'=>'仓库中的商品',
 								'?m=product&s=admin_product_batch'=>'淘宝导入',
 								'?m=product&s=admin_product_cat'=>'分类管理',
                                 '?m=product&s=admin_product_count'=>'',
                                 '?m=product&s=admin_product_note'=>'',
-								'?m=product&s=product_selection'=>'点选商品',
+
 							)
 						 ),
 						 array(
@@ -93,12 +94,26 @@ if($_GET['action']=='main' || $_GET['action']=='logout' || ($_GET['action']=='' 
 	$flag='2';
 else
 	$flag='1';
+
 foreach($menu as $key=>$v)
 {
 	if(isset($menu[$key]['sub']))
 	{
-		foreach($menu[$key]['sub'] as $sv)
+		foreach($menu[$key]['sub'] as $sk=>$sv)
 		{
+
+            if($sv['name'] == '商品管理'){
+                //var_dump($sv);
+                $sql = "SELECT userid,ptype,pid FROM mallbuilder_shop WHERE userid = ".$buid;
+                $db->query($sql);
+                $res = $db->fetchRow();
+                if(($res['ptype']!=2)){
+                    unset($menu[$key]['sub'][$sk]['action']['?m=product&s=product_selection']);
+                }elseif($res['ptype']==2){
+                    unset($menu[$key]['sub'][$sk]['action']['?m=product&s=admin_product']);
+                }
+            }
+
 			if(is_array($sv['action']))
 			{
 				foreach($sv['action'] as $sskey=>$ssv)
@@ -121,7 +136,6 @@ foreach($menu as $key=>$v)
 		}
 		ksort($menu[$key]['sub']);
 	}
-	
 	if(isset($admin))
 	{	
 		if($key!='main'&&is_array($menu[$key]['sub']))
@@ -155,6 +169,7 @@ if($flag=='1')
 
 if(isset($tpl))
 {
+
 	$cmenu=!empty($cmenu)?$cmenu:'main';
 	$tpl->assign("submenu",$menu[$cmenu]);
 	$tpl->assign("menu",$menu);
