@@ -51,14 +51,14 @@ function check()
 	{
 		$("#con").focus();
 		$("#submit").attr("disabled","");
-		return false;	
+		return false;
 	}
 	$("#submit").val("提交中...");
 }
 $(".add-consult").click(function(){
-	
+
 	var isIE=!!window.ActiveXObject;
-	var isIE6=isIE&&!window.XMLHttpRequest; 
+	var isIE6=isIE&&!window.XMLHttpRequest;
 	if(isIE && isIE6){
 		alert("对不起，您的浏览器不支持此操作!请更换浏览器或升级浏览器版本。");
 		return false;

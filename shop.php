@@ -103,6 +103,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 		$tpl->assign("score",$score);
 		$tpl->assign("custom_cat",$shop->get_custom_cat_list(1));
 		$tpl->assign("shop_nav",$shop->get_shop_nav());
+
 		//-------------------------module分发--------------------
 		if(!empty($_GET['m'])&&!empty($_GET['action']))
 		{
@@ -171,6 +172,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag))
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
 			$dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['uid'];
 			$tpl->assign("dis",$dis);
+
 			//-------------------------------------------
 			if($_GET[fx]=='fx')
 				$page = "space_index_fx.htm";
@@ -195,6 +197,32 @@ $tpl->assign("working_time",$working_time);
 		$tpl->assign("cs",$shop->get_cs());
 		$tpl->assign("shopconfig",$shopconfig);
 		$tpl->assign("com",$company);
+
+        //获取品牌
+        $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 ORDER BY displayorder DESC LIMIT 10";
+        $db->query($sql);
+        $brand = $db->getRows();
+        $tpl->assign("brand", $brand);
+
+        //获取分类
+        $sql = "SELECT catid,cat,wpic FROM mallbuilder_product_cat where catid > 100000 and catid <999999";
+        $db->query($sql);
+        $catids = $db->getRows();
+        foreach($catids as $k => $v){
+            $catids[$v['catid']] = $v;
+        }
+        $tpl->assign("catids", $catids);
+
+        //获取商品
+        foreach($catids as $key=>$val){
+            $sql = "SELECT `name`,market_price,price,pic,id,catid FROM mallbuilder_product WHERE catid=".$val['catid']." LIMIT 3";
+            $db->query($sql);
+            $product = $db->getRows();
+            if(!empty($product)){
+                $products[$val['catid']] = $product;
+            }
+        }
+        $tpl->assign("products", $products);
 
 		//判断是否收藏商品
         if(!empty($_COOKIE['USER'])) {
@@ -225,20 +253,18 @@ $tpl->assign("working_time",$working_time);
 	}
 	else
 	{
-			if($config['temp']=='wap')
-			{
-				msg("$config[weburl]","商铺还未开启，或暂时关闭,将转向主页");
-			}
-			else
-			{
-				echo json_encode(array(
-					'status' => 0
-				));die;
-			}
-
+		if($config['temp']=='wap')
+		{
+			msg("$config[weburl]","商铺还未开启，或暂时关闭,将转向主页");
+		}
+		else
+		{
+			echo json_encode(array(
+				'status' => 0
+			));die;
+		}
 	}
 }
-
 
 $tpl->assign("chat_open_flag", $chat_open_flag);
 $tpl->display("space_temp_inc.htm",$flag);
