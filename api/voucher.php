@@ -59,14 +59,14 @@ class voucher extends Uc_server{
         1464427700=>array(
             'url'=>'https://www.mayihaitao.com/api/voucher.php',
             'shop'=>'',
-            'secret'=>'10cf1fdf6ad958eeffa9853f6885cec9',
+            'secret'=>'1a2e939f4c52360c3c774d5e68786aa5',
             'ips'=>array()
         )
     );
     public function __construct($config)
     {
         $data['uc_appid']='201605270933';
-        $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
+        $data['uc_secret']='jindsf83nsdvi3n0ejj91jnlnapfnas92nvb';
         $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
         //$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
         parent::__construct($data);
@@ -383,7 +383,7 @@ class voucher extends Uc_server{
 
 include_once("../includes/global.php");
 $config['appid']='1464427700';
-$config['secret']='10cf1fdf6ad958eeffa9853f6885cec9';
+$config['secret']='1a2e939f4c52360c3c774d5e68786aa5';
 $config['uc_server']='http://www.haitao.com/';
 $obj = new voucher($config);
 

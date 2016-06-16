@@ -1,11 +1,21 @@
 <?php
 if(empty($_GET['m'])||empty($_GET['s']))
 	die('forbiden;');
+
+if(file_exists($config['webroot']."/templates_c/".$config['temp']."/index.html"))
+{
+	include($config['webroot']."/templates_c/".$config['temp']."/index.html");exit;
+}
 //------------------------------
 if(!empty($config['index_catid']))
 	$cat_pro=unserialize($config['index_catid']);
 else
 	$cat_pro=array();
+
+if(file_exists($config['webroot'].'/cache/list.log')){
+	$json_str = file_get_contents($config['webroot'].'/cache/list.log',true);
+	$cat_pro= json_decode($json_str,true);
+}else{
 if($cat_pro)
 {
 	$i = 0;
@@ -24,7 +34,7 @@ if($cat_pro)
 		$s=$v['catid']."00";
 		$b=$v['catid']."99";
 		$limit=$config['temp']!='wap'?"16":"7";
-		
+
 		$sql="select cat,catid,pic,wpic from ".PCAT." where catid>$s and catid<$b order by nums asc,char_index asc limit 0,$limit";
 		$db->query($sql);
 		$cat_pro[$key]['sub_cat']=$db->getRows();
@@ -69,10 +79,13 @@ if($cat_pro)
 			$i++;
 		}
 	}
+	file_put_contents($config['webroot'].'/cache/list.log',json_encode($cat_pro));
 	/*echo '<pre>';
 	print_r($cat_pro);die;*/
-	$tpl->assign("categorys",$cat_pro);
+
 }
+}
+$tpl->assign("categorys",$cat_pro);
 if($config['temp'] != "wap")
 {
 	$sql="select user,logo,b.pic from ".MEMBER." a left join ".MEMBERGRADE." b on a.grade_id = b.id where userid = '$buid' ";
@@ -80,14 +93,15 @@ if($config['temp'] != "wap")
 	$member = $db->fetchRow();
 	$tpl->assign("member",$member);
 	
-	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '1' ";
-	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '3' ";
-	$sqls[] = "select * from ".ORDER." where buyer_id = '$buid' and status = '4' and buyer_comment='0' and seller_comment = '0' ";	
+	$sqls[] = "select 1 from ".ORDER." where buyer_id = '$buid' and status = '1' ";
+	$sqls[] = "select 1 from ".ORDER." where buyer_id = '$buid' and status = '3' ";
+	$sqls[] = "select 1 from ".ORDER." where buyer_id = '$buid' and status = '4' and buyer_comment='0' and seller_comment = '0' ";
 	foreach($sqls as $val)
 	{
 		$db->query($val);
 		$count[] = $db->num_rows();	
 	}
+
 	$tpl->assign("count",$count);
 
 }

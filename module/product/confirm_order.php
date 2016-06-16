@@ -172,7 +172,7 @@ else
 					$obj = $db->fetchRow();
 
 					/***生成买家订单****/
-					if($obj['ptype']==2&&$obj['pid']=null)
+					if($obj['ptype']==2&&$obj['pid']==null)
 						$sql = "INSERT INTO ".ORDER." (`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`,`pid`,`ptype`) VALUES ($buid,$order_id,'0',$sell_userid,'".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id','$obj[pid]','$obj[ptype]')";
 					else
 						$sql = "INSERT INTO ".ORDER." (`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($buid,$order_id,'0',$sell_userid,'".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
@@ -180,7 +180,7 @@ else
 					$db->query($sql);
 
 					/***生成卖家订单****/
-					if($obj['ptype']==2&&$obj['pid']=null)
+					if($obj['ptype']==2&&$obj['pid']==null)
 						$sql = "INSERT INTO ".ORDER."	(`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`,`pid`,`ptype`) VALUES ($sell_userid,$order_id,'$buid','0','".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id','$obj[pid]','$obj[ptype]')";
 					else
 						$sql = "INSERT INTO ".ORDER."	(`userid`,`order_id`,`buyer_id`,`seller_id`,`consignee`,`consignee_address`,`consignee_tel`,`consignee_mobile`,`product_price`,`logistics_type`,`logistics_price`,`status`,`des`,`create_time`,`uptime`,`invoice_title`,`voucher_price`,`discounts`, `dist_user_id`) VALUES ($sell_userid,$order_id,'$buid','0','".addslashes($re[name])."','$re[area] $re[address]','$re[tel]','$re[mobile]','$product_price','$logistics_type','$logistics_price',1,'$msg','$time','$time','$invoice_title','$vou_price','$discounts', '$dist_user_id')";
