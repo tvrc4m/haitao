@@ -383,7 +383,7 @@ class voucher extends Uc_server{
 
 include_once("../includes/global.php");
 $config['appid']='1464427700';
-$config['secret']='10cf1fdf6ad958eeffa9853f6885cec9';
+$config['secret']='1a2e939f4c52360c3c774d5e68786aa5';
 $config['uc_server']='http://www.haitao.com/';
 $obj = new voucher($config);
 

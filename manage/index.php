@@ -25,9 +25,14 @@ if(!empty($_POST["user"]))
 
         $db->query($sql);
         $re=$db->fetchRow();
-   /*     $sql = "select * from mallbuilder_shop where userid={$re[userid]}";
-        $db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
-var_dump($db);die;*/
+
+        $sql = "select pid,ptype from mallbuilder_shop where userid={$re[userid]}";
+        $db->query($sql);
+        $pshop = $db->fetchRow();
+        if($pshop['ptype']!=1&&$pshop['pid']==$re['userid']){
+            header("location:index.php?type=3");
+            exit();
+        }
         $login_phone = empty($login_phone)?(!empty($re)?$re["mobile"]:''):$login_phone;
         $us = $obj->userinfo(array('phone'=>$login_phone));
         if($us['password']==md5(md5($_POST['password']).$us['salt']))
@@ -111,6 +116,8 @@ include_once("../lang/".$config['language']."/admin.php");
                                   {
                                       if($_GET["type"]==1)
                                           echo lang_show('error_user');
+                                      if($_GET["type"]==3)
+                                          echo '帐号无权登录！';
                                   }
                                   ?>
                               </span>
