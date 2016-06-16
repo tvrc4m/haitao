@@ -1,6 +1,11 @@
 <?php
 if(empty($_GET['m'])||empty($_GET['s']))
 	die('forbiden;');
+
+if(file_exists($config['webroot']."/templates_c/".$config['temp']."/index.html"))
+{
+	include($config['webroot']."/templates_c/".$config['temp']."/index.html");exit;
+}
 //------------------------------
 if(!empty($config['index_catid']))
 	$cat_pro=unserialize($config['index_catid']);
