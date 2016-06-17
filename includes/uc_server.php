@@ -6,9 +6,9 @@
 class Uc_server
 {
 
-	protected $appid;
+	protected $appid="201605270933";
 
-    protected $secret;
+    protected $secret="jindsf83nsdvi3n0ejj91jnlnapfnas92nvb";
 
     protected $timestamp;
 
@@ -18,15 +18,15 @@ class Uc_server
      */
     protected $action;
 
-    protected $server;
+    protected $server="https://m.mayizaixian.cn/apis/uc";
 
     protected $params=array();
 
-    public function __construct($config)
+    public function __construct($uc_config)
     {
-        $this->secret=$config['uc_secret'];
-    	$this->appid=$config['uc_appid'];
-        $this->server=$config['uc_server'];
+    //    $this->secret=$uc_config['uc_secret'];
+    //	$this->appid=$uc_config['uc_appid'];
+     //   $this->server=$uc_config['uc_server'];
     	$this->timestamp=time();
 
     }
@@ -55,6 +55,7 @@ class Uc_server
     public function login($params){
         $this->action='login';
     	$result=$this->http_post($this->server,$params);
+
     	if($result===false){
 
     	}
@@ -153,6 +154,7 @@ class Uc_server
 
     public function http_post($url, $data)
     {
+
         $str=http_build_query($data);
         $params=array('params'=>$this->authcode($str,'ENCODE',$this->secret));
         $params['signature']=$this->signature($data);

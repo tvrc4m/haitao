@@ -19,9 +19,9 @@ if(!empty($_POST["user"]))
         {
             $sql="select * from ".MEMBER." where mobile='$_POST[user]'";
             $login_phone = $_POST['user'];
-        }
-        else
+         }else{
             $sql="select * from ".MEMBER." where  user='$_POST[user]'";
+        }
 
         $db->query($sql);
         $re=$db->fetchRow();
