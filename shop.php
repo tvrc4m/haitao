@@ -219,8 +219,9 @@ $tpl->assign("working_time",$working_time);
 		}elseif($config['temp'] == 'default'){
 			$limit = 10;
 		}
+
         foreach($catids as $key=>$val){
-            $sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a INNER JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = ".$val['catid']." LIMIT ".$limit;
+            $sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = ".$val['catid']." AND a.member_id=".$buid." LIMIT ".$limit;
             $db->query($sql);
             $product = $db->getRows();
             foreach($product as $k=>$v){
