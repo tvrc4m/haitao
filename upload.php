@@ -85,11 +85,11 @@ if(is_uploaded_file($_FILES['pic']['tmp_name']))
 		echo "<script>alert('上传文件扩展名是不允许的扩展名。');window.parent.close_win();</script>";die;
 	}
 	
-	if($remote_config['image_remote_storage']==1 and !empty($remote_config['space_name']) and !empty($remote_config['ftp_password']) and !empty($remote_config['ftp_name']))
-	{
+	if($remote_config['image_remote_storage']==1 and !empty($remote_config['space_name']) and !empty($remote_config['ftp_password']) and !empty($remote_config['ftp_name']) && empty($_GET['ty']))
+	{ 
 
 		require_once('lib/php-sdk-master/upyun.class.php');
-
+		$path = "/".$path;
 		$upyun = new UpYun("$remote_config[space_name]","$remote_config[ftp_name]","$remote_config[ftp_password]");
 		try
 		{
