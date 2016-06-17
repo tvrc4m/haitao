@@ -156,6 +156,7 @@ $(function(){
                     data: {id:id, page:page, m:"product", s:"ajax_list", national:national, dist_id:dist_id},
                     dataType: "json",
                     success: function(msg){
+                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
@@ -176,7 +177,7 @@ $(function(){
                                                     "<p class='money'>¥"+msg.data[i].price+"</p>"+
                                                     "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
-                                                "<div class='shopli_bottom_sales'>销量<span>1001</span></div>"+
+                                                "<div class='shopli_bottom_sales'>销量<span>"+msg.data[i].sales+"</span></div>"+
                                             "</div>"+
                                        "</div>"+
                                     "</a>"+
