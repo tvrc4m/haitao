@@ -214,10 +214,20 @@ $tpl->assign("working_time",$working_time);
         $tpl->assign("catids", $catids);
 
         //获取商品
+		if($config['temp'] == 'wap'){
+			$limit = 3;
+		}elseif($config['temp'] == 'default'){
+			$limit = 10;
+		}
         foreach($catids as $key=>$val){
-            $sql = "SELECT `name`,market_price,price,pic,id,catid FROM mallbuilder_product WHERE catid=".$val['catid']." LIMIT 3";
+            $sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a INNER JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = ".$val['catid']." LIMIT ".$limit;
             $db->query($sql);
             $product = $db->getRows();
+            foreach($product as $k=>$v){
+                $sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = ".$v['id'];
+                $db->query($sql);
+                $product[$k]['nums'] = $db->fetchField('nums');
+            }
             if(!empty($product)){
                 $products[$val['catid']] = $product;
             }
