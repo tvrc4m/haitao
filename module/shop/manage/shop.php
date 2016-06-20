@@ -40,7 +40,7 @@ $shop=new shop();
 			}
 			msg("?m=shop&s=shop.php&operation=list",'');
 		}	
-		$sql = " and shop_statu != '0' and shop_statu != '-2'  and shop_statu != '-4' and shop_statu != '-5' and pid=40";
+		$sql = " and shop_statu != '0' and shop_statu != '-2'  and shop_statu != '-4' and shop_statu != '-5' and pid=149 and ptype=2";
 		$tpl->assign("de",$shop->GetShopList($sql));
 	}
 	elseif($_GET['operation']=='edit')
