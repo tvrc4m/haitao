@@ -384,7 +384,7 @@ class shop
 				$ptype = '';
 			}
 
-			$sql="insert into ".SHOP." (company,tel,provinceid,addr,cityid,areaid,streetid,area,userid,user,logo,main_pro,grade,catid,uptime,create_time,shop_statu,shop_type,pid,ptype,`lng`,`lat`) VALUES ('$_POST[company]','$_POST[tel]','$_POST[province]','$_POST[addr]','$_POST[city]','$_POST[area]','$_POST[street]','$_POST[t]','$buid','$buser','$_POST[logo]','$_POST[main_pro]','$_POST[grade]','$catid','$pn','$pn',$shop_statu,$shop_type,$pid,$ptype,'$lng','$lat')";
+			$sql="insert into ".SHOP." (company,tel,provinceid,addr,cityid,areaid,streetid,area,userid,user,logo,main_pro,grade,catid,uptime,create_time,shop_statu,shop_type,pid,ptype,`lng`,`lat`) VALUES ('$_POST[company]','$_POST[tel]','$_POST[province]','$_POST[addr]','$_POST[city]','$_POST[area]','$_POST[street]','$_POST[t]','$buid','$buser','$_POST[logo]','$_POST[main_pro]','$_POST[grade]','$catid','$pn','$pn',$shop_statu,$shop_type,$pid,'$ptype','$lng','$lat')";
 			$re=$this->db->query($sql);
 			
 			$sql="insert into ".SSET." (shop_id,shop_logo,shop_banner,shop_title,shop_keywords,shop_description,wap_bannar) values ('$buid','$_POST[shop_logo]','$_POST[shop_banner]','$_POST[shop_title]','$_POST[shop_keywords]','$_POST[shop_description]','$_POST[wap_bannar]')";
