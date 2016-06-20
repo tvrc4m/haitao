@@ -134,7 +134,7 @@ class cart
 		$sql="select 
 		a.*,a.price * a.quantity as sumprice,a.quantity as num,b.weight,b.cubage,
 		b.subhead,b.brand,b.type,b.promotion_id,b.ship_free_id,b.trade,b.is_shelves,b.status,b.market_price,b.price as pprice,b.stock as amount,b.name as pname,b.pic,b.catid,b.id as pid,b.freight_id as freight,b.freight_type,b.is_invoice,
-		c.setmeal as setmealname,c.spec_name,c.stock,c.price as sprice,b.skuid,b.pid,b.ptype from
+		c.setmeal as setmealname,c.spec_name,c.stock,c.price as sprice,b.skuid,b.pid,b.ptype,b.weights from
 		".CART." a left join 
 		".PRODUCT." b on a.product_id = b.id left join 
 		".SETMEAL." c on a.spec_id = c.id 
@@ -229,7 +229,6 @@ class cart
 				if ($fprice['express']<=0) $list['expresss'] = 1;
 			}
 		}
-
 		$orig_sum_price=$sumprice;//商品原价
 		$discount_price=$orig_sum_price-$sumprice;	//会员打折减少金额
 		
@@ -328,6 +327,7 @@ class cart
 	{
 		global $buid;  
 		$sumprice = 0;
+		$weights = 0;
 
 		//判断是否分销店
 		$sql = "select a.id, GROUP_CONCAT(a.id) as cart_id, seller_id,spec_id,company,a.discounts, a.dist_user_id from
@@ -351,6 +351,7 @@ class cart
 		    //获取单个店铺商品及商品总价格、平邮、快递、EMS、总邮费
 			$pro = $this->get_prolist($v['seller_id'],$area,$product_id,$provinceid);
             $voucher = $this->get_voucher($v['seller_id'],$pro['sumprice']);
+
 			if($pro['prolist'])
 			{
 				$re[$key]['orig_sum_price'] = $pro['orig_sum_price']*1;
@@ -368,6 +369,7 @@ class cart
 				$re[$key]['prolist'] = $pro['prolist'];
 				$re[$key]['is_invoice'] = $pro['is_invoice'];
 				$sumprice += $pro['sumprice'];
+				$weights += (int)$pro['weights'];
 				if($pro['giftlist'])
 				{
 					$re[$key]["giftlist"]=$pro['giftlist'];
@@ -378,7 +380,8 @@ class cart
 		}
 		$res['cart'] = $de;
 		$res['sumprice'] = $sumprice;
-
+		$res['weights']=$weights;
+		var_dump($res);die;
 		return $res;
 	}
 	

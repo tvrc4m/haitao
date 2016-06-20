@@ -288,7 +288,7 @@ $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
 $tpl->assign("cart",$cartlist['cart']);
 $tpl->assign("sumprice",$cartlist['sumprice']);
-
+var_dump($cartlist);die;
 include_once("footer.php");
 if($config['temp']=='wap'||$config['temp']=='wap_app')
 {
