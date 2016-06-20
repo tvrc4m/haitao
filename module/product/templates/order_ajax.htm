@@ -74,14 +74,14 @@
             <tr class="seg-entry"></tr>
 		</table>
         <div class="money">
-            <p><var>7</var>件商品，总商品金额<span class="s_sumprice"></span></p>
-            <p><i>运费</i><span>¥ 70.00</span></p>
-            <p>应付总额<span class="s_sumprice"></span></p>
+            <p><var class="pro">7</var>件商品，总商品金额<span>¥<b class="sumprice"></b></span></p>
+            <p><i>运费</i><span class="fare">¥ <b>70.50</b></span></p>
+            <p>应付总额<span>¥<b class="s_sumprice"></b></span></p>
             <div class="freight hidden"><p>免日本境内运费</p><p>商品重量：500.00g</p><p>首重：88.00元/500.00g</p><p>续重：8.00元/100.00g</p><p>(500.00g起运，不足500g按500g运费收取)</p><p>物流对比参考：</p><p>此商品官网直邮中国运费价格为人民币</p></div>
         </div>
         <p class="tip">*因商品都是由海外仓库直接发货，所以您在不同商铺购买的商品会统一发您一个包裹，收到包裹后请查收您的商品是否齐全。<br/>*若在清关中产生的税费及手续费需要收件人缴纳，请知悉。</p>
    		<input type="submit" value="" class="order_submit">
-        <div class="order_sum">实付款&nbsp&nbsp<b><{$config.money}> <span class="s_sumprice"></span></b></div>
+        <div class="order_sum">实付款&nbsp&nbsp<b><{$config.money}> <span><b class="s_sumprice"></b></span></b></div>
    </div>
 </form>
 <script>
@@ -109,7 +109,8 @@ function count_all_price()
 	{
 		total+=stotal[i].innerHTML.replace(',','')*1;
 	}
-	
+	$('.sumprice').html(roundAmount(total));
+    total+=Number($(".fare b").text());
 	$('.s_sumprice').html(roundAmount(total));
 }
 count_all_price();
@@ -118,7 +119,7 @@ function setMoney(){
     $('.num').each(function(index, item) {
         sum += parseInt($(item).text()) || 0;
     });
-    $(".money var")[0].innerHTML=sum;
+    $(".money var.pro")[0].innerHTML=sum;
     $(".money i").hover(function(){
         $(".freight").removeClass("hidden");
     },function(){

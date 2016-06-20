@@ -110,6 +110,7 @@ div.money .freight{position: absolute;top: 60px;right: 0;z-index: 1;background: 
 div.money .freight:before, div.money .freight:after{content: "";display: block;border-width: 10px;position: absolute;top: -20px;left: 90px;border-style: dashed dashed solid dashed;border-color: transparent transparent #e0e0e0 transparent;font-size: 0;line-height: 0;}
 div.money .freight:after {top: -19px;border-color: transparent transparent #fff transparent;}
 div.money .freight p{text-align: left;}
+div.money b{font-weight: normal;}
 /*.step tr.total:nth-child(even){border-bottom:1px solid #d8d8d8;}*/
 .step .order_sum{float: right;display: inline-block;line-height: 40px;margin-right: 20px;}
 .step .order_sum b{color: #ff5c5c;font-size: 24px;}
