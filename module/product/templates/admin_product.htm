@@ -123,6 +123,12 @@ var weburl="<{$config.weburl}>";
             <input type="text" onblur="init_value()" name="price" id="price" maxlength="10" value="<{$de.price}>" /> 元
         </td>
     </tr>
+    <tr>
+        <th><font color="red">*</font>商品重量</th>
+        <td>
+            <input type="text" onblur="init_value()" name="weights" id="weights" maxlength="10" value="<{$de.weights}>" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d+\.+\d]/g,''))" onkeyup="value=value.replace(/[^\d+\.+\d]/g,'')"/> KG
+        </td>
+    </tr>
 
     <{if $distribution_open_flag eq 1 AND $distribution_user_state eq -3}>
     <tr>
@@ -584,6 +590,12 @@ function check_value()
 		$('#price').focus();
 		return false;
 	}
+    if(!$('#weights').val())
+    {
+        alert('请填商品重量');
+        $('#weights').focus();
+        return false;
+    }
 
     if(!$('#market_price').val())
     {
