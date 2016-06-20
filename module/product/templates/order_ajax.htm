@@ -64,54 +64,20 @@
             <tr class="other">
             	<td colspan="2" rowspan="2" class="msg">
                 <p>补充说明: <input placeholder="选填，可告诉卖家您的特殊要求" name="msg_<{$list.seller_id}>"></p>
-                
+
                 <input type="hidden" name="invoice_<{$list.seller_id}>" value="<{$list.is_invoice}>" />
-                
+
                 <!-- <{if $list.is_invoice>0}>
                 <p>发票抬头: <input style="width:100px;" type="text" name="invoice_title_<{$list.seller_id}>" value="<{$re}>" /></p>
                 <{/if}> -->
-                
+
                 </td>
-            	<td>运费方式：</td>
+            	<td></td>
                 <td>
-                普通配送&nbsp;
-                <{if $list.mail>0 or $list.express>0 or $list.ems>0}>
-                <{assign var="m_price" value="0.00"}>
-                <select id='cem_<{$list.seller_id}>' onchange="count_price('<{$list.seller_id}>');">
-                    
-                <{if $list.express>0}>
-                <{assign var="m_price" value=$list.express}>
-				<option value="快递,<{$list.express}>">
-                    快递&nbsp;&nbsp;<{$list.express|number_format:2}>元
-                </option>
-                <{/if}>
-                    
-                <{if $list.mail>0}>
-                <{if $list.express eq 0}><{assign var="m_price" value=$list.mail}><{/if}>
-                <option value="平邮,<{$list.mail}>">
-                	平邮&nbsp;&nbsp;<{$list.mail|number_format:2}>元
-                </option>
-                <{/if}>
-                    
-                <{if $list.ems>0}>
-                <{if $list.express eq 0}><{assign var="m_price" value=$list.ems}><{/if}>
-                <option value="EMS,<{$list.ems}>">
-                	EMS&nbsp;&nbsp;<{$list.ems|number_format:2}>元
-                </option>
-                <{/if}>
-                </select>
-                <{else}>
-                卖家承担
-                <{/if}>
+                    运费：
                 </td>
-                <td class="price">  
-                <{if $m_price>0}>
-                    <b id="show_cem_<{$list.seller_id}>">
-                    <{$m_price|number_format:2}>
-                    </b>
-                <{else}>
-                <b>0.00</b>    
-                <{/if}>
+                <td class="price">
+                <b>0.00</b>
                 </td>
             </tr>
 			<tr class="total">
