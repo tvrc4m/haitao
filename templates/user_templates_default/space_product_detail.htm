@@ -172,22 +172,17 @@ function buy()
                         </div>
                         <ul class="promo-meta clearfix">
                             <li>
-                                <span class="mr10">国内价</span>
-                                <s><{$config.money}><{$de.market_price|number_format:2}></s>
-                            </li>
-                            <li>
-                                <span class="mr10" style="vertical-align:-6px;">蚂蚁价</span>
+                                <span class="mr10" style="vertical-align:-6px;">店头价</span>
                                 <strong class="promo-price">
                                     <em class="rmb"><{$config.money}></em>
                                     <em id="price" class="rmb-num"><{$de.price|number_format:2}></em>
-                                    <em class="icon"></em>
                                 </strong>
                             </li>
                         </ul>
                         <ul class="promo-service">
-                            <li><span class="mr10">该商品</span>由<strong><{$com.trade}></strong>发货  预计3-7天送达</li>
-                            <li><span class="mr10">进口税</span>由<b><{$com.company}></b>承担</li>
-                            <li><span class="mr10">服&nbsp&nbsp&nbsp务</span>支持14天退换货&nbsp<em class="help"><p class="registerNotice1"><span class="tipcon">只支持在物流中损坏的商品</span><span class="rownotice"><img src="/image/default/tipnamebg.png"></span></p></em><em class="icon"></em><span style="color:#ff5c5c;">运费：<{$de.weights}></span> </li>
+                            <li><span class="mr10">该商品</span>由<strong><{$com.trade}></strong>发货  预计5-15天送达</li>
+                            <li><span class="mr10">运&nbsp&nbsp&nbsp费</span>根据商品的重量计算运费&nbsp<b>¥<{$de.weights}></b></li>
+                            <li><span class="mr10">服&nbsp&nbsp&nbsp务</span>不支持7天无理由退换货</li>
                         </ul>
                         <div class="buy_box clearfix">
                                 <form id="form" onsubmit="return buy()" action="<{$config.weburl}>/?m=product&s=<{if $de.is_virtual}>confirm_virtual_order<{else}>confirm_order<{/if}><{if $smarty.get.shop_id}>&dist_user_id=<{$smarty.get.shop_id}><{/if}>" method="post">
