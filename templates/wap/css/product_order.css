@@ -21,11 +21,12 @@
 .inventory{padding: 0px 10px 0px;}
 .p-price-num-z{font-size: 0.857rem;}
 .p-name-gunge{font-size: 0.6rem;color: #666;}
-.item {background:#FFF;border:1px solid #b9b9b9;min-height:80px;;position:relative;}
+.item {background:#FFF;border:1px solid #b9b9b9;min-height:80px;;position:relative;margin-bottom: 0.5rem;}
 .item:first-child{margin-top:10px;}
-.item_rule {text-align: center;font-size: 0.6rem;padding: 0.5rem 0;background-color: #fff;}
+.item:last-of-type{margin-bottom:0;}
+.item_rule {text-align: center;font-size: 0.642rem;padding: 0.5rem 0;background-color: #fff;}
 .item_rule .item_rule_title{width: 70%;position: relative;height: 1px;background-color: #b9b9b9;margin-left: 15%;margin-top: 0.5rem;margin-bottom: 1rem;}   
-.item_rule .item_rule_title h2{position: absolute;top: -8px;left: 50%;background-color: #fff;z-index: 99;font-size: 0.7rem;width: 100px;margin-left: -50px;
+.item_rule .item_rule_title h2{position: absolute;top: -8px;left: 50%;background-color: #fff;z-index: 99;font-size: 0.714rem;width: 100px;margin-left: -50px;
     text-align: center;color: #ff5c5c;}
 .item_rule .item_rule_list{text-align: left;padding-left: 2.2rem;}
 .item_rule .item_rule_list p{line-height: 1.6;}
