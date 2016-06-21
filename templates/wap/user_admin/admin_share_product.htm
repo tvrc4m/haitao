@@ -36,7 +36,7 @@
                         <a href="<{$config.weburl}>/?m=product&amp;s=detail&amp;id=<{$list.pid}>"><{$list.pname}></a>
                     </p>
                     <div class="wareli_bottom_ro clearfix">
-                        <span class="org"><{$config.money}><{$list.price}></span><span class="gre wareli_money_del wareli_money_dels"><{$config.money}><{$list.market_price}></span>
+                        <span>店头价&nbsp;</span><span class="org"><{$config.money}><{$list.price}></span>
                     </div>
                 </div>
                 <div class="shareshop-detail-delates" data-id='<{$list.id}>'><a href="javascript:void(0);">删除</a></div>
@@ -122,7 +122,7 @@ $(function(){
                                             "<a href='<{$config.weburl}>/?m=product&amp;s=detail&amp;id="+msg.data[i].pid+"'>"+msg.data[i].pname+"</a>"+
                                         "</p>"+
                                         "<div class='wareli_bottom_ro clearfix'>"+
-                                            "<span class='org'><{$config.money}>"+msg.data[i].price+"</span><span class='gre wareli_money_del wareli_money_dels'><{$config.money}>"+msg.data[i].market_price+"</span>"+
+                                            "<span>店头价&nbsp;</span><span class='org'><{$config.money}>"+msg.data[i].price+"</span>"+
                                         "</div>"+
                                     "</div>"+
                                     "<div class='shareshop-detail-delates' data-id='"+msg.data[i].id+"'><a href='javascript:void(0);'>删除</a></div>"+

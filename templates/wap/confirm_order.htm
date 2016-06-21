@@ -117,7 +117,7 @@
             <{if $list.reduce_price}>
             <div>
                 <span class="p-name">
-                原价（含运费）：
+                原价：
                 <strong class="price"><{$list.orig_sum_price+$list.express|number_format:2}></strong>
                 </span>
             </div>
@@ -131,7 +131,7 @@
             
             <div class="fr">
             <span class="fr-gong">共<span class="fr-gong-num"></span>件商品</span>
-            合计(含运费):&nbsp;&nbsp;
+            合计:&nbsp;&nbsp;
             <span class="p-name">
                 <strong class="price">
                     <{$config.money}>
