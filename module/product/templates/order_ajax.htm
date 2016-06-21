@@ -79,11 +79,8 @@
             <{if $logisticsCost <= 88}>
             <div class="freight hidden"><p>免日本境内运费</p><p>商品重量：<{$weights}>g</p><p>首重：88.00元/500.00g</p><p>续重：8.00元/100g</p><p>(500g起运，不足500g按500g运费收取)</p><p>物流对比参考：</p><p>此商品官网直邮中国运费价格为人民币</p></div>
             <{/if}>
-            <{if $logisticsCost > 88 && $logisticsCost <= 150}>
-            <div class="freight hidden"><p>免日本境内运费</p><p>商品重量：<{$weights}>g</p><p>首重：150.00元/1000g</p><p>续重：22.00元/250g</p><p>物流对比参考：</p><p>此商品官网直邮中国运费价格为人民币</p></div>
-            <{/if}>
-            <{if $logisticsCost > 150}>
-            <div class="freight hidden"><p>免日本境内运费</p><p>商品重量：<{$weights}>g</p><p>首重：194.00元/2000g</p><p>续重：22.00元/350g</p><p>物流对比参考：</p><p>此商品官网直邮中国运费价格为人民币</p></div>
+            <{if $logisticsCost > 88}>
+            <div class="freight hidden"><p>免日本境内运费</p><p>商品重量：<{$weights}>g</p><p>首重：150.00元/1000g</p><p>续重：22.00元/500g</p><p>物流对比参考：</p><p>此商品官网直邮中国运费价格为人民币</p></div>
             <{/if}>
         </div>
         <p class="tip">*因商品都是由海外仓库直接发货，所以您在不同商铺购买的商品会统一发您一个包裹，收到包裹后请查收您的商品是否齐全。<br/>*若在清关中产生的税费及手续费需要收件人缴纳，请知悉。</p>

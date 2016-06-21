@@ -170,26 +170,17 @@
             <p>此商品官网直邮中国运费价格为人民币。</p>
         </div>
         <{/if}>
-        <{if $logisticsCost > 88 && $logisticsCost <= 150}>
+        <{if $logisticsCost > 88}>
         <div class="confirm_total_box">
             <p>免日本境内运费</p>
             <p>商品重量 <{$weights}>g</p>
             <p>首重 150.00元/1000g</p>
-            <p>续重 22.00元/250g</p>
+            <p>续重 22.00元/500g</p>
             <p>物流对比参考：</p>
             <p>此商品官网直邮中国运费价格为人民币。</p>
         </div>
         <{/if}>
-        <{if $logisticsCost > 150}>
-        <div class="confirm_total_box">
-            <p>免日本境内运费</p>
-            <p>商品重量 <{$weights}>g</p>
-            <p>首重 194.00元/2000g</p>
-            <p>续重 22.00元/350g</p>
-            <p>物流对比参考：</p>
-            <p>此商品官网直邮中国运费价格为人民币。</p>
-        </div>
-        <{/if}>
+
         <i class="confirm_total_jt"></i>
     </div>
     <div><span class="confirm_total_lf">应付总额：</span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_sumpricess"></span></span></div>
