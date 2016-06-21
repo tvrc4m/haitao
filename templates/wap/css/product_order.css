@@ -24,7 +24,7 @@
 .item {background:#FFF;border:1px solid #b9b9b9;min-height:80px;;position:relative;margin-bottom: 0.5rem;}
 .item:first-child{margin-top:10px;}
 .item:last-of-type{margin-bottom:0;}
-.item_rule {text-align: center;font-size: 0.642rem;padding: 0.5rem 0;background-color: #fff;}
+.item_rule {text-align: center;font-size: 0.642rem;padding: 0.5rem 0;background-color: #fff;color: #942a94;}
 .item_rule .item_rule_title{width: 70%;position: relative;height: 1px;background-color: #b9b9b9;margin-left: 15%;margin-top: 0.5rem;margin-bottom: 1rem;}   
 .item_rule .item_rule_title h2{position: absolute;top: -8px;left: 50%;background-color: #fff;z-index: 99;font-size: 0.714rem;width: 100px;margin-left: -50px;
     text-align: center;color: #ff5c5c;}
