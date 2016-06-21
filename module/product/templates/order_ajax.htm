@@ -54,7 +54,7 @@
                 <p>
                     <select name="voucher_<{$list.seller_id}>" uid="<{$list.seller_id}>">
                     <option value="" item=0>不使用代金券</option>
-                     <{foreach from=$list.voucher item=vo}>limit
+                     <{foreach from=$list.voucher item=vo}>
                     <option item="<{$vo.price}>" value="<{$vo.id}>"><{$vo.name}></option>
                     <{/foreach}>
                     </select>
@@ -82,7 +82,7 @@
             <{if $logisticsCost > 88 && $logisticsCost <= 150}>
             <div class="freight hidden"><p>免日本境内运费</p><p>商品重量：<{$weights}>g</p><p>首重：150.00元/1000g</p><p>续重：22.00元/250g</p><p>物流对比参考：</p><p>此商品官网直邮中国运费价格为人民币</p></div>
             <{/if}>
-            <{if $logisticsCost > 128}>
+            <{if $logisticsCost > 150}>
             <div class="freight hidden"><p>免日本境内运费</p><p>商品重量：<{$weights}>g</p><p>首重：194.00元/2000g</p><p>续重：22.00元/350g</p><p>物流对比参考：</p><p>此商品官网直邮中国运费价格为人民币</p></div>
             <{/if}>
         </div>

@@ -193,7 +193,8 @@ class cart
 				}
 
 				$sumprice += $val['sumprice'];//单店总价
-				$weights += $val['weights'];//单店总价
+				$weights += $val['weights']*$val['num'];//单店总价
+
 				if($val['is_invoice']=='true')
 				{
 					$list['is_invoice']++;	
@@ -353,7 +354,6 @@ class cart
 		    //获取单个店铺商品及商品总价格、平邮、快递、EMS、总邮费
 			$pro = $this->get_prolist($v['seller_id'],$area,$product_id,$provinceid);
             $voucher = $this->get_voucher($v['seller_id'],$pro['sumprice']);
-
 			if($pro['prolist'])
 			{
 				$re[$key]['orig_sum_price'] = $pro['orig_sum_price']*1;
