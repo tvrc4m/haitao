@@ -327,7 +327,7 @@ class cart
 	 */
 	function get_cart_list($area,$product_id = '',$provinceid = '')
 	{
-		global $buid;  
+		global $buid;
 		$sumprice = 0;
 		$weights = 0;
 
@@ -383,8 +383,6 @@ class cart
 		$res['cart'] = $de;
 		$res['sumprice'] = $sumprice;
 		$res['weights']=$weights;
-		echo $weights;
-		var_dump($res['cart']);die;
 		return $res;
 	}
 	
