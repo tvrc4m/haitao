@@ -47,7 +47,6 @@
                         <div class="shopli_bottom_rob">
                             <div class="al shopli_bottom_money">
                                 <p class="money"><{$config.money}><{$list.price}></p>
-                                <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                             </div>
                             <div class="shopli_bottom_sales">销量<span><{$list.sales}></span></div>
                         </div>
@@ -125,7 +124,6 @@ $(function(){
                                             "<div class='shopli_bottom_rob clearfix'>"+
                                                 "<div class='al shopli_bottom_money'>"+
                                                     "<p class='money'>¥"+msg.data[i].price+"</p>"+
-                                                    "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
                                                 "<div class='shopli_bottom_sales'>销量<span>"+msg.data[i].sales+"</span></div>"+
                                             "</div>"+
