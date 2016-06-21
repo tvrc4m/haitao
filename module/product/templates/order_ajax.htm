@@ -59,7 +59,6 @@
                     <{/foreach}>
                     </select>
                 </p>
-                    
                     <{if $list.voucher}><b class="vouchers" id="voucher_<{$list.seller_id}>">0.00</b>
                     <br/><{/if}>
                     <b class="shop_total_price" id="s_csumprice_<{$list.seller_id}>" org="<{$list.sumprice+$m_price|number_format:2}>">
@@ -137,5 +136,4 @@ function roundAmount(n)
   if(i   +   2   ==   s.length)   t   +=   "0"  
   return   t  
 }
-
 </script>
