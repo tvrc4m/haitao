@@ -193,6 +193,7 @@ class cart
 				}
 
 				$sumprice += $val['sumprice'];//单店总价
+				$weights += $val['weights'];//单店总价
 				if($val['is_invoice']=='true')
 				{
 					$list['is_invoice']++;	
@@ -257,6 +258,7 @@ class cart
 		
 		$list['orig_sum_price']=$orig_sum_price;//商品活动、折扣前的总价
 		$list['sumprice'] = $sumprice;//单个卖家的商品总价
+		$list['weights']=$weights;
 		$list['prolist'] = $re;//单个店铺的产品列表
 		
 		return $list;
@@ -369,7 +371,7 @@ class cart
 				$re[$key]['prolist'] = $pro['prolist'];
 				$re[$key]['is_invoice'] = $pro['is_invoice'];
 				$sumprice += $pro['sumprice'];
-				$weights += (int)$pro['weights'];
+				$weights += $pro['weights'];
 				if($pro['giftlist'])
 				{
 					$re[$key]["giftlist"]=$pro['giftlist'];
@@ -381,7 +383,8 @@ class cart
 		$res['cart'] = $de;
 		$res['sumprice'] = $sumprice;
 		$res['weights']=$weights;
-		var_dump($res);die;
+		echo $weights;
+		var_dump($res['cart']);die;
 		return $res;
 	}
 	
