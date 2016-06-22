@@ -123,6 +123,10 @@ function getfavshop(){
 }
 function buy()
 {
+    if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
+        layer.msg("不能购买自己店铺的商品！",{icon:0});
+        return false;
+    }
     var flag = false;
     $('ul[genre="property"]').each(function(){
         if(!$(this).find('a').hasClass('checked')){
