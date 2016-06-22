@@ -30,7 +30,7 @@
     text-align: center;color: #ff5c5c;}
 .item_rule .item_rule_list{text-align: left;padding:0 0.5rem;}
 .item_rule .item_rule_list p{line-height: 1.6;}
-.item .top{background-color:#fff;border-bottom:1px solid #ff5c5c ;padding:0.642rem 0;}
+.item .top{background-color:#fff;border-bottom:1px solid #ff5c5c ;padding:0.4rem 0;}
 .item .top a{color:#535353;padding-left:10px;font-size: 0.714rem;}
 .item .top input[type="checkbox"]{margin:-1px 0 0 20px }
 .item dl{padding:15px 10px;border-top:1px solid #b9b9b9;position:relative;}
@@ -91,7 +91,7 @@ span.p-price strong{font-size:0.9rem;}
 .confirm_total div{width: 100%;line-height: 1.8;}
 .confirm_total .confirm_total_lf{width:70%;text-align: right;display: inline-block;}
 .confirm_total .confirm_total_lf .confirm_total_icon{padding-left: 0.9rem;background:url(../../../image/wap/wap_haitao_icon160.png) center left no-repeat;background-size: contain;}
-.confirm_total .confirm_total_lf>span{margin-right: 0.5rem;}
+.confirm_total .confirm_total_lf .confirm_total_lfsd{margin-right: 0.5rem;}
 .confirm_total .confirm_total_rt{width:30%;text-align: right;display: inline-block;}
 .confirm_total_frame{position: relative;}
 .confirm_total_frame .confirm_total_box{position: absolute;top: 1.5rem;width: 100%;left: 0;z-index: 9999;
