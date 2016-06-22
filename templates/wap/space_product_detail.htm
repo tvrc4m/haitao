@@ -70,24 +70,24 @@
     <div class="select_style_one">
         <div class="b-gra-cfs">
             <div class="col-money">
-                <span class="price_moneys"><{$config.money}>  <span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>&nbsp;&nbsp;
-                <span>国内价：</span><span class="price_dels"> <{$config.money}>  <span class="price_dels_num" id="price"><{$de.market_price|number_format:2}></span></span>&nbsp;&nbsp;
-                <span>已省：</span><span class="price_chas"> <{$config.money}>  <span class="price_chas_num"></span></span>
+                <span>店头价</span><span class="price_moneys"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
             </div>
             <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
         </div>
+        <div style="height:0.4rem;background-color:#f5f5f5;width:100%"></div>
         <div class="c-wh bgw" style="margin-bottom: 0">
             <div class="select_style clearfix">
                 <div class="select_guanshui clearfix">
-                    <div><span class="select_one">该商品</span><span>由<b><{$com.trade}></b>发货 预计3-7天送达</span></div>
-                    <div><span class="select_one">进口税</span><span>由<a href="shop.php?uid=<{$smarty.get.uid}>"><var><{$com.company}></var></a>承担</span></div>
-                    <div class="select_duty_context">
-                        <div><span class="select_one">服务</span><span class="select_guanshui_ic">支持14天退换货</span><span class="select_guanshui_ip">免运费</span></div>
-                        <div class="select_guanshui_hid"><i></i>只支持在物流中损坏的商品</div>
-                    </div>
+                    <div><span class="select_one select_ones">运费</span><span>根据订单中商品的总重量来计算运费</span></div>
+                    <div><span>该商品由蚂蚁海淘日本仓发货 预计 <span class="org">5-15</span> 天送达</span></div>
+                </div>
+                <div class="select_guanshui clearfix">
+                    <div><span class="select_one">进口税</span><span>若在清关中产生税费及手续费需要收件人缴纳，请知悉</span></div>  
+                    <div><span class="select_one">服务</span><span>不支持7天无理由退货，仅支持物流中损坏的商品</span></div>
                 </div>
             </div>
         </div>
+        <div style="height:0.4rem;background-color:#f5f5f5;width:100%"></div>
         <div class="c-wh bgw bgw_vi">
             <div class="select_style select_styless clearfix">
                 <{if $de.rest==0 && !$de.offertime}>
@@ -162,8 +162,7 @@
                                         </div>
                                         <div class="shopli_bottom_rob clearfix">
                                             <div class="al shopli_bottom_money">
-                                                <span class="money"><{$config.money}><{$list.price}></span>
-                                                <span class="money money_del"><{$config.money}><{$list.market_price}></span>
+                                                <span>店头价&nbsp;</span><span class="money"><{$config.money}><{$list.price}></span>
                                             </div>
                                         </div>
                                     </div>
@@ -300,9 +299,6 @@
             _slideObj.animate({height:slideH},800);
         }, 800);
     }, false);    
-    var monNum=Number($(".price_moneys .price_moneys_num").html()),delNum=Number($(".price_dels .price_dels_num").html());
-    var chaNum=(delNum-monNum).toFixed(2);
-    $(".price_chas .price_chas_num").html(chaNum);
 </script>
 <script>
 $(document).ready(function(){

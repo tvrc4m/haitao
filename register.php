@@ -185,9 +185,7 @@ else
 function doreg($guid=NULL)
 {
 	global $db,$config,$ip;
-	/*$data['uc_appid']='201605270933';
-	$data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
-	$data['uc_server']='https://m.mayizaixian.cn/apis/uc';*/
+
 	$obj = new Uc_server($_SESSION['ucenter_data']);
     $user = 'mayi'.$_POST['mobile'];
 	$pass = addslashes($_POST['password']);
@@ -206,58 +204,97 @@ function doreg($guid=NULL)
     if(Check_only($mobile, 'mobile', MEMBER)>0){
         die('<script>alert("该手机号已经存在！");history.go(-1);</script>;');
     }
+	$list = $obj->userinfo(array("phone"=>$mobile));
+	if($list['status']=='1100'){
+		$sql = "insert into " . MEMBER . " (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','" . md5($pass) . "','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
+		$re = $db->query($sql);
+		$userid = $db->lastid();
+		if ($userid) {
+			$sql = "INSERT INTO " . MEMBERINFO . " (member_id) VALUES ('$userid')";
+			$re = $db->query($sql);
+			if ($re) {
+				$post['userid'] = $userid;
+				$post['email'] = $user;
+				$pay_id = member_get_url($post, true);
+				if ($pay_id) {
+					$sql = "update " . MEMBER . " set pay_id='$pay_id' where userid='$userid'";
+					$re = $db->query($sql);
+				}
+				//-------------绑定一键连接
 
-	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
-	$re=$db->query($sql);
-	$userid=$db->lastid();
-	$list = $obj->userinfo($mobile);
+				if (!empty($_REQUEST['connect_id'])) {
+					$sql = "update " . USERCOON . " set userid='$userid' where id='$_REQUEST[connect_id]'";
+					$db->query($sql);
+				}
+				//---------------设置加密的cookie
+				bsetcookie("USERID", "$userid\t$user", NULL, "/", $config['baseurl']);
+				setcookie("USER", $user, NULL, "/", $config['baseurl']);
 
-	$salt = rand_pwd();
-	$obj->register(array('phone'=>$mobile,'password'=>md5(md5($pass).$salt),'salt'=>$salt));
-	/* $aa = $this->register(array('phone'=>'15011426119','password'=>md5(md5(123456).'abcabc'),'salt'=>'abcabc'));
-  var_dump($aa);die;*/
-	if($userid)
-	{
+				$PluginManager = Yf_Plugin_Manager::getInstance();
+				$PluginManager->trigger('reg_done', $userid, $user);
 
-		$sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
-		$re=$db->query($sql);
-		if($re)
-		{
-			$post['userid'] = $userid;
-			$post['email'] = $user;
-			$pay_id = member_get_url($post,true);	
-			if($pay_id)
-			{
-				$sql="update ".MEMBER." set pay_id='$pay_id' where userid='$userid'";
-				$re=$db->query($sql);	
-			}
-			//-------------绑定一键连接
-
-			if(!empty($_REQUEST['connect_id']))
-			{
-				$sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";
+				$sql = "update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=" . $userid;
 				$db->query($sql);
+				$sql = "update " . MEMBER . " set mobile_verify = 1 where userid=" . $userid;
+				$db->query($sql);
+
+				if ($config['temp'] == 'wap')
+					header("Location: main.php?cg_u_type=1");
+				else
+					header("Location: main.php?m=member&s=admin_member&cg_u_type=1&from_register=1");
 			}
-			//---------------设置加密的cookie
-			bsetcookie("USERID","$userid\t$user",NULL,"/",$config['baseurl']);
-			setcookie("USER",$user,NULL,"/",$config['baseurl']);
+		} else
+			die('<script>alert("系统繁忙，请稍后注册!");history.go(-1);</script>;');
+	}else{
+		$sql = "insert into " . MEMBER . " (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','" . md5($pass) . "','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify')";
+		$re = $db->query($sql);
+		$userid = $db->lastid();
 
-			$PluginManager = Yf_Plugin_Manager::getInstance();
-			$PluginManager->trigger('reg_done', $userid, $user);
+		$salt = rand_pwd();
 
-            $sql="update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=".$userid;
-            $db->query($sql);
-            $sql="update ". MEMBER ." set mobile_verify = 1 where userid=".$userid;
-            $db->query($sql);
+		$reg_obj = new Uc_server($_SESSION['ucenter_data']);
+		$res = $reg_obj->register(array('phone' => $mobile, 'password' => md5(md5($pass) . $salt), 'salt' => $salt));
+		/* $aa = $this->register(array('phone'=>'15011426119','password'=>md5(md5(123456).'abcabc'),'salt'=>'abcabc'));
+      var_dump($aa);die;*/
+		if ($userid) {
 
-			if($config['temp'] == 'wap')
-				header("Location: main.php?cg_u_type=1");
-			else
-				header("Location: main.php?m=member&s=admin_member&cg_u_type=1&from_register=1");
-		}
-	 }
-	 else
-		 die('<script>alert("系统繁忙，请稍后注册!");history.go(-1);</script>;');
+			$sql = "INSERT INTO " . MEMBERINFO . " (member_id) VALUES ('$userid')";
+			$re = $db->query($sql);
+			if ($re) {
+				$post['userid'] = $userid;
+				$post['email'] = $user;
+				$pay_id = member_get_url($post, true);
+				if ($pay_id) {
+					$sql = "update " . MEMBER . " set pay_id='$pay_id' where userid='$userid'";
+					$re = $db->query($sql);
+				}
+				//-------------绑定一键连接
+
+				if (!empty($_REQUEST['connect_id'])) {
+					$sql = "update " . USERCOON . " set userid='$userid' where id='$_REQUEST[connect_id]'";
+					$db->query($sql);
+				}
+				//---------------设置加密的cookie
+				bsetcookie("USERID", "$userid\t$user", NULL, "/", $config['baseurl']);
+				setcookie("USER", $user, NULL, "/", $config['baseurl']);
+
+				$PluginManager = Yf_Plugin_Manager::getInstance();
+				$PluginManager->trigger('reg_done', $userid, $user);
+
+				$sql = "update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=" . $userid;
+				$db->query($sql);
+				$sql = "update " . MEMBER . " set mobile_verify = 1 where userid=" . $userid;
+				$db->query($sql);
+
+				if ($config['temp'] == 'wap')
+					header("Location: main.php?cg_u_type=1");
+				else
+					header("Location: main.php?m=member&s=admin_member&cg_u_type=1&from_register=1");
+			}
+		} else
+			die('<script>alert("系统繁忙，请稍后注册!");history.go(-1);</script>;');
+
+	}
 }
 
 /* =================================================自定义方法======================================================== */
@@ -293,7 +330,7 @@ function rand_pwd(){
 	$strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 	$max = strlen($strPol)-1;
 
-	for($i=0;$i<5;$i++){
+	for($i=0;$i<6;$i++){
 		$str.=$strPol[rand(0,$max)];
 	}
 

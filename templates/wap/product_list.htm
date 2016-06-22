@@ -47,7 +47,6 @@
                         <div class="shopli_bottom_rob">
                             <div class="al shopli_bottom_money">
                                 <p class="money"><{$config.money}><{$list.price}></p>
-                                <p class="money money_del"><{$config.money}><{$list.market_price}></p>
                             </div>
                             <div class="shopli_bottom_sales">销量<span><{$list.sales}></span></div>
                         </div>
@@ -66,16 +65,6 @@
     <h3>没有相关宝贝</h3>
 </div>
 <{/if}>
-<div class="leftcate hidden">
-    <{if $cat }>
-    <h2>分类 <a class="remove" href="javascript:void(0)"><nav>取消</nav></a></h2>
-    <ul>
-        <{foreach item=list from=$cat}>
-        <li><a <{if $smarty.get.id==$list.catid}>class="current"<{/if}> href="<{$config.weburl}>/?m=product&s=list&id=<{$list.catid}>"><{$list.cat}></a></li>
-        <{/foreach}>
-    </ul>
-    <{/if}>
-</div>
 </section>
 <section class="addcarts">
     <a class="carts" href="/?m=product&s=cart">
@@ -92,45 +81,6 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_list.js"></script>
 <script type="text/javascript">
-    function altto(co){
-        $(".collect_box_content").show();
-        $(".collect_box_content").html(co);
-    }
-    function wid(){
-        var wid=$(".collect_box_content").width()/2;
-        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px","top":"30%"});
-        setTimeout(function(){
-            $(".collect_box_content").hide();
-        },2000)
-    }
-    function distribute_goods(id){
-        var url = '<{$config.weburl}>/module/distribution/add.php';
-        var uname='<{$smarty.cookies.USER}>';
-        if(uname=='')
-        {
-            altto('请先登录！');
-            wid();
-            return false;
-        }
-        var pars = 'pid='+id+'&uname='+uname;
-        $.post(url, pars,showResponse);
-        function showResponse(originalRequest)
-        {
-
-            if(originalRequest>1){
-                altto('成功添加至我的店铺!');
-                wid();
-            }
-            else if (originalRequest>0){
-                altto('该商品已经在我的店铺！');
-                wid();
-            }
-            else{
-                altto('参数传递错误<br>无法完成操作!');
-                wid();
-            }
-        }
-    }
 $(function(){
     var liLen=$(".shoplist .shopli").size();
     if(liLen<10){
@@ -156,7 +106,6 @@ $(function(){
                     data: {id:id, page:page, m:"product", s:"ajax_list", national:national, dist_id:dist_id},
                     dataType: "json",
                     success: function(msg){
-                        console.log(msg)
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
@@ -175,7 +124,6 @@ $(function(){
                                             "<div class='shopli_bottom_rob clearfix'>"+
                                                 "<div class='al shopli_bottom_money'>"+
                                                     "<p class='money'>¥"+msg.data[i].price+"</p>"+
-                                                    "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
                                                 "</div>"+
                                                 "<div class='shopli_bottom_sales'>销量<span>"+msg.data[i].sales+"</span></div>"+
                                             "</div>"+

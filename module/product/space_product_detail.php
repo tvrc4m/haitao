@@ -53,7 +53,11 @@ if(!empty($buid)){
 	$tpl->assign("sshop",0);
 }
 //====================================产品详情
-
+//物流运费
+$prode['weights'] =1000;
+include_once ("$config[webroot]/api/logisticsCost.php");
+$obj = new logistics($prode['weights']);
+$prode['weights'] = $obj->cost();
 $tpl->assign("de",$prode);
 
 $tpl->assign("relation",$relation);

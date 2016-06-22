@@ -134,7 +134,7 @@ class cart
 		$sql="select 
 		a.*,a.price * a.quantity as sumprice,a.quantity as num,b.weight,b.cubage,
 		b.subhead,b.brand,b.type,b.promotion_id,b.ship_free_id,b.trade,b.is_shelves,b.status,b.market_price,b.price as pprice,b.stock as amount,b.name as pname,b.pic,b.catid,b.id as pid,b.freight_id as freight,b.freight_type,b.is_invoice,
-		c.setmeal as setmealname,c.spec_name,c.stock,c.price as sprice,b.skuid,b.pid,b.ptype from
+		c.setmeal as setmealname,c.spec_name,c.stock,c.price as sprice,b.skuid,b.pid,b.ptype,b.weights from
 		".CART." a left join 
 		".PRODUCT." b on a.product_id = b.id left join 
 		".SETMEAL." c on a.spec_id = c.id 
@@ -193,6 +193,8 @@ class cart
 				}
 
 				$sumprice += $val['sumprice'];//单店总价
+				$weights += $val['weights']*$val['num'];//单店总价
+
 				if($val['is_invoice']=='true')
 				{
 					$list['is_invoice']++;	
@@ -229,7 +231,6 @@ class cart
 				if ($fprice['express']<=0) $list['expresss'] = 1;
 			}
 		}
-
 		$orig_sum_price=$sumprice;//商品原价
 		$discount_price=$orig_sum_price-$sumprice;	//会员打折减少金额
 		
@@ -258,6 +259,7 @@ class cart
 		
 		$list['orig_sum_price']=$orig_sum_price;//商品活动、折扣前的总价
 		$list['sumprice'] = $sumprice;//单个卖家的商品总价
+		$list['weights']=$weights;
 		$list['prolist'] = $re;//单个店铺的产品列表
 		
 		return $list;
@@ -326,8 +328,9 @@ class cart
 	 */
 	function get_cart_list($area,$product_id = '',$provinceid = '')
 	{
-		global $buid;  
+		global $buid;
 		$sumprice = 0;
+		$weights = 0;
 
 		//判断是否分销店
 		$sql = "select a.id, GROUP_CONCAT(a.id) as cart_id, seller_id,spec_id,company,a.discounts, a.dist_user_id from
@@ -368,6 +371,7 @@ class cart
 				$re[$key]['prolist'] = $pro['prolist'];
 				$re[$key]['is_invoice'] = $pro['is_invoice'];
 				$sumprice += $pro['sumprice'];
+				$weights += $pro['weights'];
 				if($pro['giftlist'])
 				{
 					$re[$key]["giftlist"]=$pro['giftlist'];
@@ -378,7 +382,7 @@ class cart
 		}
 		$res['cart'] = $de;
 		$res['sumprice'] = $sumprice;
-
+		$res['weights']=$weights;
 		return $res;
 	}
 	
