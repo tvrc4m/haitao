@@ -12,12 +12,18 @@
         <img class="duser_left_logo" src="<{if $cominfo.plogo}><{$cominfo.plogo}><{else}>image/wap/avatar.png<{/if}>">
     </div>
     <div class="duser_right">
-        <div class="duser_right_name"><{$cominfo.user}></div>
+        <div class="duser_right_name">
+            <{if $cominfo.user}>
+                <{$cominfo.user}>
+            <{else}>
+                mayi<{$cominfo.mobile}>
+            <{/if}>
+        </div>
         <div class="duser_right_auth">
             <a href="<{$config.weburl}>/profile.php" class="">实名认证、收货地址&nbsp;></a>
         </div>
     </div>   
-</div>   
+</div>
 <div class="order">
     <div class="order_top"><span>我的订单</span><a href="main.php?m=product&s=admin_buyorder">查看全部订单</a></div>
 	<div class="order_one_list clearfix">

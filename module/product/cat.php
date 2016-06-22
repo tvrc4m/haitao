@@ -7,7 +7,7 @@ function get_cat($catid="")
 	{
 		$max = $catid."99";
 		$min = $catid."00";
-		$sql = "select cat,catid from ".PCAT." where catid <= $max and catid >= $min order by nums,catid";	
+		$sql = "select cat,catid from ".PCAT." where catid <= $max and catid >= $min order by nums,catid";
 	}
 	else
 	{
@@ -19,9 +19,9 @@ function get_cat($catid="")
 	{
 		foreach($re as $key => $val)
 		{
-			$re[$key]["scat"]=get_cat($val['catid']);	
+			$re[$key]["scat"]=get_cat($val['catid']);
 		}
-		return $re;	
+		return $re;
 	}
 }
 $config['title']="商品分类";
