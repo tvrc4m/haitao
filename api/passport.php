@@ -42,7 +42,6 @@ class passport extends Uc_server{
             // 请求的方法不存在
             $this->_response_code='10001';
         }
-
     }
 
     /*
