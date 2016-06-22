@@ -32,7 +32,7 @@ class passport extends Uc_server{
     {
         $config['uc_appid']='201605270933';
         $this->_secret =  $config['uc_secret'] = 'jindsf83nsdvi3n0ejj91jnlnapfnas92nvb';
-        $config['uc_server']='https://m.mayizaixian.cn/apis/uc';
+        $config['uc_server']='http://t.mayionline.cn/apis/uc';
         parent:: __construct($config);
         $this->_action = !empty($_REQUEST['action'])?$_REQUEST['action']:'';
 
@@ -42,7 +42,6 @@ class passport extends Uc_server{
             // 请求的方法不存在
             $this->_response_code='10001';
         }
-
     }
 
     /*
@@ -67,11 +66,6 @@ class passport extends Uc_server{
     {
 		//file_put_contents("/web/uploadfile/register.txt",var_export($_REQUEST,true),FILE_APPEND);
         global $db;
-        $_REQUEST = array (
-            'time' => '1464728785',
-            'code' => 'accdaZ4zZbv3YfIyIfPs8mfgPhYe1gtud6RMeJ+lHlGAB9Rrfv1btKMaXjDvMug8eB421SC/kiNQUkeD4CPO9RRySJ3vqFmBz2cGFyyrRWHfKYDmDAy/3qOEUOafddCUaiqxYPll8Nhc4pQLd1CbE5r/J/8',
-            'action' => 'uc_register',
-        );
         $code = $_REQUEST['code'];
         $timestamp = $_REQUEST['time'];
         $str = $this->authcode($code, DECODE, $this->_secret);
@@ -160,6 +154,7 @@ class passport extends Uc_server{
         if ($re[userid] && $_SESSION['openid_f'])
         {
             $sql = "update " . MEMBER . " SET `open_id`='" . $_SESSION['openid_f'] . "' WHERE `userid`='$re[userid]' AND open_id = ''";
+			
             $re = $db -> query($sql);
         }
     }

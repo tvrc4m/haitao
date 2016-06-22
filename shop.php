@@ -220,23 +220,23 @@ $tpl->assign("working_time",$working_time);
 			$limit = 10;
 		}
 
-        foreach($catids as $key=>$val){
-			if($buid)
-	            $sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = ".$val['catid']." AND a.member_id=".$buid." LIMIT ".$limit;
-            else
-				$sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = ".$val['catid']."  LIMIT ".$limit;
+        if(!empty($buid)) {
+            foreach ($catids as $key => $val) {
+                $sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = " . $val['catid'] . " AND a.member_id=" . $buid . " LIMIT " . $limit;
 
-			$db->query($sql);
-            $product = $db->getRows();
-            foreach($product as $k=>$v){
-                $sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = ".$v['id'];
                 $db->query($sql);
-                $product[$k]['nums'] = $db->fetchField('nums');
-            }
-            if(!empty($product)){
-                $products[$val['catid']] = $product;
+                $product = $db->getRows();
+                foreach ($product as $k => $v) {
+                    $sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = " . $v['id'];
+                    $db->query($sql);
+                    $product[$k]['nums'] = $db->fetchField('nums');
+                }
+                if (!empty($product)) {
+                    $products[$val['catid']] = $product;
+                }
             }
         }
+
         $tpl->assign("products", $products);
 
 		//判断是否收藏商品
@@ -283,4 +283,5 @@ $tpl->assign("working_time",$working_time);
 
 $tpl->assign("chat_open_flag", $chat_open_flag);
 $tpl->display("space_temp_inc.htm",$flag);
+
 ?>

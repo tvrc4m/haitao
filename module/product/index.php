@@ -2,20 +2,22 @@
 if(empty($_GET['m'])||empty($_GET['s']))
 	die('forbiden;');
 
-if(file_exists($config['webroot']."/templates_c/".$config['temp']."/index.html"))
+/*if(file_exists($config['webroot']."/templates_c/".$config['temp']."/index.html"))
 {
 	include($config['webroot']."/templates_c/".$config['temp']."/index.html");exit;
-}
+}*/
+
 //------------------------------
 if(!empty($config['index_catid']))
 	$cat_pro=unserialize($config['index_catid']);
 else
 	$cat_pro=array();
 
-if(file_exists($config['webroot'].'/cache/list.log')){
-	$json_str = file_get_contents($config['webroot'].'/cache/list.log',true);
-	$cat_pro= json_decode($json_str,true);
-}else{
+//if(file_exists($config['webroot'].'/cache/list.log')){
+//	$json_str = file_get_contents($config['webroot'].'/cache/list.log',true);
+//	$cat_pro= json_decode($json_str,true);
+//}else{
+
 if($cat_pro)
 {
 	$i = 0;
@@ -79,13 +81,16 @@ if($cat_pro)
 			$i++;
 		}
 	}
-	file_put_contents($config['webroot'].'/cache/list.log',json_encode($cat_pro));
+	//file_put_contents($config['webroot'].'/cache/list.log',json_encode($cat_pro));
 	/*echo '<pre>';
 	print_r($cat_pro);die;*/
+	$tpl->assign("categorys",$cat_pro);
 
 }
-}
-$tpl->assign("categorys",$cat_pro);
+//}
+
+
+
 if($config['temp'] != "wap")
 {
 	$sql="select user,logo,b.pic from ".MEMBER." a left join ".MEMBERGRADE." b on a.grade_id = b.id where userid = '$buid' ";
