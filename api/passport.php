@@ -66,11 +66,6 @@ class passport extends Uc_server{
     {
 		//file_put_contents("/web/uploadfile/register.txt",var_export($_REQUEST,true),FILE_APPEND);
         global $db;
-        $_REQUEST = array (
-            'time' => '1464728785',
-            'code' => 'accdaZ4zZbv3YfIyIfPs8mfgPhYe1gtud6RMeJ+lHlGAB9Rrfv1btKMaXjDvMug8eB421SC/kiNQUkeD4CPO9RRySJ3vqFmBz2cGFyyrRWHfKYDmDAy/3qOEUOafddCUaiqxYPll8Nhc4pQLd1CbE5r/J/8',
-            'action' => 'uc_register',
-        );
         $code = $_REQUEST['code'];
         $timestamp = $_REQUEST['time'];
         $str = $this->authcode($code, DECODE, $this->_secret);
