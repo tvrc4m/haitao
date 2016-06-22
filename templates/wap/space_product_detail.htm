@@ -367,8 +367,6 @@ function check_nums()
         },2000)
     }
     function collect_goods(id){
-        console.log("<{$shop_user}>")
-        console.log("<{$smarty.cookies.USER}>")
         if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
             altto('不能收藏自己店铺的商品！');
             wid();
