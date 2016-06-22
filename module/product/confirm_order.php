@@ -215,13 +215,14 @@ else
 							$db->query($sql);
 						}
 					}
-					$logistics_price = $weig->cost();//物流费用
+
+
 					$post['action']='add';//填加流水
 					$post['type']=2;//担保接口
 					$post['seller_email'] = "Myzx168@163.com";//卖家账号
 					$post['buyer_email'] = $buid;//卖家账号
 					$post['order_id'] = $order_id;//外部订单号
-					$post['price'] = $product_price*1 + $logistics_price;//订单总价，单价元
+					$post['price'] = $product_price*1;//订单总价，单价元
 					$post['extra_param'] = '';//自定义参数，可存放任何内容
 					$post['return_url'] = $config['weburl'].'/api/order.php?id='.$order_id;//返回地址
 					$post['notify_url'] = $config['weburl'].'/api/order.php?id='.$order_id;//异步返回地址
@@ -244,7 +245,8 @@ else
 		// 插入到合并支付表
 		$uorder = "U".date("Ymdhis",time()).rand(100,999); // 18位
 		$inorder = substr($inorder, 0,-1);
-
+		$logistics_price = $weig->cost();//物流费用
+		$uprice = $uprice + $logistics_price;
 		$sql = "insert into ".UORDER."  (`order_id`,`inorder`,`price`,`create_time`) values ('$uorder','$inorder','$uprice','".time()."')";
 
 		$db->query($sql);
