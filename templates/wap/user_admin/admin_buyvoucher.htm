@@ -60,10 +60,16 @@
 <script type="text/javascript" charset="utf-8" src="<{$config.weburl}>/script/jquery-1.11.2.min.js" ></script>
 <script type="text/javascript">
 	$(function(){
-		var rollHtm=$(".roll_list_money").html();
-		if(rollHtm<10){
-			$(".roll_list_money").css({"margin-left":"1.3rem"});
-		}
+		$(".roll_list_money").each(function(){
+			var _this=$(this) , rollHtm=_this.html();
+			if(rollHtm<10){
+				_this.css({"margin-left":"1.3rem"});
+			}
+			if(rollHtm>99){
+				_this.css({"margin-left":"0.3rem"});
+			}
+		})
+		
 		$(".roll_icon").bind("click",function(e){
 			e = e || window.event;
 	        if (e.stopPropagation) { //W3C阻止冒泡方法

@@ -15,6 +15,7 @@ else
 {
 	include_once("module/member/includes/plugin_orderadder_class.php");
 	include_once("module/product/includes/plugin_cart_class.php");
+	include_once ("$config[webroot]/api/logisticsCost.php");
 	$cart = new cart();
 
 	if(!empty($_POST['id'])&&!empty($_POST['nums']))
@@ -66,6 +67,7 @@ else
 
 	//修正订单店铺信息
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
+	$weig = new logistics($cartlist['weights']);
 
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
@@ -75,7 +77,6 @@ else
 		if($_COOKIE['identity']=='true'){
 		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']);
 		//----------循环店铺,生成多个订单
-
 		// 合并付款
 		$uprice = 0;
 		$buyer = $buid;
@@ -215,12 +216,13 @@ else
 						}
 					}
 
+
 					$post['action']='add';//填加流水
 					$post['type']=2;//担保接口
 					$post['seller_email'] = "Myzx168@163.com";//卖家账号
 					$post['buyer_email'] = $buid;//卖家账号
 					$post['order_id'] = $order_id;//外部订单号
-					$post['price'] = $product_price*1 + $logistics_price*1;//订单总价，单价元
+					$post['price'] = $product_price*1;//订单总价，单价元
 					$post['extra_param'] = '';//自定义参数，可存放任何内容
 					$post['return_url'] = $config['weburl'].'/api/order.php?id='.$order_id;//返回地址
 					$post['notify_url'] = $config['weburl'].'/api/order.php?id='.$order_id;//异步返回地址
@@ -243,7 +245,8 @@ else
 		// 插入到合并支付表
 		$uorder = "U".date("Ymdhis",time()).rand(100,999); // 18位
 		$inorder = substr($inorder, 0,-1);
-
+		$logistics_price = $weig->cost();//物流费用
+		$uprice = $uprice + $logistics_price;
 		$sql = "insert into ".UORDER."  (`order_id`,`inorder`,`price`,`create_time`) values ('$uorder','$inorder','$uprice','".time()."')";
 
 		$db->query($sql);
@@ -288,6 +291,8 @@ $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
 $tpl->assign("cart",$cartlist['cart']);
 $tpl->assign("sumprice",$cartlist['sumprice']);
+$tpl->assign("logisticsCost",$weig->cost());
+$tpl->assign("weights",$cartlist['weights']);
 
 include_once("footer.php");
 if($config['temp']=='wap'||$config['temp']=='wap_app')
