@@ -157,7 +157,8 @@
 <div class="confirm_total">
     <div><span class="confirm_total_lf"><span><span class="confirm_total_num org"></span>件商品</span>总商品金额：</span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_sumprices"></span></span></div>
     <div class="confirm_total_frame">
-        <span class="confirm_total_lf"><span class="confirm_total_icon">运费：</span></span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_freight">70.10</span></span>
+        <span class="confirm_total_lf"><span class="confirm_total_icon">运费：</span></span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_freight"><{$logisticsCost}></span></span>
+        <{if $logisticsCost <= 88}>
         <div class="confirm_total_box">
             <p>免日本境内运费</p>
             <p>商品重量 500.00g</p>
