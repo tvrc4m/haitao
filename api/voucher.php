@@ -68,7 +68,7 @@ class voucher extends Uc_server{
         $data['uc_appid']='201605270933';
         $data['uc_secret']='jindsf83nsdvi3n0ejj91jnlnapfnas92nvb';
         $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
-        //$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
+        //$data['uc_server']='http://t.mayionline.cn/apis/uc';
         parent::__construct($data);
         $this->_startTime = time();
         $this->_appid=$config['appid'];

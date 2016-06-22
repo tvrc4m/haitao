@@ -19,6 +19,7 @@ class Uc_server
     protected $action;
 
     protected $server="https://m.mayizaixian.cn/apis/uc";
+ //   protected $server="http://t.mayionline.cn/apis/uc";
 
     protected $params=array();
 
