@@ -367,7 +367,9 @@ function check_nums()
         },2000)
     }
     function collect_goods(id){
-        if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
+        console.log("<{$shop_user}>")
+        console.log("<{$smarty.cookies.USER}>")
+        if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
             altto('不能收藏自己店铺的商品！');
             wid();
             return;
@@ -427,7 +429,7 @@ function check_nums()
     }
 
     $(".incar_c").click(function(){       
-        if ('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
+        if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
             altto('不能购买自己店铺的商品！');
             wid();
             return;
@@ -443,9 +445,6 @@ function check_nums()
             $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
             altto('添加成功');
             wid();
-            // $(".cart-adds").addClass("cart-adds-test");
-            // $(".cart-adds").animate({"opacity":"0","transform":"translate(19px,-39px);","-webkit-transform":"translate(19px,-39px);"},{ duration: 3000, queue: false }
-            // );
             return false;
         }
     })
@@ -461,14 +460,11 @@ function check_nums()
         {
             return !flag;
         }
-       // $("#form").submit();
     }
      $(".btn-buy").click(function(){
-        if('<{$com.company}>' == '<{$smarty.cookies.USER}>') {
-            collect_altr(".addcart")
-            console.log('<{$com.company}>' == '<{$smarty.cookies.USER}>')
+        if('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
             altto('不能购买自己店铺的商品！');
-            show();
+            wid();
             return;
         }
         $("#form").attr("action","/?m=product&s=confirm_order");
