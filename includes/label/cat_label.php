@@ -11,7 +11,7 @@ function cat($ar)
 		$tpl->template_dir = $config['webroot']."/templates/default/label/";
 	$ar['temp']=empty($ar['temp'])?'cat_default':$ar['temp'];
 	if(!$tpl->is_cached($ar['temp'].".htm",$flag))
-	{	
+	{
 		if($ar['rec'])
 			$ssql.=" and isindex=$ar[rec]";
 
@@ -31,10 +31,6 @@ function cat($ar)
 		$re=$db->getRows();
 		foreach($re as $key=>$v)
 		{
-			if(file_exists($config['webroot']."/cache/list_{$month}.log")){
-				$json_str = file_get_contents($config['webroot']."/cache/list_{$month}.log",true);
-				$sre= json_decode($json_str,true);
-			}else{
 			$s=$v['catid']."00";
 			$b=$v['catid']."99";
 			$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,6";
@@ -55,10 +51,8 @@ function cat($ar)
 					$sre[$skey]["brand"]=$db->getRows();
 				}
 			}
-			file_put_contents($config['webroot']."/cache/list_{$month}.log",json_encode($sre));
-			}
 			$re[$key]["scat"]=$sre;
-		}	
+		}
 		$tpl->assign("config",$config);
 		$tpl->assign("cat",$re);
 	}
