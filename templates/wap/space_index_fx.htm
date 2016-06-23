@@ -220,7 +220,22 @@ $(function(){
             _slideObj.animate({height:slideH},800);
         }, 800);
     }, false);
-    var a=$jj(".main_container .t_slide").height() , b=$jj(".nav_shop").height();
+    window.onload=function(){
+        var a=$jj(".main_container .t_slide").height() , b=$jj(".nav_shop").height() , c=$jj(".shop_main_nav ul li img").size() , d=5-c%5 ,f=$jj(".shop_main_nav ul li img").height() , g=parseFloat($jj(".shop_main_nav ul li").css("margin-right")) , h=parseFloat($jj(".shop_main_nav").css("padding-top"));
+        if(d != 5){
+            for(var i=0;i<d;i++){
+                $jj(".shop_main_nav ul").append("<li>"+
+                    "<a href='javascript:void(0);'>"+
+                    "</a>"+
+                "</li>")
+            }
+        }
+        if(c>5){
+            $jj(".shop_main_nav ul li").css({"margin-bottom":g+"px"})
+            $jj(".shop_main_nav").css({"padding-bottom":(h-g)+"px"})
+        }
+        $jj(".shop_main_nav ul li").height(f);
+    }  
     $jj(document).scroll(function(){
         var h = $jj(document).scrollTop();
         var wHeight=$jj(window).height();
