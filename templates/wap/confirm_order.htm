@@ -158,7 +158,7 @@
     <div><span class="confirm_total_lf"><span><span class="confirm_total_num org"></span>件商品</span>总商品金额：</span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_sumprices"></span></span></div>
     <div class="confirm_total_frame">
         <span class="confirm_total_lf"><span class="confirm_total_icon">运费：</span></span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_freight"><{$logisticsCost}></span></span>
-        <{if $logisticsCost <= 88}>
+        <{if $logisticsCost <= 128}>
         <div class="confirm_total_box">
             <p>免日本境内运费</p>
             <p>商品重量 <{$weights}>g</p>
@@ -170,11 +170,11 @@
             <p>此商品官网直邮中国运费价格为人民币。</p>
         </div>
         <{/if}>
-        <{if $logisticsCost > 88}>
+        <{if $logisticsCost > 128}>
         <div class="confirm_total_box">
             <p>免日本境内运费</p>
             <p>商品重量 <{$weights}>g</p>
-            <p>首重 150.00元/1000g</p>
+            <p>首重 128.00元/1000g</p>
             <p>续重 22.00元/500g</p>
             <p>物流对比参考：</p>
             <p>此商品官网直邮中国运费价格为人民币。</p>
