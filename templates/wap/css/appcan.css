@@ -76,6 +76,8 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .incars{width: 50%;float: left;text-align: center;font-size: 16px;}
 .incars_l{background-color: #ff5c5c;color: #fff!important;}
 .incars_c{background-color: #ff9c00;color: #fff;}
+#pro_detail img.diantou{width: 1.4rem;margin-right: 0.2rem;vertical-align: -3px;}
+#pro_detail img.diantou1{width: 1.4rem;margin-right: 0.2rem;vertical-align: -3px;}
 .hj_share_box {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;opacity: 0;display: none;
 	background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size: 70%;}
 .collect_box_contentss {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;
@@ -269,8 +271,7 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 /*商品推荐*/
 .select_style .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}
 .select_style .shop_t .shopli:nth-of-type(3n){margin-right: 0;}
-.shopli_bottom_rob{padding-left:5px;padding-right: 5px;}
-.shopli_bottom_message{padding-left:5px;padding-right: 5px;}
+.shopli_bottom_rob{text-align: left;}
 .shopli_bottom_message p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .shopli_top_img{border:1px solid #e1e1e1;}
 #pro_detail .pname_img{font-size: 0.7rem;/*margin-right: 0.5rem;*/color: #ff5c5c;position: static!important;}

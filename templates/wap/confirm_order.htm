@@ -104,10 +104,7 @@
             合计:&nbsp;&nbsp;
             <span class="p-name">
                 <strong class="price">
-                    <{$config.money}>
-                    <em class="shop_total_price" id="s_csumprice_<{$list.seller_id}>" orgprice="<{$list.sumprice+$list.express|number_format:2}>">
-                        <{$list.sumprice+$list.express|number_format:2}>
-                    </em>
+                    <{$config.money}><em class="shop_total_price" id="s_csumprice_<{$list.seller_id}>" orgprice="<{$list.sumprice+$list.express|number_format:2}>"><{$list.sumprice+$list.express|number_format:2}></em>
                 </strong>
             </span>
             </div>
