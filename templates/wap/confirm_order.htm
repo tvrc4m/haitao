@@ -74,36 +74,6 @@
         <{/if}>
         </div>
         <div class="bottom clearfix">
-          <!--   <div class="p-detail clearfix">
-                <span class="p-detail-test">配送方式</span>
-                <{if $list.mail>0 or $list.express>0 or $list.ems>0}>
-                <{assign var="m_price" value="0.00"}>
-                <select id='cem_<{$list.seller_id}>' class="cem_num" onchange="count_price('<{$list.seller_id}>');">
-                <{if $list.express>0}>
-                <{assign var="m_price" value=$list.express}>
-                <option value="快递,<{$list.express}>">快递<{$config.money}><{$list.express|number_format:2}></option>
-                <{/if}>
-                <{if $list.mail>0}>
-                <{if $list.express eq 0}><{assign var="m_price" value=$list.mail}><{/if}>
-                <option value="平邮,<{$list.mail}>">平邮<{$config.money}><{$list.mail|number_format:2}></option>
-                <{/if}>
-                <{if $list.ems>0}>
-                <{if $list.express eq 0}><{assign var="m_price" value=$list.ems}><{/if}>
-                <option value="EMS,<{$list.ems}>">EMS<{$config.money}><{$list.ems|number_format:2}></option>
-                <{/if}>
-                </select>
-                <{else}>
-                <span class="p-detail-user">卖家承担</span>
-                <{/if}>
-                <{if $list.mail>0 or $list.express>0 or $list.ems>0}>
-                    <span class="hidden" id="show_cem_<{$list.seller_id}>">
-                        <{$list.express|number_format:2}>
-                    </span>
-                <{/if}>
-                
-                <input name="logistics_type_<{$list.seller_id}>" id="logistics_type_<{$list.seller_id}>" type="hidden" value="快递" />
-                <input name="logistics_price_<{$list.seller_id}>" id="logistics_price_<{$list.seller_id}>" type="hidden" value="<{$m_price}>" />
-            </div> -->
             <p class="v_order">
                 <span class="v_order_juan">优惠券/代金券</span>
                 <select name="voucher_<{$list.seller_id}>" uid="<{$list.seller_id}>" class="d_select">
@@ -155,14 +125,14 @@
     </div>  
 </div>
 <div class="confirm_total">
-    <div><span class="confirm_total_lf"><span><span class="confirm_total_num org"></span>件商品</span>总商品金额：</span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_sumprices"></span></span></div>
+    <div><span class="confirm_total_lf"><span class="confirm_total_lfsd"><span class="confirm_total_num org"></span>件商品</span>总商品金额：</span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_sumprices"></span></span></div>
     <div class="confirm_total_frame">
         <span class="confirm_total_lf"><span class="confirm_total_icon">运费：</span></span><span class="confirm_total_rt"><{$config.money}><span class="confirm_total_money" id="s_freight"><{$logisticsCost}></span></span>
         <{if $logisticsCost <= 88}>
         <div class="confirm_total_box">
             <p>免日本境内运费</p>
-            <p>商品重量 500.00g</p>
-            <p>首重 88.00元/1000.00g</p>
+            <p>商品重量 <{$weights}>g</p>
+            <p>首重 88.00元/500.00g</p>
             <p>续重 8.00元/100.00g</p>
             <p>（500.00g起运。不足500g则按500g的运费</p>
             <p>收取）</p>
