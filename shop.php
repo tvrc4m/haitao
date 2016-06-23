@@ -220,22 +220,10 @@ $tpl->assign("working_time",$working_time);
 			$limit = 10;
 		}
 
-<<<<<<< HEAD
         if(!empty($buid)) {
             foreach ($catids as $key => $val) {
                 $sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = " . $val['catid'] . " AND a.member_id=" . $buid . " LIMIT " . $limit;
-=======
-        foreach($catids as $key=>$val){
-			if($buid)
-	            $sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = ".$val['catid']." AND a.member_id=".$buid." LIMIT ".$limit;
-            else
-				$sql = "SELECT a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = ".$val['catid']."  LIMIT ".$limit;
 
-			$db->query($sql);
-            $product = $db->getRows();
-            foreach($product as $k=>$v){
-                $sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = ".$v['id'];
->>>>>>> 92fc36a6e9d07225e7d4bd09fb9089905dc37fac
                 $db->query($sql);
                 $product = $db->getRows();
                 foreach ($product as $k => $v) {
