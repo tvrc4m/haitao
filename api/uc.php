@@ -1,4 +1,5 @@
 <?php
+include_once('../includes/global.php'); 
 	define('IN_DISCUZ', TRUE);
 	define('UC_CLIENT_VERSION', '1.5.0');
 	define('UC_CLIENT_RELEASE', '20081212');
