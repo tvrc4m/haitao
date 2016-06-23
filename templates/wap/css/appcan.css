@@ -5,7 +5,8 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .bc-text-head {color: white;}
 .bc-head {background-color: #dd3030;}
 .uh, .uf {width: 100%;font-size: 1.2em;}
-.ub-ver {-webkit-box-orient: vertical;-moz-box-orient: vertical;-ms-box-orient: vertical;-o-box-orient: vertical;box-orient: vertical;}
+.ub-ver{-webkit-box-orient: vertical;-moz-box-orient: vertical;-ms-box-orient: vertical;-o-box-orient: vertical;
+	box-orient: vertical;}
 .ub{display: -webkit-box !important;display: box !important;position: relative;}
 .bc-bg{background-color:#fff;padding-bottom: 50px;}
 .c-wh-dianpu{padding: 0 0.5rem;border-bottom: 1px solid #b9b9b9;}
@@ -60,14 +61,29 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .choose_btn{color:#8b8b8b;background-color:#fff;position:fixed;bottom: 0px;width:100%;padding:.5em 1em .5em 0}
 .choose_btn a{color:#525252;}
 .choose_btn .btn{margin: .25em;background-color: inherit !important;}
-.addcart{float: right;margin-bottom: 5px;width: 100%;height: 50px;}
-.incar{color: #000;width: 30%;float: right;text-align: center;font-size: 16px;}
+/*详情底部固定样式*/
+.shoping-fixed{position: fixed;bottom: 0px;width: 100%;height: 50px;line-height: 50px;background-color: #fff;z-index: 999;}
+.addcart{width: 100%;}
+.addcart .cart{float: left; background: url(../../../image/wap/cart-gwc.png) no-repeat;position: relative;width: 32px;height:30px;background-size: cover;margin-top: 10px;margin-left: 20px;}
+.cart .cart-num-cont {position: absolute;top: -2px;right: -12px;color: #fff;background: #ff5c5c;border-radius: 50%;
+    text-align: center;width:18px;height:18px;line-height: 18px;overflow: hidden;}
+.cart .cart-num-conts {position: absolute;top: -2px;right: -12px;color: #fff;background: #ff5c5c;border-radius: 50%;
+    text-align: center;width: 18px;height: 18px;line-height: 18px;overflow: hidden;z-index: 12}   
+.shoping-hide{display: none;}
+.incar{width: 30%;float: right;text-align: center;font-size: 16px;}
 .incar_l{background-color: #ff5c5c;color: #fff!important;}
 .incar_c{background-color: #efefef;color: #ff5c5c;}
+.incars{width: 50%;float: left;text-align: center;font-size: 16px;}
+.incars_l{background-color: #ff5c5c;color: #fff!important;}
+.incars_c{background-color: #ff9c00;color: #fff;}
+.hj_share_box {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;opacity: 0;display: none;
+	background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size: 70%;}
+.collect_box_contentss {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;
+	color: #fff;font-size: 14px;}
 .incar span{color:#fff;padding-right: 5px;}
 .choose_btn .buy{background-color:#dd3030;color:#fff;height:100%;padding: .5em;border-radius: .2em;min-width:85px}
 .collect{color:#ff5c5c}
-.col-money{font-size: 0.6rem;width: 100%;}
+.col-money{font-size: 0.6rem;width: 100%;padding: 0 0.5rem;}
 .pdetail_show2 {width: 100%;box-sizing: border-box;-webkit-box-sizing: border-box;}
 .pdetail_show2 span{    display: block;
     border-bottom: 1px solid #f0f0f0;
@@ -142,12 +158,12 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .select{width: 100%;height:44px;border:none}
 .select_style{position:relative;background:#fff;padding: 0 0.5rem;}
 .select_styless{position:relative;background:#fff;border-bottom:1px dotted #666;padding: 0;}
-.select_guanshui{font-size: 12px;padding-top: 10px;padding-bottom: 10px;line-height: 1rem;}
+.select_guanshui{font-size: 0.6rem;padding:0.5rem 0;line-height: 1.3rem;}
 .select_guanshui:last-of-type{border-top:1px dotted #666;}
 .select_guanshui var{color:#ff5c5c;}
 .select_duty_context{position: relative;}
-.select_one{margin-right: 15px;text-align: right;display: inline-block;width: 36px;}
-.select_ones{text-align: left;width: 24px;}
+.select_one{margin-right: 2%;text-align: left;display: inline-block;width: 8%;vertical-align: top;}
+.select_two{display: inline-block;width: 90%;}
 .select_duty{position: absolute;top: 1.5rem;right: 0px;z-index: 88;width: 90%;background-color: #ccc;padding: 5px 10px;border-radius:6px;display: none;}
 .select_duty i{display: inline-block;width: 10px; height:10px;background-color: #ccc;transform:rotate(135deg);-webkit-transform:rotate(135deg); position: absolute;top: -5px;right:2.15rem;}
 .select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:35px;}
@@ -160,7 +176,6 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .select_style dt i{display: inline-block;width: 25px;height: 25px; background: url(../../../image/wap/mayi_wap_icon23.png) no-repeat;background-size: contain;vertical-align: middle;margin-right: 0.4rem;margin-top: -5px;}
 .select_style dd{color:#404040;}
 .select_style dd.mati_say_content{position: relative;}
-.select_guanshui_ic{}
 .select_guanshui_ip{padding-left: 22px;background: url(../../../image/wap/wap_haitao_icon64.png) left no-repeat;background-size: contain;color: #3f7b06;}
 .select_guanshui_hid{position: absolute;top: 30px;left: 9%;padding:5px 10px;z-index: 199;
     background-color: #ff5c5c;border-radius: 5px;color: #fff;font-size: 12px;display: none;}
@@ -211,8 +226,6 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .font12{font-size: 12px;}
 .main{overflow: hidden;width: 100%;}
 .itips{font-size: 10px;padding-left: 10px;font-family: "宋体"}
-
-.shoping-fixed{position: fixed;bottom: 0px;width: 100%;height: 50px;line-height: 50px;background-color: #fff;color: #fff;text-align: center;z-index: 999;}
 /*常见问题*/
 .position_container{margin-bottom: 20px;}
 .position_container h2{font-size: 0.7rem;padding-bottom: 0.8rem;padding-top: 0.7rem;}
@@ -248,12 +261,6 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .c_daibao ul li{width: 20%;display: inline-block;text-align: center;}
 #pro_detail .c_daibao ul li img{width: 40px;height: 40px;}
 #pro_detail .c_daibao ul li p{margin-top: 5px;font-size: 0.6rem;}
-.incars{color: #000;width: 50%;float: left;text-align: center;font-size: 16px;}
-.incars_l{background-color: #ff5c5c;color: #fff!important;}
-.incars_c{background-color: #ff9c00;color: #fff;}
-.hj_share_box {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size: 70%;opacity: 0;display: none;}
-.collect_box_contentss {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;font-size: 14px;}
-.shoping-hide{display: none;}
 .bgw_vi{padding:0 0.5rem;margin-bottom: 0.5rem}
 .c_daixiao_img{padding: 2px;border-radius: 50%;background-color: #944ce5;color: #fff;display: inline-block;width: 0.8rem;height: 0.8rem;text-align: center;line-height: 0.8rem;}
 .c_daixiao_imgs{background-color: #ff6600;}
@@ -269,13 +276,6 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 #pro_detail .pname_img{font-size: 0.7rem;/*margin-right: 0.5rem;*/color: #ff5c5c;position: static!important;}
 #pro_detail .pname_img img{width: 1rem;vertical-align: 0px;height: auto!important;}
 .shopli_kong{text-align: center;font-size: 0.7rem;}
-
-.addcart .cart{float: left; background: url(../../../image/wap/cart-gwc.png) no-repeat;position: relative;width: 32px;height:30px;background-size: cover;margin-top: 10px;margin-left: 20px;}
-.cart .cart-num-cont {position: absolute;top: -2px;right: -12px;color: #fff;background: #ff5c5c;border-radius: 50%;
-    text-align: center;width:18px;height:18px;line-height: 18px;overflow: hidden;}
-.cart .cart-num-conts {position: absolute;top: -2px;right: -12px;color: #fff;background: #ff5c5c;border-radius: 50%;
-    text-align: center;width: 18px;height: 18px;line-height: 18px;overflow: hidden;z-index: 12}   
-
 .nav-c {text-align: center;-webkit-box-flex: 1;-ms-box-flex: 1;-moz-box-flex: 1;-o-box-flex: 1;/*margin-left: -60px;*/}
 .notice_container h3{text-align: center;border-bottom: 1px solid #ff5c5c;font-size: 0.8rem;color: #ff5c5c;padding-bottom: 5px;margin-bottom: 15px;}
 .notice_container{font-size: 0.7rem;padding:20px 10px;color: #000;font-family: SimHei;}
