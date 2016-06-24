@@ -49,7 +49,7 @@ ul,ol{list-style:none;}
 /*热门品牌分类*/
 .buyer-shop .hotclass{font-size: 0;padding:20px 0 16px 0;background: #f5f5f5;}
 .buyer-shop .hotclass .brand{width: 1212px;position: relative;}
-.buyer-shop .hotclass a{width: 148px;height: 90px;margin: 0 4px 4px 0;background: #fff}
+.buyer-shop .hotclass .brand div{width: 148px;height: 90px;margin: 0 4px 4px 0;background: #fff;display: inline-block;}
 .buyer-shop .hotclass span{position: absolute;left: -30px;top: 0;width: 14px;padding: 8px;font-size: 14px;background: #ffa23e;color: #fff;}
 /*热卖推荐*/
 .buyer-shop .hotpro{width: 1212px;margin-top: 20px;background: #fff;position: relative;}
