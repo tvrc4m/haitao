@@ -1,54 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><{if $com.shop_title!=''}><{$com.shop_title}> - <{$config.company}><{else}><{$title}> - <{$config.company}><{/if}></title>
 <meta name="description" content="<{if $com.shop_keywords!=''}><{$com.shop_keywords}><{else}><{$keyword}><{/if}>">
 <meta name="keywords" content="<{if $com.shop_description!=''}><{$com.shop_description}><{else}><{$de.description|truncate:100:"...":true}><{/if}>">
-<link rel="stylesheet" type="text/css" href="<{$config.weburl}>/templates/user_templates_default/space.css"/>
 <link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page.css" rel="stylesheet" type="text/css" />
 <script src="<{$config.weburl}>/script/jquery-1.11.2.min.js" type="text/javascript"></script>
-<script language="javascript" src="<{$config.weburl}>/templates/user_templates_default/jquery.Sonline.js"></script>
 <script language="javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
-<script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
-<link rel="stylesheet" href="<{$config.weburl}>/script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
-<script type="text/javascript">
-function getfavshop()
-{	
-	var url = '<{$config.weburl}>/module/sns/ajax_update.php';
-	
-	var uname='<{$smarty.cookies.USER}>';
-	if(uname=='')
-	{
-		alert('<{$lang.no_logo}>');
-		window.location.href='<{$config.weburl}>/login.php?forward=shop.php?uid=<{$smarty.get.uid}>';
-		return false;
-	}
-	var shopid='<{$smarty.get.uid}>';
-	var shopname="<{$com.company|regex_replace:"/[\r\t\n]/":""}>";
-	var pars = 'uname='+uname+'&shopid='+shopid+'&shopname='+shopname;
-	$.post(url, pars,showResponse);
-	function showResponse(originalRequest)
-	{
-		if(originalRequest>1)
-			// alert('<{$lang.fav_ok}>');
-            layer.msg('<{$lang.fav_ok}>', {icon: 0});
-		else if (originalRequest>0)
-			// alert('<{$lang.fav_isbing}>');
-            layer.msg('<{$lang.fav_isbing}>', {icon: 0});
-		else
-			alert('<{$lang.error}>');
-	 }
-	
-}
-</script>
-
 <script type='text/javascript'>
 var _vds=_vds||[];window._vds=_vds;(function(){_vds.push(["setAccountId","aa62fdecb181b0b9"]);(function(){var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=("https:"==document.location.protocol?"https://":"http://")+"dn-growing.qbox.me/vds.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})()})();
 </script>
 </head>
 <body>
-
 <div class="site-nav">
     <div class="w fn-clear">
         <ul class="fn-left">
@@ -217,8 +181,6 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
     $(".m_menu dd").toggleClass("hidden");
 });
 </script>
-<div class="bgcolor">
-<div class="w">
     <{if $smarty.get.m=='product' and $smarty.get.s=='detail'}>
     <{$output}>
     <{else}>
@@ -226,71 +188,4 @@ $(".m_menu").bind("mouseenter mouseleave",function(){
     <{/if}>
 	<{$output}>
 	<{/if}>
-</div>
-</div>
-<script type="text/javascript">
-    $(".block_ico,.none_ico").click(function(e){
-        var xx = e.originalEvent.x || e.originalEvent.layerX || 0;
-        var lo = $(this).offset().left
-
-        if($(this).parents("li").find("ul").length > 0)
-        {
-            if($(this).parents("li").find("ul").is(":visible"))
-            {
-
-                $(this).parents("li").find("ul").slideUp()
-                $(this).removeClass("none_ico").addClass("block_ico")
-            }
-            else
-            {
-                $(this).parents("li").find("ul").slideDown()
-                 $(this).removeClass("block_ico").addClass("none_ico")
-            }
-        }
-
-        if(xx*1 - lo*1 < 22)
-        {
-            return false
-        }
-    })
-
-
-    $(".search_btn").mouseover(function(e){
-        $('#search_form').attr('action', "<{$config.weburl}>/shop.php");
-    })
-
-    $(".search_btn_platform").mouseover(function(e){
-        $('#search_form').attr('action', "<{$config.weburl}>/?m=product&s=list");
-    })
-
-
-    function get_search_word(k)
-    {
-        if(k!='')
-        {
-            var url = '<{$config.weburl}>/ajax_back_end.php';
-            var sj = Math.random();
-            var pars = 'shuiji=' + sj+'&search_flag=1&key='+k;
-            $.post(url, pars,showResponse);
-        }
-
-        function showResponse(originalRequest)
-        {
-            if(originalRequest)
-            {
-                $('#key_select').show();
-                //$('#key_select').css("display",'block');
-                $('#key_select').html(originalRequest);
-            }
-            else
-                $('#key_select').hide();
-        }
-
-    }
-    function select_word(v)
-    {
-        $('#keyword').val(v);
-        $('#key_select').hide();
-    }
-</script>
 <{include file="../../templates/default/footer.htm"}>
