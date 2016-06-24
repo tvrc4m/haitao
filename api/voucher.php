@@ -353,6 +353,15 @@ class voucher extends Uc_server{
 
         if($userid)
         {
+            //代金卷发放
+            $_serial=time().rand(100000,999999);
+            $_endTime = time()+3600*24*7;
+            $_startTime = time();
+            $logo=$this->_url."/image/red/20.png";
+            $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('{$_serial}','2','新用户代金卷','消费300可用','{$_startTime}','{$_endTime}','20','300','','1','".time()."','{$userid}','mayi{$mobile}','{$logo}','') ";
+            $db->query($sql);
+            $sql = "update mallbuilder_voucher_temp set `giveout` = giveout+1 where id=2";
+            $db -> query($sql);
             $sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
             $re=$db->query($sql);
             if($re)

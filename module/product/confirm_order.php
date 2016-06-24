@@ -68,6 +68,13 @@ else
 	//修正订单店铺信息
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
 	$weig = new logistics($cartlist['weights']);
+	//新手代金卷
+	$sql = "select 1 from mallbuilder_voucher where temp_id=2 and member_id={$buid}";
+	$db->query($sql);
+	if($db->fetchRow())
+		$voucher_novice = 20;
+	else
+		$voucher_novice = 0;
 
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
@@ -245,6 +252,8 @@ else
 		// 插入到合并支付表
 		$uorder = "U".date("Ymdhis",time()).rand(100,999); // 18位
 		$inorder = substr($inorder, 0,-1);
+
+
 		$logistics_price = $weig->cost();//物流费用
 		$uprice = $uprice + $logistics_price;
 		$sql = "insert into ".UORDER."  (`order_id`,`inorder`,`price`,`create_time`) values ('$uorder','$inorder','$uprice','".time()."')";
