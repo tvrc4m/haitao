@@ -39,6 +39,15 @@ if (!get_magic_quotes_gpc())
 	$_REQUEST = quotes($_REQUEST);
 
 }
+/*$str = 'https://www.mayihaitao.com/uploadfile/product/44/2016/05/14/1463210011.jpg';
+$aa = strpos($str,'haitao.com');
+if($aa)
+	echo 111;
+else
+	echo 222;
+
+
+die;*/
 
 include_once($config['webroot']."/config/uc_config.php");
 include_once($config['webroot']."/includes/function.php");
