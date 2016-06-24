@@ -16,9 +16,12 @@ if(!$de||$de['status']>4||$de['status']<2)
 {
 	header("Location: 404.php");
 }
+
 $tpl->assign("de",$de);
+
 //=====================================================================
 $tpl->assign("config",$config);
 $tpl->assign("lang",$lang);
 $output=tplfetch("admin_apply.htm");
+
 ?>
