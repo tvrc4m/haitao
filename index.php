@@ -135,7 +135,7 @@ else
 				}
 				$tpl->assign("out",$out);unset($out);unset($tpl->statu);
 				$tpl->template_dir = $config['webroot']."/templates/".$config['temp']."/";
-				$tpl->caching = false; //设置缓存方式
+				$tpl->caching = true; //设置缓存方式
 				$tpl->display("m.htm");
 				if($is_cahe_index)
 				{
