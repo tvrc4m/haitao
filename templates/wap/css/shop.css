@@ -117,8 +117,9 @@ i.home_icon_shop {background: url(../../../image/wap/wap_haitao_icon9.png) cente
 .main_container .dot .cur {background-color: #ff5c5c;}
 .main_list_ware .wareli_img{width: 100%;background-color: #fff;padding: 0.5rem 0;border: 1px solid #dadada;
 	box-sizing: border-box;-webkit-box-sizing: border-box;}
-.shop_main_nav{margin: 0.5rem 0;}
-.shop_main_nav ul li{width: 20%;float: left;}
+.shop_main_nav{padding: 0.5rem 0.2rem;background-color: #999;}
+.shop_main_nav ul li{width: 19.5%;float: left;background-color: #fff;margin-right:0.625%;}
+.shop_main_nav ul li:nth-of-type(5n){margin-right: 0;}
 .shop_main_nav ul li a img{width: 100%;border:none;outline: none;}
 .main_activity{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;background-color: #f5f5f5;}
 .main_activity .main_activity_banner{width: 100%;}

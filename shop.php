@@ -203,7 +203,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			$limit = 10;
 		}
 
-
 		if (!empty($buid)) {
 			foreach ($catids as $key => $val) {
 				if ($buid)
@@ -266,6 +265,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 				));
 				die;
 			}
+
 		}
 	}
 

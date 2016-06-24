@@ -19,17 +19,18 @@
     <!-- 承诺结束 -->
     <!-- 热门品牌开始 -->
     <div class="hotclass">
-        <{foreach item=list from=$brand}>
-            <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
-                <img src="<{$list.logo}>" alt="<{$list.name}>" />
-            </a>
-        <{/foreach}>
-
-        <span>热门品牌分类</span>
+        <div class="brand">
+            <{foreach item=list from=$brand}>
+                <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
+                    <img src="<{$list.logo}>" alt="<{$list.name}>" />
+                </a>
+            <{/foreach}>
+            <span>热门品牌分类</span>
+        </div>
     </div>
     <!-- 热门品牌结束 -->
     <!-- 热门商品开始 -->
-    <!--<div class="hotpro">
+    <div class="hotpro">
         <ul class="clear">
             <li>
                 <div>
@@ -41,7 +42,7 @@
                     </p>
                     <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
                 </div>
-                <i>免税包邮</i>
+                <i></i>
             </li>
             <li>
                 <div>
@@ -53,7 +54,7 @@
                     </p>
                     <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
                 </div>
-                <i>免税包邮</i>
+                <i></i>
             </li>
             <li>
                 <div>
@@ -65,7 +66,7 @@
                     </p>
                     <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
                 </div>
-                <i>免税包邮</i>
+                <i></i>
             </li>
             <li>
                 <div>
@@ -77,7 +78,7 @@
                     </p>
                     <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
                 </div>
-                <i>免税包邮</i>
+                <i></i>
             </li>
             <li class="w243">
                 <div>
@@ -89,7 +90,7 @@
                     </p>
                     <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
                 </div>
-                <i>免税包邮</i>
+                <i></i>
             </li>
             <li>
                 <div>
@@ -101,42 +102,40 @@
                     </p>
                     <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
                 </div>
-                <i>免税包邮</i>
+                <i></i>
             </li>
         </ul>
         <span>热卖推荐</span>
     </div>
-    &lt;!&ndash; 热门商品结束 &ndash;&gt;
-    &lt;!&ndash; 广告位开始 &ndash;&gt;
+    <!-- 热门商品结束 -->
+    <!-- 广告位开始 -->
     <div class="ad">
         <img src="https://www.mayihaitao.com/uploadfile/adv/91349497_undefined">
-    </div>-->
+    </div>
     <!-- 广告位结束 -->
     <!-- 纸尿裤专区开始 -->
+    <{foreach item=list from=$products key=key}>
+    <div class="section">
+        <div class="title znk"><{$catids.$key.cat}><span><a href="<{$config.weburl}>/product-list-<{$key}>.html">查看分类</a></span></div>
 
-        <{foreach item=list from=$products key=key}>
-        <div class="section">
-            <div class="title znk"><{$catids.$key.cat}><span><a href="<{$config.weburl}>/product-list-<{$key}>.html">查看分类</a></span></div>
-
-            <ul class="clear">
-                <{foreach item=lists from=$list}>
-                <li>
-                    <div>
-                        <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" class="goods_img"><img src="<{$lists.pic}>" alt="<{$lists.name}>"></a>
-                        <p class="goods_price"><var>￥<{$lists.price}></var><s>￥<{$lists.market_price}></s></p>
-                        <p class="goods_text">
-                            <img src="<{$lists.img}>">
-                            <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" title="<{$lists.name}>"><{$lists.name}></a>
-                        </p>
-                        <p class="goods_option clear"><a class="fl" href="#"><{$lists.nums}></a><a class="fr" href="#">加入购物车</a></p>
-                    </div>
-                    <i>免税包邮</i>
-                </li>
-                <{/foreach}>
-            </ul>
-        </div>
-        <{/foreach}>
-
+        <ul class="clear">
+            <{foreach item=lists from=$list}>
+            <li>
+                <div>
+                    <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" class="goods_img"><img src="<{$lists.pic}>" alt="<{$lists.name}>"></a>
+                    <p class="goods_price"><var>￥<{$lists.price}></var><s>￥<{$lists.market_price}></s></p>
+                    <p class="goods_text">
+                        <img src="<{$lists.img}>">
+                        <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" title="<{$lists.name}>"><{$lists.name}></a>
+                    </p>
+                    <p class="goods_option clear"><a class="fl" href="#"><{$lists.nums}></a><a class="fr" href="#">加入购物车</a></p>
+                </div>
+                <i></i>
+            </li>
+            <{/foreach}>
+        </ul>
+    </div>
+    <{/foreach}>
 </div>
 <!-- 内容结束 -->
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
