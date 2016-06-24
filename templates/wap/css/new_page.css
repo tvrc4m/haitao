@@ -132,6 +132,7 @@ ins,a{text-decoration:none;}
 .shop .shoplist{width:100%;border-top: 1px solid #b9b9b9;}
 .shop .shopli{position: relative;width:50%;text-align:center;height: auto;overflow: hidden;background: #fff;border:1px solid #b9b9b9;box-sizing:border-box;-webkit-box-sizing:border-box;float: left;
     border-top: none;}
+.wareli_bottom_ro img{width: 1.4rem;margin-right: 0.2rem;vertical-align: -2px;}
 .shop .shopli:nth-of-type(even){border-left:none;}
 .shop .shopli:last-of-type(){border-bottom:1px solid #b9b9b9;}
 .shop .shopli .shopli_bottom{padding: 0.5rem;}

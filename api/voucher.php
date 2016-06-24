@@ -41,6 +41,8 @@ class voucher extends Uc_server{
 
     private $_serials = array();
 
+    private $_url = 'https://www.mayihaitao.com';
+
     const TIME=600;
 
     private $_error = array(
@@ -68,7 +70,7 @@ class voucher extends Uc_server{
         $data['uc_appid']='201605270933';
         $data['uc_secret']='jindsf83nsdvi3n0ejj91jnlnapfnas92nvb';
         $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
-        //$data['uc_server']='https://m.mayizaixian.cn/apis/uc';
+        //$data['uc_server']='http://t.mayionline.cn/apis/uc';
         parent::__construct($data);
         $this->_startTime = time();
         $this->_appid=$config['appid'];
@@ -171,8 +173,8 @@ class voucher extends Uc_server{
             else
                 $this->_response_code='10006';
         }else{
-            $logo="https://www.mayihaitao.com/image/red/".(int)$list['price'].".png";
-            $sql = "insert into mallbuilder_voucher_temp (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`,`TYPE`) values ('$this->_name','消费{$list['limit']}可用',".$this->_startTime.",'6898435688','{$list['price']}','{$list['limit']}','{$list['shop_id']}','{$this->_shopinfo['company']}','999999999','0','','1','{$logo}','2')";
+            $logo=$this->_url."/image/red/".(int)$list['price'].".png";
+            $sql = "insert into mallbuilder_voucher_temp (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`,`TYPE`) values ('{$this->_name}','消费{$list['limit']}可用','{$this->_startTime}','6898435688','{$list['price']}','{$list['limit']}','{$list['shop_id']}','{$this->_shopinfo['company']}','999999999','0','{$logo}','1','','2')";
             $db->query($sql);
             $id = $db->lastid();
             $this->voucher($list,$id);
@@ -195,8 +197,8 @@ class voucher extends Uc_server{
                 $this->_serials[$list['voucher_id']]=(string)$this->_serial;
                 //array_push($this->_serials,array($list['voucher_id']=>$this->_serial));
                 $this->_endTime = $list['time'];
-                $logo="https://www.mayihaitao.com/image/red/".(int)$list['price'].".png";
-                $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('$this->_serial','{$id}','$this->_name','消费{$list['limit']}可用','$this->_startTime','$this->_endTime','{$list['price']}','{$list['limit']}','{$list['shop_id']}',1,'".time()."','{$this->_userinfo['userid']}','{$this->_userinfo['user']}','{$logo}','{$this->_shopinfo['company']}') ";
+                $logo=$this->_url."/image/red/".(int)$list['price'].".png";
+                $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('{$this->_serial}','{$id}','{$this->_name}','消费{$list['limit']}可用','{$this->_startTime}','{$this->_endTime}','{$list['price']}','{$list['limit']}','{$list['shop_id']}',1,'".time()."','{$this->_userinfo['userid']}','{$this->_userinfo['user']}','{$logo}','{$this->_shopinfo['company']}') ";
                 $db->query($sql);
                 $sql = "update mallbuilder_voucher_temp set `giveout` = giveout+1 where id=".$id;
                 $db -> query($sql);
