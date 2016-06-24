@@ -7,7 +7,7 @@
 <div class="pro_detail clear">
 <!-- 商品信息开始 -->
     <div class="item_info clear">
-      <div class="head">蚂蚁首页>好奇Huggies金装纸尿裤男L40P</div>
+      <div class="head">蚂蚁首页><{$de.name}></div>
       <!--图片放大start-->
       <div class="gallery">
         <div>
@@ -26,11 +26,15 @@
       <!-- 商品属性开始 -->
       <div class="property">
         <div class="title">
-          <h3>好奇Huggies金装纸尿裤男L40P<span><img src="https://www.mayihaitao.com/uploadfile/adv/2016/04/20/1461139133.jpg">日本品牌 海外直采</span></h3>
+          <h3><{$de.name}>
+            <{if $de.national_info }>
+                <span><img src="<{$de.national_info.img}>"><{$de.national_info.title}>品牌 海外直采</span>
+            <{/if}>
+          </h3>
           <p>美国原装进口，海关监管，保证正品，蚂蚁海淘提供安全保障</p>
         </div>
         <div class="price">
-          <p><span>店头价</span><i>¥</i><em id="price">138.00</em></p>
+          <p><span>店头价</span><i>¥</i><em id="price"><{$de.price|number_format:2}></em></p>
         </div>
         <div class="service">
           <p><span>该商品</span>由蚂蚁海淘日本仓发货&nbsp预计5-15天送达</p>
@@ -157,6 +161,7 @@
                 </div>
                 <div class="desc">
                     <p>商品详情</p>
+                    <{$de.detail}>
                 </div>
                 <div class="notice">
                     <p>消费者告知书</p>
