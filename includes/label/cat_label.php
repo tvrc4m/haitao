@@ -11,7 +11,7 @@ function cat($ar) {
 	$ar['temp'] = empty($ar['temp'])?'cat_default':$ar['temp'];
 
 	if (!$tpl -> is_cached($ar['temp'] . ".htm", $flag)) {
-		$cache_cat_file = $config['webroot'] . "/templates_c/" . $config['temp'] . "/cat_cache.htm";
+		$cache_cat_file = $config['webroot']."/templates_c/".$config['temp']."/{$flag}cat_cache.htm";
 		if (!file_exists($cache_cat_file)) {
 			if ($ar['rec'])
 				$ssql .= " and isindex=$ar[rec]";
