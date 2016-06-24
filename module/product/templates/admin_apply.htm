@@ -18,10 +18,15 @@
         <input type="hidden" value="<{$de.seller_id}>" name="seller_id" />
         <table>
             <tr>
-                <td width="80"><em>*</em>退款原因：</td>
+                <td width="80"><em>*</em>退款原因：<{$de.}></td>
                 <td>
-                    <select>
-                        <option value="0">请选择退款原因</option>
+                    <select name="reason_type">
+                        <{if $de.reason_type == 1}>
+                            <option value="1" selected="selected">物流中损坏的商品</option>
+                        <{elseif $de.reason_type == 2}>
+                            <option value="2" selected="selected">商品有质量问题</option>
+                        <{/if}>
+                        <option value="0" >请选择退款原因</option>
                         <option value="1">物流中损坏的商品</option>
                         <option value="2">商品有质量问题</option>
                     </select>
@@ -45,17 +50,17 @@
                 <td>
                     <ul class="clear">
                     <li>
-                    <input type="hidden" data-id="1" name="pic" value="./uploadfile/member/20160612/1465697909.jpg">
+                    <input type="hidden" data-id="1" name="pic[]" value="">
                     <img data-id="1" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" height="70" width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
-                    <input type="hidden" data-id="2" name="pic" value="./uploadfile/member/20160612/1465697909.jpg">
+                    <input type="hidden" data-id="2" name="pic[]" value="">
                     <img data-id="2" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" height="70" width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
-                    <input type="hidden" data-id="3" name="pic" value="./uploadfile/member/20160612/1465697909.jpg">
+                    <input type="hidden" data-id="3" name="pic[]" value="">
                     <img data-id="3" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" height="70" width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
