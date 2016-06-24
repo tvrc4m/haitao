@@ -151,7 +151,13 @@ magic();//魔术调用
 
 //是否启用聊天
 $chat_open_flag = false;
-
+/*$_serial=time().rand(100000,999999);
+$_endTime = time()+3600*24*7;
+$_startTime = time();
+$logo=$config['weburl']."/image/red/20.png";
+$sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('{$_serial}','2','新用户代金卷','消费300可用','{$_startTime}','{$_endTime}','20','300','','1','".time()."','{$userid}','{$user}','{$logo}','') ";
+echo $sql;
+var_dump($config);die;*/
 Yf_Registry::getInstance();
 $b2bbuilder_auth = bgetcookie("USERID");
 
