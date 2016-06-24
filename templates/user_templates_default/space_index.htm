@@ -21,9 +21,11 @@
     <div class="hotclass">
         <div class="brand">
             <{foreach item=list from=$brand}>
+            <div>
                 <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
                     <img src="<{$list.logo}>" alt="<{$list.name}>" />
                 </a>
+            </div>
             <{/foreach}>
             <span>热门品牌分类</span>
         </div>
