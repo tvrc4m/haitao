@@ -1,5 +1,5 @@
 <link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
-<body class="um-vp bc-bg" ontouchstart>
+<body class="bc-bg" ontouchstart>
 <header>
     <div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
@@ -10,29 +10,25 @@
 <div class='collect_box_content'></div>
 <div class="select_style_one">
     <div class="shoping-fixed">
-        <div class="c-wh bgw">
-            <div class="addcart clearfix">
-                <a class="cart" href="/?m=product&s=cart">
-                    <span class="cart-num-cont" id='cart_num'>
-                        <span class="cart-num"></span>
-                        <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
-                    </span>
-                </a>
-                <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
-                <{if $de.is_virtual neq 1}>
-                <a class="incar incar_c " href="javascript:void(0)">加入购物车</a>
-                <{/if}>
-            </div>
+        <div class="addcart clearfix">
+            <a class="cart" href="/?m=product&s=cart">
+                <span class="cart-num-cont" id='cart_num'>
+                    <span class="cart-num"></span>
+                    <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
+                </span>
+            </a>
+            <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
+            <{if $de.is_virtual neq 1}>
+            <a class="incar incar_c " href="javascript:void(0)">加入购物车</a>
+            <{/if}>
         </div>
     </div>
 </div>
 <div class="select_style_two shoping-hide">
     <div class="shoping-fixed">
-        <div class="c-wh bgw">
-            <div class="addcart clearfix">
-                <a class="incars incars_c" href="javascript:distribute_goods('<{$de.id}>');">代销上架</a>
-                <a class="incars incars_l" href="javascript:void(0)">马上分享</a>
-            </div>
+        <div class="addcart clearfix">
+            <a class="incars incars_c" href="javascript:distribute_goods('<{$de.id}>');">代销上架</a>
+            <a class="incars incars_l" href="javascript:void(0)">马上分享</a>
         </div>
     </div>
     <div class="hj_share_box" id="share_box"></div>
@@ -52,39 +48,32 @@
         </div>
         <div class="ub b-gra-cf">
             <div class="ub ub-ver ub-f1">
-            <div>
-                <div id="pname"><span class="pname_img"><{if $de.img }><img src="<{$de.img}>">&nbsp;&nbsp;<{/if}><{$de.title}></span><{if $de.img }>&nbsp;&nbsp;<{/if}><{$de.name}></div>
-                <div class="col">
-                    <a href="javascript:collect_goods(<{$de.id}>);" style="color:8b8b8b" class="collect_xin">
-                        <div class="col_ttt">
-                            <div id="collect" class="iconfont <{if $spro}>collect<{/if}>">&#xe628;</div>
-                            <div class="nav-c" style="font-size: .6rem; color:#000;"><{if $spro}>已收藏<{else}>收藏<{/if}></div>
-                        </div>  
-                    </a>
-                </div>
+            <div id="pname"><span class="pname_img"><{if $de.img }><img src="<{$de.img}>">&nbsp;&nbsp;<{/if}><{$de.title}></span><{if $de.img }>&nbsp;&nbsp;<{/if}><{$de.name}></div>
+            <div class="col">
+                <a href="javascript:collect_goods(<{$de.id}>);" class="collect_xin">
+                    <div class="col_ttt">
+                        <div id="collect" class="iconfont <{if $spro}>collect<{/if}>">&#xe628;</div>
+                        <div class="nav-c" style="font-size: .6rem; color:#000;"><{if $spro}>已收藏<{else}>收藏<{/if}></div>
+                    </div>  
+                </a>
             </div>
             </div>
         </div>
         <div id="cart_show" style="display:none;"></div>
     </div>
     <div class="select_style_one">
-        <div class="b-gra-cfs">
-            <div class="col-money">
-                <span>店头价</span><span class="price_moneys"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
-            </div>
-            <div class="itips"><{if $de.discounts}>（店铺会员<{$de.discounts}>折）<{elseif $de.is_tg=="true"}>(已开启团购价)<{/if}></div>
+        <div class="col-money">
+            <img src="../image/wap/wap_haitao_icon161.png" class="diantou1"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
         </div>
         <div style="height:0.4rem;background-color:#f5f5f5;width:100%"></div>
-        <div class="c-wh bgw" style="margin-bottom: 0">
-            <div class="select_style clearfix">
-                <div class="select_guanshui clearfix">
-                    <div><span class="select_one select_ones">运费</span><span>根据订单中商品的总重量来计算运费</span></div>
-                    <div><span>该商品由蚂蚁海淘日本仓发货 预计 <span class="org">5-15</span> 天送达</span></div>
-                </div>
-                <div class="select_guanshui clearfix">
-                    <div><span class="select_one">进口税</span><span>若在清关中产生税费及手续费需要收件人缴纳，请知悉</span></div>  
-                    <div><span class="select_one">服务</span><span>不支持7天无理由退货，仅支持物流中损坏的商品</span></div>
-                </div>
+        <div class="select_style">
+            <div class="select_guanshui">
+                <div><span class="select_one">运费</span><span class="select_two">根据订单中商品的总重量来计算运费</span></div>
+                <div><span>该商品由蚂蚁海淘日本仓发货 预计 <span class="org">5-15</span> 天送达</span></div>
+            </div>
+            <div class="select_guanshui">
+                <div><span class="select_one">关税</span><span class="select_two">若在清关中产生税费及手续费需要收件人缴纳，请知悉</span></div>  
+                <div><span class="select_one">服务</span><span class="select_two">不支持7天无理由退货，仅支持物流中损坏的商品</span></div>
             </div>
         </div>
         <div style="height:0.4rem;background-color:#f5f5f5;width:100%"></div>
@@ -99,7 +88,7 @@
                         <a href="javascript:void(0);" id="add_num">+</a>
                     </dd>
                     <dd class="stock_kucun">
-                        <em> （库存 <span id="stock"><{$de.stock}></span> 件<{if $de.is_virtual eq 1 && $de.maxbuy lt $de.stock  && $de.maxbuy gt 0}>，每人限购<strong style='color:#f40'><{$de.maxbuy}>件<{/if}></strong>） </em>
+                        <em>（库存 <span id="stock"><{$de.stock}></span> 件）</em>
                     </dd>
                 </dl>
                 <{/if}>
@@ -121,11 +110,9 @@
         <div style="height:0px;border-top:1px solid #ccc;"></div>
     </div>
     <div class="select_style_two shoping-hide">
-        <div class="b-gra-cfs">
-            <div class="col-money">
-                <div class="col-money-bot col-money-bots">佣金：</span><span class="price_moneys2"> <{$config.money}>  <span class="price_dels_num"><{$distr.commission_product_price_0|number_format:2}></span></span><span class="price_moneys2"></div>
-                <div class="col-money-bot">卖价：</span><span><{$config.money}>  <span class="price_moneys_num"><{$de.price|number_format:2}></span></div>
-            </div>
+        <div class="col-money">
+            <div class="col-money-bot col-money-bots">佣金：</span><span class="price_moneys2"><{$config.money}><span class="price_dels_num"><{$distr.commission_product_price_0|number_format:2}></span></span><span class="price_moneys2"></div>
+            <div class="col-money-bot"><img src="../image/wap/wap_haitao_icon161.png" class="diantou1"><span><{$config.money}><span class="price_moneys_num"><{$de.price|number_format:2}></span></div>
         </div>
         <div class="c_daibao clearfix">
             <div class="c_daibao_title">代销保障</div>
@@ -162,7 +149,7 @@
                                         </div>
                                         <div class="shopli_bottom_rob clearfix">
                                             <div class="al shopli_bottom_money">
-                                                <span>店头价&nbsp;</span><span class="money"><{$config.money}><{$list.price}></span>
+                                                <img src="../image/wap/wap_haitao_icon161.png" class="diantou"><span class="money"><{$config.money}><{$list.price}></span>
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +201,6 @@
             <li><a class="clearfix" href="shop.php?uid=<{$smarty.get.uid}>"><i class="kefu_icon2"></i>进入店铺</a></li>
         </ul>
     </div>
-   <!--  <div id="offset-top"></div> -->
     <div class="c-wh bgw clearfix">
         <div class="clearfix">
             <div class="nav-box">
