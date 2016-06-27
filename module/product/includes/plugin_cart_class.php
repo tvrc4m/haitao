@@ -155,8 +155,6 @@ class cart
 				$activities_re=$this->db->fetchRow();
 				$re[$k]["activity_rule"]=$activities_re["activity_rule"];
 			}
-			if(strpos($value['pic'],'haitao.com'))
-				$re[$k]["pic"] =
 		}
 	
 		foreach($re as $key => $val)
@@ -255,7 +253,7 @@ class cart
 			}
 		}
 		$sumprice-=$reduce_price;
-		var_dump($re);die;
+		
 		$list['reduce_price']=$reduce_price; //活动减免的金额
 		$list['discount_price']=$discount_price; //会员折扣金额
 		
