@@ -20,12 +20,20 @@
     <!-- 热门品牌开始 -->
     <div class="hotclass">
         <div class="brand">
-            <{foreach item=list from=$brand}>
-            <div>
+            <{foreach item=list from=$brand key=key}>
+            <{if ($key+1)%8 ==0 }>
+            <div class="mr0">
                 <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
                     <img src="<{$list.logo}>" alt="<{$list.name}>" />
                 </a>
             </div>
+            <{else}>
+                <div>
+                    <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
+                        <img src="<{$list.logo}>" alt="<{$list.name}>" />
+                    </a>
+                </div>
+            <{/if}>
             <{/foreach}>
             <span>热门品牌分类</span>
         </div>
