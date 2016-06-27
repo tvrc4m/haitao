@@ -62,9 +62,10 @@ if(($pshop['pid'] != null) && ($pshop['pid'] == 44) && (!empty($buid))){
 		$sql = "SELECT id FROM mallbuilder_product WHERE ptype =2 AND member_id = ".$pshopid['shop_id']." AND proid =".$id;
 		$db->query($sql);
 		$proid = $db->fetchRow();
-		$id = $proid['id'];
+		$id = $proid['id'] ? $proid['id'] : $id ;
 	}
 }
+
 //-----------------------------------
 user_read_rec($buid,$id,1);//记录会员查看商品
 //-----------------------------------    20150624 lemons 商品被删除后从订单点进去，进入快照
@@ -85,8 +86,9 @@ if(is_numeric($_GET["order_id"])&&$id&&is_numeric($_GET["pid"]))
 }
 //-----------------------------------
 //---如果商品不存在跳转回首页或商家自己商品
-$sql = "select p.*,s.user from ".PRODUCT." p, ".SHOP." s where s.userid=p.member_id and p.id =".$id;
+$sql = "select p.*,s.user from " . PRODUCT . " p, " . SHOP . " s where s.userid=p.member_id and p.id =" . $id;
 $db -> query($sql);
+
 if(!$db -> num_rows())
 {
 	msg($config['weburl'],"商品不存在");
