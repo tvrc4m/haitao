@@ -93,7 +93,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		$tpl->assign("score", $score);
 		$tpl->assign("custom_cat", $shop->get_custom_cat_list(1));
 		$tpl->assign("shop_nav", $shop->get_shop_nav());
-
 		//-------------------------module分发--------------------
 		if (!empty($_GET['m']) && !empty($_GET['action'])) {
 			$_GET['m'] = preg_replace('#[^a-z]#iuU', '', $_GET['m']);
@@ -155,7 +154,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			$PluginManager->trigger('dist_product', intval($_GET['uid']));
 			$dis = "?uid=" . $_REQUEST['uid'] . "&dist_id=" . $_REQUEST['uid'];
 			$tpl->assign("dis", $dis);
-
 			//-------------------------------------------
 			if ($_GET[fx] == 'fx')
 				$page = "space_index_fx.htm";
@@ -202,6 +200,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		} elseif ($config['temp'] == 'default') {
 			$limit = 10;
 		}
+
 
 		if (!empty($id) || !empty($buid)) {
 			foreach ($catids as $key => $val) {
@@ -266,7 +265,10 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 	}
 
+
 	$tpl->assign("chat_open_flag", $chat_open_flag);
 	$tpl->display("space_temp_inc.htm", $flag);
-}
+
+
+
 ?>

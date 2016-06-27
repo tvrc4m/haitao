@@ -122,18 +122,16 @@
         <!-- 可能喜欢开始 -->
         <div class="like">
             <h3>你可能喜欢</h3>
+            <{foreach item=list key=num from=$relation}>
             <div class="like-p">
                 <a href="" class="p-img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463131913.jpg_220X220.jpg"></a>
-                <p class="p-name"><a href="">德国本土奶粉</a></p>
-                <p class="p-price">¥334</p>
+                <p class="p-name"><a href=""><{$list.name|truncate:18:""}></a></p>
+                <p class="p-price"><{$config.money}><{$list.price}></p>
                 <span>海外直采</span>
             </div>
-            <div class="like-p">
-                <a href="" class="p-img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463131913.jpg_220X220.jpg"></a>
-                <p class="p-name"><a href="">德国本土奶粉</a></p>
-                <p class="p-price">¥334</p>
-                <span>海外直采</span>
-            </div>
+            <{foreachelse}>
+            <div class="like-p">暂无推荐！</div>
+            <{/foreach}>
         </div>
         <!-- 可能喜欢结束 -->
     </div>
