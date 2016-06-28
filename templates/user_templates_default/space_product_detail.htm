@@ -176,7 +176,7 @@
 <!--商品详情end-->
 <script>
 // 图片放大
-$(".jqzoom").imagezoom();
+// $(".jqzoom").imagezoom();
 $(".gallery li").on('mouseenter',function(){
     $(this).addClass("selected").siblings().removeClass("selected");
     $(".jqzoom").attr('src',$(this).find("img").attr("src"));
@@ -292,6 +292,8 @@ $("#shopcode").bind("click", function (e) {
     var curEl = e.srcElement || e.target;
     mbox(curEl.id);
 });
+// 可能喜欢最后一个去掉底边
+$(".like .like-p:last").addClass("bbn");
 // 切换选项卡
 $(".banner li").on("click",function(){
   var _this=$(this).index();
@@ -302,10 +304,4 @@ $(".banner li").on("click",function(){
 $('#comment').load('<{$config.weburl}>/?m=product&s=detail&id=<{$de.id}>&ajax=reviews');
 $('#record').load('<{$config.weburl}>/?m=product&s=detail&id=<{$de.id}>&ajax=deal-record');
 $('#consult').load('<{$config.weburl}>/?m=product&s=detail&id=<{$de.id}>&ajax=consult');
-// 滚动
-$(window.document).scroll(function () {''
-    var scrolltop = $(document).scrollTop();
-    if (scrolltop>700) {
-    };
-});
 </script>
