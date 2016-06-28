@@ -292,6 +292,8 @@ $("#shopcode").bind("click", function (e) {
     var curEl = e.srcElement || e.target;
     mbox(curEl.id);
 });
+// 可能喜欢最后一个去掉底边
+$(".like .like-p:last").addClass("bbn");
 // 切换选项卡
 $(".banner li").on("click",function(){
   var _this=$(this).index();
