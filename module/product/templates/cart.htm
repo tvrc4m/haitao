@@ -59,7 +59,7 @@
             </tr>
         </thead>
         <tbody>
-        <tr class="reduce"><td colspan="6"><p><span>满减</span>全场满300元减20，还差98元<a href="">去凑单</a></p></td></tr>
+        <tr class="reduce"><td colspan="6"><p><span>满减</span>全场满300元减20，还差<b id="xiangcha">300.00</b>元<a href="<{$config.weburl}>">去凑单</a></p></td></tr>
         <tr class="seg-entry"></tr>
         <{foreach item=list from=$cart.cart}>
 
@@ -286,6 +286,7 @@ function count()
 {
 	var count = 0;
 	var num = 0;
+    var mj=20;
 	$(".cart-checkbox").find("input[name='product_id[]']:checked").each(function(){
 		var value = $(this).val();
 		var price = $(this).parent().parent().parent().find("#cell"+value+" span").html();
@@ -297,6 +298,12 @@ function count()
 		$(this).parent().parent().parent().addClass("checked");
 	});
 	$(".subtotal").html(count.toFixed(2));
+    if(count.toFixed(2)<=300){
+        $("#xiangcha").html((300-count).toFixed(2));
+    }else{
+        $("#xiangcha").html('0.00');
+        $(".subtotal").html((count-mj).toFixed(2));
+    }
 	$(".cart-count em").html(num);
 	if(num>0) 
 		$(".submit-btn").removeClass("submit-btn-disabled");
