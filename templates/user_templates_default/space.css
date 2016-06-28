@@ -34,6 +34,7 @@ ul,ol{list-style:none;}
 .w{width:1212px}
 .w242{width: 242px !important;}
 .w243{width: 243px !important;}
+.bbn{border-bottom: none !important;}
 /*卖家店铺开始*/
 .buyer-shop{overflow: hidden;}
 .buyer-shop .banner{position: relative;top: 0;left: 50%;margin-left: -960px;}
