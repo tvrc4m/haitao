@@ -202,7 +202,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 
 
-		if (!empty($id) || !empty($buid)) {
+		if (!empty($id) || empty($buid)) {
 
 			foreach ($catids as $key => $val) {
 				if ($buid) {

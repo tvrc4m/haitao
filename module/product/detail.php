@@ -100,7 +100,6 @@ $tpl->assign("shop_user",$ress['user']);
 $prodetail=new product();
 $prode=$prodetail->detail($id);
 $relation = $prodetail->relation_detail($id);
-
 if (isset($_REQUEST['dist_id']))
 {
 	$shop_id = $prode['member_id'];
