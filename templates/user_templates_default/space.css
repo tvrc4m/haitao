@@ -34,6 +34,7 @@ ul,ol{list-style:none;}
 .w{width:1212px}
 .w242{width: 242px !important;}
 .w243{width: 243px !important;}
+.bbn{border-bottom: none !important;}
 /*卖家店铺开始*/
 .buyer-shop{overflow: hidden;}
 .buyer-shop .banner{position: relative;top: 0;left: 50%;margin-left: -960px;}
@@ -98,7 +99,7 @@ ul,ol{list-style:none;}
 .pro_detail .item_info .head{height: 80px;line-height: 80px;}
 /*图片放大*/
 .pro_detail .item_info .gallery{width: 450px;float: left;position: relative;}
-.pro_detail .item_info .gallery div{width: 448px;height: 448px;font-size: 0;border: 1px solid #ccc;}
+.pro_detail .item_info .gallery div{width: 448px;height: 448px;font-size: 0;border: 1px solid #ccc;text-align: center;}
 .pro_detail .item_info .gallery .midimg{max-width: 448px;max-height: 448px;}
 .pro_detail .item_info .gallery li{width: 80px;height: 80px;float: left;margin: 10px 10px 10px 0;border: 1px solid #ccc;}
 .pro_detail .item_info .gallery li.selected{border-color: #ff5c5c;}
