@@ -22,9 +22,9 @@
             <tr class="item">
                 <td class="name">
                     <div class="fl">
-                    <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.pid}><{if $pro.dist_user_id}>&shop_id=<{$pro.dist_user_id}><{/if}>"><img height="60" alt="<{$pro.pname}>" src="<{php}>if(strpos($this->_tpl_vars['pro']['pic'],'haitao.com'))echo $this->_tpl_vars['pro']['pic'].'_60X60.jpg';else echo $this->_tpl_vars['pro']['pic'].'!/fw/60/quality/60';<{/php}>"></a>
+                    <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.pids}><{if $pro.dist_user_id}>&shop_id=<{$pro.dist_user_id}><{/if}>"><img height="60" alt="<{$pro.pname}>" src="<{php}>if(strpos($this->_tpl_vars['pro']['pic'],'haitao.com'))echo $this->_tpl_vars['pro']['pic'].'_60X60.jpg';else echo $this->_tpl_vars['pro']['pic'].'!/fw/60/quality/60';<{/php}>"></a>
                     </div>
-                    <p><a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.pid}><{if $pro.dist_user_id}>&shop_id=<{$pro.dist_user_id}><{/if}>"><{$pro.pname}></a></p>
+                    <p><a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.pids}><{if $pro.dist_user_id}>&shop_id=<{$pro.dist_user_id}><{/if}>"><{$pro.pname}></a></p>
 				</td>
                 <td><{$pro.price|number_format:2}></td>
                 <td class="num"><{$pro.num}></td>

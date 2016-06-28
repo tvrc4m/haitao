@@ -241,12 +241,23 @@ else
 				}
 			}
 		}
+		//新用户全站代金卷
+		if(!empty($buid)){
+			$sql = "SELECT price FROM mallbuilder_voucher WHERE temp_id=2 AND member_id={$buid}";
+			$db->query($sql);
+			$djj = $db->fetchRow();
+		}
 
 		// 插入到合并支付表
 		$uorder = "U".date("Ymdhis",time()).rand(100,999); // 18位
 		$inorder = substr($inorder, 0,-1);
 		$logistics_price = $weig->cost();//物流费用
-		$uprice = $uprice + $logistics_price;
+		if($djj)
+			$uprice = $uprice + $logistics_price-$djj['price'];
+		else
+			$uprice = $uprice + $logistics_price;
+
+
 		$sql = "insert into ".UORDER."  (`order_id`,`inorder`,`price`,`create_time`) values ('$uorder','$inorder','$uprice','".time()."')";
 
 		$db->query($sql);
