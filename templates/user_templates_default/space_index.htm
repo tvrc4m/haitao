@@ -42,85 +42,27 @@
     <!-- 热门商品开始 -->
     <div class="hotpro">
         <ul class="clear">
+            <{foreach item=list from=$cproducts key=key}>
             <li>
                 <div>
-                    <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
-                    <p class="goods_price"><var>￥180</var><s>￥235</s></p>
+                    <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" class="goods_img"><img src="<{$list.pic}>" alt="<{$list.name}>"></a>
+                    <p class="goods_price"><var>￥<{$list.price}></var><s>￥<{$list.market_price}></s></p>
                     <p class="goods_text">
-                        <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
-                        <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
+                        <img src="<{$config.weburl}>/product-detail-<{$list.id}>.html">
+                        <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$list.name}></a>
                     </p>
                     <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
                 </div>
                 <i></i>
             </li>
-            <li>
-                <div>
-                    <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
-                    <p class="goods_price"><var>￥180</var><s>￥235</s></p>
-                    <p class="goods_text">
-                        <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
-                        <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                    </p>
-                    <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
-                </div>
-                <i></i>
-            </li>
-            <li>
-                <div>
-                    <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
-                    <p class="goods_price"><var>￥180</var><s>￥235</s></p>
-                    <p class="goods_text">
-                        <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
-                        <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                    </p>
-                    <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
-                </div>
-                <i></i>
-            </li>
-            <li>
-                <div>
-                    <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
-                    <p class="goods_price"><var>￥180</var><s>￥235</s></p>
-                    <p class="goods_text">
-                        <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
-                        <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                    </p>
-                    <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
-                </div>
-                <i></i>
-            </li>
-            <li class="w243">
-                <div>
-                    <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
-                    <p class="goods_price"><var>￥180</var><s>￥235</s></p>
-                    <p class="goods_text">
-                        <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
-                        <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                    </p>
-                    <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
-                </div>
-                <i></i>
-            </li>
-            <li>
-                <div>
-                    <a href="" class="goods_img"><img src="https://www.mayihaitao.com/uploadfile/product/91/2016/05/13/1463132442.jpg_220X220.jpg" alt=""></a>
-                    <p class="goods_price"><var>￥180</var><s>￥235</s></p>
-                    <p class="goods_text">
-                        <img src="https://www.mayihaitao.com/uploadfile/national/d3d2b0e28a6f1811b8ca3cdd0c1dc97e.jpg">
-                        <a href="" title="">乳酸鱼骨胶原蛋白粉</a>
-                    </p>
-                    <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
-                </div>
-                <i></i>
-            </li>
+            <{/foreach}>
         </ul>
         <span>热卖推荐</span>
     </div>
     <!-- 热门商品结束 -->
     <!-- 广告位开始 -->
     <div class="ad">
-        <img src="https://www.mayihaitao.com/uploadfile/adv/91349497_undefined">
+        <script src='<{$config.weburl}>/api/ad.php?id=20&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
     </div>
     <!-- 广告位结束 -->
     <!-- 纸尿裤专区开始 -->
