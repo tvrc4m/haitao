@@ -257,7 +257,6 @@ else
 		else
 			$uprice = $uprice + $logistics_price;
 
-
 		$sql = "insert into ".UORDER."  (`order_id`,`inorder`,`price`,`create_time`) values ('$uorder','$inorder','$uprice','".time()."')";
 
 		$db->query($sql);
@@ -298,10 +297,11 @@ else
 	}
 }
 //=================================================
+var_dump($cartlist);die;
 $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
 $tpl->assign("cart",$cartlist['cart']);
-$tpl->assign("sumprice",$cartlist['sumprice']);
+$tpl->assign("sumprice",$cartlist['sumprice']-20);
 $tpl->assign("logisticsCost",$weig->cost());
 $tpl->assign("weights",$cartlist['weights']);
 
