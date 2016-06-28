@@ -297,11 +297,10 @@ else
 	}
 }
 //=================================================
-var_dump($cartlist);die;
 $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
 $tpl->assign("cart",$cartlist['cart']);
-$tpl->assign("sumprice",$cartlist['sumprice']-20);
+$tpl->assign("sumprice",$cartlist['sumprice']);
 $tpl->assign("logisticsCost",$weig->cost());
 $tpl->assign("weights",$cartlist['weights']);
 
