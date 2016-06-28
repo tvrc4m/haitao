@@ -69,7 +69,6 @@
     <{foreach item=list from=$products key=key}>
     <div class="section">
         <div class="title znk"><{$catids.$key.cat}><span><a href="<{$config.weburl}>/product-list-<{$key}>.html">查看分类</a></span></div>
-
         <ul class="clear">
             <{foreach item=lists from=$list}>
             <li>
@@ -95,4 +94,15 @@
     $(window).load(function(){
         $(".flexslider").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true});
     });
+    // 补全品牌
+    appendDiv();
+    function appendDiv(){
+        var a = 8-($(".brand div").length%8);
+        var b="";
+        for(var i= 0; i< a;i++){
+            b = b + "<div></div>"
+        }
+        $(".brand span").before(b);
+        $(".brand div:last").addClass("mr0");
+    }
 </script>

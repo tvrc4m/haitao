@@ -50,7 +50,7 @@ ul,ol{list-style:none;}
 /*热门品牌分类*/
 .buyer-shop .hotclass{font-size: 0;padding:20px 0 16px 0;background: #f5f5f5;}
 .buyer-shop .hotclass .brand{width: 1212px;position: relative;}
-.buyer-shop .hotclass .brand div{width: 148px;height: 90px;margin: 0 4px 4px 0;background: #fff;display: inline-block;}
+.buyer-shop .hotclass .brand div{width: 148px;height: 90px;margin: 0 4px 4px 0;background: #fff;display: inline-block;vertical-align: top;}
 .buyer-shop .hotclass span{position: absolute;left: -30px;top: 0;width: 14px;padding: 8px;font-size: 14px;background: #ffa23e;color: #fff;}
 /*热卖推荐*/
 .buyer-shop .hotpro{width: 1212px;margin-top: 20px;background: #fff;position: relative;}
@@ -172,7 +172,7 @@ ul,ol{list-style:none;}
 .zoomMask{position: absolute;background: url(img/haitao_icon16.png) repeat scroll 0 0 transparent;cursor: move;z-index: 1;}
 .zoomDiv{z-index: 1;position: absolute;background: #FFF;display: none;overflow: hidden;}
 .zoomDiv img{max-width: none;}
-#mb_con {position: fixed;width: 300px;height: 300px;z-index: 44;background: #fff; padding:20px;}
+#mb_con {position: fixed;width: 164px;height: 164px;z-index: 44;background: #fff;}
 /*分享图标*/
 .bshare-custom.icon-medium a{padding-left:20px !important;height: 20px;}
 .bshare-custom.icon-medium .bshare-weixin{background: url(img/haitao_icon17.png) no-repeat 0 -127px;}
@@ -181,6 +181,7 @@ ul,ol{list-style:none;}
 .bshare-custom.icon-medium .bshare-renren{background: url(img/haitao_icon17.png) no-repeat 0 -76px;}
 .bshare-custom.icon-medium .bshare-qqmb{background: url(img/haitao_icon17.png) no-repeat 0 -25px;}
 .bshare-custom.icon-medium .bshare-douban{background: url(img/haitao_icon17.png) no-repeat 0 -102px;}
+.bshare-weixin:hover,.bshare-qzone:hover,.bshare-sinaminiblog:hover,.bshare-renren:hover,.bshare-qqmb:hover,.bshare-douban:hover{opacity: 0.6; filter:alpha(opacity=50);-moz-opacity:0.5;-khtml-opacity: 0.5;}
 /*成交记录*/
 .pro_detail .inner-right .content .record tr{line-height: 40px;}
 .pro_detail .inner-right .content .record td{text-align: center;}
