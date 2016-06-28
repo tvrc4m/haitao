@@ -3,7 +3,7 @@ function mbox(id){
 	btnNo();
 }
 var GenerateHtml = function (id) {
-	var _html = '<div id="mb_box"><div id="mb_con"><img id="code" src="" /></div></div>';
+	var _html = '<div id="mb_box"></div><div id="mb_con"><img id="code" src="" /></div>';
 	$("body").append(_html);
 	if(id=="shopcode"){
 		$("#mb_con img").attr("src","api/share_qrcode.php?type=product&pid=580&rand=8747")
