@@ -79,7 +79,10 @@
                         <img src="<{$lists.img}>">
                         <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" title="<{$lists.name}>"><{$lists.name}></a>
                     </p>
-                    <p class="goods_option clear"><a class="fl" href="#"><{if ($lists.nums)>0}><{$lists.nums}><{else}>0<{/if}></a><a class="fr" href="<{$config.weburl}>/product-detail-<{$lists.id}>.html">加入购物车</a></p>
+                    <p class="goods_option clear">
+                        <a class="fl" href="<{$config.weburl}>/product-detail-<{$lists.id}>.html"><{if ($lists.nums)>0}><{$lists.nums}><{else}>0<{/if}></a>
+                        <a class="fr" href="<{$config.weburl}>/product-detail-<{$lists.id}>.html">加入购物车</a>
+                    </p>
                 </div>
                 <i></i>
             </li>
