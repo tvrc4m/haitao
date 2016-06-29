@@ -202,8 +202,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 
 
-//		if ((1==$company['shop_type'] && $company['shop_statu']==-3) || (2==$company['shop_type'] && $company['shop_statu']==1) || (1==$company['shop_statu'] && 3==$company['shop_type']) ) {
-
 			foreach ($catids as $key => $val) {
 				if ($buid) {
 					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = " . $val['catid'] . " AND a.member_id=" . $buid . " LIMIT " . $limit;
