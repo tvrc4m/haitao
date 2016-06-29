@@ -116,7 +116,7 @@ function count_all_price()
 	}
 	$('.sumprice').html(roundAmount(total));
     total+=Number($(".fare b").text());
-	$('.s_sumprice').html(roundAmount(total));
+	$('.s_sumprice').html(roundAmount(total-<{$firstvou}>));
 }
 count_all_price();
 function setMoney(){

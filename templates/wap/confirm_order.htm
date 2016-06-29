@@ -223,7 +223,7 @@ $(function(){
             total+=stotal[i].innerHTML.replace(',','')*1;
         }
         total=roundAmount(total)
-        totals=roundAmount(Number(total)+Number(freight))
+        totals=roundAmount(Number(total)+Number(freight)-<{$firstvou}>)
         $('#s_sumprice').html(totals);
         $('#s_sumpricess').html(totals);
         $('#s_sumprices').html(total);
