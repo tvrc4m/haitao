@@ -89,9 +89,9 @@ ul,ol{list-style:none;}
 .buyer-shop .section p.goods_price {line-height: 40px;height: 40px;}
 .buyer-shop .section p.goods_price var{font-size: 24px;color: #ff5c5c;}
 .buyer-shop .section p.goods_price s{font-size: 18px;color: #999;float: right;}
-.buyer-shop .section p.goods_option a.fl{background: url(img/icon-com.png) no-repeat 0;padding-left: 20px;}
-.buyer-shop .section p.goods_option a.fr{background: url(img/icon-cart.png) no-repeat 0;padding-left: 20px;}
-.buyer-shop .section i{position: absolute;top: 0;left: 0;width: 50px;height: 50px;background:url(img/icon1.jpg);background-size: 100%;}
+.buyer-shop .section p.goods_option a.fl{background: url(img/haitao_icon19.png) no-repeat 0;padding-left: 20px;}
+.buyer-shop .section p.goods_option a.fr{background: url(img/haitao_icon18.png) no-repeat 0;padding-left: 20px;}
+.buyer-shop .section i{position: absolute;top: 0;left: 0;width: 50px;height: 50px;background:url(img/haitao_icon01.jpg);background-size: 100%;}
 .buyer-shop .section p.goods_text,.buyer-shop .section p.goods_option{line-height: 16px;margin-top: 10px;height: 16px;}
 /*店铺页面结束*/
 /*商品详情页开始*/
