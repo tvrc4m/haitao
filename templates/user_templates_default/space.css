@@ -106,7 +106,8 @@ ul,ol{list-style:none;}
 .pro_detail .item_info .gallery .fixed{position: absolute;top: 0;left: 0;width: 50px;height: 50px;background: url(img/haitao_icon01.jpg);background-size: 100%;border: none;}
 /*商品属性*/
 .pro_detail .item_info .property{width: 710px;float: right;font-size: 14px;}
-.pro_detail .item_info .property .title h3{font-size: 24px;height:48px;font-weight: normal;}
+.pro_detail .item_info .property .title h3{font-size: 24px;line-height:40px;font-weight: normal;margin-bottom: 10px;}
+.pro_detail .item_info .property .title h3 div{float: left;width: 590px;}
 .pro_detail .item_info .property .title h3 span{display: inline-block;float: right;width: 110px;font-size: 14px;line-height: 14px;font-weight: normal;color: #ff5c5c;}
 .pro_detail .item_info .property .title h3 img{width: 50px;float: left;}
 .pro_detail .item_info .property .title p{color: #ff5c5c;}
