@@ -67,10 +67,10 @@ foreach ($score as $key => $value) {
 	$score[$key] = $value?$value:5;
 }
 
-$score['aw']=$score['a']/5*100;
+/*$score['aw']=$score['a']/5*100;
 $score['bw']=$score['b']/5*100;
 $score['cw']=$score['c']/5*100;
-$score['dw']=$score['d']/5*100;
+$score['dw']=$score['d']/5*100;*/
 
 $tpl->assign("score",$score);
 
