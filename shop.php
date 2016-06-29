@@ -202,7 +202,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 
 
-		if (!empty($id) || empty($buid)) {
+//		if ((1==$company['shop_type'] && $company['shop_statu']==-3) || (2==$company['shop_type'] && $company['shop_statu']==1) || (1==$company['shop_statu'] && 3==$company['shop_type']) ) {
 
 			foreach ($catids as $key => $val) {
 				if ($buid) {
@@ -226,7 +226,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			}
 
 			$tpl->assign("products", $products);
-
+		
             //获取橱窗推荐
             $sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
             $db->query($sql);
@@ -270,7 +270,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			}
 
 		}
-	}
+
 }
 	$tpl->assign("chat_open_flag", $chat_open_flag);
 	$tpl->display("space_temp_inc.htm", $flag);
