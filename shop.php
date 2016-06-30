@@ -224,7 +224,8 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			}
 
 			$tpl->assign("products", $products);
-		
+			//echo "<pre>";
+			//print_r($products);
             //获取橱窗推荐
             $sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
             $db->query($sql);
