@@ -52,8 +52,70 @@
     <{insert name="label" type="cat" temp="pro_index_01"}>
 </div>
 <!--商品分类 end-->
+<div class="am-dialog-mask"></div>
+<section>
+    <div class="main-bomb bomb-in">
+        <div class="main-bomb-mayi">
+            <img src="../image/default/haitao_mayi.png" alt="蚂蚁弹框">
+        </div>
+        <div class="main-bomb-content">
+            <div class="bomb-content-top">
+                <p>新手注册送<b>20</b>元代金劵</p>
+                <p>购物满<b>300</b>元可用</p>
+            </div>
+            <div class="bomb-content-center">
+                <p>适用范围：蚂蚁海淘购物平台</p>
+                <p>蚂蚁海淘代金劵可在购物、支付时抵扣</p>
+                <p>等额现金（不含虚拟商品）</p>
+            </div>
+            <div class="bomb-content-bottom">
+                <a href="javascript:void(0);" class="bomb-content-btn1">立即领取</a>
+                <a href="javascript:void(0);" class="bomb-content-btn2">先去逛逛</a>
+            </div>   
+        </div>
+        <div class="main-bomb-delate">
+            <img src="../image/default/haitao_delate.png" alt="蚂蚁弹框">
+        </div > 
+    </div>
+</section>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
+function setCookie(objName,objValue,objHours){
+        var str = objName + "=" + escape(objValue); 
+        if (objHours > 0) {//为0时不设定过期时间，浏览器关闭时cookie自动消失 
+            var date = new Date(); 
+            var ms = objHours * 3600 * 1000; 
+            date.setTime(date.getTime() + ms); 
+            str += "; expires=" + date.toGMTString(); 
+        } 
+        document.cookie = str; 
+    }
+    function getCookie(name){
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+        else
+        return null;
+    }
+    function bombanimate(){
+        setCookie("mayi_bomb","mayi_delate","0");
+        $(".main-bomb").removeClass("bomb-in")
+        $(".main-bomb").addClass("bomb-out")
+        $(".am-dialog-mask").hide();
+    }
+    if(getCookie("mayi_bomb")!="mayi_delate"){
+        $(".main-bomb").show();
+        $(".am-dialog-mask").show();
+    }else{
+        $(".main-bomb").hide();
+        $(".am-dialog-mask").hide();
+    }
+    $(".main-bomb-delate").bind("click",function(){
+        bombanimate();
+    });
+    $(".bomb-content-btn2").bind("click",function(){
+        bombanimate();
+    });
 $(".m_menu").unbind("mouseenter mouseleave");
 $(".m_menu dd").removeClass("hidden");
 $(window).load(function(){
