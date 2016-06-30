@@ -98,6 +98,7 @@
     <div class="suggest" style="display: block;">
     </div>
 </section>
+<{if $buidAd eq 1}>
 <div class="am-dialog-mask"></div>
 <section>
     <div class="main-bomb bomb-in">
@@ -115,7 +116,7 @@
                 <p>等额现金（不含虚拟商品）</p>
             </div>
             <div class="bomb-content-bottom">
-                <a href="javascript:void(0);" class="bomb-content-btn1">立即领取</a>
+                <a href="<{$logoAd}>" class="bomb-content-btn1">立即领取</a>
                 <a href="javascript:void(0);" class="bomb-content-btn2">先去逛逛</a>
             </div>   
         </div>
@@ -124,6 +125,7 @@
         </div > 
     </div>
 </section>
+<{/if}>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
@@ -134,7 +136,7 @@
 <script type="text/javascript">
 $(function(){
     function setCookie(name,value){
-        var Days = 60000000000000;
+        var Days = 30;
         var exp = new Date();
         exp.setTime(exp.getTime() + Days*24*60*60*1000);
         document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
