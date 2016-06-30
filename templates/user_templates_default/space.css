@@ -165,10 +165,12 @@ ul,ol{list-style:none;}
 .pro_detail .inner-right .content>div{display: none;}
 .pro_detail .inner-right .content .details{display: block;}
 .pro_detail .inner-right .details .desc{text-align: center;}
-.pro_detail .details .attributes p,.pro_detail .details .desc p,.pro_detail .inner-right .notice p,.pro_detail .inner-right .send-flow p{height: 40px;line-height: 40px;border-bottom: 1px dotted #ccc;margin-bottom: 20px;padding-left: 20px;background: url(img/haitao_icon12.png) no-repeat 0;text-align: left;}
+.pro_detail .inner-right .details .desc img{max-width: 750px;}
+.pro_detail .details .attributes p,.pro_detail .details .desc p,.pro_detail .inner-right .notice p,.pro_detail .inner-right .send-flow p{height: 40px;line-height: 40px;border-bottom: 1px dotted #ccc;border-top:1px dotted #ccc;margin: 20px 0;padding-left: 20px;background: url(img/haitao_icon12.png) no-repeat 0;text-align: left;}
 .pro_detail .details .attributes p{margin-bottom: 0;}
 .pro_detail .inner-right .notice ,.pro_detail .inner-right .send-flow {text-align: center;}
-.pro_detail .inner-right .content .details .attributes ul{padding: 10px 30px;border-bottom: 1px dotted #ccc;}
+.pro_detail .inner-right .content .details .attributes img{margin: 20px auto 0;display: block;}
+.pro_detail .inner-right .content .details .attributes ul{padding: 10px 30px;}
 .pro_detail .inner-right .content .details .attributes li{float: left;width: 310px;line-height: 30px;}
 /*图片放大*/
 .zoomMask{position: absolute;background: url(img/haitao_icon16.png) repeat scroll 0 0 transparent;cursor: move;z-index: 1;}
