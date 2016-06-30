@@ -10,12 +10,12 @@
 			$("#grid").jqGrid("setGridParam", {page: 1, postData: {skey: b}}).trigger("reloadGrid")
 		});
 		
-		/* //新增会员
+		 //新增会员
 		$("#btn-add").click(function (t)
 		{
 			t.preventDefault();
 			Business.verifyRight("INVLOCTION_ADD") && handle.operate("add")
-		}); */
+		}); 
 		
 		//刷新页面
 		$("#btn-refresh").click(function (t)
