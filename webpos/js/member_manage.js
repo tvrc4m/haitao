@@ -82,6 +82,7 @@ function getData()
     var link_info = getEntriesData(), links = link_info.entriesData, data = cRowId ? {
         member_id: cRowId.member_id,
         member_id: $.trim($("#member_id").val()),
+        member_cardnum: $.trim($("#member_cardnum").val()),
         member_realname: $.trim($("#member_realname").val()),
 		member_sex: sex.getValue(),
 		member_points: $.trim($("#member_points").val()),
@@ -94,6 +95,7 @@ function getData()
     } : {
         member_id: $.trim($("#member_id").val()),
         member_realname: $.trim($("#member_realname").val()),
+		member_cardnum: $.trim($("#member_cardnum").val()),
 		member_sex: sex.getValue(),
 		member_points: $.trim($("#member_points").val()),
         member_email: $.trim($("#member_email").val()),
