@@ -100,7 +100,7 @@
 </section>
 <div class="am-dialog-mask"></div>
 <section>
-    <div class="main-bomb">
+    <div class="main-bomb bomb-in">
         <div class="main-bomb-mayi">
             <img src="../image/wap/wap_haitao_mayi1.png" alt="蚂蚁弹框">
         </div>
@@ -133,13 +133,37 @@
 </script>
 <script type="text/javascript">
 $(function(){
-    $(".main-bomb-delate").bind("click",function(){
+    function setCookie(name,value){
+        var Days = 60000000000000;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    }
+    function getCookie(name){
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+        else
+        return null;
+    }
+    function bombanimate(){
+        setCookie("mayi_bomb","mayi_delate");
+        $(".main-bomb").removeClass("bomb-in")
+        $(".main-bomb").addClass("bomb-out")
+        $(".am-dialog-mask").hide();
+    }
+    if(getCookie("mayi_bomb")!="mayi_delate"){
+        $(".main-bomb").show();
+        $(".am-dialog-mask").show();
+    }else{
         $(".main-bomb").hide();
         $(".am-dialog-mask").hide();
+    }
+    $(".main-bomb-delate").bind("click",function(){
+        bombanimate();
     });
     $(".bomb-content-btn2").bind("click",function(){
-        $(".main-bomb").hide();
-        $(".am-dialog-mask").hide();
+        bombanimate();
     });
     $(".main_crousel .main_crousel_inner .flexslider").addClass("t_slide pos_re");
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
