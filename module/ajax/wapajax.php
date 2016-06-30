@@ -87,17 +87,17 @@
     $re=$db->getRows();
     //==================================================
     if(!empty($re)) {
-        if(file_exists($config['webroot']."/cache/wapajax_{$val['national']}.log")){
+       /* if(file_exists($config['webroot']."/cache/wapajax_{$val['national']}.log")){
             $json_str = file_get_contents($config['webroot']."/cache/wapajax_{$val['national']}.log",true);
             $re= json_decode($json_str,true);
-        }else{
+        }else{*/
             foreach ($re as $key => $val) {
                 $sql = "select title,img from mallbuilder_national_pavilions where id = " . $val['national'];
                 $db->query($sql);
                 $re[$key]['nationalurl'] = $db->fetch_row();
             }
-            file_put_contents($config['webroot']."/cache/wapajax_{$val['national']}.log",json_encode($re));
-        }
+         /*   file_put_contents($config['webroot']."/cache/wapajax_{$val['national']}.log",json_encode($re));
+        }*/
         $tpl->assign("config", $config);
 
         $tpl->assign("pro", $re);
