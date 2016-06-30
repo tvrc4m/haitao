@@ -55,7 +55,7 @@
         </div>
         <div class="clearfix main_list_ware">
             <ul class="main_warelist clearfix">
-                <{insert name="label" type="product" catid=100103 o=4 temp="product_list_li_6" limit=3}>
+                <{insert name="label" type="product" catid=10010317 o=4 temp="product_list_li_6" limit=3}>
             </ul>
         </div>
     </div>
@@ -98,6 +98,32 @@
     <div class="suggest" style="display: block;">
     </div>
 </section>
+<div class="am-dialog-mask"></div>
+<section>
+    <div class="main-bomb bomb-in">
+        <div class="main-bomb-mayi">
+            <img src="../image/wap/wap_haitao_mayi1.png" alt="蚂蚁弹框">
+        </div>
+        <div class="main-bomb-content">
+            <div class="bomb-content-top">
+                <p>新手注册送<span>20</span>元代金劵</p>
+                <p>购物满<span>300</span>元可用</p>
+            </div>
+            <div class="bomb-content-center">
+                <p>适用范围：蚂蚁海淘购物平台</p>
+                <p>蚂蚁海淘代金劵可在购物、支付时抵扣</p>
+                <p>等额现金（不含虚拟商品）</p>
+            </div>
+            <div class="bomb-content-bottom">
+                <a href="javascript:void(0);" class="bomb-content-btn1">立即领取</a>
+                <a href="javascript:void(0);" class="bomb-content-btn2">先去逛逛</a>
+            </div>   
+        </div>
+        <div class="main-bomb-delate">
+            <img src="../image/wap/wap_haitao_delate.png" alt="蚂蚁弹框">
+        </div > 
+    </div>
+</section>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
@@ -107,6 +133,42 @@
 </script>
 <script type="text/javascript">
 $(function(){
+    function setCookie(objName,objValue,objHours){
+        var str = objName + "=" + escape(objValue); 
+        if (objHours > 0) {//为0时不设定过期时间，浏览器关闭时cookie自动消失 
+            var date = new Date(); 
+            var ms = objHours * 3600 * 1000; 
+            date.setTime(date.getTime() + ms); 
+            str += "; expires=" + date.toGMTString(); 
+        } 
+        document.cookie = str; 
+    }
+    function getCookie(name){
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+        else
+        return null;
+    }
+    function bombanimate(){
+        setCookie("mayi_bomb","mayi_delate","0");
+        $(".main-bomb").removeClass("bomb-in")
+        $(".main-bomb").addClass("bomb-out")
+        $(".am-dialog-mask").hide();
+    }
+    if(getCookie("mayi_bomb")!="mayi_delate"){
+        $(".main-bomb").show();
+        $(".am-dialog-mask").show();
+    }else{
+        $(".main-bomb").hide();
+        $(".am-dialog-mask").hide();
+    }
+    $(".main-bomb-delate").bind("click",function(){
+        bombanimate();
+    });
+    $(".bomb-content-btn2").bind("click",function(){
+        bombanimate();
+    });
     $(".main_crousel .main_crousel_inner .flexslider").addClass("t_slide pos_re");
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
     for(var i=0;i<imgIndex;i++){
@@ -118,15 +180,15 @@ $(function(){
     }
     $("#slider_13").bind("swipeLeft", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { 
+        if (e.stopPropagation) {
             e.stopPropagation();
         } else {
-            e.cancelBubble = true; 
+            e.cancelBubble = true;
         }
     });
     $("#slider_13").bind("swipeRight", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { 
+        if (e.stopPropagation) {
             e.stopPropagation();
         } else {
             e.cancelBubble = true;
@@ -151,6 +213,6 @@ $(function(){
         }, 800);
     }, false);
     $jj(".scrollLoading").scrollLoading();
-})   
+})
 </script>
 
