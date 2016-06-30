@@ -58,8 +58,8 @@ $prode['weights'] =1000;
 include_once ("$config[webroot]/api/logisticsCost.php");
 $obj = new logistics($prode['weights']);
 $prode['weights'] = $obj->cost();
+$prode['detail'] = str_replace('/lib/kindeditor/php/../../..',$config['weburl'],$prode['detail']);
 $tpl->assign("de",$prode);
-
 $tpl->assign("relation",$relation);
 
 $score = $shop->score();
