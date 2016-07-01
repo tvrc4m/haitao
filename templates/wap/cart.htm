@@ -107,17 +107,20 @@
             count = count + price;
             $(".subtotal").html(count.toFixed(2));
         });
-        var b=$(".cart-activity-begin") , c=$(".cart-activity-end") , d=(300-parseInt($(".subtotal").html()));
-        $(".cart-activity-num").html(d);
-        if(d<=0){
-            b.hide();
-            c.show();
-            var f=parseInt($(".subtotal").html())-20;
-            $(".subtotal").html(f.toFixed(2));
-        }else{
-            b.show();
-            c.hide();
-        } 
+        var b=$(".cart-activity-begin") , c=$(".cart-activity-end") , d=(300-parseInt($(".subtotal").html())) , h=$(".cart-activity").html();
+        if(h != null){
+            $(".cart-activity-num").html(d);
+            if(d<=0){
+                b.hide();
+                c.show();
+                var f=parseInt($(".subtotal").html())-20;
+                $(".subtotal").html(f.toFixed(2));
+            }else{
+                b.show();
+                c.hide();
+            } 
+        }
+        
     })
     $(".operations a").bind("click",function(){
         $("#act").val($(this).attr("class"));
@@ -223,7 +226,8 @@ function count()
         $(this).parent().parent().parent().addClass("checked");
     });
     $(".subtotal").html(count.toFixed(2));
-    var b=$(".cart-activity-begin") , c=$(".cart-activity-end") , d=(300-parseInt($(".subtotal").html()));
+    var b=$(".cart-activity-begin") , c=$(".cart-activity-end") , d=(300-parseInt($(".subtotal").html())), h=$(".cart-activity").html();
+    if(h != null){
         $(".cart-activity-num").html(d);
         if(d<=0){
             b.hide();
@@ -234,6 +238,7 @@ function count()
             b.show();
             c.hide();
         } 
+    }
     $(".cart-count em").html(num);
     if(num>0) 
         $(".submit-btn").removeClass("submit-btn-disabled");
