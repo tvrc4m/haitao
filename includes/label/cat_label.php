@@ -48,7 +48,7 @@ function cat($ar) {
 					} 
 				} 
 				$re[$key]["scat"] = $sre;
-			} 
+			}
 			@file_put_contents($cache_cat_file, json_encode($re));
 		} else {
 			$re = json_decode(file_get_contents($cache_cat_file), true);
