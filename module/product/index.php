@@ -139,7 +139,7 @@ if(!empty($buid)){
 	$db->query($sql);
 	if($db->fetchRow()){
 		$tpl->assign("buidAd",1);
-		$tpl->assign("logoAd",$config['weburl']."/main.php?m=voucher&s=admin_buyvoucher&dist_id={$buid}");
+		$tpl->assign("logoAd",$config['weburl']."/main.php?m=voucher&s=admin_buyvoucher");
 	}else{
 		$tpl->assign("buidAd",0);
 		$tpl->assign("logoAd",$config['weburl']);

@@ -371,6 +371,7 @@ sub{vertical-align:text-bottom}
 .m_goods_list ul{margin-top:-1px}
 .m_goods_list li{padding:11px 10px;border-top:1px solid #716f85;line-height:25px;font-size: 12px;height: 77px;}
 .m_goods_list li label{font-size:16px}
+.m_goods_list li label a{cursor: default;}
 .m_goods_list li label i{width:20px;height:20px;margin-right:10px}
 .m_goods_list li label b{font-weight:normal}
 .m_goods_list a{color:#fff;margin-right:10px}

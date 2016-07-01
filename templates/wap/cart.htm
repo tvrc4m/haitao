@@ -12,9 +12,15 @@
     购物车内暂时没有产品<br />您可以<a href="<{$config.weburl}>">去首页</a>挑选
 </div>
 <{else}>
-<div class="cart-manjian">
-   <span class="cart-manjian-text">满减</span><span>全场满300减20 , 还差98元</span><a class="cart-manjian-btn" href="<{$config.weburl}>">去凑单</a>
+
+<{if $current eq 1}>
+<div class="cart-activity">
+    <span class="cart-activity-title">满减</span>
+    <span class="cart-activity-begin">全场满300减20 , 还差<span class="cart-activity-num org"></span>元<a class="cart-activity-btn" href="index.html">去凑单</a></span>
+    <span class="cart-activity-end hide">已购满300元，已减20元</span>
 </div>
+</if>
+<{/if}>
 <div class="cart">
     <{if $smarty.get.type=="numf"}>
     <div align="center"><font color="#FF0000">库存数量不够(已经为定订购产品的最大值)</font></div>
@@ -105,6 +111,20 @@
             count = count + price;
             $(".subtotal").html(count.toFixed(2));
         });
+        var b=$(".cart-activity-begin") , c=$(".cart-activity-end") , d=(300-parseInt($(".subtotal").html())) , h=$(".cart-activity").html();
+        if(h != null){
+            $(".cart-activity-num").html(d);
+            if(d<=0){
+                b.hide();
+                c.show();
+                var f=parseInt($(".subtotal").html())-20;
+                $(".subtotal").html(f.toFixed(2));
+            }else{
+                b.show();
+                c.hide();
+            } 
+        }
+        
     })
     $(".operations a").bind("click",function(){
         $("#act").val($(this).attr("class"));
@@ -210,6 +230,19 @@ function count()
         $(this).parent().parent().parent().addClass("checked");
     });
     $(".subtotal").html(count.toFixed(2));
+    var b=$(".cart-activity-begin") , c=$(".cart-activity-end") , d=(300-parseInt($(".subtotal").html())), h=$(".cart-activity").html();
+    if(h != null){
+        $(".cart-activity-num").html(d);
+        if(d<=0){
+            b.hide();
+            c.show();
+            var f=parseInt($(".subtotal").html())-20;
+            $(".subtotal").html(f.toFixed(2));
+        }else{
+            b.show();
+            c.hide();
+        } 
+    }
     $(".cart-count em").html(num);
     if(num>0) 
         $(".submit-btn").removeClass("submit-btn-disabled");
