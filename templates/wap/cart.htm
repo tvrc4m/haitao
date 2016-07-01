@@ -12,9 +12,11 @@
     购物车内暂时没有产品<br />您可以<a href="<{$config.weburl}>">去首页</a>挑选
 </div>
 <{else}>
+<{if $current eq 1}>
 <div class="cart-manjian">
    <span class="cart-manjian-text">满减</span><span>全场满300减20 , 还差98元</span><a class="cart-manjian-btn" href="<{$config.weburl}>">去凑单</a>
 </div>
+<{/if}>
 <div class="cart">
     <{if $smarty.get.type=="numf"}>
     <div align="center"><font color="#FF0000">库存数量不够(已经为定订购产品的最大值)</font></div>
