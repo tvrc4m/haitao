@@ -180,7 +180,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		$tpl->assign("com", $company);
 
 		//获取品牌
-		$sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 ORDER BY displayorder DESC LIMIT 10";
+		$sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 and logo<>'' ORDER BY displayorder DESC LIMIT 10";
 		$db->query($sql);
 		$brand = $db->getRows();
 		$tpl->assign("brand", $brand);
