@@ -190,6 +190,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			case 49 : $pcat = 1002; break;
 			case 48 : $pcat = 1000; break;
 			case 44 : $pcat = 1001; break;
+            default : $pcat = 1000;
 		}
 
 		//获取分类
