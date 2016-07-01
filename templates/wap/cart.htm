@@ -112,6 +112,8 @@
         if(d<=0){
             b.hide();
             c.show();
+            var f=parseInt($(".subtotal").html())-20;
+            $(".subtotal").html(f.toFixed(2));
         }else{
             b.show();
             c.hide();
@@ -226,6 +228,8 @@ function count()
         if(d<=0){
             b.hide();
             c.show();
+            var f=parseInt($(".subtotal").html())-20;
+            $(".subtotal").html(f.toFixed(2));
         }else{
             b.show();
             c.hide();
