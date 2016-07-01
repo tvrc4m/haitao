@@ -59,6 +59,7 @@ ul,ol{list-style:none;}
 .buyer-shop .hotpro li{float: left;width: 242px;height: 334px;position: relative;font-size: 14px;margin-bottom:-1px;}
 .buyer-shop .hotpro li div{padding: 20px;border: 1px solid #ccc;border-left: none;}
 .buyer-shop .hotpro li .goods_img{display: block;width: 200px;height: 200px;}
+.buyer-shop .hotpro li .goods_img img{width: 200px;height: 200px;}
 .buyer-shop .hotpro p.goods_text img{width: 30px;float: left;}
 .buyer-shop .hotpro p.goods_text a{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 170px;}
 .buyer-shop .hotpro p.goods_price {line-height: 40px;height: 40px;}
@@ -84,6 +85,7 @@ ul,ol{list-style:none;}
 .buyer-shop .section li{float: left;width: 242px;height: 333px;position: relative;font-size: 14px;}
 .buyer-shop .section li div{padding: 20px;border: 1px solid #ccc;border-left: none;border-top: none;}
 .buyer-shop .section li .goods_img{display: block;width: 200px;height: 200px;}
+.buyer-shop .section li .goods_img img{width: 200px;height: 200px;}
 .buyer-shop .section p.goods_text img{width: 30px;float: left;}
 .buyer-shop .section p.goods_text a{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 170px;}
 .buyer-shop .section p.goods_price {line-height: 40px;height: 40px;}
