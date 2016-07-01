@@ -16,7 +16,6 @@ em{font-style:normal;}
 .fn-left{display:inline;float:left;}
 .fn-right{display:inline;float:right;}
 .fn-hide{display:none;}
-.fl{float:left;}
 .fn{float:none;}
 .al{text-align:left;}
 .ac{text-align:center;}
@@ -257,12 +256,6 @@ em{font-style:normal;}
 .til_1003 a{color: #45b130}
 .til_1004{border-left:20px solid #3c67fe;color:#3c67fe}
 .til_1004 a{color: #3c67fe}
-
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-address,cite,dfn,em,var,i{font-style:normal}
-var{font-family:Verdana,Arial}
-sup{vertical-align:text-top}
-sub{vertical-align:text-bottom}
 /* a */
 a{display:inline-block;color:#333;text-decoration:none;outline:none}
 a:hover{color:#ff5c5c;text-decoration:none}
@@ -405,7 +398,7 @@ sub{vertical-align:text-bottom}
 .m_list .list_box a{display:block;line-height:26px}
 .m_list .list_box .goods_img{width:160px;height:160px;line-height:0;margin:0 auto;overflow:hidden}
 .m_list .list_box p var{color:#ff4545;margin-right:5px}
-.m_list .list_box p s{color:#999;}
+.m_list .list_box p span{padding: 0 2px;border: 1px solid #ff5c5c;border-radius: 5px;color: #ff5c5c;margin-right: 10px;}
 
 .m_list_01 .list_box{width:808px}
 .m_list_01 .list_box .m_img_box{top:0;left:202px;}
