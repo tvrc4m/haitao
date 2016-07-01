@@ -133,7 +133,7 @@ ul,ol{list-style:none;}
 .pro_detail .item_info .property .social li a{padding-left: 25px;margin-right: 10px;}
 .pro_detail .item_info .property .social a.fav{background: url(img/haitao_icon03.png)no-repeat 0;}
 .pro_detail .item_info .property .social a.fx{background: url(img/haitao_icon04.png)no-repeat 0;}
-.pro_detail .item_info .property .social a.share{background: url(img/haitao_icon02.png)no-repeat 0;float: left;}
+.pro_detail .item_info .property .social span.share{background: url(img/haitao_icon02.png)no-repeat 0;float: left;padding-left: 25px;margin-right: 10px;}
 .pro_detail .item_info .property .social .bshare-custom{float: left;}
 .pro_detail .item_info .property .ls1{letter-spacing: 1em;}
 /*下半部分*/
