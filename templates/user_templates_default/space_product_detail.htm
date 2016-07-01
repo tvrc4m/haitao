@@ -10,7 +10,7 @@
       <!--图片放大start-->
       <div class="gallery">
         <div>
-          <a href="#"><img src="<{$de.pic}>" class="jqzoom midimg"/></a>
+          <a href="javascript:void(0);"><img src="<{$de.pic}>" class="jqzoom midimg"/></a>
         </div>
         <ul class="clear">
             <{foreach item=pic key=num from=$de.pic_more}>
@@ -68,7 +68,7 @@
         <ul class="social clear">
           <li><a href="javascript:collect_goods('<{$de.id}>');" class="fav">收藏商品</a></li>
           <li><a href="javascript:distribute_goods('<{$de.id}>');" class="fx">立即分销赚佣金</a></li>
-          <li><a href="#" class="share">分享</a>
+          <li><span class="share">分享</span>
             <div class="bshare-custom icon-medium">
             <div class="bsPromo bsPromo2"></div>
             <a title="分享到微信" class="bshare-weixin" id="shopcode" href="javascript:void(0);"></a>
