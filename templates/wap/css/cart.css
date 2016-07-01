@@ -39,3 +39,9 @@
 .cart-manjian{padding: 0 0.5rem;height: 1.5rem;line-height: 1.5rem;font-size: 0.6rem;margin-top: 0.4rem;}
 .cart-manjian .cart-manjian-text{background-color: #ff5c5c;color: #fff;display: inline-block;height: 1rem;line-height: 1rem;width: 2rem;text-align: center;margin-right: 0.3rem;}
 .cart-manjian .cart-manjian-btn{text-decoration: underline;display: inline-block;margin-left: 0.3rem;color: #ff5c5c;}
+.cart-activity {padding: 0 0.5rem;height: 1.5rem;line-height: 1.5rem;font-size: 0.6rem;margin-top: 0.4rem;}
+.cart-activity .cart-activity-title{background-color: #ff5c5c;color: #fff;display: inline-block;
+    height: 1rem;line-height: 1rem;width: 2rem;text-align: center;margin-right: 0.3rem;}
+.cart-activity .cart-activity-btn {text-decoration: underline;display: inline-block;margin-left: 0.3rem;
+	color: #ff5c5c;}
+.hide{display: none;}
