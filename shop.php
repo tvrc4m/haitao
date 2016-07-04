@@ -230,7 +230,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 					$products[$val['catid']] = $product;
 				}
 			}
-
 			$tpl->assign("products", $products);
 
             //获取橱窗推荐
