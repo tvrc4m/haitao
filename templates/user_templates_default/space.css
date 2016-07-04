@@ -75,12 +75,12 @@ ul,ol{list-style:none;}
 .buyer-shop .section{margin-bottom: 20px;width: 1212px;}
 .buyer-shop .section .title{height: 48px;line-height:48px;text-indent: 10px;font-size: 18px;}
 .buyer-shop .section .title span{float: right;margin-right: 10px;font-size: 16px;color: #333;}
-.buyer-shop .section .title.znk{border-left: 20px solid #0096ff;border-bottom: 3px solid #0096ff;color: #0096ff;}
-.buyer-shop .section .title.jknf{border-left: 20px solid #ff758e;border-bottom: 3px solid #ff758e;color: #ff758e;}
-.buyer-shop .section .title.bbxh{border-left: 20px solid #ff875d;border-bottom: 3px solid #ff875d;color: #ff875d;}
-.buyer-shop .section .title.aqwy{border-left: 20px solid #58bc5a;border-bottom: 3px solid #58bc5a;color: #58bc5a;}
-.buyer-shop .section .title.yyfs{border-left: 20px solid #24ccce;border-bottom: 3px solid #24ccce;color: #24ccce;}
-.buyer-shop .section .title.bbhf{border-left: 20px solid #924ee6;border-bottom: 3px solid #924ee6;color: #924ee6;}
+.buyer-shop .section .title.color1{border-left: 20px solid #0096ff;border-bottom: 3px solid #0096ff;color: #0096ff;}
+.buyer-shop .section .title.color2{border-left: 20px solid #ff758e;border-bottom: 3px solid #ff758e;color: #ff758e;}
+.buyer-shop .section .title.color3{border-left: 20px solid #ff875d;border-bottom: 3px solid #ff875d;color: #ff875d;}
+.buyer-shop .section .title.color4{border-left: 20px solid #58bc5a;border-bottom: 3px solid #58bc5a;color: #58bc5a;}
+.buyer-shop .section .title.color5{border-left: 20px solid #24ccce;border-bottom: 3px solid #24ccce;color: #24ccce;}
+.buyer-shop .section .title.color6{border-left: 20px solid #924ee6;border-bottom: 3px solid #924ee6;color: #924ee6;}
 .buyer-shop .section ul{border-left: 1px solid #ccc;}
 .buyer-shop .section li{float: left;width: 242px;height: 333px;position: relative;font-size: 14px;}
 .buyer-shop .section li div{padding: 20px;border: 1px solid #ccc;border-left: none;border-top: none;}
