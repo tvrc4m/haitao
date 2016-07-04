@@ -178,12 +178,29 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		$tpl->assign("cs", $shop->get_cs());
 		$tpl->assign("shopconfig", $shopconfig);
 		$tpl->assign("com", $company);
+        $tpl->assign("shopid", $_GET['uid']);
 
-		//获取品牌
-		$sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 and logo<>'' ORDER BY displayorder DESC LIMIT 10";
-		$db->query($sql);
-		$brand = $db->getRows();
-		$tpl->assign("brand", $brand);
+        //获取店铺相应的品牌
+        $sql = "SELECT brand FROM mallbuilder_product where member_id = ".$_GET['uid']." GROUP BY brand";
+        $db->query($sql);
+        $pbrand = $db->getRows();
+        if(!empty($pbrand)){
+            foreach($pbrand as $key => $val){
+                $pstr .= "'".$val['brand']."',";
+            }
+            $pstr = trim($pstr,',');
+            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 AND name in($pstr) ORDER BY displayorder DESC LIMIT 10";
+            $db->query($sql);
+            $brand = $db->getRows();
+            $tpl->assign("brand", $brand);
+        }else {
+            //获取品牌
+            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 ORDER BY displayorder DESC LIMIT 10";
+            $db->query($sql);
+            $brand = $db->getRows();
+            $tpl->assign("brand", $brand);
+        }
+        //取相应店铺的对应分类
 
 		switch($_GET['uid']){
 			case 91 : $pcat = 1003; break;
@@ -278,9 +295,9 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 
 }
+
 	$tpl->assign("chat_open_flag", $chat_open_flag);
 	$tpl->display("space_temp_inc.htm", $flag);
-
 
 
 ?>
