@@ -81,15 +81,18 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 	background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size: 70%;}
 .collect_box_contentss {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;
 	color: #fff;font-size: 14px;}
+.price_moneys2{font-family: Arial;font-size: 0.9rem;}
+.price_money_jian{font-size: 0.75rem;}
 .incar span{color:#fff;padding-right: 5px;}
 .choose_btn .buy{background-color:#dd3030;color:#fff;height:100%;padding: .5em;border-radius: .2em;min-width:85px}
 .collect{color:#ff5c5c}
 .col-money{font-size: 0.6rem;width: 100%;padding: 0 0.5rem;}
 .col-moneys2{padding: 0.5rem;}
-.col-moneys1{padding: 0.5rem 0;}
+.col-moneys1{padding: 0;margin: 0.5rem 0;}
 .col-moneys2 .col-money-lt{float: left;margin-right: 0.8rem;position: relative;}
 .col-moneys2 .col-money-lt i{color: #ff5c5c;display: inline-block;width: 2.2rem;text-align: center;
-    height: 0.9rem;line-height: 0.9rem;border:1px solid #ff5c5c;border-radius: 5px;font-size: 0.6rem;}
+    height: 0.9rem;line-height: 0.9rem;border-radius: 5px;font-size: 0.6rem;
+    background-color: #ff5c5c;color: #fff;}
 #pro_detail .col-moneys2 .col-money-lt img.fix1{position: absolute;top: -5px;right: -0.5rem;
     width: 0.8rem;height: 0.8rem;-webkit-animation: pos_tb 1.5s linear infinite; }
 @-webkit-keyframes pos_tb{

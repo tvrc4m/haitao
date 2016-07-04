@@ -65,7 +65,9 @@
         <div class="col-moneys2 clearfix">
             <div class="col-money-lt">
                 <i>店头价</i>
-                <a href="<{$config.weburl}>/head_price.php"><img src="../image/wap/wap_haitao_icon162.png" class="fix1"></a>
+                <a href="<{$config.weburl}>/head_price.php">
+                    <img src="../image/wap/wap_haitao_icon162.png" class="fix1">
+                </a>
             </div>
             <div class="col-money-rt org"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span></div>
         </div>
@@ -115,8 +117,16 @@
     </div>
     <div class="select_style_two shoping-hide">
         <div class="col-money">
-            <div class="col-money-bot col-money-bots">佣金：</span><span class="price_moneys2"><{$config.money}><span class="price_dels_num"><{$distr.commission_product_price_0|number_format:2}></span></span><span class="price_moneys2"></div>
-            <div class="col-money-bot"><img src="../image/wap/wap_haitao_icon161.png" class="diantou1"><span class="org"><{$config.money}><span class="price_moneys_num"><{$de.price|number_format:2}></span></div>
+            <div class="col-money-bot col-money-bots org">佣金：</span><span class="price_moneys2"><{$config.money}><span class="price_dels_num"><{$distr.commission_product_price_0|number_format:2}></span></span><span class="price_money_jian">/件</span></div>
+            <div class="col-moneys2 col-moneys1 clearfix">
+                <div class="col-money-lt">
+                    <i>店头价</i>
+                    <a href="<{$config.weburl}>/head_price.php">
+                        <img src="../image/wap/wap_haitao_icon162.png" class="fix1">
+                    </a>
+                </div>
+                <div class="col-money-rt org"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span></div>
+            </div>
         </div>
         <div class="c_daibao clearfix">
             <div class="c_daibao_title">代销保障</div>
