@@ -32,6 +32,19 @@ $(function(){
 		return false;
 	
 	});
+    $(".mobile_spi").each(function(){
+        var mobile_spi=$(this) , mobile_spihtm=$(this).html();
+        mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"))
+    })
+    $(".relationship_levels").each(function(){
+        var _this=$(this) , _thishtm=_this.html();
+        if(_thishtm=="1"){
+          _this.html("I")
+        }
+        if(_thishtm=="2"){
+          _this.html("Ⅱ")
+        }
+    })
 });
 </script>
 <div class="path">
@@ -70,14 +83,13 @@ $(function(){
             </thead>
             <tbody>
             <{foreach item=list from=$re}>
-            <tr style="height: 80px;">
-            	<td><{$list.user_name}></td>
-                <td><{$list.user_relationship_level}></td>
+            <tr style="height: 80px;border-left: 1px solid #ccc;border-right: 1px solid #ccc;">
+            	<td class="mobile_spi"><{$list.user_name}></td>
+                <td class="relationship_levels"><{$list.user_relationship_level}></td>
                 <td><{$list.user_commission_shop_amount|string_format:"%.2f"}></td>
-                <!--<td><a href="<{$config.weburl}>/main.php?m=message&s=admin_message_det&id=<{$list.user_id}>">详情</a></td>-->
             </tr>
             <{foreachelse}>
-            <tr>
+            <tr style="border-left: 1px solid #ccc;border-right: 1px solid #ccc;">
             	<td colspan="3" class="norecord">
                 	<i></i><span>暂无符合条件的数据记录</span>	
                 </td>

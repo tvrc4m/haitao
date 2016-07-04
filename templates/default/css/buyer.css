@@ -60,7 +60,7 @@ body{background-color: #fff;}
 .layout .right_con{float:right;width:1000px;border: 1px solid #ccc;background-color: #fff;min-height: 651px;}
 /*导航*/
 .layout .path{border-bottom:1px solid #e0e0e0;margin: 20px;}
-.layout .path .shop{display: inline-block;width:16px;height:16px;vertical-align:top;background:url(../../../image/default/user_admin/shop.png);}
+.layout .path .shop{display: inline-block;width:16px;height:16px;vertical-align:top;background:url(../../../image/default/user_admin/mayi_icon17.png);}
 .layout .path div{height:40px;font-size:14px;}
 .layout .path div span{font-family:sans-serif;font-size:14px;margin:0 6px 0 2px;}
 .main .wrap{padding:0 20px 40px;}
@@ -73,7 +73,7 @@ body{background-color: #fff;}
 .wrap_buyer .layout_l{float:left;width:786px;border: 1px solid #ccc;background-color: #fff;}
 /*买家中心个人信息*/
 .wrap_buyer .member_info{height: 185px;border-bottom: 1px dotted #ccc;}
-.wrap_buyer .member_info .user_pic{padding: 30px;float: left;}
+.wrap_buyer .member_info .user_pic{margin: 30px;float: left;}
 .wrap_buyer .member_info .user_pic img{width: 125px;height: 125px;border-radius: 50%;}
 .wrap_buyer .member_info .user_rt{float: left;padding-top: 30px;}
 .wrap_buyer .member_info dl dt{margin-bottom: 10px;}
@@ -92,14 +92,14 @@ body{background-color: #fff;}
 .weibo_con{border:1px solid #D0D0D0;border-radius:3px;line-height:1.231;position:relative;transition:border 0.2s linear 0s, -moz-box-shadow 0.2s linear 0s;word-break:break-all;word-wrap:break-word;z-index:104;}
 .weibo_con.focus{border-color:#7BD6F6;-moz-outline-radius:8px;-webkit-box-shadow:0 0 10px rgba(123,214,246,.6);-moz-box-shadow:0 0 10px rgba(123,214,246,.6);box-shadow:0 0 10px rgba(123,214,246,.6)}
 .weibo textarea{box-shadow:none;background:#FFF;border:0 none!important;font:14px/21px Tahoma,Arial;height:63px;padding:5px 1%!important;width:97.9%;resize:none;}
-.weibo .weibopic{background:url(../../../image/default/user_admin/mayi_weibotishi.png) no-repeat;float:left;height:22px;width:224px;}
+.weibo .weibopic{background:url(../../../image/default/user_admin/mayi_icon18.png) no-repeat;float:left;height:22px;width:224px;}
 .weibo .charcount{color:#808080;margin:5px 0;float:right;padding-right: 75px;}
 .weibo .charcount .counter span{font-family:Constantia,Georgia;font-size:22px;font-style:italic;font-weight:700;}
 .weibo .charcount .error span{color:#E44443;}
 .weibo .weibo_button{margin:8px 0;position:relative;}
 .weibo .weibo_button span{float:left;}
 .weibo .weibo_button a{font-weight: bold;font-size: 18px;padding-right: 5px;}
-.weibo .weibo_button span a{font-size:0;height:20px;line-height:0;margin:5px 5px 0px 0;overflow:hidden;text-align:center;width:20px;display:inline-block;background:url(../../../image/default/user_admin/weibo_icon.png) no-repeat}
+.weibo .weibo_button span a{font-size:0;height:20px;line-height:0;margin:5px 5px 0px 0;overflow:hidden;text-align:center;width:20px;display:inline-block;background:url(../../../image/default/user_admin/mayi_icon19.png) no-repeat}
 .weibo #insertFace{background-position:0 0;}
 .weibo #insertFace:hover{background-position:-25px 0;}
 .weibo #uploadPic{background-position:0 -24px;}
@@ -148,12 +148,12 @@ body{background-color: #fff;}
 .sns-item .sns-extra .sns-action a{margin-left:30px;}
 /*删除按钮*/
 .sns-item .more-action{display:none;font-size:12px;position:absolute;right:5px;top:24px;z-index:100;}
-.sns-item .more-action a{display:block ;height:12px;width:12px;background:url(../../../image/default/user_admin/public.png) -212px bottom;}
+.sns-item .more-action a{display:block ;height:12px;width:12px;background:url(../../../image/default/user_admin/mayi_icon20.png) -212px bottom;}
 .sns-item .more-action a:hover{background-position:right bottom;}
 .sns-item:hover .more-action{display:block;}
 /*查看更多*/
 .more{text-align: center}
-.more a{background: url(../../../image/default/user_admin/mayi_mores.png) no-repeat 59% 23px;background-color: #ff5c5c;color: #fff !important;width: 721px;height: 60px;line-height: 60px;border-radius: 5px;cursor: pointer;margin:30px 0;}
+.more a{background: url(../../../image/default/user_admin/mayi_icon21.png) no-repeat 59% 23px;background-color: #ff5c5c;color: #fff !important;width: 721px;height: 60px;line-height: 60px;border-radius: 5px;cursor: pointer;margin:30px 0;}
 /*转发评论弹框*/
 .ftextarea{border:1px solid #D5E5F5;font-size:12px;height:40px;overflow:auto;resize:none;width:98%;word-wrap:break-word;} 
 .feededitor{margin:0 auto;width:480px;}
@@ -208,7 +208,7 @@ body{background-color: #fff;}
 .team-list .p-pirce{font-size: 18px;}
 .team-list .p-pirce span{color: #ff5c5c;}
 .team-list .p-pirce del{color:#999;font-size:14px;font-weight: normal;}
-.team-list .delete{position:absolute;top:0;right:0;padding-left:20px;padding-right:10px;height:23px;line-height:23px;color:#fff;visibility:hidden;background: url(../../../image/default/user_admin/delete.png) no-repeat 5px;background-color:rgba(0,0,0,.8);}
+.team-list .delete{position:absolute;top:0;right:0;padding-left:20px;padding-right:10px;height:23px;line-height:23px;color:#fff;visibility:hidden;background: url(../../../image/default/user_admin/mayi_icon22.png) no-repeat 5px;background-color:rgba(0,0,0,.8);}
 .team-list .p-pic:hover .delete{visibility:visible;}
 .team-list .delete:hover{background-color:rgba(243,102,82,.8);filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#ccf36652', endColorstr='#ccf36652');text-decoration:none;}
 /*代金券*/
@@ -230,7 +230,7 @@ body{background-color: #fff;}
 .pic_model dl dd.picture img{width: 150px;height: 150px;}
 .pic_model dl dd.picture .handle{display:none;}
 .pic_model dl dd.picture:hover .handle{background:rgba(0, 0, 0, 0.5);display:block;height:30px;left:0;position:absolute;top:120px;width:150px;z-index:99;}
-.pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/del.png) no-repeat 0 0;display:block;float:right;height:16px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:16px;}
+.pic_model dl dd.picture:hover .handle a{background:url(../../../image/default/user_admin/mayi_icon23.png) no-repeat 0 0;display:block;float:right;height:16px;margin-right:12px;margin-top:9px;overflow:hidden;text-indent:999%;width:16px;}
 .pic_model dl dd .price{color:#555555;font-family:Tahoma;font-size:12px;font-weight:700;color:#FF6600;}
 .pic_model strong{font-weight: normal;font-size:18px;color:#ff5c5c;line-height:25px;}
 .pic_model .pro-checkbox input{position: absolute;left: 10px;z-index: 1}
@@ -242,7 +242,7 @@ body{background-color: #fff;}
 .table-list-style tbody td{padding:12px 0;text-align:center;}
 /* 无记录*/
 .norecord{padding:50px 210px!important;}
-.norecord i{background:url(../../../image/default/user_admin/norecord.gif) no-repeat ;display:inline-block;float:left;height:44px;margin-right:16px;width:44px;}
+.norecord i{background:url(../../../image/default/user_admin/mayi_icon24.gif) no-repeat ;display:inline-block;float:left;height:44px;margin-right:16px;width:44px;}
 .norecord span{display:inline-block;float:left;font-size:1.3em;font-weight:700;line-height:44px;}
 /* 分页*/
 .pagination{float: right;margin-top: -9px;}
@@ -270,8 +270,8 @@ body{background-color: #fff;}
 .order .success-order:hover .bdr{border-right-color:#BFBFBF;}
 .order .success-order td{border-bottom-color:#E8E8E8;}
 .order tbody td a{color:#3c3c3c;display:block;margin-bottom:4px;text-decoration:none;}
-.order tbody td a.org{color:#FF4400;background:url(../../../image/default/user_admin/order.png) no-repeat 0 -179px;padding-left:2px;}
-.order tbody td a.black{background:url(../../../image/default/user_admin/order.png) no-repeat 0 -150px;padding-left:5px;}
+.order tbody td a.org{color:#FF4400;background:url(../../../image/default/user_admin/mayi_icon25.png) no-repeat 0 -179px;padding-left:2px;}
+.order tbody td a.black{background:url(../../../image/default/user_admin/mayi_icon25.png) no-repeat 0 -150px;padding-left:5px;}
 .order tbody .dealtime{font-family:verdana;float:left;margin-right:12px;}
 .order tbody .number{float:left;}
 .order tbody td.product{padding-left:20px;text-align:left;}
@@ -285,7 +285,7 @@ body{background-color: #fff;}
 .order .button-confirm{background-color:#66b6ff;color:#FFF;font-weight:700;}
 .order .button-confirm:hover{color:#FFF!important;}
 .order .countdown{position:relative;display:inline-block;margin-bottom:8px;padding:2px 0 2px 18px;text-align:left;color:#9c9c9c;}
-.order .countdown i{position:absolute;top:4px;left:0;width:18px;height:15px;overflow:hidden;background:url(../../../image/default/user_admin/order.png) no-repeat 0 -65px;}
+.order .countdown i{position:absolute;top:4px;left:0;width:18px;height:15px;overflow:hidden;background:url(../../../image/default/user_admin/mayi_icon25.png) no-repeat 0 -65px;}
 .order .tg{background-color:#ff4400;border-radius:4px;color:#fff;height:16px;line-height:16px;padding:4px 4px 3px;display:inline-block;}
 .upload-button{border-radius:5px;color:#fff !important;height:27px;line-height:27px;text-align:center;text-decoration:none;width:78px;padding:0 10px;background-color: #ff5c5c;}
 .upload-button:hover{text-decoration:none;}
@@ -312,7 +312,7 @@ body{background-color: #fff;}
 .main .form-style{margin-top:15px;}
 .main .form-style dl{border-bottom:1px dashed #F5F5F5;clear:both;margin:10px auto;overflow:hidden;padding:0;width:96%;line-height:20px;font-size:14px;}
 .main .form-style dl dt{color:#404040;float:left;line-height:23px;margin:0;padding:6px 6px 0 0;text-align:right;width:110px;} 
-.main .form-style dl dd em{background:url(../../../image/default/user_admin/required.gif) no-repeat;display:inline-block;height:8px;margin-left:10px;width:7px;}
+.main .form-style dl dd em{background:url(../../../image/default/user_admin/mayi_icon26.gif) no-repeat;display:inline-block;height:8px;margin-left:10px;width:7px;}
 .main .form-style dl dd{float:left;padding:8px;width:580px;}
 .main .form-style dl dd .send{padding: 5px;background: #ff5c5c;color: #fff;height: 27px;margin-top: -5px;vertical-align: top;cursor:pointer;}
 .main .form-style dl dd p{clear:both;}
@@ -334,7 +334,7 @@ body{background-color: #fff;}
 .admin_friends .groupMan .zuu{display: inline-block;line-height: 40px;width: 170px;}
 .admin_friends .groupMan .zu1{margin-left: 20px;float: right;}
 .admin_friends .groupMan .addgroup{padding: 10px;border-top:1px dotted #ccc;margin-top: 50px;}
-.message{background:url(../../../image/default/user_admin/public.png) no-repeat -234px -24px;height:16px;line-height:16px;margin:0 0 0 4px;vertical-align:middle;width:16px;}
+.message{background:url(../../../image/default/user_admin/mayi_icon20.png) no-repeat -234px -24px;height:16px;line-height:16px;margin:0 0 0 4px;vertical-align:middle;width:16px;}
 /*信息*/
 .table-list-style.info tbody tr{border-bottom: 1px solid #ccc;height: 80px;}
 .admin_message_list_outbox .delete,.admin_message_list_inbox .delete{padding: 10px 23px;margin-top: 10px;border: 1px solid #ccc;}
@@ -349,7 +349,7 @@ body{background-color: #fff;}
 #msgObj{border:1px solid #BED3F1;background-color:#FFF;-webkit-box-shadow:1px 1px 2px 0 rgba(0,0,0,.3);-moz-box-shadow:1px 1px 2px 0 rgba(0,0,0,.3);box-shadow:1px 1px 2px 0 rgba(0,0,0,.3);}
 .titleBar{font-size:14px; background: #E8F0FB;}
 .titleBar td{padding:10px;}
-.closeBtn{background:url(../../../image/default/close.png) no-repeat;width:9px;cursor:pointer;float:right;height:9px;margin-top:-4px;}
+.closeBtn{background:url(../../../image/default/user_admin/mayi_icon27.png) no-repeat;width:9px;cursor:pointer;float:right;height:9px;margin-top:-4px;}
 /*公共*/
 td.al i{color:#000;font-size:11px;}
 .btn2{cursor: pointer;padding: 0 5px;}

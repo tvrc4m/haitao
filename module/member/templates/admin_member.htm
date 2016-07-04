@@ -59,6 +59,8 @@ $(function(){
             }
 		}
 	});
+    var mobile_spi=$(".mobile_spi") , mobile_spihtm=$(".mobile_spi").html();
+    mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"))
 });
 </script>
 <div class="path">
@@ -288,7 +290,7 @@ $(function(){
             <{if $de.mobile}>
             <dl>
                 <dt>手机：</dt>
-                <dd><{$de.mobile}><{if $de.mobile_verify==1}><span class="verify">已验证</span><{/if}></dd>
+                <dd class="mobile_spi"><{$de.mobile}><{if $de.mobile_verify==1}><span class="verify">已验证</span><{/if}></dd>
             </dl>
             <{/if}>
             <dl>

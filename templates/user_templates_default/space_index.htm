@@ -23,13 +23,13 @@
             <{foreach item=list from=$brand key=key}>
             <{if ($key+1)%8 ==0 }>
             <div class="mr0">
-                <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
+                <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>&shopid=<{$shopid}>">
                     <img src="<{$list.logo}>" alt="<{$list.name}>" />
                 </a>
             </div>
             <{else}>
                 <div>
-                    <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
+                    <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>&shopid=<{$shopid}>">
                         <img src="<{$list.logo}>" alt="<{$list.name}>" />
                     </a>
                 </div>
