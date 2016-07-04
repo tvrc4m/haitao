@@ -93,19 +93,19 @@ window._vds=_vds;
                     </ul>
                 </div>
             </li>
-            
+
         </ul>
     </div>
 </div>
 <script type="text/javascript">
 $('.drop-down').hover(function(){
-    $(this).addClass("hover");                   
+    $(this).addClass("hover");
     if($(this).hasClass("cart"))
     {
         $('.cart .nav-fore2').load('<{$config.weburl}>/?m=product&s=cart_number&act=list');
     }
 },function(){
-    $(this).removeClass("hover");   
+    $(this).removeClass("hover");
 });
 $(".fn-left li:first").bind("mouseenter mouseleave",function(){
        $(".fn-left .sjmy").toggleClass("fn-hide");
@@ -181,10 +181,10 @@ $(".fn-left li:first").bind("mouseenter mouseleave",function(){
     </div>
     <!--header end-->
 <script>
-$('.menu-items li').hover(function(){                    
+$('.menu-items li').hover(function(){
     $(this).addClass("hover");
 },function(){
-    $(this).removeClass("hover");   
+    $(this).removeClass("hover");
 });
 $(".m_gz").bind("mouseenter mouseleave",function(){
     $(".m_gz .sjmy").toggleClass("fn-hide");

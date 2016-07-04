@@ -119,7 +119,6 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 }
 else
 {
-
     //===================================分类
 	if(is_numeric($id))
 	{
@@ -197,6 +196,8 @@ else
 		$scl.=" and ( a.keywords like '%$key%' or a.name like '%$key%' )";
 	if(!empty($_GET['brand']))
 		$scl.=" and a.brand='".$_GET['brand']."' ";
+	if(!empty($_GET['shopid']))
+		$scl.=" and a.member_id='".$_GET['shopid']."' ";
 	/*if($dpid)
 		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";
 
