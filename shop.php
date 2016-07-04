@@ -201,6 +201,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
             $tpl->assign("brand", $brand);
         }
         //取相应店铺的对应分类
+
 		switch($_GET['uid']){
 			case 91 : $pcat = 1003; break;
 			case 49 : $pcat = 1002; break;

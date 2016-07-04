@@ -133,24 +133,13 @@
                 <li <{if ($num+1)%5==0}>class="mr0 w242"<{/if}> >
                     <div class="p-info">
                         <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
-
-                        <p class="p-country"><span>
+                        <p class="p-country">
                             <{if $list.nat}>
                                 <img src="<{$list.nat.img}>">
-                            <{/if}>
-                        </span><a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a>
+                            <{/if}>日本
                         </p>
-
-                        <p class="p-price"><strong><{$config.money}><{$list.price}></strong><s>¥<{$list.market_price}></s></p>
-                        <p class="p-option clearfix">
-                            <a class="fl" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.con.num}></a>
-                            <{if $list.stock > 0}>
-                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="fr">加入购物车</a>
-                            <{else}>
-                                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" class="fr">已售完</a>-->
-                            <{/if}>
-                             <!--<div class="fr">已售完</div>-->
-                        </p>
+                        <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a>
+                        <p class="p-price"><span>店头价</span><var><{$config.money}><{$list.price}></var></p>
                     </div>
                     <div class="fix"></div>
                 </li>
@@ -181,6 +170,29 @@
                     <span>2、尝试其他关键字</span>
                 </p>
             </div>
+        </div>
+        <div>
+            <img src="image/default/haitao_gift.jpg">
+            <p class="itemsNull-like">你可能还喜欢</p>
+        </div>
+        <div class="itemSearchResult">
+            <ul class="clearfix border_left">
+                <{foreach item=list key=num from=$info.list}>
+                <li <{if ($num+1)%5==0}>class="mr0 w242"<{/if}> >
+                    <div class="p-info">
+                        <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
+                        <p class="p-country">
+                            <{if $list.nat}>
+                                <img src="<{$list.nat.img}>">
+                            <{/if}>日本
+                        </p>
+                        <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a>
+                        <p class="p-price"><span>店头价</span><var><{$config.money}><{$list.price}></var></p>
+                    </div>
+                    <div class="fix"></div>
+                </li>
+                <{/foreach}>
+            </ul>
         </div>
         <{/if}>
     </div>
