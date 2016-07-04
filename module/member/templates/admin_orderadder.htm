@@ -76,6 +76,8 @@ $(function(){
 			<{/if}>
 		}
 	});
+    var mobile_spi=$(".mobile_spi") , mobile_spihtm=$(".mobile_spi").html();
+    mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"))
 });
 </script>
 <div class="path">
@@ -181,7 +183,7 @@ $(function(){
                 <td><{$list.name}></td>
                 <td><{$list.area}><{$list.address}></td>
                 <td><{$list.zip}></td>
-                <td><{$list.mobile}></td>
+                <td class="mobile_spi"><{$list.mobile}></td>
                 <td><a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&id=<{$list.id}>&type=edit" >修改</a> <a href="<{$config.weburl}>/main.php?m=member&s=admin_orderadder&edid=<{$list.id}>">/删除</a></td>
             </tr>
             <{foreachelse}>

@@ -132,13 +132,13 @@
                 <{foreach item=list key=num from=$info.list}>
                 <li <{if ($num+1)%5==0}>class="mr0 w242"<{/if}> >
                     <div class="p-info">
-                        <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
+                        <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" title="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
                         <p class="p-country">
                             <{if $list.nat}>
                                 <img src="<{$list.nat.img}>">
                             <{/if}>日本
                         </p>
-                        <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a>
+                        <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="<{$list.pname}>"><{$list.pname}></a>
                         <p class="p-price"><span>店头价</span><var><{$config.money}><{$list.price}></var></p>
                     </div>
                     <div class="fix"></div>
@@ -151,14 +151,6 @@
             </div>
             <{/if}>
         </div>
-       <!--  <div class="hotProduct">
-            <div class="m">
-                <div class="mt"><h3>为您推荐</h3></div>
-                <div class="mc">
-                 <{insert name="label" type="product" catid=$smarty.get.id o='1' temp="product_list_li" limit=6}>
-                </div>
-            </div>
-        </div> -->
         <{else}>
         <div class="itemsNull clearfix">
             <div class="left"><img src="image/default/null.png"></div>
@@ -180,13 +172,13 @@
                 <{foreach item=list key=num from=$info.list}>
                 <li <{if ($num+1)%5==0}>class="mr0 w242"<{/if}> >
                     <div class="p-info">
-                        <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
+                        <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" title="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
                         <p class="p-country">
                             <{if $list.nat}>
                                 <img src="<{$list.nat.img}>">
                             <{/if}>日本
                         </p>
-                        <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.pname}></a>
+                        <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="<{$list.pname}>"><{$list.pname}></a>
                         <p class="p-price"><span>店头价</span><var><{$config.money}><{$list.price}></var></p>
                     </div>
                     <div class="fix"></div>
