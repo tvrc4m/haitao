@@ -62,8 +62,12 @@
         <div id="cart_show" style="display:none;"></div>
     </div>
     <div class="select_style_one">
-        <div class="col-money org">
-            <img src="../image/wap/wap_haitao_icon161.png" class="diantou1"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
+        <div class="col-moneys2 clearfix">
+            <div class="col-money-lt">
+                <i>店头价</i>
+                <a href="<{$config.weburl}>/head_price.php"><img src="../image/wap/wap_haitao_icon162.png" class="fix1"></a>
+            </div>
+            <div class="col-money-rt org"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span></div>
         </div>
         <div style="height:0.4rem;background-color:#f5f5f5;width:100%"></div>
         <div class="select_style">
