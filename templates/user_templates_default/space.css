@@ -104,6 +104,7 @@ ul,ol{list-style:none;}
 .pro_detail .item_info .gallery div{width: 448px;height: 448px;font-size: 0;border: 1px solid #ccc;text-align: center;}
 .pro_detail .item_info .gallery .midimg{max-width: 448px;max-height: 448px;}
 .pro_detail .item_info .gallery li{width: 80px;height: 80px;float: left;margin: 10px 10px 10px 0;border: 1px solid #ccc;}
+.pro_detail .item_info .gallery li img{width: 80px;height: 80px;}
 .pro_detail .item_info .gallery li.selected{border-color: #ff5c5c;}
 .pro_detail .item_info .gallery .fixed{position: absolute;top: 0;left: 0;width: 50px;height: 50px;background: url(img/haitao_icon01.jpg);background-size: 100%;border: none;}
 /*商品属性*/
