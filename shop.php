@@ -228,8 +228,8 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 
 			foreach ($catids as $key => $val) {
-				if ($buid) {
-					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = " . $val['catid'] . " AND a.member_id=" . $buid . " LIMIT " . $limit;
+
+					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE LOCATE({$val['catid']},a.catid)>0  LIMIT " . $limit;
 					$db->query($sql);
 					$product = $db->getRows();
 					foreach ($product as $k => $v) {
@@ -237,12 +237,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 						$db->query($sql);
 						$product[$k]['nums'] = $db->fetchField('nums');
 					}
-				} else {
-					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid > ".$val['catid']."00"." and a.catid < ".$val['catid']."99"." LIMIT " . $limit;
-					$db->query($sql);
-					$product = $db->getRows();
-				}
-
 				if (!empty($product)) {
 					$products[$val['catid']] = $product;
 				}
