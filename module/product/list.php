@@ -329,6 +329,15 @@ if(!empty($_GET['id'])){
 	$res = $db->fetchField('cat');
 	$tpl->assign("wapcatname",$res);
 }
+//你可能还喜欢
+if(!empty($_GET['id'])) {
+	$cat_first = substr($_GET['id'],0,4);
+	$sql = "SELECT a.id,a.`name`,a.market_price,a.price,a.pic,b.`img`,b.`title` FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.`national`=b.id WHERE LOCATE({$cat_first},a.catid)>0 ORDER BY a.clicks DESC LIMIT 10";
+	$db->query($sql);
+	$relation = $db->getRows();
+
+	$tpl->assign('relationcat',$relation);
+}
 if($_GET['national']==7)$tpl->assign("wapcatname",'日本馆');
 
 $tpl->assign("province",GetDistrict1());

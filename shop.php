@@ -189,13 +189,13 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
                 $pstr .= "'".$val['brand']."',";
             }
             $pstr = trim($pstr,',');
-            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 AND name in($pstr) ORDER BY displayorder DESC LIMIT 10";
+            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 and logo<>'' AND name in($pstr) ORDER BY displayorder DESC LIMIT 10";
             $db->query($sql);
             $brand = $db->getRows();
             $tpl->assign("brand", $brand);
         }else {
             //获取品牌
-            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 ORDER BY displayorder DESC LIMIT 10";
+            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 and logo<>'' ORDER BY displayorder DESC LIMIT 10";
             $db->query($sql);
             $brand = $db->getRows();
             $tpl->assign("brand", $brand);
@@ -295,7 +295,6 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 
 }
-
 	$tpl->assign("chat_open_flag", $chat_open_flag);
 	$tpl->display("space_temp_inc.htm", $flag);
 
