@@ -135,8 +135,8 @@
                         <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" title="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
                         <p class="p-country">
                             <{if $list.nat}>
-                                <img src="<{$list.nat.img}>">
-                            <{/if}><{$list.nat.title}>
+                                <img src="<{$list.nat.img}>"><{$list.nat.title}>
+                            <{/if}>
                         </p>
                         <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="<{$list.pname}>"><{$list.pname}></a>
                         <p class="p-price"><span>店头价</span><var><{$config.money}><{$list.price}></var></p>
@@ -176,8 +176,8 @@
                     <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.name}>" src="<{$list.pic}>_220X220.jpg"> </a>
                     <p class="p-country">
                         <{if $list.img}>
-                        <img src="<{$list.img}>">
-                        <{/if}><{$list.title}>
+                        <img src="<{$list.img}>"><{$list.title}>
+                        <{/if}>
                     </p>
                     <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>"><{$list.name}></a>
                     <p class="p-price"><span>店头价</span><var><{$config.money}><{$list.price}></var></p>
