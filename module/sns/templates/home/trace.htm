@@ -30,4 +30,18 @@ $(".sns-img").find("ul").on('click', 'img', function(){
         $(this).attr("src",url);
     }
 });
+$('.basic-info a').on('click',function(){
+    $.ajax({
+        type: 'GET',
+        url: "<{$config.weburl}>/shop.php?sAjax=sAjax&uid=<{$smarty.get.uid}>",
+        success: function(data){
+            var status = JSON.parse(data);
+            if(!status.status){
+                layer.msg('商铺还未开启或暂时关闭', {icon: 0});
+            }else{
+                window.location.href="<{$config.weburl}>/shop.php?uid=<{$smarty.get.uid}>";
+            }
+        }
+    });
+});
 </script>

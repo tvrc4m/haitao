@@ -59,7 +59,8 @@ ul,ol{list-style:none;}
 .buyer-shop .hotpro li{float: left;width: 242px;height: 327px;position: relative;font-size: 14px;margin-bottom:-1px;}
 .buyer-shop .hotpro li div{padding: 20px;border: 1px solid #ccc;border-left: none;}
 .buyer-shop .hotpro li .goods_img{display: block;width: 200px;height: 200px;}
-.buyer-shop .hotpro li .goods_img img{width: 200px;height: 200px;}
+.buyer-shop .hotpro li .goods_img img{width: 200px;height: 200px;-webkit-transform: none;-moz-transform: none;-o-transform: none;transform: none;-webkit-transition: all .4s ease-out;-moz-transition: all .4s ease-out;-o-transition: all .4s ease-out;transition: all .4s ease-out;}
+.buyer-shop .hotpro li:hover .goods_img img{-webkit-transform: translateX(-10px);-moz-transform: translateX(-10px);-o-transform: translateX(-10px);transform: translateX(-10px);}
 .buyer-shop .hotpro li .goods_country{text-align: center;line-height: 30px;height: 30px;}
 .buyer-shop .hotpro li .goods_country img{width: 30px;}
 .buyer-shop .hotpro p.goods_text a{display: block; height: 20px;line-height: 20px;margin: 0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
@@ -83,7 +84,8 @@ ul,ol{list-style:none;}
 .buyer-shop .section li{float: left;width: 242px;height: 326px;position: relative;font-size: 14px;}
 .buyer-shop .section li div{padding: 20px;border: 1px solid #ccc;border-left: none;border-top: none;}
 .buyer-shop .section li .goods_img{display: block;width: 200px;height: 200px;}
-.buyer-shop .section li .goods_img img{width: 200px;height: 200px;}
+.buyer-shop .section li .goods_img img{width: 200px;height: 200px;-webkit-transform: none;-moz-transform: none;-o-transform: none;transform: none;-webkit-transition: all .4s ease-out;-moz-transition: all .4s ease-out;-o-transition: all .4s ease-out;transition: all .4s ease-out;}
+.buyer-shop .section li:hover .goods_img img{-webkit-transform: translateX(-10px);-moz-transform: translateX(-10px);-o-transform: translateX(-10px);transform: translateX(-10px);}
 .buyer-shop .section li .goods_country{text-align: center;line-height: 30px;height: 30px;}
 .buyer-shop .section li .goods_country img{width: 30px;}
 .buyer-shop .section p.goods_text a{display: block; height: 20px;line-height: 20px;margin: 0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
