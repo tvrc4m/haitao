@@ -242,7 +242,7 @@ body{background-color: #fff;}
 .table-list-style tbody td{padding:12px 0;text-align:center;}
 /* 无记录*/
 .norecord{padding:50px 210px!important;}
-.norecord i{background:url(../../../image/default/user_admin/mayi_icon24.gif) no-repeat ;display:inline-block;float:left;height:44px;margin-right:16px;width:44px;}
+.norecord i{background:url(../../../image/default/user_admin/norecord.gif) no-repeat ;display:inline-block;float:left;height:44px;margin-right:16px;width:44px;}
 .norecord span{display:inline-block;float:left;font-size:1.3em;font-weight:700;line-height:44px;}
 /* 分页*/
 .pagination{float: right;margin-top: -9px;}
