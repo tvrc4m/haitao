@@ -1,5 +1,5 @@
 <?php
-var_dump($_GET);
+
 include_once("footer.php");
 if($config['temp']=='wap'||$config['temp']=='wap_app')
 {
