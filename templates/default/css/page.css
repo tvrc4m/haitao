@@ -389,9 +389,9 @@ a.goods_text {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width
 .agr_main a{line-height: 20px;background-color: #fe5f5c;color: #fff;border-radius: 5px;padding: 10px;margin-left: 453px;margin-bottom: 15px;cursor: pointer;}
 /*首页弹框*/
 .am-dialog-mask {position: fixed;top: 0;left: 0;z-index: 10000;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);display: none;} 
-.main-bomb{position: fixed;width: 440px;top: 50%;margin-top:-160px;left: 50%;margin-left: -220px;z-index: 10001;display: none;}
-.main-bomb a.close{position: absolute;top: 5px; right: 5px;width: 20px;height: 20px;background:url(../../../image/default/haitao_icon4.png);background-size: 100%;}
-.main-bomb a.receive{position: absolute;bottom: 20px;right: 48px;width: 136px;height: 43px;}
+.main-bomb{position: fixed;width: 600px;top: 50%;margin-top:-214px;left: 50%;margin-left: -300px;z-index: 10001;display: none;}
+.main-bomb a.close{position: absolute;top: 5px; right: 5px;width: 30px;height: 30px;background:url(../../../image/default/haitao_icon4.png);background-size: 100%;}
+.main-bomb a.receive{position: absolute;bottom: 27px;right: 65px;width: 187px;height: 58px;}
 .bomb-in{
 -webkit-animation:fadeInDownBig 1s .2s ease both;
 -moz-animation:fadeInDownBig 1s .2s ease both;}
@@ -423,8 +423,8 @@ a.goods_text {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width
 -moz-transform:translateY(-2000px)}
 }
 /*右侧固定栏*/
-.fixation {position: fixed;top: 50%;left: 50%;margin-left:616px;width: 60px;margin-top: -80px;text-align: center;z-index: 3;}
-.fixation > a{width: 59px;height: 59px;border-top: 1px solid #e0e0e0;border-left: 1px solid #e0e0e0;position: relative;background: #fff;}
+.fixation {position: fixed;top: 70%;left: 50%;margin-left:616px;width: 60px;margin-top: -80px;text-align: center;z-index: 3;}
+.fixation > a{width: 59px;height: 59px;border: 1px solid #e0e0e0;margin-bottom:-1px;position: relative;background: #fff;}
 .fixation > a p{width: 60px;margin-top: 35px;}
 .fixation div{position: absolute;background: #fff;border: 1px solid #ccc;border-right: none;display: none;}
 .fixation .max {bottom: -2px;left: -122px;width: 100px;padding:10px;}

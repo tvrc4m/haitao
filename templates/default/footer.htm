@@ -22,7 +22,7 @@
     </div>
 <!--footer end-->
 <div class="fixation">
-  <a href="#" class="">
+  <a href="<{$config.weburl}>?m=product&s=cart">
     <p>购物车</p>
   </a>
   <a class="show">
@@ -31,14 +31,14 @@
   </a>
   <a id="maxbox" class="show">
     <p>微信</p>
-    <div class="max" ><img src="../image/default/cash.png" alt="蚂蚁在线微信公众号"></div>
+    <div class="max" ><img src="../image/default/code.jpg" alt="蚂蚁在线微信公众号"></div>
   </a>
   <a href="#" id="returnTop" style="display: none;"></a>
 </div>
 <script>
 $(".fixation>a.show").hover(function(){
     $(this).find("div").show();
-    $(this).css("border-left","none");
+    $(this).css("border-left","1px solid #fff");
 },function(){
     $(this).find("div").hide();
     $(this).css("border-left","1px solid #e0e0e0");
