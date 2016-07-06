@@ -345,7 +345,7 @@ class order
 
 		//=============================
 	  	$page = new Page;
-		$page -> firstRow = $begin;
+		if($begin!=0) $page -> firstRow = $begin;
 		$page -> listRows = $limit;
 		if (!$page -> __get('totalRows'))
 		{
