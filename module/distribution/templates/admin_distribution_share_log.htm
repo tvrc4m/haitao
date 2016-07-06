@@ -110,7 +110,7 @@
                     </div>
                 </td>
                 <td class="tl" valign="top"><a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$shop_id}>"><{$list.pname}></a></td>
-                <td><{$list.price|number_format:2}>  <br /><{if $list.is_dist}>预计佣金: <{$list.commission_product_price_0|number_format:2}> 元<{/if}></td>
+                <td><{$list.price|number_format:2}>  <br /><{if $list.is_dist}>预计佣金:<{if $list.commission_product_price_0 != '' }> <{$list.commission_product_price_0|number_format:2}><{else}>0<{/if}> 元<{/if}></td>
                 <td>
                     <{$list.distribution_analyse_shop_num}>
                 </td>

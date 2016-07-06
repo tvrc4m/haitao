@@ -57,8 +57,8 @@ $("input[type='button']").click(function(){
     	<td colspan="4" class="al">
         <ul>
             <li>收货地址：<{$de.consignee_address}></li>
-            <!--<li>买家实付 = 
-            <em id="em"><{$de.product_price}></em> + 
+            <!--<li>买家实付 =
+            <em id="em"><{$de.product_price}></em> +
             <em id="em1"><{$de.logistics_price|number_format:2}></em>
             <em id="em2"> + 0.00</em> =
             <em id="em3"><{$de.product_price+$de.logistics_price|number_format:2}></em>
@@ -82,8 +82,8 @@ $("input[type='button']").click(function(){
 <{else}>
 <div class="path">
     <div>
-    	<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span> 
-    	<a href="main.php?m=product&s=admin_sellorder">订单管理</a> <span>&gt;</span> <a href="#">实物订单</a> <span>&gt;</span> 
+    	<a href="main.php?cg_u_type=2">卖家中心</a> <span>&gt;</span>
+    	<a href="main.php?m=product&s=admin_sellorder">订单管理</a> <span>&gt;</span> <a href="#">实物订单</a> <span>&gt;</span>
         <{if $smarty.get.status=='1'}>等待付款
         <{elseif $smarty.get.status=='2'}>等待发货
         <{elseif $smarty.get.status=='3'}>已经发货
@@ -92,7 +92,7 @@ $("input[type='button']").click(function(){
         <{elseif $smarty.get.status=='6'}>退货完成
         <{elseif $smarty.get.status=='-1'}>已经取消
          <{elseif $smarty.get.status=='0'}>交易关闭
-        <{else}>所有订单<{/if}> 
+        <{else}>所有订单<{/if}>
     </div>
 </div>
 <div class="main">
@@ -152,8 +152,8 @@ $("input[type='button']").click(function(){
                 <span class="fr"><a title="打印订单" target="_blank" href="<{$config.weburl}>/main.php?m=product&s=admin_orderprint&order_id=<{$sellist.order_id}>"><i class="order_print"></i></a></span>
                 </th>
 			</tr>
-            
-            <tr> 
+
+            <tr>
                 <td class="bdl"></td>
                 <td colspan="4">
                 <table>
@@ -176,7 +176,7 @@ $("input[type='button']").click(function(){
                     <td class="w80"><{$plist.price|number_format:2}></td>
                     <td class="w80"><{$plist.num}></td>
                     <td class="w80">
-                    
+
                     <{if $plist.status == 4 }>
                         <a class="org" href="main.php?m=product&s=admin_apply_detail&order_id=<{$sellist.order_id}>&pid=<{$plist.id}>">退款处理中</a>
 					<{elseif $plist.status == 5 }>
@@ -202,22 +202,22 @@ $("input[type='button']").click(function(){
                 含运费 <{$sellist.logistics_price|number_format:2}>
                 </p>
                 <{/if}>
-				
+
                 <{if $sellist.status==1}>
                 	<a data-param="{'order_id':'<{$sellist.order_id}>'}" class="edit_price" href="javascript:;">修改价格</a>
                 <{/if}>
                 </td>
                 <td class="bdl bdr">
-                
+
                 <p><a href="<{$config.weburl}>/main.php?m=product&s=admin_orderdetail&id=<{$sellist.order_id}>">订单详情</a></p>
-               
+
                 <{if $sellist.status==1}>
                 <p><a href="<{$config.weburl}>/main.php?m=product&s=admin_sellorder&id=<{$sellist.order_id}>&flag=0">取消</a></p>
                 <{/if}>
-               
+
                 <{if $sellist.status!=2&&$sellist.status!=4}><p><{$sellist.statu_text}></p><{/if}>
 				<{if $sellist.status==2}><p><a class="buttons" href="main.php?m=product&s=admin_deliver&order_id=<{$sellist.order_id}>">发货</a></p><{/if}>
-                
+
                 <{if $sellist.status==3}>
                     <p class="countdown">
                         <i></i>
@@ -225,7 +225,7 @@ $("input[type='button']").click(function(){
                     </p>
                     <a data-param="{'order_id':'<{$sellist.order_id}>'}" class="expand clearfix" href="javascript:;">延长收货时间</a><{/if}>
                 <{if $sellist.status==5}><p><a class="buttons" href="main.php?m=product&s=admin_return_step&id=<{$sellist.order_id}>">退货详情</a></p><{/if}>
-                
+
                 <{if $sellist.status==4 and !$sellist.seller_comment}>
                 <p><a href="<{$config.weburl}>/?m=product&s=ucomment&uid=<{$buid}>&id=<{$sellist.order_id}>&bid=<{$sellist.buyer_id}>">评论</a></p>
                     <{if $sellist.buyer_comment}><p>买家已评</p><{/if}>
@@ -239,7 +239,7 @@ $("input[type='button']").click(function(){
             <{foreachelse}>
             <tr>
             	<td colspan="20" class="norecord">
-                	<i></i><span>暂无符合条件的数据记录</span>	
+                	<i></i><span>暂无符合条件的数据记录</span>
                 </td>
             </tr>
             <{/foreach}>
@@ -256,12 +256,12 @@ $("input[type='button']").click(function(){
 $("input[type='radio']").click(function(){
     window.location.href = "<{$config.weburl}>/main.php?m=product&s="+$(this).val();
 });
-$('.expand').click(function(){	
+$('.expand').click(function(){
 var data = $(this).attr('data-param');
 eval("data = "+data);
 ajax_form("order", '延长收货时间', '<{$config.weburl}>/main.php?m=product&s=admin_sellorder&act=expand&order_id='+data.order_id, 500);
 });
-$('.edit_price').click(function(){	
+$('.edit_price').click(function(){
 var data = $(this).attr('data-param');
 eval("data = "+data);
 ajax_form("order", '修改价格', '<{$config.weburl}>/main.php?m=product&s=admin_sellorder&act=edit_price&order_id='+data.order_id, 800);
