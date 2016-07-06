@@ -8,7 +8,7 @@ $_GET['uid']*=1;
 $catid=$_GET['catid']*1;
 $_GET['firstRow']=empty($_GET['firstRow'])?NULL:$_GET['firstRow'];
 $action=isset($_GET['action'])?$_GET['action']:NULL;
-
+var_dump($_GET);
 //------------------------
 user_read_rec($buid,$_GET['uid'],3);//记录会员查看店铺
 //------------------------
@@ -228,30 +228,28 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		}
 
 			foreach ($catids as $key => $val) {
-				if ($buid) {
-					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = " . $val['catid'] . " AND a.member_id=" . $buid . " LIMIT " . $limit;
-					$db->query($sql);
-					$product = $db->getRows();
-					foreach ($product as $k => $v) {
-						$sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = " . $v['id'];
+					if(!empty($_GET['uid'])){
+						$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE member_id = {$_GET['uid']} and LOCATE({$val['catid']},a.catid)>0  LIMIT " . $limit;
 						$db->query($sql);
-						$product[$k]['nums'] = $db->fetchField('nums');
+						$product = $db->getRows();
+						foreach ($product as $k => $v) {
+							$sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = " . $v['id'];
+							$db->query($sql);
+							$product[$k]['nums'] = $db->fetchField('nums');
+						}
+						if (!empty($product)) {
+							$products[$val['catid']] = $product;
+						}
+					}else{
+						$products='';
 					}
-				} else {
-					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid > ".$val['catid']."00"." and a.catid < ".$val['catid']."99"." LIMIT " . $limit;
-					$db->query($sql);
-					$product = $db->getRows();
-				}
 
-				if (!empty($product)) {
-					$products[$val['catid']] = $product;
-				}
 			}
 
 			$tpl->assign("products", $products);
 
             //获取橱窗推荐
-            $sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 and is_shelves = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
+            $sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 and is_shelves = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
             $db->query($sql);
             $cproduct = $db->getRows();
             $tpl->assign("cproducts", $cproduct);

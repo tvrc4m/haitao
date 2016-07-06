@@ -309,8 +309,8 @@ sub{vertical-align:text-bottom}
 .country_goods_list ul.pos_re{height:500px}
 .country_goods_list ul .item{position:absolute;top:0;left:0;}
 
-.c_l_img{left:-114px;bottom:0;line-height:0;z-index:1000}
-.c_r_img{right:-116px;bottom:0;line-height:0;z-index:1000}
+.c_l_img{left:-114px;bottom:0;line-height:0;z-index:1}
+.c_r_img{right:-116px;bottom:0;line-height:0;z-index:1}
 
 /**Tab public*/
 .m_tab_con .item{display:none}
@@ -340,7 +340,7 @@ sub{vertical-align:text-bottom}
 .m_list_02 .list_box li:hover img{-webkit-transform:translateX(-10px);-moz-transform:translateX(-10px);-o-transform:translateX(-10px);transform:translateX(-10px);}
 
 /*silder*/
-.pos_re .extend{position:absolute;top:0;right:0;z-index:999}
+.pos_re .extend{position:absolute;top:0;right:0;z-index:2}
 .pos_re .w.pos_ab{top:0;left:50%;margin-left:-606px}
 /**newfooter*/
 .newfooter .m_b_commitment{line-height:0;background:#fff;border-top: 3px solid #ff5c5c;}
@@ -389,18 +389,9 @@ a.goods_text {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width
 .agr_main a{line-height: 20px;background-color: #fe5f5c;color: #fff;border-radius: 5px;padding: 10px;margin-left: 453px;margin-bottom: 15px;cursor: pointer;}
 /*首页弹框*/
 .am-dialog-mask {position: fixed;top: 0;left: 0;z-index: 10000;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);display: none;} 
-.main-bomb{position: fixed;width: 440px;top: 50%;margin-top:-290px;left: 50%;margin-left: -220px;z-index: 10001;display: none;}
-.main-bomb .main-bomb-mayi{width: 100%;text-align: center;}
-.main-bomb .main-bomb-mayi img{width: 250px;}
-.main-bomb .main-bomb-delate{width: 100%;text-align: center;}
-.main-bomb .main-bomb-delate img{width: 30px;cursor: pointer;}
-.main-bomb .main-bomb-content{width: 100%;background-color: #fff;border-radius: 10px;}
-.main-bomb .bomb-content-top{text-align: center;font-size:26px;color: #ff5c5c;padding-top: 30px;padding-bottom: 10px;}
-.main-bomb .bomb-content-center p{height: 40px;line-height: 40px;padding-left: 45px;font-size: 20px;color: #535353;}
-.main-bomb .bomb-content-bottom{text-align: center;margin-top: 10px;}
-.main-bomb .bomb-content-bottom a{width: 320px;display: block;height: 60px;line-height: 60px;font-size: 24px;margin: 0 auto;}
-.main-bomb .bomb-content-bottom a.bomb-content-btn1{background-color: #ff5c5c;color: #fff;border-radius: 5px;}
-.main-bomb .bomb-content-bottom a.bomb-content-btn2{background-color: #fff;color: #999;}
+.main-bomb{position: fixed;width: 440px;top: 50%;margin-top:-160px;left: 50%;margin-left: -220px;z-index: 10001;display: none;}
+.main-bomb a.close{position: absolute;top: 5px; right: 5px;width: 20px;height: 20px;background:url(../../../image/default/haitao_icon4.png);background-size: 100%;}
+.main-bomb a.receive{position: absolute;bottom: 20px;right: 48px;width: 136px;height: 43px;}
 .bomb-in{
 -webkit-animation:fadeInDownBig 1s .2s ease both;
 -moz-animation:fadeInDownBig 1s .2s ease both;}
@@ -431,3 +422,16 @@ a.goods_text {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;width
 100%{opacity:0;
 -moz-transform:translateY(-2000px)}
 }
+/*右侧固定栏*/
+.fixation {position: fixed;top: 50%;left: 50%;margin-left:616px;width: 60px;margin-top: -80px;text-align: center;z-index: 3;}
+.fixation > a{width: 59px;height: 59px;border-top: 1px solid #e0e0e0;border-left: 1px solid #e0e0e0;position: relative;background: #fff;}
+.fixation > a p{width: 60px;margin-top: 35px;}
+.fixation div{position: absolute;background: #fff;border: 1px solid #ccc;border-right: none;display: none;}
+.fixation .max {bottom: -2px;left: -122px;width: 100px;padding:10px;}
+.fixation .tel {bottom: -1px;left: -130px;width: 130px;height: 59px;line-height: 59px;color: #ff5c5c;font-size: 16px;}
+.fixation a::before{ content: "";position: absolute;top: 0;left: 12px;width: 36px;height: 36px;background: url(../../../image/default/haitao_icon2.png) no-repeat;background-size: 100%;}
+.fixation a:nth-child(2)::before {background-position: 0 -28px;}
+.fixation a:nth-child(2)::before {background-position: 0 -34px;}
+.fixation a:nth-child(3)::before {background-position: 0 -66px;}
+.fixation a:nth-child(4)::before {background-position: 0 -95px;}
+.fixation a:nth-child(4){background: #ff5c5c;height: 40px;}
