@@ -213,24 +213,13 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 /*弹框样式*/
 .am-dialog-mask {position: fixed;top: 0;left: 0;z-index: 20000;width: 100%;height: 100%;
     background-color: rgba(0,0,0,.7);display: none;} 
-.main-bomb{position: fixed;width: 12rem;top: 2rem;left: 50%;margin-left: -6rem;z-index: 999999999999;display: none;}
-.main-bomb .main-bomb-mayi{width: 100%;text-align: center;}
-.main-bomb .main-bomb-mayi img{width: 7.5rem;}
-.main-bomb .main-bomb-delate{width: 100%;text-align: center;}
-.main-bomb .main-bomb-delate img{width: 1.5rem;}
-.main-bomb .main-bomb-content{width: 100%;background-color: #fff;border-radius: 10px;}
-.main-bomb .bomb-content-top{text-align: center;font-size:0.9rem;color: #ff5c5c;padding-top: 1.25rem;
-    padding-bottom: 0.9rem;}
-.main-bomb .bomb-content-top span{font-weight: bold;}
-.main-bomb .bomb-content-top p:first-of-type{margin-bottom: 0.7rem;}
-.main-bomb .bomb-content-center{padding-left: 1rem;padding-right:0.7rem;font-size: 0.56rem;}
-.main-bomb .bomb-content-center p{margin-bottom: 0.4rem;}
-.main-bomb .bomb-content-center p:last-of-type{margin-bottom: 0;}
-.main-bomb .bomb-content-bottom{text-align: center;margin-top: 0.7rem;padding-bottom: 0.25rem;}
-.main-bomb .bomb-content-bottom a{width: 9.3rem;display: inline-block;height: 1.8rem;line-height: 1.8rem;
-    text-align:center;font-size: 0.7rem;}
-.main-bomb .bomb-content-bottom a.bomb-content-btn1{background-color: #ff5c5c;color: #fff;border-radius: 5px;}
-.main-bomb .bomb-content-bottom a.bomb-content-btn2{background-color: #fff;color: #999;}
+.main-bomb{position: fixed;width: 12rem;top: 30%;left: 50%;margin-left: -6rem;z-index: 999999999999;display: none;}
+.main-bomb .main-bomb-inner{position: relative;}
+.main-bomb .main-bomb-inner img{width: 100%;}
+.main-bomb .main-bomb-inner .main-bomb-delate{position: absolute;top: 0.1rem;right: 0.1rem;display: inline-block;
+    width: 0.8rem;height: 0.8rem;background: url(../../../image/wap/wap_index_delate.png) center no-repeat;background-size: contain;}
+.bomb-content-btn1{position: absolute;bottom: 0.3rem;right:1.3rem; display: inline-block;
+    width: 4rem;height: 1.75rem;background-color: transparent;}
 .bomb-in{
 -webkit-animation:fadeInDownBig 1s .2s ease both;
 -moz-animation:fadeInDownBig 1s .2s ease both;}
