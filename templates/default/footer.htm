@@ -21,9 +21,42 @@
         </div>
     </div>
 <!--footer end-->
+<div class="fixation">
+  <a href="#" class="">
+    <p>购物车</p>
+  </a>
+  <a class="show">
+    <p>客服</p>
+    <div class="tel" >400-010-1977</div>
+  </a>
+  <a id="maxbox" class="show">
+    <p>微信</p>
+    <div class="max" ><img src="../image/default/cash.png" alt="蚂蚁在线微信公众号"></div>
+  </a>
+  <a href="#" id="returnTop" style="display: none;"></a>
+</div>
+<script>
+$(".fixation>a.show").hover(function(){
+    $(this).find("div").show();
+    $(this).css("border-left","none");
+},function(){
+    $(this).find("div").hide();
+    $(this).css("border-left","1px solid #e0e0e0");
+});
+$("#returnTop").on("click",function () {
+    $('body,html').animate({ scrollTop: 0 }, 200);
+    return false;
+ });
+$(window).on("scroll",function(){
+    if($(window).scrollTop() > $(window).height()){
+        $("#returnTop").fadeIn();
+    }else{
+        $("#returnTop").fadeOut();
+    };
+});
+</script>
 <div style="display:none;">
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259727090'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259727090' type='text/javascript'%3E%3C/script%3E"));</script>
 </div>
-<script src="https://qiyukf.com/script/bea2523d45995fbdcece2ec4882677bd.js" defer async></script>
 </body>
 </html>
