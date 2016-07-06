@@ -158,27 +158,11 @@
 <div class="am-dialog-mask"></div>
 <section>
     <div class="main-bomb bomb-in">
-        <div class="main-bomb-mayi">
-            <img src="../image/wap/wap_haitao_mayi1.png" alt="蚂蚁弹框">
+        <div class="main-bomb-inner">
+            <img src="../image/wap/wap_index_tk.png" alt="蚂蚁弹框"> 
+            <i class="main-bomb-delate"></i>
+            <a href="<{$logoAd}>" class="bomb-content-btn1"></a>
         </div>
-        <div class="main-bomb-content">
-            <div class="bomb-content-top">
-                <p>新手注册送<span>20</span>元代金劵</p>
-                <p>购物满<span>300</span>元可用</p>
-            </div>
-            <div class="bomb-content-center">
-                <p>适用范围：蚂蚁海淘购物平台</p>
-                <p>蚂蚁海淘代金劵可在购物、支付时抵扣</p>
-                <p>等额现金（不含虚拟商品）</p>
-            </div>
-            <div class="bomb-content-bottom">
-                <a href="<{$logoAd}>" class="bomb-content-btn1">立即领取</a>
-                <a href="javascript:void(0);" class="bomb-content-btn2">先去逛逛</a>
-            </div>   
-        </div>
-        <div class="main-bomb-delate">
-            <img src="../image/wap/wap_haitao_delate.png" alt="蚂蚁弹框">
-        </div > 
     </div>
 </section>
 <{/if}>
@@ -223,9 +207,6 @@ $(function(){
         $(".am-dialog-mask").hide();
     }
     $(".main-bomb-delate").bind("click",function(){
-        bombanimate();
-    });
-    $(".bomb-content-btn2").bind("click",function(){
         bombanimate();
     });
     $(".main_crousel .main_crousel_inner .flexslider").addClass("t_slide pos_re");
