@@ -84,9 +84,16 @@ $(document).ready(function(){
 <{else}>
 <div class="menu clearfix">
     <ul>
+        <{if $smarty.get.cg_u_type}>
+            <{foreach item=list name=name key=num from=$menu}>
+            <li class="<{if $smarty.foreach.name.iteration==1}>first<{elseif $smarty.foreach.name.last}>last<{/if}><{if $smarty.get.action==$num}> selected<{elseif $smarty.get.s== 'admin_message_list_inbox' && $num == 'inquire'}> selected <{elseif $num == 'main'}> selected<{/if}>"><a <{if $list.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><span><{$list.name}></span></a></li>
+            <{/foreach}>
+        <{else}>
         <{foreach item=list name=name key=num from=$menu}>
-		<li class="<{if $smarty.foreach.name.iteration==1}>first<{elseif $smarty.foreach.name.last}>last<{/if}><{if $cmenu==$num}> selected<{/if}>"><a <{if $list.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><span><{$list.name}></span></a></li>
+		<li class="<{if $smarty.foreach.name.iteration==1}>first<{elseif $smarty.foreach.name.last}>last<{/if}><{if $smarty.get.action==$num}> selected<{elseif $smarty.get.s== 'admin_message_list_inbox' && $num == 'inquire'}> selected<{/if}>"><a <{if $list.action|truncate:4:''=='http'}>target="_blank"<{/if}> href="<{if $list.action|truncate:1:''!='?' and $list.action|truncate:4:''!='http'}>?action=<{/if}><{$list.action}>"><span><{$list.name}></span></a></li>
         <{/foreach}>
+        <{/if}>
+           <!--<{if $cmenu==$num}> selected<{/if}>-->
     </ul>
 	<a target="_blank" href="<{$config.weburl}>/pay/" class="payment"><span><{$config.pay_name}></span></a>
 	<a target="_blank" href="<{$config.weburl}>/shop.php?uid=<{$buid}>" class="mytb"><span>我的店铺</span></a>
