@@ -8,7 +8,6 @@ $_GET['uid']*=1;
 $catid=$_GET['catid']*1;
 $_GET['firstRow']=empty($_GET['firstRow'])?NULL:$_GET['firstRow'];
 $action=isset($_GET['action'])?$_GET['action']:NULL;
-var_dump($_GET);
 //------------------------
 user_read_rec($buid,$_GET['uid'],3);//记录会员查看店铺
 //------------------------
