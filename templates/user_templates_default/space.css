@@ -63,11 +63,13 @@ ul,ol{list-style:none;}
 .buyer-shop .hotpro li:hover .goods_img img{-webkit-transform: translateX(-10px);-moz-transform: translateX(-10px);-o-transform: translateX(-10px);transform: translateX(-10px);}
 .buyer-shop .hotpro li .goods_country{text-align: center;line-height: 30px;height: 30px;}
 .buyer-shop .hotpro li .goods_country img{width: 30px;}
+.buyer-shop .hotpro li .goods_country span{background: #CC0033;color: #fff;padding: 2px 5px;margin-left: 5px;}
+.buyer-shop .hotpro p.goods_tip{text-align: center;line-height: 30px;height: 30px;color: #cc0033;}
 .buyer-shop .hotpro p.goods_text a{display: block; height: 20px;line-height: 20px;margin: 0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .buyer-shop .hotpro p.goods_price{color: #ff5c5c;text-align: center;line-height: 25px;height: 25px;margin-top: 10px;}
-.buyer-shop .hotpro p.goods_price span{border: 1px solid;border-radius: 5px;padding: 2px;margin-right: 10px;vertical-align: top;}
-.buyer-shop .hotpro p.goods_price var{font-size: 20px;}
-.buyer-shop .hotpro i{position: absolute;top: 0;left: 0;width: 50px;height: 50px;background:url(img/haitao_icon01.jpg);background-size: 100%;}
+.buyer-shop .hotpro p.goods_price span{border: 1px solid #ff5c5c;border-radius: 5px;padding: 2px;margin-right: 10px;vertical-align: top;}
+.buyer-shop .hotpro p.goods_price .tm{background:#ff5c5c;color: #fff;}
+.buyer-shop .hotpro p.goods_price var{font-size: 20px;color: #cc0033;}
 /*广告位*/
 .buyer-shop .ad{width: 1212px;margin: 20px auto;}
 /*分类专区*/
@@ -88,11 +90,13 @@ ul,ol{list-style:none;}
 .buyer-shop .section li:hover .goods_img img{-webkit-transform: translateX(-10px);-moz-transform: translateX(-10px);-o-transform: translateX(-10px);transform: translateX(-10px);}
 .buyer-shop .section li .goods_country{text-align: center;line-height: 30px;height: 30px;}
 .buyer-shop .section li .goods_country img{width: 30px;}
+.buyer-shop .section li .goods_country span{background: #CC0033;color: #fff;padding: 2px 5px;margin-left: 5px;}
+.buyer-shop .section p.goods_tip{text-align: center;line-height: 30px;height: 30px;color: #cc0033;}
 .buyer-shop .section p.goods_text a{display: block; height: 20px;line-height: 20px;margin: 0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .buyer-shop .section p.goods_price{color: #ff5c5c;text-align: center;line-height: 25px;height: 25px;margin-top: 10px;}
-.buyer-shop .section p.goods_price span{border: 1px solid;border-radius: 5px;padding: 2px;margin-right: 10px;vertical-align: top;}
-.buyer-shop .section p.goods_price var {font-size: 20px;}
-.buyer-shop .section i{position: absolute;top: 0;left: 0;width: 50px;height: 50px;background:url(img/haitao_icon01.jpg);background-size: 100%;}
+.buyer-shop .section p.goods_price span{border: 1px solid #ff5c5c;border-radius: 5px;padding: 2px;margin-right: 10px;vertical-align: top;}
+.buyer-shop .section p.goods_price .tm{background:#ff5c5c;color: #fff;}
+.buyer-shop .section p.goods_price var {font-size: 20px;color: #cc0033;}
 /*店铺页面结束*/
 /*商品详情页开始*/
 .pro_detail{width: 1212px;margin: 10px auto;}
@@ -104,7 +108,7 @@ ul,ol{list-style:none;}
 .pro_detail .item_info .gallery li{width: 80px;height: 80px;float: left;margin: 10px 10px 10px 0;border: 1px solid #ccc;}
 .pro_detail .item_info .gallery li img{width: 80px;height: 80px;}
 .pro_detail .item_info .gallery li.selected{border-color: #ff5c5c;}
-.pro_detail .item_info .gallery .fixed{position: absolute;top: 0;left: 0;width: 50px;height: 50px;background: url(img/haitao_icon01.jpg);background-size: 100%;border: none;}
+.pro_detail .item_info .gallery .fixed{position: absolute;top: 0;left: 0;width: 50px;height: 50px;/*background: url(img/haitao_icon01.jpg);*/background-size: 100%;border: none;}
 /*商品属性*/
 .pro_detail .item_info .property{width: 710px;float: right;font-size: 14px;}
 .pro_detail .item_info .property .title h3{font-size: 24px;line-height:40px;font-weight: normal;margin-bottom: 10px;}

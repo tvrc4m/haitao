@@ -55,6 +55,16 @@
                 <i></i>
             </li>
             <{/foreach}>
+            <li>
+                <div>
+                    <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" class="goods_img"><img src="<{$list.pic}>" alt="<{$list.name}>"></a>
+                    <p class="goods_tip">正品小样，专柜直供</p>
+                    <p class="goods_text">
+                        <a  href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$list.name}></a>
+                    </p>
+                    <p class="goods_price"><span class="tm">特卖价</span><var>¥<{$list.price}></var></p>
+                </div>
+            </li>
         </ul>
         <span class="bar">热卖推荐</span>
     </div>
@@ -73,15 +83,24 @@
             <li>
                 <div>
                     <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" class="goods_img"><img src="<{$lists.pic}>" alt="<{$lists.name}>"></a>
-                    <p class="goods_country"><{if $lists.img}><img src="<{$lists.img}>"><{$lists.title}><{/if}></p>
+                    <p class="goods_country"><{if $lists.img}><img src="<{$lists.img}>"><{$lists.title}><{/if}><span>海外直采</span></p>
                     <p class="goods_text">
                         <a  href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$lists.name}></a>
                     </p>
                     <p class="goods_price"><span>店头价</span><var>¥<{$lists.price}></var></p>
                 </div>
-                <i></i>
             </li>
             <{/foreach}>
+            <li>
+                <div>
+                    <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" class="goods_img"><img src="<{$lists.pic}>" alt="<{$lists.name}>"></a>
+                    <p class="goods_tip">正品小样，专柜直供</p>
+                    <p class="goods_text">
+                        <a  href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$lists.name}></a>
+                    </p>
+                    <p class="goods_price"><span class="tm">特卖价</span><var>¥<{$lists.price}></var></p>
+                </div>
+            </li>
         </ul>
     </div>
     <{/foreach}>
