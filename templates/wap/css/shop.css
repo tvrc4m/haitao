@@ -147,6 +147,19 @@ i.home_icon_shop {background: url(../../../image/wap/wap_haitao_icon9.png) cente
 .shopinfo_header .shopinfo-companys .shopinfo-cols .nav-c{vertical-align: 7px;}
 .shopinfo_header .shopinfo-imphosts{font-size: 0.6rem;color: #fff;padding-left: 4.3rem;height: 1.5rem;line-height: 1.5rem;
 	background-color: rgba(0,0,0,.7);}
+.wareli_bottom_rob .diantou {
+    color: #ff5c5c;
+    display: inline-block;
+    width: 2.0rem;
+    text-align: center;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    border-radius: 5px;
+    font-size: 0.5rem;
+    background-color: #fff;
+    border: 1px solid #ff5c5c;
+    margin-right: 0.2rem;
+}
 .head a.user_icon {left: 0.5rem;}
 #y_menu_icon {right: 0.5rem;}
 .main95{margin:0 auto;overflow:hidden;width: 80%;}
