@@ -64,7 +64,7 @@ ul,ol{list-style:none;}
 .buyer-shop .hotpro li .goods_country{text-align: center;line-height: 30px;height: 30px;}
 .buyer-shop .hotpro li .goods_country img{width: 30px;}
 .buyer-shop .hotpro li .goods_country span{background: #CC0033;color: #fff;padding: 2px 5px;margin-left: 5px;}
-.buyer-shop .hotpro p.goods_tip{text-align: center;line-height: 30px;height: 30px;color: #cc0033;}
+.buyer-shop .hotpro p.goods_tip{text-align: center;line-height: 30px;height: 30px;color: #cc0033;font-weight: 600;}
 .buyer-shop .hotpro p.goods_text a{display: block; height: 20px;line-height: 20px;margin: 0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .buyer-shop .hotpro p.goods_price{color: #ff5c5c;text-align: center;line-height: 25px;height: 25px;margin-top: 10px;}
 .buyer-shop .hotpro p.goods_price span{border: 1px solid #ff5c5c;border-radius: 5px;padding: 2px;margin-right: 10px;vertical-align: top;}
@@ -91,7 +91,7 @@ ul,ol{list-style:none;}
 .buyer-shop .section li .goods_country{text-align: center;line-height: 30px;height: 30px;}
 .buyer-shop .section li .goods_country img{width: 30px;}
 .buyer-shop .section li .goods_country span{background: #CC0033;color: #fff;padding: 2px 5px;margin-left: 5px;}
-.buyer-shop .section p.goods_tip{text-align: center;line-height: 30px;height: 30px;color: #cc0033;}
+.buyer-shop .section p.goods_tip{text-align: center;line-height: 30px;height: 30px;color: #cc0033;font-weight: 600;}
 .buyer-shop .section p.goods_text a{display: block; height: 20px;line-height: 20px;margin: 0 20px;font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .buyer-shop .section p.goods_price{color: #ff5c5c;text-align: center;line-height: 25px;height: 25px;margin-top: 10px;}
 .buyer-shop .section p.goods_price span{border: 1px solid #ff5c5c;border-radius: 5px;padding: 2px;margin-right: 10px;vertical-align: top;}
