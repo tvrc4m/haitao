@@ -2130,7 +2130,8 @@ if ( "function" == typeof define &&  define.amd ) {
             index : 0,                              // 轮播初始值
             continuousScroll : false,               // 连续滚动
             autoSwipe : true,                       // 自动切换
-            speed : 4000,                           // 切换速度
+            speed : 4000,							// 切换速度
+            nums : 0,                           // 切换速度
             axisX : true,                           // X轴
             transitionType : 'ease',                // 过渡类型
             lazyLoad : false,                       // 图片懒加载
@@ -2228,6 +2229,7 @@ if ( "function" == typeof define &&  define.amd ) {
         function fnGetSlideDistance(){
             var $li = me.opts.ul.children();
             me._slideDistance = me.opts.axisX ? me.opts.ul.width() : me.opts.ul.height();
+            me._slideDistance = me._slideDistance+me.opts.nums
             // 定位
             fnTransition(me, me.opts.ul, 0);
             fnTranslate(me, me.opts.ul, -me._slideDistance*me._index);

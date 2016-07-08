@@ -5,7 +5,7 @@
 
 	$sql="select a.buyer_id,a.name,a.pic,b.member_id as userid,b.member_name as user,b.id,b.price from ".ORPRO." a left join ".PRODUCT." b on a.pid=b.id where order_id='$_GET[id]'";
 	$db->query($sql);
-	$re=$db->getRows();	
+	$re=$db->getRows();
 	$tpl->assign("pro",$re);
 	if($_POST['submit']=="submit")
 	{
