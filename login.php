@@ -112,6 +112,8 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             if($re){
                 /*$re['mobile']='15763951212';
                 $post['password']='812988018';*/
+                if($us['password']!=md5(md5($post['password']).$us['salt']))
+                    msg("login.php?erry=-2&connect_id=$post[connect_id]");
                 if($us['password']==md5(md5($post['password']).$us['salt'])){
                     login($re['userid'],$re['user']);
                     $script = $obj->login(array('phone'=>$login_phone,'password'=>$post['password']));
@@ -134,6 +136,8 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                 $sql="select userid from ".MEMBER." where  mobile='$post[user]'";
                 $db->query($sql);
                 $re=$db->fetchRow();
+                if($us['password']!=md5(md5($post['password']).$us['salt']))
+                    msg("login.php?erry=-2&connect_id=$post[connect_id]");
                 if($us['password']==md5(md5($post['password']).$us['salt'])){
                     $script = $obj->login(array('phone'=>$post['user'],'password'=>$post['password']));
                     if(!empty($post['forward'])){
