@@ -230,30 +230,30 @@ $(function(){
             $jj(".shop_main_nav ul li").css({"margin-bottom":g+"px"})
             $jj(".shop_main_nav").css({"padding-bottom":(h-g)+"px"})
         }
-        $jj(".shop_main_nav ul li").height(f);
-    }  
-    $jj(document).scroll(function(){
-        var h = $jj(document).scrollTop();
-        var wHeight=$jj(window).height();
-        if(h>wHeight){
-            $jj(".addtop").show()
-            $jj(".addtop").click(function(){
-                $jj(window).scrollTop(0);
-            })
-        }else{
-            $jj(".addtop").hide()
-        }
-        if(h > (a-b)){
-            $jj(".main_crousel").css({"position":"fixed","top":-(a-b)+"px","z-index":"999","left":0});
-            $jj(".c_daibao").css({"margin-top":a+"px"});
-            $jj(".dot").hide();
-        }
-        else{
-            $jj(".main_crousel").css({"position":"static","top":0,"z-index":"999","left":0});
-            $jj(".c_daibao").css({"margin-top":"0px"});
-            $jj(".dot").show();
-        }
-    })
+        $jj(".shop_main_nav ul li").height(f); 
+        $jj(document).scroll(function(){
+            var h = $jj(document).scrollTop();
+            var wHeight=$jj(window).height();
+            if(h>wHeight){
+                $jj(".addtop").show()
+                $jj(".addtop").click(function(){
+                    $jj(window).scrollTop(0);
+                })
+            }else{
+                $jj(".addtop").hide()
+            }
+            if(h > (a-b)){
+                $jj(".main_crousel").css({"position":"fixed","top":-(a-b)+"px","z-index":"999","left":0});
+                $jj(".c_daibao").css({"margin-top":a+"px"});
+                $jj(".dot").hide();
+            }
+            else{
+                $jj(".main_crousel").css({"position":"static","top":0,"z-index":"999","left":0});
+                $jj(".c_daibao").css({"margin-top":"0px"});
+                $jj(".dot").show();
+            }
+        })
+    } 
     $jj(".scrollLoading").scrollLoading();
     function substr(htm,obj,num){
         var value_substr=obj.substr(0,num);
