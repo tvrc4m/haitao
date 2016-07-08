@@ -221,7 +221,7 @@ class member
 		}
 		else
 		{
-			$desc="订单".$order_id."购物消费";	
+			$desc="订单".$order_id."购物消费";
 		}
 		
 		$sql="select user from ".MEMBER." WHERE userid='$uuid'";
