@@ -247,9 +247,9 @@ else
 	$page->url=$config['weburl'].'/';
 	$page->listRows=20;
 	if(empty($cat['ext_field_cat']))
-		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.sales,a.market_price,a.stock,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.ptype!=2 and a.status>0 and is_shelves=1  $ext_sql $scl";
+		$sql="SELECT a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.market_price,a.stock,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
-		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and  a.ptype!=2 and a.status>0 and is_shelves=1 $ext_sql $scl";
+		$sql="SELECT a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and a.status>0 and is_shelves=1 $ext_sql $scl";
 	if(!$page->__get('totalRows'))
 	{
 		$db->query($sql);

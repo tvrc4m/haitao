@@ -140,6 +140,7 @@
         </div>
             <ul class="clearfix border_left">
                 <{foreach item=list key=num from=$info.list}>
+                <{if $list.trade eq 2}>
                 <li <{if ($num+1)%5==0}>class="mr0 w242"<{/if}> >
                     <div class="p-info">
                         <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" title="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
@@ -153,14 +154,17 @@
                         <p class="p-price"><span>店头价</span><var><{$config.money}><{$list.price}></var></p>
                     </div>
                 </li>
+                <{/if}>
+                <{if $list.trade eq 0}>
                 <li>
                     <div class="p-info">
                         <a class="p-img" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">  <img height="200" width="200" alt="<{$list.pname}>" title="<{$list.pname}>" src="<{$list.pic}>_220X220.jpg"> </a>
-                        <p class="p-text">正品小样，专柜直供</p>
+                        <p class="p-text" title="<{$list.subhead}>"><{$list.subhead|truncate:20}></p>
                         <a class="p-name" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="<{$list.pname}>"><{$list.pname}></a>
                         <p class="p-price"><span class="tm">特卖价</span><var><{$config.money}><{$list.price}></var></p>
                     </div>
                 </li>
+                <{/if}>
                 <{/foreach}>
             </ul>
             <{if $info.page}>
