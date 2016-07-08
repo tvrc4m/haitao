@@ -153,7 +153,7 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .da_list div.shop{display: none;}
 .da_list div.list_current{display: block;}
 .da_list_test {position: fixed;top: 50px;z-index: 999999999999;width: 93.3%;}
-.iconfont{color:#999;font-size: 2.2em!important;}
+.shopinfo-xin{color:#999;font-size: 1.8em!important;}
 .collect_box_content{position: fixed;z-index: 9999; left: 50%;top: 65%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;font-size: 14px;}
  
 /*合伙人页面*/
