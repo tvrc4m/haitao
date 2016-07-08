@@ -83,6 +83,8 @@ if(isset($_GET['province']))
 {
 	$scl.=" and c.provinceid='" . intval($_GET['province']) . "'";
 }
+if(!empty($_GET['brand']))
+	$scl.=" and a.brand='".$_GET['brand']."' ";
 
 if($dcid)
 	$scl.=" and c.cityid='".getdistrictid($dcid)."'";

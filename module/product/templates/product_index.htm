@@ -62,7 +62,7 @@ function bombanimate(){
     setCookie("mayi_bomb","mayi_delate");
     $(".main-bomb").removeClass("bomb-in")
     $(".main-bomb").addClass("bomb-out")
-    $(".am();
+    $(".am-dialog-mask").hide();
 }
 if(getCookie("mayi_bomb")!="mayi_delate"){
     $(".main-bomb").show();
@@ -75,7 +75,7 @@ $(".main-bomb a.close").bind("click",function(){
     bombanimate();
 });
 $(".m_menu").unbind("mouseenter mouseleave");
-$(".m_menu dd").removeCl<{$buidAd}>ass("hidden");
+$(".m_menu dd").removeClass("hidden");
 $(window).load(function(){
     $(".flexslider").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true});
 });

@@ -329,6 +329,9 @@ if(!empty($_GET['id'])){
 	$res = $db->fetchField('cat');
 	$tpl->assign("wapcatname",$res);
 }
+if(!empty($_GET['brand']))
+	$tpl->assign("wapcatname",$_GET['brand']);
+
 //你可能还喜欢
 if(!empty($_GET['id'])) {
 	$cat_first = substr($_GET['id'],0,4);
