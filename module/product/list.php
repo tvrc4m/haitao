@@ -142,7 +142,7 @@ else
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
 		{
-			$sql="select * from ".BRAND." where id in ( $cat[brand] ) order by displayorder asc ";
+			$sql="select * from ".BRAND." where id in ( $cat[brand] ) and logo<>'' order by displayorder asc ";
 			$db->query($sql);
 			$re=$db->getRows();
 			$tpl->assign("brand",$re);

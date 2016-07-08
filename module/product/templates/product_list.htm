@@ -26,25 +26,15 @@
             <dt>品牌：</dt>
             <dd>
                 <{assign var=b value=$smarty.get.brand}>
-                <div><a <{if $b==""}>class="curr"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&brand=$b":""}>">不限</a></div>
+                <!--<div><a <{if $b==""}>class="curr"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&brand=$b":""}>">不限</a></div>-->
+                <div class="brand">
                 <{foreach item=list from=$brand}>
-                <div>
-                <a <{if $b==$list.name}>class="curr"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&brand=$b":""}>&brand=<{$list.name}>"><{$list.name}></a>
-                </div>
+                <a <{if $b==$list.name}>class="curr"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&brand=$b":""}>&brand=<{$list.name}>"><img src="<{$list.logo}>"><{$list.name}></a>
                 <{/foreach}>
+                </div>
             </dd>
         </dl>
         <{/if}>
-        <dl>
-            <dt>品牌：</dt>
-            <dd>
-                <div class="brand">
-                    <a href="" title="真维斯"><img src="https://haitao-resource.b0.upaiyun.com/brand/1466666100576b8c74d21c7.jpg">真维斯</a>
-                    <a href="" title="真维斯"><img src="https://haitao-resource.b0.upaiyun.com/brand/1466666100576b8c74d21c7.jpg">真维斯</a>
-                </div>
-                <div class="more"><a href="">更多</a></div>
-            </dd>
-        </dl>
         <dl>
             <dt>筛选：</dt>
             <{if $smarty.get.key}>
