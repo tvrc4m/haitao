@@ -220,6 +220,19 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
     width: 0.8rem;height: 0.8rem;background: url(../../../image/wap/wap_index_delate.png) center no-repeat;background-size: contain;}
 .bomb-content-btn1{position: absolute;bottom: 0.3rem;right:1.3rem; display: inline-block;
     width: 4rem;height: 1.75rem;background-color: transparent;}
+.wareli_bottom_rob .diantou {
+    color: #ff5c5c;
+    display: inline-block;
+    width: 2.0rem;
+    text-align: center;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    border-radius: 5px;
+    font-size: 0.5rem;
+    background-color: #fff;
+    border: 1px solid #ff5c5c;
+    margin-right: 0.2rem;
+}
 .bomb-in{
 -webkit-animation:fadeInDownBig 1s .2s ease both;
 -moz-animation:fadeInDownBig 1s .2s ease both;}
