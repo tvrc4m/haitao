@@ -220,7 +220,8 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
     width: 0.8rem;height: 0.8rem;background: url(../../../image/wap/wap_index_delate.png) center no-repeat;background-size: contain;}
 .bomb-content-btn1{position: absolute;bottom: 0.3rem;right:1.3rem; display: inline-block;
     width: 4rem;height: 1.75rem;background-color: transparent;}
-.wareli_bottom_rob .diantou {
+.shopli_bottom_money .money{font-size: 0.6rem;}
+.shopli_bottom_money .diantou,.wareli_bottom_rob .diantou {
     color: #ff5c5c;
     display: inline-block;
     width: 2.0rem;
