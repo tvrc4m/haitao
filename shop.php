@@ -228,7 +228,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 
 			foreach ($catids as $key => $val) {
 					if(!empty($_GET['uid'])){
-						$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE member_id = {$_GET['uid']} and LOCATE({$val['catid']},a.catid)>0  LIMIT " . $limit;
+						$sql = "SELECT a.pid,a.name,a.subhead,a.trade,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE member_id = {$_GET['uid']} and LOCATE({$val['catid']},a.catid)>0  LIMIT " . $limit;
 						$db->query($sql);
 						$product = $db->getRows();
 						foreach ($product as $k => $v) {
@@ -248,7 +248,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			$tpl->assign("products", $products);
 
             //获取橱窗推荐
-            $sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 and is_shelves = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
+            $sql = "SELECT a.pid,a.name,a.subhead,a.trade,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 and is_shelves = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
             $db->query($sql);
             $cproduct = $db->getRows();
             $tpl->assign("cproducts", $cproduct);
