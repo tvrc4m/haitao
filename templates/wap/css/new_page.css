@@ -146,7 +146,7 @@ ins,a{text-decoration:none;}
 .shop .shopli .shopli_bottom_rob .shopli_bottom_sales{position: absolute;right: 0px;bottom:0px;font-size: 0.5rem;color: #535353;}
 .shop .shopli .shopli_bottom_rob .shopli_bottom_sales span{margin-left: 5px;}
 .shop .shopli .shopli_bottom_rob .shopli_bottom_money p:first-of-type{margin-bottom: 3px;font-size: 0.7rem;}
-.shopli_bottom_message p{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;margin-top: 8px;text-overflow: ellipsis;
+.shopli_bottom_message p{width: 100%;overflow: hidden;height: 0.725rem;line-height: 0.725rem;text-overflow: ellipsis;
 	white-space: nowrap;}
 .shop .shopli a {width: 100%;height: auto;outline: 0; font-size: 0.6rem;overflow: hidden;text-decoration: none;margin: 0 auto;display: block;}
 .money{color: #ff5c5c;text-align: left;}
