@@ -251,19 +251,15 @@ $(function(){
                                             "<div class='shopli_bottom_message'>"+
                                                 "<p class='shopli_bottom_text'>"+msg.data[i].pname+"</p>"+
                                             "</div>"+
-                                            "<div class='shopli_bottom_rob shopli_bottom_rob2 clearfix' data-id='"+msg.data[i].id+"'>"+
-                                                "<div class='al shopli_bottom_money'>"+
-                                                    "<p class='money'><{$config.money}>"+msg.data[i].price+"</p>"+
-                                                    "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
-                                                "</div>"+
+                                            "<div class='wareli_bottom_rob clearfix'>"+
+                                                "<span class='diantou'>店头价</span><span class='org'><{$config.money}>"+msg.data[i].price+"</span>"+
                                             "</div>"+
                                         "</div>"+
                                     "</a>"+
                                 "</li>") 
                                 if(pnational!==false){
                                     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].pnational.img+"' alt='"+msg.data[i].pnational.title+"'>")
-                                }
-                                $(".shopli_bottom_rob2[data-id="+msg.data[i].id+"]").append("<a href='javascript:void(0);' class='shopli_bottom_zhuanxiang'>专享抢购</a>")           
+                                }         
                         }
                         $(".scrollLoading").scrollLoading();
                         rate();

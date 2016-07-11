@@ -56,7 +56,7 @@
 .filter{margin:0.5rem auto 0.5rem;padding:0 10px;}
 .filter-ul{border-top: 2px solid #7753ff}
 .filter li{width:25%;float:left;text-align:center;height:40px;line-height:40px;}
-.filter li a{display:inline-block;width:100%;border-right:none;}
+.filter li a{display:inline-block;width:100%;border-right:none;font-size: 0.6rem;}
 .filter li.current a{background:#7753ff;color:#FFF;border-color:#7753ff;}
 .nav-c{margin-left: 0;}
 .leftcate{position:absolute;right:0;top:0;width:100%;z-index:999;background:#FFF;}
