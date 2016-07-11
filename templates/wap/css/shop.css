@@ -141,7 +141,7 @@ i.home_icon_shop {background: url(../../../image/wap/wap_haitao_icon9.png) cente
 	margin: 0 auto;border-radius: 10px;width: 90%;position: absolute;left: 50%;margin-left: -45%;font-size: 0.6rem;}
 .shopinfo_header{position: relative;}
 .shopinfo_header .header_topleft{position: absolute;bottom: 0px;left: 0.5rem;width: 3.3rem;height: 3.3rem;border-radius: 50%;}
-.shopinfo_header .header_topleft img{width: 100%;border-radius: 50%;}
+.shopinfo_header .header_topleft img{width: 3.3rem;height: 3.3rem;border-radius: 50%;}
 .shopinfo_header .shopinfo-companys{font-size: 0.7rem;color: #ff5c5c;padding-left: 4.3rem;height: 1.8rem;line-height: 1.8rem;
 	background-color: #fff;}
 .shopinfo_header .shopinfo-companys .shopinfo-titl{float: left;}
