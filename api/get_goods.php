@@ -27,16 +27,16 @@ if($_GET['beginDate'] && $_GET['endDate'])
 {
     $start = strtotime($_GET['beginDate']);
     $end = strtotime($_GET['endDate']);
-    $time = " and a.uptime > $start and a.uptime <= $end";
+    $time = " and a.uptime > $start and a.uptime <= $end ";
 }
 //按店铺查找
 if(!empty($_GET['sid']))
 {
-    $where =" where a.member_name = '$_GET[sid]' and";
+    $where =" where a.member_name = '$_GET[sid]' ";
 }
 else
 {
-    $where = "where";
+    $where = "where 1 ";
 }
 
 //按商品是否上架查找
@@ -44,7 +44,7 @@ if($_GET['goodsStatus'])
 {
     if($_GET['goodsStatus'] == 1)
     {
-        $where .=" a.is_shelves=1 ";
+        $where .=" and a.is_shelves=1 ";
     }
     elseif($_GET['goodsStatus'] == 2)
     {
