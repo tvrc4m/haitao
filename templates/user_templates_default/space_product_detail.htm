@@ -10,7 +10,7 @@
       <!--图片放大start-->
       <div class="gallery">
         <div>
-          <a href="#"><img src="<{$de.pic}>" class="jqzoom midimg"/></a>
+          <a href="javascript:void(0);"><img src="<{$de.pic}>" class="jqzoom midimg"/></a>
         </div>
         <ul class="clear">
             <{foreach item=pic key=num from=$de.pic_more}>
@@ -23,12 +23,13 @@
       <!-- 商品属性开始 -->
       <div class="property">
         <div class="title">
-          <h3><{$de.name}>
+          <h3 class="clear">
+            <div><{$de.name}></div>
             <{if $de.national_info }>
                 <span><img src="<{$de.national_info.img}>"><{$de.national_info.title}>品牌 海外直采</span>
             <{/if}>
           </h3>
-          <p>美国原装进口，海关监管，保证正品，蚂蚁海淘提供安全保障</p>
+          <p><{$de.subhead}></p>
         </div>
         <div class="price">
           <p><span>店头价</span><i>¥</i><em id="price"><{$de.price|number_format:2}></em></p>
@@ -67,7 +68,7 @@
         <ul class="social clear">
           <li><a href="javascript:collect_goods('<{$de.id}>');" class="fav">收藏商品</a></li>
           <li><a href="javascript:distribute_goods('<{$de.id}>');" class="fx">立即分销赚佣金</a></li>
-          <li><a href="#" class="share">分享</a>
+          <li><span class="share">分享</span>
             <div class="bshare-custom icon-medium">
             <div class="bsPromo bsPromo2"></div>
             <a title="分享到微信" class="bshare-weixin" id="shopcode" href="javascript:void(0);"></a>
@@ -122,10 +123,10 @@
             <h3>你可能喜欢</h3>
             <{foreach item=list key=num from=$relation}>
             <div class="like-p">
-                <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" class="p-img"><img src="<{$list.pic}>"></a>
-                <p class="p-name"><a href="<{$config.weburl}>/product-detail-<{$list.id}>.html"><{$list.name|truncate:18:""}></a></p>
+                <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" class="p-img"><img src="<{$list.pic}>" alt="<{$list.name}>" title="<{$list.name}>"></a>
+                <p class="p-name"><a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$list.name|truncate:18:"..."}></a></p>
                 <p class="p-price"><{$config.money}><{$list.price}></p>
-                <span>海外直采</span>
+                <!-- <span>海外直采</span> -->
             </div>
             <{foreachelse}>
             <div class="like-p">暂无推荐！</div>
@@ -151,9 +152,10 @@
                            <{$list}>
                         <{/foreach}>
                     </ul>
+                    <img src="/templates/user_templates_default/img/haitao_icon21.jpg">
                 </div>
                 <div class="desc">
-                    <p>商品详情</p>
+                    <p class="title">商品详情</p>
                     <{$de.detail}>
                 </div>
                 <div class="notice">

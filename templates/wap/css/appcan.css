@@ -36,7 +36,6 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 #pro_detail img{width:100%;}
 
 #pro_detail #pname{min-height: 2.15rem;line-height: 1.5em;font-weight: 800;font-size: 0.7rem;padding-bottom: 0.5rem;border-bottom: 1px dotted #666;padding-right: 2.5rem;}
-#pro_detail #price{font-family: 'microsoft yahei';font-size:0.6rem;border-bottom: 1px dotted #666;height: 50px;line-height: 50px;}
 #pro_detail span#price{border-bottom: none;}
 #pro_detail #price span{color:#535353;}
 #pro_detail #price span.price_moneys_num{color: #ff5c5c;}
@@ -82,10 +81,50 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 	background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size: 70%;}
 .collect_box_contentss {position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;
 	color: #fff;font-size: 14px;}
+.price_moneys2{font-family: Arial;font-size: 0.9rem;}
+.price_money_jian{font-size: 0.75rem;}
 .incar span{color:#fff;padding-right: 5px;}
 .choose_btn .buy{background-color:#dd3030;color:#fff;height:100%;padding: .5em;border-radius: .2em;min-width:85px}
 .collect{color:#ff5c5c}
 .col-money{font-size: 0.6rem;width: 100%;padding: 0 0.5rem;}
+.col-moneys2{padding: 0.5rem;}
+.col-moneys1{padding: 0.5rem 0;}
+.col-moneys2 .col-money-lt{float: left;margin-right: 0.8rem;position: relative;}
+.col-moneys2 .col-money-lt i{color: #ff5c5c;display: inline-block;width: 2.2rem;text-align: center;
+    height: 0.9rem;line-height: 0.9rem;border-radius: 5px;font-size: 0.6rem;
+    background-color: #ff5c5c;color: #fff;}
+#pro_detail .col-moneys2 .col-money-lt img.fix1{position: absolute;top: -5px;right: -0.5rem;
+    width: 0.8rem;height: 0.8rem;-webkit-animation: pos_tb 1.5s linear infinite; }
+@-webkit-keyframes pos_tb{
+    0% {
+        top: -5px;
+    }
+    12.5% {
+        top: -7px;
+    }
+    25% {
+        top: -9px;
+    }
+    37.5% {
+        top: -7px;
+    }
+    50% {
+        top: -5px;
+    }
+    62.5% {
+        top: -3px;
+    }
+    75% {
+        top: -1px;
+    } 
+    87.5% {
+        top: -3px;
+    }
+    100% {
+        top: -5px;
+    }
+}
+.col-moneys2 .col-money-rt{float: left;font-size: 0.7rem;margin-top: 1px;}
 .pdetail_show2 {width: 100%;box-sizing: border-box;-webkit-box-sizing: border-box;}
 .pdetail_show2 span{    display: block;
     border-bottom: 1px solid #f0f0f0;
@@ -266,7 +305,7 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .bgw_vi{padding:0 0.5rem;margin-bottom: 0.5rem}
 .c_daixiao_img{padding: 2px;border-radius: 50%;background-color: #944ce5;color: #fff;display: inline-block;width: 0.8rem;height: 0.8rem;text-align: center;line-height: 0.8rem;}
 .c_daixiao_imgs{background-color: #ff6600;}
-.col-money-bot{font-size: 0.7rem;margin: 0.5rem 0;}
+.col-money-bot{font-size: 0.7rem;height: 1.7rem;line-height: 1.7rem;}
 .col-money-bots{font-size: 0.7rem;}
 /*商品推荐*/
 .select_style .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}

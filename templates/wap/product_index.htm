@@ -39,7 +39,7 @@
         </div>
         <div class="clearfix main_list_ware">
             <ul class="main_warelist clearfix">
-                <{insert name="label" type="product" catid=10010104 o=4 temp="product_list_li_6" limit=3}>
+                <{insert name="label" type="product" catid=10020108 o=6 temp="product_list_li_6" limit=3}>
             </ul>
         </div>
         <div class="main_list_banner">
@@ -47,7 +47,7 @@
         </div>
         <div class="clearfix main_list_ware">
             <ul class="main_warelist clearfix">
-                <{insert name="label" type="product" catid=10010311 o=4 temp="product_list_li_6" limit=3}>
+                <{insert name="label" type="product" catid=10010311 o=6 temp="product_list_li_6" limit=3}>
             </ul>
         </div>
         <div class="main_list_banner">
@@ -55,7 +55,63 @@
         </div>
         <div class="clearfix main_list_ware">
             <ul class="main_warelist clearfix">
-                <{insert name="label" type="product" catid=100103 o=4 temp="product_list_li_6" limit=3}>
+                <{insert name="label" type="product" catid=10010317 o=6 temp="product_list_li_6" limit=3}>
+            </ul>
+        </div>
+        <div class="main_list_banner">
+            <script src='<{$config.weburl}>/api/ad.php?id=42'></script>
+        </div>
+        <div class="clearfix main_list_ware">
+            <ul class="main_warelist clearfix">
+                <{insert name="label" type="product" catid=100301 o=6 temp="product_list_li_6" limit=3}>
+            </ul>
+        </div>
+        <div class="main_list_banner">
+            <script src='<{$config.weburl}>/api/ad.php?id=43'></script>
+        </div>
+        <div class="clearfix main_list_ware">
+            <ul class="main_warelist clearfix">
+                <{insert name="label" type="product" catid=100105 o=6 temp="product_list_li_6" limit=3}>
+            </ul>
+        </div>
+        <div class="main_list_banner">
+            <script src='<{$config.weburl}>/api/ad.php?id=44'></script>
+        </div>
+        <div class="clearfix main_list_ware">
+            <ul class="main_warelist clearfix">
+                <{insert name="label" type="product" catid=10030204 o=6 temp="product_list_li_6" limit=3}>
+            </ul>
+        </div>
+        <div class="main_list_banner">
+            <script src='<{$config.weburl}>/api/ad.php?id=45'></script>
+        </div>
+        <div class="clearfix main_list_ware">
+            <ul class="main_warelist clearfix">
+                <{insert name="label" type="product" catid=10030207 o=6 temp="product_list_li_6" limit=3}>
+            </ul>
+        </div>
+        <div class="main_list_banner">
+            <script src='<{$config.weburl}>/api/ad.php?id=46'></script>
+        </div>
+        <div class="clearfix main_list_ware">
+            <ul class="main_warelist clearfix">
+                <{insert name="label" type="product" catid=10020107 o=6 temp="product_list_li_6" limit=3}>
+            </ul>
+        </div>
+        <div class="main_list_banner">
+            <script src='<{$config.weburl}>/api/ad.php?id=47'></script>
+        </div>
+        <div class="clearfix main_list_ware">
+            <ul class="main_warelist clearfix">
+                <{insert name="label" type="product" catid=100101 o=6 temp="product_list_li_6" limit=3}>
+            </ul>
+        </div>
+        <div class="main_list_banner">
+            <script src='<{$config.weburl}>/api/ad.php?id=48'></script>
+        </div>
+        <div class="clearfix main_list_ware">
+            <ul class="main_warelist clearfix">
+                <{insert name="label" type="product" catid=10020112 o=6 temp="product_list_li_6" limit=3}>
             </ul>
         </div>
     </div>
@@ -98,6 +154,18 @@
     <div class="suggest" style="display: block;">
     </div>
 </section>
+<{if $buidAd eq 1}>
+<div class="am-dialog-mask"></div>
+<section>
+    <div class="main-bomb bomb-in">
+        <div class="main-bomb-inner">
+            <img src="../image/wap/wap_index_tk.png" alt="蚂蚁弹框"> 
+            <i class="main-bomb-delate"></i>
+            <a href="<{$logoAd}>" class="bomb-content-btn1"></a>
+        </div>
+    </div>
+</section>
+<{/if}>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
@@ -107,6 +175,40 @@
 </script>
 <script type="text/javascript">
 $(function(){
+
+    function setCookie(objName,objValue,objHours){
+        var str = objName + "=" + escape(objValue); 
+        if (objHours > 0) {//为0时不设定过期时间，浏览器关闭时cookie自动消失 
+            var date = new Date(); 
+            var ms = objHours * 3600 * 1000; 
+            date.setTime(date.getTime() + ms); 
+            str += "; expires=" + date.toGMTString(); 
+        } 
+        document.cookie = str;
+    }
+    function getCookie(name){
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+        return unescape(arr[2]);
+        else
+        return null;
+    }
+    function bombanimate(){
+        setCookie("mayi_bomb","mayi_delate","0");
+        $(".main-bomb").removeClass("bomb-in")
+        $(".main-bomb").addClass("bomb-out")
+        $(".am-dialog-mask").hide();
+    }
+    if(getCookie("mayi_bomb")!="mayi_delate"){
+        $(".main-bomb").show();
+        $(".am-dialog-mask").show();
+    }else{
+        $(".main-bomb").hide();
+        $(".am-dialog-mask").hide();
+    }
+    $(".main-bomb-delate").bind("click",function(){
+        bombanimate();
+    });
     $(".main_crousel .main_crousel_inner .flexslider").addClass("t_slide pos_re");
     var imgIndex=$(".t_slide li img").size() , dot = $(".dot");
     for(var i=0;i<imgIndex;i++){
@@ -118,15 +220,15 @@ $(function(){
     }
     $("#slider_13").bind("swipeLeft", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { 
+        if (e.stopPropagation) {
             e.stopPropagation();
         } else {
-            e.cancelBubble = true; 
+            e.cancelBubble = true;
         }
     });
     $("#slider_13").bind("swipeRight", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { 
+        if (e.stopPropagation) {
             e.stopPropagation();
         } else {
             e.cancelBubble = true;
@@ -151,6 +253,6 @@ $(function(){
         }, 800);
     }, false);
     $jj(".scrollLoading").scrollLoading();
-})   
+})
 </script>
 

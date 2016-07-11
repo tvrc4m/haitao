@@ -83,6 +83,8 @@ if(isset($_GET['province']))
 {
 	$scl.=" and c.provinceid='" . intval($_GET['province']) . "'";
 }
+if(!empty($_GET['brand']))
+	$scl.=" and a.brand='".$_GET['brand']."' ";
 
 if($dcid)
 	$scl.=" and c.cityid='".getdistrictid($dcid)."'";
@@ -127,9 +129,9 @@ $pag = $_GET['page'];
 $page->firstRow=$pag;
 $page->listRows=10;
 if(empty($cat['ext_field_cat']))
-    $sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl ";
+    $sql="SELECT a.id,a.name as pname,a.sales,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl ";
 else
-	$sql="SELECT a.id,a.name as pname,a.price,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1 $ext_sql $scl";
+	$sql="SELECT a.id,a.name as pname,a.price,a.sales,a.national,a.market_price,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1 $ext_sql $scl";
 if(!$page->__get('totalRows'))
 {
 	$db->query($sql);

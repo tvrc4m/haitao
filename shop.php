@@ -8,7 +8,6 @@ $_GET['uid']*=1;
 $catid=$_GET['catid']*1;
 $_GET['firstRow']=empty($_GET['firstRow'])?NULL:$_GET['firstRow'];
 $action=isset($_GET['action'])?$_GET['action']:NULL;
-
 //------------------------
 user_read_rec($buid,$_GET['uid'],3);//记录会员查看店铺
 //------------------------
@@ -165,7 +164,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			$sql = "select time from " . CUSTOMTIME . " where userid=$_GET[uid]";
 			$db->query($sql);
 			$working_time = $db->fetch_Row();
-			#echo "uid".$_GET['uid'];
+
 		} elseif (!empty($_GET['id'])) {
 			$sql = "select time from " . CUSTOMTIME . " a left join " . PRODUCT . " b ON a.userid =b.member_id where b.id='$_GET[id]'";
 			$db->query($sql);
@@ -178,19 +177,45 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 		$tpl->assign("cs", $shop->get_cs());
 		$tpl->assign("shopconfig", $shopconfig);
 		$tpl->assign("com", $company);
+        $tpl->assign("shopid", $_GET['uid']);
 
-		//获取品牌
-		$sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 ORDER BY displayorder DESC LIMIT 10";
-		$db->query($sql);
-		$brand = $db->getRows();
-		$tpl->assign("brand", $brand);
+        //获取店铺相应的品牌
+        $sql = "SELECT brand FROM mallbuilder_product where member_id = ".$_GET['uid']." GROUP BY brand";
+        $db->query($sql);
+        $pbrand = $db->getRows();
+        if(!empty($pbrand)){
+            foreach($pbrand as $key => $val){
+                $pstr .= "'".$val['brand']."',";
+            }
+            $pstr = trim($pstr,',');
+            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 and logo<>'' AND name in($pstr) ORDER BY displayorder DESC LIMIT 10";
+            $db->query($sql);
+            $brand = $db->getRows();
+            $tpl->assign("brand", $brand);
+        }else {
+            //获取品牌
+            $sql = "SELECT * FROM mallbuilder_brand WHERE `status` = 1 and logo<>'' ORDER BY displayorder DESC LIMIT 10";
+            $db->query($sql);
+            $brand = $db->getRows();
+            $tpl->assign("brand", $brand);
+        }
+        //取相应店铺的对应分类
+
+		switch($_GET['uid']){
+			case 91 : $pcat = 1003; break;
+			case 49 : $pcat = 1002; break;
+			case 48 : $pcat = 1000; break;
+			case 44 : $pcat = 1001; break;
+            default : $pcat = 1000;
+		}
 
 		//获取分类
-		$sql = "SELECT catid,cat,wpic FROM mallbuilder_product_cat where catid > 100000 and catid <999999";
+		$sql = "SELECT catid,cat,wpic FROM mallbuilder_product_cat where catid > $pcat"."00 and catid < $pcat"."99";
 		$db->query($sql);
 		$catids = $db->getRows();
 		foreach ($catids as $k => $v) {
 			$catids[$v['catid']] = $v;
+            unset($catids[$k]);
 		}
 		$tpl->assign("catids", $catids);
 
@@ -201,34 +226,29 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			$limit = 10;
 		}
 
-
-		if (!empty($id) || empty($buid)) {
-
 			foreach ($catids as $key => $val) {
-				if ($buid) {
-					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = " . $val['catid'] . " AND a.member_id=" . $buid . " LIMIT " . $limit;
-					$db->query($sql);
-					$product = $db->getRows();
-					foreach ($product as $k => $v) {
-						$sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = " . $v['id'];
+					if(!empty($_GET['uid'])){
+						$sql = "SELECT a.pid,a.name,a.subhead,a.trade,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE member_id = {$_GET['uid']} and LOCATE({$val['catid']},a.catid)>0  LIMIT " . $limit;
 						$db->query($sql);
-						$product[$k]['nums'] = $db->fetchField('nums');
+						$product = $db->getRows();
+						foreach ($product as $k => $v) {
+							$sql = "SELECT COUNT(id) as nums FROM mallbuilder_product_comment WHERE pid = " . $v['id'];
+							$db->query($sql);
+							$product[$k]['nums'] = $db->fetchField('nums');
+						}
+						if (!empty($product)) {
+							$products[$val['catid']] = $product;
+						}
+					}else{
+						$products='';
 					}
-				} else {
-					$sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.catid = " . $val['catid'] . "  LIMIT " . $limit;
-					$db->query($sql);
-					$product = $db->getRows();
-				}
 
-				if (!empty($product)) {
-					$products[$val['catid']] = $product;
-				}
 			}
 
 			$tpl->assign("products", $products);
 
             //获取橱窗推荐
-            $sql = "SELECT a.pid,a.name,a.market_price,a.price,a.pic,a.id,a.catid,b.img FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
+            $sql = "SELECT a.pid,a.name,a.subhead,a.trade,a.market_price,a.price,a.pic,a.id,a.catid,b.img,b.title FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.national = b.id WHERE a.shop_rec = 1 and is_shelves = 1 AND a.member_id = ".$_GET[uid]."  LIMIT 10";
             $db->query($sql);
             $cproduct = $db->getRows();
             $tpl->assign("cproducts", $cproduct);
@@ -270,11 +290,10 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 			}
 
 		}
-	}
+
 }
 	$tpl->assign("chat_open_flag", $chat_open_flag);
 	$tpl->display("space_temp_inc.htm", $flag);
-
 
 
 ?>

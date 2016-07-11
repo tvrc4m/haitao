@@ -162,7 +162,18 @@ else
 	}
 }
 //================================================
-$tpl->assign("current","product");
+//新用户全站代金卷
+$firstvou=0;
+if(!empty($buid)) {
+	$sql = "SELECT `price`,`limit` FROM mallbuilder_voucher WHERE `temp_id`=2 and `member_id`={$buid}";
+	$db->query($sql);
+	$djj = $db->fetchRow();
+	if($djj)
+		$firstvou = 1;
+	else
+		$firstvou = 0;
+}
+$tpl->assign("current",$firstvou);
 include_once("footer.php");
 $out=tplfetch("cart.htm",$flag,true);
 ?>

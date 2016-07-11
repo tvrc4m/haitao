@@ -58,8 +58,8 @@ $prode['weights'] =1000;
 include_once ("$config[webroot]/api/logisticsCost.php");
 $obj = new logistics($prode['weights']);
 $prode['weights'] = $obj->cost();
+$prode['detail'] = str_replace('/lib/kindeditor/php/../../..',$config['weburl'],$prode['detail']);
 $tpl->assign("de",$prode);
-
 $tpl->assign("relation",$relation);
 
 $score = $shop->score();
@@ -67,10 +67,10 @@ foreach ($score as $key => $value) {
 	$score[$key] = $value?$value:5;
 }
 
-$score['aw']=$score['a']/5*100;
+/*$score['aw']=$score['a']/5*100;
 $score['bw']=$score['b']/5*100;
 $score['cw']=$score['c']/5*100;
-$score['dw']=$score['d']/5*100;
+$score['dw']=$score['d']/5*100;*/
 
 $tpl->assign("score",$score);
 

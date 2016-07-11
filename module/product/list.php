@@ -119,7 +119,6 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 }
 else
 {
-
     //===================================分类
 	if(is_numeric($id))
 	{
@@ -143,7 +142,7 @@ else
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
 		{
-			$sql="select * from ".BRAND." where id in ( $cat[brand] ) order by displayorder asc ";
+			$sql="select * from ".BRAND." where id in ( $cat[brand] ) and logo<>'' order by displayorder asc ";
 			$db->query($sql);
 			$re=$db->getRows();
 			$tpl->assign("brand",$re);
@@ -197,6 +196,8 @@ else
 		$scl.=" and ( a.keywords like '%$key%' or a.name like '%$key%' )";
 	if(!empty($_GET['brand']))
 		$scl.=" and a.brand='".$_GET['brand']."' ";
+	if(!empty($_GET['shopid']))
+		$scl.=" and a.member_id='".$_GET['shopid']."' ";
 	/*if($dpid)
 		$scl.=" and c.provinceid='".getdistrictid($dpid)."'";
 
@@ -246,9 +247,9 @@ else
 	$page->url=$config['weburl'].'/';
 	$page->listRows=20;
 	if(empty($cat['ext_field_cat']))
-		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.sales,a.market_price,a.stock,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.ptype!=2 and a.status>0 and is_shelves=1  $ext_sql $scl";
+		$sql="SELECT a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.market_price,a.stock,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".SHOP." c on a.member_id=c.userid WHERE c.shop_statu=1 and a.status>0 and is_shelves=1  $ext_sql $scl";
 	else
-		$sql="SELECT a.id,a.name as pname,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and  a.ptype!=2 and a.status>0 and is_shelves=1 $ext_sql $scl";
+		$sql="SELECT a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id left join ".$cat['ext_table']." b on a.id=b.product_id left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and a.status>0 and is_shelves=1 $ext_sql $scl";
 	if(!$page->__get('totalRows'))
 	{
 		$db->query($sql);
@@ -327,6 +328,18 @@ if(!empty($_GET['id'])){
 	$db->query($sql);
 	$res = $db->fetchField('cat');
 	$tpl->assign("wapcatname",$res);
+}
+if(!empty($_GET['brand']))
+	$tpl->assign("wapcatname",$_GET['brand']);
+
+//你可能还喜欢
+if(!empty($_GET['id'])) {
+	$cat_first = substr($_GET['id'],0,4);
+	$sql = "SELECT a.id,a.`name`,a.market_price,a.price,a.pic,b.`img`,b.`title` FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.`national`=b.id WHERE is_shelves=1 and LOCATE({$cat_first},a.catid)>0 ORDER BY a.clicks DESC LIMIT 10";
+	$db->query($sql);
+	$relation = $db->getRows();
+
+	$tpl->assign('relationcat',$relation);
 }
 if($_GET['national']==7)$tpl->assign("wapcatname",'日本馆');
 

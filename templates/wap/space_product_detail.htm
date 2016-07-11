@@ -52,7 +52,7 @@
             <div class="col">
                 <a href="javascript:collect_goods(<{$de.id}>);" class="collect_xin">
                     <div class="col_ttt">
-                        <div id="collect" class="iconfont <{if $spro}>collect<{/if}>">&#xe628;</div>
+                        <div id="collect" class="iconfont shopinfo-xin <{if $spro}>collect<{/if}>">&#xe628;</div>
                         <div class="nav-c" style="font-size: .6rem; color:#000;"><{if $spro}>已收藏<{else}>收藏<{/if}></div>
                     </div>  
                 </a>
@@ -62,8 +62,14 @@
         <div id="cart_show" style="display:none;"></div>
     </div>
     <div class="select_style_one">
-        <div class="col-money">
-            <img src="../image/wap/wap_haitao_icon161.png" class="diantou1"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span>
+        <div class="col-moneys2 clearfix">
+            <div class="col-money-lt">
+                <i>店头价</i>
+                <a href="<{$config.weburl}>/head_price.php">
+                    <img src="../image/wap/wap_haitao_icon162.png" class="fix1">
+                </a>
+            </div>
+            <div class="col-money-rt org"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></div>
         </div>
         <div style="height:0.4rem;background-color:#f5f5f5;width:100%"></div>
         <div class="select_style">
@@ -111,8 +117,16 @@
     </div>
     <div class="select_style_two shoping-hide">
         <div class="col-money">
-            <div class="col-money-bot col-money-bots">佣金：</span><span class="price_moneys2"><{$config.money}><span class="price_dels_num"><{$distr.commission_product_price_0|number_format:2}></span></span><span class="price_moneys2"></div>
-            <div class="col-money-bot"><img src="../image/wap/wap_haitao_icon161.png" class="diantou1"><span><{$config.money}><span class="price_moneys_num"><{$de.price|number_format:2}></span></div>
+            <div class="col-money-bot col-money-bots org"><span>佣金：</span><span class="price_moneys2"><{$config.money}><span class="price_dels_num"><{$distr.commission_product_price_0|number_format:2}></span></span><span class="price_money_jian">/件</span></div>
+            <div class="col-moneys2 col-moneys1 clearfix">
+                <div class="col-money-lt">
+                    <i>店头价</i>
+                    <a href="<{$config.weburl}>/head_price.php">
+                        <img src="../image/wap/wap_haitao_icon162.png" class="fix1">
+                    </a>
+                </div>
+                <div class="col-money-rt org"><{$config.money}><span class="price_moneys_num" id="price"><{$de.price|number_format:2}></span></span></div>
+            </div>
         </div>
         <div class="c_daibao clearfix">
             <div class="c_daibao_title">代销保障</div>
@@ -149,7 +163,7 @@
                                         </div>
                                         <div class="shopli_bottom_rob clearfix">
                                             <div class="al shopli_bottom_money">
-                                                <img src="../image/wap/wap_haitao_icon161.png" class="diantou"><span class="money"><{$config.money}><{$list.price}></span>
+                                                <span class="diantou">店头价</span><span class="money"><{$config.money}><{$list.price}></span>
                                             </div>
                                         </div>
                                     </div>
@@ -211,6 +225,7 @@
                 </ul>
             </div>
             <div class="wap_pdetail j_tab pdetail_show">
+                <img src="../../../image/wap/wap_haitao_dtj.jpg" alt="消费者告知书" />
                 <{$de.detail}>
             </div>
             <div class="wap_pdetail j_tab pdetail_show2">

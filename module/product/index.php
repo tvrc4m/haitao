@@ -134,6 +134,21 @@ if($config['sina_connect']==1)//sina
 include_once("module/shop/includes/plugin_shop_class.php");
 $shop=new shop();
 $cominfo=$shop->get_shop_info($buid);
+if(!empty($buid)){
+	$sql = "select 1 from mallbuilder_voucher where temp_id=2 and member_id={$buid}";
+	$db->query($sql);
+	if($db->fetchRow()){
+		$tpl->assign("buidAd",1);
+		$tpl->assign("logoAd",$config['weburl']."/main.php?m=voucher&s=admin_buyvoucher");
+	}else{
+		$tpl->assign("buidAd",0);
+		$tpl->assign("logoAd",$config['weburl']);
+	}
+}else{
+	$tpl->assign("buidAd",1);
+	$tpl->assign("logoAd",$config['weburl'].'/register.php');
+}
+
 
 $tpl->assign("cominfo",$cominfo);
 $tpl->assign("cat_pro",$cat_pro);

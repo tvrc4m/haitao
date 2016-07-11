@@ -1,5 +1,5 @@
 <link href="<{$config.weburl}>/templates/wap/css/shop.css" rel="stylesheet" type="text/css" />
-<link href="<{$config.weburl}>/templates/wap/css/appcan.css" rel="stylesheet" type="text/css" />
+<link href="<{$config.weburl}>/templates/<{$config.temp}>/css/new_page.css" type="text/css" rel="stylesheet"/>
 <header>
 	<div class="nav-w">
         <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
@@ -7,40 +7,6 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
 	</div>
 </header>
-<{if $dist_pro and false}>
-<section class="filter clearfix">
-    <ul class="clearfix">
-        <li class="current"><a><span><{$lang.distribution_list}></span></a></li>
-    </ul>
-</section>
-<section class="clearfix">
-    <div class="itemSearchResult plist">
-        <ul class="shoplist clearfix">
-            <{foreach item=list key=key from=$dist_pro}>
-            <li class="shopli <{if $key%2}>even<{/if}>">
-                <span class="pname_img">
-                    <{if $list.nat != '' }>
-                        <img src="<{$list.nat.img|default:$list.nat.title}>">
-                    <{/if}>
-                </span>
-                <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$com.shop_id}>">
-                    <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" width="125" height="125" alt="<{$list.pname}>"/></div>
-                    <!-- <div class="shop_over">已售完</div> -->
-                    <div class="p-name"><{$list.pname}></div>
-                </a>
-                 <div class="p-price">
-                    <p class="money"><{$config.money}><{$list.price}></p>
-                    <p class="money money_del"><{$config.money}><{$list.market_price}></p>
-                </div>
-                <{if $smarty.get.is_dist eq 1}><a href="javascript:distribute_goods('<{$de.id}>');" class="shopli_bottom_zhuanxiangs">加入分销</a><{else}><a href="javascript:void(0);" class="shopli_bottom_zhuanxiangs">专享抢购</a><{/if}>
-            </li>
-            <{/foreach}>
-        </ul>
-    </div>
-    <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
-</section>
-<{/if}>
-
 <section class="filter clearfix">
 	<ul class="clearfix filter-ul">
     	<{assign var=s value=$smarty.get.orderby}>
@@ -57,52 +23,32 @@
         <{assign var=$info.list value=$dist_pro}>
         <{/if}>
         <{foreach item=list key=key from=$info.list}>
-            <li class="shopli <{if $key%2}>even<{/if}>">
+            <li class="shopli clearfix">
                 <span class="pname_img">
                     <{if $list.nat != '' }>
                         <img src="<{$list.nat.img|default:$list.nat.title}>">
                     <{/if}>
                 </span>
-                <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>">
-                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" width="125" height="125" alt="<{$list.pname}>" /></div>
-                <!-- <div class="shop_over">已售完</div> -->
-                <div class="p-name"><{$list.pname}></div>
+                <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="<{$list.pname}>">
+                    <div class="shopli_top_img">
+                        <img  class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" height="125" width="125" alt="<{$list.pname}>"/>
+                    </div>
+                    <div class="shopli_bottom">
+                        <div class="shopli_bottom_message">
+                            <p class="shopli_bottom_text"><{$list.pname}></p>
+                        </div>
+                        <div class="shopli_bottom_rob">
+                            <div class="al shopli_bottom_money">
+                                <p class="money"><{$config.money}><{$list.price}></p>
+                            </div>
+                            <div class="shopli_bottom_sales">销量<span><{$list.sales}></span></div>
+                        </div>
+                    </div>
                 </a>
-                <div class="p-price">
-                    <p class="money"><{$config.money}><{$list.price}></p>
-                    <p class="money money_del"><{$config.money}><{$list.market_price}></p>
-                </div>
-                <{if $smarty.get.is_dist eq 1}><a href="javascript:distribute_goods('<{$list.id}>');" class="shopli_bottom_zhuanxiangs">加入分销</a><{else}><a href="javascript:void(0);" class="shopli_bottom_zhuanxiangs">专享抢购</a><{/if}>
             </li>
         <{/foreach}>
     </ul>
     </div>
-    <{if $dist_pro}>
-    <div class="itemSearchResult plist ">
-        <!-- <span style="display:inline-block;width:100%;border:1px solid #BDC0C2;border-right:none;background:#DB181E;color:#FFF;border-color:#DB1A1F;border-radius:5px 0 0 5px;height:26px;line-height:26px;">&nbsp;&nbsp;&nbsp;&nbsp;推荐商品</span> -->
-        <ul class="shoplist clearfix">
-        <{foreach item=list key=key from=$dist_pro}>
-        <li class="shopli <{if $key%2}>even<{/if}>">
-            <span class="pname_img">
-                <{if $list.nat != '' }>
-                    <img src="<{$list.nat.img|default:$list.nat.title}>">
-                <{/if}>
-            </span>
-            <a target="_blank" title="<{$list.pname}>" href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>&shop_id=<{$com.shop_id}>">
-                <div class="p-pic"><img class="scrollLoading" data-url="<{$list.pic}>_220X220.jpg" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" width="125" height="125" alt="<{$list.pname}>" /></div>
-                <div class="p-name"><{$list.pname}></div>
-            </a>
-             <div class="p-price">
-                <!-- <strong><{$config.money}> <{$list.price}></strong> -->
-                <p class="money"><{$config.money}><{$list.price}></p>
-                <p class="money money_del"><{$config.money}><{$list.market_price}></p>
-            </div>
-            <{if $smarty.get.is_dist eq 1}><a href="javascript:distribute_goods('<{$list.id}>');" class="shopli_bottom_zhuanxiangs">加入分销</a><{else}><a href="jacascript:void(0);" class="shopli_bottom_zhuanxiangs">专享抢购</a><{/if}>
-        </li>
-        <{/foreach}>
-        </ul>
-    </div>
-    <{/if}>
     <a href="javascript:void(0);" class="m_jiazai">下拉加载更多</a>
 </section>
 <section class="addcarts">
@@ -123,7 +69,6 @@ $(function(){
     var divLen=$(".shoplist .shopli").size();
     if(divLen<10){
         $(".m_jiazai").hide();
-        $("footer").css({"margin-top":"20px"})
     }
     var page = 0;
     var url = "http://haitao.com/shop.php";
@@ -153,22 +98,29 @@ $(function(){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
                             var nat=msg.data[i].nat;
-                            $(".shoplist").append("<li class='shopli <{if $key%2}>even<{/if}>'>"+
+                            $(".shoplist").append("<li class='shopli clearfix'>"+
                                     "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
                                     "</span>"+
-                                    "<a target='_blank' title='"+msg.data[i].pname+"' href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].id+"'>"+
-                                    "<div class='p-pic'><img class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;' width='125' height='125' alt='"+msg.data[i].pname+"' /></div>"+
-                                    "<div class='p-name'>"+msg.data[i].pname+"</div>"+
+                                    "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].product_id+"'>"+
+                                        "<div class='shopli_top_img'>"+
+                                            "<img  class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;' height='125' width='125' alt='"+msg.data[i].pname+"'/>"+
+                                        "</div>"+
+                                        "<div class='shopli_bottom clearfix'>"+
+                                            "<div class='shopli_bottom_message'>"+
+                                                "<p class='shopli_bottom_text'>"+msg.data[i].pname+"</p>"+
+                                            "</div>"+
+                                            "<div class='shopli_bottom_rob clearfix'>"+
+                                                "<div class='al shopli_bottom_money'>"+
+                                                    "<p class='money'>¥"+msg.data[i].price+"</p>"+
+                                                "</div>"+
+                                                "<div class='shopli_bottom_sales'>销量<span>"+msg.data[i].sales+"</span></div>"+
+                                            "</div>"+
+                                       "</div>"+
                                     "</a>"+
-                                    "<div class='p-price'>"+
-                                        "<p class='money'><{$config.money}>"+msg.data[i].price+"</p>"+
-                                        "<p class='money money_del'><{$config.money}>"+msg.data[i].market_price+"</p>"+
-                                    "</div>"+
-                                    "<{if $smarty.get.is_dist eq 1}><a href='javascript:distribute_goods('"+msg.data[i].id+"');' class='shopli_bottom_zhuanxiangs'>加入分销</a><{else}><a href='javascript:void(0);' class='shopli_bottom_zhuanxiangs'>专享抢购</a><{/if}>"+
-                                "</li>") 
-                                 if(nat!==""){
+                                "</li>")
+                                if(nat !== ""){
                                     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].nat.img+"' alt='"+msg.data[i].nat.title+"'>")
-                                }                              
+                                }           
                         }
                         stop=true;
                         $(".scrollLoading").scrollLoading();

@@ -23,19 +23,19 @@
             <{foreach item=list from=$brand key=key}>
             <{if ($key+1)%8 ==0 }>
             <div class="mr0">
-                <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
+                <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>&shopid=<{$shopid}>">
                     <img src="<{$list.logo}>" alt="<{$list.name}>" />
                 </a>
             </div>
             <{else}>
                 <div>
-                    <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
+                    <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>&shopid=<{$shopid}>">
                         <img src="<{$list.logo}>" alt="<{$list.name}>" />
                     </a>
                 </div>
             <{/if}>
             <{/foreach}>
-            <span>热门品牌分类</span>
+            <span>热门品牌</span>
         </div>
     </div>
     <!-- 热门品牌结束 -->
@@ -43,51 +43,77 @@
     <div class="hotpro">
         <ul class="clear">
             <{foreach item=list from=$cproducts key=key}>
+            <{if $list.trade eq 2}>
             <li>
                 <div>
                     <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" class="goods_img"><img src="<{$list.pic}>" alt="<{$list.name}>"></a>
-                    <p class="goods_price"><var>￥<{$list.price}></var><s>￥<{$list.market_price}></s></p>
+                    <p class="goods_country"><{if $list.img}><img src="<{$list.img}>"><{$list.title}><{/if}><span>海外直采</span></p>
                     <p class="goods_text">
-                        <img src="<{$config.weburl}>/product-detail-<{$list.id}>.html">
-                        <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$list.name}></a>
+                        <a  href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$list.name}></a>
                     </p>
-                    <p class="goods_option clear"><a class="fl" href="#">0</a><a class="fr" href="#">加入购物车</a></p>
+                    <p class="goods_price"><span>店头价</span><var>¥<{$list.price}></var></p>
                 </div>
                 <i></i>
             </li>
+            <{/if}>
+            <{if $list.trade eq 0}>
+            <li>
+                <div>
+                    <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" class="goods_img"><img src="<{$list.pic}>" alt="<{$list.name}>"></a>
+                    <p class="goods_tip" title="<{$list.subhead}>"><{$list.subhead|truncate:20}></p>
+                    <p class="goods_text">
+                        <a  href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$list.name}></a>
+                    </p>
+                    <p class="goods_price"><span class="tm">特卖价</span><var>¥<{$list.price}></var></p>
+                </div>
+            </li>
+            <{/if}>
             <{/foreach}>
+
         </ul>
-        <span>热卖推荐</span>
+        <span class="bar">热卖推荐</span>
     </div>
     <!-- 热门商品结束 -->
     <!-- 广告位开始 -->
     <div class="ad">
-        <script src='<{$config.weburl}>/api/ad.php?id=20&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
+        <script src='<{$config.weburl}>/api/ad.php?id=49'></script>
     </div>
     <!-- 广告位结束 -->
-    <!-- 纸尿裤专区开始 -->
+    <!-- 专区开始 -->
     <{foreach item=list from=$products key=key}>
     <div class="section">
-        <div class="title znk"><{$catids.$key.cat}><span><a href="<{$config.weburl}>/product-list-<{$key}>.html">查看分类</a></span></div>
-
+        <div class="title color<{php}>echo substr($this->_tpl_vars['key'],-1,1)<{/php}>"><{$catids.$key.cat}><span><a href="<{$config.weburl}>/product-list-<{$key}>.html">查看分类</a></span></div>
         <ul class="clear">
             <{foreach item=lists from=$list}>
+            <{if $lists.trade eq 2}>
             <li>
                 <div>
                     <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" class="goods_img"><img src="<{$lists.pic}>" alt="<{$lists.name}>"></a>
-                    <p class="goods_price"><var>￥<{$lists.price}></var><s>￥<{$lists.market_price}></s></p>
+                    <p class="goods_country"><{if $lists.img}><img src="<{$lists.img}>"><{$lists.title}><{/if}><span>海外直采</span></p>
                     <p class="goods_text">
-                        <img src="<{$lists.img}>">
-                        <a href="<{$config.weburl}>/product-detail-<{$lists.id}>.html" title="<{$lists.name}>"><{$lists.name}></a>
+                        <a  href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$lists.name}></a>
                     </p>
-                    <p class="goods_option clear"><a class="fl" href="#"><{$lists.nums}></a><a class="fr" href="#">加入购物车</a></p>
+                    <p class="goods_price"><span>店头价</span><var>¥<{$lists.price}></var></p>
                 </div>
-                <i></i>
             </li>
+            <{/if}>
+            <{if $lists.trade eq 0}>
+            <li>
+                <div>
+                    <a href="<{$config.weburl}>/product-detail-<{$list.id}>.html" class="goods_img"><img src="<{$list.pic}>" alt="<{$list.name}>"></a>
+                    <p class="goods_tip" title="<{$list.subhead}>"><{$list.subhead|truncate:20}></p>
+                    <p class="goods_text">
+                        <a  href="<{$config.weburl}>/product-detail-<{$list.id}>.html" title="<{$list.name}>"><{$list.name}></a>
+                    </p>
+                    <p class="goods_price"><span class="tm">特卖价</span><var>¥<{$list.price}></var></p>
+                </div>
+            </li>
+            <{/if}>
             <{/foreach}>
         </ul>
     </div>
     <{/foreach}>
+    <!-- 专区结束 -->
 </div>
 <!-- 内容结束 -->
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>

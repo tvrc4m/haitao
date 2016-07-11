@@ -1,34 +1,8 @@
 <{include file="../../../templates/default/site_nav.htm"}>
 <link type="text/css" rel="stylesheet" href="<{$config.weburl}>/module/product/templates/cart.css">
 <{include file="../../../templates/default/header_nonav.htm"}>
-<!-- <div class="header">
-	<div class="w fn-clear">
-        <div class="logo">
-            <a title="<{$config.company}>" href="<{$config.weburl}>">
-                <img src="<{if $config.logo}><{$config.logo}><{else}><{$config.weburl}>/image/logo.gif<{/if}>" />
-                <span></span>
-            </a>
-        </div>
-		<div class="search">
-            <form action="" class="form" method="get">
-            <div class="i-search">
-                <input type="hidden" value="product" name="m" id="m">
-                <input type="hidden" value="list" name="s" id="s">
-                <input type="text" class="text" name="key" id="key" value="<{$smarty.get.key}>" autocomplete="off">
-			</div>
-            <input type="submit" value="搜&nbsp;索" class="button">
-            </form>
-        </div>
-    </div>  
-</div> -->
-<div class="bgcolor">
-<div class="cart w">
-    <div class="cart-hd">
-        <h2>我的购物车</h2><{$smarty.get.dist_user_id}>
-        <!-- <{if $cart.cart}>
-        <span>已选商品(不含运费)：<strong class="Price"><{$config.money}><em class="subtotal">0.00</em></strong><a class="submit-btn submit-btn-disabled" href="javascript:void(0);">结算</a></span>
-        <{/if}> -->
-    </div>
+<div class="cart">
+    <h2>我的购物车</h2><{$smarty.get.dist_user_id}>
     <{if $smarty.get.type=="clear" || $cart.cart|@count<1}>
         <div class="cart-empty w">
             <div class="message">
@@ -45,7 +19,7 @@
     <{/if}>
     <form id="form" method="post" action="">
     <input type="hidden" id="act" name="act" />
-    <table width="100%" cellpadding="0" cellspacing="0" class="cart-con">
+    <table width="100%" class="cart-con">
     	<thead>
             <tr>
                 <th width="45">
@@ -59,17 +33,18 @@
             </tr>
         </thead>
         <tbody>
+        <{if $current eq 1}>
         <tr class="reduce"><td colspan="6"><p><span>满减</span>全场满300元减20，还差<b id="xiangcha">300.00</b>元<a href="<{$config.weburl}>">去凑单</a></p></td></tr>
+        <{/if}>
         <tr class="seg-entry"></tr>
         <{foreach item=list from=$cart.cart}>
 
         <{if $list.dist_user_id}>
         <tr>
             <th colspan="6">
-                <label class="cart-checkbox"><input type="checkbox" data-type="shop" data-value="<{$list.dist_user_id}>" name="checkbox" value="<{$pro.id}>"><em></em></label>
+                <label class="cart-checkbox cart-shop"><input type="checkbox" data-type="shop" data-value="<{$list.dist_user_id}>" name="checkbox" value="<{$pro.id}>"><em></em></label>
                 店铺:
                 <a target="_blank" href="shop.php?uid=<{$list.dist_user_id}>"><{$list.company}></a>
-                <!--<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=&amp;site=qq&amp;menu=yes" target="_blank"><img align="absmiddle" src="<{$config.weburl}>/image/default/cart/qq.gif"></a>-->
             </th>
         </tr>
         <{foreach item=pro key=n from=$list.prolist}>
@@ -80,12 +55,11 @@
             <td>
                 <div class="pro-img">
                     <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.product_id}>&shop_id=<{$list.dist_user_id}>">
-                        <img height="80" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg">
+                        <img height="80" width="80" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg">
                     </a>
                 </div>
                 <div class="pro-name">
                     <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.product_id}>&shop_id=<{$list.dist_user_id}>">
-                        <{if $pro.is_tg=='true'}><span>团购</span><{/if}>
                         <{$pro.pname}>
                     </a>
                     <{foreach item = lists from = $pro.spec}>
@@ -94,16 +68,13 @@
                 </div>
             </td>
             <td>
-                <{if $pro.market_price>0}>
-                <p><s><{$pro.market_price}></s></p>
-                <{/if}>
                 <p class="price"><{$pro.price}></p>
                 <{if $pro.market_price>0}>
                 <div class="promo-content">卖家促销</div>
                 <{/if}>
             </td>
             <td>
-                <div class="computing fn-clear">
+                <div class="computing clear">
                     <div class="computing_item">
                         <div class="computing_num">
                             <input maxlength="4" data-id='<{$pro.id}>' data-max="<{$pro.stock}>" name="nums" id="nums" type="text" value="<{$pro.num}>" />
@@ -126,10 +97,9 @@
         <{else}>
         <tr class="event-entry">
             <th colspan="6">
-                <label class="cart-checkbox"><input type="checkbox" data-type="shop" data-value="<{$list.seller_id}>" name="checkbox" value="<{$pro.id}>"><em></em></label>
+                <label class="cart-checkbox cart-shop"><input type="checkbox" data-type="shop" data-value="<{$list.seller_id}>" name="checkbox" value="<{$pro.id}>"><em></em></label>
                 店铺:
                 <a target="_blank" href="shop.php?uid=<{$list.seller_id}>"><{$list.company}></a>
-                <!--<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=&amp;site=qq&amp;menu=yes" target="_blank"><img align="absmiddle" src="<{$config.weburl}>/image/default/cart/qq.gif"></a>-->
             </th>
         </tr>
         <{foreach item=pro key=n from=$list.prolist}>
@@ -140,12 +110,11 @@
             <td>
                 <div class="pro-img">
                     <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.product_id}>">
-                        <img height="80" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg">
+                        <img height="80" width="80" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg">
                     </a>
                 </div>
                 <div class="pro-name">
                     <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.product_id}>">
-                        <{if $pro.is_tg=='true'}><span>团购</span><{/if}>
                         <{$pro.pname}>
                     </a>
                     <{foreach item = lists from = $pro.spec}>
@@ -154,16 +123,13 @@
                 </div>
             </td>
             <td>
-                <{if $pro.market_price>0}>
-                <p><s><{$pro.market_price}></s></p>
-                <{/if}>
                 <p class="price"><{$pro.price}></p>
                 <{if $pro.market_price>0}>
                 <div class="promo-content">卖家促销</div>
                 <{/if}>
             </td>
             <td>
-                <div class="computing fn-clear">
+                <div class="computing clear">
                     <div class="computing_item">
                         <div class="computing_num">
                             <input maxlength="4" data-id='<{$pro.id}>' data-max="<{$pro.stock}>" name="nums" id="nums" type="text" value="<{$pro.num}>" />
@@ -189,7 +155,7 @@
         </tbody>
     </table>
     
-	<div class="toolbar fn-clear">
+	<div class="toolbar clear">
     	<div class="select-all">
             <label class="cart-checkbox"><input type="checkbox" data-type="all"><em>全选</em></label>
         </div>
@@ -209,7 +175,6 @@
     </div>
     </form>
     <{/if}>
-</div>
 </div>
 <script type="text/javascript">
 $(".operations a").bind("click",function(){
@@ -264,6 +229,14 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
 		$(this).parent().parent().parent().removeClass("checked");
 
 	}
+    var flag_all = $(".cart-shop").length== $(".cart-shop.cart-checkbox-checked").length;
+        if(flag_all){
+            ckeckbox("input[type='checkbox']",true);
+            
+        }else{
+            $("input[data-type='all']").prop("checked","");
+            $("input[data-type='all']").parent().removeClass("cart-checkbox-checked");
+        }
 	count();
 });
 function ckeckbox(obj,flag)
@@ -287,6 +260,7 @@ function count()
 	var count = 0;
 	var num = 0;
     var mj=20;
+    var voucher = <{$current}>;
 	$(".cart-checkbox").find("input[name='product_id[]']:checked").each(function(){
 		var value = $(this).val();
 		var price = $(this).parent().parent().parent().find("#cell"+value+" span").html();
@@ -298,11 +272,15 @@ function count()
 		$(this).parent().parent().parent().addClass("checked");
 	});
 	$(".subtotal").html(count.toFixed(2));
-    if(count.toFixed(2)<=300){
-        $("#xiangcha").html((300-count).toFixed(2));
+    if(voucher){
+        if(count.toFixed(2)<=300){
+            $("#xiangcha").html((300-count).toFixed(2));
+        }else{
+            $("#xiangcha").html('0.00');
+            $(".subtotal").html((count-mj).toFixed(2));
+        }
     }else{
-        $("#xiangcha").html('0.00');
-        $(".subtotal").html((count-mj).toFixed(2));
+        $(".subtotal").html(count.toFixed(2));
     }
 	$(".cart-count em").html(num);
 	if(num>0) 

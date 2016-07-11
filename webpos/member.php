@@ -1,6 +1,7 @@
 <?php
 	include_once("config.php");
 	include_once("includes/public.php");
+
 	
 	$common = new Common;
 	
@@ -111,6 +112,7 @@
 		$member_birth = $_REQUEST['member_birth'];
 		$operator = $_SESSION['ADMIN_USER'];
 		$operate_id = $_SESSION['ADMIN_USER_ID'];
+		$member_cardnum = addslashes(trim($_REQUEST['member_cardnum']));
 		$time = time();
 		
 		if(!empty($member_mobile)&&!empty($identification)&&!empty($member_realname)){
@@ -125,6 +127,7 @@
 					mallbuilder_member
 				SET 
 					`real_name` = '$member_realname',
+					`card_num` = '$member_cardnum',
 					`sex` = '$member_sex',
 					`email` = '$member_email',
 					`mobile` = '$member_mobile',
@@ -145,6 +148,104 @@
 		echo $data;
 		die;
 	}
+
+	if($_GET['met']=='add')
+	{	
+
+		$member_name = $_REQUEST['member_name'];
+		$member_realname = $_REQUEST['member_realname'];
+		$member_sex = $_REQUEST['member_sex'];
+		$member_points = $_REQUEST['member_points']; 
+		$email = $member_email = $_REQUEST['member_email'];
+		$mobile = $member_mobile = $_REQUEST['member_mobile'];
+		$member_qq = $_REQUEST['member_qq'];
+		$member_ww = $_REQUEST['member_ww'];
+		$member_cardnum = addslashes(trim($_REQUEST['member_cardnum']));
+		$identification = $_REQUEST['identification'];
+
+		$member_birth = $_REQUEST['member_birth'];
+		$operator = $_SESSION['ADMIN_USER'];
+		$operate_id = $_SESSION['ADMIN_USER_ID'];
+		$time = time();
+
+	$user = 'mayi'.$mobile;
+	$pass = rand(100000,9999999);
+	$email_verify = 0;
+	$mobile_verify = "1";
+	$ip = getip();
+	$ip = empty($ip)?NULL:$ip;
+	$lastLoginTime = time();
+	$regtime = date("Y-m-d H:i:s");
+	$user_reg = "2";
+
+
+	$db=new dba($config['dbhost'],$config['dbuser'],$config['dbpass'],$config['dbname'],$config['dbport']);
+
+	//验证手机号唯一
+    if(Check_only($mobile, 'mobile', MEMBER)>0){
+        die('<script>alert("该手机号已经存在！");history.go(-1);</script>;');
+    }
+
+	$sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify,card_num,real_name,identification,sex,qq,ww,birth,open_id) values ('$user','".md5($pass)."','$ip','$lastLoginTime','$email','$mobile','$regtime','$user_reg','$email_verify','$mobile_verify','$member_cardnum','$member_realname','$identification','$member_sex','$member_qq','$member_ww','$member_birth','')";
+	$re=$db->query($sql);
+	$userid=$db->lastid();
 	
+	if($userid)
+	{
+
+		$sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
+		$re=$db->query($sql);
+		if($re)
+		{
+			$post['userid'] = $userid;
+			$post['email'] = $user;
+			$pay_id = member_get_url($post,true);	
+			if($pay_id)
+			{
+				$sql="update ".MEMBER." set pay_id='$pay_id' where userid='$userid'";
+				$re=$db->query($sql);	
+			}
+			if($_SESSION['IDENTITY']==2)
+			{
+  			}
+			$PluginManager = Yf_Plugin_Manager::getInstance();
+			$PluginManager->trigger('reg_done', $userid, $user);
+
+            $sql="update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=".$userid;
+            $db->query($sql);
+            $sql="update ". MEMBER ." set mobile_verify = 1 where userid=".$userid;
+            $db->query($sql);
+			Send_msg($mobile,"尊敬的用户您的蚂蚁海淘账户密码为:{$pass}");
+
+		}
+	 }
+
+		$data = $common->getMember($userid);
+		echo $data;
+		die;
+	}
+
+	function Check_only($data = null, $key = null, $table = null){
+		global $db;
+		$sql="select * from ".$table." where $key = '$data'";
+		$db->query($sql);
+		return $db->num_rows();
+	}
+
+	function Send_msg($mob = null, $con = null)
+	{
+			global $config;
+			include_once("{$config[webroot]}/module/sms/includes/plugin_sms_class.php");
+			$sms = new sms();
+			$str = $sms->send($mob, $con);
+			$res = json_decode(iconv("gb2312", "utf-8//IGNORE", urldecode($str)),true);
+			if($res['error']==0&&$res['msg']=='ok'){
+				return 1;
+			}else{
+				return 2;
+			}
+		die;
+	}
+
 	$tpl->display('member.htm');
 ?>
