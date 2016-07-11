@@ -3,7 +3,7 @@ include_once ("includes/global.php");
 $sql = "SELECT * FROM mallbuilder_member where 1";
 $db->query($sql);
 $aa = $db->fetchRow();
-var_dump($aa);var_dump($db);die;
+var_dump($config);var_dump($db);die;
 include_once ("lib/PHPExcel/Classes/PHPExcel.php");
 
 //创建对象
