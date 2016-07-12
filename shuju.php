@@ -1,5 +1,10 @@
 <?php
-include_once ("PHPExcel/Classes/PHPExcel.php");
+include_once ("includes/global.php");
+$sql = "SELECT * FROM mallbuilder_member where 1";
+$db->query($sql);
+$aa = $db->fetchRow();
+var_dump($config);var_dump($db);die;
+include_once ("lib/PHPExcel/Classes/PHPExcel.php");
 
 //创建对象
 $excel = new PHPExcel();
