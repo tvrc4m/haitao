@@ -1,9 +1,6 @@
 <?php
 include_once ("includes/global.php");
-$sql = "SELECT * FROM mallbuilder_member where 1";
-$db->query($sql);
-$aa = $db->fetchRow();
-var_dump($config);var_dump($db);die;
+
 include_once ("lib/PHPExcel/Classes/PHPExcel.php");
 
 //创建对象
@@ -18,6 +15,7 @@ for($i = 0;$i < count($tableheader);$i++) {
     $excel->getActiveSheet()->setCellValue("$letter[$i]","$tableheader[$i]");
 }
 
+$sql = "SELECT  FROM mallbuilder_product LIMIT 1";
 //表格数组
 $data = array(
     array('1','小王','男','20','100','1','小王','男','20','100','1','小王','男','20','100','1','小王','男','20','100','1','小王','男','20','100','1','小王'),
