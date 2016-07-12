@@ -51,7 +51,7 @@
         <span class="shopinfo-titl"><{$com.company}></span>
         <div class="shopinfo-cols">
             <a onclick="javascript:getfavshop()">
-                <span class="iconfont <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe628;</span>
+                <span class="shopinfo-xin iconfont <{if $sns_shop == 'yes' }>collect<{/if}>">&#xe628;</span>
                 <span class="nav-c"><{if $sns_shop == 'yes' }>已收藏<{else}>收藏<{/if}></span>
             </a>
         </div>
@@ -93,8 +93,8 @@
                     <div class="wareli_bottom_message">
                         <p class="wareli_bottom_text"><{$lists.name}></p>
                     </div>
-                    <div class="wareli_bottom_ro clearfix">
-                        <img src="../image/wap/wap_haitao_icon161.png" class="shop_diantou"><span class="org">¥<{$lists.price}></span>
+                    <div class="wareli_bottom_rob clearfix">
+                        <span class="diantou">店头价</span><span class="org">¥<{$lists.price}></span>
                     </div>
                 </div>
             </a></li>
@@ -102,6 +102,9 @@
         </ul>
     </div>
     <{/foreach}>
+    <div class="shopinfo_btn">
+        <a href="shop.php?uid=<{$smarty.get.uid}>&action=product_list&m=product">查看更多商品</a>
+    </div>
 </div>
 <div class="addcarts">
     <a class="carts" href="/?m=product&s=cart">
@@ -246,7 +249,7 @@ $(function(){
                 $jj(".addtop").hide()
             }
             if(h > (a-b)){
-                console.log(a)
+
                 $jj(".main_crousel").css({"position":"fixed","top":-(a-b)+"px","z-index":"999","left":0});
                 $jj(".c_daibao").css({"margin-top":a+"px"});
                 $jj(".dot").hide();

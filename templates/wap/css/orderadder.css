@@ -17,7 +17,7 @@ input[type="text"]{background:#FFFFFF;border:0 none;border-radius:0 0 0 0;color:
 #d_1 a{color: #ff5353;}
 #d_2{padding:0 10px 10px;}
 .orderadder{padding:0 0.5rem;}
-select{width:100%;margin-top:10px;height:30px;line-height:30px;color: #ff5353;}
+select{width:100%;margin-top:10px;height:30px;line-height:30px;}
 input[type="submit"]{height:40px;font-size:0.6rem;line-height:40px;border-radius:5px 5px 5px 5px;width:100%;display:block;background:#ff5c5c;color:#FFFFFF!important;border:1px solid #ff5c5c;text-align:center;margin:15px auto;}
 .form-error{color:#F00;padding:0 10px;}
 .taoplus{display: none!important}

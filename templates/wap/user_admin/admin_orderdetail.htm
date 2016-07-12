@@ -31,14 +31,14 @@
             <{/foreach}>
         </div>
         <div class="bottom">
-            <{$lang.logistics}>
+           <!-- <{$lang.logistics}>
             <{if $de.logistics_price==''&&$de.logistics_type==''}>
                 <{$lang.spayfee}>
             <{else}>
                 <{if $de.logistics_type}>(<{$de.logistics_type}>)<{/if}>:&nbsp;
                 <span class="p-price"><strong><{$config.money}> <{$de.logistics_price|number_format:2}></strong></span> 
             <{/if}> 
-        	<br />
+        	<br />-->
         	<{$lang.pallprice}>:&nbsp;<span class="p-price"><strong><{$config.money}> <{$de.product_price+$de.logistics_price|number_format:2}></strong></span>
         </div>
     </div>   
