@@ -122,7 +122,7 @@ function pay_get_url($post,$return=NULL)
 		header("Location: $config[pay_url]/api/gateway.php?".$str);
 	else
 	{
-		$url="$config[pay_url]/api/gateway.php?".$str;
+		echo $url="$config[pay_url]/api/gateway.php?".$str;
 		$re=file_get_contents($url);
 		return $re;
 	}

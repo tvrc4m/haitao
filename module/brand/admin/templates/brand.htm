@@ -12,7 +12,7 @@ $(function(){
 	$('#form').validate({
 		errorPlacement: function(error, element){
 			element.next('.form-error').append(error);
-		},      
+		},
 		rules : {
 			name:{
 				required:true
@@ -47,9 +47,26 @@ $(function(){
                     <{/if}>
                     <li><a href="?m=brand&s=brand_cat.php"><span>分类管理</span></a></li>
                 </ul>
+
+                <table class="select_table">
+                    <tr>
+                        <td width="400">
+                            <a class="refresh fr" href="?m=<{$smarty.get.m}>&s=<{$smarty.get.s}>"></a>
+                            <div class="select_box fr">
+                                <form action="" method="get">
+                                    <input type="hidden" name="m" value="<{$smarty.get.m}>">
+                                    <input type="hidden" name="s" value="brand.php">
+                                    <input placeholder="请输入品牌名称..." type="text" name="key" class="txt s w250" value="<{$smarty.get.key}>" />
+                                    <input type="submit" value="搜索" />
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
             </div>
         </div>
-        <div class="h35"></div>  
+        <div class="h35"></div>
         <{if $smarty.get.operation=='add' or $smarty.get.operation=='edit' or $smarty.get.operation=='batch' }>
             <form name="form" id="form" method="post">
             <input name="id" type="hidden" id="id" value="<{$de.id}>">
@@ -63,7 +80,7 @@ $(function(){
                 <tr>
                     <td width="100">品牌</td>
                     <td>
-                    <{if $smarty.get.operation=='batch'}> 
+                    <{if $smarty.get.operation=='batch'}>
                     <textarea name="name" id="name" class="w350" rows="10"></textarea>
                     <{else}>
                     <input name="name" id="name" type="text" class="w350" value="<{$de.name}>">
@@ -71,39 +88,39 @@ $(function(){
                     <div id="form-error" class="form-error"></div>
                     </td>
                 </tr>
-                
+
                 <tr>
                     <td>分类</td>
                     <td>
                     <select class="select" name='catid'>
                     	<option value=''>选择品牌分类</option>
                         <{foreach item=list from=$cat}>
-                        <option <{if $de.catid==$list.id}> selected="selected" <{/if}>value="<{$list.id}>"><{$list.catname}></option>	
+                        <option <{if $de.catid==$list.id}> selected="selected" <{/if}>value="<{$list.id}>"><{$list.catname}></option>
                         <{foreach item=slist from=$list.scat}>
-                        <option <{if $de.catid==$slist.id}> selected="selected" <{/if}>value="<{$slist.id}>">┣ <{$slist.catname}></option>	
-                        <{/foreach}> 
-                        <{/foreach}> 
+                        <option <{if $de.catid==$slist.id}> selected="selected" <{/if}>value="<{$slist.id}>">┣ <{$slist.catname}></option>
+                        <{/foreach}>
+                        <{/foreach}>
             		</select>
                     <div id="form-error" class="form-error"></div>
                     </td>
                 </tr>
-                
+
                 <tr>
                     <td>LOGO</td>
                     <td>
                     <input name="pic" class="w350" type="text" id="pic" value="<{$de.logo}>" />
                     <input name="oldpic" type="hidden" value="<{$de.logo}>" />
-                    [<a href="javascript:uploadfile('上传LOGO','pic',400,240,'brand')">上传</a>] 
+                    [<a href="javascript:uploadfile('上传LOGO','pic',400,240,'brand')">上传</a>]
                     [<a href="javascript:preview('pic');">预览</a>]
                     [<a onclick="javascript:$('#pic').val('');" href="#">删除</a>] <span class="bz"></span>
                     </td>
                 </tr>
-                
+
                 <tr>
                     <td>点击数</td>
                     <td><input type="text" name="hits" value="<{if $de.hits}><{$de.hits}><{else}>0<{/if}>" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/></td>
 				</tr>
-                
+
                 <tr>
                     <td>状态</td>
                     <td>
@@ -112,7 +129,7 @@ $(function(){
                     <input type="radio" name="status" value="0" id="close" <{if $de.status==0}>checked="checked"<{/if}>/><label for="close">关闭</label>
                     </td>
                 </tr>
-               
+
                 <tr>
                     <td>&nbsp;</td>
                     <td>
@@ -136,7 +153,7 @@ $(function(){
                     }
                 });
                 $('.checkall').attr('checked', this.checked);
-            });	 
+            });
         });
         </script>
         <form action="" method="post">
@@ -160,8 +177,8 @@ $(function(){
                     <td><{$list.catname}></td>
                     <td><{if $list.status==1}>开启<{elseif $list.status==2}>推荐<{else}>关闭<{/if}></td>
                     <td>
-                    <a href="?m=brand&s=brand.php&operation=edit&editid=<{$list.id}>"><{$editimg}></a> 
-                    <a onclick="return confirm('确定删除吗');" href="?m=brand&s=brand.php&delid=<{$list.id}>"><{$delimg}></a>
+                        <a href="?m=brand&s=brand.php&operation=edit&editid=<{$list.id}>"><{$editimg}></a>
+                        <a onclick="return confirm('确定删除吗');" href="?m=brand&s=brand.php&delid=<{$list.id}>"><{$delimg}></a>
                     </td>
                 </tr>
                 <{foreachelse}>
