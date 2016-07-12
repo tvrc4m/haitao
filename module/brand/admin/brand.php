@@ -120,9 +120,14 @@
 				}
 			}
 			msg("?m=brand&s=brand.php&$getstr");
-		}	
+		}
+
+        $str = null;
+		if(isset($_GET['key']) && !empty($_GET['key'])){
+            $str .= "where name LIKE '%".$_GET['key']."%' ";
+		}
 		//获取
-		$sql="select b.*,c.catname from ".BRAND." b left join ".BRANDCAT." c on c.id=b.catid order by displayorder , id  desc ";
+		$sql="select b.*,c.catname from ".BRAND." b left join ".BRANDCAT." c on c.id=b.catid ".$str." order by displayorder , id  desc ";
 		//=============================
 		$page = new Page;
 		$page->listRows=20;
