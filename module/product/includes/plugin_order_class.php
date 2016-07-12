@@ -580,9 +580,6 @@ class order
 		global $buid,$config;
 		$buid = $member_id ? $member_id : $buid;
 
-		//echo $oid; 160621035354001
-		//echo $status; 4;
-		//echo $buid;die; 40
 		if($status==0)
 		{
 			$sql="select seller_id,status,product_price,logistics_price from ".ORDER." where order_id='$oid' and userid='$buid'";
@@ -627,10 +624,9 @@ class order
 			{
 				$str = " `userid` = '".$buid."'";
 			}
-            echo $sql="select seller_id,status,product_price,logistics_price,is_virtual, order_id, dist_user_id from ".ORDER." where order_id='$oid' and $str";
+            $sql="select seller_id,status,product_price,logistics_price,is_virtual, order_id, dist_user_id from ".ORDER." where order_id='$oid' and $str";
 			$this->db->query($sql);
 			$de=$this->db->fetchRow();
-            var_dump($de);
 			if ($de['dist_user_id'])
 			{
 				global $distribution;
@@ -651,10 +647,7 @@ class order
 			$post['order_id']=$oid;//外部订单号
 			$post['statu']=4;
 			$post['is_virtual']=$de['is_virtual'];
-            die;
-
 			$res=pay_get_url($post,true);//跳转至订单生成页面
-
 			fb($res);
 		}
 		
@@ -662,7 +655,7 @@ class order
 		{
 			//提交退货审请
 			$sql="select seller_id from ".ORDER." where order_id='$oid' and userid='$buid'";
-			$this->db->query($sql); 
+			$this->db->query($sql);
 			
 			$post['action']='update';
 			$post['seller_email']=$this->db->fetchField('seller_id');
@@ -742,7 +735,6 @@ class order
 			pay_get_url($post,true);//跳转至订单生成页面
 			//--------------
 		}
-		
 	}
 	
 	//修改订单价格，需要请求支付中心

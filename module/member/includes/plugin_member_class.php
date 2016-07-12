@@ -223,13 +223,10 @@ class member
 		{
 			$desc="订单".$order_id."购物消费";
 		}
-		
 		$sql="select user from ".MEMBER." WHERE userid='$uuid'";
 		$this->db->query($sql);
 		$user=$this->db->fetchField('user');
-
-		$sql = "INSERT INTO ".POINTSLOG." (member_id,member_name,points,type,create_time,`desc`) VALUES ('$uuid','$user','$sum','$type','".time()."','$desc')"; 
-	
+		$sql = "INSERT INTO ".POINTSLOG." (member_id,member_name,points,type,create_time,`desc`) VALUES ('$uuid','$user','$sum','$type','".time()."','$desc')";
 		$this -> db->query($sql);
                 unset($uid);
 	}
