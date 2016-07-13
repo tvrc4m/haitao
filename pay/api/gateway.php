@@ -192,6 +192,7 @@ switch ($action)
 			if($status == 3 || $is_virtual)
 			{
 				$flag = 'T';
+
 				if($price<0) $price *= -1;
 				$price =  $price - $refund_amount;
 
