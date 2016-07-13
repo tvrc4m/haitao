@@ -579,7 +579,6 @@ class order
 	{
 		global $buid,$config;
 		$buid = $member_id ? $member_id : $buid;
-
 		if($status==0)
 		{
 			$sql="select seller_id,status,product_price,logistics_price from ".ORDER." where order_id='$oid' and userid='$buid'";
@@ -611,7 +610,7 @@ class order
 			$res=pay_get_url($post,true);//跳转至订单生成页面
 		}
 		if($status==4)
-		{	
+		{
 			//===========成功，反回结果给支付中心。
 			$sql = "select is_virtual from  ".ORDER." where  order_id='$oid' limit 1";
 			$this->db->query($sql);
@@ -624,9 +623,11 @@ class order
 			{
 				$str = " `userid` = '".$buid."'";
 			}
-            $sql="select seller_id,status,product_price,logistics_price,is_virtual, order_id, dist_user_id from ".ORDER." where order_id='$oid' and $str";
+
+			$sql="select seller_id,status,product_price,logistics_price,is_virtual, order_id, dist_user_id from ".ORDER." where order_id='$oid' and $str";
 			$this->db->query($sql);
 			$de=$this->db->fetchRow();
+
 			if ($de['dist_user_id'])
 			{
 				global $distribution;
@@ -639,7 +640,7 @@ class order
 			}
 
 			include_once("module/member/includes/plugin_member_class.php");
-			$member = new member();				
+			$member = new member();
 			$member->add_points(($de['product_price']+$de['logistics_price'])*1,'1',$oid,$buid);
 			$post['action']='update';
 			$post['seller_email']=$de['seller_id'];
@@ -648,6 +649,7 @@ class order
 			$post['statu']=4;
 			$post['is_virtual']=$de['is_virtual'];
 			$res=pay_get_url($post,true);//跳转至订单生成页面
+
 			fb($res);
 		}
 		
