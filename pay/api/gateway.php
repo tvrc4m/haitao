@@ -192,11 +192,12 @@ switch ($action)
 			$price = $ss['price'];
 			$refund_amount = $ss['refund_amount'];
 			$status = $ss['statu'];
-
+			print_r($ss);
 			$flag = 'F';
 			if($status == 3 || $is_virtual)
 			{
 				$flag = 'T';
+
 				if($price<0) $price *= -1;
 				$price =  $price - $refund_amount;
 
@@ -209,6 +210,7 @@ switch ($action)
 					$commission_str = $_REQUEST['commission_str'];
 
 					$price = $price - $commission_str;
+
 
 					//确认收货，更改状态
 					$sql = "update ".CASHFLOW." set statu='4', price = price - $commission_str, dist_commission_out = dist_commission_out+$commission_str  where order_id='$order_id' AND seller_email=''";
