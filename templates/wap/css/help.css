@@ -6,7 +6,7 @@
 .cat-banner-out ul.cat-banner li.current{background-color: #7753ff;}
 .cat-banner-out ul.cat-banner li.current a{color: #fff;}
 .cat-banner-out ul.cat-banner li a {display:block;height: 40px;line-height: 40px;font-size: 0.6rem;}
-.cat-container {margin: 0.5rem;background-color: #fff;}
+.cat-container {padding: 0.5rem;background-color: #fff;}
 .cat-container .cat-container-list{margin-bottom: 20px;}
 .cat-container .cat-container-list h2{font-weight: bold;font-size: 0.7rem;text-indent: 1em;text-align: left;border-left: 4px solid #ff5c5c;color: #535353;}
 .cat-container .cat-container-list ul li{width:24%;margin-top: 20px;text-align: center;margin-right: 1.25%;vertical-align: top;float: left;}
