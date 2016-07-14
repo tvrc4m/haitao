@@ -69,53 +69,13 @@
           <li><a href="javascript:collect_goods('<{$de.id}>');" class="fav">收藏商品</a></li>
           <li><a href="javascript:distribute_goods('<{$de.id}>');" class="fx">立即分销赚佣金</a></li>
           <li><span class="share">分享</span>
-            <div class="bshare-custom icon-medium">
-            <div class="bsPromo bsPromo2"></div>
-            <a title="分享到微信" class="bshare-weixin" id="shopcode" href="javascript:void(0);"></a>
-            <a title="分享到QQ空间" onclick="shareTo('qzone')" href="javascript:void(0);" class="bshare-qzone"></a>
-            <a title="分享到新浪微博" onclick="shareTo('sinaminiblog')" href="javascript:void(0);" class="bshare-sinaminiblog"></a>
-            <a title="分享到人人网" onclick="shareTo('renren')" href="javascript:void(0);" class="bshare-renren"></a>
-            <a title="分享到腾讯微博" onclick="shareTo('qqmb')" href="javascript:void(0);" class="bshare-qqmb"></a>
-            <a title="分享到豆瓣" onclick="shareTo('douban')" href="javascript:void(0);" class="bshare-douban"></a>
-                <div class="bdsharebuttonbox" data-tag="share_1">
-                    <a class="bds_mshare" data-cmd="mshare"></a>
-                    <a class="bds_qzone" data-cmd="qzone" href="#"></a>
-                    <a class="bds_tsina" data-cmd="tsina"></a>
-                    <a class="bds_baidu" data-cmd="baidu"></a>
-                    <a class="bds_renren" data-cmd="renren"></a>
-                    <a class="bds_tqq" data-cmd="tqq"></a>
-                    <a class="bds_more" data-cmd="more">更多</a>
-                    <a class="bds_count" data-cmd="count"></a>
-                </div>
-                <script>
-                    window._bd_share_config = {
-                        common : {
-                            bdText : '自定义分享内容',
-                            bdDesc : '自定义分享摘要',
-                            bdUrl : 'www.baidu.com',
-                            bdPic : 'https://www.mayihaitao.com/uploadfile/product/44/14664975895768fa357451f.jpg'
-                        },
-                        share : [{
-                            "bdSize" : 16
-                        }],
-                        slide : [{
-                            bdImg : 0,
-                            bdPos : "right",
-                            bdTop : 100
-                        }],
-                        image : [{
-                            viewType : 'list',
-                            viewPos : 'top',
-                            viewColor : 'black',
-                            viewSize : '16',
-                            viewList : ['qzone','tsina','huaban','tqq','renren']
-                        }],
-                        selectShare : [{
-                            "bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
-                        }]
-                    }
-                    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-                </script>s
+            <div class="bdsharebuttonbox" data-tag="share_1">
+                <a title="分享到微信" class="bshare-weixin" id="shopcode" href="javascript:void(0);"></a>
+                <a class="bds_qzone" data-cmd="qzone"></a>
+                <a class="bds_tsina" data-cmd="tsina"></a>
+                <a class="bds_douban" data-cmd="douban"></a>
+                <a class="bds_renren" data-cmd="renren"></a>
+                <a class="bds_tqq" data-cmd="tqq"></a>
             </div>
           </li>
         </ul>
@@ -275,14 +235,33 @@ $(".btn-buy").click(function(){
     $("#form").submit();
 });
 // 分享
-function shareTo(site){
-  var e = encodeURIComponent, s = screen, d = document, wd = 640, hg = 480, u = d.location;
-  var uuid = '';
-  var img =$(".jqzoom").attr("src");
-  var ctxt = $(".summary .title>p").text();
-  var url = "//api.bshare.cn/share/"+site+"?url="+e("https://www.mayihaitao.com/?m=product&s=detail&id=<{$de.id}>")+"&title="+e(d.title)+"&publisherUuid="+uuid+"&summary="+ctxt+"&pic="+img;
-  window.open(url, 'bshare', ['toolbar=0,status=0,resizable=1,width='+ wd +',height='+ hg +',left='+ (s.width - wd) / 2+ ',top='+ (s.height - hg) / 2]);
+window._bd_share_config = {
+    common : {
+        bdText : $(".property h3>div").text(), 
+        bdDesc : '', 
+        bdUrl : 'https://www.mayihaitao.com/?m=product&s=detail&id=<{$de.id}>',    
+        bdPic : $(".jqzoom").attr("src")
+    },
+    share : [{
+        "bdSize" : 16
+    }],
+    slide : [{     
+        bdImg : 0,
+        bdPos : "right",
+        bdTop : 100
+    }],
+    image : [{
+        viewType : 'list',
+        viewPos : 'top',
+        viewColor : 'black',
+        viewSize : '16',
+        viewList : ['qzone','tsina','tqq']
+    }],
+    selectShare : [{
+        "bdselectMiniList" : ['qzone','tqq','douban']
+    }]
 }
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
 // 分销
 function distribute_goods(id){
     var url = '<{$config.weburl}>/module/distribution/add.php';
