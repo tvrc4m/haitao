@@ -28,19 +28,17 @@ $flag='T';
 //不合理！
 if(isset($seller_email))
 {
-	echo $seller_email;
 	if (9 != $mold)
 	{
-		echo $sql="select pay_email,pay_id from ".MEMBER." where userid='$seller_email' or pay_email='$seller_email'";
+		$sql="select pay_email,pay_id from ".MEMBER." where userid='$seller_email' or pay_email='$seller_email'";
 	}
 	else
 	{
 		$sql="select pay_email,pay_id from ".MEMBER." where userid='$seller_email'";
 	}
-echo $sql;
+
 	$db->query($sql);
 	$re=$db->fetchRow();
-    print_r($re);
 	if($re)
 	{
 		$seller_email = $re['pay_email'];
@@ -64,7 +62,6 @@ if(isset($buyer_email))
 
 	$db->query($sql);
 	$re=$db->fetchRow();
-
 	if($re)
 	{
 		$buyer_email=$re['pay_email'];
@@ -188,15 +185,14 @@ switch ($action)
 			$sql = "select price,statu,refund_amount from ".CASHFLOW." where pay_uid={$buyer_id} and order_id='$order_id'";
 			$db -> query($sql);
 			$ss = $db -> fetchRow();
-			
 			$price = $ss['price'];
 			$refund_amount = $ss['refund_amount'];
 			$status = $ss['statu'];
-
 			$flag = 'F';
 			if($status == 3 || $is_virtual)
 			{
 				$flag = 'T';
+
 				if($price<0) $price *= -1;
 				$price =  $price - $refund_amount;
 
@@ -210,7 +206,17 @@ switch ($action)
 
 					$price = $price - $commission_str;
 
+
 					//确认收货，更改状态
+					if(!empty($_GET['seller_email'])){
+						$sql = "update mallbuilder_product_order set status='4' where order_id={$order_id} and userid={$_GET['seller_email']}";
+						$db->query($sql);
+					}
+					if(!empty($_GET['buyer_email'])){
+						$sql = "update mallbuilder_product_order set status='4' where order_id={$order_id} and userid={$_GET['buyer_email']}";
+						$db->query($sql);
+					}
+
 					$sql = "update ".CASHFLOW." set statu='4', price = price - $commission_str, dist_commission_out = dist_commission_out+$commission_str  where order_id='$order_id' AND seller_email=''";
 					$re = $db->query($sql);
 
@@ -224,6 +230,15 @@ switch ($action)
 				else
 				{
 					//确认收货，更改状态
+					if(!empty($_GET['seller_email'])){
+						$sql = "update mallbuilder_product_order set status='4' where order_id={$order_id} and userid={$_GET['seller_email']}";
+						$db->query($sql);
+					}
+					if(!empty($_GET['buyer_email'])){
+						$sql = "update mallbuilder_product_order set status='4' where order_id={$order_id} and userid={$_GET['buyer_email']}";
+						$db->query($sql);
+					}
+
 					$sql = "update ".CASHFLOW." set statu='4' where order_id='$order_id'";
 					$re = $db->query($sql);
 
