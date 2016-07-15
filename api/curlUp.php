@@ -12,6 +12,8 @@ class curlUp{
     private $imgUpurl = "http://121.40.31.77:8015/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
     private $orderUrl = "http://121.40.31.77:8015/Service/Send_Goods_Order.aspx";//订单提交链接
 
+    private $trades = array('0'=>'1','1'=>'2','2'=>'0');
+
     const EXT='.txt';
 
 
@@ -50,7 +52,7 @@ class curlUp{
         $list['goods_order'][0]['goods_attributes_list'][0]['sku_id']=$orderList['skuid'];
         $list['goods_order'][0]['goods_attributes_list'][0]['price']=$orderList['price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['num']=$orderList['num'];
-        $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$orderList['trade'];
+        $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$this->trades[$orderList['trade']];
         $order = json_encode($list);
         $token =  $this->token();
         $type = $this->aes($this->orderUrl,array ("time" => $this->time,"pass" => $this->pass,"token" => $token,"order" => $order));

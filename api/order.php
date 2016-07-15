@@ -1,7 +1,7 @@
 <?php
 include_once("../includes/global.php");
 include_once("../includes/smarty_config.php");
-include_once("order_api.php");
+include_once("curlUp.php");
 
 if(!empty($_GET['statu'])&&$_GET['statu']==1)
 {
@@ -10,7 +10,7 @@ if(!empty($_GET['statu'])&&$_GET['statu']==1)
 	
 	function order_oprate($id)
 	{
-		global $db,$config;
+		global $db,$config,$buid;
 
 		$sql = "select `status`,`pid` from ".ORPRO." where order_id='$id'";
 		$db -> query($sql);
@@ -20,7 +20,34 @@ if(!empty($_GET['statu'])&&$_GET['statu']==1)
 
 		if($status < 2)
 		{
-          	  sub_order($id);//提交订单接口
+          	//支付成功以后推送订单
+			if(!empty($buid)){
+				$sql ="select real_name,identity_card,real_img1,real_img2 from pay_member where identity_verify=true and userid=".$buid;
+				$db->query($sql);
+				$user = $db->fetchRow();
+				$upFile = new curlUp($user['real_name'],$user['identity_card'],$user['real_img1'],$user['real_img2']);
+				//验证身份证是否存在
+				$real = $upFile->real();
+				if($real['is_exists']!=1){
+					$realUp = $upFile->curlUpload();
+					if($realUp['goods_type_count']==1){
+						$upFile->cacheLog('shen_success',$user,'cache/shen/');
+					}else{
+						$upFile->cacheLog('shen_error',$user,'cache/shen/');
+					}
+				}
+				if($real['is_exists']==1 || $realUp['goods_type_count']==1){
+					$sql = "select od.order_id,od.create_time,od.consignee_address,od.consignee_mobile,od.logistics_price,od.product_price,od.consignee,od.logistics_name,od.logistics_price,od.product_price,op.order_id,op.skuid,op.price,op.num,op.trade from ".ORDER." od left join ".ORPRO." op on od.order_id=op.order_id where od.order_id={$id} group by od.order_id";
+					$db->query($sql);
+					$list = $db->fetchRow();
+					$list['identity_card'] = $user['identity_card'];
+					$type = $upFile->orderUp($list);
+					if($type['status']==0)
+						$upFile->cacheLog('order_success',$list,'cache/shen/');
+					else
+						$upFile->cacheLog('order_error',$list,'cache/shen/');
+				}
+			}
 			//---------------------付款成功减库存，
 			$sql="select pid,num,setmeal from ".ORPRO." where order_id='$id'";
 			$db->query($sql);
