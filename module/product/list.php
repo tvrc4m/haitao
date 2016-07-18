@@ -136,9 +136,9 @@ else
                 $newname[$key_f] = array('id' => $catname[$key_f], 'oid' => $catname[$key_f]);
             }
         }
-
 		$tpl->assign("catname",$newname);
 		$cat=readCat($id);
+
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
 		{

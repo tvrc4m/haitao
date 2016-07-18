@@ -1,0 +1,16 @@
+/*--帮助中心--*/
+.helpnav{line-height: 40px;margin: 20px 0 10px 20px;font-size:14px;}
+.help_side{border:1px solid #ccc;}
+.help_side h4{background:#f5f5f5;color:#4A4A4A;font-family:"microsoft yahei";font-size:14px;height:32px;line-height:32px;padding-left:25px;cursor:pointer;}
+.help_side h4 span{float:left;}
+.help_side b{cursor:pointer;float:right;height:14px;margin:9px 10px 0 0;overflow:hidden;width:14px;}
+.help_side ul{display:none;}
+.help_side ul li{border-top:1px dotted #CBECF8;height:32px;line-height:32px;overflow:hidden;padding-left:32px;}
+.help_side .current h4{border-bottom:0 none;}
+.help_side .current ul{display:block;}
+.help_side .current b{background-position:right 0;}
+.help.clearfix{margin-bottom: 20px;}
+.help .left{float: left;width: 200px;}
+.help .right{padding-top:0px;width: 980px;float: right;}
+.help_tit{height:32px;line-height:32px;padding-left:9px;border-bottom:1px solid #ccc;}
+.help_box{padding:10px 10px 10px 20px;}

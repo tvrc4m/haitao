@@ -1,8 +1,4 @@
 @charset "utf-8";
-.w{width:1212px;}
-.header{padding:15px 0 10px;}
-.header .w{padding-right:0;width:990px;}
-.header .search{margin:15px 0 10px;height:45px;}
 
 .step{margin:20px auto 20px;}
 .step h3{border-bottom:1px solid #e0e0e0;padding:0 5px 10px;margin-bottom:20px;color: #666;}
@@ -37,7 +33,7 @@
 
 .step li{width: 275px;height: 135px;display: inline-block;border: 1px solid #e4e4e4;position: relative;margin: 6px;overflow: hidden;}
 
-.order_submit{background:url(../../../image/default/btn-updata.png) no-repeat;height:36px;line-height:100px;overflow:hidden;width:135px;border:0 none;cursor:pointer;float:right;}
+.order_submit{background:url(../../../image/default/haitao_icon25.png) no-repeat;height:36px;line-height:100px;overflow:hidden;width:135px;border:0 none;cursor:pointer;float:right;}
 
 .loading{text-align:center;height:72px;padding-top:40px;+position:relative;}
 .loading p{height:32px;line-height:32px;padding-left:42px;background:url(../../../image/default/loading.gif) no-repeat 0 50%;color:#f50;display:inline-block;_display:inline;_height:14px;_line-height:14px;_padding:9px 0 9px 42px;_background-position-y:0;+position:absolute;+left:50%;+margin-left:-55px;}

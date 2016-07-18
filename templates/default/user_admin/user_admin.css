@@ -43,9 +43,7 @@ html[xmlns] .clearfix{display:block;}
 .fl{float:left;}
 .fr{float:right!important;}
 .br{border-right: 1px solid #ccc;}
-.w{margin:0 auto;width:1212px;}
 .form-error{color:#F00;}
-.clear{clear:both;}
 .tl{text-align:left!important;}
 .tc{text-align:center!important;}
 .ar{text-align:right!important;}
@@ -612,11 +610,6 @@ div.edit_price{padding:20px 30px;}
 /*==============================*/
 /* 底部条样式*/
 /*==============================*/
-#footer{color:#666;font-size:12px;line-height:24px;margin:0 auto;padding:15px 0;text-align:center;width:961px;border-top:1px solid #E9ECEF;clear:both;overflow:hidden;}
-#footer p{color:#666666;padding:10px 0;word-spacing:5px;}
-#footer p em{margin:0 15px;}
-#footer a{color:#666666;text-decoration:none;}
-
 input{background-color:expression((this.readOnly && this.readOnly == true)? "#efefef":"");}
 input[readonly]{
     background-color: #efefef;
@@ -660,20 +653,6 @@ input.submit{border:0 none;border-radius:4px 4px 4px 4px;color:#fff;cursor:point
 .delete .checkall{vertical-align: middle;margin-top: -3px;}
 .menu li{border: none;}
 .menu li.selected{background: #ff5c5c;}
-
-/**newfooter*/
-.newfooter .m_b_commitment{line-height:0;background:#fff;border-top: 3px solid #ff5c5c;}
-.newfooter .foot{padding:20px 0 30px;color:#666;background:#e9e9e9}
-.newfooter .foot .icon_b_logo{width:238px;height:100px;margin:20px 40px 0 0;display: inline-block;vertical-align:middle;text-indent:-9999px;background-image:url(../../../image/default/mayionline.png);background-repeat:no-repeat;overflow:hidden}
-.newfooter .foot ul li{float:left;width:180px;text-align:center;}
-.newfooter .foot ul li span{display:block;font-size:18px;line-height:60px;border-bottom:1px solid #666;}
-.newfooter .foot ul li p{margin-top:20px;}
-.newfooter .foot ul li p a{display:block;font-size:14px;color:#666;line-height:25px}
-.newfooter .foot ul li p a:hover{text-decoration:underline;}
-.newfooter .foot .b_code{width: 135px;height: 170px;display: inline-block;float: right;margin-top: 20px;text-align: center;}
-.newfooter .foot .b_code p{background: #f2f2f2;line-height: 35px;font-size: 14px;}
-.newfooter .foot .b_code img{width: 100%;}
-.newfooter .footer{background-color: #e9e9e9;border-top: none;margin-top: 0;height: 60px;line-height: 20px;color: #666;text-align: center;}
 
 /*大都选品上架*/
 .dadu_select table{border:1px solid #e0e0e0;}
