@@ -456,6 +456,7 @@ class cart
                 {
                     $discounts = $this -> db -> fetchField("discounts");
                 }
+                $discounts = floatval($discounts);
                 if($discounts > 0){$price = ($price * $discounts)/10;}
 
 				if ($dist_id)
