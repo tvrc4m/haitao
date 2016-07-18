@@ -21,7 +21,7 @@ if(!empty($_GET['statu'])&&$_GET['statu']==1)
 		if($status < 2)
 		{
           	//支付成功以后推送订单
-			/*if(!empty($buid)){
+			if(!empty($buid)){
 				$sql ="select real_name,identity_card,real_img1,real_img2 from pay_member where identity_verify=true and userid=".$buid;
 				$db->query($sql);
 				$user = $db->fetchRow();
@@ -45,9 +45,9 @@ if(!empty($_GET['statu'])&&$_GET['statu']==1)
 					if($type['status']==0)
 						$upFile->cacheLog('order_success',$list,'cache/shen/');
 					else
-						$upFile->cacheLog('order_error',$list,'cache/shen/');
+						$upFile->cacheLog('order_error',$type,'cache/shen/');
 				}
-			}*/
+			}
 			//---------------------付款成功减库存，
 			$sql="select pid,num,setmeal from ".ORPRO." where order_id='$id'";
 			$db->query($sql);
