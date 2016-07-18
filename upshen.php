@@ -28,8 +28,8 @@ if(!empty($buid)){
         $realUp = $upFile->curlUpload();
         if($realUp['goods_type_count']!=1)echo '身份证上传失败';
     }
-    if(1){
-        $sql = "select od.order_id,od.create_time,od.consignee_address,od.consignee_mobile,od.logistics_price,od.product_price,od.consignee,od.logistics_name,od.logistics_price,od.product_price,op.order_id,op.skuid,op.price,op.num,op.trade from ".ORDER." od left join ".ORPRO." op on od.order_id=op.order_id where od.order_id={$order_id} group by op.`skuid`";
+    if($real['is_exists']==1 || $realUp['goods_type_count']==1){
+        $sql = "select od.order_id,od.create_time,od.consignee_address,od.consignee_mobile,od.logistics_price,od.product_price,od.consignee,od.logistics_name,od.logistics_price,od.product_price,op.order_id,op.skuid,op.price,op.num,op.trade from ".ORDER." od left join ".ORPRO." op on od.order_id=op.order_id where od.order_id={$order_id} group by od.order_id";
         $db->query($sql);
         $list = $db->getRows();
         $list[0]['identity_card'] = $user['identity_card'];
