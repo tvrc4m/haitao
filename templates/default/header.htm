@@ -13,7 +13,7 @@
             <li><i class="icon_commitment_03"></i><em class="mid">无忧<br>售后</em></li>
         </ul>
         <div class="m_t_search ml40 mid">
-            <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
+            <form action="<{$config.weburl}>/?m=product&s=list_search" method="get" accept-charset="utf-8">
                 <input type="hidden" value="product" name="m" id="m">
                 <input type="hidden" value="list" name="s" id="s">
                 <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索"><div id="key_select"></div>

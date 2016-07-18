@@ -138,6 +138,7 @@ else
         }
 		$tpl->assign("catname",$newname);
 		$cat=readCat($id);
+
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
 		{
@@ -175,9 +176,7 @@ else
 		$tpl->assign("catfile",$catfile);
 		//---------------------------------按分类搜索
 		$scl.=" and LOCATE('".intval(trim($_GET['id']))."',a.catid)=1 ";//按类别搜索
-	}else{
-		include("includes/list_search.php");
-    }
+	}
 	$ads = array('1000'=>'33','1001'=>'34','1002'=>'35','1003'=>'36');
 	if(array_key_exists($newname[0]['oid'],$ads))
 		$gid = $ads[$newname[0]['oid']];
