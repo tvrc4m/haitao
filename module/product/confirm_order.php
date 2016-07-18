@@ -261,7 +261,7 @@ else
 
 		$uprice = $uprice + $logistics_price - $firstvou;
 
-		$sql = "insert into ".UORDER."  (`order_id`,`buyer`,`inorder`,`price`,`create_time`) values ('$uorder','$buid','$inorder','$uprice','".time()."')";
+		$sql = "insert into ".UORDER."  (`order_id`,`buyer`,`inorder`,`price`,`create_time`,`status`) values ('$uorder','$buid','$inorder','$uprice','".time()."','0')";
 
 		$db->query($sql);
 
