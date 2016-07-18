@@ -90,8 +90,9 @@ ul,ol{list-style:none;}
 .m_goods_list li label{font-size:16px}
 .m_goods_list li label i{width:20px;height:20px;margin-right:10px}
 .m_goods_list li label b{font-weight:normal}
+.m_goods_list li label a{cursor: default;}
 .m_goods_list a{color:#fff;margin-right:10px}
-.m_goods_list a:hover{color:#fff}
+.m_goods_list p a:hover{color:#fff;text-decoration: underline;}
 /*横向导航*/
 .m_nav .nav{float:left;margin-left: 20px;}
 .m_nav .nav li{float:left;}
@@ -109,7 +110,7 @@ ul,ol{list-style:none;}
 .footer .foot ul li{float:left;width:180px;text-align:center;}
 .footer .foot ul li span{display:block;font-size:18px;line-height:60px;border-bottom:1px solid #ccc;}
 .footer .foot ul li p{margin-top:20px;}
-.footer .foot ul li p a{display:block;font-size:14px;line-height:25px}
+.footer .foot ul li p a{display:block;font-size:14px;line-height:25px;width: 70px;margin:0 auto;}
 .footer .foot ul li p a:hover{text-decoration:underline;}
 .footer .foot ul li p img{width: 75px;}
 .footer .foot .copyright{line-height: 25px;text-align: center;margin-top: 20px;}
