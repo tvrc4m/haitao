@@ -18,204 +18,117 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.validation.min.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.charCount.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/sns.js"></script>
-<link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page.css" rel="stylesheet" type="text/css" />
+<link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page1.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="member">
 <div id="append_parent"></div>
 <div id="ajaxwaitid"></div>
-<div class="site-nav">
-    <div class="w fn-clear">
-        <ul class="fn-left">
-
-            <li class="nav">
-                    <span class="icon4"></span>
-                    <div class="nav-fore1"><a href="<{$config.weburl}>/?temp=wap">手机蚂蚁</a></div>
-            </li>
-            <li class="nav">
-                <span class="icon7"></span>
-                <div class="nav-fore1">400-010-1977</div>
-            </li>
+<!--header start-->
+  <div class="header">
+    <!--top start-->
+    <div class="top">
+      <div class="w clear">
+        <ul class="fl clear">
+          <li><a href="<{$config.weburl}>/?temp=wap" title="手机蚂蚁">手机蚂蚁</a></li>
+          <li><div>400-010-1977</div></li>
         </ul>
-        <ul class="fn-right">
-            <li class="nav<{if $smarty.cookies.USER}> drop-down<{/if}> user">
-                <script src="<{$config.weburl}>/login_statu.php?m=index"></script>
-            </li>
-            <{if $current != 'index'}>
-            <li class="nav">
-                <div class="nav-fore1">
-                    <a href="<{$config.weburl}>"><{$config.company}>首页</a>
-                </div>
-            </li>
+        <ul class="fr clear">
+          <script src="<{$config.weburl}>/login_statu.php?m=index"></script>
+          <li class="drop-down">
+            <a href="main.php?cg_u_type=1">我的商城</a>
+            <div>
+              <a href="main.php?m=product&s=admin_buyorder&cg_u_type=1">已买到的商品</a>
+              <a href="main.php?m=product&s=admin_footprint&cg_u_type=1">我的足迹</a>
+              <a href="<{$config.pay_url}>">蚂蚁钱包</a>
+            </div>
+          </li>
+          <li class="drop-down">
+            <{if $cominfo.shop_type eq 1}>
+            <a href="<{$config.weburl}>/main.php?m=shop&s=admin_step&shop_type=2&cg_u_type=2">卖家中心</a>
+            <{else}>
+            <a href="<{$config.weburl}>/main.php?cg_u_type=2">卖家中心</a>
             <{/if}>
-            <li class="nav drop-down">
-                <div class="nav-fore1">
-                    <a href="main.php?cg_u_type=1">我的商城</a>
-                    <i><em></em></i>
-                </div>
-                <div class="nav-fore2">
-                    <ul>
-                        <li><a href="main.php?m=product&s=admin_buyorder&cg_u_type=1">已买到的商品</a></li>
-                        <li><a href="main.php?m=product&s=admin_footprint&cg_u_type=1">我的足迹</a></li>
-                        <li><a href="<{$config.pay_url}>"><{$config.pay_name}></a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="site-nav-pipe">|</li>
-            <li class="nav drop-down">
-                <div class="nav-fore1">
-                    <{if $cominfo.shop_type eq 1}>
-                    <a href="<{$config.weburl}>/main.php?m=shop&s=admin_step&shop_type=2&cg_u_type=2">卖家中心</a>
-                    <{else}>
-                    <a href="<{$config.weburl}>/main.php?cg_u_type=2">卖家中心</a>
-                    <{/if}>
-                    <i><em></em></i>
-                </div>
-                <div class="nav-fore2">
-                    <ul>
-                        <li><a href="main.php?m=shop&s=admin_step&cg_u_type=2">免费开店</a></li>
-                        <li><a href="main.php?m=product&s=admin_sellorder&cg_u_type=2">已卖出的商品</a></li>
-                        <li><a href="main.php?m=product&s=admin_product_list&cg_u_type=2">出售中的商品</a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="nav collect drop-down">
-                <div class="nav-fore1">
-                    <a href="main.php?m=sns&s=admin_share_product&cg_u_type=1">
-                    <span>收藏夹</span>
-                    </a>
-                    <i><em></em></i>
-                </div>
-                <div class="nav-fore2">
-                    <ul>
-                        <li><a href="main.php?m=sns&s=admin_share_product&cg_u_type=1">收藏的商品</a></li>
-                        <li><a href="main.php?m=sns&s=admin_share_shop&cg_u_type=1">收藏的店铺</a></li>
-                    </ul>
-                </div>
-            </li>
-
+            <div>
+              <a href="main.php?m=shop&s=admin_step&cg_u_type=2">免费开店</a>
+              <a href="main.php?m=product&s=admin_sellorder&cg_u_type=2">已卖出的商品</a>
+              <a href="main.php?m=product&s=admin_product_list&cg_u_type=2">出售中的商品</a>
+            </div>
+          </li>
+          <li class="drop-down">
+            <a href="main.php?m=sns&s=admin_share_product&cg_u_type=1">收藏夹</a>
+            <div>
+              <a href="main.php?m=sns&s=admin_share_product&cg_u_type=1">收藏商品</a>
+              <a href="main.php?m=sns&s=admin_share_shop&cg_u_type=1">收藏店铺</a>
+            </div>
+          </li>
         </ul>
+      </div>
     </div>
-</div>
-<script type="text/javascript">
-$('.drop-down').hover(function(){
-    $(this).addClass("hover");
-    if($(this).hasClass("cart"))
-    {
-        $('.cart .nav-fore2').load('<{$config.weburl}>/?m=product&s=cart_number&act=list');
-    }
-},function(){
-    $(this).removeClass("hover");
-});
-$(".fn-left li:first").bind("mouseenter mouseleave",function(){
-       $(".fn-left .sjmy").toggleClass("fn-hide");
-    });
-</script>
- <div class="newheader">
-        <!--head start-->
-        <div class="w head newclear">
-            <a href="<{$config.weburl}>" class="icon_logo ml10 mid"></a>
-            <ul class="m_commitment ml60 newclear mid">
-                <li><i class="icon_commitment_01"></i><em class="mid">品质<br>保证</em></li>
-                <li><i class="icon_commitment_02"></i><em class="mid">全球<br>直供</em></li>
-                <li><i class="icon_commitment_03"></i><em class="mid">无忧<br>售后</em></li>
-            </ul>
-            <div class="m_t_search ml40 mid">
-                <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
-                    <input type="hidden" value="product" name="m" id="m">
-                    <input type="hidden" value="list" name="s" id="s">
-                    <input type="text" id="key" name="key" autocomplete="off" placeholder="搜索您需要的商品" onkeyup="get_search_word(this.value);" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
-                </form>
+    <!--top end-->
+    <!--head start-->
+    <div class="head clear">
+      <a href="<{$config.weburl}>" class="icon_logo"></a>
+      <ul class="m_commitment ml60 clear mid">
+        <li><i class="icon_commitment_01"></i><em class="mid">品质<br>保证</em></li>
+        <li><i class="icon_commitment_02"></i><em class="mid">全球<br>直供</em></li>
+        <li><i class="icon_commitment_03"></i><em class="mid">无忧<br>售后</em></li>
+      </ul>
+      <div class="m_t_search ml40 mid">
+        <form action="<{$config.weburl}>" method="get" accept-charset="utf-8">
+          <input type="hidden" value="product" name="m" id="m">
+          <input type="hidden" value="list" name="s" id="s">
+          <input type="text" name="key" autocomplete="off" placeholder="搜索您需要的商品" value="<{$smarty.get.key}>"><input type="submit" name="s_submit" value="搜索">
+        </form>
+      </div>
+      <div class="m_shop_cart mid">
+        <a class="cart_box" href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a>
+      </div>
+    </div>
+    <!--head end-->
+    <!--导航 start-->
+    <div class="m_nav">
+      <div class="w pos_re">
+        <!--menu start-->
+        <dl class="m_menu">
+          <dt><i class="icon_menu"></i><span class="mid">全部商品分类</span></dt>
+          <dd class="clear">
+            <div class="m_goods_list">
+              <ul>
+                <{insert name="label" type="cat" temp="pro_cat_shop_left"}>
+              </ul>
             </div>
-            <div class="m_shop_cart mid pos_re">
-                <div class="cart_box"><a href="<{$config.weburl}>?m=product&s=cart"><span class="mid">我的购物车</span><i class="icon_cart"></i><span id="cart_num"><script  src='<{$config.weburl}>/?m=product&s=cart_number'></script></span></a></div>
-                <div class="cart_list">
-                </div>
+          </dd>
+        </dl>
+        <!--menu end-->
+        <!--nav start-->
+        <ul class="nav clear">
+        <{foreach item=list key=num from=$menus name=nav}>
+          <li <{if $list.identifier==$current}>class="current"<{/if}>>
+            <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
+            <{if $list.scat}>
+            <div class="i-items">
+                <{foreach item=slist from=$list.scat}>
+                <a href="<{if $slist.url|truncate:4:''=='http'}><{$slist.url}><{else}><{$config.weburl}>/<{$slist.url}><{/if}>"><{$slist.name}></a>
+                <{/foreach}>
+            </div>
+            <{/if}>
+          </li>
+        <{/foreach}>
+        </ul>
+        <!--nav end-->
+        <div class="m_gz">
+            <span class="mid money">马上赚钱</span>
+            <div>
+                <img src="../../../image/default/haitao_icon21.png" />
+                <span></span>
             </div>
         </div>
-        <!--head end-->
-        <!--导航 start-->
-        <div class="m_nav">
-            <div class="w pos_re">
-                <!--menu start-->
-                <dl class="m_menu">
-                    <dt><i class="icon_menu"></i><span class="mid">全部商品分类</span></dt>
-                    <dd class="newclear hidden">
-                        <div class="m_goods_list">
-                            <ul <{if $smarty.get.m=='product' && $smarty.get.s=='index'}><{/if}>>
-                                <{insert name="label" type="cat" temp="pro_cat_shop_left"}>
-                            </ul>
-                        </div>
-                    </dd>
-                </dl>
-                <!--menu end-->
-                <!--nav start-->
-                <ul class="nav ml20 newclear">
-                    <{foreach item=list key=num from=$menus name=nav}>
-                    <li <{if $list.identifier==$current}>class="current"<{/if}>>
-                    <a href="<{if $list.url|truncate:4:''=='http'}><{$list.url}><{else}><{$config.weburl}>/<{$list.url}><{/if}>"><{$list.name}></a>
-                    <{if $list.scat}>
-                    <div class="i-items">
-                        <{foreach item=slist from=$list.scat}>
-                        <a href="<{if $slist.url|truncate:4:''=='http'}><{$slist.url}><{else}><{$config.weburl}>/<{$slist.url}><{/if}>"><{$slist.name}></a>
-                        <{/foreach}>
-                    </div>
-                    <{/if}>
-                    </li>
-                    <{/foreach}>
-                </ul>
-                <!--nav end-->
-                <div class="m_gz">
-                    <span class="mid money">马上赚钱</span>
-                    <div class="sjmy fn-hide">
-                        <img src="../../../image/default/cash.png" />
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--导航 end-->
+      </div>
     </div>
-    <!--header end-->
+    <!--导航 end-->
+  </div>
+  <!--header end-->
 <script>
-$('.menu-items li').hover(function(){
-    $(this).addClass("hover");
-},function(){
-    $(this).removeClass("hover");
-});
-$(".m_gz").bind("mouseenter mouseleave",function(){
-       $(".m_gz .sjmy").toggleClass("fn-hide");
-    });
-function get_search_word(k)
-{
-    if(k!='')
-    {
-        var url = '<{$config.weburl}>/ajax_back_end.php';
-        var sj = Math.random();
-        var pars = 'shuiji=' + sj+'&search_flag=1&key='+k;
-        $.post(url, pars,showResponse);
-    }
-
-    function showResponse(originalRequest)
-    {
-        if(originalRequest)
-        {
-            $('#key_select').show();
-            //$('#key_select').css("display",'block');
-            $('#key_select').html(originalRequest);
-        }
-        else
-            $('#key_select').hide();
-    }
-
-}
-function select_word(v)
-{
-    $('#key').val(v);
-    $('#key_select').hide();
-}
-$(".m_menu").bind("mouseenter mouseleave",function(){
-    $(".m_menu dd").toggleClass("hidden");
-});
 // 收缩展开效果
 $(document).ready(function(){
     $(".father dt").click(function(){
@@ -228,8 +141,8 @@ $(document).ready(function(){
 });
 </script>
 <div id="main">
-	<{if $smarty.get.m=='product' && ($smarty.get.s=='admin_receipt')}>
-		<{$output}>
+    <{if $smarty.get.m=='product' && ($smarty.get.s=='admin_receipt')}>
+        <{$output}>
     <{else}>
     <div class="layout buyer clearfix">
         <div class="left_con">
@@ -285,32 +198,31 @@ $(document).ready(function(){
             <{/if}>
         </div>
         <div class="<{if $smarty.get.s != ''}>right_con <{$smarty.get.s}><{else}>right_con_index<{/if}>"><{$output}></div>
-	</div>
+    </div>
     <{/if}>
 </div>
+
 <!--footer start-->
-    <div class="newfooter">
-        <div class="m_b_commitment">
-            <div class="w"><img src="/image/default/b_commitment.png" alt="品质保证 全球直供 优质品牌 售后保障"></div>
-        </div>
-        <div class="foot">
-            <div class="w">
-                <i class="icon_b_logo fl"></i>
-                <ul class="fl">
-                    <{insert name="label" type="ftlink" temp="ftlink_list"}>
-                </ul>
-                <i class="b_code"><img src="../../../image/default/code.jpg" />
-                <p>蚂蚁海淘微信公众号</p></i>
-                <div style="clear:both;"></div>
-            </div>
-        </div>
-        <div class="footer">
-            <p class="copytight">© 2015-2016 蚂蚁在线(北京)科技有限公司 |  京ICP备15039996号-4 |  京ICP证160637号<br>
-            地址：北京市朝阳区东大桥路甲8号尚都国际中心A座1815 | 电话:400-010-1977
-            </p>
-        </div>
-    </div>
+<div class="footer">
+<div class="m_b_commitment">
+  <div class="w"><img src="../image/default/haitao_icon14.png" alt="品质保证 全球直供 优质品牌 售后保障"></div>
+</div>
+<div class="foot">
+  <div class="w clear">
+    <i class="icon_b_logo fl"></i>
+    <ul class="clear fl">
+      <{insert name="label" type="ftlink" temp="ftlink_list"}>
+      <li>
+        <span>关注我们</span>
+        <p>
+          <img src="../image/default/haitao_icon16.jpg">
+        </p>
+      </li>
+    </ul>
+  </div>
+  <p class="w copyright">© 2015-2016 蚂蚁在线(北京)科技有限公司 |  京ICP备15039996号-4<br>
+        地址：北京市朝阳区东大桥路甲8号尚都国际中心A座1815 | 电话:400-010-1977
+  </p>
+</div>
+</div>
 <!--footer end-->
-<script src="https://qiyukf.com/script/bea2523d45995fbdcece2ec4882677bd.js" defer async></script>
-</body>
-</html>
