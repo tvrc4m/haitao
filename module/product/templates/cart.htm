@@ -1,6 +1,5 @@
-<{include file="../../../templates/default/site_nav.htm"}>
 <link type="text/css" rel="stylesheet" href="<{$config.weburl}>/module/product/templates/cart.css">
-<{include file="../../../templates/default/header_nonav.htm"}>
+<{include file="../../../templates/default/header.htm"}>
 <div class="cart">
     <h2>我的购物车</h2><{$smarty.get.dist_user_id}>
     <{if $smarty.get.type=="clear" || $cart.cart|@count<1}>
@@ -20,7 +19,7 @@
     <form id="form" method="post" action="">
     <input type="hidden" id="act" name="act" />
     <table width="100%" class="cart-con">
-    	<thead>
+        <thead>
             <tr>
                 <th width="45">
                 <label class="cart-checkbox"><input data-type="all" type="checkbox"><em>全选</em></label>
@@ -155,8 +154,8 @@
         </tbody>
     </table>
     
-	<div class="toolbar clear">
-    	<div class="select-all">
+    <div class="toolbar clear">
+        <div class="select-all">
             <label class="cart-checkbox"><input type="checkbox" data-type="all"><em>全选</em></label>
         </div>
         <div class="operations">
@@ -178,30 +177,30 @@
 </div>
 <script type="text/javascript">
 $(".operations a").bind("click",function(){
-	$("#act").val($(this).attr("class"));
-	$("#form").submit();
+    $("#act").val($(this).attr("class"));
+    $("#form").submit();
 });
 $(".submit-btn").bind("click",function(){
-	if(!$(this).hasClass("submit-btn-disabled"))
-	{
-		$("#form").attr("action","<{$config.weburl}>/?m=product&s=confirm_order");
-		$("#form").submit();
-	}
+    if(!$(this).hasClass("submit-btn-disabled"))
+    {
+        $("#form").attr("action","<{$config.weburl}>/?m=product&s=confirm_order");
+        $("#form").submit();
+    }
 });
 $(".cart-checkbox input[type='checkbox']").click(function(){
-	var flag = $(this).prop("checked");
-	var data_type = $(this).attr("data-type");
-	if(flag == true)
-	{
-		if(data_type == 'all')
-		{
-			ckeckbox("input[type='checkbox']",true);
-		}
-		else if(data_type == 'shop')
-		{
-			var data_value = $(this).attr("data-value");
-			ckeckbox("input[data-value='"+data_value+"']",true);
-		}else{
+    var flag = $(this).prop("checked");
+    var data_type = $(this).attr("data-type");
+    if(flag == true)
+    {
+        if(data_type == 'all')
+        {
+            ckeckbox("input[type='checkbox']",true);
+        }
+        else if(data_type == 'shop')
+        {
+            var data_value = $(this).attr("data-value");
+            ckeckbox("input[data-value='"+data_value+"']",true);
+        }else{
             var a = $(this).parent().parent().parent().nextUntil("tr.seg-entry").length+$(this).parent().parent().parent().prevUntil("tr.seg-entry").length;
             var b = $(this).parent().parent().parent().nextUntil("tr.seg-entry").find("label.cart-checkbox-checked").length+$(this).parent().parent().parent().prevUntil("tr.seg-entry").find("label.cart-checkbox-checked").length;
             if(a-b==1){
@@ -209,26 +208,26 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
                 $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th input").prop("checked","checked");
             }
         }
-		$(this).parent().addClass("cart-checkbox-checked");
-	}
-	else
-	{
-		if(data_type == 'all')
-		{
-			ckeckbox("input[type='checkbox']",false);
-		}
-		else if(data_type == 'shop')
-		{
-			var data_value = $(this).attr("data-value");
-			ckeckbox("input[data-value='"+data_value+"']",false);
-		}else{
+        $(this).parent().addClass("cart-checkbox-checked");
+    }
+    else
+    {
+        if(data_type == 'all')
+        {
+            ckeckbox("input[type='checkbox']",false);
+        }
+        else if(data_type == 'shop')
+        {
+            var data_value = $(this).attr("data-value");
+            ckeckbox("input[data-value='"+data_value+"']",false);
+        }else{
             $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th label").removeClass("cart-checkbox-checked");
             $(this).parent().parent().parent().prevUntil("tr.seg-entry").find("th input").prop("checked","");
         }
-		$(this).parent().removeClass("cart-checkbox-checked");
-		$(this).parent().parent().parent().removeClass("checked");
+        $(this).parent().removeClass("cart-checkbox-checked");
+        $(this).parent().parent().parent().removeClass("checked");
 
-	}
+    }
     var flag_all = $(".cart-shop").length== $(".cart-shop.cart-checkbox-checked").length;
         if(flag_all){
             ckeckbox("input[type='checkbox']",true);
@@ -237,41 +236,41 @@ $(".cart-checkbox input[type='checkbox']").click(function(){
             $("input[data-type='all']").prop("checked","");
             $("input[data-type='all']").parent().removeClass("cart-checkbox-checked");
         }
-	count();
+    count();
 });
 function ckeckbox(obj,flag)
 {
-	$(".cart-checkbox").find(obj).each(function(){
-		if(flag == true)
-		{
-			$(this).parent().addClass("cart-checkbox-checked");
-			$(this).prop("checked","checked");
-		}
-		else
-		{
-			$(this).parent().parent().parent().removeClass("checked");
-			$(this).parent().removeClass("cart-checkbox-checked");
-			$(this).prop("checked","");	
-		}
-	});
+    $(".cart-checkbox").find(obj).each(function(){
+        if(flag == true)
+        {
+            $(this).parent().addClass("cart-checkbox-checked");
+            $(this).prop("checked","checked");
+        }
+        else
+        {
+            $(this).parent().parent().parent().removeClass("checked");
+            $(this).parent().removeClass("cart-checkbox-checked");
+            $(this).prop("checked",""); 
+        }
+    });
 }
 function count()
 {
-	var count = 0;
-	var num = 0;
+    var count = 0;
+    var num = 0;
     var mj=20;
     var voucher = <{$current}>;
-	$(".cart-checkbox").find("input[name='product_id[]']:checked").each(function(){
-		var value = $(this).val();
-		var price = $(this).parent().parent().parent().find("#cell"+value+" span").html();
-		price = price.replace(/,/g, "")
-		price = Number(price);
-		count = count + price;
-		// num ++;
+    $(".cart-checkbox").find("input[name='product_id[]']:checked").each(function(){
+        var value = $(this).val();
+        var price = $(this).parent().parent().parent().find("#cell"+value+" span").html();
+        price = price.replace(/,/g, "")
+        price = Number(price);
+        count = count + price;
+        // num ++;
         num = num +parseInt($(this).parentsUntil("tbody").find("#nums").val());
-		$(this).parent().parent().parent().addClass("checked");
-	});
-	$(".subtotal").html(count.toFixed(2));
+        $(this).parent().parent().parent().addClass("checked");
+    });
+    $(".subtotal").html(count.toFixed(2));
     if(voucher){
         if(count.toFixed(2)<=300){
             $("#xiangcha").html((300-count).toFixed(2));
@@ -282,86 +281,86 @@ function count()
     }else{
         $(".subtotal").html(count.toFixed(2));
     }
-	$(".cart-count em").html(num);
-	if(num>0) 
-		$(".submit-btn").removeClass("submit-btn-disabled");
-	else
-		$(".submit-btn").addClass("submit-btn-disabled");	
+    $(".cart-count em").html(num);
+    if(num>0) 
+        $(".submit-btn").removeClass("submit-btn-disabled");
+    else
+        $(".submit-btn").addClass("submit-btn-disabled");   
 }
 var c=$(".computing_item");
 var e=null;
 c.each(function(){
-	var g=$(this).find(".computing_act input");		
-	var h=$(this).find("input#nums");
-	var o=this;
-	var f=h.attr("data-max");
-	var i=1;
-	var id=h.attr("data-id");
-	h.bind("input propertychange",function(){
-		var j=this;
-		var k=$(j).val();
-		e&&clearTimeout(e);
-		e=setTimeout(function(){
-			var l=Math.max(Math.min(f,k.replace(/\D/gi,"").replace(/(^0*)/,"")||1),i);
-			$(j).val(l);
-			edit_num(id,l,o);
-			if(l==f){
-				g.eq(0).attr("class","no_add");
-				if(l==i)
-					g.eq(1).attr("class","no_reduce")
-				else
-					g.eq(1).attr("class","reduce")
-			}else{
-				if(l<=i){
-					g.eq(1).attr("class","no_reduce");
-					g.eq(0).attr("class","add")
-				}else{
-					g.eq(1).attr("class","reduce");
-					g.eq(0).attr("class","add")
-				}
-			}
-		},50)
-	}).trigger("input propertychange").blur(function(){$(this).trigger("input propertychange")}).keydown(function(l){
-		if(l.keyCode==38||l.keyCode==40)
-		{
-			var j=0;
-			l.keyCode==40&&(j=1);g.eq(j).trigger("click")
-		}
-	});
-	g.bind("click",function(l){
-		if(!$(this).hasClass("no_reduce")){
-			var j=parseInt(h.val(),10)||1;
-			if($(this).hasClass("add")&&!$(this).hasClass("no_add")){
-				$(this).next().attr("class","reduce");
-				if(f>i&&j>=f){
-					$(this).attr("class","no_add")
-				}
-				else
-				{
-					j++;
-					edit_num(id,j,o);
-				}
-			}else{
-				if($(this).hasClass("reduce")&&!$(this).hasClass("no_reduce")){
-					j--;
-					edit_num(id,j,o);
-					$(this).prev().attr("class","add");
-					j<=i&&$(this).attr("class","no_reduce")
-				}
-			}
-			h.val(j)
-		}
-	})
+    var g=$(this).find(".computing_act input");     
+    var h=$(this).find("input#nums");
+    var o=this;
+    var f=h.attr("data-max");
+    var i=1;
+    var id=h.attr("data-id");
+    h.bind("input propertychange",function(){
+        var j=this;
+        var k=$(j).val();
+        e&&clearTimeout(e);
+        e=setTimeout(function(){
+            var l=Math.max(Math.min(f,k.replace(/\D/gi,"").replace(/(^0*)/,"")||1),i);
+            $(j).val(l);
+            edit_num(id,l,o);
+            if(l==f){
+                g.eq(0).attr("class","no_add");
+                if(l==i)
+                    g.eq(1).attr("class","no_reduce")
+                else
+                    g.eq(1).attr("class","reduce")
+            }else{
+                if(l<=i){
+                    g.eq(1).attr("class","no_reduce");
+                    g.eq(0).attr("class","add")
+                }else{
+                    g.eq(1).attr("class","reduce");
+                    g.eq(0).attr("class","add")
+                }
+            }
+        },50)
+    }).trigger("input propertychange").blur(function(){$(this).trigger("input propertychange")}).keydown(function(l){
+        if(l.keyCode==38||l.keyCode==40)
+        {
+            var j=0;
+            l.keyCode==40&&(j=1);g.eq(j).trigger("click")
+        }
+    });
+    g.bind("click",function(l){
+        if(!$(this).hasClass("no_reduce")){
+            var j=parseInt(h.val(),10)||1;
+            if($(this).hasClass("add")&&!$(this).hasClass("no_add")){
+                $(this).next().attr("class","reduce");
+                if(f>i&&j>=f){
+                    $(this).attr("class","no_add")
+                }
+                else
+                {
+                    j++;
+                    edit_num(id,j,o);
+                }
+            }else{
+                if($(this).hasClass("reduce")&&!$(this).hasClass("no_reduce")){
+                    j--;
+                    edit_num(id,j,o);
+                    $(this).prev().attr("class","add");
+                    j<=i&&$(this).attr("class","no_reduce")
+                }
+            }
+            h.val(j)
+        }
+    })
 })
 function edit_num(id,num,obj){
-	var url = "?m=product&s=cart";
-	var pars = 'id='+id+'&num='+num;
-	$.post(url, pars,showResponse);
-	function showResponse(originalRequest)
-	{
-		$('#cell'+id+' span').html((Number(originalRequest).toFixed(2)));	
-		count()
-	}
+    var url = "?m=product&s=cart";
+    var pars = 'id='+id+'&num='+num;
+    $.post(url, pars,showResponse);
+    function showResponse(originalRequest)
+    {
+        $('#cell'+id+' span').html((Number(originalRequest).toFixed(2)));   
+        count()
+    }
 }
 </script>
 <{include file="../../../templates/default/footer.htm"}>

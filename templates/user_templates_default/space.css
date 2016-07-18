@@ -1,43 +1,11 @@
-@charset "utf-8";
-/*public*/
-html,body,address,blockquote,div,dl,form,h1,h2,h3,h4,h5,h6,ol,p,ul,dd,dt,li,object,a,b,em,i,img,samp,span,strong,sub,sup,tt,var,input,select{margin:0;padding:0}
-body{font:12px/1.5 'Microsoft YaHei','Heiti SC',simhei,'Lucida Sans Unicode','Myriad Pro','Hiragino Sans GB',Verdana;color:#333;word-wrap:break-word;word-break:break-all;-webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: none;}
-html,body{overflow-y:auto;overflow-x:hidden;}
-input,button,img,fieldset{border:0;outline:none}
-input,select{outline:none}
-input[type="reset"]::-moz-focus-inner,
-input[type="button"]::-moz-focus-inner,
-input[type="submit"]::-moz-focus-inner,
-input[type="file"] > input[type="button"]::-moz-focus-inner{border:none;padding:0;}
-/* set image max width to 100% */
-img,video{max-width:100%;height:auto;width:auto\9;/* ie8 */}
-/* set html5 elements to block */
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body div,body p{margin:0 auto;word-break:normal}
-address,cite,dfn,em,var,i{font-style:normal}
-var{font-family:Verdana,Arial}
-sup{vertical-align:text-top}
-sub{vertical-align:text-bottom}
-/* a */
-a{display:inline-block;color:#333;text-decoration:none;outline:none}
-a:hover{color:#ff5c5c;text-decoration:none}
-/* list */
-ul,ol{list-style:none;}
-/*float*/
-.fl{float:left}
-.fr{float:right}
-.clear{zoom:1;}
-.clear:after{display:block; content:""; height:0; clear:both;visibility:hidden;}
-
 /*Pages Width*/
-.w{width:1212px}
 .w242{width: 242px !important;}
 .w243{width: 243px !important;}
 .bbn{border-bottom: none !important;}
+.mr0{margin-right: 0 !important;}
 /*卖家店铺开始*/
 .buyer-shop{overflow: hidden;}
-.buyer-shop .banner{position: relative;top: 0;left: 50%;margin-left: -960px;}
+/*.buyer-shop .banner{position: relative;top: 0;left: 50%;margin-left: -960px;}*/
 .buyer-shop .promise{background: #fff;}
 .buyer-shop .promise ul{margin-top: 20px;}
 .buyer-shop .promise li{float: left;width: 241px;height: 100px;line-height: 100px;text-align: center;font-size: 18px;}
@@ -104,6 +72,7 @@ ul,ol{list-style:none;}
 /*图片放大*/
 .pro_detail .item_info .gallery{width: 450px;float: left;position: relative;}
 .pro_detail .item_info .gallery div{width: 448px;height: 448px;line-height:448px;font-size: 0;border: 1px solid #ccc;text-align: center;}
+.pro_detail .item_info .gallery div a{width: 448px;height: 448px;overflow: hidden;}
 .pro_detail .item_info .gallery .midimg{max-width: 448px;max-height: 448px;}
 .pro_detail .item_info .gallery li{width: 80px;height: 80px;float: left;margin: 10px 10px 10px 0;border: 1px solid #ccc;}
 .pro_detail .item_info .gallery li img{width: 80px;height: 80px;}

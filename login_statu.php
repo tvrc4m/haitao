@@ -22,8 +22,8 @@ function showUser()
 
 				$new.= "<li class='nav msg'><div class='nav-fore1'><a class='name' href='".$config['weburl']."/main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'><span>消息</span></a></div></li>";
 			}else{
-				$new = "<div class='nav-fore1'><a class='name' href='main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><img align='absmiddle' src='$pic'><i><em></em></i></div><div class='nav-fore2'><ul><li><a href='main.php?m=member&s=admin_member'>账号管理</a></li><li><a href='main.php?action=logout'>退出</a></li></ul><div>";
-
+				// $new = "<div class='nav-fore1'><a class='name' href='main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><img align='absmiddle' src='$pic'><i><em></em></i></div><div class='nav-fore2'><ul><li><a href='main.php?m=member&s=admin_member'>账号管理</a></li><li><a href='main.php?action=logout'>退出</a></li></ul><div>";
+				$new = "<li class='drop-down'><a class='name' href='main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><div><a href='main.php?m=member&s=admin_member'>账号管理</a><a href='main.php?action=logout'>退出</a><div></li>";
 				$new.= "<li class='nav msg'><div class='nav-fore1'><a class='name' href='main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'><span>消息</span></a></div></li>";
 			}
 
@@ -43,9 +43,10 @@ function showUser()
 		}
 		else
 		{
-			$new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/$config[regname]'>注册</a>";
+			// $new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/$config[regname]'>注册</a>";
+			$new="<li><a href='".$config["weburl"]."/login.php'>亲，请登录</a></li><li><a href='".$config["weburl"]."/$config[regname]'>注册</a></li>";
 		}
-		if($_GET['m'] == 'index')
+		if($_GET['m'] == 'index'&&$config['temp']=='wap')
 		{
 			$new="<div class='nav-fore1'>".$new."</div>";
 		}

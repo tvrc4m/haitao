@@ -1,37 +1,30 @@
+<link href="<{$config.weburl}>/templates/<{$config.temp}>/css/page2.css" rel="stylesheet" type="text/css" />
 <!--banner start-->
-<div class="pos_re newclear">
+<div class="banner-slide clear">
     <script src='<{$config.weburl}>/api/ad.php?id=1&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-    <div class="w pos_ab">
-        <div class="extend">
-            <script src='<{$config.weburl}>/api/ad.php?id=16&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-        </div>
-    </div>
+    <div class="extend"><script src='https://www.mayihaitao.com/api/ad.php?id=31'></script></div>
 </div>
 <!--banner end-->
 <!--海淘国家 start-->
 <div class="m_country_list">
-    <div class="w">
-        <div class="country_goods_list">
-            <ul class="m_tab_con pos_re" id="country_tab_con">
-                <li class="item cur">
-                    <div class="m_list m_list_01 newclear">
-                        <div class="clu m_img_box w_202"><a href="<{$config.weburl}>/?m=product&s=list&dist_id=31&national=7"><img src="../../../uploadfile/adv/2016/bg_jp_l.jpg" alt="日本馆"></a></div>
-                        <div class="clu pos_re list_box">
-                            <ul class="newclear">
-                                <{insert name="label" national=1 type="product"  o=6 temp="product_list_li_3" limit=6}>
-                            </ul>
-                            <div class="m_img_box pos_ab">
-                                <script src='<{$config.weburl}>/api/ad.php?id=17&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script>
-                            </div>
-                        </div>
-                        <div class="clu m_img_box w_202"><script src='<{$config.weburl}>/api/ad.php?id=18&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
-                    </div>
-                    <div class="pos_ab c_l_img"><a href="<{$config.weburl}>/?m=product&s=list&dist_id=31&national=7"><img src="/image/default/jp_left.png" alt=""></a></div>
-                    <div class="pos_ab c_r_img"><img src="/image/default/jp_right.png" alt=""></div>
-                </li>
+  <div class="country_goods_list">
+    <ul class="m_tab_con pos_re" id="country_tab_con">
+      <li>
+        <div class="m_list m_list_01 clear">
+          <div class="fl m_img_box w_202"><a href="<{$config.weburl}>/?m=product&s=list&dist_id=31&national=7"><img src="../image/default/haitao_icon11.jpg"></a></div>
+          <div class="fl pos_re list_box">
+            <ul class="clear">
+              <{insert name="label" national=1 type="product"  o=6 temp="product_list_li_3" limit=6}>
             </ul>
+            <div class="m_img_box pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=17&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
+          </div>
+          <div class="fl m_img_box w_202"><script src='http://haitao.com/api/ad.php?id=18&catid=&name='></script></div>
         </div>
-    </div>
+        <div class="c_l_img"><img src="../image/default/haitao_icon12.png" alt=""></div>
+        <div class="c_r_img"><img src="../image/default/haitao_icon13.png" alt=""></div>
+      </li>
+    </ul>
+  </div>
 </div>
 <!--海淘国家 end-->
 <!--商品分类 start-->
@@ -42,7 +35,7 @@
 <{if $buidAd eq 1}>
 <div class="am-dialog-mask"></div>
 <section>
-    <div class="main-bomb bomb-in"><img src="../../../image/default/haitao_icon3.png"><a href="javascript:void(0);" class="close"></a><a href="<{$logoAd}>" class="receive"></a></div>
+    <div class="main-bomb bomb-in"><img src="../../../image/default/haitao_icon17.png"><a href="javascript:void(0);" class="close"></a><a href="<{$logoAd}>" class="receive"></a></div>
 </section>
 <{/if}>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
@@ -74,8 +67,7 @@ if(getCookie("mayi_bomb")!="mayi_delate"){
 $(".main-bomb a.close").bind("click",function(){
     bombanimate();
 });
-$(".m_menu").unbind("mouseenter mouseleave");
-$(".m_menu dd").removeClass("hidden");
+$(".m_menu dd").css("display","block");
 $(window).load(function(){
     $(".flexslider").flexslider({slideshowSpeed: 4000,animationSpeed: 400,touch: true,pauseOnHover:true});
 });
