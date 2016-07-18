@@ -30,16 +30,25 @@ class curlUp{
     * @param $id
     */
     function orderUp($orderList){
-
-        $time = $this->time;//date("YmdHis",$orlist['order']['create_time']);
-        $addr = explode(' ',$orderList['consignee_address']);
         $list = array();
-        $list['goods_order_count']=1;
-        $list['msg'] = '';
-        $list['goods_order'][0]['order_code']=$orderList['order_id'];
-        $list['goods_order'][0]['order_sum_money']=(string)($orderList['price']+$orderList['logistics_price']);//$orlist['order']['logistics_price']);
-        $list['goods_order'][0]['order_member_name']=$orderList['consignee'];
-        $list['goods_order'][0]['order_member_id_number']=$orderList['identity_card'];
+        for($i=0;$i<count($orderList);$i++){
+            $time = $this->time;//date("YmdHis",$orlist['order']['create_time']);
+            $addr = explode(' ',$orderList[0]['consignee_address']);
+            $list['goods_order_count']=1;
+            $list['msg'] = '';
+            $list['goods_order'][0]['order_code']=$orderList[0]['order_id'];
+            $list['goods_order'][0]['order_sum_money']=(string)($orderList[0]['price']+$orderList[0]['logistics_price']);//$orlist['order']['logistics_price']);
+            $list['goods_order'][0]['order_member_name']=$orderList[0]['consignee'];
+
+            var_dump($orderList[0]);
+        }
+        var_dump($list);die;
+
+
+
+
+
+       $list['goods_order'][0]['order_member_id_number']=$orderList['identity_card'];
         $list['goods_order'][0]['order_member_phone']=$orderList['consignee_mobile'];
         $list['goods_order'][0]['order_member_sheng']=$addr[0];
         $list['goods_order'][0]['order_member_shi']=$addr[1];
@@ -53,6 +62,7 @@ class curlUp{
         $list['goods_order'][0]['goods_attributes_list'][0]['price']=$orderList['price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['num']=$orderList['num'];
         $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$this->trades[$orderList['trade']];
+        var_dump($list);var_dump($list['goods_order'][0]['goods_attributes_list']);die;
         $order = json_encode($list);
         $token =  $this->token();
         $type = $this->aes($this->orderUrl,array ("time" => $this->time,"pass" => $this->pass,"token" => $token,"order" => $order));
