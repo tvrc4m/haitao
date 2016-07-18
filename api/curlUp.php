@@ -12,7 +12,7 @@ class curlUp{
     private $imgUpurl = "http://121.40.31.77:8015/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
     private $orderUrl = "http://121.40.31.77:8015/Service/Send_Goods_Order.aspx";//订单提交链接
 
-    private $trades = array('0'=>'1','1'=>'2','2'=>'0');
+    private $trades = array('0'=>'2','1'=>'0','2'=>'1');
 
     const EXT='.txt';
 
