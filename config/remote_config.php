@@ -1,0 +1,1 @@
+<?php $remote_config = unserialize('a:7:{s:20:"image_remote_storage";s:1:"0";s:10:"ftp_server";s:16:"v0.api.upyun.com";s:10:"space_name";s:15:"haitao-resource";s:8:"ftp_name";s:10:"mayihaitao";s:12:"ftp_password";s:9:"mayi@2015";s:16:"remote_directory";s:6:"gaofei";s:17:"remote_access_url";s:38:"https://haitao-resource.b0.upaiyun.com";}');?>

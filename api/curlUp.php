@@ -6,11 +6,13 @@ class curlUp{
     private $realPositive;
     private $realBack;
     private $time;
-    private $pass = 'AiMeiHtBoyWholeSaler100';
-    private $tokenUrl = "http://121.40.31.77:80/Service/Get_Aes.aspx";//验证token链接
-    private $realUrl = "http://121.40.31.77/Service/Get_Exist_Id_Num.aspx";//验证身份证是否存在链接
-    private $imgUpurl = "http://121.40.31.77/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
-    private $orderUrl = "http://121.40.31.77/Service/Send_Goods_Order.aspx";//订单提交链接
+    private $pass = 'AiMeiHtBoyWholeSaler001';
+    private $tokenUrl = "http://121.40.31.77:8015/Service/Get_Aes.aspx";//验证token链接
+    private $realUrl = "http://121.40.31.77:8015/Service/Get_Exist_Id_Num.aspx";//验证身份证是否存在链接
+    private $imgUpurl = "http://121.40.31.77:8015/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
+    private $orderUrl = "http://121.40.31.77:8015/Service/Send_Goods_Order.aspx";//订单提交链接
+
+    private $trades = array('0'=>'1','1'=>'2','2'=>'0');
 
     const EXT='.txt';
 
@@ -29,6 +31,7 @@ class curlUp{
     */
     function orderUp($orderList){
 
+        $time = $this->time;//date("YmdHis",$orlist['order']['create_time']);
         $addr = explode(' ',$orderList['consignee_address']);
         $list = array();
         $list['goods_order_count']=1;
@@ -42,14 +45,14 @@ class curlUp{
         $list['goods_order'][0]['order_member_shi']=$addr[1];
         $list['goods_order'][0]['order_member_xian']=$addr[2];
         $list['goods_order'][0]['order_member_address']=$addr[3];
-        $list['goods_order'][0]['order_logistics_name']=$orderList['logistics_name'];
+        $list['goods_order'][0]['order_logistics_name']='快递';//$orderList['logistics_name'];
         $list['goods_order'][0]['order_logistics_money']=$orderList['logistics_price'];
         $list['goods_order'][0]['order_goods_money']=$orderList['price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['id']='';
         $list['goods_order'][0]['goods_attributes_list'][0]['sku_id']=$orderList['skuid'];
         $list['goods_order'][0]['goods_attributes_list'][0]['price']=$orderList['price'];
         $list['goods_order'][0]['goods_attributes_list'][0]['num']=$orderList['num'];
-        $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$orderList['trade'];
+        $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$this->trades[$orderList['trade']];
         $order = json_encode($list);
         $token =  $this->token();
         $type = $this->aes($this->orderUrl,array ("time" => $this->time,"pass" => $this->pass,"token" => $token,"order" => $order));

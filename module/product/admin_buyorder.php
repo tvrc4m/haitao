@@ -9,7 +9,6 @@ $order=new order();
 	if($_GET['flag']==4){
 
         $tmpPwd = $_POST['passwd_order'];
-        var_dump($tmpPwd);
         $tmpPwd = md5($tmpPwd);
         $sql="select pay_pass from pay_member where pay_pass='$tmpPwd' and userid='$buid'";
         if( mysql_num_rows($db->query($sql)) == 1){
