@@ -18,7 +18,7 @@
 .centent_list .centent_list_title{width: 100%;height: 40px;line-height: 40px;margin-left: -1px;margin-top: -1px;}
 .centent_list .centent_list_title a{width: 100%;border-left:8px solid #ffa200;font-size:0.7rem;padding-left: 15px;height: 40px;
 	line-height: 40px;display: inline-block;}
-.centent_list .centent_list_menu li{padding: 15px 0;border-top: 1px dotted #666;padding-left: 15px;}
+.centent_list .centent_list_menu li{padding: 15px 0;border-top: 1px dotted #666;padding-left: 15px;line-height: 1;}
 .centent_list .centent_list_menu li a{display: inline-block;width: 100%;color: #535353;}
 .centent_list .centent_list_menu li a span{float: left;padding-left: 1.4rem;font-size: 0.65rem;color: #666;}
 .centent_list .centent_list_menu li a span.list_menu_i1{background: #fff url(../../../image/wap/wap_haitao_icon87.png) 0rem center no-repeat;

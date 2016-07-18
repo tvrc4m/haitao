@@ -119,7 +119,7 @@ input[type="submit"] {background: #ff5c5d;border: 0 none;color: #FFFFFF;display:
 .roll_list .roll_list_content .roll_list_left .roll_list_lai{float: left;width: 0.7rem;line-height: 1.2;margin-left: 0.3rem;color: #fff;}
 .roll_list .roll_list_content .roll_list_left .roll_list_money{font-size:1.8rem;float: left;margin-top: 1rem;margin-left: 0.8rem;color: #ffea00;}
 .roll_list .roll_list_content .roll_list_left .roll_list_money_test{color: #fff;}
-.roll_list .roll_list_content .roll_list_left .roll_list_img{float: left;margin-left: 4px;width: 10px;margin-top: 0.85rem;}
+.roll_list .roll_list_content .roll_list_left .roll_list_img{float: left;margin-left: 0.2rem;width: 0.4rem;margin-top: 0.8rem;}
 .roll_list .roll_list_content .roll_list_right{float: left;text-align: left;padding-left: 0.8rem;}
 .roll_list .roll_list_content .roll_list_right .roll_list_status{width: 2.5rem;position: absolute;right: 0.5rem;top: 0.8rem;}
 .roll_list .roll_list_content .roll_list_right .roll_list_checked{width: 2rem;position: absolute;right: 0.5rem;top: 0.9rem;z-index: 999;}
