@@ -3,8 +3,8 @@ include_once("includes/page_utf_class.php");
 include_once("$config[webroot]/module/product/includes/plugin_order_class.php");
 $order=new order();
 
-/*
-if(isset($_GET['flag'])&&isset($_GET['id']))
+
+/*if(isset($_GET['flag'])&&isset($_GET['id']))
 {
 	if($_GET['flag']==4){
 
@@ -14,15 +14,11 @@ if(isset($_GET['flag'])&&isset($_GET['id']))
         if( mysql_num_rows($db->query($sql)) == 1){
             $order->set_order_statu($_GET['id'],4);//确认收货
             $admin->msg("$config[weburl]/main.php?m=product&s=admin_buyorder","支付成功");
-            
         }else{
             msg("$config[weburl]/main.php?m=product&s=admin_buyorder","支付密码错误");
-            
-            
-
         }
-		
-		}
+
+	}
     if($_GET['flag']==0){
         if($_POST['state_info']){
 		
@@ -33,8 +29,30 @@ if(isset($_GET['flag'])&&isset($_GET['id']))
     
 		$order->set_order_statu($_GET['id'],0);//取消定单
 	}
+}*/
+
+if(isset($_GET['flag'])&&isset($_GET['id']))
+{
+	if($_GET['flag']==4 && $buid){
+
+        $sql="select pay_pass from pay_member where userid='$buid'";
+        if(mysql_num_rows($db->query($sql)) == 1){
+            $order->set_order_statu($_GET['id'],4);//确认收货
+            $admin->msg("$config[weburl]/main.php?m=product&s=admin_buyorder","收货成功");
+        }else{
+            msg("$config[weburl]/main.php?m=product&s=admin_buyorder","收货失败");
+        }
+
+	}
+    if($_GET['flag']==0){
+        if($_POST['state_info']){
+            $sql="update ".ORPRO." set reason = '$_POST[state_info]' where order_id = '$_GET[id]'";
+            $db->query($sql);
+        }
+		$order->set_order_statu($_GET['id'],0);//取消定单
+	}
 }
-*/
+
 
 if(isset($_GET['flag'])&&isset($_GET['id']))
 {

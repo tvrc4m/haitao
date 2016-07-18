@@ -610,7 +610,7 @@ class order
 			$res=pay_get_url($post,true);//跳转至订单生成页面
 		}
 		if($status==4)
-		{	
+		{
 			//===========成功，反回结果给支付中心。
 			$sql = "select is_virtual from  ".ORDER." where  order_id='$oid' limit 1";
 			$this->db->query($sql);
@@ -623,6 +623,7 @@ class order
 			{
 				$str = " `userid` = '".$buid."'";
 			}
+
 			$sql="select seller_id,status,product_price,logistics_price,is_virtual, order_id, dist_user_id from ".ORDER." where order_id='$oid' and $str";
 			$this->db->query($sql);
 			$de=$this->db->fetchRow();
@@ -639,7 +640,7 @@ class order
 			}
 
 			include_once("module/member/includes/plugin_member_class.php");
-			$member = new member();				
+			$member = new member();
 			$member->add_points(($de['product_price']+$de['logistics_price'])*1,'1',$oid,$buid);
 			$post['action']='update';
 			$post['seller_email']=$de['seller_id'];
@@ -647,8 +648,6 @@ class order
 			$post['order_id']=$oid;//外部订单号
 			$post['statu']=4;
 			$post['is_virtual']=$de['is_virtual'];
-
-
 			$res=pay_get_url($post,true);//跳转至订单生成页面
 
 			fb($res);
@@ -738,7 +737,6 @@ class order
 			pay_get_url($post,true);//跳转至订单生成页面
 			//--------------
 		}
-		
 	}
 	
 	//修改订单价格，需要请求支付中心
