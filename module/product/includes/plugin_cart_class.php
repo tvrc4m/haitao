@@ -459,16 +459,16 @@ class cart
                 $discounts = floatval($discounts);
                 if($discounts > 0){$price = ($price * $discounts)/10;}
 
-				if ($dist_id)
-				{
-					$sql = "insert into ".CART."(`buyer_id`,`product_id`,`seller_id`,`price`,`quantity`,`create_time` ,`spec_id`,`is_tg`,`discounts`, dist_user_id) VALUES ('$buid','$product_id','$pro[member_id]','$price','$quantity',".time().",'$spec_id','$pro[is_tg]','$discounts', $dist_id)";
+				//if ($dist_id)
+				//{
+					$sql = "insert into ".CART."(`buyer_id`,`product_id`,`seller_id`,`price`,`quantity`,`create_time` ,`spec_id`,`is_tg`,`discounts`, dist_user_id) VALUES ('$buid','$product_id','$pro[member_id]','$price','$quantity',".time().",'$spec_id','$pro[is_tg]','$discounts', intval($dist_id)";
 
-				}
+				/*}
 				else
 				{
 					$sql = "insert into ".CART."(`buyer_id`,`product_id`,`seller_id`,`price`,`quantity`,`create_time` ,`spec_id`,`is_tg`,`discounts`) VALUES ('$buid','$product_id','$pro[member_id]','$price','$quantity',".time().",'$spec_id','$pro[is_tg]','$discounts')";
 				}
-
+				*/
 				$this->db->query($sql);	
 				$id=$this->db->lastid();
 				return $id;
