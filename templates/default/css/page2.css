@@ -93,6 +93,7 @@
 .pro_list .pro_select dl{line-height: 40px;border-bottom: 1px dotted #ccc;overflow: hidden;}
 .pro_list .pro_select dt{float: left;width: 70px;text-align: right;font-weight: bold;color: #999;}
 .pro_list .pro_select a{padding: 0 10px;}
+.pro_list .pro_select a.curr{color:#ff5c5c;}
 .pro_list .pro_select .pro_selected{border-bottom:none;}
 .pro_list .pro_selected a{border: 1px solid #ccc;height: 20px;display: inline;padding: 2px 5px;margin: 0 5px;}
 /*商品列表页分类排序*/
