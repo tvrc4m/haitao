@@ -1,4 +1,5 @@
 <?php
+include_once("includes/global.php");
 if(!empty($_GET["action"]))
     $post=$_GET;
 else
@@ -10,7 +11,7 @@ if(!empty($_SERVER['HTTP_REFERER']))
 setcookie('old_url',$_SERVER['HTTP_REFERER']);
 if(!empty($post["action"])&&$post["action"]=="submit")
 {
-    include_once("includes/global.php");
+    
     include_once("includes/smarty_config.php");
     include_once("config/reg_config.php");
     include_once ("includes/uc_server.php");
@@ -134,12 +135,6 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                 $sql="select userid from ".MEMBER." where  mobile='$post[user]'";
                 $db->query($sql);
                 $re=$db->fetchRow();
-                if($re['statu']=='-2')
-                    msg("login.php?erry=-5&connect_id=$post[connect_id]");
-
-                if($re['password']!=md5($post['password']))
-                    msg("login.php?erry=-2&connect_id=$post[connect_id]");
-
                 if($us['password']!=md5(md5($post['password']).$us['salt']))
                     msg("login.php?erry=-2&connect_id=$post[connect_id]");
                 if($us['password']==md5(md5($post['password']).$us['salt'])){
@@ -158,7 +153,6 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             }else
                 msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
         }else{
-
             // no ucenter login
             //验证手机号登录
             if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
@@ -572,9 +566,8 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 {
     $appid = $config['weixin_app_id'];
     $appsecret = $config['weixin_key'];
-    if(empty($_SESSION['accessToken'])){
-    $redirect_uri = urlencode("$config[weburl]/login.php?connect_type=weixin");
 
+    $redirect_uri = urlencode("$config[weburl]/login.php?connect_type=weixin");
     if($config['bw'] == "weixin")
     {
         $wechat_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
@@ -586,7 +579,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 
     $_SESSION['connect_name'] = '微信';
     $tpl -> assign("wechat_url",$wechat_url);
-
+    if(empty($_SESSION['accessToken'])){
     if ($config['bw'] == "weixin")
     {
         if (!isset($_GET['code']))

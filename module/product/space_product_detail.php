@@ -59,6 +59,8 @@ include_once ("$config[webroot]/api/logisticsCost.php");
 $obj = new logistics($prode['weights']);
 $prode['weights'] = $obj->cost();
 $prode['detail'] = str_replace('/lib/kindeditor/php/../../..',$config['weburl'],$prode['detail']);
+var_dump($prode['catid']);
+catId($prode['catid']);
 $tpl->assign("de",$prode);
 $tpl->assign("relation",$relation);
 
@@ -244,6 +246,12 @@ function get_buyerpoints($points)
 			return $v['img'];
 		}
 	}	
+}
+//获取商品栏目目录
+function catId($catid){
+	$aa = strlen($catid);
+	var_dump(substr('123456789',0, 2));die;
+	//return $cat;
 }
 function namereplace($name, $charset = 'UTF8') {
 	$strlen = mb_strlen($name, $charset);
