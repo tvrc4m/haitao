@@ -245,10 +245,9 @@ body{background-color: #fff;}
 .norecord i{background:url(../../../image/default/user_admin/norecord.gif) no-repeat ;display:inline-block;float:left;height:44px;margin-right:16px;width:44px;}
 .norecord span{display:inline-block;float:left;font-size:1.3em;font-weight:700;line-height:44px;}
 /* 分页*/
-.pagination{float: right;margin-top: -9px;}
-.pagination a ,.pagination b{display:inline-block;min-width:35px;height:35px;border:solid 1px #e0e0e0;line-height:35px;text-align: center;}
-.pagination b{background:#FF5c5c;color:#FFFFFF;cursor:default;font-weight: normal;}
-.pagination .nextPage,.pagination .prePage{padding:0 10px;}
+.pagination{width: 960px;padding: 15px 0;text-align: center;}
+.pagination a, .pagination b{border: 1px solid #CCCCCC;font-family: arial;font-size: 14px;height: 20px;line-height: 20px;margin-left: 2px;overflow: hidden;padding: 3px 10px;border-radius: 3px 3px 3px 3px;text-decoration: none;display: inline-block;}
+.pagination b{background:#e4e4e4;}
 /*订单管理 */
 .order tbody th{border-top:1px solid #e0e0e0;padding:10px;}
 .order tbody .bl{border-left:1px solid #C4D5E0;}

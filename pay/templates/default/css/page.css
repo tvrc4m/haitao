@@ -4,7 +4,7 @@ body{margin:0;padding:0;font:12px/1.5 arial,'宋体';,"Microsoft Yahei";}
 html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,a,em,font,img,strong,b,dl,dt,dd,ol,ul,li,form,textarea,input{margin:0;padding:0;}
 ol,ul,li{list-style:none outside none;}
 a{text-decoration:none;color:#4D4D4D;cursor:pointer;}
-a:hover{color:#08c;}
+a:hover{color:#ff5c5c;}
 em{font-style:normal;}
 .fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 .fn-clear{zoom:1;}
@@ -12,17 +12,26 @@ em{font-style:normal;}
 .fn-right{display:inline;float:right;}
 .fn-hide{display:none;}
 .w{width:960px;margin:0 auto;}
-.top{height:117px;margin-bottom:15px;}
-.top>.nav{background-color: #e1e1e1;}
-.top-a{height:30px;line-height:30px;}
-.top-a .fn-left li{float:left;padding-right:14px;}
-.top-a .fn-right li{float:left;padding-left:20px;}
-.top-b{margin-top:2px;height:50px;padding-top:20px;}
-.top-b h2{float:left;display:inline;}
-.top-b ul{float:right;display:inline;}
-.top-b ul li{float:left;margin:10px 30px 0 30px;font-weight:700;font-size:16px;}
-.top-b ul li a{color:#000;}
-.top-b ul li.current a{color:#ff5c5c;}
+.fl{float:left}
+.fr{float:right}
+.clear{zoom:1;}
+.clear:after{display:block; content:""; height:0; clear:both;visibility:hidden;}
+.header .top{background:#e1e1e1;height:30px;line-height:30px}
+.header .top .fl li{float: left;}
+.header .top .fl a{padding-left:16px;margin-right:20px;background: url(../../../../image/default/haitao_icon1.png) no-repeat 0;}
+.header .top .fl div{padding-left:16px;background: url(../../../../image/default/haitao_icon2.png) no-repeat 0;}
+.header .top .fr li{float: left;}
+.header .top .fr a{padding:0 15px;}
+.header .top .drop-down a{background: url(../../../../image/default/haitao_icon3.png) no-repeat 85%;padding-right: 25px;}
+.header .top .drop-down div{position: absolute;border: 1px solid #eee;background: #fff;border-top: 0;z-index: 1;display: none;}
+.header .top .drop-down div a{display: block;background: none;}
+.header .top .drop-down:hover{background: #fff;}
+.header .top .drop-down:hover div{display: block;}
+.header .nav{width: 960px;margin: 20px auto;}
+.header .nav .icon-logo{ display: inline-block;width: 200px;height: 60px;background: url(../../../../image/default/haitao_icon4.png) no-repeat;margin-bottom:10px;}
+.header .nav ul{float: right;}
+.header .nav ul li{float: left;margin: 20px 30px 0 30px;font-weight: 700;font-size: 16px;}
+.header .nav ul li.current a{color: #ff5c5c;}
 .banner{background:url(../image/banner1.jpg);height:150px;}
 
 .banner .user{float:left;display:inline;margin:32px 0 0 20px;width:360px;height:97px;position:relative;}

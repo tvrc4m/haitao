@@ -66,7 +66,6 @@ $(function(){
             <input type="checkbox" class="checkall" id="checkall"></td>
             <label for="checkall" class="btn2">全选</label>
             <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
-            <div class="pagination"><{$re.page}></div>
         </div>
         <table class="table-list-style info">
             <thead>
@@ -104,6 +103,11 @@ $(function(){
                 </td>
                 <td class="tl"><a href="<{$config.weburl}>/main.php?m=message&s=admin_message_det&id=<{$list.id}>"><{$list.sub}></a></td>
                 <td><{$list.date}></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <div class="pagination"><{$re.page}></div>
+                </td>
             </tr>
             <{foreachelse}>
             <tr>

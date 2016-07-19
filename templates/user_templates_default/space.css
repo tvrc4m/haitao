@@ -117,6 +117,7 @@
 .pro_detail .inner-left .shop-info dl{display: inline-block;float: left;width: 50px;}
 .pro_detail .inner-left .shop-info .shop-rate{padding: 0 20px;}
 .pro_detail .inner-left .shop-info .shop-rate p{line-height: 40px;height: 40px;}
+.pro_detail .inner-left .shop-info .shop-rate p img{vertical-align: middle;}
 .pro_detail .inner-left .shop-info .shop-rate dd{color: #ff5c5c;}
 .pro_detail .inner-left .shop-info .shop-rate dd span{display: inline-block;background: url(img/haitao_icon07.png)no-repeat 0;width: 10px;height: 10px;}
 /*承诺*/
