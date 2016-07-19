@@ -129,7 +129,7 @@ if($_POST['act']=='pay'&&$re['statu']==1)
 			// 合并付款
 			if(substr($order_id, 0,1) == "U")
 			{
-				$sql = "select concat(`extra_param`,'') from ".RECORD." where `order_id` = '".$order_id."' and  `buyer_email` IS NOT NULL";
+				$sql = "select CONCAT(`extra_param`,'') AS extra_param from ".RECORD." where `order_id` = '".$order_id."' and  `buyer_email` IS NOT NULL";
 				$db -> query($sql);
 				$oid = $db -> fetchField("extra_param");
 
