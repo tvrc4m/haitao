@@ -27,7 +27,7 @@
             <dt>品牌：</dt>
             <dd>
             <{assign var=b value=$smarty.get.brand}>
-                <div class="brand">
+                <div class="brand clear">
                 <{foreach item=list from=$brand}>
                 <a <{if $b==$list.name}>class="curr"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&brand=$b":""}>&brand=<{$list.name}>"><img src="<{$list.logo}>"><{$list.name}></a>
                 <{/foreach}>

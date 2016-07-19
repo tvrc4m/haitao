@@ -40,10 +40,7 @@ html[xmlns] .clearfix{display:block;}
 *+html .clearfix{height:1%;}
 .ntb{border-top:none!important;}
 /* 定位*/
-.fl{float:left;}
-.fr{float:right!important;}
 .w{margin:0 auto;width:1212px;}
-.clear{clear:both;}
 .tl{text-align:left!important;}
 .tc{text-align:center!important;}
 .ml10{margin-left:10px;}
