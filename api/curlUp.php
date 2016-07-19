@@ -12,7 +12,9 @@ class curlUp{
     private $imgUpurl = "http://121.40.31.77:8015/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
     private $orderUrl = "http://121.40.31.77:8015/Service/Send_Goods_Order.aspx";//订单提交链接
 
-    private $trades = array('0'=>'1','1'=>'2','2'=>'0');
+    private $price;
+
+    private $trades = array('0'=>'2','1'=>'0','2'=>'1');
 
     const EXT='.txt';
 
@@ -31,28 +33,34 @@ class curlUp{
     */
     function orderUp($orderList){
 
-        $time = $this->time;//date("YmdHis",$orlist['order']['create_time']);
-        $addr = explode(' ',$orderList['consignee_address']);
+        $coun = count($orderList);
         $list = array();
+        $time = $this->time;//date("YmdHis",$orlist['order']['create_time']);
+        $addr = explode(' ',$orderList[0]['consignee_address']);
         $list['goods_order_count']=1;
         $list['msg'] = '';
-        $list['goods_order'][0]['order_code']=$orderList['order_id'];
-        $list['goods_order'][0]['order_sum_money']=(string)($orderList['price']+$orderList['logistics_price']);//$orlist['order']['logistics_price']);
-        $list['goods_order'][0]['order_member_name']=$orderList['consignee'];
-        $list['goods_order'][0]['order_member_id_number']=$orderList['identity_card'];
-        $list['goods_order'][0]['order_member_phone']=$orderList['consignee_mobile'];
+        $list['goods_order'][0]['order_code']=$orderList[0]['order_id'];
+        for($i=0;$i<$coun;$i++) {
+            $this->price += $orderList[$i]['price'];
+        }
+        $list['goods_order'][0]['order_sum_money']=(string)($this->price+$orderList[0]['logistics_price']);//$orlist['order']['logistics_price']);
+        $list['goods_order'][0]['order_member_name']=$orderList[0]['consignee'];
+        $list['goods_order'][0]['order_member_id_number']=$orderList[0]['identity_card'];
+        $list['goods_order'][0]['order_member_phone']=$orderList[0]['consignee_mobile'];
         $list['goods_order'][0]['order_member_sheng']=$addr[0];
         $list['goods_order'][0]['order_member_shi']=$addr[1];
         $list['goods_order'][0]['order_member_xian']=$addr[2];
         $list['goods_order'][0]['order_member_address']=$addr[3];
         $list['goods_order'][0]['order_logistics_name']='快递';//$orderList['logistics_name'];
-        $list['goods_order'][0]['order_logistics_money']=$orderList['logistics_price'];
-        $list['goods_order'][0]['order_goods_money']=$orderList['price'];
-        $list['goods_order'][0]['goods_attributes_list'][0]['id']='';
-        $list['goods_order'][0]['goods_attributes_list'][0]['sku_id']=$orderList['skuid'];
-        $list['goods_order'][0]['goods_attributes_list'][0]['price']=$orderList['price'];
-        $list['goods_order'][0]['goods_attributes_list'][0]['num']=$orderList['num'];
-        $list['goods_order'][0]['goods_attributes_list'][0]['trade']=$this->trades[$orderList['trade']];
+        $list['goods_order'][0]['order_logistics_money']=$orderList[0]['logistics_price'];
+        $list['goods_order'][0]['order_goods_money']=$this->price;
+        for($i=0;$i<$coun;$i++) {
+            $list['goods_order'][0]['goods_attributes_list'][$i]['id']='';
+            $list['goods_order'][0]['goods_attributes_list'][$i]['sku_id']=$orderList[$i]['skuid'];
+            $list['goods_order'][0]['goods_attributes_list'][$i]['price']=$orderList[$i]['price'];
+            $list['goods_order'][0]['goods_attributes_list'][$i]['num']=$orderList[$i]['num'];
+            $list['goods_order'][0]['goods_attributes_list'][$i]['trade']=$this->trades[$orderList[$i]['trade']];
+        }
         $order = json_encode($list);
         $token =  $this->token();
         $type = $this->aes($this->orderUrl,array ("time" => $this->time,"pass" => $this->pass,"token" => $token,"order" => $order));
