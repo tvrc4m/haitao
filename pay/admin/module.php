@@ -6,10 +6,11 @@ include_once("auth.php");
 //===============================================
 if(file_exists('../config/module_'.$_GET['m'].'_config.php'))
 {
-	@include('config/module_'.$_GET['m'].'_config.php');
+	@include('../config/module_'.$_GET['m'].'_config.php');
 	$mcon='module_'.$_GET['m'].'_config';
 	@$config = array_merge($config,$$mcon);
 }
+
 //================================================
 include_once($config["webroot"]."/lib/smarty/Smarty.class.php");
 $tpl =  new Smarty();
