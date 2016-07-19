@@ -62,8 +62,20 @@
             <{if $smarty.get.brand}>
                 <a href="<{$config.weburl}>?m=product&s=list&id=<{$smarty.get.id}>"><{$smarty.get.brand}></a>
             <{/if}>
+        </dl>
+        <{foreach item=list key=num from=$catfile}>
+        <{assign var=fieldName value=$list.field}>
+        <{assign var=s value=$smarty.get.$fieldName}>
+        <dl <{if !$brand && !$cat && $num==0 }>class="first"<{/if}> >
+            <dt><{$list.name}>：</dt>
+            <dd>
+                <div><a <{if $smarty.get.$fieldName==""}>class="curr"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&$fieldName=$s":""}>">不限</a></div>
+                <{foreach item=slist from=$list.catItem}>
+                    <div><a <{if $smarty.get.$fieldName==$slist.id}>class="curr"<{/if}> href="<{$config.weburl}>/?<{$url|replace:"&$fieldName=$s":""}>&<{$list.field}>=<{$slist.id}>"><{$slist.name}></a></div>
+                <{/foreach}>
             </dd>
-          </dl>
+        </dl>
+        <{/foreach}>
         </div>
         <!--筛选条件 end-->
         <!--排序 start-->

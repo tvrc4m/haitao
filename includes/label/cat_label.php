@@ -52,7 +52,7 @@ function cat($ar) {
 			@file_put_contents($cache_cat_file, json_encode($re));
 		} else {
 			$re = json_decode(file_get_contents($cache_cat_file), true);
-		} 
+		}
 		$tpl -> assign("config", $config);
 		$tpl -> assign("cat", $re);
 	} 
