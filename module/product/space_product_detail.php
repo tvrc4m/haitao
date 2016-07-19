@@ -59,8 +59,7 @@ include_once ("$config[webroot]/api/logisticsCost.php");
 $obj = new logistics($prode['weights']);
 $prode['weights'] = $obj->cost();
 $prode['detail'] = str_replace('/lib/kindeditor/php/../../..',$config['weburl'],$prode['detail']);
-var_dump($prode['catid']);
-catId($prode['catid']);
+$tpl->assign('cats',catId($prode['catid']));
 $tpl->assign("de",$prode);
 $tpl->assign("relation",$relation);
 
@@ -249,9 +248,22 @@ function get_buyerpoints($points)
 }
 //获取商品栏目目录
 function catId($catid){
-	$aa = strlen($catid);
-	var_dump(substr('123456789',0, 2));die;
-	//return $cat;
+	global $db;
+	$cid = substr($catid,0,4);
+	$sql = "select catid,cat from mallbuilder_product_cat where LOCATE({$cid},catid)>0 order BY catid";
+	$db->query($sql);
+	$catList = $db->getRows();
+	foreach($catList as $v){
+		$cats[$v['catid']] = $v['cat'];
+	}
+	$len = strlen($catid);
+	$cat = $cats[$cid].'>';
+	if($len>4){
+		for($i=1;$i<=($len-4)/2;$i++){
+			$cat .= $cats[substr($catid,0,(4+2*$i))].'>';
+		}
+	}
+	return $cat;
 }
 function namereplace($name, $charset = 'UTF8') {
 	$strlen = mb_strlen($name, $charset);
