@@ -18,9 +18,9 @@ function showUser()
 			$db->query($sql);
 			$pic = $db->fetchField('pic');
 			if($_GET['p'] == 'pay'){
-				$new = "<div class='nav-fore1'><a class='name' href='".$config['weburl']."/main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><img align='absmiddle' src='$pic'><i><em></em></i></div><div class='nav-fore2'><ul><li><a href='".$config['weburl']."/main.php?m=member&s=admin_member'>账号管理</a></li><li><a href='".$config['weburl']."/main.php?action=logout'>退出</a></li></ul><div>";
+				$new = "<li class='drop-down'><a href='".$config['weburl']."/main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><div><a href='".$config['weburl']."/main.php?m=member&s=admin_member'>账号管理</a><a href='".$config['weburl']."/main.php?action=logout'>退出</a><div></li>";
 
-				$new.= "<li class='nav msg'><div class='nav-fore1'><a class='name' href='".$config['weburl']."/main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'><span>消息</span></a></div></li>";
+				$new.= "<li><div><a href='".$config['weburl']."/main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'>消息</a></div></li>";
 			}else{
 				// $new = "<div class='nav-fore1'><a class='name' href='main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><img align='absmiddle' src='$pic'><i><em></em></i></div><div class='nav-fore2'><ul><li><a href='main.php?m=member&s=admin_member'>账号管理</a></li><li><a href='main.php?action=logout'>退出</a></li></ul><div>";
 				$new = "<li class='drop-down'><a class='name' href='main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><div><a href='main.php?m=member&s=admin_member'>账号管理</a><a href='main.php?action=logout'>退出</a><div></li>";

@@ -25,8 +25,8 @@
 .head .info-left .basic-info{margin: 50px 0 0 240px;}
 .head .basic-info h2{margin-bottom: 20px;font-weight: 400;color: #ff5c5c;}
 .head .basic-info .realy-info{margin-right: 35px;}
-.head .basic-info .realy-info img{margin-top:-3px;}
-.head .basic-info span.sex{background:url(home/icon7.png) no-repeat  right -35px;padding-right:10px;margin-right:35px;}
+.head .basic-info .realy-info img{vertical-align: bottom;}
+.head .basic-info span.sex{background:url(home/icon7.png) no-repeat  right -34px;padding-right:10px;margin-right:35px;}
 .head .basic-info span.female{background-position:15px 3px;}
 .head .basic-info a{color: #ff5c5c;}
 /*右侧访问*/

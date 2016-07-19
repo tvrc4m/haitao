@@ -69,12 +69,11 @@ $(function(){
             <input type="checkbox" class="checkall" id="checkall"></td>
             <label for="checkall" class="btn2">全选</label>
             <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
-            <div class="pagination"><{$re.page}></div>
         </div>
         <table class="table-list-style share-pro">
             <tr>
                 <td colspan="20" class="pic_model">
-                    <ul>
+                    <ul class="clear">
                     <{foreach item=list key=num from=$re.list}>
                     	<li>
                             <label class="pro-checkbox">
@@ -101,18 +100,10 @@ $(function(){
                 </td>
             </tr>
             <{/if}>
-            </tbody>
-            <!-- <tfoot>
             <tr>
-            	<td width="2"></td>
-            	<td>
-                <input type="checkbox" class="checkall" id="checkall">
-                <label for="checkall" class="btn2">全选</label>
-                <a id="del" confirm="您确定要删除吗?" class="btn2" href="javascript:void(0);">删除</a>
-                <div class="pagination"><{$re.page}></div>
-                </td>
+                <td><div class="pagination"><{$re.page}></div></td>
             </tr>
-            </tfoot> -->
+            </tbody>
         </table>
      </div>
 </div>
