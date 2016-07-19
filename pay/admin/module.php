@@ -8,6 +8,7 @@ if(file_exists('../config/module_'.$_GET['m'].'_config.php'))
 {
 	@include('../config/module_'.$_GET['m'].'_config.php');
 	$mcon='module_'.$_GET['m'].'_config';
+	var_dump($$mcon);die;
 	@$config = array_merge($config,$$mcon);
 }
 
