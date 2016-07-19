@@ -144,19 +144,15 @@ switch ($action)
 			echo uc_user_synlogout();
 		}
 		$_SESSION['USER_TYPE']=NULL;
-
+	
 		//header("Location: "."$config[weburl]/login.php");
-		$tpl->assign('test','1111111');
-		header("Location:"."$config[weburl]");
-	/*	$sql = "select mobile from mallbuilder_member where userid=".$buid;
+		$sql = "select mobile from mallbuilder_member where userid=".$buid;
 		$db->query($sql);
 		$list = $db->fetchRow();
 		$script = $obj->logout(array('phone'=>$list['mobile']));
-		$tpl->assign('con','正在退出...');
-		$tpl->assign('forward',$config['weburl']);
-		$tpl->assign('script',$script->data);
-		$tpl->display("script.htm");
-		die;*/
+		$_SESSION['script']=$script->data;
+		msg($config['weburl']);
+		die;
 		break;
 	}
 	case "msg":
@@ -297,6 +293,9 @@ switch ($action)
 					//---------------------------------
 					//获取当前用户店铺动态评分
                     $shop_comment = $shop->get_shop_comment();
+                    foreach($shop_comment as $key => $val){
+                        $shop_comment[$key] = empty($val) ? 5 : $val ;
+                    }
 					$admin->tpl->assign("shop_comment",$shop_comment);
 					//获取当前用户产品 评论 订单 数量
 					
@@ -358,7 +357,7 @@ else
 
         }
 	//}
-
+	
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
     if(isset($_GET['disp']) && $_GET['disp'] == 1) {
         $tpl->display('withdrawals.htm');

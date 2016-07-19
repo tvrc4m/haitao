@@ -129,11 +129,11 @@ if($_POST['act']=='pay'&&$re['statu']==1)
 			// 合并付款
 			if(substr($order_id, 0,1) == "U")
 			{
-				$sql = "select `extra_param` from ".RECORD." where `order_id` = '".$order_id."' and  `buyer_email` IS NOT NULL";
+				$sql = "select convert(`extra_param`,char) AS extra_param from ".RECORD." where `order_id` = '".$order_id."' and  `buyer_email` IS NOT NULL";
 				$db -> query($sql);
 				$oid = $db -> fetchField("extra_param");
 
-				$sql = "update ".RECORD." set statu='2' where order_id in ($oid)";
+				$sql = "update ".RECORD." set statu='2' where order_id in (CONVERT($oid,CHAR))";
 				$db->query($sql);
 
 				$sql="update ".RECORD." set statu='-1' and `display` = 0 where order_id='$order_id'";

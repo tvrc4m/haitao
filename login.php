@@ -124,10 +124,8 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     }
                     setcookie("old_url");
                     setcookie("userid",$re['userid']);
-                    $tpl->assign('con','正在登录...');
-                    $tpl->assign('forward',$forward);
-                    $tpl->assign('script',$script->data);
-                    $tpl->display("script.htm");
+                    $_SESSION['script']=$script->data;
+                    msg($forward);
                     die;
                 }
 
@@ -153,15 +151,14 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     }
                     setcookie("old_url");
                     setcookie("userid",$re['userid']);
-                    $tpl->assign('con','正在登录...');
-                    $tpl->assign('forward',$forward);
-                    $tpl->assign('script',$script->data);
-                    $tpl->display("script.htm");
+                    $_SESSION['script']=$script->data;
+                    msg($forward);
                     die;
                 }
             }else
                 msg('login.php?erry=-1&connect_id='.$post['connect_id'].'&user='.$_POST['user']);//没
         }else{
+
             // no ucenter login
             //验证手机号登录
             if(preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $post['user']))
