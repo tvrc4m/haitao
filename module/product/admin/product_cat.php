@@ -1,9 +1,5 @@
 <?php
-$sql = 'select catid,cat,pic,wpic,brand from mallbuilder_product_cat where isindex=1 order by catid ASC';
-$db->query($sql);
-$cacheList = $db->getRows();
-var_dump($config);
-var_dump($cacheList);die;
+
 	if($_GET['operation']=="add" or $_GET['operation']=="edit")
 	{
 		if($_POST['act'])
@@ -107,7 +103,6 @@ var_dump($cacheList);die;
 				unset($_GET['editid']);
 			}
 			$getstr=implode('&',convert($_GET));
-
 			msg("?m=product&s=product_cat.php&$getstr");
 		}
 		if($_GET['editid'] and is_numeric($_GET['editid']))
@@ -155,6 +150,15 @@ var_dump($cacheList);die;
 			}
 			$de[$key]['scat']=$a;
 		}
+		$sql = 'SELECT catid,cat,pic,wpic,brand FROM mallbuilder_product_cat ORDER BY catid ASC';
+		$db->query($sql);
+		$cacheList = $db->getRows();
+		foreach($cacheList as $v){
+			$cacheLists[$v['catid']]=$v;
+			$cacheLists[$v['catid']]['url']=$config['weburl'].'/product-list-'.$v['catid'].'.html';
+		}
+		file_put_contents($config['webroot'].'/cache/configure/cat.cache', "<?php\nreturn " . var_export($cacheLists, true) . ";");
+
 	}
 	else if($_GET['operation']=="search"&&$_GET['cat'])
 	{		
