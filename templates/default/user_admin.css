@@ -85,7 +85,7 @@ html[xmlns] .clearfix{display:block;}
 .search{width:471px;position:absolute;right:0px;top:16px;}
 .search .i-search{border:2px solid #ff5c5c;border-right:none;border-bottom-color:#ff5c5c;height:30px;margin-bottom:3px;width:468px;z-index:11;}
 .search input{border:medium none;height:30px;float:left;}
-.search .text{background-color:#FFFFFF;color:#999999;font-family:arial,"宋体";font-size:14px;height:20px;line-height:20px;padding:5px 7px 5px 23px !important;width:360px;box-shadow:none;background:url(../../image/default/user_admin/search.png) 8px 9px no-repeat;}
+.search .text{background-color:#FFFFFF;color:#999999;font-family:arial,"宋体";font-size:14px;height:20px;line-height:20px;padding:5px 7px 5px 23px !important;width:360px;box-shadow:none;background:url(../../image/default/user_admin/mayi_icon6.png) 8px 9px no-repeat;}
 .search .text:focus{border:none;box-shadow:none;outline: none;}
 .search .search_button{background:#ff5c5c;float:right;color:#FFFFFF;font-size:14px;font-weight:bold;width:78px;cursor: pointer;}
 .hotwords{color:#999999;height:18px;overflow:hidden;}
@@ -99,14 +99,14 @@ html[xmlns] .clearfix{display:block;}
 .header #nav .text{background:#FFFFDF;border:medium none!important;border-radius:3px 3px 3px 3px;box-shadow:1px 3px 1px #FFB775 inset!important;float:right;font-family:Tahoma;height:16px;line-height:16px;padding:6px 2px 4px 4px!important;transition:width 0.5s ease 0s;width:160px;}
 .header #nav .submit{background:url(../../image/default/user_admin/public.png) no-repeat;border:medium none;cursor:pointer;height:16px;line-height:16px;opacity:0.5;position:absolute;right:20px;top:12px;width:16px;z-index:999;}
 .menu{border-bottom:2px solid #3E88CD;margin:0 auto 10px;width:961px;position:relative;}
-.menu li,.menu li.selected{background:url(../../image/default/user_admin/tab.png) repeat-x;}
+.menu li,.menu li.selected{background:url(../../image/default/user_admin/mayi_icon13.png) repeat-x;}
 .menu li{background-position:0 0;border-left:1px solid #B6CFEA;border-top:1px solid #B6CFEA;float:left;height:27px;line-height:27px;position:relative;}
 .menu li.selected{background-position:0 -27px;border-left:medium none;color:#FFFFFF;}
 .menu li a{color:#404040;display:block;font-weight:bold;padding:0 25px;text-decoration:none;}
 .menu li.selected a{color:#FFFFFF;}
 .menu li.first{border-radius:2px 0 0 0;}
 .menu li.last{border-radius:0 2px 0 0;border-right:1px solid #B6CFEA;}
-.menu .mytb{position:absolute;right:15px;top:5px;font-family:sans-serif;background:url(../../image/default/user_admin/shop.gif) 0 1px no-repeat;padding-left:19px;}
+.menu .mytb{position:absolute;right:15px;top:5px;font-family:sans-serif;background:url(../../image/default/user_admin/mayi_icon14.jpg) 0 1px no-repeat;padding-left:19px;}
 .menu .mytb:hover{color:#FF6600;}
 .shop_close_info{background:#FF9900;border:1px solid #FF6600;color:#FFFFFF;font-size:12px;font-weight:600;line-height:20px;margin:10px auto 0;padding:10px;width:941px;}
 .intro{margin:10px auto;padding:20px 0;min-height:92px;border:1px solid #D6E3F3;background:#F6FBFF;width:959px;border-radius:2px 2px 2px 2px;color:#777777;font-size:12px;}
@@ -123,7 +123,7 @@ html[xmlns] .clearfix{display:block;}
 .intro dt{float:left;margin-right:10px;}
 .intro dd{float:right;}
 .intro .rate-star{padding:3px 0;float:left;}
-.rate-star em, .rate-star em i{background:url(../../image/default/user_admin/rate_star.gif) repeat-x;height:12px;}
+.rate-star em, .rate-star em i{background:url(../../image/default/user_admin/mayi_icon5.jpg) repeat-x;height:12px;}
 .rate-star em{background-position:left top;display:block;margin:0;position:relative;width:70px;z-index:1;}
 .rate-star em i{background-position:left bottom;left:0;position:absolute;top:0;z-index:1;}
 /*==============================*/
