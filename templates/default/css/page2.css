@@ -42,14 +42,14 @@
 .goods_items .til p a{margin-left:20px;color:#666}
 .goods_items .til p a:hover{color:#ff5c5c;}
 /*不同专区*/
-.til_1001{border-left:20px solid #ff5853;}
-.til_1001 a{color:#ff5853;}
-.til_1002{border-left:20px solid #9a4bc3;}
-.til_1002 a{color:#9a4bc3;}
-.til_1003{border-left:20px solid #45b130;}
-.til_1003 a{color:#45b130;}
-.til_1004{border-left:20px solid #3c67fe;}
-.til_1004 a{color:#3c67fe;}
+.til_1005{border-left:20px solid #ff5853;}
+.til_1005 a{color:#ff5853;}
+.til_1006{border-left:20px solid #9a4bc3;}
+.til_1006 a{color:#9a4bc3;}
+.til_1007{border-left:20px solid #45b130;}
+.til_1007 a{color:#45b130;}
+.til_1008{border-left:20px solid #3c67fe;}
+.til_1008 a{color:#3c67fe;}
 /*首页弹框*/
 .am-dialog-mask {position: fixed;top: 0;left: 0;z-index: 5;width: 100%;height: 100%;background-color: rgba(0,0,0,.7);display: none;} 
 .main-bomb{position: fixed;width: 600px;top: 50%;margin-top:-214px;left: 50%;margin-left: -300px;z-index: 6;display: none;}
