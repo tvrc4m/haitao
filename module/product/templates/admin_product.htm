@@ -629,7 +629,7 @@ var property_checked_<{$num}> = new Array();
 <{/foreach}>
 
 $(function(){
-	$('tbody[data_type="property_table"]').find('input[type="text"]').live('change',function(){
+	$('tbody[data_type="property_table"]').find('input[type="text"]').on('change',function(){
 		s = $(this).attr('date_type');
 		V[s] = $(this).val();
 	});
