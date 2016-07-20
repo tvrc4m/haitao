@@ -107,7 +107,7 @@ html[xmlns] .clearfix{display:block;}
 .menu li.selected a{color:#FFFFFF;}
 .menu li.first{border-radius:2px 0 0 0;}
 .menu li.last{border-radius:0 2px 0 0;border-right:1px solid #B6CFEA;}
-.menu .payment{ position:absolute;top:5px;right:100px;background:url(../../../image/default/user_admin/pay.png) 0 2px no-repeat;padding-left:22px;}
+.menu .payment{ position:absolute;top:5px;right:100px;background:url(../../../image/default/user_admin/mayi_icon24.png) 0 2px no-repeat;padding-left:22px;}
 .menu .mytb{position:absolute;right:15px;top:5px;font-family:sans-serif;background:url(../../../image/default/user_admin/shop.gif) 0 1px no-repeat;padding-left:19px;}
 .menu .mytb:hover{color:#FF6600;}
 .shop_close_info{background:#FF5c5c;border:1px solid #FF6600;color:#FFFFFF;font-size:12px;font-weight:600;line-height:20px;margin:10px auto 0;padding:10px;width:1192px;}
@@ -126,7 +126,7 @@ html[xmlns] .clearfix{display:block;}
 .intro dt{float:left;margin-right:10px;}
 .intro dd{float:right;}
 .intro .rate-star{padding:3px 0;float:left;}
-.rate-star em, .rate-star em i{background:url(../../../image/default/user_admin/rate_star.gif) repeat-x;height:12px;}
+.rate-star em, .rate-star em i{background:url(../../../image/default/user_admin/mayi_icon5.jpg) repeat-x;height:12px;}
 .rate-star em{background-position:left top;display:block;margin:0;position:relative;width:70px;z-index:1;}
 .rate-star em i{background-position:left bottom;left:0;position:absolute;top:0;z-index:1;}
 /*==============================*/
