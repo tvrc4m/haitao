@@ -36,7 +36,7 @@
           <p><span>店头价</span><i>¥</i><em id="price"><{$de.price|number_format:2}></em></p>
         </div>
         <div class="service">
-          <p><span>该商品</span>由蚂蚁海淘日本仓发货&nbsp预计5-15天送达</p>
+          <p><span>该商品</span>由蚂蚁海淘<{$com.trade}>&nbsp预计5-15天送达</p>
           <p><span class="ls1">关税</span>若在清关中产生的税费和手续费需要收件人缴纳，请知悉</p>
           <p><span class="ls1">服务</span>不支持7天无理由退货，仅支持物流中损坏的物品</p>
         </div>
@@ -56,7 +56,7 @@
             <{if $de.rest==0}>
             <{if $de.stock > 0 }>
             <p class="stock"><span class="ls1">数量</span>
-            <a href="javascript:void(0);" id="low_num">-</a><input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1"><a href="javascript:void(0);" id="add_num">+</a>件（库存 <span id="stock">99</span> 件）
+            <a href="javascript:void(0);" id="low_num">-</a><input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1"><a href="javascript:void(0);" id="add_num">+</a>件（库存 <span id="stock"><{$de.stock}></span> 件）
             </p>
             <{/if}>
             <{/if}>

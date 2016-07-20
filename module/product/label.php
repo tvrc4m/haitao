@@ -80,6 +80,7 @@ function product($ar)
             $or=" order by a.uptime DESC,id desc";
 
         $sql="select a.id,a.name as pname,a.trade,a.price,a.market_price,a.national,a.member_id as userid,a.pic,b.user,b.company FROM ".PRODUCT." a left join ".SHOP." b on a.member_id=b.userid WHERE b.shop_statu=1 and is_shelves=1 $scl $or limit 0,$limit";
+        echo $sql;
         $db->query($sql);
         $re=$db->getRows();
         //==================================================
