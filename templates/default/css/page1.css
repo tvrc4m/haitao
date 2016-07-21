@@ -52,8 +52,9 @@ ul,ol{list-style:none;}
 .header .top .fl a{padding-left:16px;margin-right:20px;background: url(../../../image/default/haitao_icon1.png) no-repeat 0;}
 .header .top .fl div{padding-left:16px;background: url(../../../image/default/haitao_icon2.png) no-repeat 0;}
 .header .top .fr li{float: left;}
+.header .top .fr li.drop-down{padding-right: 10px;}
 .header .top .fr a{padding:0 15px;}
-.header .top .drop-down a{background: url(../../../image/default/haitao_icon3.png) no-repeat 85%;padding-right: 25px;}
+.header .top .drop-down a{background: url(../../../image/default/haitao_icon3.png) no-repeat right;padding-right: 15px;}
 .header .top .drop-down div{position: absolute;border: 1px solid #eee;background: #fff;border-top: 0;z-index: 1;display: none;}
 .header .top .drop-down div a{display: block;background: none;}
 .header .top .drop-down:hover{background: #fff;}
