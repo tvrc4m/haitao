@@ -202,11 +202,11 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
         //取相应店铺的对应分类
 
 		switch($_GET['uid']){
-			case 91 : $pcat = 1003; break;
-			case 49 : $pcat = 1002; break;
-			case 48 : $pcat = 1000; break;
-			case 44 : $pcat = 1001; break;
-            default : $pcat = 1000;
+			case 91 : $pcat = 1007; break;
+			case 49 : $pcat = 1006; break;
+			case 48 : $pcat = 1004; break;
+			case 44 : $pcat = 1005; break;
+            default : $pcat = 1004;
 		}
 
 		//获取分类
