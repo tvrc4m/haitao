@@ -336,7 +336,7 @@ else
 
 
 function check_activity_by_product_ids($product_ids){
-	$time_start = strtotime("2016-07-25 00:00:00");
+	$time_start = strtotime("2016-07-22 00:00:00");
 	$time_end = strtotime("2016-08-02 00:00:00");
 	$time_now = time();
 	if($time_now>$time_end || $time_now<$time_start){

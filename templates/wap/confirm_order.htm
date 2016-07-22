@@ -48,10 +48,10 @@
         <{foreach item=pro from=$list.prolist}>
             <dl class="clearfix">
                 <dt>
-                    <a href="?m=product&s=detail&id=<{$pro.pid}>"><img height="90" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg"></a>
+                    <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.pids}><{if $pro.dist_user_id}>&shop_id=<{$pro.dist_user_id}><{/if}>"><img height="90" alt="<{$pro.name}>" src="<{$pro.pic}>_220X220.jpg"></a>
                 </dt>
                 <dd>
-                    <p class="p-name"><a href="?m=product&s=detail&id=<{$pro.pid}>"><{$pro.pname}></a></p>
+                    <p class="p-name"><a href="<{$config.weburl}>/?m=product&s=detail&id=<{$pro.pids}><{if $pro.dist_user_id}>&shop_id=<{$pro.dist_user_id}><{/if}>"><{$pro.pname}></a></p>
                     <{if $pro.setmealname}><p class="p-name-gunge">规格：<{$pro.setmealname}></p><{/if}>
                     <p class="p-price clearfix"><strong><{$config.money}><{$pro.price|number_format:2}></strong><span class="p-price-num">X <var class="p-price-num-z"><{$pro.num}></var></span></p>
                 </dd>
