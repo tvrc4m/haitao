@@ -61,9 +61,6 @@ else
 	}
 
 	$product_id = $_POST['product_id'] ? implode(",",$_POST['product_id']) : "";
-		//是否参与邮费半价活动
-
-	$is_share_logistics_half = check_activity_by_product_ids($_POST['product_id']);
 	unset($_POST['product_id']);
 	$_SESSION['product_id'] = $product_id ? $product_id : $_SESSION['product_id'];
 	$_SESSION['dist_user_id'] = $_REQUEST['dist_user_id'] ? $_REQUEST['dist_user_id'] : $_SESSION['dist_user_id'];
@@ -262,6 +259,9 @@ else
 		$inorder = substr($inorder, 0,-1);
 		$logistics_price = $weig->cost();//物流费用
 
+		//是否参与邮费半价活动
+
+		$is_share_logistics_half = check_activity_by_product_ids($product_id);
 		$logistics_price = $is_share_logistics_half?floor($logistics_price):$logistics_price;
 		$uprice = $uprice + $logistics_price - $firstvou;
 
@@ -332,12 +332,16 @@ else
 
 
 function check_activity_by_product_ids($product_ids){
-	$activity_product_ids = array(794,480,496,641,479,683,673,645,587,668,665,481,793,550,615,679,502,469,620,625,579,575,576,516);
+	$time_start = strtotime("2016-07-22 00:00:00");
+	$time_end = strtotime("2016-07-25 00:00:00");
+	$time_now = time();
+	if($time_now>$time_end || $time_now<$time_start){
+		return false;
+	}
 	if(empty($product_id))
 		return false;
-
+	$activity_product_ids = array(794,480,496,641,479,683,673,645,587,668,665,481,793,550,615,679,502,469,620,625,579,575,576,516);
 	foreach (explode(",", $product_id) as $key => $value) {
-		# code...
 		if(!in_array($value, $activity_product_ids))
 			return false;
 	}
