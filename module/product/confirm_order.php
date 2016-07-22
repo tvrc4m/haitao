@@ -66,9 +66,11 @@ else
 	unset($_POST['product_id']);
 	$_SESSION['product_id'] = $product_id ? $product_id : $_SESSION['product_id'];
 	$_SESSION['dist_user_id'] = $_REQUEST['dist_user_id'] ? $_REQUEST['dist_user_id'] : $_SESSION['dist_user_id'];
-	var_dump($_SESSION['product_id']);
+
 	//修正订单店铺信息
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
+	var_dump($cartlist);
+
 	$weig = new logistics($cartlist['weights']);
 
 	$firstvou=0;
