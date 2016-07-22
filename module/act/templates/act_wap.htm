@@ -25,6 +25,9 @@
 	</div>
 	<div class="seckill-content"></div>
 </div>
+<div class="addtop">
+	<a class="top" href="javascript:void(0);"></a>
+</div>
 <script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -44,6 +47,18 @@ $(function(){
 				"</li>");
 		}
 	}
+	$(window).scroll(function(){
+		var h = $(document).scrollTop();
+		var wHeight=$(window).height();
+		if(h>wHeight){
+			$(".addtop").show()
+			$(".addtop").click(function(){
+				$(window).scrollTop(0);
+			})
+		}else{
+			$(".addtop").hide()
+		}
+	})
 })
 </script>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
