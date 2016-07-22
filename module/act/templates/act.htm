@@ -28,5 +28,17 @@
 	<img src="<{$config.weburl}>/module/act/templates/image/act-25.jpg">
 	<img src="<{$config.weburl}>/module/act/templates/image/act-26.jpg">
 </div>
-<div class="act-link"></div>
+<div class="act-link">
 </div>
+</div>
+<script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var list_link=["https://www.mayihaitao.com/product-detail-794.html","https://www.mayihaitao.com/product-detail-480.html","https://www.mayihaitao.com/product-detail-496.html","https://www.mayihaitao.com/product-detail-641.html","https://www.mayihaitao.com/product-detail-479.html","https://www.mayihaitao.com/product-detail-683.html","https://www.mayihaitao.com/product-detail-673.html","https://www.mayihaitao.com/product-detail-645.html","https://www.mayihaitao.com/product-detail-587.html","https://www.mayihaitao.com/product-detail-668.html","https://www.mayihaitao.com/product-detail-665.html","https://www.mayihaitao.com/product-detail-481.html","https://www.mayihaitao.com/product-detail-793.html","https://www.mayihaitao.com/product-detail-615.html","https://www.mayihaitao.com/product-detail-550.html","https://www.mayihaitao.com/product-detail-679.html&dist_id=49","https://www.mayihaitao.com/product-detail-469.html&dist_id=49","https://www.mayihaitao.com/product-detail-502.html","https://www.mayihaitao.com/product-detail-620.html&dist_id=49","https://www.mayihaitao.com/product-detail-625.html&dist_id=49","https://www.mayihaitao.com/product-detail-579.html&dist_id=49","https://www.mayihaitao.com/product-detail-575.html&dist_id=49","https://www.mayihaitao.com/product-detail-516.html&dist_id=49","https://www.mayihaitao.com/product-detail-576.html&dist_id=49"];
+	var links="";
+	for(var i=1;i<25;i++){
+		links=links+"<a href='"+list_link[i]+"'class=act-pro"+i+"></a>"
+	}
+	$(".act-link").append(links);
+});
+</script>

@@ -2,4 +2,10 @@
 .act-img{font-size: 0;position: relative;left: 50%;margin-left: -960px;}
 .act-link{width: 1200px;position: absolute;top: 0;height: 100%;left: 50%;margin-left: -600px;}
 .act-link a{position: relative;}
-.act-link .act-pro1{top}
+.act-link .act-pro1{top:1205px;left: 116px;width:960px; height: 265px;}
+.act-link .act-pro2{top:1269px;left: 189px;width:826px; height: 302px;}
+.act-link .act-pro3{top:1918px;left: 222px;width:732px; height: 239px;}
+.act-link .act-pro4{top:1205px;left: 116px;width:960px; height: 265px;}
+.act-link .act-pro5{top:1205px;left: 116px;width:960px; height: 265px;}
+.act-link .act-pro6{top:1205px;left: 116px;width:960px; height: 265px;}
+.act-link .act-pro7{top:1205px;left: 116px;width:960px; height: 265px;}
