@@ -30,6 +30,7 @@ else
 		{
 			$flag = $cart->add_cart($_POST['id'],$_POST['nums'],$_POST['sid'], null, $_REQUEST['dist_user_id']);
 			$_SESSION['product_id'] = $flag;
+
 			$_SESSION['dist_user_id'] = $_REQUEST['dist_user_id'];
 			header("Location: ?m=product&s=confirm_order");
 		}
@@ -67,6 +68,7 @@ else
 
 	//修正订单店铺信息
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
+	$is_share_logistics_half = check_activity_by_product_ids($cartlist["cart"]);
 	$weig = new logistics($cartlist['weights']);
 
 	$firstvou=0;
@@ -261,7 +263,7 @@ else
 
 		//是否参与邮费半价活动
 
-		$is_share_logistics_half = check_activity_by_product_ids($product_id);
+		
 		$logistics_price = $is_share_logistics_half?floor($logistics_price):$logistics_price;
 		$uprice = $uprice + $logistics_price - $firstvou;
 
@@ -304,6 +306,8 @@ else
 		die;
 	}
 }
+$logistics_price = $weig->cost();
+$logistics_price = $is_share_logistics_half?floor($logistics_price):$logistics_price;
 //=================================================
 $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
@@ -338,12 +342,19 @@ function check_activity_by_product_ids($product_ids){
 	if($time_now>$time_end || $time_now<$time_start){
 		return false;
 	}
-	if(empty($product_id))
+	if(empty($product_ids))
 		return false;
+
+	
 	$activity_product_ids = array(794,480,496,641,479,683,673,645,587,668,665,481,793,550,615,679,502,469,620,625,579,575,576,516);
-	foreach (explode(",", $product_id) as $key => $value) {
-		if(!in_array($value, $activity_product_ids))
+	foreach ($product_ids as $key => $value) {
+		foreach ($value['prolist'] as $kkey => $vvalue) {
+			echo $vvalue['product_id'];
+			if(!in_array($vvalue['product_id'], $activity_product_ids))
 			return false;
+		}
+
+
 	}
 	return true;
 }
