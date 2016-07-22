@@ -68,7 +68,6 @@ else
 
 	//修正订单店铺信息
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
-	var_dump($cartlist["cart"]);
 	$is_share_logistics_half = check_activity_by_product_ids($cartlist["cart"]);
 	$weig = new logistics($cartlist['weights']);
 
@@ -343,10 +342,13 @@ function check_activity_by_product_ids($product_ids){
 	if($time_now>$time_end || $time_now<$time_start){
 		return false;
 	}
-	if(empty($product_id))
+	if(empty($product_ids))
 		return false;
+
 	$activity_product_ids = array(794,480,496,641,479,683,673,645,587,668,665,481,793,550,615,679,502,469,620,625,579,575,576,516);
-	foreach ($product_id as $key => $value) {
+	foreach ($product_ids as $key => $value) {
+		var_dump($value);
+		echo $value['product_id'];
 		if(!in_array($value['product_id'], $activity_product_ids))
 			return false;
 	}
