@@ -30,6 +30,7 @@ else
 		{
 			$flag = $cart->add_cart($_POST['id'],$_POST['nums'],$_POST['sid'], null, $_REQUEST['dist_user_id']);
 			$_SESSION['product_id'] = $flag;
+
 			$_SESSION['dist_user_id'] = $_REQUEST['dist_user_id'];
 			header("Location: ?m=product&s=confirm_order");
 		}
@@ -45,6 +46,7 @@ else
 	{
 		$addr = $orderadder -> get_orderadderlist();
 	}
+	var_dump($addr);
 	$tpl -> assign("consignee",$addr);
 	//============================读出购物车的数据
 	if($_GET['id']&&is_numeric($_GET['id']))
@@ -261,7 +263,7 @@ else
 
 		//是否参与邮费半价活动
 
-		$is_share_logistics_half = check_activity_by_product_ids($product_id);
+		
 		$logistics_price = $is_share_logistics_half?floor($logistics_price):$logistics_price;
 		$uprice = $uprice + $logistics_price - $firstvou;
 
@@ -304,6 +306,8 @@ else
 		die;
 	}
 }
+$logistics_price = $weig->cost();
+$logistics_price = $is_share_logistics_half?floor($logistics_price):$logistics_price;
 //=================================================
 $tpl->assign("config",$config);
 $tpl->assign("verify",$_COOKIE['identity']);
