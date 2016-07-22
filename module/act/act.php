@@ -1,5 +1,4 @@
 <?php
-
 $tpl->assign('config',$config);
 if($config['temp'] == 'default'){
     $out = tplfetch('act.htm');
