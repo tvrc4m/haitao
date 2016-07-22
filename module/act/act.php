@@ -1,4 +1,6 @@
 <?php
+
+
 if ($config['bw'] == "weixin")
 {
 	include_once("pay/module/payment/lib/WxPayPubHelper/WxPay.pub.config.php");
@@ -19,6 +21,7 @@ if ($config['bw'] == "weixin")
 
 		$_SESSION['tmpTime'] = time();
 	}
+	else
 	{
 		$_SESSION['noncestr'] = randomkeys(12);
 
