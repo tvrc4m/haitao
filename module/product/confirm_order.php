@@ -346,7 +346,7 @@ function check_activity_by_product_ids($product_ids){
 		return false;
 
 	
-	$activity_product_ids = array(794,480,496,641,479,683,673,645,587,668,665,481,793,550,615,679,502,469,620,625,579,578,575,576,516);
+	$activity_product_ids = array(794,480,496,641,479,683,673,645,587,668,665,481,793,550,615,679,502,469,620,625,578,575,576,516);
 	foreach ($product_ids as $key => $value) {
 		foreach ($value['prolist'] as $kkey => $vvalue) {
 			if(!in_array($vvalue['product_id'], $activity_product_ids))
