@@ -22,13 +22,13 @@
 <body>
 <div class="seckill-container">
 	<div class="seckill-banner">
-		<img src="image/seckill-banner.jpg" alt="正品直邮邮费半价">
+		<img src="../image/wap/seckill-banner.jpg" alt="正品直邮邮费半价">
 	</div>
 	<div class="seckill-limit">
-		<h2><img src="image/seckill-hs.jpg" alt="限时秒杀"></h2>
+		<h2><img src="../image/wap/seckill-hs.jpg" alt="限时秒杀"></h2>
 		<div>
-			<a href="javascript:void(0);"><img src="image/seckill-limit1.jpg" alt="碧欧泉 Biotherm男士亮肤臻白 亮肤三件套小样洁面"></a>
-			<a href="javascript:void(0);"><img src="image/seckill-limit2.jpg" alt="倩碧2016焕颜活力小样八件套"></a>
+			<a href="javascript:void(0);"><img src="../image/wap/seckill-limit1.jpg" alt="碧欧泉 Biotherm男士亮肤臻白 亮肤三件套小样洁面"></a>
+			<a href="javascript:void(0);"><img src="../image/wap/seckill-limit2.jpg" alt="倩碧2016焕颜活力小样八件套"></a>
 		</div>
 	</div>
 	<div class="seckill-content"></div>
@@ -41,13 +41,13 @@ $(function(){
 	var list_name=[["SKII/SK-II/SK2 护肤精华露 青春露 神仙水 30ML","洗颜专科 柔澈泡沫 洁面乳 120g","资生堂ANESSA安耐晒超金瓶SPF50+PA＋＋＋＋","北海道LOSHI马油滋润保湿乳霜 万用霜 面霜 身体乳 220g"],["Rosette Paste 去除毛孔黑头海泥洁面膏 120g","COW/牛乳无添加洗颜洁面泡沫/洗面奶200ML","日本 Fancl/芳珂 柔滑保湿洁面粉 清爽型 50g","雪肌精柔净洗颜乳140ml 日本洗面奶"],["欢乐颂同款面膜Pure Smile艺妓面膜脸谱保湿补水159g/4枚","DUODUO家日本本土肌美精3D超保湿超补水面膜 9g*4枚","UTENA佑天兰胶原蛋白玻尿酸保湿美白果冻面膜贴159g/4枚","高丝 clear turn 精华面膜 5片装 胶原蛋白成分"],["Albion奥尔滨奥比虹健康水爽肤精萃液 27ml","SANA 2倍浓缩豆乳美肌保湿乳液150mL","sofina苏菲娜芯美颜日间倍护防护乳 32ml","Sofina苏菲娜 瓷效控油隔离妆前乳SPF25/SPF15 25ml"],["Biore/碧柔防晒霜spf50 花王防晒凝露 50g","花王碧柔UV防晒啫哩","TAMA植物成分萃取食品级防晒乳液SPF50孕妇可用 30g","NIVEA妮维雅防晒霜 水感清爽防晒乳140g SPF50"],["资生堂UNO吾诺男士洗面奶 控油去油抗痘去黑头磨砂洁面乳 130g","资生堂UNO吾诺男士多效防晒型调理乳160ml","UNO吾诺男士多效控油调理乳液160ml 清爽控油祛痘","日本资生堂 UNO吾诺男士洗面奶黑炭洁面乳130g 清爽控油去黑头"]]
 	for(i=0;i<list_numi;i++){
 		$(".seckill-content").append("<div class='seckill-list'>"+
-			"<h2><img src='image/seckill-h"+i+".jpg' alt='限时秒杀'></h2>"+
+			"<h2><img src='../image/wap/seckill-h"+i+".jpg' alt='限时秒杀'></h2>"+
 			"<ul class='clearfix' data-id='"+i+"'>"+
 			"</ul>"+
 		"</div>");
 		for(j=0;j<list_numj;j++){
 			$(".seckill-content ul[data-id="+i+"]").append("<li>"+
-				"<a href='"+list_link[i][j]+"'><img src='image/seckill-img"+i+""+j+".jpg' alt='"+list_name[i][j]+"'></a>"+
+				"<a href='"+list_link[i][j]+"'><img src='../image/wap/seckill-img"+i+""+j+".jpg' alt='"+list_name[i][j]+"'></a>"+
 				"</li>");
 		}
 	}
