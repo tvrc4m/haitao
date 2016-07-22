@@ -1,1 +1,57 @@
-shou ji duan wap
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>商城页面</title>
+	<meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width">
+	<meta name="viewport" media="(device-height: 568px)" content="initial-scale=1.0,user-scalable=no,maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta property="wb:webmaster" content="c51923015ca19eb1">
+	<style type="text/css">
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+	.seckill-container img{width: 100%;vertical-align: top;font-size: 0;display: block;}
+	.seckill-content ul li{width: 50%;float: left;list-style: none;}
+	.seckill-content{margin-bottom: 20px;}
+	.clearfix:after{height: 0;content: "";clear: both;visibility: hidden;display: block;overflow: hidden;}
+	.clearfix{*zoom:1;}
+	</style>
+</head>
+<body>
+<div class="seckill-container">
+	<div class="seckill-banner">
+		<img src="image/seckill-banner.jpg" alt="正品直邮邮费半价">
+	</div>
+	<div class="seckill-limit">
+		<h2><img src="image/seckill-hs.jpg" alt="限时秒杀"></h2>
+		<div>
+			<a href="javascript:void(0);"><img src="image/seckill-limit1.jpg" alt="碧欧泉 Biotherm男士亮肤臻白 亮肤三件套小样洁面"></a>
+			<a href="javascript:void(0);"><img src="image/seckill-limit2.jpg" alt="倩碧2016焕颜活力小样八件套"></a>
+		</div>
+	</div>
+	<div class="seckill-content"></div>
+</div>
+<script type="text/javascript" src="../script/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var list_numi=6 , list_numj=4;
+	var list_link=[["https://www.mayihaitao.com/product-detail-794.html","https://www.mayihaitao.com/product-detail-480.html","https://www.mayihaitao.com/product-detail-496.html","https://www.mayihaitao.com/product-detail-641.html"],["https://www.mayihaitao.com/product-detail-479.html","https://www.mayihaitao.com/product-detail-683.html","https://www.mayihaitao.com/product-detail-673.html","https://www.mayihaitao.com/product-detail-645.html"],["https://www.mayihaitao.com/product-detail-587.html","https://www.mayihaitao.com/product-detail-668.html","https://www.mayihaitao.com/product-detail-665.html","https://www.mayihaitao.com/product-detail-481.html"],["https://www.mayihaitao.com/product-detail-793.html","https://www.mayihaitao.com/product-detail-550.html","https://www.mayihaitao.com/product-detail-615.html","https://www.mayihaitao.com/product-detail-679.html&dist_id=49"],["https://www.mayihaitao.com/product-detail-502.html","https://www.mayihaitao.com/product-detail-469.html&dist_id=49","https://www.mayihaitao.com/product-detail-620.html&dist_id=49","https://www.mayihaitao.com/product-detail-625.html&dist_id=49"],["https://www.mayihaitao.com/product-detail-579.html&dist_id=49","https://www.mayihaitao.com/product-detail-575.html&dist_id=49","https://www.mayihaitao.com/product-detail-576.html&dist_id=49","https://www.mayihaitao.com/product-detail-516.html&dist_id=49"]]
+	var list_name=[["SKII/SK-II/SK2 护肤精华露 青春露 神仙水 30ML","洗颜专科 柔澈泡沫 洁面乳 120g","资生堂ANESSA安耐晒超金瓶SPF50+PA＋＋＋＋","北海道LOSHI马油滋润保湿乳霜 万用霜 面霜 身体乳 220g"],["Rosette Paste 去除毛孔黑头海泥洁面膏 120g","COW/牛乳无添加洗颜洁面泡沫/洗面奶200ML","日本 Fancl/芳珂 柔滑保湿洁面粉 清爽型 50g","雪肌精柔净洗颜乳140ml 日本洗面奶"],["欢乐颂同款面膜Pure Smile艺妓面膜脸谱保湿补水159g/4枚","DUODUO家日本本土肌美精3D超保湿超补水面膜 9g*4枚","UTENA佑天兰胶原蛋白玻尿酸保湿美白果冻面膜贴159g/4枚","高丝 clear turn 精华面膜 5片装 胶原蛋白成分"],["Albion奥尔滨奥比虹健康水爽肤精萃液 27ml","SANA 2倍浓缩豆乳美肌保湿乳液150mL","sofina苏菲娜芯美颜日间倍护防护乳 32ml","Sofina苏菲娜 瓷效控油隔离妆前乳SPF25/SPF15 25ml"],["Biore/碧柔防晒霜spf50 花王防晒凝露 50g","花王碧柔UV防晒啫哩","TAMA植物成分萃取食品级防晒乳液SPF50孕妇可用 30g","NIVEA妮维雅防晒霜 水感清爽防晒乳140g SPF50"],["资生堂UNO吾诺男士洗面奶 控油去油抗痘去黑头磨砂洁面乳 130g","资生堂UNO吾诺男士多效防晒型调理乳160ml","UNO吾诺男士多效控油调理乳液160ml 清爽控油祛痘","日本资生堂 UNO吾诺男士洗面奶黑炭洁面乳130g 清爽控油去黑头"]]
+	for(i=0;i<list_numi;i++){
+		$(".seckill-content").append("<div class='seckill-list'>"+
+			"<h2><img src='image/seckill-h"+i+".jpg' alt='限时秒杀'></h2>"+
+			"<ul class='clearfix' data-id='"+i+"'>"+
+			"</ul>"+
+		"</div>");
+		for(j=0;j<list_numj;j++){
+			$(".seckill-content ul[data-id="+i+"]").append("<li>"+
+				"<a href='"+list_link[i][j]+"'><img src='image/seckill-img"+i+""+j+".jpg' alt='"+list_name[i][j]+"'></a>"+
+				"</li>");
+		}
+	}
+})
+</script>
+</body>
+</html>
