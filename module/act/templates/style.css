@@ -1,2 +1,5 @@
-.act-wrap{position: relative;left: 50%;margin-left: -960px;overflow: hidden;}
-.floor1{background: url(image/1.jpg) no-repeat;height: 898px;}
+.act-wrap{position: relative;}
+.act-img{font-size: 0;position: relative;left: 50%;margin-left: -960px;}
+.act-link{width: 1200px;position: absolute;top: 0;height: 100%;left: 50%;margin-left: -600px;}
+.act-link a{position: relative;}
+.act-link .act-pro1{top}
