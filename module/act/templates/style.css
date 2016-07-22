@@ -2,10 +2,30 @@
 .act-img{font-size: 0;position: relative;left: 50%;margin-left: -960px;}
 .act-link{width: 1200px;position: absolute;top: 0;height: 100%;left: 50%;margin-left: -600px;}
 .act-link a{position: relative;}
-.act-link .act-pro1{top:1205px;left: 116px;width:960px; height: 265px;}
-.act-link .act-pro2{top:1269px;left: 189px;width:826px; height: 302px;}
-.act-link .act-pro3{top:1918px;left: 222px;width:732px; height: 239px;}
-.act-link .act-pro4{top:1205px;left: 116px;width:960px; height: 265px;}
-.act-link .act-pro5{top:1205px;left: 116px;width:960px; height: 265px;}
-.act-link .act-pro6{top:1205px;left: 116px;width:960px; height: 265px;}
-.act-link .act-pro7{top:1205px;left: 116px;width:960px; height: 265px;}
+.act-link .act-pro0{top:1230px;left: 136px;width:920px; height: 240px;}
+.act-link .act-pro1{top:1330px;left: 190px;width:826px; height: 250px;}
+.act-link .act-pro2{top:1420px;left: 215px;width:730px; height: 240px;}
+.act-link .act-pro3{top:1950px;left: 120px;width:570px; height: 320px;}
+.act-link .act-pro4{top:2150px;left: 30px;width:530px; height: 375px;}
+.act-link .act-pro5{top:2000px;left: 0;width:590px; height: 420px;}
+.act-link .act-pro6{top:2290px;left: 0;width:540px; height: 420px;}
+.act-link .act-pro7{top:2690px;left: 80px;width:540px; height: 460px;}
+.act-link .act-pro8{top:2810px;left: 90px;width:500px; height: 480px;}
+.act-link .act-pro9{top:2710px;left: 40px;width:540px; height: 440px;}
+.act-link .act-pro10{top:2860px;left: 40px;width:540px; height: 440px;}
+.act-link .act-pro11{top:3230px;left: 150px;width:650px; height: 350px;}
+.act-link .act-pro12{top:3330px;left: 0px;width:560px; height: 370px;}
+.act-link .act-pro13{top:3230px;left: 0;width:600px; height: 380px;}
+.act-link .act-pro14{top:3290px;left: 420px;width:630px; height: 410px;}
+.act-link .act-pro15{top:3590px;left: 130px;width:580px; height: 430px;}
+.act-link .act-pro16{top:3850px;left: 150px;width:450px; height: 490px;}
+.act-link .act-pro17{top:3550px;left: 0;width:480px; height: 430px;}
+.act-link .act-pro18{top:3850px;left: 0;width:500px; height: 430px;}
+.act-link .act-pro19{top:4130px;left: 150px;width:500px; height: 390px;}
+.act-link .act-pro20{top:4460px;left: 150px;width:500px; height: 480px;}
+.act-link .act-pro21{top:4180px;left: 0;width:430px; height: 430px;}
+.act-link .act-pro22{top:4460px;left: 0;width:450px; height: 410px;}
+.act-link .act-pro23{top:4760px;left: 150px;width:450px; height: 500px;}
+.act-link .act-pro24{top:4980px;left: 150px;width:500px; height: 400px;}
+.act-link .act-pro25{top:4780px;left: 0;width:500px; height: 430px;}
+.act-link .act-pro26{top:5050px;left: 0;width:500px; height: 470px;}
