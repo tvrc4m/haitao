@@ -46,7 +46,6 @@ else
 	{
 		$addr = $orderadder -> get_orderadderlist();
 	}
-	var_dump($addr);
 	$tpl -> assign("consignee",$addr);
 	//============================读出购物车的数据
 	if($_GET['id']&&is_numeric($_GET['id']))
