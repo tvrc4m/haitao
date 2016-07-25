@@ -17,15 +17,15 @@ $db->query($sql);
 $cats = $db->fetchRow();
 $strs="";
 if(!empty($cats)){
-    $strs .= "OR catid=".$cats['catid'];
+    $strs .= "OR a.catid=".$cats['catid'];
 }
 if(!empty($brand)){
-    $strs .= "AND brand='".$brand."'";
+    $strs .= "AND a.brand='{$brand}'";
 }else{
     $strbrand = "OR a.brand ='{$key}'";
 }
 if(!empty($id)){
-    $strs .= "AND catid=".$brand;
+    $strs .= "AND a.catid=".$id;
 }
 
 include_once("includes/page_utf_class.php");
@@ -67,9 +67,10 @@ if(!$page->__get('totalRows'))
 }
 
 $sql.=" limit ".$page->firstRow.",".$page->listRows;
+
 $db->query($sql);
 $ress = $db->getRows();
-
+//var_dump($ress);
 if(!empty($ress)) {
     foreach ($ress as $val) {
         $cats[] = $val['catid'];
@@ -125,7 +126,7 @@ if(!empty($_GET['brand']))
 //你可能还喜欢
 if(!empty($_GET['id'])) {
     $cat_first = substr($_GET['id'],0,4);
-    $sql = "SELECT a.id,a.`name`,a.market_price,a.price,a.pic,b.`img`,b.`title` FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.`national`=b.id WHERE is_shelves=1 and LOCATE({$cat_first},a.catid)>0 ORDER BY a.clicks DESC LIMIT 10";die;
+    $sql = "SELECT a.id,a.`name`,a.market_price,a.price,a.pic,b.`img`,b.`title` FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.`national`=b.id WHERE is_shelves=1 and LOCATE({$cat_first},a.catid)>0 ORDER BY a.clicks DESC LIMIT 10";
     $db->query($sql);
     $relation = $db->getRows();
 
