@@ -10,33 +10,26 @@ else
 	$cat_pro=array();
 
 //--------广告位------
-//$guang = array(array(15,16,17),array(18,19,20),array(21,22,23),array(24,25,26));
-$guang = array(
-	array(15,16,17),
-	array(18,19,20),
-	array(21,22,23),
-	array(24,25,26),
-	array(27,28,29)
-);
+$guang = array(array(15,16,17),array(18,19,20),array(21,22,23),array(24,25,26));
+
 if($cat_pro)
 {
-	$i=0;
-	foreach($cat_pro as $key=>$v)
-	{
-		$cat_pros[$key]['catid'] =$catCache[$v['catid']]['catid'];
-		$cat_pros[$key]['name'] =$catCache[$v['catid']]['cat'];
-		$cat_pros[$key]['url'] =$catCache[$v['catid']]['url'];
+	$cat_pro = array_values($cat_pro);
+	
+	for($c=0;$c<count($cat_pro);$c++){
+		$cat_pros[$c]['catid'] =$catCache[$cat_pro[$c]['catid']]['catid'];
+		$cat_pros[$c]['name'] =$catCache[$cat_pro[$c]['catid']]['cat'];
+		$cat_pros[$c]['url'] =$catCache[$cat_pro[$c]['catid']]['url'];
 		if(!empty($v['tab'])){
-			for($i=0;$i<count($v['tab']);$i++){
-				$cat_pros[$key]['sub_cat'][$i]['catid']=$catCache[$v['tab'][$i]]['catid'];
-				$cat_pros[$key]['sub_cat'][$i]['name']=$catCache[$v['tab'][$i]]['cat'];
-				$cat_pros[$key]['sub_cat'][$i]['url']=$catCache[$v['tab'][$i]]['url'];
+			for($i=0;$i<count($cat_pro[$c]['tab']);$i++){
+				$cat_pros[$c]['sub_cat'][$i]['catid']=$catCache[$cat_pro[$c]['tab'][$i]]['catid'];
+				$cat_pros[$c]['sub_cat'][$i]['name']=$catCache[$cat_pro[$c]['tab'][$i]]['cat'];
+				$cat_pros[$c]['sub_cat'][$i]['url']=$catCache[$cat_pro[$c]['tab'][$i]]['url'];
 			}
 		}else{
-			$cat_pros[$key]['sub_cat']='';
+			$cat_pros[$c]['sub_cat']='';
 		}
-		$cat_pros[$key]['guanggao'] = $guang[$i];
-		$i++;
+		$cat_pros[$c]['guanggao'] = $guang[$c];
 	}
 
 	$tpl->assign("categorys",$cat_pros);
