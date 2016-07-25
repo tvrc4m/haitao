@@ -151,3 +151,4 @@ ul,ol{list-style:none;}
 .flex-control-paging li a {width: 60px; height: 5px; display: block; background: url(../../../image/default/haitao_icon10.jpg) no-repeat ; cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px;}
 .flex-control-paging li a:hover {background: url(../../../image/default/haitao_icon9.jpg) no-repeat;}
 .flex-control-paging li a.flex-active {background: url(../../../image/default/haitao_icon9.jpg) no-repeat ; cursor: default;}
+.flex-direction-nav{display: none;}
