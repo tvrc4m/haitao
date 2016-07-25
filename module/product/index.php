@@ -10,7 +10,14 @@ else
 	$cat_pro=array();
 
 //--------广告位------
-$guang = array(array(15,16,17),array(18,19,20),array(21,22,23),array(24,25,26));
+//$guang = array(array(15,16,17),array(18,19,20),array(21,22,23),array(24,25,26));
+$guang = array(
+	array(15,16,17),
+	array(18,19,20),
+	array(21,22,23),
+	array(24,25,26),
+	array(27,28,29)
+);
 if($cat_pro)
 {
 	$i=0;
