@@ -145,9 +145,10 @@ ul,ol{list-style:none;}
 /*banner*/
 .banner-slide{position: relative;font-size:0;height: 460px;overflow: hidden;}
 .banner-slide .extend{position:absolute;top:0;left:50%;margin-left:361px;z-index:3;font-size: 0;}
-.flexslider{height: 460px;position: relative;left: 50%;margin-left: -960px;max-width: 1920px;}
+.flexslider{height: 460px;position: relative;left: 50%;margin-left: -960px;max-width: 1920px;overflow:hidden;}
 .flex-control-nav {width: 100%; position: absolute; bottom: 10px; text-align: center;z-index: 3}
 .flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
 .flex-control-paging li a {width: 60px; height: 5px; display: block; background: url(../../../image/default/haitao_icon10.jpg) no-repeat ; cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px;}
 .flex-control-paging li a:hover {background: url(../../../image/default/haitao_icon9.jpg) no-repeat;}
 .flex-control-paging li a.flex-active {background: url(../../../image/default/haitao_icon9.jpg) no-repeat ; cursor: default;}
+.flex-direction-nav{display: none;}
