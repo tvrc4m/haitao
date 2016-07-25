@@ -17,7 +17,7 @@
             <dd>
             <{assign var=id value=$smarty.get.id}>
             <{foreach item=list from=$cat}>
-              <a href="<{$config.weburl}>/?m=product&s=list&id=<{$list.catid}>"><{$list.cat}></a>
+              <a href="<{$config.weburl}>/?m=product&s=list_search&id=<{$list.catid}>"><{$list.cat}></a>
             <{/foreach}>
             </dd>
           </dl>
