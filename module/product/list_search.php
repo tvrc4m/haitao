@@ -17,15 +17,15 @@ $db->query($sql);
 $cats = $db->fetchRow();
 $strs="";
 if(!empty($cats)){
-    $strs .= "OR catid=".$cats['catid'];
+    $strs .= "OR a.catid=".$cats['catid'];
 }
 if(!empty($brand)){
-    $strs .= "AND brand='".$brand."'";
+    $strs .= "AND a.brand='{$brand}'";
 }else{
     $strbrand = "OR a.brand ='{$key}'";
 }
 if(!empty($id)){
-    $strs .= "AND catid=".$brand;
+    $strs .= "AND a.catid=".$id;
 }
 
 include_once("includes/page_utf_class.php");
@@ -58,7 +58,7 @@ else{
 
 //查询商品中的分类与品牌
 //$sql = "SELECT catid,brand FROM mallbuilder_product WHERE `name` LIKE '%{$key}%' OR brand ='{$key}' OR keywords LIKE '%{$key}%' $strs";
-echo $sql = "SELECT a.catid,a.brand,a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id  left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and a.status>0 and is_shelves=1 and a.`name` LIKE '%{$key}%' $strbrand  OR a.keywords LIKE '%{$key}%' $strs $scl";
+$sql = "SELECT a.catid,a.brand,a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id  left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and a.status>0 and is_shelves=1 and a.`name` LIKE '%{$key}%' $strbrand  OR a.keywords LIKE '%{$key}%' $strs $scl";
 
 if(!$page->__get('totalRows'))
 {
@@ -125,7 +125,7 @@ if(!empty($_GET['brand']))
 //你可能还喜欢
 if(!empty($_GET['id'])) {
     $cat_first = substr($_GET['id'],0,4);
-    $sql = "SELECT a.id,a.`name`,a.market_price,a.price,a.pic,b.`img`,b.`title` FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.`national`=b.id WHERE is_shelves=1 and LOCATE({$cat_first},a.catid)>0 ORDER BY a.clicks DESC LIMIT 10";die;
+    $sql = "SELECT a.id,a.`name`,a.market_price,a.price,a.pic,b.`img`,b.`title` FROM mallbuilder_product a LEFT JOIN mallbuilder_national_pavilions b ON a.`national`=b.id WHERE is_shelves=1 and LOCATE({$cat_first},a.catid)>0 ORDER BY a.clicks DESC LIMIT 10";
     $db->query($sql);
     $relation = $db->getRows();
 
