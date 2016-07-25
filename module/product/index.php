@@ -31,6 +31,7 @@ if($cat_pro)
 		$cat_pros[$key]['guanggao'] = $guang[$i];
 		$i++;
 	}
+
 	$tpl->assign("categorys",$cat_pros);
 }
 
