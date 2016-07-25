@@ -1,6 +1,7 @@
 <?php
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
+if($config['temp']=='wap'){
 
 /*if($_GET['id'] and is_numeric($_GET['id']))
 {
@@ -72,4 +73,8 @@ $config['description']=$de['description'];
 //======================================================================
 include_once("footer.php");
 $tpl->display("cat.htm");
+
+}else{
+	msg($config['weburl']);
+}
 ?>

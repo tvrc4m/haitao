@@ -150,6 +150,15 @@
 			}
 			$de[$key]['scat']=$a;
 		}
+		$sql = 'SELECT catid,cat,pic,wpic,brand FROM mallbuilder_product_cat ORDER BY catid ASC';
+		$db->query($sql);
+		$cacheList = $db->getRows();
+		foreach($cacheList as $v){
+			$cacheLists[$v['catid']]=$v;
+			$cacheLists[$v['catid']]['url']=$config['weburl'].'/product-list-'.$v['catid'].'.html';
+		}
+		file_put_contents($config['webroot'].'/cache/configure/cat.cache', "<?php\nreturn " . var_export($cacheLists, true) . ";");
+
 	}
 	else if($_GET['operation']=="search"&&$_GET['cat'])
 	{		
