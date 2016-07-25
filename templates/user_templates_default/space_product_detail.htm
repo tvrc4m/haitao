@@ -61,11 +61,11 @@
             <{/if}>
             <{/if}>
             <div class="btn-choose">
-                <{if $de.stock > 0 }>
+                <{if $de.stock eq 0 }>
+                <a class="no-pro">已售罄</a>
+                <{else}>
                 <a href="javascript:void(0);" class="btn-buy"></a>
                 <a href="javascript:void(0);" class="add-cart"></a>
-                <{else}>
-                <a class="no-pro">已售罄</a>
                 <{/if}>
             </div>
         </form>
