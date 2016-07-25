@@ -1,0 +1,149 @@
+<style type="text/css">
+	.seckill-container img{width: 100%;vertical-align: top;font-size: 0;display: block;}
+	.seckill-content ul li{width: 50%;float: left;list-style: none;}
+	.seckill-content{padding-bottom: 20px;background-color: #fffcf8;}
+	.seckill-banner{position:relative;}
+	.seckill-banner i{
+		display: inline-block;height: 35px;width: 35px;border-radius: 50%;
+	    background: url(image/wap/wap_haitao_icon9.png) center 3px no-repeat;
+	    background-size: 75%;background-color: rgba(0,0,0,.5);
+	    position: absolute;top: 10%;left: 4%;}
+	.mains{height: 0;}
+</style>
+<div class="seckill-container">
+	<div class="seckill-banner">
+		<img src="<{$config.weburl}>/module/act/templates/image/wap/seckill-banner.jpg" alt="正品直邮邮费半价">
+		<a href="<{$config.weburl}>"><i></i></a>
+	</div>
+	<div class="seckill-limit">
+		<h2><img src="<{$config.weburl}>/module/act/templates/image/wap/seckill-hs.jpg" alt="限时秒杀"></h2>
+		<div>
+			<a href="<{$config.weburl}>/?m=product&s=detail&id=564"><img src="/module/act/templates/image/wap/seckill-limit1.jpg" alt="碧欧泉 Biotherm男士亮肤臻白 亮肤三件套小样洁面20ml+水30ml+霜20ml"></a>
+			<a href="<{$config.weburl}>/?m=product&s=detail&id=568"><img src="/module/act/templates/image/wap/seckill-limit2.jpg" alt="碧欧泉 (Biotherm)活泉护肤小样五件套"></a>
+			<a href="<{$config.weburl}>/?m=product&s=detail&id=572"><img src="/module/act/templates/image/wap/seckill-limit3.jpg" alt="倩碧2016焕颜活力小样八件套"></a>
+		</div>
+	</div>
+	<div class="seckill-content"></div>
+</div>
+<div class="addtop">
+	<a class="top" href="javascript:void(0);"></a>
+</div>
+<script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	var list_numi=6 , list_numj=4;
+	var list_hname=["人气推荐","面部清洁","面膜","爽肤水乳液","防晒隔离","男士护肤"]
+	var list_link=[["794","480","496","641"],["479","683","673","645"],["587","668","665","481"],["793","615","550","679"],["469","502","620","625"],["579","576","516","575"]]
+	var list_name=[["SKII/SK-II/SK2 护肤精华露 青春露 神仙水 30ML","洗颜专科 柔澈泡沫 洁面乳 120g","资生堂ANESSA安耐晒超金瓶SPF50+PA＋＋＋＋","北海道LOSHI马油滋润保湿乳霜 万用霜 面霜 身体乳 220g"],["Rosette Paste 去除毛孔黑头海泥洁面膏 120g","COW/牛乳无添加洗颜洁面泡沫/洗面奶200ML","日本 Fancl/芳珂 柔滑保湿洁面粉 清爽型 50g","雪肌精柔净洗颜乳140ml 日本洗面奶"],["欢乐颂同款面膜Pure Smile艺妓面膜脸谱保湿补水159g/4枚","DUODUO家日本本土肌美精3D超保湿超补水面膜 9g*4枚","UTENA佑天兰胶原蛋白玻尿酸保湿美白果冻面膜贴159g/4枚","高丝 clear turn 精华面膜 5片装 胶原蛋白成分"],["Albion奥尔滨奥比虹健康水爽肤精萃液 27ml","sofina苏菲娜芯美颜日间倍护防护乳 32ml","SANA 2倍浓缩豆乳美肌保湿乳液150mL","Sofina苏菲娜 瓷效控油隔离妆前乳SPF25/SPF15 25ml"],["花王碧柔UV防晒啫哩","Biore/碧柔防晒霜spf50 花王防晒凝露 50g","TAMA植物成分萃取食品级防晒乳液SPF50孕妇可用 30g","NIVEA妮维雅防晒霜 水感清爽防晒乳140g SPF50"],["资生堂UNO吾诺男士洗面奶 控油去油抗痘去黑头磨砂洁面乳 130g","资生堂UNO吾诺男士多效防晒型调理乳160ml","日本资生堂 UNO吾诺男士洗面奶黑炭洁面乳130g 清爽控油去黑头","UNO吾诺男士多效控油调理乳液160ml 清爽控油祛痘"]]
+	for(i=0;i<list_numi;i++){
+		$(".seckill-content").append("<div class='seckill-list'>"+
+			"<h2><img src='<{$config.weburl}>/module/act/templates/image/wap/seckill-h"+i+".jpg' alt='"+list_hname[i]+"'></h2>"+
+			"<ul class='clearfix' data-id='"+i+"'>"+
+			"</ul>"+
+		"</div>");
+		for(j=0;j<list_numj;j++){
+			$(".seckill-content ul[data-id="+i+"]").append("<li>"+
+				"<a href='<{$config.weburl}>/?m=product&s=detail&id="+list_link[i][j]+"'><img src='<{$config.weburl}>/module/act/templates/image/wap/seckill-img"+i+""+j+".jpg' alt='"+list_name[i][j]+"'></a>"+
+				"</li>");
+		}
+	}
+	$(window).scroll(function(){
+		var h = $(document).scrollTop();
+		var wHeight=$(window).height();
+		if(h>wHeight){
+			$(".addtop").show()
+			$(".addtop").click(function(){
+				$(window).scrollTop(0);
+			})
+		}else{
+			$(".addtop").hide()
+		}
+	})
+})
+</script>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    var cnf = {
+        //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
+        timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
+        nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
+        signature: '<{$smarty.session.signature}>',// 必填，签名，见附录1
+        jsApiList: ['onMenuShareQQ','onMenuShareTimeline','onMenuShareWeibo','onMenuShareAppMessage','downloadImage','checkJsApi'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    };
+    wx.config(cnf);
+    wx.ready(function(){
+        wx.onMenuShareTimeline({
+            title: "“海外直邮，邮费减半”，蚂蚁海淘为您发福利啦！", // 分享标题
+            link: location.href, // 分享链接
+            imgUrl: "<{$config.weburl}>/module/act/templates/image/wap/seckill-share.jpg", // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareAppMessage({
+            title:"“海外直邮，邮费减半”，蚂蚁海淘为您发福利啦！", // 分享标题
+            desc: "绝对正品，机不可失哦！", // 分享描述
+            link: location.href, // 分享链接
+            imgUrl: "<{$config.weburl}>/module/act/templates/image/wap/seckill-share.jpg", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        })
+
+        wx.onMenuShareQQ({
+            title: '“海外直邮，邮费减半”，蚂蚁海淘为您发福利啦！', // 分享标题
+            desc: '绝对正品，机不可失哦！', // 分享描述
+            link: location.href, // 分享链接
+            imgUrl: '<{$config.weburl}>/module/act/templates/image/wap/seckill-share.jpg', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        wx.onMenuShareWeibo({
+            title: '“海外直邮，邮费减半”，蚂蚁海淘为您发福利啦！', // 分享标题
+            desc: '绝对正品，机不可失哦！', // 分享描述
+            link: location.href, // 分享链接
+            imgUrl: '<{$config.weburl}>/module/act/templates/image/wap/seckill-share.jpg', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                /*
+                var url = "<{$config.weburl}>/ajax_back_end.php";
+                $.post(url,{"uid":'<{$buid}>',"shopid":'<{$smarty.get.uid}>',"type":'1'},function(data){
+                })
+                */
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    })
+</script>

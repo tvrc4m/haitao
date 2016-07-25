@@ -365,4 +365,5 @@ if($_GET['fx']==fx)
 	$out=tplfetch("product_list_x.htm");
 else
 	$out=tplfetch("product_list.htm");
+
 ?>

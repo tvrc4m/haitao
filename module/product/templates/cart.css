@@ -37,7 +37,7 @@ table{border-collapse:collapse;}
 .cart-con .pro-name p{color:#666;margin-top:5px;line-height:16px;}
 .cart-con .price{color:#000;font-weight:bold;font-family:Verdana,Arial;}
 .cart-con .org{color:#FF4400;}
-.cart-con .promo-content{background-color:#1dc2b4;color:#FFF;width:60px;height:25px;line-height:25px;margin:3px auto;text-align:center;display:inline-block;cursor:pointer;}
+.cart-con .promo-content{background-color:#1dc2b4;color:#FFF;height:25px;line-height:25px;margin:3px auto;text-align:center;display:inline-block;cursor:pointer;}
 /*底部全选*/
 .toolbar{margin:20px 0 40px 0;height:50px;line-height:50px;position:relative;overflow:hidden;}
 .toolbar .select-all{float:left;width:50px;height:50px;padding-left:10px;} 
