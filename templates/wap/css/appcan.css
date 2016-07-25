@@ -71,6 +71,7 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .shoping-hide{display: none;}
 .incar{width: 30%;float: right;text-align: center;font-size: 16px;}
 .incar_l{background-color: #ff5c5c;color: #fff!important;}
+.incar_d{background-color: #efefef;color: #535353;}
 .incar_c{background-color: #efefef;color: #ff5c5c;}
 .incars{width: 50%;float: left;text-align: center;font-size: 16px;}
 .incars_l{background-color: #ff5c5c;color: #fff!important;}
