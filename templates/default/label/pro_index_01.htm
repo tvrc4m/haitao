@@ -1,26 +1,26 @@
 <{foreach item=slist key=key from=$categorys}>
-    <{if $key<1004 }>
         <div class="w goods_items">
             <div class="til clear">
                 <span class="til_<{$key+1}>">
-                    <a target="_blank" href="<{$config.weburl}>?m=product&s=list&id=<{$slist.catid}>"><{$slist.name}></a>
+                    <a target="_blank" href="<{$slist.url}>"><{$slist.name}></a>
                 </span>
                 <p>
+                    <{if $slist.sub_cat neq ''}>
                     <{foreach item=sublist key=n from=$slist.sub_cat}>
-                    <a href="<{$config.weburl}>/?m=product&s=list&id=<{$sublist.catid}>" title=""><{$sublist.cat}></a>
+                    <a href="<{$sublist.url}>" title=""><{$sublist.name}></a>
                     <{/foreach}>
+                    <{/if}>
                 </p>
             </div>
             <div class="m_list m_list_02 clear">
-                <div class="fl m_img_box w_202"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.0}>&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
+                <div class="fl m_img_box w_202"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.1}>'></script></div>
                 <div class="fl pos_re list_box">
                     <ul class="clear">
                         <{insert name="label" catid=$slist.catid type="product" o=6 temp="product_list_li_2" limit=6}>
                     </ul>
-                    <div class="m_img_box pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.1}>&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
-                    <div class="m_img_box spe pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.2}>&catid=<{$smarty.get.id}>&name=<{$smarty.get.key}>'></script></div>
+                    <div class="m_img_box pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.1}>'></script></div>
+                    <div class="m_img_box spe pos_ab"><script src='<{$config.weburl}>/api/ad.php?id=<{$slist.guanggao.2}>'></script></div>
                 </div>
             </div>
         </div>
-    <{/if}>
 <{/foreach}>

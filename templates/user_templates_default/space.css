@@ -140,7 +140,7 @@
 .pro_detail .inner-right .content>div{display: none;}
 .pro_detail .inner-right .content .details{display: block;}
 .pro_detail .inner-right .details .desc{text-align: center;}
-.pro_detail .inner-right .details .desc img{max-width: 750px;}
+.pro_detail .inner-right .details .desc img{max-width: 750px;vertical-align: top;}
 .pro_detail .details .attributes p,.pro_detail .details .desc p.title,.pro_detail .inner-right .notice p,.pro_detail .inner-right .send-flow p{height: 40px;line-height: 40px;border-bottom: 1px dotted #ccc;border-top:1px dotted #ccc;margin: 20px 0;padding-left: 20px;background: url(img/haitao_icon12.png) no-repeat 0;text-align: left;}
 .pro_detail .details .attributes p{margin-bottom: 0;}
 .pro_detail .inner-right .notice ,.pro_detail .inner-right .send-flow {text-align: center;}
