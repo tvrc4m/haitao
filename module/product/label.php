@@ -27,14 +27,14 @@ function product($ar)
             $scl.=" and a.is_tg='$tg'";
 
         /*---分站---*/
-        if($dpid)
+      /*  if($dpid)
             $scl.=" and b.provinceid='".getdistrictid($dpid)."'";
         if($dcid)
             $scl.=" and b.cityid='".getdistrictid($dcid)."'";
         if($daid)
             $scl.=" and b.areaid='".getdistrictid($daid)."'";
         if($dsid)
-            $scl.=" and b.streetid='".getdistrictid($dsid)."'";
+            $scl.=" and b.streetid='".getdistrictid($dsid)."'";*/
 
 
         // -- 手机端屏蔽虚拟商品 bruce 2015-1-22

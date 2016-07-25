@@ -101,6 +101,7 @@
 .pro_detail .item_info .property .btn-choose{margin: 30px 0;font-size: 0;}
 .pro_detail .item_info .property .btn-choose .btn-buy{width: 150px;height: 50px;background: url(img/haitao_icon10.png)no-repeat;margin-right: 40px;}
 .pro_detail .item_info .property .btn-choose .add-cart{width: 180px;height: 50px;background: url(img/haitao_icon11.png)no-repeat;}
+.pro_detail .item_info .property .btn-choose .no-pro{width: 150px;height: 50px;background: #e1e1e1;color: #fff;font-size: 14px;border-radius: 5px;text-align: center;line-height: 50px;}
 .pro_detail .item_info .property .social li{float: left;}
 .pro_detail .item_info .property .social li a{padding-left: 25px;margin-right: 10px;}
 .pro_detail .item_info .property .social a.fav{background: url(img/haitao_icon03.png)no-repeat 0;}
@@ -140,7 +141,7 @@
 .pro_detail .inner-right .content>div{display: none;}
 .pro_detail .inner-right .content .details{display: block;}
 .pro_detail .inner-right .details .desc{text-align: center;}
-.pro_detail .inner-right .details .desc img{max-width: 750px;}
+.pro_detail .inner-right .details .desc img{max-width: 750px;vertical-align: top;}
 .pro_detail .details .attributes p,.pro_detail .details .desc p.title,.pro_detail .inner-right .notice p,.pro_detail .inner-right .send-flow p{height: 40px;line-height: 40px;border-bottom: 1px dotted #ccc;border-top:1px dotted #ccc;margin: 20px 0;padding-left: 20px;background: url(img/haitao_icon12.png) no-repeat 0;text-align: left;}
 .pro_detail .details .attributes p{margin-bottom: 0;}
 .pro_detail .inner-right .notice ,.pro_detail .inner-right .send-flow {text-align: center;}

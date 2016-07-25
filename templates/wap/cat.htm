@@ -47,9 +47,9 @@ $(function(){
 		}
 	})
 	$(".cat-container div").hide();
-	$(".cat-container div[pid=a1000]").show();  
+	$(".cat-container div[pid=a1004]").show();
 	$(".cat-banner li").click(function(){
-		var _this=$(this) , liSize=$(this).index() , linum="a"+Number(1000+liSize);
+		var _this=$(this) , liSize=$(this).index() , linum="a"+Number(1004+liSize);
 		_this.addClass("current").siblings().removeClass("current");
 		$(".cat-container div[pid='"+linum+"']").show();
 		$(".cat-container div[pid!='"+linum+"']").hide();
