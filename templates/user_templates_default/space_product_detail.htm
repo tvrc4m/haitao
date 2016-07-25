@@ -61,8 +61,12 @@
             <{/if}>
             <{/if}>
             <div class="btn-choose">
+                <{if $de.stock > 0 }>
                 <a href="javascript:void(0);" class="btn-buy"></a>
                 <a href="javascript:void(0);" class="add-cart"></a>
+                <{else}>
+                <a class="no-pro">已售罄</a>
+                <{/if}>
             </div>
         </form>
         <div id="cart_show"></div>
