@@ -7,9 +7,9 @@ include_once("includes/insert_function.php");
 include_once($config["webroot"]."/config/nav_menu.php");
 //===============================================
 //================未读消息验证===================
-$sql="select iflook from ".FEEDBACK." where touserid=$buid and iflook=0";
+/*$sql="select iflook from ".FEEDBACK." where touserid=$buid and iflook=0";
 $numRows = mysql_num_rows(mysql_query($sql));
-$tpl->assign("numRows",$numRows);
+$tpl->assign("numRows",$numRows);*/
 //===============================================
 $action=isset($_GET['action'])?$_GET['action']:"main";
 $submit=isset($_POST['submit'])?$_POST['submit']:NULL;
@@ -339,7 +339,7 @@ else
 		$tpl->assign("output",$output);
 	else
 		$tpl->assign("output",$admin->tpl->fetch($page));
-	
+
 	// if($config['temp']=='wap')
 	// {
 	// 	$page="admin_inc_p.htm";
