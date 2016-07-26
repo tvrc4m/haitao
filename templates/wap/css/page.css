@@ -5,6 +5,7 @@ h1,h2,h3,h4,h5,h6{font-size:100%;}
 ul,ol,li{list-style:none;}
 em,i{font-style:normal;}
 img{border:0;}
+input{-webkit-appearance : none;}
 input,img{vertical-align:middle;}
 body{color:#535353;font:400 14px/18px 'microsoft yahei';background:#f5f5f5;max-width: 720px;margin: 0 auto;}
 a,a:visited{color:#535353;text-decoration:none;}
