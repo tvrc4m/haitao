@@ -101,6 +101,7 @@
 .pro_detail .item_info .property .btn-choose{margin: 30px 0;font-size: 0;}
 .pro_detail .item_info .property .btn-choose .btn-buy{width: 150px;height: 50px;background: url(img/haitao_icon10.png)no-repeat;margin-right: 40px;}
 .pro_detail .item_info .property .btn-choose .add-cart{width: 180px;height: 50px;background: url(img/haitao_icon11.png)no-repeat;}
+.pro_detail .item_info .property .btn-choose .no-pro{width: 150px;height: 50px;background: #e1e1e1;color: #fff;font-size: 14px;border-radius: 5px;text-align: center;line-height: 50px;}
 .pro_detail .item_info .property .social li{float: left;}
 .pro_detail .item_info .property .social li a{padding-left: 25px;margin-right: 10px;}
 .pro_detail .item_info .property .social a.fav{background: url(img/haitao_icon03.png)no-repeat 0;}

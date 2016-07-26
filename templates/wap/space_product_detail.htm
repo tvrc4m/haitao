@@ -17,11 +17,14 @@
                     <script  src='<{$config.weburl}>/?m=product&s=cart_number'></script>
                 </span>
             </a>
+            <{if $de.stock eq 0}>
+            <a class="incar incar_d" href="javascript:void(0);" >已售罄</a>
+            <{else}>
             <a class="incar incar_l btn-buy" href="javascript:void(0);" >立即购买</a>
             <{if $de.is_virtual neq 1}>
             <a class="incar incar_c " href="javascript:void(0)">加入购物车</a>
             <{/if}>
-            <!-- <a class="incar incar_d" href="javascript:void(0);" >已售罄</a> -->
+            <{/if}>
         </div>
     </div>
 </div>

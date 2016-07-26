@@ -35,7 +35,7 @@ class ArrCache
 		if($this->cached==false&&strlen($contents)>0)
 		{
 			ob_end_clean();
-			file_put_contents($this->fileName,$contents);
+			@file_put_contents($this->fileName,$contents);
 			echo $contents;
 		}
 	}
