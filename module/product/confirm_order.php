@@ -268,14 +268,6 @@ else
 		$logistics_price = $weig->cost();//物流费用
 
 		//是否参与邮费半价活动
-		/*
-		if(floor($uprice)<300)
-			$logistics_price = $is_share_logistics_half?floor($logistics_price/2):floor($logistics_price/2);
-		else
-			$logistics_price = 0;
-			*/
-
-			var_dump($uprice);
 		$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice,$logistics_price);
 		$uprice = $uprice + $logistics_price - $firstvou;
 
@@ -319,12 +311,6 @@ else
 	}
 }
 $logistics_price = $weig->cost();
-/*
-if($cartlist['sumprice']<300)
-$logistics_price = $is_share_logistics_half?floor($logistics_price/2):floor($logistics_price/2);
-else
-$logistics_price=0;
-*/
 $logistics_price = get_real_logistcost($is_share_logistics_half,$cartlist['sumprice'],$logistics_price);
 //=================================================
 $tpl->assign("config",$config);
@@ -381,10 +367,11 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 	if($time_now>$time_end || $time_now<$time_start){
 		return $logistcost_price;
 	}
-
+	//var_dump($is_half_price,$product_price,$logistcost_price);
 	$full_free_acount = 300;
 	if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
 	{
+		//var_dump(1);
 		$full_free_acount = 200;
 	}
 

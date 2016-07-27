@@ -66,7 +66,7 @@ else{
 
 //查询商品中的分类与品牌
 //$sql = "SELECT catid,brand FROM mallbuilder_product WHERE `name` LIKE '%{$key}%' OR brand ='{$key}' OR keywords LIKE '%{$key}%' $strs";
-echo $sql = "SELECT a.catid,a.brand,a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id  left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and a.status>0 and is_shelves=1 and a.`name` LIKE '%{$key}%' $strbrand  OR a.keywords LIKE '%{$key}%' $strs $scl";
+$sql = "SELECT a.catid,a.brand,a.id,a.name as pname,a.subhead,a.trade,a.price,a.national,a.sales,a.stock,a.market_price,a.is_dist,a.member_id as userid,a.pic,c.company, p.* FROM ".PRODUCT." a left join ".DISTRIBUTION_PRODUCT." p ON a.id=p.product_id  left join ".SHOP." c on a.member_id=c.userid WHERE  c.shop_statu=1 and a.status>0 and is_shelves=1 and a.`name` LIKE '%{$key}%' $strbrand  OR a.keywords LIKE '%{$key}%' $strs $scl";
 
 if(!$page->__get('totalRows'))
 {

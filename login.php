@@ -641,7 +641,11 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
             if($cre['userid'])
             {
                 login($cre['userid'],NULL);
+                if(!empty($_COOKIE['old_url']))
+                $forward=$_COOKIE['old_url'];
+                    else
                 $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+
                 msg($forward);
             }
             else
