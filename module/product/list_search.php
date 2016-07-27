@@ -2,6 +2,7 @@
 $id=!empty($_GET["id"])?$_GET["id"]*1:NULL;
 $key=!empty($_GET["key"])?trim($_GET["key"]):NULL;
 $brand=!empty($_GET["brand"])?trim($_GET["brand"]):NULL;
+
 if (null == $key)
 {
     $key=!empty($_GET["keyword"])?trim($_GET["keyword"]):NULL;
@@ -20,12 +21,19 @@ if(!empty($cats)){
     $strs .= "OR a.catid=".$cats['catid'];
 }
 if(!empty($brand)){
-    $strs .= "AND a.brand='{$brand}'";
+    $strs .= " a.brand='{$brand}'";
+    if(!empty($id)){
+        $strs .= " and ";
+    }
 }else{
     $strbrand = "OR a.brand ='{$key}'";
 }
 if(!empty($id)){
-    $strs .= "AND a.catid=".$id;
+    $strs .= "a.catid=".$id;
+}
+
+if(!empty($brand) || !empty($id)){
+    $strs = ' HAVING '.$strs;
 }
 
 include_once("includes/page_utf_class.php");
