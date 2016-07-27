@@ -85,10 +85,16 @@ else
 
 	//-----------如果为空,返回至购物车
 	if(empty($cartlist['sumprice'])) msg($config['weburl']."/?m=product&s=cart");
+	if(!empty($buid)){
+		$sql = 'select identity_verify from pay_member where userid='.$buid;
+		$db->query($sql);
+		$identity_verify = $db->fetch_row();
+	}else
+		$identity_verify=false;
 	//=============================提交订单
 	if($_POST['act']=='order')
 	{
-		if($_COOKIE['identity']=='true'){
+		if($identity_verify[0]=='true'){
 		$re = $orderadder->get_orderadder($_POST['hidden_consignee_id']);
 		//----------循环店铺,生成多个订单
 		// 合并付款
@@ -262,9 +268,13 @@ else
 		$logistics_price = $weig->cost();//物流费用
 
 		//是否参与邮费半价活动
-
-		
-		$logistics_price = $is_share_logistics_half?floor($logistics_price/2):$logistics_price;
+		/*
+		if(floor($uprice)<300)
+			$logistics_price = $is_share_logistics_half?floor($logistics_price/2):floor($logistics_price/2);
+		else
+			$logistics_price = 0;
+			*/
+		$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice,$logistics_price);
 		$uprice = $uprice + $logistics_price - $firstvou;
 
 		$sql = "insert into ".UORDER."  (`order_id`,`buyer`,`inorder`,`price`,`create_time`,`status`) values ('$uorder','$buid','$inorder','$uprice','".time()."','0')";
@@ -307,10 +317,16 @@ else
 	}
 }
 $logistics_price = $weig->cost();
-$logistics_price = $is_share_logistics_half?floor($logistics_price/2):$logistics_price;
+/*
+if($cartlist['sumprice']<300)
+$logistics_price = $is_share_logistics_half?floor($logistics_price/2):floor($logistics_price/2);
+else
+$logistics_price=0;
+*/
+$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice,$logistics_price);
 //=================================================
 $tpl->assign("config",$config);
-$tpl->assign("verify",$_COOKIE['identity']);
+$tpl->assign("verify",$identity_verify[0]);
 $tpl->assign("cart",$cartlist['cart']);
 $tpl->assign("sumprice",$cartlist['sumprice']);
 $tpl->assign('firstvou',$firstvou);
@@ -345,7 +361,7 @@ function check_activity_by_product_ids($product_ids){
 	if(empty($product_ids))
 		return false;
 
-	
+	return true;
 	$activity_product_ids = array(794,480,496,641,479,683,673,645,587,668,665,481,793,550,615,679,502,469,620,625,579,575,576,516);
 	foreach ($product_ids as $key => $value) {
 		foreach ($value['prolist'] as $kkey => $vvalue) {
@@ -354,5 +370,36 @@ function check_activity_by_product_ids($product_ids){
 		}
 	}
 	return true;
+}
+
+function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
+	$time_start = strtotime("2016-07-22 00:00:00");
+	$time_end = strtotime("2016-08-02 00:00:00");
+	$time_now = time();
+	if($time_now>$time_end || $time_now<$time_start){
+		return $logistcost_price;
+	}
+	$full_free_acount = 300;
+	if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
+	{
+		$full_free_acount = 200;
+	}
+
+	if($product_price>=$full_free_acount){
+		return 0;
+	}
+	else{
+		if($is_half_price){
+			return floor($logistcost_price/2);
+		}
+		else
+		{
+			return $logistcost_price;
+		}
+	}
+
+	return $logistcost_price;
+
+
 }
 ?>
