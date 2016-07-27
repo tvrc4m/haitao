@@ -15,7 +15,8 @@
 .address .address_line{width: 100%;margin-bottom: 10px;}
 .address_line{width: 100%;font-size: 0;vertical-align: bottom;}
 .address_line2{margin-bottom: 70px;}
-.address_line3{vertical-align: top;}
+.address_line3{vertical-align: top;display: block;}
+.address_text{margin-top: 0.5rem;padding: 0 0.5rem;font-size: 0.6rem;}
 .address p{overflow:hidden;margin-top:5px;color: #666;}
 .address p:first-of-type{margin-bottom: 10px;font-weight: 600;}
 .inventory{padding: 0px 10px 0px;}
