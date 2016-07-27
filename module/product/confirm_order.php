@@ -274,6 +274,8 @@ else
 		else
 			$logistics_price = 0;
 			*/
+
+			var_dump($uprice);
 		$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice,$logistics_price);
 		$uprice = $uprice + $logistics_price - $firstvou;
 
@@ -323,7 +325,7 @@ $logistics_price = $is_share_logistics_half?floor($logistics_price/2):floor($log
 else
 $logistics_price=0;
 */
-$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice,$logistics_price);
+$logistics_price = get_real_logistcost($is_share_logistics_half,$cartlist['sumprice'],$logistics_price);
 //=================================================
 $tpl->assign("config",$config);
 $tpl->assign("verify",$identity_verify[0]);
@@ -379,6 +381,7 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 	if($time_now>$time_end || $time_now<$time_start){
 		return $logistcost_price;
 	}
+
 	$full_free_acount = 300;
 	if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
 	{
