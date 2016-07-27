@@ -25,6 +25,14 @@ if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
         {
                $url_temp= $config['weburl'].'/main.php?cg_u_type=1';
         }
+        else
+        {
+        	if(!preg_match("/^".str_replace("/", "\/", $config['weburl'])."*/",$url_temp))
+        	{
+        		$url_temp = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        	}
+
+        }
 		/**
 		* roc 2016.07.27 end---
 		$url_temp = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
