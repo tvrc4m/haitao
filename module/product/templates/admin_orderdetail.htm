@@ -98,7 +98,8 @@
     	<dt>卖家信息</dt>
         <{if $de.sellerinfo.user}><dd><a href="<{$config.weburl}>/home.php?uid=<{$de.sellerinfo.userid}>" target="_blank">用户名：<{$de.sellerinfo.user}></a></dd><{/if}>
         <dd><a href="<{$config.weburl}>/shop.php?uid=<{$de.sellerinfo.userid}>" target="_blank">店铺名： <{$de.sellerinfo.company}></a></dd>
-        <{if $de.sellerinfo.tel}><dd>联系电话：<{$de.sellerinfo.tel}></dd><{/if}>
+        <dd>联系电话：400-010-1977</dd>
+        <!-- <{if $de.sellerinfo.tel}><dd>联系电话：<{$de.sellerinfo.tel}></dd><{/if}> -->
         <{if $de.sellerinfo.area}><dd>店铺地址：<{$de.sellerinfo.area}></dd><{/if}>
     </dl>
     <{/if}>
@@ -161,7 +162,7 @@
             <td class="item">
             <div class="pic-info"><img src="<{$plist.pic}>" width="70" /></div>
             <div class="txt-info">
-            <a href="<{$config.weburl}>/?m=product&s=detail&order_id=<{$de.order_id}>&pid=<{$plist.id}>&id=<{$plist.pid}>" target="_blank" ><{$plist.name}></a>
+            <a href="<{$config.weburl}>/?m=product&s=detail&order_id=<{$de.order_id}>&pid=<{$plist.id}>&id=<{$plist.pid}>" target="_blank" title="<{$plist.name}>" ><{$plist.name|truncate:52:"..."}></a>
             <{if $plist.spec}>
             <p>
             <{foreach item= v from = $plist.spec}>
