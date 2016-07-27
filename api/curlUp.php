@@ -6,11 +6,11 @@ class curlUp{
     private $realPositive;
     private $realBack;
     private $time;
-    private $pass = 'AiMeiHtBoyWholeSaler001';
-    private $tokenUrl = "http://121.40.31.77:8015/Service/Get_Aes.aspx";//验证token链接
-    private $realUrl = "http://121.40.31.77:8015/Service/Get_Exist_Id_Num.aspx";//验证身份证是否存在链接
-    private $imgUpurl = "http://121.40.31.77:8015/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
-    private $orderUrl = "http://121.40.31.77:8015/Service/Send_Goods_Order.aspx";//订单提交链接
+    private $pass = 'AiMeiHtBoyWholeSaler100';
+    private $tokenUrl = "http://121.40.31.77:80/Service/Get_Aes.aspx";//验证token链接
+    private $realUrl = "http://121.40.31.77:80/Service/Get_Exist_Id_Num.aspx";//验证身份证是否存在链接
+    private $imgUpurl = "http://121.40.31.77:80/Service/Send_Id_Num_Info.aspx";//身份证信息上传链接
+    private $orderUrl = "http://121.40.31.77:80/Service/Send_Goods_Order.aspx";//订单提交链接
 
     private $price;
 
