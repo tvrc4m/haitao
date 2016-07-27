@@ -69,6 +69,7 @@ else
 	//修正订单店铺信息
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
 	$is_share_logistics_half = check_activity_by_product_ids($cartlist["cart"]);
+	exclude_by_product_ids($cartlist["cart"]);
 	$weig = new logistics($cartlist['weights']);
 
 	$firstvou=0;
@@ -391,5 +392,19 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 	return $logistcost_price;
 
 
+}
+function exclude_by_product_ids($product_ids){
+
+	private $_price;
+	$exclude_product_ids = array(564,568,572,923);
+	foreach ($product_ids as $key => $value) {
+		foreach ($value['prolist'] as $kkey => $vvalue) {
+			if(in_array($vvalue['product_id'], $exclude_product_ids)){
+
+			}
+
+				var_dump($vvalue['price']);
+		}die;
+	}
 }
 ?>
