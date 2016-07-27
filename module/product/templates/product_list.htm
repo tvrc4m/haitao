@@ -17,7 +17,7 @@
             <dd>
             <{assign var=id value=$smarty.get.id}>
             <{foreach item=list from=$cat}>
-              <a href="<{$config.weburl}>/?m=product&s=list_search&id=<{$list.catid}>"><{$list.cat}></a>
+              <a style="color:<{if $smarty.get.id == $list.catid}>red<{/if}>" href="<{$config.weburl}>/?m=product&s=list_search&id=<{$list.catid}><{if $smarty.get.key}>&key=<{$smarty.get.key}><{/if}><{if $smarty.get.s_submit}>&s_submit=<{$smarty.get.s_submit}><{/if}><{if $smarty.get.brand}>&brand=<{$smarty.get.brand}><{/if}>"><{$list.cat}></a>
             <{/foreach}>
             </dd>
           </dl>

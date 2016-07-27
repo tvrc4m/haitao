@@ -603,7 +603,7 @@ function check_value()
         $('#market_price').focus();
         return false;
     }
-	if($('#amount').val()<=0)
+	if($('#amount').val()<0)
 	{
 		alert('请填写数量');
 		$('#amount').focus();
