@@ -311,7 +311,7 @@ else
 	}
 }
 $logistics_price = $weig->cost();
-$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice,$logistics_price);
+$logistics_price = get_real_logistcost($is_share_logistics_half,$cartlist['sumprice'],$logistics_price);
 //=================================================
 $tpl->assign("config",$config);
 $tpl->assign("verify",$identity_verify[0]);
