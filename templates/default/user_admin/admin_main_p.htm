@@ -69,7 +69,7 @@ var weburl = "<{$config.weburl}>"
 $('.qd a').click(function(){
 	var url = 'ajax_back_end.php';
 	var sj = new Date();
-	var pars = 'shuiji=' + sj+'&qd=1&id=<{$cominfo.userid}>'; 
+	var pars = 'shuiji=' + sj+'&qd=1&id=<{$cominfo.userid}>';
 	$.post(url, pars,showResponse);
 	function showResponse(originalRequest)
 	{
