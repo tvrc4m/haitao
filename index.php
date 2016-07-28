@@ -28,7 +28,7 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
 	$jsApi = new JsApi_pub();
 
 	//通过code获得openid
-	if (!isset($_GET['code']) && !isset($_SESSION['openid_f'])) // && $_GET['m']!="product"
+	if (!isset($_GET['code']) && (!isset($_SESSION['openid_f']) || $_SESSION['openid_f']=="")) // && $_GET['m']!="product"
 	{
 		//$url_temp = WxPayConf_pub::JS_API_CALL_URL;
 
@@ -57,8 +57,8 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
 
 		//触发微信返回code码
 		$url = $jsApi->createOauthUrlForCode($url_temp);
-
-		header("Location: $url");
+		file_get_contents($url);
+		//header("Location: $url");
 	}
 	else if(isset($_GET['code']))
 	{

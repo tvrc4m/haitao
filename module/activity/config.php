@@ -6,6 +6,7 @@ $mem['running'][1][]=array(
 	array(
 		'activity.php,1,activity,活动管理',
 		'activity_product_list.php,1,activity,活动产品',
+		'comactivity.php,1,comactivity,商品活动',
 	)
 );
 

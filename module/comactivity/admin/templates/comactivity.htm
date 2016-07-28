@@ -239,7 +239,7 @@ var weburl="<{$config.weburl}>";
                 <tr>
 					<td width="100">商品sku码</td>
                     <td>
-                    <input name="sku" id="sku" type="text" class="w350" value="<{$de.name}>"><div id="form-error" class="form-error"></div>
+                    <input name="sku" id="sku" type="text" class="w350" value="<{$de.sku}>"><div id="form-error" class="form-error"></div>
                     </td>
                 </tr>
 
@@ -252,7 +252,7 @@ var weburl="<{$config.weburl}>";
                             document.write(cdr);
                             cdr.showMoreDay = true;
                         </script>
-                        <input onFocus="cdr.show(this);" class="w160" type="text" name="begintime" id="stime" value="<{if $de.stime}><{$de.stime|date_format}><{else}><{$time|date_format}><{/if}>">
+                        <input onFocus="cdr.show(this);" class="w160" type="text" name="begintime" id="stime" value="<{if $de.begintime}><{$de.begintime|date_format}><{/if}>">
                     </td>
                 </tr>
 
@@ -260,29 +260,29 @@ var weburl="<{$config.weburl}>";
                 	<td>开始结束</td>
                     <td>
                     <!--<input name="endtime" id="endtime" type="text" class="w350" value="<{$de.group}>">-->
-                        <input onFocus="cdr.show(this);" class="w160" type="text" name="endtime" id="etime" value="<{if $de.stime}><{$de.etime|date_format}><{else}><{$time1|date_format}><{/if}>">
+                        <input onFocus="cdr.show(this);" class="w160" type="text" name="endtime" id="etime" value="<{if $de.endtime}><{$de.endtime|date_format}><{/if}>">
                  	</td>
                 </tr>
 
                 <tr>
                 	<td>平台选择</td>
                     <td>
-                    <input type="radio" name="platform"  value="1"> PC <br/>
-                    <input  type="radio" name="platform"  value="2"> WAP
+                    <input type="radio" name="platform"  value="1" <{if $de.platform == 1 }>checked<{/if}>> PC <br/>
+                    <input  type="radio" name="platform"  value="2" <{if $de.platform == 2 }>checked<{/if}>> WAP
                     <div id="form-error" class="form-error"></div>
                 </tr>
 
                 <tr>
                 	<td>展示位置</td>
                     <td>
-                    <input type="radio" name="position"  value="1"> 首页 <br/>
-                    <input  type="radio" name="position"  value="2"> 一级分类
+                    <input type="radio" name="position"  value="1" <{if $de.position == 1 }>checked<{/if}>> 首页 <br/>
+                    <input  type="radio" name="position"  value="2"  <{if $de.position == 2 }>checked<{/if}>> 一级分类
                     <div id="form-error" class="form-error"></div>
                 </tr> <tr>
                 	<td>状态</td>
                     <td>
-                    <input type="radio" name="status"  value="1"> 开启 <br/>
-                    <input  type="radio" name="status"  value="2"> 关闭
+                    <input type="radio" name="status"  value="1" <{if $de.status == 1 }>checked<{/if}>> 开启 <br/>
+                    <input  type="radio" name="status"  value="2" <{if $de.status == 2 }>checked<{/if}>> 关闭
                     <div id="form-error" class="form-error"></div>
                 </tr>
 
@@ -290,7 +290,11 @@ var weburl="<{$config.weburl}>";
                 	<td></td>
                     <td>
                     <input class="submit" type="submit" value="提交">
+                    <{if $smarty.get.operation == 'add_ads' }>
                     <input name="act" type="hidden"  value="add"/>
+                    <{elseif $smarty.get.operation == 'edit_ads' }>
+                    <input name="operation" type="hidden"  value="edit_ads"/>
+                    <{/if}>
                     </td>
                 </tr>
                 </tbody>
@@ -414,30 +418,13 @@ var weburl="<{$config.weburl}>";
         });
         </script>
         <form action="" method="get">
-        <input type="hidden" name="m" value="adv">
-        <input type="hidden" name="s" value="adv.php">
-        <table class="select_table">
+        <input type="hidden" name="m" value="comactivity">
+        <input type="hidden" name="s" value="comactivity.php">
+        <table>
             <tbody>
                 <tr>
-                    <td width="70">广告位aa名称:</td>
+                    <td width="70">商品sku码:</td>
                     <td width="260"><input type="text" name="name" class="w250" value="<{$smarty.get.name}>" /></td>
-               		<td width="70">广告位类别:</td>
-                    <td width="70">
-                    <select name="ad_type">
-                    <option value="">请选择</option>
-                  	<{foreach item=list key=key from=$type}>
-                    	<option value="<{$key+1}>" <{if ($key+1)==$smarty.get.ad_type}>selected="selected"<{/if}>><{$list}></option>
-                    <{/foreach}>
-                    </select>
-                    </td>
-					<td width="70">广告位分组:</td>
-                    <td width="70">
-                    <select name="group">
-                    <option value="">请选择</option>
-                  	<{foreach item=list key=key from=$re}>
-                    	<option value="<{$list.group}>" <{if $list.group==$smarty.get.group}>selected="selected"<{/if}>><{$list.group}></option>
-                    <{/foreach}>
-                    </select></td>
                     <td><input type="image" src="../image/admin/search.gif" /></td>
                 </tr>
             </tbody>
@@ -448,6 +435,7 @@ var weburl="<{$config.weburl}>";
         <table class="table">
             <tbody>
                 <tr class="header partition">
+                    <th ></th>
                     <th >活动商品</th>
                     <th >开始时间</th>
                     <th >结束时间</th>
@@ -458,21 +446,21 @@ var weburl="<{$config.weburl}>";
                 </tr>
                 <{foreach item=list from=$de}>
                 <tr align="center">
-                    <!--<td><input type="checkbox" value="<{$list.ID}>" class="checkitem" name="chk[]"></td>-->
+                    <td><input type="checkbox" value="<{$list.cid}>" class="checkitem" name="chk[]"></td>
                     <!--<td >
                         <{foreach item=lists from=list.product}>
                            <{$lists.name}>
                         <{/foreach}>
                     </td>-->
                     <td ><{$list.sku}></td>
-                    <td ><{$list.begintime}></td>
-                    <td><{$list.endtime}></td>
-                    <td><{$list.platform}></td>
-                    <td><{$list.position}></td>
-                    <td><{$list.status}></td>
+                    <td ><{$list.begintime|date_format:"%Y-%m-%d %H:%M:%S"}></td>
+                    <td><{$list.endtime|date_format:"%Y-%m-%d %H:%M:%S"}></td>
+                    <td><{if $list.platform == 1 }>PC<{elseif $list.platform ==2 }>WAP<{/if}></td>
+                    <td><{if $list.position == 1 }>首页<{elseif $list.position == 2 }>一级分类<{/if}></td>
+                    <td><{if $list.status == 1 }>开启<{elseif $list.status == 2 }>关闭<{/if}></td>
 					<td>
-                        <a href="?m=adv&s=adv.php&operation=edit_ads&editid=<{$list.ID}>&<{$getstr}>"><{$editimg}></a>
-                        <a onclick="return confirm('确定删除吗');" href="?m=adv&s=adv.php&delid=<{$list.ID}>&<{$getstr}>"><{$delimg}></a>
+                        <a href="?m=comactivity&s=comactivity.php&operation=edit_ads&editid=<{$list.cid}>&<{$getstr}>"><{$editimg}></a>
+                        <a onclick="return confirm('确定删除吗');" href="?m=comactivity&s=comactivity.php&operation=del_ads&chk=<{$list.cid}>&<{$getstr}>"><{$delimg}></a>
                     </td>
                 </tr>
                 <{foreachelse}>
@@ -485,10 +473,10 @@ var weburl="<{$config.weburl}>";
                 <tr>
                 	<td colspan="3">
                         <input type="checkbox" class="checkall" id="del">
-                        <input type="hidden" name="act" value="op" />
+                        <input type="hidden" name="operation" value="del_ads" />
                         <input type="submit" name="submit" value="删除" />
                     </td>
-                    <td colspan="99"><div class="page"><{$de.page}></div></td>
+                    <td colspan="99"><div class="page"><{$page}></div></td>
                 </tr>
             </tfoot>
         </table>
