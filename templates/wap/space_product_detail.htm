@@ -79,7 +79,7 @@
         <div class="select_style">
             <div class="select_guanshui">
                 <div><span class="select_one">运费</span><span class="select_two">根据订单中商品的总重量来计算运费</span></div>
-                <div><span>该商品由蚂蚁海淘日本仓发货 预计 <span class="org">5-15</span> 天送达</span></div>
+                <div><span>该商品由蚂蚁海淘<{$com.trade}>&nbsp预计&nbsp<span class="org">5-15</span> 天送达</span></div>
             </div>
             <div class="select_guanshui">
                 <div><span class="select_one">关税</span><span class="select_two">若在清关中产生税费及手续费需要收件人缴纳，请知悉</span></div>  
@@ -571,7 +571,7 @@ function check_nums()
     var goodsspec = new goodsspec(specs, specQty, defSpec);
 </script>
 
-<{if $smarty.session.appid}>
+<{if $is_wechat}>
 <script type="text/javascript">
 define = null;
 require = null;
@@ -580,10 +580,10 @@ require = null;
 <script type="text/javascript">
     var cnf = {
         //debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: '<{$smarty.session.appid}>',       // 必填，公众号的唯一标识
-        timestamp: '<{$smarty.session.tmpTime}>', // 必填，生成签名的时间戳
-        nonceStr: '<{$smarty.session.noncestr}>', // 必填，生成签名的随机串
-        signature: '<{$smarty.session.signature}>',// 必填，签名，见附录1
+        appId: '<{$wechat_share.appId}>',       // 必填，公众号的唯一标识
+        timestamp: '<{$wechat_share.timestamp}>', // 必填，生成签名的时间戳
+        nonceStr: '<{$wechat_share.nonceStr}>', // 必填，生成签名的随机串
+        signature: '<{$wechat_share.signature}>',// 必填，签名，见附录1
         jsApiList: ['onMenuShareQQ','onMenuShareTimeline','onMenuShareWeibo','onMenuShareAppMessage','downloadImage','checkJsApi'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     };
 
