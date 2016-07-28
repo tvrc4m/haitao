@@ -114,8 +114,10 @@ weburl="<{$config.weburl}>";
 </div>
 <script>
 $(function(){
-    var mobile_spi=$(".mobile_spi") , mobile_spihtm=$(".mobile_spi").html();
+  $(".mobile_spi").each(function(){
+    var mobile_spi=$(this) , mobile_spihtm=$(this).html();
     mobile_spi.html(mobile_spihtm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"))
+  })
 })
 $('#cart').load('<{$config.weburl}>/?m=product&s=confirm_order&ajax=ajax<{if $smarty.session.dist_user_id}>&dist_user_id=<{$smarty.session.dist_user_id}><{/if}>');
 // $("#step-1").find("input[type='radio']").bind("click",function(){

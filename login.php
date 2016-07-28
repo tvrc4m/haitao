@@ -566,7 +566,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 {
     $appid = $config['weixin_app_id'];
     $appsecret = $config['weixin_key'];
-
+    
     $redirect_uri = urlencode("$config[weburl]/login.php?connect_type=weixin");
     if($config['bw'] == "weixin")
     {
@@ -641,7 +641,11 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
             if($cre['userid'])
             {
                 login($cre['userid'],NULL);
+                if(!empty($_COOKIE['old_url']))
+                $forward=$_COOKIE['old_url'];
+                    else
                 $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+
                 msg($forward);
             }
             else

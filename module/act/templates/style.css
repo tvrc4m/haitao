@@ -3,6 +3,9 @@
 .act-img img{vertical-align: top;}
 .act-link{width: 1200px;position: absolute;top: 0;height: 100%;left: 50%;margin-left: -600px;}
 .act-link a{position: relative;}
+.act-btn{text-align: center;margin-bottom: 15px;}
+.act-btn a{display: inline-block;background-color: #ff5c5c;width: 220px;height: 45px;
+    font-size: 16px;color: #fff;line-height: 45px;text-align: center;border-radius: 5px;}
 .act-link .act-pro0{top:1230px;left: 136px;width:920px; height: 240px;}
 .act-link .act-pro1{top:1330px;left: 190px;width:826px; height: 250px;}
 .act-link .act-pro2{top:1420px;left: 215px;width:730px; height: 240px;}

@@ -69,6 +69,7 @@ else
 	//修正订单店铺信息
 	$cartlist = $cart -> get_cart_list($on_city,$_SESSION['product_id']);
 	$is_share_logistics_half = check_activity_by_product_ids($cartlist["cart"]);
+	$is_exclude_product = exclude_by_product_ids($cartlist["cart"]);
 	$weig = new logistics($cartlist['weights']);
 
 	$firstvou=0;
@@ -268,15 +269,7 @@ else
 		$logistics_price = $weig->cost();//物流费用
 
 		//是否参与邮费半价活动
-		/*
-		if(floor($uprice)<300)
-			$logistics_price = $is_share_logistics_half?floor($logistics_price/2):floor($logistics_price/2);
-		else
-			$logistics_price = 0;
-			*/
-
-			var_dump($uprice);
-		$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice,$logistics_price);
+		$logistics_price = get_real_logistcost($is_share_logistics_half,$uprice-$is_exclude_product,$logistics_price);
 		$uprice = $uprice + $logistics_price - $firstvou;
 
 		$sql = "insert into ".UORDER."  (`order_id`,`buyer`,`inorder`,`price`,`create_time`,`status`) values ('$uorder','$buid','$inorder','$uprice','".time()."','0')";
@@ -319,13 +312,7 @@ else
 	}
 }
 $logistics_price = $weig->cost();
-/*
-if($cartlist['sumprice']<300)
-$logistics_price = $is_share_logistics_half?floor($logistics_price/2):floor($logistics_price/2);
-else
-$logistics_price=0;
-*/
-$logistics_price = get_real_logistcost($is_share_logistics_half,$cartlist['sumprice'],$logistics_price);
+$logistics_price = get_real_logistcost($is_share_logistics_half,$cartlist['sumprice']-$is_exclude_product,$logistics_price);
 //=================================================
 $tpl->assign("config",$config);
 $tpl->assign("verify",$identity_verify[0]);
@@ -381,10 +368,11 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 	if($time_now>$time_end || $time_now<$time_start){
 		return $logistcost_price;
 	}
-
+	//var_dump($is_half_price,$product_price,$logistcost_price);
 	$full_free_acount = 300;
 	if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
 	{
+		//var_dump(1);
 		$full_free_acount = 200;
 	}
 
@@ -404,5 +392,25 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 	return $logistcost_price;
 
 
+}
+//满300包邮活动，数组内商品id不在活动内
+function exclude_by_product_ids($product_ids){
+	$_price=0;
+	$time_start = strtotime("2016-07-22 00:00:00");
+	$time_end = strtotime("2016-08-02 00:00:00");
+	$time_now = time();
+	if($time_now>$time_end || $time_now<$time_start){
+		return $_price;
+	}
+	if(empty($product_ids))return $_price;
+	$exclude_product_ids = array(564,568,572);
+	foreach ($product_ids as $key => $value) {
+		foreach ($value['prolist'] as $kkey => $vvalue) {
+			if(in_array($vvalue['product_id'], $exclude_product_ids)){
+				$_price +=$vvalue['price']*$vvalue['num'];
+			}
+		}
+	}
+	return $_price;
 }
 ?>

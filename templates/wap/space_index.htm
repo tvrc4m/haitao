@@ -63,17 +63,6 @@
         <img class="ub-img shoplogo" src="<{if $com.logo}><{$com.logo}><{else}>templates/wap/images/user.png<{/if}>">
     </div>    
 </div>
-<div class="shop_main_nav">
-    <ul class="clearfix">
-        <{foreach item=list from=$brand}>
-            <li>
-                <a href="<{$config.weburl}>/product-list.html&brand=<{$list.name}>">
-                    <img src="<{$list.logo}>" alt="<{$list.name}>" />
-                </a>
-            </li>
-        <{/foreach}>
-    </ul>
-</div>
 <div class="main_list">
     <{foreach item=list from=$products key=key}>
     <div class="main_list_banner">
@@ -223,20 +212,7 @@ $(function(){
     window.onload=function(){
         var windowWid=-($jj(window).width())/2;
         $jj(".main_container .t_slide .slides li img").css({"margin-left":windowWid+"px"});
-        var a=$jj(".main_container .t_slide").height() , b=$jj(".nav_shop").height() , c=$jj(".shop_main_nav ul li img").size() , d=5-c%5 ,f=$jj(".shop_main_nav ul li img").height() , g=parseFloat($jj(".shop_main_nav ul li").css("margin-right")) , h=parseFloat($jj(".shop_main_nav").css("padding-top"));
-        if(d != 5){
-            for(var i=0;i<d;i++){
-                $jj(".shop_main_nav ul").append("<li>"+
-                    "<a href='javascript:void(0);'>"+
-                    "</a>"+
-                "</li>")
-            }
-        }
-        if(c>5){
-            $jj(".shop_main_nav ul li").css({"margin-bottom":g+"px"})
-            $jj(".shop_main_nav").css({"padding-bottom":(h-g)+"px"})
-        }
-        $jj(".shop_main_nav ul li").height(f);  
+        var a=$jj(".main_container .t_slide").height() , b=$jj(".nav_shop").height() , g=parseFloat($jj(".shop_main_nav ul li").css("margin-right")) , h=parseFloat($jj(".shop_main_nav").css("padding-top"));
         $jj(document).scroll(function(){
             var h = $jj(document).scrollTop();
             var wHeight=$jj(window).height();
