@@ -3,7 +3,7 @@
 if ($config['bw'] == "weixin")
 {
 	include_once("pay/module/payment/lib/WxPayPubHelper/WxPay.pub.config.php");
-
+	/**
 	if(!isset($_SESSION['access_token']) || (time()-$_SESSION['tmpTime'])>7200)
 	{
 		//获取微信票据
@@ -32,6 +32,12 @@ if ($config['bw'] == "weixin")
 		$str_tmp = "jsapi_ticket=".$_SESSION['ticket']."&noncestr=".$_SESSION['noncestr']."&timestamp=".$_SESSION['tmpTime']."&url=".$strTmp;
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
+	*/
+	include_once("includes/jssdk.php");
+	$jssdk = new JSSDK(WxPayConf_pub::APPID,WxPayConf_pub::APPSECRET);
+	$wechat_share_data = $jssdk->getSignPackage();
+	$tpl->assign("wechat_share",$wechat_share_data);
+
 }
 //====================================获取国家馆
 $sql = "select title,img from mallbuilder_national_pavilions where id = ".$prode['national'];
