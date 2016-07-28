@@ -12,6 +12,7 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
 	include_once("./pay/module/payment/lib/WxPayPubHelper/WxPayPubHelper.php");
 	//使用jsapi接口
 	$jsApi = new JsApi_pub();
+
 	//通过code获得openid
 	if (!isset($_GET['code']) && (!isset($_SESSION['openid_f']) || $_SESSION['openid_f']=="")) // && $_GET['m']!="product"
 	{
@@ -42,8 +43,8 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
 
 		//触发微信返回code码
 		$url = $jsApi->createOauthUrlForCode($url_temp);
-		file_get_contents($url);
-		//header("Location: $url");
+		
+		header("Location: $url");
 	}
 	else if(isset($_GET['code']))
 	{
@@ -54,6 +55,7 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
 		$_SESSION['openid_f'] = $openid;
 		//自动根据openid登录操作
 	}
+
 }
 //==========================================
 $dre=explode(".",$_SERVER['HTTP_HOST']);
