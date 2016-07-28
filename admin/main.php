@@ -1,8 +1,8 @@
 <?php
 include_once("config.php");
 include_once("menu_config.php");
-if(!is_file($config['webroot']."/image/phpqrcode.jpg")) 
-{	
+if(!is_file($config['webroot']."/image/phpqrcode.jpg"))
+{
 	include "lib/phpqrcode/phpqrcode.php";
 	$value=$config['weburl'];
 	$errorCorrectionLevel = 'L';
@@ -24,7 +24,7 @@ function list_sub($sv,$sub=NULL)
 			$str.='<a href="module.php?m='.$u_v[2].'&s='.$u_v[0].'"  hidefocus="true">';
 		else
 			$str.="<a href='$u_v[0]' hidefocus='true' >";
-		
+
 		$sar=explode('?',$u_v[0]);
 		$u_v[0]=$sar[0];
 		$scrp_name=substr($u_v[0],0,-4);
@@ -43,11 +43,11 @@ foreach($mem as $key=>$v)
 	{
 		$arr=@explode(",",$v[1][0][1][0]);
 		if($arr[2])
-		{ 
+		{
 			$to_url="module.php?m=$arr[2]&s=$arr[0]";
 			if($perm){if(!in_array(md5($arr[0]),$perm)) $to_url="";}
 		}
-		else	
+		else
 		{
 			$to_url=$arr[0];
 			if($perm){if(!in_array(md5($to_url),$perm)) $to_url="";}
@@ -60,9 +60,9 @@ foreach($mem as $key=>$v)
 {
 	$con=NULL;
 	if($v[1])
-	{	
+	{
 		foreach($v[1] as $skey=>$sv)
-		{	
+		{
 			$left_con=NULL;
 			foreach($sv[1] as $sub_sv)
 			{

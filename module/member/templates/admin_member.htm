@@ -278,10 +278,10 @@ $(function(){
         <div class="form-style">
             <form action="" method="post" name="form" id="form" enctype="multipart/form-data">
             <input type="hidden" value="edit" name="submit">
-            <h5>亲爱的<span><{$smarty.cookies.USER}></span>，填写真实的资料，有助于好友找到你哦。</h5>
+            <h5>亲爱的<span class="mobile_spi"><{$smarty.cookies.USER}></span>，填写真实的资料，有助于好友找到你哦。</h5>
             <dl>
                 <dt>用户名：</dt>
-                <dd><{$de.user}></dd>
+                <dd class="mobile_spi"><{$de.user}></dd>
             </dl>
             <{if $de.email}>
             <dl>
