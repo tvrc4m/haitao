@@ -10,17 +10,6 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
 	 * 步骤1：网页授权获取用户openid
 	*/
 
-
-	$url_data = parse_url($_SERVER['REQUEST_URI']);
-	if(isset($url_data['query']) && !empty($url_data['query']))
-	{
-		  parse_str($url_data['query'],$str_url);
-		  if(isset($str_url['code']) && !empty($str_url['code'])
-		  {
-		  	 $_GET['code'] = $str_url['code'];
-		  }
-	}
-	
 	include_once("module/payment/lib/WxPayPubHelper/WxPayPubHelper.php");
 	//使用jsapi接口
 	$jsApi = new JsApi_pub();
