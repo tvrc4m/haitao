@@ -2,15 +2,31 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 // ========= 微信支付第一步骤 =========
-if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
+
+if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['openid_f']==""))
 {
 	/**
 	 * 成功调起支付第一步骤：
 	 * 步骤1：网页授权获取用户openid
 	*/
+
+
+
+	$url_data = parse_url($_SERVER['REQUEST_URI']);
+	if(isset($url_data['query']) && !empty($url_data['query']))
+	{
+		  parse_str($url_data['query'],$str_url);
+		  if(isset($str_url['code']) && !empty($str_url['code'])
+		  {
+		  	 $_GET['code'] = $str_url['code'];
+		  }
+	}
+
+	
 	include_once("./pay/module/payment/lib/WxPayPubHelper/WxPayPubHelper.php");
 	//使用jsapi接口
 	$jsApi = new JsApi_pub();
+
 	//通过code获得openid
 	if (!isset($_GET['code']) && !isset($_SESSION['openid_f'])) // && $_GET['m']!="product"
 	{
@@ -53,6 +69,7 @@ if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
 		$_SESSION['openid_f'] = $openid;
 		//自动根据openid登录操作
 	}
+
 }
 //==========================================
 $dre=explode(".",$_SERVER['HTTP_HOST']);
