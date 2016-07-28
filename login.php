@@ -84,6 +84,10 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             }
             uc_user_synlogin($uid);
             $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+            if(empty($forward) || $forward == $config["weburl"]."/login.php")
+            {
+                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+            }
             msg($forward);
         }
         else
@@ -126,6 +130,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     setcookie("old_url");
                     setcookie("userid",$re['userid']);
                     $_SESSION['script']=$script->data;
+
+                    if(empty($forward) || $forward == $config["weburl"]."/login.php")
+                    {
+                        $forward = $config["weburl"]."/main.php?cg_u_type=1";
+                    }
                     msg($forward);
                     die;
                 }
@@ -147,6 +156,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     setcookie("old_url");
                     setcookie("userid",$re['userid']);
                     $_SESSION['script']=$script->data;
+
+                    if(empty($forward) || $forward == $config["weburl"]."/login.php")
+                    {
+                        $forward = $config["weburl"]."/main.php?cg_u_type=1";
+                    }
                     msg($forward);
                     die;
                 }
@@ -178,6 +192,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     else
                         login($re['userid'],$re['user']);
                     if(!empty($post['forward'])){
+
+                        if($forward == $config["weburl"]."/login.php")
+                        {
+                            $forward = $config["weburl"]."/main.php?cg_u_type=1";
+                        }
                         $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                         msg($forward);
                     }else{
@@ -477,6 +496,10 @@ if($config['sina_connect']==1)//sina
         {
             login($cre['userid'],NULL);
             $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+            if(empty($forward) || $forward == $config["weburl"]."/login.php")
+            {
+                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+            }
             msg($forward);
         }
         else
