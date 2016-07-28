@@ -14,7 +14,9 @@ $is_name = "张高飞";
 $realPositive = "zheng.jpg";
 $realBack = "bei.jpg";*/
 $buid=40;
-$id = '160718051527001';
+$id = '160718051527001,1111';
+$arr = explode($id);
+var_dump($arr);die;
 if(!empty($buid)){
     $sql ="select real_name,identity_card,real_img1,real_img2 from pay_member where identity_verify=true and userid=".$buid;
     $db->query($sql);
