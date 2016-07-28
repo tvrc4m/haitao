@@ -566,11 +566,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 {
     $appid = $config['weixin_app_id'];
     $appsecret = $config['weixin_key'];
-
-    if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
-    {
-        var_dump($config_cache);die;
-    }
+    
     $redirect_uri = urlencode("$config[weburl]/login.php?connect_type=weixin");
     if($config['bw'] == "weixin")
     {

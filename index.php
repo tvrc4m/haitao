@@ -41,8 +41,8 @@ if($config['bw'] == "weixin" && !isset($_SESSION['openid_f']))
 
 		//触发微信返回code码
 		$url = $jsApi->createOauthUrlForCode($url_temp);
-
-		header("Location: $url");
+		file_get_contents($url);
+		//header("Location: $url");
 	}
 	else if(isset($_GET['code']))
 	{
