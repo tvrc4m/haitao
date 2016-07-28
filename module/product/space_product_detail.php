@@ -1,5 +1,5 @@
 <?php
-$tpl->assign("is_wechat",false);
+$tpl->assign("is_wechat",);
 //微信分享
 if ($config['bw'] == "weixin")
 {

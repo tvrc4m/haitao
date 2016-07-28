@@ -103,15 +103,9 @@ class WechatOrderPush
 		}
 		else
 		{
-			$url          = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" . $appid . "&secret=" . $appsecret;
-			$token        = $this->requestGet($url);
-
-			fb('$token str:');
-			fb($token);
-
-			$token        = json_decode(stripslashes($token));
-			$arr          = json_decode(json_encode($token), true);
-			$access_token = $arr['access_token'];
+			include_once("../includes/jssdk.php");
+			$jssdk = new JSSDK($appid,$appsecret);
+			$access_token = $jssdk->getAccessToken();
 
 			if ($access_token)
 			{

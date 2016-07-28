@@ -1,6 +1,61 @@
 <?php
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
+//*******************************************************/
+
+if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['openid_f']==""))
+{
+	/**
+	 * 成功调起支付第一步骤：
+	 * 步骤1：网页授权获取用户openid
+	*/
+	include_once("module/payment/lib/WxPayPubHelper/WxPayPubHelper.php");
+	//使用jsapi接口
+	$jsApi = new JsApi_pub();
+	//通过code获得openid
+	if (!isset($_GET['code']) && (!isset($_SESSION['openid_f']) || $_SESSION['openid_f']=="")) // && $_GET['m']!="product"
+	{
+		//$url_temp = WxPayConf_pub::JS_API_CALL_URL;
+		/**
+		* roc 2016.07.27 start---
+		$url_temp = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		*/
+		$url_temp = $_SERVER['HTTP_REFERER'];
+        if(empty($url_temp))
+        {
+               $url_temp= $config['weburl'].'/main.php?cg_u_type=1';
+        }
+        else
+        {
+        	if(!preg_match("/^".str_replace("/", "\/", $config['weburl'])."*/",$url_temp))
+        	{
+        		$url_temp = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        	}
+        }
+        $url_temp = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		/**
+		* roc 2016.07.27 end---
+		$url_temp = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		*/
+		$url_temp = urlencode($url_temp);
+		//触发微信返回code码
+		$url = $jsApi->createOauthUrlForCode($url_temp);
+
+		header("Location: $url");
+	}
+	else if(isset($_GET['code']))
+	{
+		//获取code码，以获取openid
+	    $code = $_GET['code'];
+		$jsApi->setCode($code);
+		$openid = $jsApi->getOpenId();
+
+		$_SESSION['openid_f'] = $openid;
+
+		//自动根据openid登录操作
+	}
+}
+
 //==========================================
 include_once("module/payment/includes/plugin_pay_class.php");
 $act=$_GET['act']?$_GET['act']:NULL;

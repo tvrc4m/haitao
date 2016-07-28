@@ -2,10 +2,12 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("footer.php");
+$tpl->assign("is_wechat",false);
+//微信分享
 if ($config['bw'] == "weixin")
 {
 	include_once("pay/module/payment/lib/WxPayPubHelper/WxPay.pub.config.php");
-
+	/**
 	if(!isset($_SESSION['access_token']) || (time()-$_SESSION['tmpTime'])>7200)
 	{
 		//获取微信票据
@@ -34,6 +36,13 @@ if ($config['bw'] == "weixin")
 		$str_tmp = "jsapi_ticket=".$_SESSION['ticket']."&noncestr=".$_SESSION['noncestr']."&timestamp=".$_SESSION['tmpTime']."&url=".$strTmp;
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
+	*/
+	include_once("includes/jssdk.php");
+	$jssdk = new JSSDK(WxPayConf_pub::APPID,WxPayConf_pub::APPSECRET);
+	$wechat_share_data = $jssdk->getSignPackage();
+	$tpl->assign("wechat_share",$wechat_share_data);
+	$tpl->assign("is_wechat",true);
+
 }
 $dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['dist_id']."&temp=wap";
 $tpl->assign("dis",$dis);
