@@ -29,7 +29,7 @@ if($config['bw'] == "weixin")
 	$openid = $_SESSION['openid_f'];
 	//=========步骤2：使用统一支付接口，获取prepay_id============
 	$unifiedOrder = new UnifiedOrder_pub();
-	
+
 	$unifiedOrder->setParameter("openid",$openid);//商品描述
 	$unifiedOrder->setParameter("body",$re_wx['note']);//商品描述
 	//自定义订单号，此处仅作举例
@@ -49,6 +49,7 @@ if($config['bw'] == "weixin")
 	//=========步骤3：使用jsapi调起支付============
 	$jsApi->setPrepayId($prepay_id);
 	$jsApiParameters = $jsApi->getParameters();
+	
 	$tpl->assign("jsApiParameters",json_decode($jsApiParameters,true));
     $s.=" and payment_type != 'wap_alipay'";
 }
