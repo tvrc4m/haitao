@@ -15,8 +15,8 @@ $realPositive = "zheng.jpg";
 $realBack = "bei.jpg";*/
 $buid=40;
 $id = '160718051527001,1111';
-$arr = explode($id);
-var_dump($arr);die;
+$arr = explode(',',$id);
+foreach($arr as $v){
 if(!empty($buid)){
     $sql ="select real_name,identity_card,real_img1,real_img2 from pay_member where identity_verify=true and userid=".$buid;
     $db->query($sql);
@@ -34,7 +34,7 @@ if(!empty($buid)){
     }
 
     if($real['is_exists']==1 || $realUp['status']==1){
-        $sql = "select od.order_id,od.create_time,od.consignee_address,od.consignee_mobile,od.logistics_price,od.product_price,od.consignee,od.logistics_name,od.logistics_price,od.product_price,op.order_id,op.skuid,op.price,op.num,op.trade from ".ORDER." od left join ".ORPRO." op on od.order_id=op.order_id where od.order_id={$id} group by op.`skuid`";
+        $sql = "select od.order_id,od.create_time,od.consignee_address,od.consignee_mobile,od.logistics_price,od.product_price,od.consignee,od.logistics_name,od.logistics_price,od.product_price,op.order_id,op.skuid,op.price,op.num,op.trade from ".ORDER." od left join ".ORPRO." op on od.order_id=op.order_id where od.order_id={$v} group by op.`skuid`";
         $db->query($sql);
         $list = $db->getRows();
         $list[0]['identity_card'] = $user['identity_card'];
@@ -45,5 +45,5 @@ if(!empty($buid)){
             $upFile->cacheLog('order_error',$type,'cache/shen/');
     }
 }
-
+}
 ?>
