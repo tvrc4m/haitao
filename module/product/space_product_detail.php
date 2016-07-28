@@ -1,4 +1,5 @@
 <?php
+$tpl->assign("is_wechat",false);
 //微信分享
 if ($config['bw'] == "weixin")
 {
@@ -37,6 +38,7 @@ if ($config['bw'] == "weixin")
 	$jssdk = new JSSDK(WxPayConf_pub::APPID,WxPayConf_pub::APPSECRET);
 	$wechat_share_data = $jssdk->getSignPackage();
 	$tpl->assign("wechat_share",$wechat_share_data);
+	$tpl->assign("is_wechat",true);
 
 }
 //====================================获取国家馆
