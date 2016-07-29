@@ -133,11 +133,11 @@
     function checkValue () {
         var num = 0;
         if($("textarea[name='reason']").val() ==""){
-            layer.msg("请填写退货原因!");
+            layer.msg("请填写退款原因!");
             return false;
         }
         if($("select[name='reason_type']").val()==0){
-            layer.msg("请选择退货原因!");
+            layer.msg("请选择退款原因!");
             return false;
         }
         $("input[name='pic[]']").each(function () {
