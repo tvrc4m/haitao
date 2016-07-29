@@ -30,12 +30,14 @@ if(!$de)
 }
 $tpl->assign("de",$de);
 $tpl->assign("type",$type);
+
 if($_GET['act'] == 'close')
 {
 	if($de['status']==1||$de['status']==4)
 	{
 		$refund -> close_refund($de['refund_id']);
-		$admin->msg("main.php?m=product&s=admin_apply_detail&id=$de[refund_id]");
+		$admin->msg("main.php?m=product&s=admin_buyorder&status=2");
+		//$admin->msg("main.php?m=product&s=admin_apply_detail&id=$de[refund_id]");
 	}
 }
 if($_POST['act'] =='agree')
