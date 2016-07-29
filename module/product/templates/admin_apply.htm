@@ -142,6 +142,10 @@
             layer.msg("请填写退货说明!");
             return false;
         }
+        if($("select[name='reason_type']").val()==0){
+            layer.msg("请选择退货原因!");
+            return false;
+        }
         $("input[name='pic[]']").each(function () {
             if ($(this).val() !== "") {
                 num = num+1;
