@@ -240,6 +240,5 @@
 		}
 	}
 	$tpl->assign("de",$de);
-var_dump($de);
 	$tpl->display("product_cat.htm");
 ?>

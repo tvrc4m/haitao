@@ -3,26 +3,6 @@ $option = $_REQUEST;
 
 //新增商品活动
 if($option['operation'] == 'add_ads'){
-
-    $sql="select * from ".PCAT." where catid<9999 order by nums,catid";
-    $db->query($sql);
-    $de=$db->getRows();
-
-    foreach($de as $key=>$val)
-    {
-        $sql="select * from ".PCAT." where catid < '".$val['catid']."99' and catid > '".$val['catid']."00' order by nums,catid";
-        $db->query($sql);
-        $a=$db->getRows();
-        foreach($a as $ke=>$va)
-        {
-            $sql="select * from ".PCAT." where catid < '".$va['catid']."99' and catid > '".$va['catid']."00' order by nums,catid";
-            $db->query($sql);
-            $a[$ke]['scat']=$db->getRows();
-        }
-        $de[$key]['scat']=$a;
-        $tpl->assign('de',$de);
-    }
-
     if(!empty($_POST)) {
         $sql = "select id FROM mallbuilder_product WHERE skuid in (" . $_POST['sku'] . ")";
         $db->query($sql);
@@ -43,33 +23,16 @@ if($option['operation'] == 'add_ads'){
             }
         }
     }
+    $tpl->assign('des',getCat());
 //商品信息修改
 }elseif($option['operation'] == 'edit_ads') {
-
-    $sql="select * from ".PCAT." where catid<9999 order by nums,catid";
-    $db->query($sql);
-    $de=$db->getRows();
-
-    foreach($de as $key=>$val)
-    {
-        $sql="select * from ".PCAT." where catid < '".$val['catid']."99' and catid > '".$val['catid']."00' order by nums,catid";
-        $db->query($sql);
-        $a=$db->getRows();
-        foreach($a as $ke=>$va)
-        {
-            $sql="select * from ".PCAT." where catid < '".$va['catid']."99' and catid > '".$va['catid']."00' order by nums,catid";
-            $db->query($sql);
-            $a[$ke]['scat']=$db->getRows();
-        }
-        $de[$key]['scat']=$a;
-        $tpl->assign('de',$de);
-    }
-
     if (empty($_POST)) {
         $sql = "SELECT * FROM mallbuilder_commodity_activity WHERE cid = " . $option['editid'];
         $db->query($sql);
         $res = $db->fetchRow();
         $tpl->assign('de', $res);
+        $tpl->assign('des', getCat());
+
     } else {
         $sql = "select id FROM mallbuilder_product WHERE skuid in (" . $_POST['sku'] . ")";
         $db->query($sql);
@@ -86,9 +49,7 @@ if($option['operation'] == 'add_ads'){
         }
     }
 }elseif($option['operation'] == 'del_ads'){
-
     $cid = is_array($option['chk']) ? implode(',',$option['chk']) : $option['chk'];
-
     $sql = "DELETE from mallbuilder_commodity_activity WHERE cid in ($cid)";
     if($db->query($sql)){
         msg('?m=comactivity&s=comactivity.php');
@@ -121,7 +82,28 @@ if($option['operation'] == 'add_ads'){
 
    }*/
 }
-//修改活动商品
 
+//获取分类
+function getCat(){
+    global $db;
+    $sql="select * from ".PCAT." where catid<9999 order by nums,catid";
+    $db->query($sql);
+    $de=$db->getRows();
 
+    foreach($de as $key=>$val)
+    {
+        $sql="select * from ".PCAT." where catid < '".$val['catid']."99' and catid > '".$val['catid']."00' order by nums,catid";
+        $db->query($sql);
+        $a=$db->getRows();
+        foreach($a as $ke=>$va)
+        {
+            $sql="select * from ".PCAT." where catid < '".$va['catid']."99' and catid > '".$va['catid']."00' order by nums,catid";
+            $db->query($sql);
+            $a[$ke]['scat']=$db->getRows();
+        }
+        $de[$key]['scat']=$a;
+
+    }
+    return $de;
+}
 $tpl->display("comactivity.htm");
