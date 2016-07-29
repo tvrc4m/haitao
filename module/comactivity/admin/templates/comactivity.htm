@@ -10,7 +10,6 @@
 <script language="javascript" src="../script/Calendar.js"></script>
 <script language="javascript">
 var weburl="<{$config.weburl}>";
-
 </script>
 </head>
 <body>
@@ -275,9 +274,27 @@ var weburl="<{$config.weburl}>";
                 <tr>
                 	<td>展示位置</td>
                     <td>
-                    <input type="radio" name="position"  value="1" <{if $de.position == 1 }>checked<{/if}>> 首页 <br/>
-                    <input  type="radio" name="position"  value="2"  <{if $de.position == 2 }>checked<{/if}>> 一级分类
+                    <!--<input type="radio" name="position"  value="1" <{if $de.position == 1 }>checked<{/if}>> 首页 <br/>
+                    <input  type="radio" name="position"  value="2"  <{if $de.position == 2 }>checked<{/if}>> 一级分类-->
+                        <select class="ws350" name='position' >
+                            <option value='0000'>首页</option>
+                            <{foreach item=list from=$de}>
+
+                            <option <{if $de.position==$list.catid }> selected="selected" <{/if}> value="<{$list.catid}>"><{$list.cat}></option>
+
+                            <{foreach item=slist from=$list.scat}>
+                            <option <{if $de.position==$slist.catid }> selected="selected" <{/if}> value="<{$slist.catid}>">|__<{$slist.cat}></option>
+
+                            <{foreach item=lists from=$slist.scat}>
+                            <option <{if $de.position==$lists.catid }> selected="selected" <{/if}> value="<{$lists.catid}>">|____<{$lists.cat}></option>
+                            <{/foreach}>
+
+                            <{/foreach}>
+
+                            <{/foreach}>
+                        </select>
                     <div id="form-error" class="form-error"></div>
+                    </td>
                 </tr> <tr>
                 	<td>状态</td>
                     <td>

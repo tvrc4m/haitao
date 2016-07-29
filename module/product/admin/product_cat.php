@@ -137,6 +137,7 @@
 		$sql="select * from ".PCAT." where catid<9999 order by nums,catid";
 		$db->query($sql);
 		$de=$db->getRows();
+
 		foreach($de as $key=>$val)
 		{
 			$sql="select * from ".PCAT." where catid < '".$val['catid']."99' and catid > '".$val['catid']."00' order by nums,catid";
@@ -150,6 +151,7 @@
 			}
 			$de[$key]['scat']=$a;
 		}
+
 		$sql = 'SELECT catid,cat,pic,wpic,brand FROM mallbuilder_product_cat ORDER BY catid ASC';
 		$db->query($sql);
 		$cacheList = $db->getRows();
@@ -238,5 +240,6 @@
 		}
 	}
 	$tpl->assign("de",$de);
+var_dump($de);
 	$tpl->display("product_cat.htm");
 ?>
