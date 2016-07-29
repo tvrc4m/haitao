@@ -140,7 +140,7 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
         		$url_temp = $config['http_type'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         	}
         }
-        $url_temp = "$config['http_type'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $url_temp = $config['http_type'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		/**
 		* roc 2016.07.27 end---
 		$url_temp = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
