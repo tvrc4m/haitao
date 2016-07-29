@@ -30,16 +30,20 @@ class refund
 			$str1 = " and seller_id = '$buid'";
 		}
 
-		$sql = "select		a.userid,a.order_id,a.buyer_id,a.seller_id,a.status,a.product_price, a.voucher_price, b.price,b.num,b.name,b.pic,b.id as pid,user,company from ".ORDER." a left join ".ORPRO." b on a.order_id = b.order_id left join ".SHOP." c on a.seller_id = c.userid where a.order_id = '$order_id' $str and b.id = '$id'";
+		$sql = "select	a.userid,a.order_id,a.buyer_id,a.seller_id,a.status,a.product_price, a.voucher_price, b.price,b.num,b.name,b.pic,b.id as pid,user,company from ".ORDER." a left join ".ORPRO." b on a.order_id = b.order_id left join ".SHOP." c on a.seller_id = c.userid where a.order_id = '$order_id' $str and b.id = '$id'";
 		$this -> db -> query($sql);
         $re = $this -> db -> fetchRow();
 
-		$sql = "select * , status as refund_status from ".REFUND." where order_id = '$order_id' $str1 and status > 0 and product_id = '$id'";
+		$sql = "select * ,status as refund_status from ".REFUND." where order_id = '$order_id' $str1 and status > 0 and product_id = '$id'";
 		$this -> db -> query($sql);
         $de = $this -> db -> fetchRow();
 
+		$sql = "select pic as pics from ".TALK." where order_id = '$order_id'";
+		$this -> db -> query($sql);
+		$pic = $this -> db -> fetchRow();
+
 		unset($de['status']);
-		if($de) @$re = array_merge($re,$de);
+		if($de) @$re = array_merge($re,$de,$pic);
 
 
 		/******************2016/6/7 start*******************/
@@ -58,7 +62,8 @@ class refund
 
 			$re['refund_price'] = $re['price'] * $re['num'];
 		}
-
+		if(!empty($re['pics']))
+			$re['pics'] = explode(',',$re['pics']);
 		/**
 		$re['refund_price'] = ($re['product_price'] - $re['voucher_price']) * ($re['price'] * $re['num']) / $re['product_price'];
 		*/
@@ -89,6 +94,7 @@ class refund
 	{
 		global $buid;
 		$re = $this -> order_detail($_POST['order_id'],$_POST['id']);
+
 		if($type=='add')
 		{
 			$T = time();
