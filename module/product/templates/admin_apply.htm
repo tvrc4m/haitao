@@ -23,12 +23,16 @@
                     <select name="reason_type">
                         <{if $de.reason_type == 1}>
                             <option value="1" selected="selected">物流中损坏的商品</option>
+                            <option value="2">商品有质量问题</option>
                         <{elseif $de.reason_type == 2}>
                             <option value="2" selected="selected">商品有质量问题</option>
+                            <option value="1">物流中损坏的商品</option>
+                        <{else}>
+                            <option value="0" >请选择退款原因</option>
+                            <option value="1">物流中损坏的商品</option>
+                            <option value="2">商品有质量问题</option>
                         <{/if}>
-                        <option value="0" >请选择退款原因</option>
-                        <option value="1">物流中损坏的商品</option>
-                        <option value="2">商品有质量问题</option>
+
                     </select>
                 </td>
             </tr>
@@ -40,7 +44,7 @@
                 </td>
             </tr>
             <tr>
-                <td><em>*</em>退款原因：</td>
+                <td><em>*</em>退款说明：</td>
                 <td>
                     <textarea name="reason"><{$de.reason}></textarea>
                 </td>
@@ -50,18 +54,20 @@
                 <td>
                     <ul class="clear">
                     <li>
-                    <input type="hidden" data-id="1" name="pic[]" value="">
-                    <img data-id="1" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" max-height="70" max-width="70">
+
+                    <input type="hidden" data-id="1" name="pic[]" value="<{if $de.pics.0 neq ''}><{$de.pics.0}><{/if}>">
+                    <img data-id="1" class="drag" src="<{if $de.pics.0 neq ''}><{$de.pics.0}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" height="70" width="70">
+
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
                     <input type="hidden" data-id="2" name="pic[]" value="">
-                    <img data-id="2" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" max-height="70" max-width="70">
+                    <img data-id="2" class="drag" src="<{if $de.pics.1 neq ''}><{$de.pics.1}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" height="70" width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
                     <input type="hidden" data-id="3" name="pic[]" value="">
-                    <img data-id="3" class="drag" src="<{$config.weburl}>/image/default/user_admin/mayi_icon12.png" max-height="70" max-width="70">
+                    <img data-id="3" class="drag" src="<{if $de.pics.2 neq ''}><{$de.pics.2}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" height="70" width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                     </ul>
