@@ -363,7 +363,7 @@ td.al i{color:#000;font-size:11px;}
 .apply_left table select{width: 200px;line-height: 20px;height: 20px;}
 .apply_left table textarea{width: 500px;min-height: 60px;}
 .apply_left table em{font-size: 14px;color: #ff5c5c;}
-.apply_left input[type='submit']{font-family: "微软雅黑";width: 170px;height: 40px;background: #ff5c5c;border-radius: 5px;color: #fff;font-size: 16px;}
+.apply_left input[type='submit']{font-family: "微软雅黑";width: 170px;height: 40px;background: #ff5c5c;border-radius: 5px;color: #fff;font-size: 16px;cursor: pointer;}
 .apply_left td ul li{float: left;width: 70px;height: 70px;margin-right: 20px;}
 .apply_left .problem{margin: 40px auto;padding-top: 20px;border-top: 1px dotted #e0e0e0;}
 .apply_left .problem h1{background: url(../../../image/default/user_admin/mayi_icon9.png) 0 no-repeat;}

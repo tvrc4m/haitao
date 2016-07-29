@@ -2,29 +2,69 @@
 $option = $_REQUEST;
 
 //新增商品活动
-if($option['act'] == 'add'){
+if($option['operation'] == 'add_ads'){
 
-        $sql = "select id FROM mallbuilder_product WHERE skuid in (".$_POST['sku'].")";
+    $sql="select * from ".PCAT." where catid<9999 order by nums,catid";
+    $db->query($sql);
+    $de=$db->getRows();
+
+    foreach($de as $key=>$val)
+    {
+        $sql="select * from ".PCAT." where catid < '".$val['catid']."99' and catid > '".$val['catid']."00' order by nums,catid";
+        $db->query($sql);
+        $a=$db->getRows();
+        foreach($a as $ke=>$va)
+        {
+            $sql="select * from ".PCAT." where catid < '".$va['catid']."99' and catid > '".$va['catid']."00' order by nums,catid";
+            $db->query($sql);
+            $a[$ke]['scat']=$db->getRows();
+        }
+        $de[$key]['scat']=$a;
+        $tpl->assign('de',$de);
+    }
+
+    if(!empty($_POST)) {
+        $sql = "select id FROM mallbuilder_product WHERE skuid in (" . $_POST['sku'] . ")";
         $db->query($sql);
         $pid = $db->getRows();
-        if(!empty($pid)) {
-            foreach($pid as $key => $val){
+        if (!empty($pid)) {
+            foreach ($pid as $key => $val) {
                 $newid[] = $val['id'];
             }
-            $newid = implode(',',$newid);
+            $newid = implode(',', $newid);
 
             $begintime = strtotime($_POST['begintime']);
             $endtime = strtotime($_POST['endtime']);
 
             $sql = "INSERT INTO mallbuilder_commodity_activity(cid,pid,sku,begintime,endtime,platform,position,`status`) VALUE (0,'" . $newid . "','" . $_POST['sku'] . '\',' . $begintime . ',' . $endtime . ',' . $_POST['platform'] . ',' . $_POST['position'] . ',' . $_POST['status'] . ")";
             $res = $db->query($sql);
-            if($res){
+            if ($res) {
                 msg('?m=comactivity&s=comactivity.php&operation=add_ads');
             }
         }
-
+    }
 //商品信息修改
 }elseif($option['operation'] == 'edit_ads') {
+
+    $sql="select * from ".PCAT." where catid<9999 order by nums,catid";
+    $db->query($sql);
+    $de=$db->getRows();
+
+    foreach($de as $key=>$val)
+    {
+        $sql="select * from ".PCAT." where catid < '".$val['catid']."99' and catid > '".$val['catid']."00' order by nums,catid";
+        $db->query($sql);
+        $a=$db->getRows();
+        foreach($a as $ke=>$va)
+        {
+            $sql="select * from ".PCAT." where catid < '".$va['catid']."99' and catid > '".$va['catid']."00' order by nums,catid";
+            $db->query($sql);
+            $a[$ke]['scat']=$db->getRows();
+        }
+        $de[$key]['scat']=$a;
+        $tpl->assign('de',$de);
+    }
+
     if (empty($_POST)) {
         $sql = "SELECT * FROM mallbuilder_commodity_activity WHERE cid = " . $option['editid'];
         $db->query($sql);
@@ -44,9 +84,7 @@ if($option['act'] == 'add'){
                 msg('?m=comactivity&s=comactivity.php');
             }
         }
-
     }
-
 }elseif($option['operation'] == 'del_ads'){
 
     $cid = is_array($option['chk']) ? implode(',',$option['chk']) : $option['chk'];
