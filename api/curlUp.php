@@ -41,7 +41,7 @@ class curlUp{
         $list['msg'] = '';
         $list['goods_order'][0]['order_code']=$orderList[0]['order_id'];
         for($i=0;$i<$coun;$i++) {
-            $this->price += $orderList[$i]['price'];
+            $this->price += $orderList[$i]['price']*$orderList[$i]['num'];
         }
         $list['goods_order'][0]['order_sum_money']=(string)($this->price+$orderList[0]['logistics_price']);//$orlist['order']['logistics_price']);
         $list['goods_order'][0]['order_member_name']=$orderList[0]['consignee'];

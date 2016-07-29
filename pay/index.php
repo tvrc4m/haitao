@@ -9,6 +9,7 @@ if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['ope
 	 * 成功调起支付第一步骤：
 	 * 步骤1：网页授权获取用户openid
 	*/
+
 	include_once("module/payment/lib/WxPayPubHelper/WxPayPubHelper.php");
 	//使用jsapi接口
 	$jsApi = new JsApi_pub();
