@@ -71,7 +71,7 @@
             <tr>
                 <td width="80"></td>
                 <td>
-                <input type="submit" value="提交退款申请" />
+                <input type="submit" value="提交退款申请" onclick="return checkValue();"/>
                 </td>
             </tr>
         </table>
@@ -95,31 +95,31 @@
             </p>
         <table>
             <tr>
-                <td>单　　价：</th>
+                <td>单　　价：</td>
                 <td><em><{$de.price}></em>元 * <em><{$de.num}></em>（数量）</td>
             </tr>
             <tr>
-                <td>商品优惠：</th>
+                <td>商品优惠：</td>
                 <td><{$de.refund_voucher}></td>
             </tr>
             <tr>
-                <td>商品实付：</th>
+                <td>商品实付：</td>
                 <td><{($de.price*$de.num-$de.refund_voucher)|number_format:2}>元</td>
             </tr>
             <tr>
-                <td>运　　费：</th>
+                <td>运　　费：</td>
                 <td><{if $de.status==4}><{$de.logistics_price|number_format:2}><{else}>0.00<{/if}>元</td>
             </tr>
             <tr>
-                <td>关　　税：</th>
+                <td>关　　税：</td>
                 <td>10.00元</td>
             </tr>
             <tr>
-                <td>商　　家：</th>
+                <td>商　　家：</td>
                 <td><em>蚂蚁海淘</em></td>
             </tr>
             <tr>
-                <td>订单编号：</th>
+                <td>订单编号：</td>
                 <td><a target="_blank" href=""><{$de.order_id}></a></td>
             </tr>
         </table>
@@ -127,3 +127,24 @@
 </div>
 </div>
 </div>
+<script src="<{$config.weburl}>/script/layer/layer.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<{$config.weburl}>/script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
+<script type="text/javascript">
+    function checkValue () {
+        var num = 0;
+        if($("textarea[name='reason']").val() ==""){
+            layer.msg("请填写退货原因!");
+            return false;
+        }
+        $("input[name='pic[]']").each(function () {
+            if ($(this).val() !== "") {
+                num = num+1;
+            }
+        })
+        if(num == 0){
+            layer.msg("请上传凭证!");
+            return false;
+        }
+        return true;
+    }
+</script>
