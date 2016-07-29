@@ -54,7 +54,7 @@
                 <td>
                     <ul class="clear">
                     <li>
-                    <input type="hidden" data-id="1" name="pic[]" value="">
+                    <input type="hidden" data-id="1" name="pic[]" value="<{if $de.pics.0 neq ''}><{$de.pics.0}><{/if}>">
                     <img data-id="1" class="drag" src="<{if $de.pics.0 neq ''}><{$de.pics.0}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" height="70" width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>

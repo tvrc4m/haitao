@@ -94,7 +94,6 @@ class refund
 	{
 		global $buid;
 		$re = $this -> order_detail($_POST['order_id'],$_POST['id']);
-
 		if($type=='add')
 		{
 			$T = time();
@@ -125,6 +124,7 @@ class refund
 		}
 		else if($type=='edit')
 		{
+			var_dump($_POST);
 			$sql="update ".REFUND." set  status='1',refund_price='$_POST[price]',reason='$_POST[reason]' where order_id = '$re[order_id]' and product_id = '$re[pid]' and member_id = '$buid' ";
 			$this->db->query($sql);
             /*$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
@@ -132,7 +132,8 @@ class refund
 			$R = $re['refund_id'];
 			$msg = "买家（".$_COOKIE['USER']."）于 ".date("Y-m-d H:i:s")." 修改了退款申请。";
 			$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
-			$this->add_talk($R,$re['order_id'],$msg,$pic);
+			var_dump($pic);
+			$this->edit_talk($R,$re['order_id'],$msg,$pic);
 		}else if($type=='delete'){
 
 		}
@@ -238,6 +239,16 @@ class refund
 		$msg = $msg;
 		//$pic = $_POST['pic'] ? $_POST['pic'] : "";
 		$sql="insert into ".TALK." (refund_id,order_id,member_id,type,content,pic,create_time) values ('$refund_id','$order_id','$buid','1','$msg','$pic','".time()."')";
+		$this->db->query($sql);
+	}
+
+	function edit_talk($refund_id,$order_id,$msg,$pic)
+	{
+		global $buid;
+		$msg = $msg;
+		//$pic = $_POST['pic'] ? $_POST['pic'] : "";
+		$sql="update ".TALK." set content='{$msg}',pic='{$pic}' where order_id = '{$order_id}'";
+		//$sql="insert into ".TALK." (refund_id,order_id,member_id,type,content,pic,create_time) values ('$refund_id','$order_id','$buid','1','$msg','$pic','".time()."')";
 		$this->db->query($sql);
 	}
 
