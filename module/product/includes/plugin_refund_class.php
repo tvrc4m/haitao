@@ -62,13 +62,17 @@ class refund
 
 			$re['refund_price'] = $re['price'] * $re['num'];
 		}
-		if(!empty($re['pics']))
-			$re['pics'] = explode(',',$re['pics']);
 		/**
 		$re['refund_price'] = ($re['product_price'] - $re['voucher_price']) * ($re['price'] * $re['num']) / $re['product_price'];
 		*/
 
 		/******************2016/6/7 end*******************/
+		if(!empty($re['pics'])){
+			$re['pics'] = explode(',',$re['pics']);
+			arsort($re['pics']);
+			$re['pics'] = array_values($re['pics']);
+		}
+
 
 		return $re;
 	}
