@@ -22,7 +22,9 @@ if(@function_exists('date_default_timezone_set'))
 	
 $config['version']='MallBuilder_v7.3.4';
 $config['webroot']=substr(dirname(__FILE__), 0, -9);
+$config['http_type'] = "http://";
 ini_set('include_path',$config['webroot'].'/');
+
 include_once($config['webroot']."/includes/waf.php");
 include_once($config['webroot']."/config/config.inc.php");
 include_once($config['webroot']."/config/web_config.php");
@@ -105,6 +107,62 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) //判断�
 	//}
 	*/
 }
+/**
+*
+*/  
+if($config['bw'] == "weixin" && (!isset($_SESSION['openid_f']) || $_SESSION['openid_f']==""))
+{
+	/**
+	 * 成功调起支付第一步骤：
+	 * 步骤1：网页授权获取用户openid
+	*/
+
+	include_once($config['webroot']."/pay/module/payment/lib/WxPayPubHelper/WxPayPubHelper.php");
+	//使用jsapi接口
+	$jsApi = new JsApi_pub();
+	//通过code获得openid
+	if (!isset($_GET['code']) && (!isset($_SESSION['openid_f']) || $_SESSION['openid_f']=="")) // && $_GET['m']!="product"
+	{
+		//$url_temp = WxPayConf_pub::JS_API_CALL_URL;
+		/**
+		* roc 2016.07.27 start---
+		$url_temp = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		*/
+		$url_temp = $_SERVER['HTTP_REFERER'];
+        if(empty($url_temp))
+        {
+               $url_temp= $config['weburl'].'/main.php?cg_u_type=1';
+        }
+        else
+        {
+        	if(!preg_match("/^".str_replace("/", "\/", $config['weburl'])."*/",$url_temp))
+        	{
+        		$url_temp = $config['http_type'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        	}
+        }
+        $url_temp = "$config['http_type'] . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		/**
+		* roc 2016.07.27 end---
+		$url_temp = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		*/
+		$url_temp = urlencode($url_temp);
+		//触发微信返回code码
+		$url = $jsApi->createOauthUrlForCode($url_temp);
+
+		header("Location: $url");
+	}
+	else if(isset($_GET['code']))
+	{
+		//获取code码，以获取openid
+	    $code = $_GET['code'];
+		$jsApi->setCode($code);
+		$openid = $jsApi->getOpenId();
+
+		$_SESSION['openid_f'] = $openid;
+
+		//自动根据openid登录操作
+	}
+}
 
 //=====================end weixin============================
 
@@ -141,10 +199,12 @@ else
 }
 
 $_SESSION['temp'] = $config['temp'];
+/*
 $data['uc_appid']='201605270933';
 $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';
 $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
 $_SESSION['ucenter_data'] = $data;
+*/
 //ucenter 0 平台登录 1 用户中心uc登陆
 $_SESSION['ucenter']=0;
 magic();//魔术调用
