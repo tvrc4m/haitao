@@ -118,7 +118,7 @@ class refund
 
 			$types = $re['status'] == 2 ? "1" : "2";
 			$sql="insert into ".REFUND." (order_id,refund_id,product_id,seller_id,member_id,refund_price,create_time,reason,status,goods_status,type,reason_type) values ('$_POST[order_id]','".$R."','$_POST[id]','$_POST[seller_id]','$buid','$_POST[price]','".time()."','$_POST[reason]','1','$goods_status','$types',$_POST[reason_type])";
-			echo $sql;$this->db->query($sql);
+			$this->db->query($sql);
 			$type_name = $types == 2 ? "退货退款":"仅退款";
 			$goods_status_name = $goods_status == 1 ? "买家已收到货":"买家未收到货";
 
@@ -128,7 +128,7 @@ class refund
 		}
 		else if($type=='edit')
 		{
-			var_dump($_POST);
+
 			$sql="update ".REFUND." set  status='1',refund_price='$_POST[price]',reason='$_POST[reason]' where order_id = '$re[order_id]' and product_id = '$re[pid]' and member_id = '$buid' ";
 			$this->db->query($sql);
             /*$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
@@ -136,10 +136,8 @@ class refund
 			$R = $re['refund_id'];
 			$msg = "买家（".$_COOKIE['USER']."）于 ".date("Y-m-d H:i:s")." 修改了退款申请。";
 			$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
-			var_dump($pic);
-			$this->edit_talk($R,$re['order_id'],$msg,$pic);
-		}else if($type=='delete'){
 
+			$this->edit_talk($R,$re['order_id'],$msg,$pic);
 		}
 
 
