@@ -135,14 +135,20 @@
 <link rel="stylesheet" href="<{$config.weburl}>/script/layer/skin/layer.ext.css" id="layui_layer_skinlayerextcss">
 <script type="text/javascript">
     function checkValue () {
+        var num = 0;
         if($("textarea[name='reason']").val() ==""){
             layer.msg("请填写退货说明!");
             return false;
-        }else if($("input[name='pic[]']").val() ==""){
+        }
+        $("input[name='pic[]']").each(function () {
+            if ($(this).val() !== "") {
+                num = num+1;
+            }
+        })
+        if(num == 0){
             layer.msg("请上传凭证!");
             return false;
-        }else{
-            return true;
         }
+        return true;
     }
 </script>
