@@ -1133,6 +1133,7 @@
   'edit_adv_con' => '广告编辑',
   'advs_con_list' => '广告位管理',
   'announcement' => '公告管理',
+  'commodityactivity' => '商品活动管理',
   'newslist' => '管理文章',
   'news_module' => '调用标签',
   'exhibit' => '发布展会',

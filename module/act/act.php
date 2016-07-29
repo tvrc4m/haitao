@@ -1,10 +1,12 @@
 <?php
 
 
+$tpl->assign("is_wechat",false);
+//微信分享
 if ($config['bw'] == "weixin")
 {
 	include_once("pay/module/payment/lib/WxPayPubHelper/WxPay.pub.config.php");
-
+	/**
 	if(!isset($_SESSION['access_token']) || (time()-$_SESSION['tmpTime'])>7200)
 	{
 		//获取微信票据
@@ -21,7 +23,6 @@ if ($config['bw'] == "weixin")
 
 		$_SESSION['tmpTime'] = time();
 	}
-	else
 	{
 		$_SESSION['noncestr'] = randomkeys(12);
 
@@ -34,6 +35,13 @@ if ($config['bw'] == "weixin")
 		$str_tmp = "jsapi_ticket=".$_SESSION['ticket']."&noncestr=".$_SESSION['noncestr']."&timestamp=".$_SESSION['tmpTime']."&url=".$strTmp;
 		$_SESSION['signature'] = sha1($str_tmp);
 	}
+	*/
+	include_once("includes/jssdk.php");
+	$jssdk = new JSSDK(WxPayConf_pub::APPID,WxPayConf_pub::APPSECRET);
+	$wechat_share_data = $jssdk->getSignPackage();
+	$tpl->assign("wechat_share",$wechat_share_data);
+	$tpl->assign("is_wechat",true);
+
 }
 $tpl->assign('config',$config);
 if($config['temp'] == 'default'){

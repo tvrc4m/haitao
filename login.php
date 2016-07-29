@@ -63,7 +63,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
 
                 $ip=getip();
                 $dbc->query("insert into ".MEMBER." (user,email,password,ip,statu) values
-				('$post[user]','$email','".md5($post['password'])."','$ip','1')");
+                ('$post[user]','$email','".md5($post['password'])."','$ip','1')");
                 $re['userid']=$dbc->lastid();
                 $re['user']=$_POST['user'];
 
@@ -84,6 +84,10 @@ if(!empty($post["action"])&&$post["action"]=="submit")
             }
             uc_user_synlogin($uid);
             $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+            if(empty($forward) || $forward == $config["weburl"]."/login.php")
+            {
+                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+            }
             msg($forward);
         }
         else
@@ -126,6 +130,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     setcookie("old_url");
                     setcookie("userid",$re['userid']);
                     $_SESSION['script']=$script->data;
+
+                    if(empty($forward) || $forward == $config["weburl"]."/login.php")
+                    {
+                        $forward = $config["weburl"]."/main.php?cg_u_type=1";
+                    }
                     msg($forward);
                     die;
                 }
@@ -147,6 +156,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     setcookie("old_url");
                     setcookie("userid",$re['userid']);
                     $_SESSION['script']=$script->data;
+
+                    if(empty($forward) || $forward == $config["weburl"]."/login.php")
+                    {
+                        $forward = $config["weburl"]."/main.php?cg_u_type=1";
+                    }
                     msg($forward);
                     die;
                 }
@@ -178,6 +192,11 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     else
                         login($re['userid'],$re['user']);
                     if(!empty($post['forward'])){
+
+                        if($forward == $config["weburl"]."/login.php")
+                        {
+                            $forward = $config["weburl"]."/main.php?cg_u_type=1";
+                        }
                         $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                         msg($forward);
                     }else{
@@ -467,9 +486,9 @@ if($config['sina_connect']==1)//sina
         if(empty($cre['id']))
         {
             $sql="insert into ".USERCOON."
-			(nickname,figureurl,gender,type,access_token,client_id) 
-			values 
-			('$ar[name]','$ar[profile_image_url]','$ar[gender]',2,'$token[access_token]','$ar[id]')";
+            (nickname,figureurl,gender,type,access_token,client_id) 
+            values 
+            ('$ar[name]','$ar[profile_image_url]','$ar[gender]',2,'$token[access_token]','$ar[id]')";
             $db->query($sql);
             $cre['id']=$db->lastid();
         }
@@ -477,6 +496,10 @@ if($config['sina_connect']==1)//sina
         {
             login($cre['userid'],NULL);
             $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+            if(empty($forward) || $forward == $config["weburl"]."/login.php")
+            {
+                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+            }
             msg($forward);
         }
         else
@@ -523,9 +546,9 @@ if(!empty($_GET['code'])&&$config['qq_connect']==1&&$_GET['type']!='sina'&&$_GET
     if(empty($cre['id']))
     {
         $sql="insert into ".USERCOON."
-		(nickname,figureurl,gender,vip,level,type,access_token,client_id,openid) 
-		values 
-		('$ar[nickname]','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',1,'$takenid','$ar2[client_id]','$ar2[openid]')";
+        (nickname,figureurl,gender,vip,level,type,access_token,client_id,openid) 
+        values 
+        ('$ar[nickname]','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',1,'$takenid','$ar2[client_id]','$ar2[openid]')";
         $db->query($sql);
         $cre['id']=$db->lastid();
     }
@@ -604,14 +627,17 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
     {
         $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$_SESSION['accessToken']->refresh_token;
         $access_token = json_decode(file_get_contents($access_token_url));
-
+        if(!empty($access_token) && isset($access_token->openid) && !empty($access_token->openid))
+        {
+            $_SESSION['openid_f'] = $access_token->openid;
+        }
         $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
         $user_info = json_decode(@file_get_contents($user_info_url));
 
         $openid = $user_info -> openid;
         $nickname = $user_info -> nickname;
 
-
+       
         if($openid)
         {
             //--------------------------
@@ -622,7 +648,7 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
             if(empty($cre['id']))
             {
                 $sql="insert into ".USERCOON."(nickname,figureurl,gender,vip,level,type,access_token,client_id,openid)
-						values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid')";
+                        values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid')";
                 $db->query($sql);
                 $cre['id']=$db->lastid();
             }
