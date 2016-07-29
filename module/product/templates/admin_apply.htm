@@ -61,12 +61,12 @@
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
-                    <input type="hidden" data-id="2" name="pic[]" value="">
+                    <input type="hidden" data-id="2" name="pic[]" value="<{if $de.pics.1 neq ''}><{$de.pics.1}><{/if}>">
                     <img data-id="2" class="drag" src="<{if $de.pics.1 neq ''}><{$de.pics.1}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" max-height="70" max-width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
-                    <input type="hidden" data-id="3" name="pic[]" value="">
+                    <input type="hidden" data-id="3" name="pic[]" value="<{if $de.pics.2 neq ''}><{$de.pics.2}><{/if}>">
                     <img data-id="3" class="drag" src="<{if $de.pics.2 neq ''}><{$de.pics.2}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" max-height="70" max-width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
