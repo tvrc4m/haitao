@@ -30,16 +30,20 @@ class refund
 			$str1 = " and seller_id = '$buid'";
 		}
 
-		$sql = "select		a.userid,a.order_id,a.buyer_id,a.seller_id,a.status,a.product_price, a.voucher_price, b.price,b.num,b.name,b.pic,b.id as pid,user,company from ".ORDER." a left join ".ORPRO." b on a.order_id = b.order_id left join ".SHOP." c on a.seller_id = c.userid where a.order_id = '$order_id' $str and b.id = '$id'";
+		$sql = "select	a.userid,a.order_id,a.buyer_id,a.seller_id,a.status,a.product_price, a.voucher_price, b.price,b.num,b.name,b.pic,b.id as pid,user,company from ".ORDER." a left join ".ORPRO." b on a.order_id = b.order_id left join ".SHOP." c on a.seller_id = c.userid where a.order_id = '$order_id' $str and b.id = '$id'";
 		$this -> db -> query($sql);
         $re = $this -> db -> fetchRow();
 
-		$sql = "select * , status as refund_status from ".REFUND." where order_id = '$order_id' $str1 and status > 0 and product_id = '$id'";
+		$sql = "select * ,status as refund_status from ".REFUND." where order_id = '$order_id' $str1 and status > 0 and product_id = '$id'";
 		$this -> db -> query($sql);
         $de = $this -> db -> fetchRow();
 
+		$sql = "select pic as pics from ".TALK." where order_id = '$order_id'";
+		$this -> db -> query($sql);
+		$pic = $this -> db -> fetchRow();
+
 		unset($de['status']);
-		if($de) @$re = array_merge($re,$de);
+		if($de) @$re = array_merge($re,$de,$pic);
 
 
 		/******************2016/6/7 start*******************/
@@ -58,7 +62,8 @@ class refund
 
 			$re['refund_price'] = $re['price'] * $re['num'];
 		}
-
+		if(!empty($re['pics']))
+			$re['pics'] = explode(',',$re['pics']);
 		/**
 		$re['refund_price'] = ($re['product_price'] - $re['voucher_price']) * ($re['price'] * $re['num']) / $re['product_price'];
 		*/
@@ -108,26 +113,32 @@ class refund
 			}
 
 			$types = $re['status'] == 2 ? "1" : "2";
-
 			$sql="insert into ".REFUND." (order_id,refund_id,product_id,seller_id,member_id,refund_price,create_time,reason,status,goods_status,type,reason_type) values ('$_POST[order_id]','".$R."','$_POST[id]','$_POST[seller_id]','$buid','$_POST[price]','".time()."','$_POST[reason]','1','$goods_status','$types',$_POST[reason_type])";
-			$this->db->query($sql);
+			echo $sql;$this->db->query($sql);
 			$type_name = $types == 2 ? "退货退款":"仅退款";
 			$goods_status_name = $goods_status == 1 ? "买家已收到货":"买家未收到货";
 
 			$msg = "买家（".$_COOKIE['USER']."）于 ".date("Y-m-d H:i:s",$T)." 创建了退款申请。买家要求：".$type_name."，货物状态：".$goods_status_name."，退款金额：$_POST[price]元，退款原因：$_POST[reason]";
-
+			$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
+			$this->add_talk($R,$re['order_id'],$msg,$pic);
 		}
 		else if($type=='edit')
 		{
+			var_dump($_POST);
 			$sql="update ".REFUND." set  status='1',refund_price='$_POST[price]',reason='$_POST[reason]' where order_id = '$re[order_id]' and product_id = '$re[pid]' and member_id = '$buid' ";
 			$this->db->query($sql);
-            $pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
-			$this->add_talk($de['refund_id'],$de['order_id'],$_POST['msg'],$pic);
+            /*$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
+			$this->add_talk($de['refund_id'],$de['order_id'],$_POST['msg'],$pic);*/
 			$R = $re['refund_id'];
 			$msg = "买家（".$_COOKIE['USER']."）于 ".date("Y-m-d H:i:s")." 修改了退款申请。";
+			$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
+			var_dump($pic);
+			$this->edit_talk($R,$re['order_id'],$msg,$pic);
+		}else if($type=='delete'){
+
 		}
-		$pic = count($_POST['pic'])>1 ? implode($_POST['pic'],',') : $_POST['pic'];
-		$this->add_talk($R,$re['order_id'],$msg,$pic);
+
+
 		return $R;
 	}
 
@@ -228,6 +239,16 @@ class refund
 		$msg = $msg;
 		//$pic = $_POST['pic'] ? $_POST['pic'] : "";
 		$sql="insert into ".TALK." (refund_id,order_id,member_id,type,content,pic,create_time) values ('$refund_id','$order_id','$buid','1','$msg','$pic','".time()."')";
+		$this->db->query($sql);
+	}
+
+	function edit_talk($refund_id,$order_id,$msg,$pic)
+	{
+		global $buid;
+		$msg = $msg;
+		//$pic = $_POST['pic'] ? $_POST['pic'] : "";
+		$sql="update ".TALK." set content='{$msg}',pic='{$pic}' where order_id = '{$order_id}'";
+		//$sql="insert into ".TALK." (refund_id,order_id,member_id,type,content,pic,create_time) values ('$refund_id','$order_id','$buid','1','$msg','$pic','".time()."')";
 		$this->db->query($sql);
 	}
 
