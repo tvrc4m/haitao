@@ -368,14 +368,13 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 	if($time_now>$time_end || $time_now<$time_start){
 		return $logistcost_price;
 	}
-	//var_dump($is_half_price,$product_price,$logistcost_price);
 	$full_free_acount = 300;
 	if(member_the_investment()){
 		$full_free_acount = 200;
 	}
+	//内部活动
 	/*if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
 	{
-		//var_dump(1);
 		$full_free_acount = 200;
 	}*/
 
