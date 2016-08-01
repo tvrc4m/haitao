@@ -32,7 +32,8 @@ if(isset($_GET['hd'])&&!empty($_GET['hd'])){
         default:
             echo '没有该活动！';
     }
-}
+}else
+    msg($config['weburl']."/404.php");
 
 
 ?>
