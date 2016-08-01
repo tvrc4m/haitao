@@ -297,9 +297,7 @@ if(!$tpl->is_cached("space_temp_inc.htm",$flag)) {
 				));
 				die;
 			}
-
 		}
-
 }
 	$tpl->assign("chat_open_flag", $chat_open_flag);
 	$tpl->display("space_temp_inc.htm", $flag);
