@@ -26,6 +26,8 @@ if(isset($_GET['hd'])&&!empty($_GET['hd'])){
             if($config['temp'] == 'default'){
                 $out = tplfetch('./qixi77/pc/index.htm');
             }elseif($config['temp'] == 'wap'){
+                $coms = array('shop_title'=>'吸睛大法');
+                $tpl->assign('com',$coms);
                 $out = tplfetch('./qixi77/wap/index.htm');
             }
         break;
