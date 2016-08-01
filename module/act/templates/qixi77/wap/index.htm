@@ -1,21 +1,22 @@
 <style type="text/css">
 	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
+	.altair-container{background-color: #fff;}
 	.altair-container img{width: 100%;vertical-align: top;font-size: 0;display: block;}
 	.altair-content ul li{width: 100%;list-style: none;}
 	.clearfix:after{height: 0;content: "";clear: both;visibility: hidden;display: block;overflow: hidden;}
 	.clearfix{*zoom:1;}
-	.altair-banner{position:relative;}
-	.altair-banner i{
+	.altair-banner{margin-bottom: 20px;}
+	.altair-container i.altair-icon{
 		display: inline-block;height: 35px;width: 35px;border-radius: 50%;
 	    background: url(image/wap/wap_haitao_icon9.png) center 3px no-repeat;
 	    background-size: 75%;background-color: rgba(0,0,0,.5);
-	    position: absolute;top: 10%;left: 4%;}
+	    position: fixed;top: 2%;left: 4%;}
 	.mains{height: 0;}
 </style>
 <div class="altair-container">
+	<a href="<{$config.weburl}>"><i class="altair-icon"></i></a>
 	<div class="altair-banner">
 		<img src="<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner.jpg" alt="七夕吸睛大法">
-		<a href="<{$config.weburl}>"><i></i></a>
 	</div>
 	<div class="altair-content"></div>
 </div>
@@ -71,7 +72,7 @@ $(function(){
         wx.onMenuShareTimeline({
             title: "全场满300免运费 蚂蚁海淘, 品质保证 ,与众不同", // 分享标题
             link: location.href, // 分享链接
-            imgUrl: "<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner.jpg", // 分享图标
+            imgUrl: "<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg", // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
                 /*
@@ -89,7 +90,7 @@ $(function(){
             title:"全场满300免运费", // 分享标题
             desc: "蚂蚁海淘, 品质保证 ,与众不同", // 分享描述
             link: location.href, // 分享链接
-            imgUrl: "<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner.jpg", // 分享图标
+            imgUrl: "<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg", // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -109,7 +110,7 @@ $(function(){
             title: '全场满300免运费', // 分享标题
             desc: '蚂蚁海淘, 品质保证 ,与众不同', // 分享描述
             link: location.href, // 分享链接
-            imgUrl: '<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner.jpg', // 分享图标
+            imgUrl: '<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
                 /*
@@ -127,7 +128,7 @@ $(function(){
             title: '全场满300免运费', // 分享标题
             desc: '蚂蚁海淘, 品质保证 ,与众不同', // 分享描述
             link: location.href, // 分享链接
-            imgUrl: '<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner.jpg', // 分享图标
+            imgUrl: '<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
                 /*
