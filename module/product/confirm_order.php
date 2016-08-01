@@ -425,7 +425,6 @@ function member_the_investment(){
 		return false;
 	}
 	$sql = "select 1 from mallbuilder_voucher where create_time>{$time_start} and create_time<{$time_end} and member_id=28859";
-	echo $sql;die;
 	$db->query($sql);
 	$num = $db->fetchField();
 	return $num!=0?true:false;
