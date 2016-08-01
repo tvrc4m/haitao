@@ -418,10 +418,11 @@ function exclude_by_product_ids($product_ids){
 //活动在线投资可享满200包邮
 function member_the_investment($buid){
 	global $db;
-	$sql = 'select 1 from mallbuilder_voucher where member_id='.$buid;
+	$sql = "select 1 from mallbuilder_voucher where member_id=".$buid;
+	echo $sql;
 	$db->query($sql);
-	$num = $db->num_rows();
-	var_dump($num);echo 11;echo $buid;
+	$num = $db->fetchRow();
+	var_dump($num);echo $buid;
 }
 
 ?>
