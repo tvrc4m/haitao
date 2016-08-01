@@ -24,9 +24,9 @@ if(isset($_GET['hd'])&&!empty($_GET['hd'])){
     switch($_GET['hd']){
         case '77':
             if($config['temp'] == 'default'){
-                $out = tplfetch('./qixi77/act.htm');
+                $out = tplfetch('./qixi77/pc/index.htm');
             }elseif($config['temp'] == 'wap'){
-                $out = tplfetch('./qixi77/act_wap.htm');
+                $out = tplfetch('./qixi77/wap/index.htm');
             }
         break;
         default:
