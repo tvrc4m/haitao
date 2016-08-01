@@ -368,10 +368,10 @@ else
 	//}
 	
 	$tpl->template_dir=$config['webroot']."/templates/".$config['temp']."/user_admin/";
-    if(isset($_GET['disp']) && $_GET['disp'] == 1) {
-        $tpl->display('withdrawals.htm');
-    }else{
-        $tpl->display($page);
-    }
+		if(isset($_GET['disp']) && $_GET['disp'] == 1) {
+			$tpl->display('withdrawals.htm');
+		}else{
+			$tpl->display($page);
+		}
 }
 ?>
