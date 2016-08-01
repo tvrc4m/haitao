@@ -362,7 +362,7 @@ function check_activity_by_product_ids($product_ids){
 }
 
 function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
-	$time_start = strtotime("2016-08-2 00:00:00");
+	$time_start = strtotime("2016-08-1 00:00:00");
 	$time_end = strtotime("2016-08-11 00:00:00");
 	$time_now = time();
 	if($time_now>$time_end || $time_now<$time_start){
@@ -398,7 +398,7 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 //满300包邮活动，数组内商品id不在活动内
 function exclude_by_product_ids($product_ids){
 	$_price=0;
-	$time_start = strtotime("2016-08-2 00:00:00");
+	$time_start = strtotime("2016-08-1 00:00:00");
 	$time_end = strtotime("2016-08-11 00:00:00");
 	$time_now = time();
 	if($time_now>$time_end || $time_now<$time_start){
@@ -418,15 +418,16 @@ function exclude_by_product_ids($product_ids){
 //活动蚂蚁在线投资可享满200包邮
 function member_the_investment(){
 	global $db,$buid;
-	$time_start = strtotime("2016-08-2 00:00:00");
+	$time_start = strtotime("2016-08-1 00:00:00");
 	$time_end = strtotime("2016-08-11 00:00:00");
 	$time_now = time();
 	if($time_now>$time_end || $time_now<$time_start){
 		return false;
 	}
-	$sql = "select 1 from mallbuilder_voucher where member_id=$buid";
+	$sql = "select 1 from mallbuilder_voucher where create_time>{$time_start} and create_time<{$time_end} and member_id=28859";
+	echo $sql;die;
 	$db->query($sql);
-	$num = $db->num_rows();
+	$num = $db->fetchField();
 	return $num!=0?true:false;
 }
 
