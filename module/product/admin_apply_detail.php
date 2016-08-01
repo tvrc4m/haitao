@@ -70,18 +70,12 @@ $talk = $refund->get_talk();
 $pics = array();
 foreach($talk as $k=>$v){
 	$pics = explode(',',$v['pic']);
-
 	for($i=0;$i<count($pics);$i++){
-
 		if($pics[$i]!=''){
-			echo $pics[$i].'-'.$i.'='.$k;
-			$talk[$k]['pic'][$i] = $pics[$i];
+			$talk[$k]['pics'][$i] = $pics[$i];
 		}
-		var_dump($talk[$k]['pic']);die;
-
-	}var_dump($talk[$k]);die;
+	}
 }
-
 $tpl->assign("talk",$talk);
 
 $image_config['image_size'] = floor($image_config['image_size']/1024);
