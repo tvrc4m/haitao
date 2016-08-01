@@ -96,7 +96,7 @@
     <div class="apply_right">
         <h1>商品详情</h1>
             <p class="clear">
-                <img src="<{$de.pic}>_60X60.jpg" />
+                <img src="<{$de.pic}>" />
                 <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$de.pid}>"><{$de.name}></a>
             </p>
         <table>
@@ -116,13 +116,13 @@
                 <td>运　　费：</td>
                 <td><{if $de.status==4}><{$de.logistics_price|number_format:2}><{else}>0.00<{/if}>元</td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td>关　　税：</td>
                 <td>10.00元</td>
-            </tr>
+            </tr>-->
             <tr>
                 <td>商　　家：</td>
-                <td><em>蚂蚁海淘</em></td>
+                <td><em><{$de.company}></em></td>
             </tr>
             <tr>
                 <td>订单编号：</td>

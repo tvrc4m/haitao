@@ -8,6 +8,7 @@
 <div class="main">
 <div class="wrap">
 <div class="apply_detail">
+    <{if $type == 'buyer'}>
     <div class="apply_left">
         <h1>等待商家处理退款申请</h1>
         <table>
@@ -45,6 +46,67 @@
             </ul>
         </div>-->
     </div>
+    <{/if}>
+    <{if $type == 'seller'}>
+    <div class="apply_left">
+        <div class="main-box">
+            <h2>请处理退款申请</h2>
+            <ul>
+                <li><i>·</i>如果未发货，请点击同意来退款给买家。</li>
+                <li><i>·</i>如果已发货，请主动与买家联系确认后再点击发货。</li>
+            </ul>
+            <form id="form" method="post">
+                <input type="hidden" name="act" value="agree" />
+                <input type="hidden" name="refund_id" value="<{$de.refund_id}>" />
+                <a class="btn mt20" id="agree" href="#">同意</a>
+                <a class="btn mt20 white" href="main.php?m=product&s=admin_deliver&order_id=<{$de.order_id}>">发货</a>
+            </form>
+            <script type="text/javascript">
+                $("#agree").click(function(){
+                    $("#form").submit();
+                })
+            </script>
+            </form>
+        </div>
+
+        <div class="review-panel">
+            <div class="mt"><h2>留言板</h2></div>
+            <{if $de.status!=0&&$de.status!=5}>
+            <div class="mc">
+                <form method="post">
+                    <input type="hidden" name="act" value="review" />
+                    <p><textarea name="msg"></textarea></p>
+                    <ul><li><img class="hidden" width="60" id="pic_img" /></li></ul>
+                    <div class="control-bar">
+                    <span>
+                        <input type="hidden" name="pic" id="pic" value="" />
+                        <a href="javascript:uploadfile('上传凭证','pic',600,600,'apply')">上传凭证</a>
+                    </span>
+                        <em>单张不超过<{$image_config.image_size}>M，支持<{$image_config.image_extension}>格式</em>
+                        <p><input type="submit" class="btn" value="发表留言" /></p>
+                    </div>
+                </form>
+            </div>
+            <{/if}>
+            <div class="mb">
+                <{foreach item=list from=$talk}>
+                <div class="reivew-item clearfix">
+                    <p><img width="38"  src="<{$list.logo}>" /></p>
+                    <dl>
+                        <dt><em><{$list.user}></em> (<{$list.create_time|date_format:"%Y-%m-%d&nbsp;%H:%M:%S"}>)</dt>
+                        <dd><{$list.content}></dd>
+                    </dl>
+                    <{if $list.pic}>
+                    <ul>
+                        <li><a target="_blank" href="<{$list.pic}>"><img width="80" src="<{$list.pic}>" /></a></li>
+                    </ul>
+                    <{/if}>
+                </div>
+                <{/foreach}>
+            </div>
+        </div>
+    </div>
+    <{/if}>
     <div class="apply_right">
         <h1>退款申请</h1>
         <table>
@@ -54,39 +116,43 @@
             </tr>
             <tr>
                 <td>退款金额：</th>
-                <td><em>116.3</em>元</td>
+                <td><em><{$de.refund_price}></em>元</td>
             </tr>
             <tr>
                 <td>退款原因：</th>
-                <td>收到商品破损</td>
+                <{if $de.reason_type == 1}>
+                <td>物流中损坏的商品</td>
+                <{else}>
+                <td>商品有质量问题</td>
+                <{/if}>
             </tr>
             <tr>
                 <td>退款单号：</th>
-                <td>67937912739127312</td>
+                <td><{$de.refund_id}></td>
             </tr>
             <tr>
                 <td>退款时间：</th>
-                <td>2016-02-11 14:20:50</td>
+                <td><{$de.create_time|date_format:"%Y-%m-%d&nbsp;%H:%M:%S"}></td>
             </tr>
         </table>
         <hr />
             <p class="clear">
-                <img src="<{$de.pic}>_60X60.jpg" />
+                <img src="<{$de.pic}>" />
                 <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$de.pid}>"><{$de.name}></a>
             </p>
         <table>
             <tr>
                 <td>商　　家：</th>
-                <td><em>蚂蚁海淘</em></td>
+                <td><em><{$de.company}></em></td>
             </tr>
             <tr>
                 <td>订单编号：</th>
                 <td><a target="_blank" href=""><{$de.order_id}></a></td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td>物流状态：</th>
                 <td>未收到货</td>
-            </tr>
+            </tr>-->
         </table>
     </div>
 </div>
