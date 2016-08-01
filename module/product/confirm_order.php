@@ -370,6 +370,8 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 	}
 	//var_dump($is_half_price,$product_price,$logistcost_price);
 	$full_free_acount = 300;
+	global $buid;
+	member_the_investment($buid);
 	if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
 	{
 		//var_dump(1);
