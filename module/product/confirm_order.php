@@ -417,6 +417,9 @@ function exclude_by_product_ids($product_ids){
 function member_the_investment($buid){
 	global $db;
 	$sql = 'select 1 from mallbuilder_voucher where member_id='.$buid;
+	$db->query($sql);
+	$a = $db->num_rows();
+	var_dump($a);
 }
 
 ?>
