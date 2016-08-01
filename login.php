@@ -5,7 +5,6 @@ if(!empty($_GET["action"]))
 else
     $post=$_POST;
 
-echo 11;
 if(!empty($_GET['forward'])&&strpos($_GET['forward'],'script')>0)
     header("Location:login.php");
 if(!empty($_SERVER['HTTP_REFERER']))
