@@ -22,7 +22,7 @@ if ($config['bw'] == "weixin")
 $tpl->assign('config',$config);
 if(isset($_GET['hd'])&&!empty($_GET['hd'])){
     switch($_GET['hd']){
-        case '77':
+        case 'qixi77':
             if($config['temp'] == 'default'){
                 $out = tplfetch('./qixi77/pc/index.htm');
             }elseif($config['temp'] == 'wap'){
