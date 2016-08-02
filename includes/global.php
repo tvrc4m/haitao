@@ -1,6 +1,6 @@
 <?php
 
-
+echo 11;die;
 error_reporting(E_ERROR|E_WARNING|E_PARSE|E_USER_ERROR|E_USER_WARNING);//6143
 if (function_exists('session_cache_limiter'))
 {
