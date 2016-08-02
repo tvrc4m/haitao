@@ -3,6 +3,7 @@
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
 include_once("footer.php");
+
 if($config['temp']=='wap')
 {
 	$id=$_GET['id']?$_GET['id']*1:"0";
