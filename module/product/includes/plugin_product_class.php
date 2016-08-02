@@ -812,7 +812,6 @@ class product
 		}else{
 			$sql .= "  limit ".$page->listRows;
 		}
-
 		$infoList['page']=$page->prompt();
 		$infoList['count']=$page->totalRows;
 		//--------------------------------------------------
