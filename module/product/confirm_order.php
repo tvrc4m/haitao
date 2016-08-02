@@ -362,19 +362,20 @@ function check_activity_by_product_ids($product_ids){
 }
 
 function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
-	$time_start = strtotime("2016-07-22 00:00:00");
-	$time_end = strtotime("2016-08-02 00:00:00");
+	$time_start = strtotime("2016-08-2 00:00:00");
+	$time_end = strtotime("2016-08-10 00:00:00");
 	$time_now = time();
 	if($time_now>$time_end || $time_now<$time_start){
 		return $logistcost_price;
 	}
-	//var_dump($is_half_price,$product_price,$logistcost_price);
 	$full_free_acount = 300;
-	if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
-	{
-		//var_dump(1);
+	if(member_the_investment()){
 		$full_free_acount = 200;
 	}
+	/*if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
+	{
+		$full_free_acount = 200;
+	}*/
 
 	if($product_price>=$full_free_acount){
 		return 0;
@@ -396,8 +397,8 @@ function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
 //满300包邮活动，数组内商品id不在活动内
 function exclude_by_product_ids($product_ids){
 	$_price=0;
-	$time_start = strtotime("2016-07-22 00:00:00");
-	$time_end = strtotime("2016-08-02 00:00:00");
+	$time_start = strtotime("2016-08-2 00:00:00");
+	$time_end = strtotime("2016-08-10 00:00:00");
 	$time_now = time();
 	if($time_now>$time_end || $time_now<$time_start){
 		return $_price;
@@ -412,5 +413,21 @@ function exclude_by_product_ids($product_ids){
 		}
 	}
 	return $_price;
+}
+
+//活动蚂蚁在线投资可享满200包邮
+function member_the_investment(){
+	global $db,$buid;
+	$time_start = strtotime("2016-08-2 00:00:00");
+	$time_end = strtotime("2016-08-11 00:00:00");
+	$time_now = time();
+	if($time_now>$time_end || $time_now<$time_start){
+		return false;
+	}
+	if(!empty($buid))
+	$sql = "select id from mallbuilder_voucher where create_time>{$time_start} and create_time<{$time_end} and member_id=".$buid;
+	$db->query($sql);
+	$num = $db->fetch_row();
+	return !empty($num)?true:false;
 }
 ?>
