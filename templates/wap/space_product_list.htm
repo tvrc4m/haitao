@@ -79,18 +79,18 @@ $(function(){
     var cat = "<{$smarty.get.cat}>";
     var uid = "<{$smarty.get.uid}>";
     var dist_id = "<{$smarty.get.dist_id}>";
-    var stop=true; 
+    var stop=true;
     $(window).scroll(function(){
-        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());      
+        totalheight = parseFloat(window.innerHeight) + parseFloat($(window).scrollTop());
         if($(document).height() <= totalheight){
-            if(stop==true){ 
+            if(stop==true){
                 $(".m_jiazai").html("正在加载中.....");
-                stop=false; 
+                stop=false;
                 page = page+10;
                  $.ajax({
                     url: url,
                     type: 'get',
-                    data: {sort:sort, keyword:keyword, price1:price1, price2:price2, cat:cat, uid:uid, sort:"price", dist_id:dist_id, action:"product_ajax_list", m:"product", page:page},
+                    data: {sort:sort, keyword:keyword, price1:price1, price2:price2, cat:cat, uid:uid, sort:"price", dist_id:dist_id, action:"product_ajax_list", m:"product", page:page, ptype:'ajax'},
                     dataType: "json",
                     success: function(msg){
                         if(msg.status==2){
@@ -119,7 +119,7 @@ $(function(){
                                 "</li>")
                                 // if(nat !== ""){
                                 //     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].nat.img+"' alt='"+msg.data[i].nat.title+"'>")
-                                // }           
+                                // }
                         }
                         stop=true;
                         $(".scrollLoading").scrollLoading();
@@ -128,9 +128,9 @@ $(function(){
                         }
                     }
                 });
-            } 
-        } 
-    }) 
+            }
+        }
+    })
      $(window).scroll(function(){
         var h = $(window).scrollTop();
         var wHeight=500;
