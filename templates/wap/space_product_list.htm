@@ -24,11 +24,11 @@
         <{/if}>
         <{foreach item=list key=key from=$info.list}>
             <li class="shopli clearfix">
-                <!-- <span class="pname_img">
-                    <{if $list.nat != '' }>
-                        <img src="<{$list.nat.img|default:$list.nat.title}>">
+                 <span class="pname_img">
+                    <{if $list.img != '' }>
+                        <img src="<{$list.img|default:$list.title}>">
                     <{/if}>
-                </span> -->
+                </span>
                 <a href="<{$config.weburl}>/?m=product&s=detail&id=<{$list.id}>" title="<{$list.pname}>">
                     <div class="shopli_top_img">
                         <img  class="scrollLoading" data-url="<{$list.pic}>" src="../../../image/wap/wap_haitao_touming.png" style="background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;" height="125" width="125" alt="<{$list.pname}>"/>
@@ -96,10 +96,10 @@ $(function(){
                         if(msg.status==2){
                         var dataLen=msg.data.length;
                         for(var i=0;i<dataLen;i++){
-                            var nat=msg.data[i].nat;
+                            var nat=msg.data[i].img;
                             $(".shoplist").append("<li class='shopli clearfix'>"+
-                                    // "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
-                                    // "</span>"+
+                                     "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+
+                                     "</span>"+
                                     "<a href='<{$config.weburl}>/?m=product&s=detail&id="+msg.data[i].product_id+"'>"+
                                         "<div class='shopli_top_img'>"+
                                             "<img  class='scrollLoading' data-url='"+msg.data[i].pic+"' src='../../../image/wap/wap_haitao_touming.png' style='background:url(../../../image/wap/wap_haitao_loadding.jpg) no-repeat center;' height='125' width='125' alt='"+msg.data[i].pname+"'/>"+
@@ -117,9 +117,9 @@ $(function(){
                                        "</div>"+
                                     "</a>"+
                                 "</li>")
-                                // if(nat !== ""){
-                                //     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].nat.img+"' alt='"+msg.data[i].nat.title+"'>")
-                                // }
+                                 if(nat !== ""){
+                                     $(".pname_img[data-id="+msg.data[i].id+"]").append("<img src='"+msg.data[i].img+"' alt='"+msg.data[i].title+"'>")
+                                 }
                         }
                         stop=true;
                         $(".scrollLoading").scrollLoading();
