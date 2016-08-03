@@ -40,22 +40,19 @@ foreach($re as $key=>$v)
 {
 	$s=$v['catid']."00";
 	$b=$v['catid']."99";
-	//$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,6";
-	$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc ";
+	$sql="select catid,cat,brand,month from ".PCAT." where `isindex` = 1 and  catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,10";
 	$db->query($sql);
 	$sre=$db->getRows();
 	foreach($sre as $skey=>$sv)
 	{
 		$s=$sv["catid"]."00";
 		$b=$sv["catid"]."99";
-		//$sql="select catid,cat,wpic from ".PCAT." where `isindex` = 1 and catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,12";
-		$sql="select catid,cat,wpic from ".PCAT." where `isindex` = 1 and catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc ";
+		$sql="select catid,cat,wpic from ".PCAT." where `isindex` = 1 and catid>$s and catid<$b and (`month` not like '%,".$month.",%' || `month` is NULL) $ssql order by nums asc limit 0,12";
 		$db->query($sql);
 		$sre[$skey]["scat"]=$db->getRows();
 		if($sv['brand'])
 		{
-			$sql="select name,id,logo from ".BRAND." where status>0 and id in ($sv[brand]) order by id asc ";
-			//$sql="select name,id,logo from ".BRAND." where status>0 and id in ($sv[brand]) order by id asc limit 0,12";
+			$sql="select name,id,logo from ".BRAND." where status>0 and id in ($sv[brand]) order by id asc limit 0,12";
 			$db->query($sql);
 			$sre[$skey]["brand"]=$db->getRows();
 		}
