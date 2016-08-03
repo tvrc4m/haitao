@@ -36,10 +36,10 @@
                     <dd><input type="password" class="text" name="password" id="password" tabindex="3" maxlength="10" placeholder="设置密码" /></dd>
                     <p class="notice" style="display: none;"><span class="tipcon"></span><span class="icon"></span></p>
                 </dl>
-                <input type="checkbox" name="agreement" value="yes" checked ><a class="mb10" href="<{$config.weburl}>/agreement.php">蚂蚁海淘注册协议</a>
+                <input type="checkbox" name="agreement" value="yes" checked >我已阅读并同意<a class="agreement" href="<{$config.weburl}>/agreement.php">《蚂蚁海淘注册协议》</a>
                 <input name="action" type="hidden" value="submit" />
                 <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
-                <input type="submit" tabindex="4" value="注册" onclick="return do_register();">
+                <input type="submit" tabindex="4" value="立即注册" onclick="return do_register();">
             </form>
         </div>
     </div>
