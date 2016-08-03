@@ -793,7 +793,7 @@ class product
 		}
 		else
 		{
-			$sql="select a.id,a.member_id as userid,market_price,name as pname,pic,uptime,price,sales,a.member_name as user from ".PRODUCT." a where a.member_id='$_GET[uid]' and is_shelves=1 and a.status>0 and is_tg = 'false' $str $sort";
+			$sql="select a.id,a.member_id as userid,market_price,name as pname,pic,uptime,price,sales,np.img,np.title,a.member_name as user from ".PRODUCT." a left join mallbuilder_national_pavilions np on a.national=np.id where a.member_id='$_GET[uid]' and is_shelves=1 and a.status>0 and is_tg = 'false' $str $sort";
 		}
 		//-------------------------------------------------
 		include_once($config['webroot']."/includes/page_utf_class.php");
@@ -812,7 +812,6 @@ class product
 		}else{
 			$sql .= "  limit ".$page->listRows;
 		}
-
 		$infoList['page']=$page->prompt();
 		$infoList['count']=$page->totalRows;
 		//--------------------------------------------------

@@ -23,10 +23,7 @@ if($_GET['order_id']&&$_GET['pid'])
 	$_GET['id'] = $re['refund_id'];
 }
 $de = $refund -> refund_detail($_GET['id'],$type);
-if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
-{
-	var_dump($de);die;
-}
+
 if(!$de)
 {
 	header("Location: 404.php");
@@ -70,9 +67,14 @@ if($_POST['act'] =='review')
 }
 
 $talk = $refund->get_talk();
-if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164" || $_SERVER['HTTP_REMOTEIP']=="182.18.10.250")
-{
-	var_dump($talk);die;
+$pics = array();
+foreach($talk as $k=>$v){
+	$pics = explode(',',$v['pic']);
+	for($i=0;$i<count($pics);$i++){
+		if($pics[$i]!=''){
+			$talk[$k]['pics'][$i] = $pics[$i];
+		}
+	}
 }
 $tpl->assign("talk",$talk);
 

@@ -97,7 +97,7 @@
         <h1>商品详情</h1>
             <p class="clear">
                 <img src="<{$de.pic}>" />
-                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$de.pid}>"><{$de.name}></a>
+                <a target="_blank" href="<{$config.weburl}>/product-detail-<{$de.pid}>.html"><{$de.name}></a>
             </p>
         <table>
             <tr>
@@ -110,7 +110,7 @@
             </tr>
             <tr>
                 <td>商品实付：</td>
-                <td><{($de.price*$de.num-$de.refund_voucher)|number_format:2}>元</td>
+                <td><{$de.refund_price|number_format:2}>元</td>
             </tr>
             <tr>
                 <td>运　　费：</td>
