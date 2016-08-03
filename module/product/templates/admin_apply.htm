@@ -61,12 +61,12 @@
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
-                    <input type="hidden" data-id="2" name="pic[]" value="">
+                    <input type="hidden" data-id="2" name="pic[]" value="<{if $de.pics.1 neq ''}><{$de.pics.1}><{/if}>">
                     <img data-id="2" class="drag" src="<{if $de.pics.1 neq ''}><{$de.pics.1}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" max-height="70" max-width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
                      <li>
-                    <input type="hidden" data-id="3" name="pic[]" value="">
+                    <input type="hidden" data-id="3" name="pic[]" value="<{if $de.pics.2 neq ''}><{$de.pics.2}><{/if}>">
                     <img data-id="3" class="drag" src="<{if $de.pics.2 neq ''}><{$de.pics.2}><{else}><{$config.weburl}>/image/default/user_admin/mayi_icon12.png<{/if}>" max-height="70" max-width="70">
                     <input class="input" stype="33" multiple="multiple" type="file" rename="3" style="visibility: hidden;">
                     </li>
@@ -82,7 +82,7 @@
             </tr>
         </table>
         </form>
-        <div class="problem">
+        <!--<div class="problem">
             <h1>常见问题</h1>
             <ul>
                 <li><a href=""><span>·</span>我确认收货了，还可以收货吗？</a></li>
@@ -91,13 +91,13 @@
                 <li><a href=""><span>·</span>收到货出现破损少货怎么办？</a></li>
                 <li><a href=""><span>·</span>卖家同意承担退货邮费但一直没有退还怎么办？</a></li>
             </ul>
-        </div>
+        </div>-->
     </div>
     <div class="apply_right">
         <h1>商品详情</h1>
             <p class="clear">
-                <img src="<{$de.pic}>_60X60.jpg" />
-                <a target="_blank" href="<{$config.weburl}>/?m=product&s=detail&id=<{$de.pid}>"><{$de.name}></a>
+                <img src="<{$de.pic}>" />
+                <a target="_blank" href="<{$config.weburl}>/product-detail-<{$de.pid}>.html"><{$de.name}></a>
             </p>
         <table>
             <tr>
@@ -110,19 +110,19 @@
             </tr>
             <tr>
                 <td>商品实付：</td>
-                <td><{($de.price*$de.num-$de.refund_voucher)|number_format:2}>元</td>
+                <td><{$de.refund_price|number_format:2}>元</td>
             </tr>
             <tr>
                 <td>运　　费：</td>
                 <td><{if $de.status==4}><{$de.logistics_price|number_format:2}><{else}>0.00<{/if}>元</td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td>关　　税：</td>
                 <td>10.00元</td>
-            </tr>
+            </tr>-->
             <tr>
                 <td>商　　家：</td>
-                <td><em>蚂蚁海淘</em></td>
+                <td><em><{$de.company}></em></td>
             </tr>
             <tr>
                 <td>订单编号：</td>
