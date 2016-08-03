@@ -4,7 +4,6 @@ include_once("includes/smarty_config.php");
 include_once("config/reg_config.php");
 $config = array_merge($config,$reg_config);
 session_start();
-
 //================================================================================
 if(!empty($_POST["company"])&&!empty($_POST["contact"])&&!empty($_POST["mes"]))
 {	
