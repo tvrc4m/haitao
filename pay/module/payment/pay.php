@@ -134,7 +134,7 @@ if($_POST['act']=='pay'&&$re['statu']==1)
 				$db -> query($sql);
 				$oid = $db -> fetchField("extra_param");
 
-				$sql = "update ".RECORD." set statu='2' where order_id in (CONVERT($oid,CHAR))";
+				$sql = "update ".RECORD." set statu='2' where order_id in ($oid)";
 				$db->query($sql);
 
 				$sql="update ".RECORD." set statu='-1' and `display` = 0 where order_id='$order_id'";
