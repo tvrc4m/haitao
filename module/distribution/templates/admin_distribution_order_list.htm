@@ -168,9 +168,9 @@
                             <td class="w80">
 
                                 <{if $plist.status == 4 }>
-                                <a class="org" href="main.php?m=product&s=admin_apply_detail&order_id=<{$sellist.order_id}>&pid=<{$plist.id}>">退款处理中</a>
+                                <a class="org" href="main.php?m=product&s=admin_apply_detail&order_id=<{$sellist.order_id}>&pid=<{$plist.pid}>">退款处理中</a>
                                 <{elseif $plist.status == 5 }>
-                                <a class="black" target="_blank" href="main.php?m=product&s=admin_apply_detail&order_id=<{$sellist.order_id}>&pid=<{$plist.id}>">查看退款</a>
+                                <a class="black" target="_blank" href="main.php?m=product&s=admin_apply_detail&order_id=<{$sellist.order_id}>&pid=<{$plist.pid}>">查看退款</a>
                                 <{/if}>
                             </td>
                         </tr>

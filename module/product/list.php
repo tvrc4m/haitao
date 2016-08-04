@@ -1,7 +1,6 @@
 <?php
  $id=!empty($_GET["id"])?$_GET["id"]*1:NULL;
  $key=!empty($_GET["key"])?trim($_GET["key"]):NULL;
-
 if (null == $key)
 {
 	$key=!empty($_GET["keyword"])?trim($_GET["keyword"]):NULL;

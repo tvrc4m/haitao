@@ -33,6 +33,7 @@ var_export($share->GetShareGoodsList(0,10));die;*/
 if($_GET['type']=='del' and is_numeric($_GET['id']))
 {
 	if($share->DelShareProduct($_GET['id'])){
+		msg('main.php?m=sns&s=admin_share_product');
         return json_encode(array(
             'data' => 'OK',
             'status' => 200

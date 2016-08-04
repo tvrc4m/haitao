@@ -38,6 +38,7 @@
 .login .idcode .btn {color: #FFF;background-color: #ff5c5c;height: 40px;border: none;cursor: pointer;width: 140px;float: right;}
 .login form dl dt.phone{background: url(../../../image/default/login/icon8.png) 10px no-repeat;}
 .login form input[type="checkbox"]{margin-right: 5px;vertical-align:middle;}
+.login .agreement{margin-bottom: 10px;color: #ff5c5c;}
 /*登录注册底部*/
 .login .footer {margin: 20px auto;color: #999;width: 990px;}
 .login .footer .commitment{  background: url(../../../image/default/login/icon5.png);width: 990px;height: 75px;border-bottom: 1px solid #999;}
