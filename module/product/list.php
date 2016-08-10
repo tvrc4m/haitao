@@ -1,7 +1,6 @@
 <?php
  $id=!empty($_GET["id"])?$_GET["id"]*1:NULL;
  $key=!empty($_GET["key"])?trim($_GET["key"]):NULL;
-
 if (null == $key)
 {
 	$key=!empty($_GET["keyword"])?trim($_GET["keyword"]):NULL;
@@ -119,7 +118,6 @@ if ($sphinx_search_flag && $key && extension_loaded("sphinx") && extension_loade
 }
 else
 {
-
     //===================================分类
 	if(is_numeric($id))
 	{
@@ -139,7 +137,6 @@ else
         }
 		$tpl->assign("catname",$newname);
 		$cat=readCat($id);
-
 		//-----------------------------分类关连的品牌
 		if(!empty($cat['brand']))
 		{
@@ -366,5 +363,4 @@ if($_GET['fx']==fx)
 	$out=tplfetch("product_list_x.htm");
 else
 	$out=tplfetch("product_list.htm");
-
 ?>

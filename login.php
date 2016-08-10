@@ -125,7 +125,10 @@ if(!empty($post["action"])&&$post["action"]=="submit")
                     if(!empty($post['forward'])){
                         $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                     }else{
+                        if(!strstr($_COOKIE['old_url'],'lostpass.php'))
                         $forward = $_COOKIE['old_url'];
+                        else
+                            $forward = $config['weburl'];
                     }
                     setcookie("old_url");
                     setcookie("userid",$re['userid']);

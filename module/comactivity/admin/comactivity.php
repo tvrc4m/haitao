@@ -4,9 +4,14 @@ $option = $_REQUEST;
 //新增商品活动
 if($option['operation'] == 'add_ads'){
     if(!empty($_POST)) {
+        $num = count(explode(',',$_POST['sku']));
+
         $sql = "select id FROM mallbuilder_product WHERE skuid in (" . $_POST['sku'] . ")";
         $db->query($sql);
         $pid = $db->getRows();
+        if($num != count($pid)){
+            msg('?m=comactivity&s=comactivity.php&operation=add_ads&err=-1&sku='.$_POST['sku']);
+        }
         if (!empty($pid)) {
             foreach ($pid as $key => $val) {
                 $newid[] = $val['id'];
@@ -75,6 +80,7 @@ if($option['operation'] == 'add_ads'){
     $res = $db->getRows();
     $tpl->assign('page',$page->prompt());
     $tpl->assign('de',$res);
+    $tpl->assign('des', getCat());
     /*foreach($res as $key => $val){
         $sql = "select name,price,pic FROM mallbuilder_product WHERE id in(".$val['pid'].")";
         $db->query($sql);

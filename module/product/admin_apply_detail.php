@@ -67,6 +67,15 @@ if($_POST['act'] =='review')
 }
 
 $talk = $refund->get_talk();
+$pics = array();
+foreach($talk as $k=>$v){
+	$pics = explode(',',$v['pic']);
+	for($i=0;$i<count($pics);$i++){
+		if($pics[$i]!=''){
+			$talk[$k]['pics'][$i] = $pics[$i];
+		}
+	}
+}
 $tpl->assign("talk",$talk);
 
 $image_config['image_size'] = floor($image_config['image_size']/1024);
