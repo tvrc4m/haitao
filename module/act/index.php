@@ -34,7 +34,7 @@ if(isset($_GET['hd'])&&!empty($_GET['hd'])){
             if($config['temp'] == 'default'){
                 $out = tplfetch('./hd810/pc/index.htm');
             }elseif($config['temp'] == 'wap'){
-                $coms = array('shop_title'=>'七夕吸睛大法');
+                $coms = array('shop_title'=>'');
                 $tpl->assign('com',$coms);
                 $out = tplfetch('./hd810/wap/index.htm');
             }
