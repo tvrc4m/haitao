@@ -2,10 +2,8 @@
 	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
 	.altair-container{background-color: #fff;}
 	.altair-container img{width: 100%;vertical-align: top;font-size: 0;display: block;}
-	.altair-content ul li{width: 100%;list-style: none;}
 	.clearfix:after{height: 0;content: "";clear: both;visibility: hidden;display: block;overflow: hidden;}
 	.clearfix{*zoom:1;}
-	.altair-banner{margin-bottom: 20px;}
 	.altair-container i.altair-icon{
 		display: inline-block;height: 35px;width: 35px;border-radius: 50%;
 	    background: url(image/wap/wap_haitao_icon9.png) center 3px no-repeat;
@@ -16,9 +14,7 @@
 <div class="altair-container">
 	<a href="<{$config.weburl}>"><i class="altair-icon"></i></a>
 	<div class="altair-banner">
-		<img src="<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner1.jpg" alt="七夕吸睛大法">
-		<a href="https://m.mayizaixian.cn/invest/detail/122?from=haitao"><img src="<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner2.jpg" alt="七夕吸睛大法"></a>
-		<img src="<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-banner3.jpg" alt="七夕吸睛大法">
+		<img src="<{$config.weburl}>/module/act/templates/hd810/wap/image/altair-banner.jpg" alt="本期推荐 井田五色腮红系列">
 	</div>
 	<div class="altair-content"></div>
 </div>
@@ -28,21 +24,13 @@
 <script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	var list_hname=["甜心约会妆","自然BABY肌","大眼萌妹","可爱嘟嘟唇","粉嫩双颊","温和快卸妆"];
-	var list_link=[["502","496","748","956"],["756","758","922","928"],["852","752","829","826","828","822"],["653","677","713","727","902"],["736","768"],["684","638"]];
-	var list_numi=list_hname.length;
+	var list_link=["767","763","773","768","765","770","771"];
+	var list_numi=list_link.length;
 	for(i=0;i<list_numi;i++){
-		$(".altair-content").append("<div class='altair-list'>"+
-			"<h2><img src='<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-h"+i+".jpg' alt='"+list_hname[i]+"'></h2>"+
-			"<ul class='clearfix' data-id='"+i+"'>"+
-			"</ul>"+
-		"</div>");
-		var list_numj=list_link[i].length;
-		for(j=0;j<list_numj;j++){
-			$(".altair-content ul[data-id="+i+"]").append("<li>"+
-				"<a href='<{$config.weburl}>/?m=product&s=detail&id="+list_link[i][j]+"'><img src='<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-img"+i+""+j+".jpg' alt=''></a>"+
-				"</li>");
-		}
+		$(".altair-content").append("<div>"+
+			"<a href='<{$config.weburl}>/?m=product&s=detail&id="+list_link[i]+"'><img src='<{$config.weburl}>/module/act/templates/hd810/wap/image/altair-h"+i+".jpg' alt=''></a>"+
+            "<img src='<{$config.weburl}>/module/act/templates/hd810/wap/image/altair-img"+i+".jpg' alt=''>"+
+			"</div>");
 	}
 	$(window).scroll(function(){
 		var h = $(document).scrollTop();
@@ -72,9 +60,9 @@ $(function(){
     wx.config(cnf);
     wx.ready(function(){
         wx.onMenuShareTimeline({
-            title: "海量嗨淘，全场满300包邮！在联盟站蚂蚁在线投资即可享受“满200包邮”特权", // 分享标题
+            title: "蚂蚁海淘全站满300免运费 本期推荐之腮红篇", // 分享标题
             link: location.href, // 分享链接
-            imgUrl: "<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg", // 分享图标
+            imgUrl: "<{$config.weburl}>/module/act/templates/hd810/wap/image/altair-share.jpg", // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
                 /*
@@ -89,10 +77,10 @@ $(function(){
         });
 
         wx.onMenuShareAppMessage({
-            title:"海量嗨淘，全场满300包邮！", // 分享标题
-            desc: "在联盟站蚂蚁在线投资即可享受“满200包邮”特权", // 分享描述
+            title:"蚂蚁海淘全站满300免运费", // 分享标题
+            desc: "本期推荐之腮红篇", // 分享描述
             link: location.href, // 分享链接
-            imgUrl: "<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg", // 分享图标
+            imgUrl: "<{$config.weburl}>/module/act/templates/hd810/wap/image/altair-share.jpg", // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -109,10 +97,10 @@ $(function(){
         })
 
         wx.onMenuShareQQ({
-            title: '海量嗨淘，全场满300包邮！', // 分享标题
-            desc: '在联盟站蚂蚁在线投资即可享受“满200包邮”特权', // 分享描述
+            title: '蚂蚁海淘全站满300免运费', // 分享标题
+            desc: '本期推荐之腮红篇', // 分享描述
             link: location.href, // 分享链接
-            imgUrl: '<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg', // 分享图标
+            imgUrl: '<{$config.weburl}>/module/act/templates/hd810/wap/image/altair-share.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
                 /*
@@ -127,10 +115,10 @@ $(function(){
         });
 
         wx.onMenuShareWeibo({
-            title: '海量嗨淘，全场满300包邮！', // 分享标题
-            desc: '在联盟站蚂蚁在线投资即可享受“满200包邮”特权', // 分享描述
+            title: '蚂蚁海淘全站满300免运费', // 分享标题
+            desc: '本期推荐之腮红篇', // 分享描述
             link: location.href, // 分享链接
-            imgUrl: '<{$config.weburl}>/module/act/templates/qixi77/wap/image/altair-share.jpg', // 分享图标
+            imgUrl: '<{$config.weburl}>/module/act/templates/hd810/wap/image/altair-share.jpg', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
                 /*
