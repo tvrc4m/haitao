@@ -12,8 +12,6 @@ else
 	$re=$product->shop_pro_list($_GET['page'],10);
 }
 
-
-
 if($re['list']){
 	echo json_encode(array(
 		'code' => 200,

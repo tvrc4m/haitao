@@ -30,6 +30,7 @@ $tpl->assign("re",$share->GetShareShopList(0,10));
 if($_GET['type']=='del' and is_numeric($_GET['id']))
 {
 	if($share->DelShareShop($_GET['id'])){
+		msg('main.php?m=sns&s=admin_share_shop');
 		return json_encode(array(
 			'data' => 'OK',
 			'status' => 200

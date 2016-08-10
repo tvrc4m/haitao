@@ -238,7 +238,7 @@ var weburl="<{$config.weburl}>";
                 <tr>
 					<td width="100">商品sku码</td>
                     <td>
-                    <input name="sku" id="sku" type="text" class="w350" value="<{$de.sku}>"><div id="form-error" class="form-error"></div>
+                    <input name="sku" id="sku" type="text" class="w350" value="<{if $de.sku}><{$de.sku}><{else}><{$smarty.get.sku}><{/if}>"><div id="form-error" class="form-error"><{if $smarty.get.err == -1}>sku码中存在未知商品，请仔细核对sku码<{/if}></div>
                     </td>
                 </tr>
 
@@ -266,7 +266,7 @@ var weburl="<{$config.weburl}>";
                 <tr>
                 	<td>平台选择</td>
                     <td>
-                    <input type="radio" name="platform"  value="1" <{if $de.platform == 1 }>checked<{/if}>> PC <br/>
+                    <input type="radio" name="platform"  value="1" <{if $de.platform == 1 }>checked<{elseif $de.platform == '' }>checked<{/if}>> PC <br/>
                     <input  type="radio" name="platform"  value="2" <{if $de.platform == 2 }>checked<{/if}>> WAP
                     <div id="form-error" class="form-error"></div>
                 </tr>
@@ -293,9 +293,9 @@ var weburl="<{$config.weburl}>";
                 </tr> <tr>
                 	<td>状态</td>
                     <td>
-                    <input type="radio" name="status"  value="1" <{if $de.status == 1 }>checked<{/if}>> 开启 <br/>
+                    <input type="radio" name="status"  value="1" <{if $de.status == 1 }>checked<{elseif $de.status == '' }>checked<{/if}>> 开启 <br/>
                     <input  type="radio" name="status"  value="2" <{if $de.status == 2 }>checked<{/if}>> 关闭
-                    <div id="form-error" class="form-error"></div>
+                    <div id="form-error" class="form-error"></div></td>
                 </tr>
 
                 <tr>
@@ -468,7 +468,18 @@ var weburl="<{$config.weburl}>";
                     <td ><{$list.begintime|date_format:"%Y-%m-%d %H:%M:%S"}></td>
                     <td><{$list.endtime|date_format:"%Y-%m-%d %H:%M:%S"}></td>
                     <td><{if $list.platform == 1 }>PC<{elseif $list.platform ==2 }>WAP<{/if}></td>
-                    <td><{if $list.position == 1 }>首页<{elseif $list.position == 2 }>一级分类<{/if}></td>
+                    <td><{if $list.position == 0000 }>首页<{/if}>
+
+                    <{foreach item=res from=$des}>
+                        <{if $list.position==$res.catid }> <{$res.cat}> <{/if}>
+                        <{foreach item=slist from=$res.scat}>
+                        <{if $list.position==$slist.catid }> <{$slist.cat}> <{/if}>
+                        <{foreach item=lists from=$slist.scat}>
+                        <{if $list.position==$lists.catid }> <{$lists.cat}> <{/if}>
+                        <{/foreach}>
+                        <{/foreach}>
+                    <{/foreach}>
+                    </td>
                     <td><{if $list.status == 1 }>开启<{elseif $list.status == 2 }>关闭<{/if}></td>
 					<td>
                         <a href="?m=comactivity&s=comactivity.php&operation=edit_ads&editid=<{$list.cid}>&<{$getstr}>"><{$editimg}></a>

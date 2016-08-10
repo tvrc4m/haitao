@@ -29,7 +29,7 @@
     <input type="hidden" id="deliver_name" name="deliver_name" value="" />
     </form>
     <script type="text/javascript">
-    $('a[genre="send"]').live('click',function(){
+    $('a[genre="send"]').on('click',function(){
 		if ($('input[values="'+$(this).attr('values')+'"]').val() == ''){
 				alert('请填写物流单号！');return false;
 		}

@@ -509,7 +509,7 @@ html[xmlns] .clearfix{display:block;}
 
 
 /*售后*/
-.apply_detail{width:961px;margin:auto;}
+.apply_detail{width:961px;margin:auto;overflow:hidden;}
 .apply{border:1px solid #C4D5E0;overflow:hidden;position:relative;}
 .apply_left{float:left;width:670px;border-right:1px solid #C4D5E0;position:relative;padding:12px 0 4999px;margin-bottom:-4999px;z-index:200;}
 .apply_right{float:right;width:233px;padding:12px 12px 4999px;position:relative;margin-bottom:-4999px;z-index:200;}
