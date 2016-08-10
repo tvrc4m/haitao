@@ -188,7 +188,8 @@ $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
 $_SESSION['ucenter_data'] = $data;
 */
 //ucenter 0 平台登录 1 用户中心uc登陆
-$_SESSION['ucenter']=0;
+//$_SESSION['ucenter']=0;
+$config["is_open_ucenter"] = false;
 magic();//魔术调用
 
 //是否启用聊天

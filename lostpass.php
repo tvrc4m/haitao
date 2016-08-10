@@ -107,7 +107,7 @@ if(!empty($_POST["action"])&&$_POST["action"]=="submit")
 	}
 	else
 	{
-		if($_SESSION['ucenter']){
+		if($config["is_open_ucenter"]){
 			$obj = new Uc_server($_SESSION['ucenter_data']);
 			$statu = $obj->findpwd($_POST['mobile'],addslashes($_POST['password']));
 			if($statu->status=='1100'){
