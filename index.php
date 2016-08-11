@@ -129,6 +129,9 @@ else
 			$m=$_GET['m'];
 			if(file_exists($config['webroot'].'/module/'.$m.'/'.$s.'.php'))
 			{	$config['seo_title']=$config['title'];
+				$config['seo_keyword']=$config['keyword'];
+				$config['seo_description']=$config['description'];
+			
 				if(file_exists($config['webroot'].'/config/module_'.$m.'_config.php'))
 				{
 					@include($config['webroot'].'/config/module_'.$m.'_config.php');

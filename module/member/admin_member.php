@@ -16,7 +16,7 @@ if($_POST['submit']=='edit')
 if($_POST['submit']=='password')
 {
 
-	if($_SESSION['ucenter']){
+	if($config["is_open_ucenter"]){
 		$sql="SELECT mobile FROM ".MEMBER." WHERE userid='$buid'";
 		$db->query($sql);
 		$user = $db->fetchRow('mobile');
