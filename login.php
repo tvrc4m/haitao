@@ -10,7 +10,6 @@ if(!empty($_GET['forward'])&&strpos($_GET['forward'],'script')>0)
 if(!empty($_SERVER['HTTP_REFERER']))
 setcookie('old_url',$_SERVER['HTTP_REFERER']);
 
-
 if(!empty($post["action"])&&$post["action"]=="submit")
 {
     include_once("includes/smarty_config.php");
