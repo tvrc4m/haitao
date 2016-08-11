@@ -34,7 +34,7 @@ if(isset($_GET['hd'])&&!empty($_GET['hd'])){
             if($config['temp'] == 'default'){
                 $out = tplfetch('./hd810/pc/index.htm');
             }elseif($config['temp'] == 'wap'){
-                $coms = array('shop_title'=>'');
+                $coms = array('shop_title'=>'蚂蚁海淘全站满300免运费 本期推荐之腮红篇');
                 $tpl->assign('com',$coms);
                 $out = tplfetch('./hd810/wap/index.htm');
             }
