@@ -125,7 +125,7 @@ class wechatCallbackapiTest
                 break;
             case 'subscribe':// 关注后消息
 				echo $this->returnMsg(array("content"=>array(array('title' =>"欢迎关注蚂蚁海淘,TEST{}" , "description"=>"很不错的平台","picurl"=>"https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461831474.jpg","url"=>$config['weburl']."?m=product&s=detail&id=1")),"type"=>Weixin_model :: REPLY_TYPE_TUWEN_MSG
-					);
+					));
                 break;
             case 'unsubscribe':
 
