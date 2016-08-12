@@ -2,10 +2,15 @@
 include_once("../includes/global.php");
 @include_once("../config/wechat_config.php");
 
+
+
+
 $wechat = $wechat_config['wechat']?$wechat_config['wechat']:"";
 $wechat = $_GET['uid'] ? "WeiXin" : $wechat ;  
 define("TOKEN", $wechat);
+include_once("weixin_model.php");
 
+var_dump(Weixin_model :: REPLY_TYPE_TUWEN_MSG);
 Yf_Log::log('Request : ' . json_encode($_REQUEST), Yf_Log::INFO, 'wechat');
 
 $wechatObj = new wechatCallbackapiTest();
@@ -100,6 +105,8 @@ class wechatCallbackapiTest
 			{
 				$msg_arr[] = array("title"=>$val['pname'],"description"=>"","picurl"=>$val['pic'],"url"=>$config['weburl']."?m=product&s=detail&id=".$val['id']);
 			}
+
+			file_put_contents("/haitao/version/dev.log", var_export($this->$this->postObj,true),FILE_APPEND);
 			include_once("weixin_model.php");
 
 			$msg["type"] = Weixin_model :: REPLY_TYPE_TUWEN_MSG;
