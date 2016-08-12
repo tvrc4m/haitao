@@ -121,7 +121,7 @@ class wechatCallbackapiTest
                             <FromUserName><![CDATA[' . $postObj->ToUserName . ']]></FromUserName>
                             <CreateTime>' . time() . '</CreateTime>
                             <MsgType><![CDATA[text]]></MsgType>
-                            <Content><![CDATA[' . $msg['description'] . ']]></Content>
+                            <Content><![CDATA[' . $msg . ']]></Content>
                             </xml>';
         return $returnStr ? $returnStr : '';
     }
