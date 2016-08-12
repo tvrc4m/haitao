@@ -72,7 +72,7 @@ class wechatCallbackapiTest
 						$Event = $postObj->Event;
 						switch ($Event) {
 							case 'subscribe':
-								echo $this->sendText($postObj,$msg_arr);
+								echo $this->sendText($postObj,"HELLO");
 								break;
 							default:
 								# code...
