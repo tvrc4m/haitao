@@ -1,6 +1,7 @@
 <?php
 include_once("../includes/global.php");
 @include_once("../config/wechat_config.php");
+
 $wechat = $wechat_config['wechat']?$wechat_config['wechat']:"";
 $wechat = $_GET['uid'] ? "WeiXin" : $wechat ;  
 define("TOKEN", $wechat);
@@ -102,12 +103,15 @@ class wechatCallbackapiTest
 			echo $this->sendTextImage($msg_arr);
 		}
 	}
+
 	private function imageMsg(){}
 	private function voiceMsg(){}
 	private function videoMsg(){}
 	private function locationMsg(){}
 	private function linkMsg(){}
+
 	private function eventMsg(){
+		include_once("weixin_model.php");
 		global $config;
 		$Event = $this->postObj->Event;
         $fromUser = trim($this->postObj->FromUserName); //发送方帐号（一个OpenID）
@@ -120,7 +124,7 @@ class wechatCallbackapiTest
                 $this->locationMsg();
                 break;
             case 'subscribe':// 关注后消息
-				echo $this->sendTextImage(array(array('title' =>"欢迎关注蚂蚁海淘,TEST{}" , "description"=>"很不错的平台","picurl"=>"https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461831474.jpg","url"=>$config['weburl']."?m=product&s=detail&id=1"))
+				echo $this->returnMsg(array("content"=>array(array('title' =>"欢迎关注蚂蚁海淘,TEST{}" , "description"=>"很不错的平台","picurl"=>"https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461831474.jpg","url"=>$config['weburl']."?m=product&s=detail&id=1")),"type"=>Weixin_model :: REPLY_TYPE_TUWEN_MSG
 					);
                 break;
             case 'unsubscribe':
@@ -131,50 +135,36 @@ class wechatCallbackapiTest
             default:
                 break;
         }
-
-
 	}
-	private function sendText($msg)
+    private function returnMsg($msg)
     {
-        $returnStr = '<xml>
-                            <ToUserName><![CDATA[' . $this->postObj->FromUserName . ']]></ToUserName>
-                            <FromUserName><![CDATA[' . $this->postObj->ToUserName . ']]></FromUserName>
-                            <CreateTime>' . time() . '</CreateTime>
-                            <MsgType><![CDATA[text]]></MsgType>
-                            <Content><![CDATA[' . $msg . ']]></Content>
-                            </xml>';
-        return $returnStr ? $returnStr : '';
-    }
-    private function sendTextImage($msg)
-    {
-
-        $newsTplHead = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[news]]></MsgType>
-                        <ArticleCount>%s</ArticleCount>
-                        <Articles>";
-        $newsTplBody = "<item>
-                        <Title><![CDATA[%s]]></Title> 
-                        <Description><![CDATA[%s]]></Description>
-                        <PicUrl><![CDATA[%s]]></PicUrl>
-                        <Url><![CDATA[%s]]></Url>
-                        </item>";
-        $newsTplFoot = "</Articles></xml>";
-        $bodyCount = count($msg);
-        $bodyCount = $bodyCount < 10 ? $bodyCount : 10;
-        $header = sprintf($newsTplHead, $this->postObj->FromUserName, $this->postObj->ToUserName, time(), $bodyCount);
-        foreach ($msg as $key => $value) {
-            $body .= sprintf($newsTplBody, $value['title'], $value['description'], $value['picurl'], $value['url']);
+        include_once("weixin_model.php");
+        $weixin_model = new Weixin_model();
+        switch ($msg['type']) {
+            case Weixin_model :: REPLY_TYPE_TEXT_MSG:
+                $returnStr = $weixin_model->sendText($this->postObj, $msg); //文本消息
+                break;
+            case Weixin_model :: REPLY_TYPE_IMG_MSG:
+                $returnStr = $weixin_model->sendImage($this->postObj, $msg); //图片消息
+                break;
+            case Weixin_model :: REPLY_TYPE_VOICE_MSG:
+                $returnStr = $weixin_model->sendVoice($this->postObj, $msg); //语音消息
+                break;
+            case Weixin_model :: REPLY_TYPE_VIDEO_MSG:
+                $returnStr = $weixin_model->sendVideo($this->postObj, $msg); //视频消息
+                break;
+            case Weixin_model :: REPLY_TYPE_TUWEN_MSG:
+                $returnStr = $weixin_model->sendTextImage($this->postObj, $msg['content']); //图文消息
+                break;
+            case Weixin_model :: REPLY_TYPE_KEFU_MSG:
+                $returnStr = $weixin_model->transmitService($this->postObj); //客服消息
+                break;
+            default:
+                $returnStr = $weixin_model->sendText($this->postObj, $msg);
         }
 
-        $FuncFlag = 0;
-        $footer = sprintf($newsTplFoot, $FuncFlag);
-        return $header . $body . $footer;
-
+        echo $returnStr;
     }
-
 
     private function checkSignature()
 	{
