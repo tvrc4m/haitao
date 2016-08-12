@@ -8,12 +8,13 @@ include_once("../includes/global.php");
 $wechat = $wechat_config['wechat']?$wechat_config['wechat']:"";
 $wechat = $_GET['uid'] ? "WeiXin" : $wechat ;  
 define("TOKEN", $wechat);
-include_once("weixin_model.php");
 
-var_dump(Weixin_model :: REPLY_TYPE_TUWEN_MSG);
 Yf_Log::log('Request : ' . json_encode($_REQUEST), Yf_Log::INFO, 'wechat');
 
 $wechatObj = new wechatCallbackapiTest();
+
+
+$wechatObj->test();
 if($_GET["echostr"]&&$_GET["signature"]&&$_GET["timestamp"]&&$_GET["nonce"])
 {
 	$wechatObj->valid();	
@@ -34,6 +35,14 @@ class wechatCallbackapiTest
 			echo $echoStr;
         	exit;
         }
+    }
+
+    public test(){
+    	include_once("weixin_model.php");
+    	$msg["type"] = Weixin_model :: REPLY_TYPE_TUWEN_MSG;
+    	$msg["content"] = array(array('title' =>"欢迎关注蚂蚁海淘,TEST{}" , "description"=>"很不错的平台","picurl"=>"https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461831474.jpg","url"=>$config['weburl']."?m=product&s=detail&id=1"));
+		$this->returnMsg($msg);
+
     }
     public function responseMsg()
     {
