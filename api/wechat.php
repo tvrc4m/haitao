@@ -31,8 +31,6 @@ class wechatCallbackapiTest
     }
     public function responseMsg()
     {
-
-
     	$postStr = file_get_contents("php://input");
         if (!empty($postStr)) {
             // 解析微信传过来的 XML 内容
@@ -110,6 +108,7 @@ class wechatCallbackapiTest
 	private function locationMsg(){}
 	private function linkMsg(){}
 	private function eventMsg(){
+		global $config;
 		$Event = $this->postObj->Event;
         $fromUser = trim($this->postObj->FromUserName); //发送方帐号（一个OpenID）
         switch ($Event) {
@@ -137,7 +136,6 @@ class wechatCallbackapiTest
 	}
 	private function sendText($msg)
     {
-
         $returnStr = '<xml>
                             <ToUserName><![CDATA[' . $this->postObj->FromUserName . ']]></ToUserName>
                             <FromUserName><![CDATA[' . $this->postObj->ToUserName . ']]></FromUserName>
