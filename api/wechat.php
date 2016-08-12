@@ -103,8 +103,6 @@ class wechatCallbackapiTest
 			{
 				$msg_arr[] = array("title"=>$val['pname'],"description"=>"","picurl"=>$val['pic'],"url"=>$config['weburl']."?m=product&s=detail&id=".$val['id']);
 			}
-
-			file_put_contents("/haitao/version/dev.log", var_export($this->$this->postObj,true),FILE_APPEND);
 			include_once("weixin_model.php");
 
 			$msg["type"] = Weixin_model :: REPLY_TYPE_TUWEN_MSG;
@@ -133,8 +131,19 @@ class wechatCallbackapiTest
                 $this->locationMsg();
                 break;
             case 'subscribe':// 关注后消息
-            	$msg["type"] = Weixin_model :: REPLY_TYPE_TUWEN_MSG;
-            	$msg["content"] = array(array('title' =>"欢迎关注蚂蚁海淘,TEST{}" , "description"=>"很不错的平台","picurl"=>"https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461831474.jpg","url"=>$config['weburl']."?m=product&s=detail&id=1"));
+            	$msg["type"] = Weixin_model :: REPLY_TYPE_TEXT_MSG;
+            	$msg["description"] = "欢迎有品位会生活的你关注蚂蚁海淘，我们是全网最实用的买买买指南！
+全球商品自由购，在家享受出国扫货般乐趣！
+
+1.全世界最有趣的新商品推荐，真正好用的口碑商品盘点
+2.我们只提供最受当地人欢迎的尖货商品
+3.海外直邮，正品保证
+4.会员可加入分销，边买边赚
+5.定期发送独家福利
+
+点击【海淘】浏览商品，点击【赚钱】加入分销
+客服电话：400-010-1977
+";
 				$this->returnMsg($msg);
                 break;
             case 'unsubscribe':
