@@ -154,18 +154,18 @@
     <div class="suggest" style="display: block;">
     </div>
 </section>
-
+<{if $buidAd eq 1}>
 <div class="am-dialog-mask"></div>
 <section>
     <div class="main-bomb bomb-in">
         <div class="main-bomb-inner">
             <img src="../image/wap/wap_index_tk.png" alt="蚂蚁弹框"> 
             <i class="main-bomb-delate"></i>
-            <a href="<{$config.weburl}>/register.php" class="bomb-content-btn1"></a>
+            <a href="<{$logoAd}>" class="bomb-content-btn1"></a>
         </div>
     </div>
 </section>
-
+<{/if}>
 <script type="text/javascript" src="<{$config.weburl}>/script/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
