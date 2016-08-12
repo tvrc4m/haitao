@@ -72,7 +72,9 @@ class wechatCallbackapiTest
 						$Event = $postObj->Event;
 						switch ($Event) {
 							case 'subscribe':
-								echo $this->sendText($postObj,"HELLO");
+								echo $this->sendTextImage($postObj,
+									array(array('title' =>"欢迎关注蚂蚁海淘" , "description"=>"很不错的平台","picurl"=>"https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461831474.jpg","url"=>$config['weburl']."?m=product&s=detail&id=1"))
+									);
 								break;
 							default:
 								# code...
