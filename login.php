@@ -98,7 +98,7 @@ if(!empty($post["action"])&&$post["action"]=="submit")
     }
     else
     {
-        if($_SESSION['ucenter']){
+        if($config["is_open_ucenter"]){
             $obj = new Uc_server($_SESSION['ucenter_data']);
             //验证手机号登录
             $login_phone = "";
