@@ -98,7 +98,12 @@ class voucher extends Uc_server{
 
     private function response(){
         // 响应json
-        exit(json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data)));
+
+        $json_str = json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));
+        if(empty($json_str)){
+            $this->cacheLog('voucher',array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data),'cache');
+        }
+        exit($json_str);
     }
 
     /*
@@ -388,6 +393,26 @@ class voucher extends Uc_server{
                 $db->query($sql);
             }
         }
+    }
+
+    /*
+     * 缓存日志
+     * $key 文件名
+     * $value 存储数据
+     * $path  存储文件路径
+     * */
+    public function cacheLog($key='',$value='',$path=''){
+        global $config;
+        $data = $this->time.'>>>'.json_encode($value)."\r\n";
+        $filename = $config['webroot'].'/'.$path.$key.self::EXT;
+        if($data !== ''){
+            $dir = dirname($filename);
+            if(!is_dir($dir)){
+                mkdir($dir,0777);
+            }
+            return file_put_contents($filename,$data,FILE_APPEND);
+        }
+
     }
 
 }
