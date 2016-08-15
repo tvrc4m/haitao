@@ -1,8 +1,7 @@
 <?php
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
- $aa = json_encode(array('status'=>1,'errmsg'=>'你好','data'=>123));
-exit($aa);
+
 $dre=explode(".",$_SERVER['HTTP_HOST']);
 $dir=trim(dirname($_SERVER['SCRIPT_NAME']), '\,/');//view: abc.**.com/a.php
 
