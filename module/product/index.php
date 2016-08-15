@@ -3,6 +3,7 @@ if(empty($_GET['m'])||empty($_GET['s']))
 	die('forbiden;');
 
 $catCache = include_once($config['webroot'].'/cache/configure/cat.cache');
+
 //------------------------------
 if(!empty($config['index_catid']))
 	$cat_pro=unserialize($config['index_catid']);

@@ -1,0 +1,43 @@
+<style type="text/css">
+	.wrap{max-width: 1920px;position: relative;left: 50%;margin-left: -960px;font-size: 0;}
+</style>
+<div class="wrap">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/1.jpg">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/2.jpg" usemap="#map1">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/3.jpg" usemap="#map2">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/4.jpg" usemap="#map3">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/5.jpg" usemap="#map4">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/6.jpg" usemap="#map5">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/7.jpg" usemap="#map6">
+	<img src="<{$config.weburl}>/module/act/templates/hd810/pc/image/8.jpg" usemap="#map7">
+	<map name="map1" id="map1">
+		<area class="act-pro0" shape="rect" coords="490,220,1400,680" href="#" target="_blank" alt="" onfocus="blur(this);">
+	</map>
+	<map name="map2" id="map2">
+		<area class="act-pro1" shape="rect" coords="500,170,1420,630" href="#" target="_blank" alt="" onfocus="blur(this);">
+	</map>
+	<map name="map3" id="map3">
+		<area class="act-pro2" vshape="rect" coords="500,150,1400,620" href="#" target="_blank" alt="" onfocus="blur(this);">
+	</map>
+	<map name="map4" id="map4">
+		<area class="act-pro3" shape="rect" coords="500,160,1440,600" href="#" target="_blank" alt="" onfocus="blur(this);">
+	</map>
+	<map name="map5" id="map5">
+		<area class="act-pro4" shape="rect" coords="350,140,1410,600" href="#" target="_blank" alt="" onfocus="blur(this);">
+	</map>
+	<map name="map6" id="map6">
+		<area class="act-pro5" shape="rect" coords="500,170,1440,620" href="#" target="_blank" alt="" onfocus="blur(this);">
+	</map>
+	<map name="map7" id="map7">
+		<area class="act-pro6" shape="rect" coords="435,120,1410,590" href="#" target="_blank" alt="" onfocus="blur(this);">
+	</map>
+</div>
+<script type="text/javascript" src="script/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	list_link=["767","763","773","768","765","770","771"];
+	for(var i=0;i<list_link.length;i++){
+		$(".act-pro"+i).attr("href","<{$config.weburl}>/product-detail-"+list_link[i]+".html");
+	}
+});
+</script>

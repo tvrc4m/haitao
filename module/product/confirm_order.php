@@ -362,8 +362,8 @@ function check_activity_by_product_ids($product_ids){
 }
 
 function get_real_logistcost($is_half_price,$product_price,$logistcost_price){
-	$time_start = strtotime("2016-08-2 00:00:00");
-	$time_end = strtotime("2016-08-10 00:00:00");
+	$time_start = strtotime("2016-08-12 00:00:00");
+	$time_end = strtotime("2016-08-23 00:00:00");
 	$time_now = time();
 	if($time_now>$time_end || $time_now<$time_start){
 		return $logistcost_price;

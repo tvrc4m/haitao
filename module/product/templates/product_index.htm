@@ -26,18 +26,18 @@
     </ul>
   </div>
 </div>
-<!--海淘国家 end-->
+<!--海淘1122国家 end-->
 <!--商品分类 start-->
 <div class="m_goods_category">
     <{insert name="label" type="cat" temp="pro_index_01"}>
 </div>
 <!--商品分类 end-->
-
+<{if $buidAd eq 1}>
 <div class="am-dialog-mask"></div>
 <section>
-    <div class="main-bomb bomb-in"><img src="../../../image/default/haitao_icon17.png"><a href="javascript:void(0);" class="close"></a><a href="https://www.mayihaitao.com/?m=act&s=index&hd=qixi77&temp=default" class="receive"></a></div>
+    <div class="main-bomb bomb-in"><img src="../../../image/default/haitao_icon17.png"><a href="javascript:void(0);" class="close"></a><a href="<{$logoAd}>" class="receive"></a></div>
 </section>
-
+<{/if}>
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
 function setCookie(objName,objValue){
