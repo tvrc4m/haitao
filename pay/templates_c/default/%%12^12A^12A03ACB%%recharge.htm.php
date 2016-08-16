@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2016-07-19 15:45:22
+<?php /* Smarty version 2.6.20, created on 2016-08-16 10:48:26
          compiled from recharge.htm */ ?>
 <script type="text/javascript" src="script/Validator.js"></script>
 <link href="templates/default/css/pay.css" rel="stylesheet" type="text/css" />
@@ -14,7 +14,7 @@
     	<dl>
         	<dt>充值方式：</dt>
             <dd class="pay">
-                <input type="hidden" name="payment_type" id="payment_type" value="<?php echo $this->_tpl_vars['pay']['1']['payment_type']; ?>
+                <input type="hidden" name="payment_type" id="payment_type" value="<?php echo $this->_tpl_vars['pay']['0']['payment_type']; ?>
 " />
                 <ul class="fn-clear">
                 <?php $_from = $this->_tpl_vars['pay']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
@@ -34,20 +34,20 @@
             </dd>
         </dl>
         </fieldset>
-        <fieldset class="d1 <?php if ($this->_tpl_vars['pay']['1']['payment_type'] == 'cards'): ?>fn-hide<?php endif; ?>">
+        <fieldset class="d1 <?php if ($this->_tpl_vars['pay']['0']['payment_type'] == 'cards'): ?>fn-hide<?php endif; ?>">
         <dl>
         	<dt>付款金额：</dt>
-            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>Double<?php endif; ?>" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
+            <dd><input type="text" class="text w100" name="amount" id="amount" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['0']['payment_type'] != 'cards'): ?>Double<?php endif; ?>" msg="请填写充值金额" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onkeyup="value=value.replace(/[^\d]/g,'')"/> 元</dd>
         </dl>
 		</fieldset>
-        <fieldset class="d2 <?php if ($this->_tpl_vars['pay']['1']['payment_type'] != 'cards'): ?>fn-hide<?php endif; ?>">
+        <fieldset class="d2 <?php if ($this->_tpl_vars['pay']['0']['payment_type'] != 'cards'): ?>fn-hide<?php endif; ?>">
         <dl>
             <dt>充值卡帐号：</dt>
-            <dd><input type="text" name="card_num" id="card_num" class="w200 text" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['1']['payment_type'] == 'cards'): ?>Require<?php endif; ?>" msg="请填写充值金额" /></dd>
+            <dd><input type="text" name="card_num" id="card_num" class="w200 text" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['0']['payment_type'] == 'cards'): ?>Require<?php endif; ?>" msg="请填写充值金额" /></dd>
         </dl>
         <dl>
             <dt>充值卡密码：</dt>
-            <dd><input type="password" name="password" id="password" class="w200 text" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['1']['payment_type'] == 'cards'): ?>Require<?php endif; ?>" msg="请填写充值金额" /></dd>
+            <dd><input type="password" name="password" id="password" class="w200 text" autocomplete="off" dataType="<?php if ($this->_tpl_vars['pay']['0']['payment_type'] == 'cards'): ?>Require<?php endif; ?>" msg="请填写充值金额" /></dd>
         </dl>
 		</fieldset>
         <dl>
