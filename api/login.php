@@ -196,11 +196,24 @@ class login
 		}
 	}
 
+	/**
+	 * [users description]
+	 * @return [type] [description]
+	 */
 	private function users(){
 		$sql = "select userid from ".MEMBER." where mobile={$this->_account}";
 		$this->_db->query($sql);
 		$type = $this->_db->fetchField('userid');
 		return empty($type)?false:true;
+	}
+
+	/**
+	 * 
+	 */
+	private function update_pwd(){
+		$sql = "update ".MEMBER." set password='{$this->_password}' where mobile='{$this->_account}}'"
+		$this->db->query($sql);
+		
 	}
 	/**
 	 * [doreg description]
