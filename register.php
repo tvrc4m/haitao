@@ -365,7 +365,6 @@ function checkData($data = null, $keyval = null){
         case 'mobile' : $res = preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[07])\d{8}$/', $data);  break;
         case 'smsvode' : $res = preg_match('/^[0-9]{6}$/', $data);  break;
         case 'password' : $res = preg_match('/^[\s\S]{6,16}$/', $data);  break;
-        //case 'password' : $res = preg_match('/^[A-Za-z0-9]{6,10}$/', $data);  break;
     }
     return $res;
 }

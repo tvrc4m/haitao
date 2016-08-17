@@ -20,8 +20,9 @@ if($_POST['action']=="check_oldpass"){
 
 $email = $_GET['email']?$_GET['email']:NULL;
 $userid = $_GET['userid']?$_GET['userid']:NULL;
+$pay_mobile = $_GET['pay_mobile']?$_GET['pay_mobile']:NULL;
 $cash = $_GET['cash']?$_GET['cash']:NULL;
-if(empty($userid)&&empty($email))
+if(empty($userid)&&empty($email)&&empty($pay_mobile))
 	die('参数错误');
 
 $sql = "select pay_id from ".MEMBER." where userid='$userid'";
@@ -31,7 +32,7 @@ $re = $db->fetchRow();
 if(!$re['pay_id'])
 {	
 	if($cash){
-		$sql = "insert into ".MEMBER." (userid,pay_email,lastLoginTime,regtime,cash) values ('$userid','$email','".time()."','".time()."',$cash)";
+		$sql = "insert into ".MEMBER." (userid,pay_email,pay_mobile,lastLoginTime,regtime,cash,mobile_verify) values ('{$userid}','{$email}','{$pay_mobile}','".time()."','".time()."',{$cash},'true')";
 		$db -> query($sql);
 		$pay_id = $db -> lastid();
 		
@@ -43,7 +44,7 @@ if(!$re['pay_id'])
 		$db->query($sql);
 		
 	}else{
-		$sql = "insert into ".MEMBER." (userid,pay_email,lastLoginTime,regtime) values ('$userid','$email','".time()."','".time()."')";
+		$sql = "insert into ".MEMBER." (userid,pay_email,pay_mobile,lastLoginTime,regtime,mobile_verify) values ('{$userid}','{$email}','{$pay_mobile}','".time()."','".time()."','true')";
 		$db -> query($sql);
 		$pay_id = $db -> lastid();
 	}

@@ -15,6 +15,10 @@ if(empty($true_prefix)&&!empty($original_prefix))
 {
 	header("Location: ".$config['weburl']);exit();
 }
+$sql = 'select * from '.MEMBER.' where userid=1';
+$db->query($sql);
+$aa = $db->fetch_row();
+var_dump($aa);die;
 
 if($true_prefix!=$original_prefix&&empty($dpid)&&empty($dcid)&&empty($dir)&&!empty($config['baseurl'])&&empty($mlang))
 {
