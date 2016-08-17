@@ -45,7 +45,7 @@ class login
 		$this->_action = $post['action'];
 		if (empty($post['username'])) $this->_response_code='10004'; else $this->_account = $post['username'];
 
-		if($this->_action == 'login' || $this->_action == 'register'){
+		if($this->_action == 'login' || $this->_action == 'register' || $this->_action == 'lostpass'){
 			if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes($post['password']));
 		}
 		if(!empty($this->_account) && !empty($this->_password)){
@@ -119,7 +119,7 @@ class login
 	private function lostpass(){
 		if(!$this->checkData($this->_account,'mobile')){$this->_response_code = '10010';return false;}
 		if(!$this->users()){$this->_response_code = '10013';return false;}
-		
+		echo 111;die;
 
 	}
 
@@ -200,8 +200,7 @@ class login
 		$sql = "select userid from ".MEMBER." where mobile={$this->_account}";
 		$this->_db->query($sql);
 		$type = $this->_db->fetchField('userid');
-		return empty($type)?'false':'true';
-
+		return empty($type)?false:true;
 	}
 	/**
 	 * [doreg description]
