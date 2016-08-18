@@ -34,7 +34,7 @@ define(function (require,exports,module) {
 						setTip("请输入用户名");
 						break;
 					case 1003:
-						setTip("请输入用户名");
+						$(".tips").css("display","none");
 						break;
 				}
 				function setTip(s){
