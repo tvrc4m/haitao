@@ -8,6 +8,7 @@
  * describe:
  * 			1、功能：注册、登录、找回密码、修改密码
  */
+include_once("../includes/global.php");
 include("./verification.php");
 class login extends verification
 {
@@ -262,5 +263,5 @@ class login extends verification
 	}
 
 }
-include_once("../includes/global.php");
+
 $obj = new login();
