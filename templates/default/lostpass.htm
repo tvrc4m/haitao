@@ -24,18 +24,19 @@
             <div class="second"><span>想起密码？</span><a href="login.php">去登录</a>&nbsp;还没有蚂蚁账号？<a href="<{$config.regname}>">20秒注册</a></div>
         </div>
         <div class="form">
+            <font class="tips">11</font>
             <form>
                 <dl>
                     <dt class="phone"></dt>
-                    <dd><input class="text" name="mobile" tabindex="1" maxlength="11" placeholder="手机号" autocomplete="off"/></dd>
+                    <dd><input class="text" name="mobile" id="mobile" tabindex="1" maxlength="11" placeholder="手机号" autocomplete="off"/></dd>
                 </dl>
                 <div class="idcode">
-                    <input class="text" tabindex="2" name="smsvode" maxlength="6" placeholder="短信验证码"/>
+                    <input class="text" tabindex="2" name="smsvode" id="smsvode" maxlength="6" placeholder="短信验证码"/>
                     <input class="btn" type="button" value="发送短信验证码" />
                 </div>
                 <dl>
                     <dt class="pass"></dt>
-                    <dd><input type="password" class="text" name="password" tabindex="3" maxlength="16" placeholder="新密码" /></dd>
+                    <dd><input type="password" class="text" name="password" id="password" tabindex="3" maxlength="16" placeholder="新密码" /></dd>
                 </dl>
                 <input type="button" class="button" value="确定">
             </form>
@@ -60,7 +61,7 @@ seajs.config({
     }
 });
 seajs.use("<{$config.weburl}>/script/pc/login",function(Check){
-    Check.regist();
+    Check.lostpass();
     Check.idCode();
 });
 </script>
