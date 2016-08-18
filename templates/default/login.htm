@@ -28,16 +28,12 @@
                 <dl>
                     <dt class="name"></dt>
                     <dd>
-                        <{if $smarty.get.user!=null}>
-                        <input type="text" class="text" name="user" tabindex="1" value="<{$smarty.get.user}>">
-                        <{else}>
-                        <input type="text" class="text" name="user" tabindex="1" autocomplete="off" placeholder="用户名/手机号">
-                        <{/if}>
+                        <input type="text" class="text" name="user" id="user" tabindex="1" autocomplete="off" placeholder="用户名/手机号">
                     </dd>
                 </dl>
                 <dl>
                     <dt class="pass"></dt>
-                    <dd><input type="password" class="text" name="password"  tabindex="2" placeholder="密码"/></dd>
+                    <dd><input type="password" class="text" name="password" id="password"  tabindex="2" placeholder="密码"/></dd>
                 </dl>
                 <a href="lostpass.php" class="linkpass">忘记密码?</a>
                 <input type="button" class="button" value="登录">

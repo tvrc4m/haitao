@@ -52,7 +52,7 @@ class login extends verification
 	public function __construct(){
 		
         global $config,$db;
-
+//var_dump($_REQUEST);die;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 		$this->_action = $post['action'];
 
@@ -84,8 +84,8 @@ class login extends verification
 	}
 
 	private function response(){
-		var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
-		//echo json_decode();die;
+		//var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
+		echo json_decode(array('status'=>$this->_response_code,'errmsg'=>$this->_response_code,'data'=>$this->_response_data));die;
 
 	}
 	/*

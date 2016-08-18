@@ -26,10 +26,11 @@ define(function (require,exports,module) {
 	Check.prototype.login = function(){
 		var _self = this;
 		$(".button").click(function(){
-			$.post("login.php",{name:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(data){
-				switch(data.code){
-					case 1001:
-						this.setTip("请输入用户名");
+			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
+				var data = JSON.parse(msg);
+;				switch(data.status){
+					case 10006:
+						this.setTip(errmsg);
 						break;
 					case 1002:
 						this.setTip("请输入用户名");
