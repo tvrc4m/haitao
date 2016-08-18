@@ -30,7 +30,7 @@ define(function (require,exports,module) {
 				var data = JSON.parse(msg);
 ;				switch(data.status){
 					case 10006:
-						this.setTip(errmsg);
+						this.setTip(data.errmsg);
 						break;
 					case 1002:
 						this.setTip("请输入用户名");

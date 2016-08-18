@@ -85,7 +85,7 @@ class login extends verification
 
 	private function response(){
 		//var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
-		echo json_decode(array('status'=>$this->_response_code,'errmsg'=>$this->_response_code,'data'=>$this->_response_data));die;
+		echo json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
 
 	}
 	/*
