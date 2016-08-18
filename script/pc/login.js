@@ -63,7 +63,7 @@ define(function (require,exports,module) {
 	/*
 	*获取验证码
 	*/
-	Check.prototype.isPwd = function(){
+	Check.prototype.idcode = function(){
 		var num = 60;
 	    $(".idcode .btn").click(function(){
 	    	$.post("",{mobile:$("#mobile").val()},function(msg){
