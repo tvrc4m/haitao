@@ -53,24 +53,20 @@ define(function (require,exports,module) {
 	    $(".idcode .btn").click(function(){
 	    	$.post("/api/login.php",{mobile:$("#mobile").val(),action:"yzCode"},function(msg){
 	    		var data = JSON.parse(msg);
-				switch(data.status){
-					case 10010:
-						_self.setTip(data.errmsg);
-						break;
-					case 1002:
-						$(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
-                        var interval = window.setInterval(function(){
-                            num = num - 1;
-                            $(".idcode .btn").attr("value",num+ "秒后重新发送");
-                            if (num < 1) {
-                                $(".idcode .btn").attr("disabled",false).css("background-color","#ff5c5d");
-                                clearInterval(interval);
-                                $(".idcode .btn").attr("value","发送短信验证码");
-                                num = 60;
-                            };
-                        },1000);
-                        $(".tips").css("display","none");
-						break;
+				_self.setTip(data.errmsg);
+				if(data.status == '10017'){
+					$(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
+                    var interval = window.setInterval(function(){
+                        num = num - 1;
+                        $(".idcode .btn").attr("value",num+ "秒后重新发送");
+                        if (num < 1) {
+                            $(".idcode .btn").attr("disabled",false).css("background-color","#ff5c5d");
+                            clearInterval(interval);
+                            $(".idcode .btn").attr("value","发送短信验证码");
+                            num = 60;
+                        };
+                    },1000);
+                    $(".tips").css("display","none");
 				}
 			});
 	    });
