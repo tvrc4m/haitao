@@ -24,8 +24,8 @@ define(function (require,exports,module) {
 	*登录操作
 	*/
 	Check.prototype.login = function(){
-		$("input[type=submit]").click(function(){
-			$.post("",{name:$("#user").val(),password:$("#password").val()},function(msg){
+		$("input[type=button]").click(function(){
+			$.post("login.php",{name:$("#user").val(),password:$("#password").val()},function(msg){
 				switch(msg.code){
 					case 1001:
 						alert(1);
@@ -38,6 +38,7 @@ define(function (require,exports,module) {
 						break;
 				}
 			});
+			$(".tips").text("密码").css("display","block");
 		});
 	};
 	/*

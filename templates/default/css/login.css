@@ -19,8 +19,9 @@
 .login form .linkpass{line-height: 40px;}
 .login form .text{font-family: arial,"微软雅黑";font-size: 14px;height: 24px;line-height: 24px;padding: 8px 4px;width: 240px;float: left;border: none;}
 .login form input[type="submit"]{font-size: 16px;font-weight: 600;color: #FFF;background-color: #ff5c5c;width: 290px;height: 42px;border: none;cursor: pointer;}
+.login form input[type="button"]{font-size: 16px;font-weight: 600;color: #FFF;background-color: #ff5c5c;width: 290px;height: 42px;border: none;cursor: pointer;}
 /*错误提示*/
-.login form font{background: #FFEBEC;border: 1px solid #FFBDBF;color: #E6393D;line-height: 25px;padding: 2px 0 2px 10px;width: 280px;display: block;}
+.login form .tips{background: #FFEBEC;border: 1px solid #FFBDBF;color: #E6393D;line-height: 25px;padding: 2px 0 2px 10px;width: 280px;display: none;color: #f00;}
 .login form .notice{border: 1px solid #ffbdbf;background: #fffafa;line-height: 20px; padding: 0 6px;position: absolute;left: 10px;top: -32px;}
 .login form .notice .icon{width: 14px;height: 8px;left: 20px;bottom: -7px;position: absolute;background: url(../../../image/default/login/icon7.png);}
 /*快捷登录*/
