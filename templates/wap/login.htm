@@ -1,5 +1,5 @@
 <{include file="header.htm"}>
-<link href="<{$config.weburl}>/templates/wap/css/login.css" rel="stylesheet" type="text/css" />
+<link href="<{$config.weburl}>/templates/wap/css/verify.css" rel="stylesheet" type="text/css" />
 <header>
 	<div class="nav-w">
     	<section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
@@ -7,27 +7,24 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
-<section class="login form_d">
-<form id="login" name="login" action="login.php" method="post">
-    <ul>
-        <li class="user_names user_rela">
-            <input class="texts" name="user" type="text" id="user" placeholder="请输入手机号/用户名" value=""/>
-            <div class="inp_close"><i></i></div>
+<div class="login_container">
+    <ul class="txt_form">
+        <li class="inp_box">
+            <i class="txt_icon txt_icon1 iconfont">&#xe60f;</i>
+            <input class="text" name="user" type="tel" id="user" placeholder="请输入手机号" value=""/>
+            <div class="txt_close iconfont">&#xe65e;</div>
         </li>
-        <li class="user_names user_rela">
-            <input class="texts" type="password" maxlength="16" name="password" id="password" placeholder="请输入密码"/>
-            <div class="inp_close inp_close_t"><i></i></div>
+        <li class="inp_box">
+            <i class="txt_icon iconfont">&#xe609;</i>
+            <input class="text" type="password" maxlength="16" name="password" id="password" placeholder="请输入密码"/>
+            <div class="txt_close iconfont">&#xe65e;</div>
         </li>
-        <li class="spe_del">
-            <a href="<{$config.weburl}>/lostpass.php">忘记密码?</a>
+        <li class="inp_lops">
+            <a href="<{$config.weburl}>/lostpass.php">忘记密码？</a>
         </li>
-        <li>
-            <input name="action" type="hidden" value="submit" />
-            <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
-            <input type="submit" value="登录" onclick="return do_login();">
-        </li>
-        <li>
-            <a id="regist" href="<{$config.weburl}>/register.php">新用户注册</a>
+        <li><div class="inp_btn" id="login_sub">立即登录</div></li>
+        <li class="inp_retr">
+            <a href="<{$config.weburl}>/register.php">新用户注册</a>
         </li>
     </ul>
     <{if $wechat_url}>
@@ -38,65 +35,25 @@
         <br />
     </div>
     <{/if}>
-    <{if $smarty.get.erry}>
-    	<script>
-        $('.form-error').offset();
-        function closefunc()
-        {
-            $('.form-error').remove();
-        }
-        setTimeout(closefunc,2000); 
-        </script>
-        <div class="form-error">
-            <{if $smarty.get.erry=="-1"}>
-                <{$lang.noname}>
-            <{elseif $smarty.get.erry=="-4"}>
-                <{$lang.have_restpass}>
-            <{elseif $smarty.get.erry=="-2"}>
-                <{$lang.passerr}>
-            <{elseif $smarty.get.erry=="-3"}>
-                <{$lang.codeerr}>
-            <{/if}>
-        </div>
-    <{/if}>
-</form>
-</section>
-<script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/base.js" type="text/javascript"></script>
-<script src="<{$config.weburl}>/script/login.js" type="text/javascript"></script>
-<script type=text/javascript>
-var nousername='<{$lang.nouname}>';
-var nouserpass='<{$lang.noupass}>';
-var norandcode='<{$lang.nocode}>';
-</script>
+</div>
+<script type="text/javascript" src="script/libs.js"></script>
 <script type="text/javascript">
-$(function(){
-    $("form").find(".texts").each(function(){
-        $(this).bind('input propertychange', function(){
-            var val=$(this).val();
-            if(val !=""){
-                $(this).parent().find(".inp_close").addClass("inp_up");
-            }
-            else{
-                 $(this).parent().find(".inp_close").removeClass("inp_up");
-            }           
-        }); 
-        $(this).bind("focus",function(){
-            var val=$(this).val();
-            if(val !=""){
-                $(this).parent().find(".inp_close").addClass("inp_up");
-            }else{
-                $(this).parent().find(".inp_close").removeClass("inp_up");
-            }
-        });
-        $(this).bind("blur",function(){
-            $(this).parent().find(".inp_close").removeClass("inp_up");
-        });  
+    require.config({
+        //By default load any module IDs from js/lib
+        baseUrl: 'script/',
+        urlArgs: "v="+window.jsVersion,
+        paths: {
+            "formValid":"formvalid",
+            "utility":"util"
+        },
+        shim: {},
+        waitSeconds:0
     });
-    $(".inp_close").bind('click', function(){  
-        $(this).prev().val("");
-        $(this).removeClass("inp_up");
-    });  
-});
+    /**JS版本号 */
+    window.jsVersion = "7b3d28d5dd";
+    require(['page/hj_login'], function (loginCtrl) {
+        loginCtrl.loginCtrl(".txt_form","#login_sub","/api/login.php");
+        loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
+    });   
 </script>
 <{include file="footer.htm"}>

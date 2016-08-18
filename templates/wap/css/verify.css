@@ -1,0 +1,78 @@
+.login_container ul{padding: 0.5rem 1rem 0;}
+.login_container .other{text-align: center;height: 2rem;line-height: 2rem;font-size: 0.55rem;}
+.login_container ul li.inp_box{position: relative;}
+.login_container ul li.inp_obtain{margin-top: 0.75rem;}
+.login_container ul li.inp_lops{display: inline-block;height: 1.5rem;line-height: 1.5rem;width: 100%;
+	text-align: right;}
+.login_container ul li.inp_lops a{color: #ff5c5c;font-size: .7rem;}	
+.login_container ul li.inp_retr a{display: inline-block;height: 2rem;line-height: 2rem;width: 100%;
+	color: #fff;text-align: center;font-size: .7rem;background-color: #ffa23e;margin-top: 0.75rem;
+	border-radius: 0.2rem;}
+.login_container ul li.inp_agreement{display: inline-block;height: 1.5rem;line-height: 1.5rem;width: 100%;
+	color: #ff5c5c;text-align: center;font-size: .7rem;}
+.login_container ul li input.text{width: 100%;text-indent: 2rem;font-size: .7rem;border:none;
+    box-shadow: 0px 0px 3px #b9b9b9;-webkit-box-shadow: 0px 0px 3px #b9b9b9;height: 2rem;border-radius: 0.2rem;margin-top: 0.75rem;
+    line-height: 2rem;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.login_container ul li input[name="smsvode"]{width: 55%;float: left;font-size: .7rem;border:none;text-indent: 1.25rem;
+  	box-shadow: 0px 0px 3px #b9b9b9;-webkit-box-shadow: 0px 0px 3px #b9b9b9;border-radius: .2rem;height: 2rem;}
+.login_container ul li b.obtain{border:none;width: 40%;float: right;font-size: .7rem;height: 2rem;line-height: 2rem;
+    box-shadow: 0px 0px 3px #b9b9b9;-webkit-box-shadow: 0px 0px 3px #b9b9b9;background-color: #ff5c5c;border-radius: .2rem;color: #fff;
+	text-align: center;}
+.inp_agreement .chk{display: inline-block;width: 0.6rem;height: 0.6rem;background: url(../../../image/wap/wap_haitao_icon163.png) no-repeat;
+	background-size: contain;vertical-align: -0.07rem;}
+.inp_agreement .seled{background: url(../../../image/wap/wap_haitao_icon164.png) no-repeat;
+	background-size: contain;vertical-align: -0.07rem;}
+/*.login_container ul li input[name="agreement"]{vertical-align: middle;}*/
+.login_container ul li input[type="submit"] {display: inline-block;height: 2rem;line-height: 2rem;
+	width: 100%;color: #fff;text-align: center;font-size: .7rem;background-color: #ff5c5c;
+	border-radius: 0.2rem;margin-top: 0.75rem;-webkit-appearance: none;}
+.login_container ul li .txt_close{position: absolute;right: 0.4rem;top: 48%;color: #ff5c5c;
+	font-size: 0.8rem; opacity: 0;filter: alpha(opacity=0);}
+.login_container ul li .txt_up{opacity: 1;filter: alpha(opacity=100);}
+.login_container ul li .txt_icon{position: absolute;left: 0.45rem;top: 48%;color: #b9b9b9;
+	font-size: 1.3rem}
+.login_container ul li .txt_icon1{top: 50%;left: 0.6rem;font-size: 0.8rem;}
+.login_container ul li .txt_icon2{top: 52%;}
+.login_container ul li .txt_icon3{top: 52%;}
+.login_container ul li .txt_icon4{top: 39%;}
+.login_container ul li .txt_icon5{top: 39%;}
+.login_container .real_notice{padding: 1.5rem 1rem 0;} 
+.login_container .real_notice_inner{background-color: #ddd;border-radius: 5px;padding: 20px;}
+.login_container .real_notice h3{font-size: 0.7rem;text-align: left;margin-bottom: 10px;}
+.login_container .real_notice ul{padding: 0;text-align: left;}
+.login_container .real_notice ul li{font-size: 0.6rem;line-height: 1.5;color: #999;}
+
+.logo_show{width: 49%;float: left;margin-top: 0.7rem;}
+.logo_show:nth-of-type(1){margin-right: 2%;}
+.logo_show img{width:100%;height: 4.35rem;}
+.input {display: none;}
+.inp_btn{display: inline-block;height: 2rem;line-height: 2rem;
+	width: 100%;color: #fff;text-align: center;font-size: .7rem;background-color: #ff5c5c;
+	border-radius: 0.2rem;margin-top: 0.75rem;}
+
+/**验证提示*/
+.alert_tips{position:fixed;top:18%;left:50%;width:94%;margin-left:-47%;height:2.4rem;z-index:99999}
+.alert_tips p{padding:.5rem .2rem;line-height:1.2rem;font-size:.7rem;font-weight:bold;color:#fff;text-align:center;
+    border-radius:5px;background-color:rgba(0,0,0,0.7)}
+.skip_txt{padding:1rem .5rem;text-align:center;font-size:.7rem}
+/**弹层提示*/
+.collect_box_content {max-width: 70%;position: fixed;z-index: 9999;left: 50%;top: 65%;text-align: center;}
+.collect_box_content p{
+    padding:0.3rem 0.5rem;font-size:.6rem;font-weight:bold;color:#fff;text-align:center;
+    border-radius:5px;background-color:rgba(0,0,0,0.7)
+}
+/***动画播放时间****/
+.time_01{-webkit-transition: all .5s;transition: all .5s}
+.time_02{-webkit-transition: all .8s;transition: all .8s}
+.time_03{-webkit-transition: all 1s;transition: all 1s}
+.time_04{-webkit-transition: all 1.2s;transition: all 1.2s}
+.time_05{-webkit-transition: all 1.5s;transition: all 1.5s}
+.time_06{-webkit-transition: all 1.8s;transition: all 1.8s}
+/***动画效果****/
+.fadeIn{opacity: 0}
+.active.fadeIn,.active .fadeIn{opacity:1}
+/**向上淡入*/
+.fadeUp{opacity: 0;-webkit-transform: translate3d(0, 100%, 0);transform: translate3d(0, 100%, 0)}
+.active .fadeUp{opacity: 1;-webkit-transform: none;transform: none}
+.fadeDown{opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0)}
+.active .fadeDown{opacity: 1;-webkit-transform: none;transform: none}
