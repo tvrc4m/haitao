@@ -28,17 +28,7 @@ define(function (require,exports,module) {
 		$(".button").click(function(){
 			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
 				var data = JSON.parse(msg);
-;				switch(data.status){
-					case 10006:
-						this.setTip(data.errmsg);
-						break;
-					case 1002:
-						this.setTip("请输入用户名");
-						break;
-					case 1003:
-						$(".tips").css("display","none");
-						break;
-				}
+					_self.setTip(data.errmsg);
 			});
 		});
 	};
