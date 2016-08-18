@@ -1,5 +1,5 @@
 /*
-*登录注册找回密码页面js
+*登录、注册、找回密码页面js
 *author:tianxiaobao
 */
 define(function (require,exports,module) {
@@ -9,17 +9,16 @@ define(function (require,exports,module) {
 		this.init();
 	}
 	var url = "<{$smarty.get.forward}>";
+	/*
+	*初始化
+	*/
 	Check.prototype.init = function(){
-		/*focus边框变色*/
-		$(function(){
-		    $("form").find("input").each(function(){
-		        $(this).focus(function(){
-		            $("form").find('dl').removeClass("focus");
-		            $(this).parents('dl').addClass("focus");
-		            
-		        });
-		    });
-		});
+	    $("form").find("input").each(function(){
+	        $(this).focus(function(){
+	            $("form").find('dl').removeClass("focus");
+	            $(this).parents('dl').addClass("focus");
+	        });
+	    });
 	}
 	/*
 	*登录操作
@@ -71,7 +70,7 @@ define(function (require,exports,module) {
 	    	$.post("register.php",{mobile:$("#mobile").val()},function(data){
 				switch(data.code){
 					case 1001:
-						alert(1);
+						this.setTip();
 						break;
 					case 1002:
 						$(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
