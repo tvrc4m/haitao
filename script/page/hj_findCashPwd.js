@@ -16,13 +16,6 @@ define(["module", "formValid"], function(module, formValid) {
      */
     hjFindCashPwd.prototype.init = function() {
         var _self = this;
-        // var wrapper = document.getElementById("wrapper");
-        // new iscrollFn("#box_scroll", {
-        //  top:48,
-        //     up:false,
-        //     pullDownHeight: 48,
-        //     fadeWrap: ".fade_wrap",
-        // });
     };
     /**
      * 表单操作控制
@@ -38,17 +31,15 @@ define(["module", "formValid"], function(module, formValid) {
         formValid.sendValidCode(btn, sec, url, phoneInput);
         $(subbtn).on("tap", function() {
             var mobileVal = $(form).find("input[name=mobile]").val(),
-                vcodeVal = $(form).find("input[name=v_code]").val(),
-                pwdVal = $(form).find("input[name=password]").val(),
-                rePwdVal = $(form).find("input[name=re_password]").val();
-
-            var isRePwdValid = formValid.isRepwd(rePwdVal,pwdVal);
-            var isPwdValid = formValid.isPwd(pwdVal);
+                vcodeVal = $(form).find("input[name=smsvode]").val(),
+                pwdVal = $(form).find("input[name=password]").val();
+                
+            var isPwdValid = formValid.isPwd(pwdVal);              
             var isSMSCodeValid = formValid.isSMSCode(vcodeVal);
             var isMobileValid = formValid.isMobile(mobileVal);
-
-        
-            if (isMobileValid && isSMSCodeValid && isPwdValid && isRePwdValid) {
+            
+           
+            if (isMobileValid && isSMSCodeValid && isPwdValid) {
                 $(form).submit();
             }
         })
