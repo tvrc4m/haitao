@@ -28,17 +28,19 @@ define(function (require,exports,module) {
 			$.post("login.php",{name:$("#user").val(),password:$("#password").val()},function(msg){
 				switch(msg.code){
 					case 1001:
-						alert(1);
+						setTip("请输入用户名");
 						break;
 					case 1002:
-						alert(2);
+						setTip("请输入用户名");
 						break;
 					case 1003:
-						alert(3);
+						setTip("请输入用户名");
 						break;
 				}
+				function setTip(s){
+					$(".tips").text(s).css("display","block");
+				}
 			});
-			$(".tips").text("密码").css("display","block");
 		});
 	};
 	/*
