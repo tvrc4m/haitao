@@ -6,15 +6,17 @@
  * Date: 2016/8/15
  * Time: 12:01
  * describe:
- * 			1、功能：注册、登录、找回密码、修改密码、用户中心关联、登录互联
- * 			2、
+ * 			1、功能：注册、登录、找回密码、修改密码
  */
-
-class login
+include("./verification.php");
+class login extends verification
 {
 
-	private $_account = '';
-	private $_password = '';
+	public $_account = '';//用户
+	private $_password = '';//密码
+	private $_password_old = '';//旧密码
+	private $_yzm = '';
+	private $_users = '';
 	private $_config = '';
 	private $_db = '';
 	private $_userinfo = '';//存储用户信息
@@ -36,30 +38,46 @@ class login
         '10011'=>'注册成功！',
         '10012'=>'注册失败！',
         '10013'=>'用户不存在！',
+        '10014'=>'密码修改成功！',
+        '10015'=>'密码修改失败！',
+        '10016'=>'密码不对！',
+        '10017'=>'短信发送成功！'
     );
 
 	public function __construct(){
+		parent::__construct();
         global $config,$db;
 
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 		$this->_action = $post['action'];
 		if (empty($post['username'])) $this->_response_code='10004'; else $this->_account = $post['username'];
+		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes($post['password']));
+		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = md5(addslashes($post['password_old']));
 
-		if($this->_action == 'login' || $this->_action == 'register' || $this->_action == 'lostpass'){
-			if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes($post['password']));
-		}
-		if(!empty($this->_account) && !empty($this->_password)){
-			
-			$this->_config = $config;
-       		$this->_db = $db;
-       		
+		$this->aa->yzm();die;
+		$this->_config = $config;
+   		$this->_db = $db;
+   		$status = false;
+   		if($this->checkData($this->_account,'mobile')){
+   			if(empty($post['smsvode']))
+   				$status = $this->users(); 
+			else{
+				parent::yzm();
+				$this->_response_code = '10017';
+			}
+
+   		}else $this->_response_code = '10010'; 
+
+		if($status){
 			if (method_exists($this,$this->_action)) {
                 call_user_func(array($this,$this->_action));
             }else{
                 // 请求的方法不存在
                 $this->_response_code='10002';
             }
-		}
+		}else
+		$this->_response_code = '10013';
+			
 
         $this->response();
 	}
@@ -77,17 +95,9 @@ class login
 	 **/
 	private function login(){
 
-		global $post,$config;
-
-	    $sql="select userid,user,statu,pid,password from ".MEMBER." where mobile = {$this->_account}";
-	    $this->_db->query($sql);
-	    $re=$this->_db->fetchRow();
-	    if(substr($re['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
-	    if ($this->_password==$re['password']) {
-	    	bsetcookie("USERID",$re['userid']."\t".$re['user']."\t".$re['pid'],NULL,"/",$this->_config['baseurl']);
-
-			$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$re['userid']}'";
-			$this->_db->query($sql);
+	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
+	    if ($this->_password==$this->_users['password']) {
+	    	$this->login_success();
 	    	$this->_response_code = '00000';
 	    	return false;
 	    }else{
@@ -103,8 +113,7 @@ class login
 	 * @return [type] [description]
 	 */
 	private function register(){
-		if(!$this->checkData($this->_account,'mobile')){$this->_response_code = '10010';return false;}
-		if($this->users()){$this->_response_code = '10009';return false;}
+		if(!empty($this->_users['mobile'])){$this->_response_code = '10009';return false;}
 		$type = $this->doreg();
 		if($type)
 			$this->_response_code = '10011';
@@ -117,10 +126,12 @@ class login
 	* 
 	*/
 	private function lostpass(){
-		if(!$this->checkData($this->_account,'mobile')){$this->_response_code = '10010';return false;}
-		if(!$this->users()){$this->_response_code = '10013';return false;}
-		echo 111;die;
-
+		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
+		$status = $this->update_pwd();
+		if ($status)
+			$this->_response_code = '10014';
+		else
+			$this->_response_code = '10015';
 	}
 
 	/*
@@ -128,28 +139,17 @@ class login
 	* 
 	*/
 	private function updatepass(){
-
+		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
+		if($this->_users['password']!=$this->_password_old)
+			$this->_response_code = '10016';
+		else{
+			$status = $this->update_pwd();
+			if ($status)
+				$this->_response_code = '10014';
+			else
+				$this->_response_code = '10015';
+		}
 	}
-
-	/**
-	 * [mobile description]
-	 * @return [type] [description]
-	 */
-	// public function mobile(){
-	// 	//验证手机号
-	// 	if(!empty($_POST['mobile'])&&$_POST['check_mobile']=='check'){
-	// 	    if(checkData($_POST['mobile'], 'mobile')){
-	// 	        if(Check_only($_POST['mobile'], 'mobile', MEMBER)){
-	// 	            die(Return_data(array('status_code' => '300', 'message' => '该手机号已存在！', 'data' => null )));
-	// 	        }else{
-	// 	            $_SESSION['mon_yzm']['ph'] = 1;
-	// 	            die(Return_data(array('status_code' => '200', 'message' => '手机号可用！', 'data' => null )));
-	// 	        }
-	// 	    }else{
-	// 	        die(Return_data(array('status_code' => '300', 'message' => '请填正确的手机号！', 'data' => null )));
-	// 	    }
-	// 	}
-	// }
 
 	/**
 	 * 数据格式验证
@@ -201,19 +201,32 @@ class login
 	 * @return [type] [description]
 	 */
 	private function users(){
-		$sql = "select userid from ".MEMBER." where mobile={$this->_account}";
+		$sql = "select userid,user,statu,pid,password,mobile from ".MEMBER." where mobile={$this->_account}";
 		$this->_db->query($sql);
-		$type = $this->_db->fetchField('userid');
-		return empty($type)?false:true;
+		$this->_users = $this->_db->fetchRow();
+
+		return empty($this->_users)?false:true;
+		
 	}
 
 	/**
-	 * 
+	 * 修改密码
 	 */
 	private function update_pwd(){
-		$sql = "update ".MEMBER." set password='{$this->_password}' where mobile='{$this->_account}}'"
-		$this->db->query($sql);
-		
+		$sql = "update ".MEMBER." set password='{$this->_password}' where userid='{$this->_users['userid']}'";
+		$status = $this->_db->query($sql);
+
+		return empty($status)?false:true;
+	}
+
+	/**
+	 * 登录成功
+	 */
+	private function login_success(){
+		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
+
+		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
+		$this->_db->query($sql);
 	}
 	/**
 	 * [doreg description]
@@ -225,8 +238,10 @@ class login
 	    $lastLoginTime = time();
 	    $regtime = date("Y-m-d H:i:s");
 	    $user_reg = "2";
+		$ip = getip();
+		$ip = empty($ip)?NULL:$ip;
 
-	    $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','{$this->_password}','NULL','{$lastLoginTime}','','{$this->_account}','{$regtime}','{$user_reg}','0','1')";
+	    $sql="insert into " . MEMBER . " (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','{$this->_password}','{$ip}','{$lastLoginTime}','','{$this->_account}','{$regtime}','{$user_reg}','0','1')";
 	    $re=$this->_db->query($sql);
 	    $userid=$this->_db->lastid();
 
