@@ -40,7 +40,7 @@
                     <dd><input type="password" class="text" name="password"  tabindex="2" placeholder="密码"/></dd>
                 </dl>
                 <a href="lostpass.php" class="linkpass">忘记密码?</a>
-                <input type="button" value="登录">
+                <input type="button" class="button" value="登录">
                 <div class="entries">快捷登录方式
                     <{if $config.qq_connect==1}>
                     <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=<{$config.qq_app_id}>&redirect_uri=<{$config.weburl|cat:'/login.php'|urlencode}>&state=<{$config.company}>&client_secret=<{$config.qq_key}>"><i class="ic1"></i></a>
