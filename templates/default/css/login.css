@@ -1,26 +1,27 @@
 /*登录注册头部*/
-.login .header{width: 1212px;padding: 15px;height: 60px;line-height: 60px;font-size: 24px;}
+.login .header{width: 1200px;padding: 15px 0;height: 60px;line-height: 60px;font-size: 24px;}
 .login .header a{height:60px;float: left;margin-right: 50px;}
-.login .header i{width: 435px;height: 60px;background: url(../../../image/default/login/icon1.png) 0 13px no-repeat;float: right;}
+.login .header i{width: 435px;height: 60px;background: url(../../../image/default/login/icon1.png) 0 no-repeat;float: right;}
 /*公用*/
 .login .center{height: 475px;position: relative;}
 .login .center .bg{max-width: none;top: 0;left: 50%;margin-left: -960px;position: absolute;}
-.login .center .mc{position: absolute;width: 1212px;top: 0;left: 50%;margin-left: -606px;}
+.login .center .mc{position: absolute;width: 1200px;top: 0;left: 50%;margin-left: -600px;}
 .login .center .form{background-color: #FFF;width: 290px;margin-top: 60px;padding: 25px 30px;float: right;box-shadow: 5px 5px 5px #d65458;-moz-box-shadow: 5px 5px 5px #d65458;-webkit-box-shadow: 5px 5px 5px #d65458;}
 .login .center .form .title{font-size: 18px;line-height: 20px;}
 .login .center .form .title a{float: right;padding-left: 16px;background: url(../../../image/default/login/icon2.png) 0 no-repeat;font-size: 12px;color: #ff5c5c;}
-.login .center form{margin-top: 25px;}
-.login form dl{ width: 290px;background-color: #FFF;height: 40px;border: solid 1px #ccc;position: relative;margin-bottom: 20px;}
+.login .center form{margin-top: 15px;}
+.login form dl{ width: 288px;height: 40px;border: 1px solid #ccc;position: relative;margin-bottom: 20px;}
 .login form dl dt{width: 40px;height: 40px;float: left;}
 .login form .focus {border-color: #7abd54;}
 /*登录样式*/
 .login form dl dt.name{background: url(../../../image/default/login/icon3.png) 10px no-repeat;}
 .login form dl dt.pass{background: url(../../../image/default/login/icon4.png) 10px no-repeat;}
-.login form .linkpass{line-height: 40px;}
-.login form .text{font-family: arial,"微软雅黑";font-size: 14px;height: 24px;line-height: 24px;padding: 8px 4px;width: 240px;float: left;border: none;}
+.login form .linkpass{height: 25px;float: right;vertical-align: top;}
+.login form .text{font-family:"微软雅黑";font-size: 14px;height: 24px;line-height: 24px;padding: 8px 4px;width: 240px;float: left;border: none;}
 .login form input[type="submit"]{font-size: 16px;font-weight: 600;color: #FFF;background-color: #ff5c5c;width: 290px;height: 42px;border: none;cursor: pointer;}
+.login form input[type="button"]{font-size: 16px;font-weight: 600;color: #FFF;background-color: #ff5c5c;width: 290px;height: 42px;border: none;cursor: pointer;}
 /*错误提示*/
-.login form font{background: #FFEBEC;border: 1px solid #FFBDBF;color: #E6393D;line-height: 25px;padding: 2px 0 2px 10px;width: 280px;display: block;}
+.login .form .tips{background: #FFEBEC;border: 1px solid #FFBDBF;color: #E6393D;line-height: 25px;padding: 2px 0 2px 10px;width: 280px;color: #f00;margin-top: 10px;display: none;}
 .login form .notice{border: 1px solid #ffbdbf;background: #fffafa;line-height: 20px; padding: 0 6px;position: absolute;left: 10px;top: -32px;}
 .login form .notice .icon{width: 14px;height: 8px;left: 20px;bottom: -7px;position: absolute;background: url(../../../image/default/login/icon7.png);}
 /*快捷登录*/
