@@ -51,10 +51,10 @@ define(function (require,exports,module) {
 		var _self = this;
 		var num = 60;
 	    $(".idcode .btn").click(function(){
-	    	$.post("register.php",{mobile:$("#mobile").val()},function(msg){
+	    	$.post("/api/login.php",{mobile:$("#mobile").val(),action:"yzCode"},function(msg){
 	    		var data = JSON.parse(msg);
 				switch(data.status){
-					case 1001:
+					case 10010:
 						_self.setTip(data.errmsg);
 						break;
 					case 1002:
