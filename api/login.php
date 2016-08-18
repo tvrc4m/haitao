@@ -19,6 +19,7 @@ class login extends verification
 	private $_yzm = '';
 	protected $_yzm_mobile = '';
 	private $_users = '';
+	private $_type = '';
 	protected $_config = '';
 	private $_db = '';
 	private $_userinfo = '';//存储用户信息
@@ -53,13 +54,13 @@ class login extends verification
 	public function __construct(){
 		
         global $config,$db;
-//var_dump($_REQUEST);die;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 		$this->_action = $post['action'];
 
 		if (empty($post['username'])) $this->_response_code='10004'; else $this->_account = $post['username'];
 		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes($post['password']));
 		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = md5(addslashes($post['password_old']));
+		if(!empty($post['type']))$this->_type = $post['type'];
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
 
 		$this->_yzm_mobile = 'mon_yzm_'.$this->_account;
@@ -70,7 +71,15 @@ class login extends verification
    		if(parent::checkData($this->_account,'mobile')){
    			$this->users();
 			if(!empty($this->_account)){
+   				if($this->_type=='lostpass' || $this->_type=='updatepass' || $this->_type=='login'){
+		   			if(empty($this->_users['mobile'])){$this->_response_code = '10013';}
+		   		}
+		   		if($this->_type=='register'){
+					if(!empty($this->_users['mobile'])){$this->_response_code = '10009';}
+				}
+
 				if (method_exists($this,$this->_action)) {
+   					if($this->_action=='register')
 	                call_user_func(array($this,$this->_action));
 	            }else{
 	                // 请求的方法不存在
@@ -94,7 +103,7 @@ class login extends verification
 	 *return 状态 
 	 **/
 	private function login(){
-
+		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
 	    if ($this->_password==$this->_users['password']) {
 	    	$this->login_success();
@@ -114,7 +123,6 @@ class login extends verification
 	 */
 	private function register(){
 		if(!empty($this->_users['mobile'])){$this->_response_code = '10009';return false;}
-
         if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
 			if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
 				$this->_response_code = '10021';
@@ -139,7 +147,6 @@ class login extends verification
 	*/
 	private function lostpass(){
 		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
-
         if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
 			if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
 				$this->_response_code = '10021';
@@ -181,7 +188,12 @@ class login extends verification
 	 * 验证码
 	 */
 	private function yzCode(){
-
+		if($this->_type=='register'){
+			if(!empty($this->_users['mobile'])){$this->_response_code = '10009';return false;}
+		}
+		if($this->_type=='lostpass'){
+			if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
+		}
 		parent::yzm();
 
 		return false;
