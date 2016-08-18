@@ -52,7 +52,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             $(this).removeClass(obj3);
         });  
     }
-    hjLogin.prototype.formCtrl = function(form, subBtn , ajaxUrl) {
+    hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl) {
         formValid.init(form);
         $(subBtn).on("tap", function() {
             var url = "<{$smarty.get.forward}>",
@@ -64,6 +64,58 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 dataType: "json",
                 data: {
                     username:userVal,
+                    password:pwdVal,
+                    action:"login",
+                    forword:url
+                },
+                success: function(data) {
+                    utility.tipsWarn(data.errmsg);
+                },
+                error: function() {
+                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                }
+            })
+        })
+    }
+    hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl) {
+        formValid.init(form);
+        $(subBtn).on("tap", function() {
+            var url = "<{$smarty.get.forward}>",
+                mobileVal = $(form).find("input[name=mobile]").val(),
+                svodeVal = $(form).find("input[name=smsvode]").val(),
+                pwdVal = $(form).find("input[name=password]").val();
+            $.ajax({
+                url: ajaxUrl + "?" + Math.random(),
+                type: "POST",
+                dataType: "json",
+                data: {
+                    username:mobileVal,
+                    password:pwdVal,
+                    action:"login",
+                    forword:url
+                },
+                success: function(data) {
+                    utility.tipsWarn(data.errmsg);
+                },
+                error: function() {
+                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                }
+            })
+        })
+    }
+    hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl) {
+        formValid.init(form);
+        $(subBtn).on("tap", function() {
+            var url = "<{$smarty.get.forward}>",
+                mobileVal = $(form).find("input[name=mobile]").val(),
+                svodeVal = $(form).find("input[name=smsvode]").val(),
+                pwdVal = $(form).find("input[name=password]").val();
+            $.ajax({
+                url: ajaxUrl + "?" + Math.random(),
+                type: "POST",
+                dataType: "json",
+                data: {
+                    username:mobileVal,
                     password:pwdVal,
                     action:"login",
                     forword:url

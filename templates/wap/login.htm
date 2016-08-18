@@ -52,7 +52,7 @@
     /**JS版本号 */
     window.jsVersion = "7b3d28d5dd";
     require(['page/hj_login'], function (loginCtrl) {
-        loginCtrl.formCtrl(".txt_form","#login_sub","/api/login.php");
+        loginCtrl.loginCtrl(".txt_form","#login_sub","/api/login.php");
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
     });   
 </script>
