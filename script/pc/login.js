@@ -25,8 +25,8 @@ define(function (require,exports,module) {
 	*/
 	Check.prototype.login = function(){
 		$("input[type=button]").click(function(){
-			$.post("login.php",{name:$("#user").val(),password:$("#password").val()},function(msg){
-				switch(msg.code){
+			$.post("login.php",{name:$("#user").val(),password:$("#password").val()},function(data){
+				switch(data.code){
 					case 1001:
 						setTip("请输入用户名");
 						break;
