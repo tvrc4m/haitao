@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>登录<{$config.company}></title>
-<meta name="description" content="<{$config.description}>" />
-<meta name="keywords" content="<{$config.keyword}>" />
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-<link href="<{$config.weburl}>/templates/default/css/pub.css" rel="stylesheet" type="text/css" />
-<link href="<{$config.weburl}>/templates/default/css/login.css" rel="stylesheet" type="text/css" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>登录<{$config.company}></title>
+        <meta name="description" content="<{$config.description}>" />
+        <meta name="keywords" content="<{$config.keyword}>" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link href="<{$config.weburl}>/templates/default/css/pub.css" rel="stylesheet" type="text/css" />
+        <link href="<{$config.weburl}>/templates/default/css/login.css" rel="stylesheet" type="text/css" />
+    </head>
 <body class="login">
+<!-- 头部开始 -->
 <div class="header">
     <a title="<{$config.company}>" href="<{$config.weburl}>"><img src="image/default/login/logo.png" /></a>欢迎登录<i></i>
 </div>
+<!-- 头部结束 -->
+<!-- 中间部分开始 -->
 <div class="center">
-<img class="bg" src="image/default/login/bg.jpg">
+    <!-- 背景图片 -->
+    <img class="bg" src="image/default/login/bg.jpg">
     <div class="mc">
         <div class="form">
             <p class="title">蚂蚁会员<a href="<{$config.regname}>">还没有蚂蚁账号，20秒注册</a></p>
-            <form id="login" name="login" method="post">
+            <font class="tips"></font>
+            <form>
                 <dl>
                     <dt class="name"></dt>
                     <dd>
                         <{if $smarty.get.user!=null}>
-                        <input type="text" class="text" name="user" tabindex="1" value="<{$smarty.get.user}>" id="user">
+                        <input type="text" class="text" name="user" tabindex="1" value="<{$smarty.get.user}>">
                         <{else}>
-                        <input type="text" class="text" name="user" tabindex="1" autocomplete="off" placeholder="用户名/手机号" id="user">
+                        <input type="text" class="text" name="user" tabindex="1" autocomplete="off" placeholder="用户名/手机号">
                         <{/if}>
                     </dd>
-                    <p class="notice" style="display: none;"><span class="tipcon"></span><span class="icon"></span></p>
                 </dl>
                 <dl>
                     <dt class="pass"></dt>
-                    <dd><input type="password" class="text" name="password"  tabindex="2" placeholder="密码" id="password" /></dd>
-                    <p class="notice" style="display: none;"><span class="tipcon"></span><span class="icon"></span></p>
+                    <dd><input type="password" class="text" name="password"  tabindex="2" placeholder="密码"/></dd>
                 </dl>
-                <font class="tips"></font>
-                <a href="lostpass.php" class="fr linkpass">忘记密码?</a>
-                <input name="action" type="hidden" value="submit" />
-                <input name="forward" type="hidden" id="forward" value="<{$smarty.get.forward}>" />
-                <input type="button" tabindex="3" value="登录">
+                <a href="lostpass.php" class="linkpass">忘记密码?</a>
+                <input type="button" value="登录">
                 <div class="entries">快捷登录方式
                     <{if $config.qq_connect==1}>
                     <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=<{$config.qq_app_id}>&redirect_uri=<{$config.weburl|cat:'/login.php'|urlencode}>&state=<{$config.company}>&client_secret=<{$config.qq_key}>"><i class="ic1"></i></a>
