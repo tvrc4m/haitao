@@ -51,45 +51,6 @@
     地址：北京市朝阳区东大桥路甲8号尚都国际中心A座1815 | 电话:400-010-1977</p>
 </div>
 <!-- 底部结束 -->
-// <script type="text/javascript">
-//     var num = 60;
-//     $(".idcode .btn").click(function(){
-//         var mob = $('#mobile').val();
-//         var str = /^13[0-9]{1}[0-9]{8}$|14[57]{1}[0-9]{8}$|15[0-9]{1}[0-9]{8}$|18[0-9]{1}[0-9]{8}$/;
-//         if(str.test(mob)) {
-//             $.ajax({
-//                 url: 'lostpass.php',
-//                 type: 'post',
-//                 data: {m_send: 'm_send', mobile: mob},
-//                 dataType: 'json',
-//                 success: function(datainfo){
-//                     if(datainfo.status_code==200) {
-//                         num = datainfo.data ? datainfo.data : num;
-//                         $(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
-//                         var interval = window.setInterval(function(){
-//                             num = num - 1;
-//                             $(".idcode .btn").attr("value",num+ "秒后重新发送");
-//                             if (num < 1) {
-//                                 $(".idcode .btn").attr("disabled","").css("background-color","#ff5c5d");
-//                                 clearInterval(interval);
-//                                 $(".idcode .btn").attr("value","发送短信验证码");
-//                                 num = 60;
-//                             };
-//                         },1000);
-//                         $(".idcode .btn").parent().find("p .tipcon").text("短信发送成功，请注意查收！");
-//                         $(".idcode .btn").parent().find("p").css("display","block");
-//                     }else{
-//                         $(".idcode .btn").parent().find("p .tipcon").text(datainfo.message);
-//                         $(".idcode .btn").parent().find("p").css("display","block");
-//                     }
-//                 }
-//             });
-//         }else{
-//             $(".idcode .btn").parent().find("p .tipcon").text("请填写验证码");
-//             $(".idcode .btn").parent().find("p").css("display","block");
-//         }
-//     });
-// </script>
 <script src="script/pc/seajs/sea.js"></script>
 <script>
 seajs.config({
