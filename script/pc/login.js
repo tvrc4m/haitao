@@ -51,10 +51,10 @@ define(function (require,exports,module) {
 		var _self = this;
 		var num = 60;
 	    $(".idcode .btn").click(function(){
-	    	$.post("register.php",{mobile:$("#mobile").val()},function(msg){
+	    	$.post("/api/login.php",{username:$("#mobile").val(),action:"yzCode"},function(msg){
 	    		var data = JSON.parse(msg);
 				_self.setTip(data.errmsg);
-				if(data.status == 10001){
+				if(data.status == '10017'){
 					$(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
                     var interval = window.setInterval(function(){
                         num = num - 1;
