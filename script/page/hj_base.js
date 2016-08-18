@@ -1,5 +1,5 @@
 /**
- * 产品详情页
+ * 页面公用模块
  * @author LiXiongXiong
  * @method hjBase
  * 
@@ -21,25 +21,9 @@ define(["module", "utility"], function(module, Util) {
         var history = window.history.length;
         var $goBack = $("#go_back");
         var his = $goBack.attr("data-href");
-        var ua = new utility.UA();
-        
-        if (history <= 1 || his == "/") {
-            if(!ua.mayi){
-                $goBack.attr({"href":"/"}).find("em").html("首页");
-            }
-        } else {
-            $goBack.attr({"href":"javascript:window.history.go(-1)"}).find("em").html("返回");
-        }
-        // if (history <= 1 || his == "/") {
-        //     $goBack.attr({"href":"/"}).find("em").html("首页");
-        // } else {
-        //     $goBack.attr({"href":"javascript:window.history.go(-1)"}).find("em").html("返回");
-        // }
 
         _self.share();
         utility.pScroll("#wrapper",'2.2',true);
-        utility.navToggle("#y_menu_icon", "#main_wrap", "#y_menu_clu");
-        utility.otherIscroll('#nav_scroll');
         utility.scrollToEle();
 
         /*是否加载base*/
@@ -103,8 +87,8 @@ define(["module", "utility"], function(module, Util) {
      * @param  {[type]} title     [description]
      * @return {[type]}           [description]
      */
-    // hjBase.prototype.wxShare = function(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil){
-    //     utility.weixinShare(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil);
-    // }
+    hjBase.prototype.wxShare = function(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil){
+        utility.weixinShare(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil);
+    }
     module.exports = new hjBase();
 });

@@ -1,5 +1,5 @@
 /**
- * 用户注册
+ * 用户登陆
  * @author LiXiongXiong
  * @method hjLogin
  * 
@@ -7,7 +7,7 @@
 define(["module", "formValid"], function(module, formValid) {
     "use strict";
 
-    function hjLogin() {
+    function hjMyshop() {
         
     }
     var formValid = new formValid();
@@ -20,18 +20,22 @@ define(["module", "formValid"], function(module, formValid) {
      * @param  {String} phoneInput 手机号input框
      * @return {[type]}            [description]
      */
-    hjLogin.prototype.formCtrl = function(form, subBtn) {
+    hjMyshop.prototype.formCtrl = function(form, subBtn ,btn ,btnInp) {
         formValid.init(form);
+        formValid.uploadPicture(btn ,btnInp)
         $(subBtn).on("tap", function() {
             var mobileVal = $(form).find("input[name=mobile]").val(),
-                pwdVal = $(form).find("input[name=pwd]").val();
-                
-            var isPwdValid = formValid.isPwd(pwdVal);
-            var isMobileValid = formValid.isMobile(mobileVal);
-            if (isMobileValid && isPwdValid) {
+                addrVal = $(form).find("input[name=addr]").val(),
+                companyVal = $(form).find("input[name=company]").val();
+
+            var isMobileValid = formValid.isMobile(mobileVal);   
+            var isNull2Valid = formValid.isNull(addrVal ,"请填写详细地址"); 
+            var isNull1Valid = formValid.isNull(companyVal ,"请填写店铺名称");
+
+            if (isNull1Valid && isNull2Valid &&isMobileValid) {
                 $(form).submit();
             }
         })
     }
-    module.exports = new hjLogin();
+    module.exports = new hjMyshop();
 });

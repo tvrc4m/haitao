@@ -1,6 +1,6 @@
 /**
  * 公共方法
- * Create by LiXiongXiong on 2015/11/13
+ * Create by huwei on 2016/6/13
  */
 ;
 define(["require", 'module', "IScroll"], function(require, module, IScroll) {
@@ -10,117 +10,454 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
      */
     function Util() {}
     module.exports = Util;
-
     /**
-     * 浮层提示
+     * 弹出层提示(公共)
+     * @method delsWarn
+     * @param {String} str 提示信息
+     * @param {String} obj1 删除按钮
+     * @param {String} obj2 删除元素
+    */
+    Util.prototype.bombWarn = function(isform, str , formBtn ,removeBtn ,id) {
+        var dialogsWrap = $("<div class='buyorder_bomb_box'>"+
+            "<div class='buyorder_bomb_txt'>"+
+            "</div>"+
+            "<div class='buyorder_bomb_btn clearfix'><a class='buyorder_bomb_sure' href='javascript:void(0);'>确定</a><a href='javascript:void(0);' class='buyorder_bomb_cancel'>取消</a></div>"+
+        "</div>");
+        setTimeout(function() {
+            $(".buyorder_bomb_txt").append(str);
+        }, 10); 
+        $("body").append(dialogsWrap);
+        $(".am_dialog_mask").show();
+        dialogsWrap.addClass('buyorder_bomb_box_test');
+        // 删除确认
+        $(".buyorder_bomb_btn a.buyorder_bomb_sure").bind("click",function(){   
+            if(isform){
+                formBtn.submit();
+            }else{
+            // $.get("main.php?deid="+data_id+"&m=distribution&s=admin_distribution_product_list", function(data){
+                removeBtn.remove();
+            // });
+            }              
+            $(".am_dialog_mask").hide();
+            dialogsWrap.removeClass('buyorder_bomb_box_test');
+            setTimeout(function() {
+                dialogsWrap.remove();
+            }, 200);
+            setTimeout(function() {
+                var innerH = Number($("#scrollWrap").find(".scroll_con").height()) + 20;
+                var scrollH = Number(document.body.clientHeight);
+                console.log(scrollH)
+                if (innerH < scrollH) {
+                    $("#scrollWrap").height(scrollH + 1);
+                } else {
+                    $("#scrollWrap").height(innerH);
+                }
+                window.scroller.refresh();
+            }, 800);
+        })
+        // 取消按钮
+        $(".buyorder_bomb_btn a.buyorder_bomb_cancel").bind("click",function(){
+            $(".am_dialog_mask").hide();
+            dialogsWrap.removeClass('buyorder_bomb_box_test');
+            setTimeout(function() {
+                dialogsWrap.remove();
+            }, 200);
+        })
+    }
+    /**
+     * 活动弹层提示(公共)
+     * @method delsWarn
+     * @param {String} str 提示信息
+     * @param {String} obj1 删除按钮
+     * @param {String} obj2 删除元素
+    */
+    Util.prototype.actsWarn = function(imgsrc) {
+        var actsWarn = $("<div class='main-bomb bomb-in'>"+
+                "<div class='main-bomb-inner'>"+
+                    "<img src='"+imgsrc+"' alt='蚂蚁活动弹框'>"+
+                    "<i class='main-bomb-delate'></i>"+
+                    "<a href='register.html' class='bomb-content-btn1'></a>"+
+                "</div>"+
+            "</div>") , dialog_mask=$(".am_dialog_mask");
+        function setCookie(objName,objValue,objHours){
+            var str = objName + "=" + escape(objValue); 
+            if (objHours > 0) {//为0时不设定过期时间，浏览器关闭时cookie自动消失 
+                var date = new Date(); 
+                var ms = objHours * 3600 * 1000; 
+                date.setTime(date.getTime() + ms); 
+                str += "; expires=" + date.toGMTString(); 
+            } 
+                document.cookie = str;
+        }
+        function getCookie(name){
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)){
+                return unescape(arr[2]);
+            }
+            else{
+                return null;
+            }     
+        }
+        function bombanimate(){
+            setCookie("mayi_bomb","mayi_delate","0");
+            actsWarn.removeClass("bomb-in")
+            actsWarn.addClass("bomb-out")
+            dialog_mask.hide();
+        }
+        if(getCookie("mayi_bomb")!="mayi_delate"){
+            $("body").append(actsWarn);
+            dialog_mask.show();
+        }else{
+            actsWarn.hide();
+            dialog_mask.hide();
+        }
+        $(".main-bomb-delate").on("tap",function(){
+            bombanimate();
+        });
+    }
+    /**
+     * 验证浮层提示
      * @method tipsWarn
      * @param {String} str 提示文字
      * @param {String} time 显示时长
-     */
+    */
     Util.prototype.tipsWarn = function(str, time) {
-            var tipsWrap = $("<div class='alert_tips'><p class='time_01 fadeDown'>" + str + "</p></div>");
-            var timenum = time || 2500,
-                tips = $(".alert_tips"),
-                tips_len = tips.size(),
-                num = 0;
-            if (tips_len > 0) {
-                tips.find("p").html(str);
-                clearTimeout(window.timmer);
-                num = 0;
-                window.timmer = setInterval(function() {
-                    num += 100;
-                    if (num > timenum) {
-                        console.log(tips);
-                        tips.removeClass('active');
-                        clearInterval(window.timmer);
-                        setTimeout(function() {
-                            tips.remove();
-                        }, 500);
-                    }
-                }, 100);
-            } else {
-                $("body").append(tipsWrap);
-                setTimeout(function() {
-                    tipsWrap.addClass('active');
-                }, 200);
-                window.timmer = setInterval(function() {
-                    num += 100;
-                    if (num > timenum) {
-                        tipsWrap.removeClass('active');
-                        clearInterval(window.timmer);
-                        setTimeout(function() {
-                            tipsWrap.remove();
-                        }, 500);
-                    }
-                }, 100);
-            }
-        }
-        /**
-         * dialogFn 弹层
-         * @param  {[type]} id      [description]
-         * @param  {[type]} title   [description]
-         * @param  {[type]} content [description]
-         * @param  {[type]} touch    是否触发关闭
-         * @return {[type]}         [description]
-         */
-    Util.prototype.dialogFn = function(id, title, content, touch) {
-            var diaWrap = '<div class="hj_dialog" id="hj_dialog_' + id + '">\
-                            <div class="inner">\
-                                <div class="dia_wrap">\
-                                    <div class="con_box time_01 fadeDown">\
-                                        <div class="ic_close"></div>\
-                                        <h3>提示</h3>\
-                                        <div class="handler_box"></div>\
-                                    </div>\
-                                </div>\
-                            </div>\
-                        </div>';
-            $("body").append(diaWrap);
-            var $wrapObj = $("#hj_dialog_" + id);
-            var $titleObj = $wrapObj.find("h3"),
-                $closeObj = $wrapObj.find(".ic_close"),
-                $conObj = $wrapObj.find(".handler_box");
-            $titleObj.html(title);
-            $conObj.html(content);
-            $wrapObj.animate({
-                "opacity": 1
-            }, 800);
-            setTimeout(function() {
-                $wrapObj.addClass('active');
+        var tipsWrap = $("<div class='alert_tips'><p class='time_01 fadeDown'>" + str + "</p></div>");
+        var timenum = time || 2500,
+            tips = $(".alert_tips"),
+            tips_len = tips.size(),
+            num = 0;
+        if (tips_len > 0) {
+            tips.find("p").html(str);
+            clearTimeout(window.timmer);
+            num = 0;
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    tips.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        tips.remove();
+                    }, 500);
+                }
             }, 100);
-            $closeObj.on("tap", function() {
-                closeDia();
-            })
-            if (touch) {
-                $wrapObj.on("tap", function(e) {
-                    if ($(e.target).parents(".con_box").length == 0) {
-                        closeDia();
-                    }
-                });
+        } else {
+            $("body").append(tipsWrap);
+            setTimeout(function() {
+                tipsWrap.addClass('active');
+            }, 200);
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    tipsWrap.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        tipsWrap.remove();
+                    }, 500);
+                }
+            }, 100);
+        }
+    }
+    /**
+     * 操作提示浮层提示
+     * @method tipsWarn
+     * @param {String} str 提示文字
+     * @param {String} time 显示时长
+    */
+    Util.prototype.operasWarn = function(str, time) {
+        var operasWrap = $("<div class='collect_box_content'><p class='time_01 fadeIn'>" + str + "</p></div>");
+        var timenum = time || 2500,
+            tips = $(".collect_box_content"),
+            tips_len = tips.size(),
+            num = 0;
+        if (tips_len > 0) {
+            tips.find("p").html(str);
+            clearTimeout(window.timmer);
+            num = 0;
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    tips.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        tips.remove();
+                    }, 500);
+                }
+            }, 100);
+        } else {
+            $("body").append(operasWrap);
+            var wid=$(".collect_box_content").width()/2;
+            $(".collect_box_content").css({"margin-left":-wid+"px"});
+            setTimeout(function() {
+                var wid=$(".collect_box_content").width()/2;
+                $(".collect_box_content").css({"margin-left":-wid+"px"});
+                operasWrap.addClass('active');
+            }, 200);
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    operasWrap.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        operasWrap.remove();
+                    }, 500);
+                }
+            }, 100);
+        }
+    }
+    /**
+    * 页面部分内容切换(公共)
+     * @method tipsWarn
+     * @param {String} obj 提示文字
+     * @param {String} time 显示时长
+    */
+    Util.prototype.partContent = function(btn1, btn2 , obj1 ,obj2) {
+        var btn1 = $(btn1) , btn2 = $(btn2) , obj1 = $(obj1) , obj2 = $(obj2)
+        btn1.on("tap",function(){
+            obj1.hide();
+            obj2.show();
+        });
+        btn2.on("tap",function(){
+            obj2.hide();
+            obj1.show();
+        });
+    }
+    /**
+    * 图片延迟加载(公共)
+    * @menthod scrollLoading
+    * @returns {object}
+    */
+    Util.prototype.scrollLoading = function(obj) {
+        var c = {
+            attr: "data-url",
+            container: $(window),
+            callback: $.noop
+        };
+        var d = $.extend({}, c);
+        d.cache = [];
+        $(obj).each(function() {
+            var h = this.nodeName.toLowerCase(),
+                g = $(this).attr(d.attr);
+            var i = {
+                obj: $(this),
+                tag: h,
+                url: g
+            };
+            d.cache.push(i);
+        });
+        var f = function(g) {
+            if ($.isFunction(d.callback)) {
+                d.callback.call(g.get(0))
             }
-
-            function closeDia() {
-                window.isSending = true;
-                $closeObj.parents("#hj_dialog_" + id).removeClass("active");
-                $closeObj.parents("#hj_dialog_" + id).animate({
-                    "opacity": 0
-                }, 500);
-                setTimeout(function() {
-                    $closeObj.parents("#hj_dialog_" + id).remove();
-                }, 600);
+        };
+        var e = function() {
+            var g = d.container.height();
+            $.each(d.cache, function(m, n) {
+                var p = n.obj,
+                    j = n.tag,
+                    k = n.url,
+                    l, h;
+                if (p) {         
+                    l = p.offset().top , h = l + p.height();
+                    if ((l >= 0 && l < g) || (h > 0 && h <= g)) {
+                        if (k) {
+                            if (j === "img") {
+                                f(p.attr("src", k))
+                            } else {
+                                p.load(k, {}, function() {
+                                    f(p)
+                                })
+                            }
+                        } else {
+                            f(p)
+                        }
+                        n.obj = null
+                    }
+                }
+            })
+        };
+        e();
+        window.scroller = new IScroll("#wrapper", {
+            probeType: 2,
+            mouseWheel: true,
+            bindToWrapper: true,
+            scrollY: true
+        }).on('scroll', e) 
+    }
+    /**
+    * 返回顶部(公共)
+    * @menthod scrollTop
+    * @menthod obj 返回按钮元素
+    * @returns {object}
+    */
+    Util.prototype.scrollTop = function(obj) {
+        window.scroller = new IScroll("#wrapper", {
+            probeType: 2,
+            mouseWheel: true,
+            bindToWrapper: true,
+            scrollY: true
+        }).on('scroll', function(){
+            var $scroller = document.getElementById("scroller");
+            var $transform = $scroller.style.webkitTransform;
+            $transform_num = $transform.match(/\-?[0-9]+/g)[1];
+            $contop = Math.abs(Number($transform_num));
+            $wHeight = $(window).height();
+            if($contop>$wHeight){
+                $(obj).show();
+                $(obj).click(function(){
+                    window.scroller.scrollTo(0, 0, 1000);
+                    $(obj).hide();
+                })
+            }else{
+                $(obj).hide();
+            }
+        }) 
+    }
+    /**
+    * 字符串截取(公共)
+    * @menthod scrollTop
+    * @menthod obj 返回按钮元素
+    */
+    Util.prototype.SubString = function(htm,obj,num,txt) {
+        function substr(htm,obj,num){
+            var value_substr=obj.substr(0,num);
+            var pname_len=obj.length;
+            var value_substr_len=value_substr.length+1;
+            if(pname_len>value_substr_len){
+                value_substr=value_substr+"...";                
+            }       
+            htm.html(value_substr);
+        }
+        if(obj==""){
+            htm.html(txt);
+        }
+        else{
+            substr(htm,obj,num);
+        }
+    }
+    /**
+     * 手机号部分隐藏(公共)
+    */
+    Util.prototype.mobHide = function(obj,htm) {
+        obj.each(function(){
+            var _this=$(this);
+            _this.html(htm.replace(/(\d{3})(\d{4})(\d{4})/,"$1****$3"));
+        })
+    }
+    /**
+     * tap切换显示隐藏
+    */
+    Util.prototype.taph = function(htm1,obj1,htm2) {
+        htm1.on("tap click",function(){
+            var _this=$(this) , c=_this.index();
+            _this.addClass(obj1).siblings().removeClass(obj1);
+            htm2.eq(c).show().siblings().hide();
+        })
+    }
+    /**
+    * 购买数量选择
+    * @menthod obj1 数量+元素
+    * @menthod obj2 数量—元素
+    * @menthod obj3 数量变化元素
+    * @menthod obj4 库存量元素
+    */
+    Util.prototype.buyNum = function(obj1,obj2,obj3,obj4) {
+        obj1.on("tap",function(){
+            var num=obj3.val()*1;
+            if(num>1){
+                obj3.val(num-1)
+            }
+            check_nums()
+        });
+        obj2.on("tap",function(){
+            var num=obj3.val()*1;
+            if(num<obj4){
+                obj3.val(num+1)
+            }
+            check_nums()
+        });
+        obj3.on("keyup",function(){
+            check_nums();
+        });
+        function check_nums(){
+            var v=obj3.val()*1;
+            var stock = obj4*1;
+            if(!v){
+                obj3.val(1);
+            }
+            if(v>stock){
+               obj3.val(stock);
+                return false;
             }
         }
-        /**
-         * tab方法
-         * @menthod tab
-         * @param {string} nav  滑动导航
-         * @param {string} list 滑动的列表
-         * @param {string} isMove 背景移动效果
-         * @returns {object}
-         */
+    }
+    /**
+     * 下拉导航
+    */
+    Util.prototype.dropDown = function(obj,test) {
+        obj.on("click",function(){
+            var _this=$(this);
+            _this.find("ul").toggle();
+            _this.find("i").toggleClass(test);
+            _this.siblings().find("ul").hide();
+            _this.siblings().find("i").removeClass(test);
+        })
+    }
+    /**
+     * 倒计时
+    */
+    Util.prototype.countDown = function(obj,date,time,isday) {
+        function ShowCountDown(date){ 
+            var now = new Date(); 
+            var endDate = new Date(date); 
+            var leftTime=endDate.getTime()-now.getTime(); 
+            if(leftTime<=0){
+                clearInterval(timeinterval);
+                if(!isday){
+                    $(obj).html("<span>00</span>：<span>00</span>：<span>00</span>")
+                } else {
+                    $(obj).html("<span>00</span>：<span>00</span>：<span>00</span>：<span>00</span>")
+                }
+                return;
+            }
+            var leftsecond = parseInt(leftTime/1000); 
+            var day1=Math.floor(leftsecond/(60*60*24));
+            var hour=Math.floor((leftsecond)/3600); 
+            var _hour=Math.floor((leftsecond-day1*24*60*60)/3600);
+            var minute=Math.floor((leftsecond-day1*24*60*60-_hour*3600)/60); 
+            var second=Math.floor(leftsecond-day1*24*60*60-_hour*3600-minute*60);
+            if(!isday){
+                var arrTime=[hour,minute,second]; 
+                var arrLength=[hour.toString().length,minute.toString().length,second.toString().length];
+            } else {
+                var arrTime=[day1,_hour,minute,second]; 
+                var arrLength=[day1.toString().length,_hour.toString().length,minute.toString().length,second.toString().length]; 
+            }
+            for(var i=0;i<arrLength.length;i++){
+                if(arrLength[i]==1){
+                    arrTime[i]="0"+arrTime[i];
+                }
+            }
+            if(!isday){
+                $(obj).html(arrTime[0]+"："+arrTime[1]+"："+arrTime[2])
+            } else {
+                $(obj).html(arrTime[0]+"："+arrTime[1]+"："+arrTime[2]+"："+arrTime[3])
+            }
+        } 
+        var timeinterval =window.setInterval(function(){ShowCountDown(date);}, time); 
+    }
+    /**
+     * tab方法
+     * @menthod tab
+     * @param {string} nav  滑动导航
+     * @param {string} list 滑动的列表
+     * @param {string} isMove 背景移动效果
+     * @returns {object}
+    */
     Util.prototype.tab = function(nav, list, isMove) {
             var wHis = window.history;
-            var hstate = wHis.state,hisLen = wHis.length;
+            var hstate = wHis.state,
+                hisLen = wHis.length;
             var curIndex = hstate ? hstate.curtab : 0,
                 curHis = hstate ? hstate.his : -1;
             var $scrollWrap = $("#scrollWrap"),
@@ -157,7 +494,7 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                     $(nav).find(".focu").removeClass("focu");
                     _this.addClass('focu');
                     $(list).find(".item").eq(i).addClass("cur").siblings().removeClass('cur');
-                    if(hisLen > 1 || backHref == "/"){
+                    if (hisLen > 1 || backHref == "/") {
                         $goBack.attr("href", "javascript:window.history.go(" + curHis + ")");
                     }
                     var innerH = Number($scrollWrap.find(".scroll_con").height()) + 20;
@@ -177,7 +514,7 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                 state = state || 0;
                 $(nav).find(".item").removeClass("focu").eq(state).addClass('focu');
                 $(list).find(".item").eq(state).addClass("cur").siblings().removeClass('cur');
-                if(hisLen > 1 || backHref == "/"){
+                if (hisLen > 1 || backHref == "/") {
                     $goBack.attr("href", "javascript:window.history.go(" + his + ")")
                 }
             }
@@ -188,13 +525,13 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                 }
             }, false);
         }
-        /**
-         * 文字上下滚动效果
-         * @menthod textSlide
-         * @param {string} list 滚动列表
-         * @param {string} time 间隔时间
-         * @returns {object}
-         */
+    /**
+     * 文字上下滚动效果
+     * @menthod textSlide
+     * @param {string} list 滚动列表
+     * @param {string} time 间隔时间
+     * @returns {object}
+     */
     Util.prototype.textSlide = function(list, time) {
             var first = $(list).find("li").eq(0).clone();
             $(list).find("ul").append(first);
@@ -227,274 +564,56 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                 }
             }, time);
         }
-        /**
-         * 侧面导航开关
-         * @menthod navToggle
-         * @param {String} btn 开关按钮
-         * @param {String} bwrap 页面盒子
-         * @param {String} menu 侧面导航    
-         * @returns {object}     
-         */
-    Util.prototype.navToggle = function(btn, bwrap, menu) {
-            var _self = this;
-            var moveX, moveY, startX, startY, scaleV, startPageX, startPageY, _status, _thisTranX;
-            var isTouch = false;
-            $(btn).on("tap", function() {
-                mSwitch(btn, bwrap, menu);
-            });
-            $(bwrap).find("#wrapper").on("tap", function(e) {
-                e.stopPropagation();
-                _status = $(btn).attr("data-open");
-                if (_status == "on") {
-                    $(btn).attr("data-open", "off");
-                    $(bwrap).removeClass("open");
-                    $(menu).removeClass("open");
-                }
-            });
-            $(bwrap).on("swipeRight", function(e) {
-                _self.stopPropagation(e);
-                $(btn).attr("data-open", "off");
-                $(bwrap).removeClass("open");
-                $(menu).removeClass("open");
-            });
-            $(bwrap).on("swipeLeft", function(e) {
-                _self.stopPropagation(e);
-                $(btn).attr("data-open", "on");
-                $(bwrap).addClass("open");
-                $(menu).addClass("open");
-            });
-            // $(bwrap).on("touchstart", function(e) {
-            //     var _this = $(this);
-            //     _thisTranX = _this.attr("data-X");
-            //     _status = $(btn).attr("data-open");
-            //     var pos = e.touches[0];
-            //     startX = pos.pageX - e.target.parentNode.offsetLeft;
-            //     startY = pos.pageY - e.target.parentNode.offsetTop;
-            //     startPageX = pos.pageX - startX;
-            //     startPageY = pos.pageY - startY;
-            // }).on("touchmove", function(e) {
-            //     var _this = $(this);
-            //     var pos = e.touches[0];
-            //     moveX = pos.pageX - startX;
-            //     moveY = pos.pageY - startY;
-            //     // if (startPageY > moveY) {console.log("上滑");}
-            //     // if (startPageY < moveY) {console.log("下滑");}
-            //     // if (startPageX > moveX) {console.log("左滑");}
-            //     // if (startPageX < moveX) {console.log("右滑");}
-            //     //判断横向滚动
-            //     // if (Math.abs(startPageY - moveY) > 0) {
-            //     //     console.log("1111");
-            //     // }
-            //     if (_status == "off") {
-            //         if (moveX < 0) {
-            //             scaleV = 1 - Math.abs(moveX) / 400;
-            //             if (scaleV < 0.8) {
-            //                 scaleV = 0.8;
-            //             }
-            //             _this.css('-webkit-transform', 'translateX(' + moveX + 'px) scale(' + scaleV + ')').attr("data-X", moveX);
-            //             $(menu).css('-webkit-transform', 'translateX(' + (200 - Math.abs(moveX)) + 'px)');
-            //         }
-            //         if (moveX <= -150) {
-            //             $(btn).attr("data-open", "on");
-            //             _this.attr({
-            //                 "style": "",
-            //                 "data-X": "-200"
-            //             }).addClass("open");
-            //             $(menu).attr("style", "").addClass("open");
-            //         }
-            //     }
-            // }).on("touchend", function() {
-            //     var _this = $(this);
-            //     if (_status == "off") {
-            //         if (moveX < 0 && moveX > -150) {
-            //             moveX = 0;
-            //             _this.css('-webkit-transform', 'translateX(0)').attr("data-X", "0");
-            //             $(menu).css('-webkit-transform', 'translateX(200px)');
-            //         }
-            //     }
-            // })
-            function mSwitch(btn, bwrap, menu) {
-                var status = $(btn).attr("data-open");
-                if (status == "off") {
-                    $(btn).attr("data-open", "on");
-                    $(bwrap).addClass("open");
-                    $(menu).addClass("open");
-                } else {
-                    $(btn).attr("data-open", "off");
-                    $(bwrap).removeClass("open");
-                    $(menu).removeClass("open");
-                }
-            }
-        }
-        /**
-         * 格式化银行卡号
-         * @menthod formatBankcardNo
-         * @param {String} bankcard     
-         * @returns {String}     
-         */
-    Util.prototype.formatBankcardNo = function(bankcard) {
-            var bcA = bankcard.split(''),
-                bc = '',
-                j;
-            for (var i = 0; i < bcA.length; i++) {
-                j = i + 1;
-                if (j % 4 == 0) bc += bcA[i] + ' '
-                else bc += bcA[i];
-            }
-            return bc
-        }
-        /**
-         * [ajaxPager description] 分页加载
-         * @param  {String}   btn      点击加载按钮
-         * @param  {String}   ul       加载列表ul
-         * @param  {String}   ajaxUrl  Ajax加载url
-         * @param  {String}   method   Ajax 请求方式
-         * @param  {Object}   postdata Ajax 提交数据
-         * @param  {Function} callback 请求成功后回调
-         * @return {[type]}            [description]
-         */
-    Util.prototype.ajaxPager = function(btn, ul, ajaxUrl, method, postdata, callback,cur,loading) {
-            var _self = this,isTap = false,totalNum = $(ul).attr("data-pages");
-            var current = 1;
-            if(loading == undefined) loading = true;
-            if(cur == "0" && totalNum != 0){
-                domLoad(1,loading);
-            }
-            //delegate 函数  rightPaper处加载更多
-            $(".scroller").delegate(btn,"tap",function(){
-            // $(btn).on("tap", function() {
-                isTap = true;
-                current++;
-                if (current <= totalNum) {
-                    if (isTap) {
-                        isTap = false;
-                        domLoad(current,true);
-                    }
-                }
-            })
-
-            function domLoad(page,isload){
-                $(btn).html("正在加载...");
-                postdata.page = page;
-                $.ajax({
-                    url: ajaxUrl,
-                    type: method || 'GET',
-                    dataType: 'json',
-                    data: postdata,
-                    beforeSend: function() {
-                        isload ? _self.hjLoading("#wrapper") : '';
-                    },
-                    success: function(data) {
-                        if (data != "" && data != undefined) {
-                            if (data.statusCode == 200) {
-                                var dataList = data.content.data;
-                                callback(dataList);
-                                $(btn).html("查看更多");
-                                isTap = true;
-                                if (page == totalNum) $(btn).remove();
-                                //刷新IScroll插件
-                                setTimeout(function() {
-                                    var innerH = Number($("#scrollWrap").find(".scroll_con").height()) + 20;
-                                    var scrollH = Number(document.body.clientHeight);
-                                    if (innerH < scrollH) {
-                                        $("#scrollWrap").height(scrollH + 1);
-                                    } else {
-                                        $("#scrollWrap").height(innerH);
-                                    }
-                                    window.scroller.refresh();
-                                    window.otherScroller.refresh();
-                                }, 800);
-                                $("#wrapper").find("a").on("tap", function() {
-                                    $(this).trigger("click");
-                                })
-                                $(".scroller").find("a").on("tap", function() {
-                                    $(this).trigger("click");
-                                });
-                            } else {
-                                _self.tipsWarn("加载失败！请稍后刷新再试");
-                                $(btn).html("查看更多");
-                                isTap = true;
-                            }
-                        } else {
-                            _self.tipsWarn("服务器请求失败，请稍后刷新再试");
-                            $(btn).html("查看更多");
-                            isTap = true;
-                        }
-                    },
-                    complete: function() {
-                        setTimeout(function() {
-                            isload ? _self.hjLoadingClose("#loading_box") : '';
-                        }, 500);
-                    },
-                    error: function() {
-                        _self.tipsWarn("加载失败！请稍后刷新再试");
-                        $(btn).html("查看更多");
-                        isTap = true;
-                    }
-                })
-            }
-        }
-        /**
-         * Loading显示
-         * @param  {[type]} wrap [description]
-         * @return {[type]}      [description]
-         */
+    /**
+     * Loading显示
+     * @param  {[type]} wrap [description]
+     * @return {[type]}      [description]
+     */
     Util.prototype.hjLoading = function(wrap) {
             var loadingDom = '<div class="loading_box" id="loading_box"></div>';
             $(wrap).append(loadingDom);
             $("#loading_box").show();
         }
-        /**
-         * Loading close
-         * @param  {[type]} load [description]
-         * @return {[type]}      [description]
-         */
+    /**
+     * Loading close
+     * @param  {[type]} load [description]
+     * @return {[type]}      [description]
+     */
     Util.prototype.hjLoadingClose = function(load) {
-            $(load).hide();
+              
             setTimeout(function() {
                 $(load).remove();
             }, 500);
         }
-        /**
-         * 分享
-         * @param  {[type]} wrap [description]
-         * @return {[type]}      [description]
-         */
-    // Util.prototype.hjShare = function(wrap,vcode) {
-    //         var _self = this;
-    //         var ua = _self.UA();
-    //         if(ua.mayi){
-    //             Android.share(vcode);
-    //         }else{
-    //             var shareDom = '<div class="hj_share_box" id="share_box"></div>';
-    //             $(wrap).append(shareDom);
-    //             $("#share_box").show();
-    //             $("#share_box").on("tap", function() {
-    //                 $(this).animate({
-    //                     "opacity": "0"
-    //                 }, 800);
-    //                 setTimeout(function() {
-    //                     $("#share_box").remove();
-    //                 }, 800);
-    //             })
-    //         }
-    //     }
-        /**
-         * 截取字符串
-         * @param  {[type]} str   [description]
-         * @param  {[type]} start [description]
-         * @param  {[type]} end   [description]
-         * @return {[type]}       [description]
-         */
-    Util.prototype.subString = function(str, start, end) {
-            str = str.substring(start, end);
-            return str;
+
+
+    Util.prototype.UA = function() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        alert(userAgent);
+        return {
+            ipad: /ipad/.test(userAgent),
+            iphone: /iphone/.test(userAgent),
+            ipod: /ipod/.test(userAgent),
+            blackBerry: /blackBerry/.test(userAgent),
+            android: /android/.test(userAgent),
+            webos: /webOS/.test(userAgent),
+            windowsPhone: /Windows Phone/.test(userAgent),
+            weixin: /micromessenger/.test(userAgent),
+            mayi: /mayi/.test(userAgent)
+        };
+    }
+    Util.prototype.isPhone = function() {
+            if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        /**
-         * stopPropagation
-         * @param  {[type]} e event
-         * @return {[type]}   [description]
-         */
+    /**
+     * stopPropagation
+     * @param  {[type]} e event
+     * @return {[type]}   [description]
+     */
     Util.prototype.stopPropagation = function(e) {
         e = e || window.event;
         if (e.stopPropagation) { //W3C阻止冒泡方法
@@ -503,110 +622,6 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
             e.cancelBubble = true; //IE阻止冒泡方法
         }
     };
-    /**
-     * [weixinShare description]
-     * @param  {[type]} appid     [description]
-     * @param  {[type]} timestamp [description]
-     * @param  {[type]} nonceStr  [description]
-     * @param  {[type]} signature [description]
-     * @param  {[type]} img       [description]
-     * @param  {[type]} plink     [description]
-     * @param  {[type]} pdesc     [description]
-     * @param  {[type]} ptitle    [description]
-     * @return {[type]}           [description]
-     */
-    // Util.prototype.weixinShare = function(appid, timestamp, nonceStr, signature, img, plink, pdesc, ptitle, qtil) {
-    //     var wxData = {
-    //         "appId": "", // 服务号可以填写appId
-    //         "imgUrl": img,
-    //         "link": plink,
-    //         "desc": pdesc,
-    //         "title": ptitle
-    //     };
-    //     weixin.config({
-    //         debug: false,
-    //         appId: appid,
-    //         timestamp: timestamp,
-    //         nonceStr: nonceStr,
-    //         signature: signature,
-    //         jsApiList: [
-    //             // 所有要调用的 API 都要加到这个列表中'checkJsApi',
-    //             'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'translateVoice', 'startRecord', 'stopRecord', 'onRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'
-    //         ]
-    //     });
-    //     weixin.ready(function() {
-    //         //隐藏右上角菜单
-    //         // wx.hideOptionMenu();
-    //         // 在这里调用 API
-    //         var title = wxData.title;
-    //         var desc = wxData.desc;
-    //         var link = wxData.link;
-    //         var imgUrl = wxData.imgUrl;
-    //         // 2. 分享接口
-    //         // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
-    //         weixin.onMenuShareAppMessage({
-    //             title: title,
-    //             desc: desc,
-    //             link: link,
-    //             imgUrl: imgUrl
-    //         });
-    //         // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
-    //         weixin.onMenuShareTimeline({
-    //             title: qtil,
-    //             link: link,
-    //             imgUrl: imgUrl
-    //         });
-    //     });
-    // }
-    // Util.prototype.UA = function() {
-    //     var userAgent = navigator.userAgent.toLowerCase();
-    //     return {
-    //         ipad: /ipad/.test(userAgent),
-    //         iphone: /iphone/.test(userAgent),
-    //         ipod: /ipod/.test(userAgent),
-    //         blackBerry: /blackBerry/.test(userAgent),
-    //         android: /android/.test(userAgent),
-    //         webos: /webOS/.test(userAgent),
-    //         windowsPhone: /Windows Phone/.test(userAgent),
-    //         weixin: /micromessenger/.test(userAgent),
-    //         mayi: /mayi/.test(userAgent)
-    //     };
-    // }
-    Util.prototype.isPhone = function() {
-            if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        /**
-         * [CalculateEarnings description]
-         * @param {[type]} rmoney [description]
-         * @param {[type]} days   [description]
-         * @param {[type]} rate   [description]
-         */
-    Util.prototype.CalculateEarnings = function(rmoney, days, rate) {
-            var EarningsNum = rmoney * (rate / 365) * days;
-            return EarningsNum;
-        }
-        /**
-         * [CalculateCashNum description]
-         * @param {[type]} rmoney [description]
-         * @param {[type]} rate   [description]
-         */
-    Util.prototype.CalculateCashNum = function(rmoney, rate) {
-            var cashNum = rmoney * rate;
-            return cashNum;
-        }
-        /**
-         * 格式化带“,”号分割的数字
-         * @param  {[type]} str [description]
-         * @return {[type]}     [description]
-         */
-    Util.prototype.formatNumber = function(str) {
-        str = str.replace(new RegExp(/,/g), '');
-        return str
-    }
     Util.prototype.scrollToEle = function() {
         var Request = new Object();
         Request = this.getRequest();
@@ -616,84 +631,62 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
         }
     }
     Util.prototype.getRequest = function() {
-            var url = location.search; //获取url中"?"符后的字串
-            var theRequest = new Object();
-            if (url.indexOf("?") != -1) {
-                var str = url.substr(1);
-                strs = str.split("&");
-                for (var i = 0; i < strs.length; i++) {
-                    theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-                }
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
             }
-            return theRequest;
         }
-        /**
-         * [countTime description]
-         * @param  {[type]} str [description]
-         * @param  {[type]} obj [description]
-         * @return {[type]}     [description]
-         */
-    Util.prototype.countTime = function(str, obj, text) {
-            var _obj = $(obj);
-            _obj.each(function(i) {
-                    var _this = $(this);
-                    var $start = Number(_this.attr("data-time")),
-                        $now = Number(_this.attr("data-now")),
-                        $href = _this.attr("data-href"),
-                        $iscan = _this.attr("data-iscan"),
-                        $status = _this.attr("data-status");
-                    var sTimmer;
-                    if ($start != "" && $now != "" && $status == "yes") {
-                        timeHandler();
-                        sTimmer = setInterval(function() {
-                            timeHandler();
-                        }, 1000);
+        return theRequest;
+    }
+    /**
+     * 下拉加载更多
+     * @param  {String}   swrap    scroll
+     * @param  {String}   ul       加载列表ul
+     * @param  {String}   ajaxUrl  Ajax加载url
+     * @param  {String}   method   Ajax 请求方式
+     * @param  {Object}   postdata Ajax 提交数据
+     * @param  {Function} callback 请求成功后回调
+     * @return {[type]} [description]
+    */
+    Util.prototype.scrollMore = function(swrap,ul,postdata) {
+        window.scroller = new IScroll(swrap, {
+            probeType: 2,
+            mouseWheel: false,
+            bindToWrapper: true,
+            scrollY: true
+        }).on('scroll', function() {
+            if(this.maxScrollY-this.y>40){
+                $(ul).append(postdata);
+                setTimeout(function() {
+                    var innerH = Number($("#scrollWrap").find(".scroll_con").height()) + 20;
+                    var scrollH = Number(document.body.clientHeight);
+                    console.log(scrollH)
+                    if (innerH < scrollH) {
+                        $("#scrollWrap").height(scrollH + 1);
+                    } else {
+                        $("#scrollWrap").height(innerH);
                     }
-                    
-
-                    function timeHandler() {
-                        var _countTime, $days, $hours, $minutes, $second;
-                        $now += 1000;
-                        _countTime = $start - $now;
-                        if (_countTime > 0) {
-                            $days = Math.floor(_countTime / (1000 * 60 * 60 * 24)),
-                                $hours = Math.floor(_countTime / (1000 * 60 * 60) % 24),
-                                $minutes = Math.floor(_countTime / (1000 * 60) % 60),
-                                $second = Math.floor(_countTime / 1000 % 60);
-                            $days = ($days > 0) ? $days + "天" : "";
-                            // $hours = ($hours > 0) ? $hours+"小时" : "";
-                            $minutes = ($minutes >= 0 && $minutes < 10) ? "0" + $minutes : $minutes;
-                            $second = ($second >= 0 && $second < 10) ? "0" + $second : $second;
-                            _this.addClass("ing").removeClass("no").html('<span>' + str + '</span>' + $days + $hours + '小时' + $minutes + '分' + $second + '秒');
-                        } else {
-                            clearInterval(sTimmer);
-                            if($href != null || $href != undefined){
-                                _this.attr("href",$href);
-                            }
-                            _this.removeClass("ing").attr({
-                                "data-iscan": "yes"
-                            }).html(text);
-                            _this.parent().siblings().find("input").removeAttr("disabled");
-                        }
-                    }
-                })
-                // _start = Number(_obj.attr("data-time")),
-                //     _now = Number(_obj.attr("data-now"));
-                // if (_start != "" && _now != "") {
-                //     timeHandler();
-                //     ctimmer = setInterval(function() {
-                //         timeHandler();
-                //     }, 1000);
-                // }
-        }
-        /**
-         * 页面滚动
-         * @return {[type]} [description]
-         */
+                    window.scroller.refresh();
+                }, 800);
+            }
+        }).on('scrollEnd', function() {
+            
+        }).on('refresh', function() {
+            console.log("refresh");
+        });
+    }
+    /**
+     * 页面滚动
+     * @return {[type]} [description]
+     */
     Util.prototype.pScroll = function(swrap, top, up) {
             var _self = this;
             _pullObj = ".pull_down_update";
-            $pullH = parseFloat($(".head").height()) + 10;
+            $pullH = parseFloat($(".head").height());
             $(swrap).data("up", false);
             var isHasUp = $(swrap).data("up");
             //控制高度不足时页面刷新
@@ -717,25 +710,23 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
             }
             window.isSrollInit = true;
         }
-        /**
-         * IScroll 事件控制
-         * @return {[type]} [description]
-         */
+    /**
+     * IScroll 事件控制
+     * @return {[type]} [description]
+     */
     Util.prototype.newIScroll = function(swrap, pullH, top, pullObj) {
-            var _self = this,
-                $pullDownObj = $(pullObj),
-                $isUpdate = false;
+            var _self = this , $pullDownObj = $(pullObj) , $isUpdate = false;
             window.scroller = new IScroll(swrap, {
                 probeType: 2,
-                mouseWheel: true,
+                mouseWheel: false,
                 bindToWrapper: true,
                 scrollY: true
             }).on('scroll', function() {
                 if (this.y >= pullH) {
                     $isUpdate = true;
-                    $(swrap).attr("data-scroll", "on").animate({
-                        "top": top + "rem"
-                    }, 500);
+                    // $(swrap).attr("data-scroll", "on").animate({
+                    //     "top": top + "rem"
+                    // }, 500);
                     $pullDownObj.html("松开刷新");
                 } else if (this.y < 50) {
                     $isUpdate = false;
@@ -754,9 +745,9 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                 console.log("refresh");
             });
         }
-        /**
-         * 初始化IScroll插件
-         */
+    /**
+     * 初始化IScroll插件
+     */
     Util.prototype.Iscroll = function(obj) {
             var _self = this;
             $(obj).find(".pull_down_update").empty();
@@ -764,28 +755,34 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                 mouseWheel: true,
             });
         }
-        /**
-         * 初始化IScroll插件
-         */
+    /**
+     * 初始化IScroll插件
+     */
     Util.prototype.otherIscroll = function(obj) {
             $(obj).find(".pull_down_update").empty();
             window.otherScroller = new IScroll(obj, {
                 mouseWheel: true,
             });
         }
-        /**
-         * 页面内部页效果
-         * @param  {[type]} title      [description]
-         * @param  {[type]} extendWrap [description]
-         * @param  {[type]} content    [description]
-         * @return {[type]}            [description]
-         */
+    Util.prototype.otherIscroll = function(obj) {
+        $(obj).find(".pull_down_update").empty();
+        window.otherScroller = new IScroll(obj, {
+            mouseWheel: true,
+        });
+    }
+    /**
+     * 页面内部页效果
+     * @param  {[type]} title      [description]
+     * @param  {[type]} extendWrap [description]
+     * @param  {[type]} content    [description]
+     * @return {[type]}            [description]
+     */
     Util.prototype.pageRightEffect = function(extendWrap) {
             var _self = this;
             var isTap = true;
             var extendCtrl = $(".extend_swicth"),
                 $extendWrap = $(extendWrap);
-            extendCtrl.on("tap",function() {
+            extendCtrl.on("tap", function() {
                 var _this = $(this);
                 var _title = _this.attr("data-title"),
                     _content = _this.attr("data-content");
@@ -797,7 +794,9 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                         $extendWrap.find("#extend_wrap_content").html(extendWrapContent);
                         $extendWrap.find("#extend_wrap_title").html(_title);
                         //安卓 webView bug
-                        $extendWrap.find(".wrap_til").animate({"top":0.1},200);
+                        $extendWrap.find(".wrap_til").animate({
+                            "top": 0.1
+                        }, 200);
 
                         $extendWrap.show();
                         setExtendOn($extendWrap);
@@ -807,7 +806,9 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                     } else {
                         setExtendOff($extendWrap);
                         //安卓 webView bug
-                        $extendWrap.find(".wrap_til").css({"top":0});
+                        $extendWrap.find(".wrap_til").css({
+                            "top": 0
+                        });
                         setTimeout(function() {
                             $("#header_logo").attr("href", "/");
                             $("#go_back").attr("href", "javascript:window.history.go(-1)");
@@ -834,12 +835,12 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
                 }).removeClass('on');
             }
         }
-        /**
-         * [inputFocus description]
-         * @param  {[type]} obj    [description]
-         * @param  {[type]} height [description]
-         * @return {[type]}        [description]
-         */
+    /**
+     * [inputFocus description]
+     * @param  {[type]} obj    [description]
+     * @param  {[type]} height [description]
+     * @return {[type]}        [description]
+     */
     Util.prototype.inputFocus = function(obj, height) {
         var inputEl = document.querySelector(obj);
         height = height || 200;
@@ -864,72 +865,22 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
         });
     }
     Util.prototype.historyHandler = function(back, str, href) {
-        var $back, _his, start, hisStr, slen;
-        $back = $(back);
-        _his = $back.attr("data-href");
-        slen = str.length;
-        start = _his.lastIndexOf("/") - slen;
-        if (start != -1) {
-            hisStr = _his.substr(start, slen);
-            if (hisStr == str) {
-                window.location.reload();
+            var $back, _his, start, hisStr, slen;
+            $back = $(back);
+            _his = $back.attr("data-href");
+            slen = str.length;
+            start = _his.lastIndexOf("/") - slen;
+            if (start != -1) {
+                hisStr = _his.substr(start, slen);
+                if (hisStr == str) {
+                    window.location.reload();
+                }
             }
         }
-    }
     /**
      * [appDown description]
      * @param  {[type]} el [description]
      * @return {[type]}    [description]
-     */
-    // Util.prototype.appDown = function(el){
-    //     var _self = this;
-    //     var androidUrl = "http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537";
-    //     var ua = _self.UA();
-    //     var downDOM = "<div class='m_app_down'><p class='fl'><i class='icon_app'></i><span>蚂蚁在线<br><em>安卓1.0隆重发布</em></span></p><a href='http://fusion.qq.com/cgi-bin/qzapps/unified_jump?appid=42240537' class='fr b_down_btn' id='b_down_btn' onclick=\"dplus.track('点击安卓App下载', {})\">下载App</a><div class='b_close_btn' id='b_close_btn'><b></b></div></div>";
-    //     var isShow = _self.getCookie("m_b_down_close");
-    //     if(ua.android && !ua.mayi && isShow != "close"){
-    //         $(el).append(downDOM);
-    //     }
-    //     $(el).delegate("#b_close_btn","tap",function(){
-    //         $(".m_app_down").remove();
-    //         _self.setCookie("m_b_down_close","close",1);
-    //     })
-    //     $(el).delegate("#b_down_btn","tap",function(){
-    //         _self.setCookie("m_b_down_close","close",30);
-    //     })
-    // }
-    /**
-         * set cookie, non-comment use
-         *
-         * @method setCookie, non-comment use, please use setLocalStorage instead
-         * @param {String} name
-         * @param {String} value
-         * @param {Int} day
-         */
-    Util.prototype.setCookie = function(name, value, day) {
-            var Days = day || 30;
-            var exp = new Date();
-            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-            var theDate = new Date(exp),expiresTime = new Date(theDate.toLocaleDateString());
-            document.cookie = name + "=" + escape(value) + ";expires=" + expiresTime;
-        }
-        /**
-         * get cookie, non-comment use
-         *
-         * @method getCookie, non-comment use, please use getLocalStorage instead
-         * @param {String} name
-         * @returns {String}
-         */
-    Util.prototype.getCookie = function(name) {
-            var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-            if (arr != null) return unescape(arr[2]);
-            return null;
-        }
-    /**
-     * set uuid
-     * @param  {Number} len   uuid length
-     * @param  {Number} radix radix
-     * @return {[type]}       uuid
      */
     Util.prototype.setUuid = function(len, radix) {
         var CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');    
