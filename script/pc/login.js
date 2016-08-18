@@ -51,7 +51,7 @@ define(function (require,exports,module) {
 		var _self = this;
 		var num = 60;
 	    $(".idcode .btn").click(function(){
-	    	$.post("/api/login.php",{mobile:$("#mobile").val(),action:"yzCode"},function(msg){
+	    	$.post("/api/login.php",{username:$("#mobile").val(),action:"yzCode"},function(msg){
 	    		var data = JSON.parse(msg);
 				_self.setTip(data.errmsg);
 				if(data.status == '10017'){

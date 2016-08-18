@@ -67,9 +67,7 @@ class login extends verification
 		$this->_config = $config;
    		$this->_db = $db;
    		$status = false;
-
    		if(parent::checkData($this->_account,'mobile')){
-
    			$this->users();
 			if(!empty($this->_account)){
 				if (method_exists($this,$this->_action)) {
