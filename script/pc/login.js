@@ -3,12 +3,11 @@
 *author:tianxiaobao
 */
 define(function (require,exports,module) {
-	var $ = require("jquery");
+	var $ = require('jquery');
 	"use strict";
 	function Check(){
 		this.init();
 	}
-	module.exports = new Check();
 	Check.prototype.init = function(){
 		/*focus边框变色*/
 		$(function(){
@@ -89,4 +88,5 @@ define(function (require,exports,module) {
 			});
 	    });
 	};
+	module.exports = new Check();
 });
