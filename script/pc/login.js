@@ -28,7 +28,7 @@ define(function (require,exports,module) {
 		$(".button").click(function(){
 			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
 				var data = JSON.parse(msg);
-					_self.setTip(data.errmsg);
+				_self.setTip(data.errmsg);
 			});
 		});
 	};
@@ -36,19 +36,11 @@ define(function (require,exports,module) {
 	*注册操作
 	*/
 	Check.prototype.regist = function() {
+		var _self = this;
 		$(".button").click(function(){
-			$.post("register.php",{mobile:$("#mobile").val(),smsvode:$("#smsvode").val(),password:$("#password").val()},function(data){
-				switch(data.code){
-					case 1001:
-						this.setTip("请输入用户名");
-						break;
-					case 1002:
-						this.setTip("请输入用户名");
-						break;
-					case 1003:
-						alert(3);
-						break;
-				}
+			$.post("register.php",{mobile:$("#mobile").val(),smsvode:$("#smsvode").val(),password:$("#password").val()},function(msg){
+				var data = JSON.parse(msg);
+				_self.setTip(data.errmsg);
 			});
 		});
 	};
@@ -56,26 +48,25 @@ define(function (require,exports,module) {
 	*获取验证码
 	*/
 	Check.prototype.idCode = function(){
+		var _self = this;
 		var num = 60;
 	    $(".idcode .btn").click(function(){
-	    	$.post("register.php",{mobile:$("#mobile").val()},function(data){
-				switch(data.code){
-					case 1001:
-						this.setTip();
-						break;
-					case 1002:
-						$(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
-                        var interval = window.setInterval(function(){
-                            num = num - 1;
-                            $(".idcode .btn").attr("value",num+ "秒后重新发送");
-                            if (num < 1) {
-                                $(".idcode .btn").attr("disabled",false).css("background-color","#ff5c5d");
-                                clearInterval(interval);
-                                $(".idcode .btn").attr("value","发送短信验证码");
-                                num = 60;
-                            };
-                        },1000);
-						break;
+	    	$.post("/api/login.php",{username:$("#mobile").val(),action:"yzCode"},function(msg){
+	    		var data = JSON.parse(msg);
+				_self.setTip(data.errmsg);
+				if(data.status == '10017'){
+					$(".idcode .btn").attr("disabled","true").css("background-color","#ccc");
+                    var interval = window.setInterval(function(){
+                        num = num - 1;
+                        $(".idcode .btn").attr("value",num+ "秒后重新发送");
+                        if (num < 1) {
+                            $(".idcode .btn").attr("disabled",false).css("background-color","#ff5c5d");
+                            clearInterval(interval);
+                            $(".idcode .btn").attr("value","发送短信验证码");
+                            num = 60;
+                        };
+                    },1000);
+                    $(".tips").css("display","none");
 				}
 			});
 	    });
