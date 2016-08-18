@@ -71,15 +71,7 @@ class login extends verification
    		if(parent::checkData($this->_account,'mobile')){
    			$this->users();
 			if(!empty($this->_account)){
-   				if($this->_type=='lostpass' || $this->_type=='updatepass' || $this->_type=='login'){
-		   			if(empty($this->_users['mobile'])){$this->_response_code = '10013';}
-		   		}
-		   		if($this->_type=='register'){
-					if(!empty($this->_users['mobile'])){$this->_response_code = '10009';}
-				}
-
 				if (method_exists($this,$this->_action)) {
-   					if($this->_action=='register')
 	                call_user_func(array($this,$this->_action));
 	            }else{
 	                // 请求的方法不存在
