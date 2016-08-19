@@ -4,26 +4,25 @@ include_once("includes/global.php");
 function showUser()
 {
 	global $config,$db,$buid;
-	
-	if(!empty($_COOKIE['USER']))
+	if(!empty($config['_COOKIE']['1']))
 	{
 		if($config['temp']=='wap')
 		{
-			$new='<a href=\'main.php?cg_u_type=1\' class=\'footer_denglu_user\'>'.$_COOKIE['USER']."</a> &nbsp;&nbsp;<a href='$config[weburl]/main.php?action=logout' class='footer_denglu'>退出</a>";
+			$new='<a href=\'main.php?cg_u_type=1\' class=\'footer_denglu_user\'>'.$config['_COOKIE']['1']."</a> &nbsp;&nbsp;<a href='$config[weburl]/main.php?action=logout' class='footer_denglu'>退出</a>";
 		}
 		else if($_GET['m'] == 'index')
 		{
 			
-			$sql="select b.pic from ".MEMBER." a left join ".MEMBERGRADE." b on a.grade_id = b.id where user = '$_COOKIE[USER]' ";
+			$sql="select b.pic from ".MEMBER." a left join ".MEMBERGRADE." b on a.grade_id = b.id where user = '{$config['_COOKIE']['1']}' ";
 			$db->query($sql);
 			$pic = $db->fetchField('pic');
 			if($_GET['p'] == 'pay'){
-				$new = "<li class='drop-down'><a href='".$config['weburl']."/main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><div><a href='".$config['weburl']."/main.php?m=member&s=admin_member'>账号管理</a><a href='".$config['weburl']."/main.php?action=logout'>退出</a><div></li>";
+				$new = "<li class='drop-down'><a href='".$config['weburl']."/main.php?cg_u_type=1'>".$config['_COOKIE']['1']."</a><div><a href='".$config['weburl']."/main.php?m=member&s=admin_member'>账号管理</a><a href='".$config['weburl']."/main.php?action=logout'>退出</a><div></li>";
 
 				$new.= "<li><div><a href='".$config['weburl']."/main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'>消息</a></div></li>";
 			}else{
-				// $new = "<div class='nav-fore1'><a class='name' href='main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><img align='absmiddle' src='$pic'><i><em></em></i></div><div class='nav-fore2'><ul><li><a href='main.php?m=member&s=admin_member'>账号管理</a></li><li><a href='main.php?action=logout'>退出</a></li></ul><div>";
-				$new = "<li class='drop-down'><a class='name' href='main.php?cg_u_type=1'>".$_COOKIE['USER']."</a><div><a href='main.php?m=member&s=admin_member'>账号管理</a><a href='main.php?action=logout'>退出</a><div></li>";
+				// $new = "<div class='nav-fore1'><a class='name' href='main.php?cg_u_type=1'>".$config['_COOKIE']['1']."</a><img align='absmiddle' src='$pic'><i><em></em></i></div><div class='nav-fore2'><ul><li><a href='main.php?m=member&s=admin_member'>账号管理</a></li><li><a href='main.php?action=logout'>退出</a></li></ul><div>";
+				$new = "<li class='drop-down'><a class='name' href='main.php?cg_u_type=1'>".$config['_COOKIE']['1']."</a><div><a href='main.php?m=member&s=admin_member'>账号管理</a><a href='main.php?action=logout'>退出</a><div></li>";
 				$new.= "<li class='nav msg'><div class='nav-fore1'><a class='name' href='main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'><span>消息</span></a></div></li>";
 			}
 
@@ -31,7 +30,7 @@ function showUser()
 		}
 		else
 		{
-			$new="欢迎来".$config['company'].'！<a class=\'name\' href=\'main.php\'>'.$_COOKIE['USER']."</a> &nbsp;<a href='$config[weburl]/main.php?action=logout'>退出</a>";
+			$new="欢迎来".$config['company'].'！<a class=\'name\' href=\'main.php\'>'.$config['_COOKIE']['1']."</a> &nbsp;<a href='$config[weburl]/main.php?action=logout'>退出</a>";
 		}
 	
 	}

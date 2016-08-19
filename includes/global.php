@@ -181,6 +181,9 @@ else
 }
 
 $_SESSION['temp'] = $config['temp'];
+
+$config['_COOKIE'] = empty(bgetcookie("USERID"))?array():bgetcookie("USERID");
+// var_dump($config);die;
 /*
 $data['uc_appid']='201605270933';
 $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';

@@ -20,6 +20,7 @@ $admin = new admin();
 if(!empty($_POST)||!empty($_GET['deid'])||!empty($_GET['rec']))
 	$admin->clear_user_shop_cache();
 //---------------------登录检查,个人或企业会员
+
 $admin->is_login($action);
 $is_company=$admin->check_myshop();
 if(!empty($_GET['oldUrl']))$tpl->assign('oldUrl',$_GET['oldUrl']);
@@ -124,6 +125,7 @@ if($_SESSION['USER_TYPE']==1)
 	include("lang/cn/admin_menu.inc_p.php");
 else
 	include("lang/cn/admin_menu.inc.php");
+
 switch ($action)
 {
 	case "logout":
