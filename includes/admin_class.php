@@ -19,7 +19,7 @@ class admin{
 	function is_login($action)
 	{
 		global $buid,$config;
-		if(!$buid||!isset($_COOKIE["USER"]))
+		if(!$buid||!isset($config['_COOKIE']['1']))
 		{
 			header("Location: $config[weburl]/login.php");
 			exit();
