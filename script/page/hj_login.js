@@ -84,6 +84,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 dataType: "json",
                 data: {
                     username:mobileVal,
+                    smsvode:svodeVal,
                     password:pwdVal,
                     action:"register",
                     forword:url
@@ -114,6 +115,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 dataType: "json",
                 data: {
                     username:mobileVal,
+                    smsvode:svodeVal,
                     password:pwdVal,
                     action:"lostpass",
                     forword:url
