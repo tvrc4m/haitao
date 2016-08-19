@@ -19,7 +19,7 @@
         </li>
         <li class="inp_obtain clearfix">
             <input name="smsvode" tabindex="3" maxlength="6" autocomplete="off" type="text" id="smsvode" placeholder="请输入验证码"/>
-            <b id="obtain" class="obtain yes">获取验证码</b>
+            <b id="obtain2" class="obtain yes">获取验证码</b>
         </li>
         <li class="inp_box">
             <i class="txt_icon iconfont">&#xe609;</i>
@@ -47,8 +47,8 @@
     window.jsVersion = "7b3d28d5dd";
     require(['page/hj_login'], function (loginCtrl) {
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
-        loginCtrl.sendValidCode("lostpass", ".txt_form", "#obtain", 60 , "/api/login.php");
         loginCtrl.lostpassCtrl(".txt_form","#find_sub","/api/login.php");  
+        loginCtrl.sendValidCode("lostpass", ".txt_form", "#obtain2", 60 , "/api/login.php");
     });   
 </script>
 <{include file="footer.htm"}>

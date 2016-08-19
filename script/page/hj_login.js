@@ -6,7 +6,6 @@
  */
 define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     "use strict";
-
     function hjLogin() {
         this.init();
     }
@@ -47,15 +46,15 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 $(this).parent().find(obj2).removeClass(obj3);
             });  
         });
-        $(obj2).on("tap click", function(){ 
+        $(obj2).on("click", function(){ 
             $(this).parent().find("input").val("");
             $(this).removeClass(obj3);
         });  
     }
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl) {
         formValid.init(form);
-        $(subBtn).on("tap", function() {
-            var url = "<{$smarty.get.forward}>",
+        $(subBtn).on("click", function() {
+            var url,
                 userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
             $.ajax({
@@ -69,7 +68,12 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                     forword:url
                 },
                 success: function(data) {
-                    utility.tipsWarn(data.errmsg);
+                    if(!data.url){
+                        utility.tipsWarn(data.errmsg);
+                    
+                    }else{
+                        window.location.href = data.url;  
+                    } 
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
@@ -79,7 +83,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     }
     hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl) {
         formValid.init(form);
-        $(subBtn).on("tap", function() {
+        $(subBtn).on("click", function() {
             var url = "<{$smarty.get.forward}>",
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
@@ -95,7 +99,12 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                     forword:url
                 },
                 success: function(data) {
-                    utility.tipsWarn(data.errmsg);
+                    if(!data.url){
+                        utility.tipsWarn(data.errmsg);
+                    
+                    }else{
+                        window.location.href = data.url;  
+                    } 
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
@@ -105,7 +114,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     }
     hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl) {
         formValid.init(form);
-        $(subBtn).on("tap", function() {
+        $(subBtn).on("click", function() {
             var url = "<{$smarty.get.forward}>",
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
@@ -121,7 +130,12 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                     forword:url
                 },
                 success: function(data) {
-                    utility.tipsWarn(data.errmsg);
+                    if(!data.url){
+                        utility.tipsWarn(data.errmsg);
+                    
+                    }else{
+                        window.location.href = data.url;  
+                    } 
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
@@ -131,9 +145,9 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     }
     hjLogin.prototype.sendValidCode = function(isForm ,form, sedBtn, sec, ajaxUrl) {
         var _self = this, num = sec ,timer = null;
-        var url = "<{$smarty.get.forward}>";
-        var type = isForm ? isForm : "lostpass";
-        $(sedBtn).on("tap",function(){
+        // var url = "<{$smarty.get.forward}>";
+        var type = isForm ? isForm : "lostpass"
+        $(sedBtn).on("click",function(){
             var _this = $(this) , mobileVal = $(form).find("input[name=mobile]").val();
             $.ajax({
                 url: ajaxUrl + "?" + Math.random(),
@@ -146,7 +160,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 },
                 success: function(data) {
                     utility.tipsWarn(data.errmsg);
-                    console.log(data.errmsg)
                     if(data.status == '10017'){
                         _this.attr("disabled",true);
                         _this.removeClass("yes").addClass("no").html('<var>' + num + '</var>秒后重新发送');
@@ -162,14 +175,24 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                             }
                         }, 1000);
                     }
-                    // else{
-                    //     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                    // }
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
                 }
             })
+            return false;
+        });
+    }
+    hjLogin.prototype.checker = function(obj) {
+        $(obj).on("click", function() {
+            var _this = $(this), icon=String("&#xe712;") ,icon2=String("&#xe738;");
+            if (_this.hasClass("seled")) {
+                _this.removeClass("seled");
+                _this.find("i.txt_icon6").html(icon2)
+            } else {
+                _this.addClass("seled");
+                _this.find("i.txt_icon6").html(icon)
+            }
         });
     }
     module.exports = new hjLogin();

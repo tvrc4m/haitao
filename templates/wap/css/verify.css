@@ -19,11 +19,7 @@
     box-shadow: 0px 0px 3px #b9b9b9;-webkit-box-shadow: 0px 0px 3px #b9b9b9;background-color: #ff5c5c;border-radius: .2rem;color: #fff;
 	text-align: center;}
 .login_container ul li b.no{background-color: #ccc;color: #fff;}
-.inp_agreement .chk{display: inline-block;width: 0.6rem;height: 0.6rem;background: url(../../../image/wap/wap_haitao_icon163.png) no-repeat;
-	background-size: contain;vertical-align: -0.07rem;}
-.inp_agreement .seled{background: url(../../../image/wap/wap_haitao_icon164.png) no-repeat;
-	background-size: contain;vertical-align: -0.07rem;}
-/*.login_container ul li input[name="agreement"]{vertical-align: middle;}*/
+.inp_agreement .chk{display: inline-block;width: 0.6rem;height: 0.6rem;margin-right: 0.1rem;}
 .login_container ul li input[type="submit"] {display: inline-block;height: 2rem;line-height: 2rem;
 	width: 100%;color: #fff;text-align: center;font-size: .7rem;background-color: #ff5c5c;
 	border-radius: 0.2rem;margin-top: 0.75rem;-webkit-appearance: none;}
@@ -37,6 +33,7 @@
 .login_container ul li .txt_icon3{top: 52%;}
 .login_container ul li .txt_icon4{top: 39%;}
 .login_container ul li .txt_icon5{top: 39%;}
+.login_container ul li .txt_icon6{font-size: 0.65rem;font-weight: 500;}
 .login_container .real_notice{padding: 1.5rem 1rem 0;} 
 .login_container .real_notice_inner{background-color: #ddd;border-radius: 5px;padding: 20px;}
 .login_container .real_notice h3{font-size: 0.7rem;text-align: left;margin-bottom: 10px;}

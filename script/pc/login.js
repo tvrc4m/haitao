@@ -17,6 +17,12 @@ define(function (require,exports,module) {
 	            $("form").find('dl').removeClass("focus");
 	            $(this).parents('dl').addClass("focus");
 	        });
+			$(window).keypress(function (event) {
+				var key = event.which;
+				if (key == 13) {
+					$(".button").click();
+				}
+			});
 	    });
 	}
 	/*

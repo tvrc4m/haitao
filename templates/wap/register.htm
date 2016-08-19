@@ -28,7 +28,7 @@
         </li>
         <{if $dist_id neq 1}>
         <li class="inp_agreement">
-            <b class="chk seled"></b>
+            <b class="chk seled"><i class="txt_icon6 iconfont">&#xe712;</i></b>
             <span>注册即接受<a class="org" href="agreement.html">《蚂蚁海淘使用协议》</a></span>
         </li>  
         <{/if}>
@@ -42,7 +42,6 @@
 <script type="text/javascript" src="script/libs.js"></script>
 <script type="text/javascript">
     require.config({
-        //By default load any module IDs from js/lib
         baseUrl: 'script/',
         urlArgs: "v="+window.jsVersion,
         paths: {
@@ -52,12 +51,12 @@
         shim: {},
         waitSeconds:0
     });
-    /**JS版本号 */
     window.jsVersion = "7b3d28d5dd";
     require(['page/hj_login'], function (loginCtrl) {
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
         loginCtrl.sendValidCode("register", ".txt_form", "#obtain", 60 , "/api/login.php");  
-        loginCtrl.registerCtrl(".txt_form","#submitreg","/api/login.php");  
+        loginCtrl.registerCtrl(".txt_form","#submitreg","/api/login.php"); 
+        loginCtrl.checker(".chk"); 
     });   
 </script>
 <{include file="footer.htm"}>
