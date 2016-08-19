@@ -10,7 +10,7 @@ if($buid)
 }
 
 $tpl->assign('config',$config);
-var_dump($smarty);die;
+
 if(!empty($_GET['connect_id']))
     $tpl->display("user_connect.htm");
 else
