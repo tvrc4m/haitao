@@ -28,7 +28,11 @@ define(function (require,exports,module) {
 		$(".button").click(function(){
 			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
 				var data = JSON.parse(msg);
-				_self.setTip(data.errmsg);	
+				if(data.url){
+					window.location.href = data.url;
+				}else{
+					_self.setTip(data.errmsg);	
+				}
 			});
 		});
 	};
@@ -40,7 +44,11 @@ define(function (require,exports,module) {
 		$(".button").click(function(){
 			$.post("/api/login.php",{mobile:$("#mobile").val(),smsvode:$("#smsvode").val(),password:$("#password").val()},function(msg){
 				var data = JSON.parse(msg);
-				_self.setTip(data.errmsg);
+				if(data.url){
+					window.location.href = data.url;
+				}else{
+					_self.setTip(data.errmsg);
+				}
 			});
 		});
 	};
@@ -52,7 +60,11 @@ define(function (require,exports,module) {
 		$(".button").click(function(){
 			$.post("/api/login.php",{mobile:$("#mobile").val(),smsvode:$("#smsvode").val(),password:$("#password").val()},function(msg){
 				var data = JSON.parse(msg);
-				_self.setTip(data.errmsg);
+				if(data.url){
+					window.location.href = data.url;
+				}else{
+					_self.setTip(data.errmsg);
+				}
 			});
 		});
 	};
