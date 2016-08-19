@@ -28,7 +28,7 @@ define(function (require,exports,module) {
 		$(".button").click(function(){
 			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
 				var data = JSON.parse(msg);
-				_self.setTip(data.errmsg);
+				_self.setTip(data.errmsg);	
 			});
 		});
 	};
