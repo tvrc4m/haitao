@@ -183,7 +183,11 @@ else
 $_SESSION['temp'] = $config['temp'];
 
 $config['_COOKIE'] = empty(bgetcookie("USERID"))?array():bgetcookie("USERID");
-// var_dump($config);die;
+if(strstr($_SERVER['HTTP_REFERER'],'forward',true))
+	$config['_FORWARD'] = "forward=".strstr($_SERVER['HTTP_REFERER'],'forward',true);
+else
+	$config['_FORWARD'] = "forward=".$_SERVER['HTTP_REFERER'];
+
 /*
 $data['uc_appid']='201605270933';
 $data['uc_secret']='g23fa33gbsd1gdd03152ed213c52ed6d1';

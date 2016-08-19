@@ -9,7 +9,6 @@ if($buid)
     exit();
 }
 include_once("footer.php");
-
 $tpl->assign('config',$config);
 
 if(!empty($_GET['connect_id']))

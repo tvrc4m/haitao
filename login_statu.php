@@ -1,6 +1,5 @@
 <?php
 include_once("includes/global.php");
-var_dump($_SERVER,$config);die;
 //=================================
 function showUser()
 {
@@ -22,7 +21,6 @@ function showUser()
 
 				$new.= "<li><div><a href='".$config['weburl']."/main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'>消息</a></div></li>";
 			}else{
-				// $new = "<div class='nav-fore1'><a class='name' href='main.php?cg_u_type=1'>".$config['_COOKIE']['1']."</a><img align='absmiddle' src='$pic'><i><em></em></i></div><div class='nav-fore2'><ul><li><a href='main.php?m=member&s=admin_member'>账号管理</a></li><li><a href='main.php?action=logout'>退出</a></li></ul><div>";
 				$new = "<li class='drop-down'><a class='name' href='main.php?cg_u_type=1'>".$config['_COOKIE']['1']."</a><div><a href='main.php?m=member&s=admin_member'>账号管理</a><a href='main.php?action=logout'>退出</a><div></li>";
 				$new.= "<li class='nav msg'><div class='nav-fore1'><a class='name' href='main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'><span>消息</span></a></div></li>";
 			}
@@ -39,12 +37,12 @@ function showUser()
 	{	
 		if($config['temp']=='wap')
 		{
-			$new="<a href='".$config["weburl"]."/login.php?forward=".$_SERVER['HTTP_REFERER']."' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/$config[regname]' class='footer_denglu'>注册</a>";
+			$new="<a href='".$config["weburl"]."/login.php?".$config['_FORWARD']."' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/register.php?".$config['_FORWARD']."' class='footer_denglu'>注册</a>";
 		}
 		else
 		{
-			// $new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/$config[regname]'>注册</a>";
-			$new="<li><a href='".$config["weburl"]."/login.php?forward=".$_SERVER['HTTP_REFERER']."'>亲，请登录</a></li><li><a href='".$config["weburl"]."/$config[regname]'>注册</a></li>";
+			// $new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/register.php?".$config['_FORWARD']."'>注册</a>";
+			$new="<li><a href='".$config["weburl"]."/login.php?".$config['_FORWARD']."'>亲，请登录</a></li><li><a href='".$config["weburl"]."/register.php?".$config['_FORWARD']."'>注册</a></li>";
 		}
 		if($_GET['m'] == 'index'&&$config['temp']=='wap')
 		{
