@@ -51,10 +51,10 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             $(this).removeClass(obj3);
         });  
     }
-    hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl) {
+    hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl) {
         formValid.init(form);
         $(subBtn).on("click", function() {
-            var url,
+            var url = skipUrl,
                 userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
             $.ajax({
@@ -81,10 +81,10 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             })
         })
     }
-    hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl) {
+    hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
         formValid.init(form);
         $(subBtn).on("click", function() {
-            var url = "<{$smarty.get.forward}>",
+            var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
@@ -112,10 +112,10 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             })
         })
     }
-    hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl) {
+    hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
         formValid.init(form);
         $(subBtn).on("click", function() {
-            var url = "<{$smarty.get.forward}>",
+            var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();

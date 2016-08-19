@@ -47,8 +47,8 @@
     window.jsVersion = "7b3d28d5dd";
     require(['page/hj_login'], function (loginCtrl) {
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
-        loginCtrl.lostpassCtrl(".txt_form","#find_sub","/api/login.php");  
         loginCtrl.sendValidCode("lostpass", ".txt_form", "#obtain2", 60 , "/api/login.php");
+        loginCtrl.lostpassCtrl(".txt_form","#find_sub","/api/login.php","<{$smarty.get.forward}>");   
     });   
 </script>
 <{include file="footer.htm"}>
