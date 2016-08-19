@@ -8,7 +8,6 @@ define(function (require,exports,module) {
 	function Check(){
 		this.init();
 	}
-	var url = "<{$smarty.get.forward}>";
 	/*
 	*初始化
 	*/
@@ -25,6 +24,7 @@ define(function (require,exports,module) {
 	*/
 	Check.prototype.login = function(){
 		var _self = this;
+		alert(url)
 		$(".button").click(function(){
 			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
 				var data = JSON.parse(msg);

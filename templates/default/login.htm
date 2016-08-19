@@ -65,7 +65,9 @@ seajs.config({
         "jquery": "pc/jquery/jquery-1.12.3.min.js"
     }
 });
+
 seajs.use("<{$config.weburl}>/script/pc/login",function(Check){
+    url = "<{$smarty.get.forward}>";
     Check.login();
 });
 </script>
