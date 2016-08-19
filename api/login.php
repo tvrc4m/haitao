@@ -173,10 +173,10 @@ class login extends verification
 			$this->_response_code = '10016';
 		else{
 			$status = $this->update_pwd();
-			if ($status)
+			if ($status){
 				$this->_response_data = $this->_config['weburl'].'/login.php';
 				$this->_response_code = '10014';
-			else
+			}else
 				$this->_response_code = '10015';
 		}
 
