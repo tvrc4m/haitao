@@ -57,7 +57,8 @@
     require(['page/hj_login'], function (loginCtrl) {
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
         loginCtrl.sendValidCode("register", ".txt_form", "#obtain", 60 , "/api/login.php");  
-        loginCtrl.registerCtrl(".txt_form","#submitreg","/api/login.php");  
+        loginCtrl.registerCtrl(".txt_form","#submitreg","/api/login.php"); 
+        loginCtrl.checker(".chk"); 
     });   
 </script>
 <{include file="footer.htm"}>
