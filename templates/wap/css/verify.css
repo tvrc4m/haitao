@@ -18,6 +18,7 @@
 .login_container ul li b.obtain{border:none;width: 40%;float: right;font-size: .7rem;height: 2rem;line-height: 2rem;
     box-shadow: 0px 0px 3px #b9b9b9;-webkit-box-shadow: 0px 0px 3px #b9b9b9;background-color: #ff5c5c;border-radius: .2rem;color: #fff;
 	text-align: center;}
+.login_container ul li b.no{background-color: #ccc;color: #fff;}
 .inp_agreement .chk{display: inline-block;width: 0.6rem;height: 0.6rem;background: url(../../../image/wap/wap_haitao_icon163.png) no-repeat;
 	background-size: contain;vertical-align: -0.07rem;}
 .inp_agreement .seled{background: url(../../../image/wap/wap_haitao_icon164.png) no-repeat;

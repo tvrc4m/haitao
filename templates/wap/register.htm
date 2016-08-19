@@ -32,7 +32,7 @@
             <span>注册即接受<a class="org" href="agreement.html">《蚂蚁海淘使用协议》</a></span>
         </li>  
         <{/if}>
-        <li><div class="inp_btn" id="submitreg">立即登录</div></li>
+        <li><div class="inp_btn" id="submitreg">免费注册</div></li>
         <li class="inp_retr">
             <a href="<{$config.weburl}>/login.php">已有账号？马上登陆</a>
         </li>
@@ -55,8 +55,9 @@
     /**JS版本号 */
     window.jsVersion = "7b3d28d5dd";
     require(['page/hj_login'], function (loginCtrl) {
-        loginCtrl.registerCtrl(".txt_form","#submitreg","/api/login.php");
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
+        loginCtrl.sendValidCode("register", ".txt_form", "#obtain", 60 , "/api/login.php");  
+        loginCtrl.registerCtrl(".txt_form","#submitreg","/api/login.php");  
     });   
 </script>
 <{include file="footer.htm"}>
