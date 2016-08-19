@@ -13,4 +13,12 @@
 		/*
 		 *用户中心配置
 		 */
+		$config['uc_state'] = true;
+		if($config['uc_state']){
+			$config['_UC']['uc_appid'] = "20160100136";
+			$config['_UC']['uc_secret'] = "92nkdbdagls3bnfs0nsdn9ndkngiansk8nlzn8isdn";
+			$config['_UC']['uc_server']="http://staging.mayionline.cn/apis/uc";
+		}
+		
+		
 		?>

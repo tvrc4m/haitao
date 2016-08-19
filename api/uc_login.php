@@ -8,6 +8,7 @@
 include_once("../includes/global.php");
 include_once($config['webroot']."/includes/verification.php");
 include_once($config['webroot']."/includes/uc_server.php");
+$uc_obj = new Uc_server($config['_UC']);
 
 class uc_login extends verification
 {
@@ -21,6 +22,7 @@ class uc_login extends verification
 	private $_type = '';
 	protected $_config = '';
 	private $_db = '';
+	private $_uc_obj = '';
 	private $_userinfo = '';//存储用户信息
 	protected $_action = '';//请求方法名
 	protected $_response_code = '';//回调状态
@@ -53,7 +55,7 @@ class uc_login extends verification
 
 	public function __construct(){
 		
-        global $config,$db;
+        global $config,$db,$uc_obj;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 		$this->_action = $post['action'];
 
@@ -68,6 +70,7 @@ class uc_login extends verification
 		
 		$this->_config = $config;
    		$this->_db = $db;
+   		$this->_uc_obj = $uc_obj;
    		if(parent::checkData($this->_account,'mobile')){
    			$this->users();
 			if(!empty($this->_account)){
@@ -84,8 +87,8 @@ class uc_login extends verification
 	}
 
 	private function response(){
-		//var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
-		echo json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'url'=>$this->_response_data));die;
+		var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
+		// echo json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'url'=>$this->_response_data));die;
 
 	}
 	/*
@@ -97,7 +100,9 @@ class uc_login extends verification
 	private function login(){
 		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
-	    var_dump($this->_users);die;
+	    $aaa = $this->_uc_obj->userinfo(array('phone'=>$login_phone));
+	    // $aaa = $this->_uc_obj->userinfo(array('phone'=>$login_phone,'password'=>$post['password']));
+	    var_dump($aaa);die;
 	    
 	}
 
@@ -107,8 +112,11 @@ class uc_login extends verification
 	 * @return [type] [description]
 	 */
 	private function register(){
-		if(!empty($this->_users['mobile'])){$this->_response_code = '10009';return false;}
-        if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
+		//if(!empty($this->_users['mobile'])){$this->_response_code = '10009';return false;}
+		$salt = parent::rand_pwd();
+		$a = $this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$salt));
+		var_dump($a);die;
+        /*if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
 			if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
 				$this->_response_code = '10021';
 			}else{
@@ -124,7 +132,7 @@ class uc_login extends verification
 	        }
 		}else{
 			$this->_response_code = '10020';
-		}
+		}*/
 		return false;
 	}
 

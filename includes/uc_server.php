@@ -6,9 +6,9 @@
 class Uc_server
 {
 
-	protected $appid="201605270933";
+	protected $appid='';
 
-    protected $secret="jindsf83nsdvi3n0ejj91jnlnapfnas92nvb";
+    protected $secret='';
 
     protected $timestamp;
 
@@ -18,18 +18,16 @@ class Uc_server
      */
     protected $action;
 
-    protected $server="https://m.mayizaixian.cn/apis/uc";
- //   protected $server="http://t.mayionline.cn/apis/uc";
+    protected $server='';
 
     protected $params=array();
 
     public function __construct($uc_config)
     {
-    //    $this->secret=$uc_config['uc_secret'];
-    //	$this->appid=$uc_config['uc_appid'];
-     //   $this->server=$uc_config['uc_server'];
+        $this->secret=$uc_config['uc_secret'];
+        $this->appid=$uc_config['uc_appid'];
+        $this->server=$uc_config['uc_server'];
     	$this->timestamp=time();
-
     }
     /**
      * 向用户中心进行注册
