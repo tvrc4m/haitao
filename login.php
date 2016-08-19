@@ -8,7 +8,7 @@ if($buid)
     header("Location:main.php?cg_u_type=1");
     exit();
 }
-
+include_once("footer.php");
 $tpl->assign('config',$config);
 
 if(!empty($_GET['connect_id']))
