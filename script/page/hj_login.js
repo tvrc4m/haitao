@@ -175,23 +175,23 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                             }
                         }, 1000);
                     }
-                    else{
-                        utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                    }
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
                 }
             })
+            return false;
         });
     }
     hjLogin.prototype.checker = function(obj) {
         $(obj).on("click", function() {
-            var _this = $(this);
+            var _this = $(this), icon=String("&#xe712;") ,icon2=String("&#xe738;");
             if (_this.hasClass("seled")) {
                 _this.removeClass("seled");
+                _this.find("i.txt_icon6").html(icon2)
             } else {
                 _this.addClass("seled");
+                _this.find("i.txt_icon6").html(icon)
             }
         });
     }
