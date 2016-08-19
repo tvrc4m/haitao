@@ -1,5 +1,6 @@
 <?php
 include_once("includes/global.php");
+var_dump($_SERVER,$config);die;
 //=================================
 function showUser()
 {
@@ -38,12 +39,12 @@ function showUser()
 	{	
 		if($config['temp']=='wap')
 		{
-			$new="<a href='".$config["weburl"]."/login.php' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/$config[regname]' class='footer_denglu'>注册</a>";
+			$new="<a href='".$config["weburl"]."/login.php?forward=".$_SERVER['HTTP_REFERER']."' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/$config[regname]' class='footer_denglu'>注册</a>";
 		}
 		else
 		{
 			// $new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/$config[regname]'>注册</a>";
-			$new="<li><a href='".$config["weburl"]."/login.php'>亲，请登录</a></li><li><a href='".$config["weburl"]."/$config[regname]'>注册</a></li>";
+			$new="<li><a href='".$config["weburl"]."/login.php?forward=".$_SERVER['HTTP_REFERER']."'>亲，请登录</a></li><li><a href='".$config["weburl"]."/$config[regname]'>注册</a></li>";
 		}
 		if($_GET['m'] == 'index'&&$config['temp']=='wap')
 		{
