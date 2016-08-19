@@ -9,7 +9,7 @@
  * 			1、功能：注册、登录、找回密码、修改密码
  */
 include_once("../includes/global.php");
-include("./verification.php");
+include_once($config['webroot']."/includes/verification.php");
 class login extends verification
 {
 
@@ -67,7 +67,6 @@ class login extends verification
 		
 		$this->_config = $config;
    		$this->_db = $db;
-   		$status = false;
    		if(parent::checkData($this->_account,'mobile')){
    			$this->users();
 			if(!empty($this->_account)){
@@ -105,6 +104,7 @@ class login extends verification
 			$this->_response_code = '10006';
 			return false;
 	    }
+
 	    
 	}
 
