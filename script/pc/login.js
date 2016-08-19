@@ -17,6 +17,12 @@ define(function (require,exports,module) {
 	            $("form").find('dl').removeClass("focus");
 	            $(this).parents('dl').addClass("focus");
 	        });
+			$(window).keypress(function (event) {
+				var key = event.which;
+				if (key == 13) {
+					$(".button").click();
+				}
+			});
 	    });
 	}
 	/*
@@ -24,7 +30,6 @@ define(function (require,exports,module) {
 	*/
 	Check.prototype.login = function(){
 		var _self = this;
-		alert(url)
 		$(".button").click(function(){
 			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
 				var data = JSON.parse(msg);
