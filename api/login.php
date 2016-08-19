@@ -26,6 +26,7 @@ class login extends verification
 	protected $_action = '';//请求方法名
 	protected $_response_code = '';//回调状态
 	protected $_response_data = null;//回调数据
+	protected $_old_url = '';
 	protected $_error = array(
         '00000'=>'登录成功！',
         '10001'=>'亲！玩我呢！',
@@ -62,6 +63,7 @@ class login extends verification
 		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = md5(addslashes($post['password_old']));
 		if(!empty($post['type']))$this->_type = $post['type'];
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
+		if(!empty($post['url']))$this->_old_url = $post['url'];
 
 		$this->_yzm_mobile = 'mon_yzm_'.$this->_account;
 		
@@ -84,7 +86,7 @@ class login extends verification
 
 	private function response(){
 		//var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
-		echo json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
+		echo json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'url'=>$this->_response_data));die;
 
 	}
 	/*
@@ -99,6 +101,7 @@ class login extends verification
 	    if ($this->_password==$this->_users['password']) {
 	    	$this->login_success();
 	    	$this->_response_code = '00000';
+	    	$this->_response_data = $this->_old_url;
 	    	return false;
 	    }else{
 			$this->_response_code = '10006';
@@ -121,7 +124,9 @@ class login extends verification
 			}else{
 				$type = $this->doreg();
 				if($type){
+					$this->login_success();
 					$this->_response_code = '10011';
+					$this->_response_data = $this->_old_url;
 					session_unset($_SESSION[$this->_yzm_mobile]);
 				}else
 					$this->_response_code = '10012';
@@ -146,6 +151,7 @@ class login extends verification
 				$status = $this->update_pwd();
 				if ($status){
 					$this->_response_code = '10014';
+					$this->_response_data = $this->_config['weburl'].'/login.php';
 					session_unset($_SESSION[$this->_yzm_mobile]);
 				}else
 					$this->_response_code = '10015';
@@ -168,6 +174,7 @@ class login extends verification
 		else{
 			$status = $this->update_pwd();
 			if ($status)
+				$this->_response_data = $this->_config['weburl'].'/login.php';
 				$this->_response_code = '10014';
 			else
 				$this->_response_code = '10015';
