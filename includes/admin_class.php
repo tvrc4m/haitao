@@ -21,7 +21,7 @@ class admin{
 		global $buid,$config;
 		if(!$buid||!isset($config['_COOKIE']['1']))
 		{
-			header("Location: $config[weburl]/login.php");
+			header("Location: $config[weburl]/login.php?$config[_FORWARD]");
 			exit();
 		}
 		if(empty($_SESSION["STATU"]))
