@@ -129,5 +129,48 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             })
         })
     }
+    hjLogin.prototype.sendValidCode = function(isForm ,form, sedBtn, sec, ajaxUrl) {
+        var _self = this, num = sec ,timer = null;
+        var url = "<{$smarty.get.forward}>";
+        var types = isForm ? isForm : "lostpass";
+        $(sedBtn).on("tap",function(){
+            var _this = $(this) , mobileVal = $(form).find("input[name=mobile]").val();
+            $.ajax({
+                url: ajaxUrl + "?" + Math.random(),
+                type: "POST",
+                dataType: "json",
+                data: {
+                    username:mobileVal,
+                    action:"yzCode",
+                    type:types
+                },
+                success: function(data) {
+                    utility.tipsWarn(data.errmsg);
+                    console.log(data.errmsg)
+                    if(data.status == '10017'){
+                        _this.attr("disabled",true);
+                        _this.removeClass("yes").addClass("no").html('<var>' + num + '</var>秒后重新发送');
+                        timer = setInterval(function() {
+                            num--;
+                            if (num < 0) {
+                                clearInterval(timer);
+                                _this.attr("disabled",false);
+                                _this.removeClass("no").addClass("yes").html("发送短信验证码");
+                                num = sec;
+                            } else {
+                                _this.find("var").html(num);
+                            }
+                        }, 1000);
+                    }
+                    // else{
+                    //     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                    // }
+                },
+                error: function() {
+                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                }
+            })
+        });
+    }
     module.exports = new hjLogin();
 });
