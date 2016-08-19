@@ -54,7 +54,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl) {
         formValid.init(form);
         $(subBtn).on("click", function() {
-            var url = "<{$smarty.get.forward}>",
+            var url,
                 userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
             $.ajax({
@@ -68,7 +68,12 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                     forword:url
                 },
                 success: function(data) {
-                    utility.tipsWarn(data.errmsg);
+                    if(!data.url){
+                        utility.tipsWarn(data.errmsg);
+                    
+                    }else{
+                        window.location.href = data.url;  
+                    } 
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
@@ -94,7 +99,12 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                     forword:url
                 },
                 success: function(data) {
-                    utility.tipsWarn(data.errmsg);
+                    if(!data.url){
+                        utility.tipsWarn(data.errmsg);
+                    
+                    }else{
+                        window.location.href = data.url;  
+                    } 
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
@@ -120,7 +130,12 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                     forword:url
                 },
                 success: function(data) {
-                    utility.tipsWarn(data.errmsg);
+                    if(!data.url){
+                        utility.tipsWarn(data.errmsg);
+                    
+                    }else{
+                        window.location.href = data.url;  
+                    } 
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
@@ -145,7 +160,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 },
                 success: function(data) {
                     utility.tipsWarn(data.errmsg);
-                    console.log(data.errmsg)
                     if(data.status == '10017'){
                         _this.attr("disabled",true);
                         _this.removeClass("yes").addClass("no").html('<var>' + num + '</var>秒后重新发送');
@@ -161,9 +175,9 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                             }
                         }, 1000);
                     }
-                    // else{
-                    //     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                    // }
+                    else{
+                        utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                    }
                 },
                 error: function() {
                     utility.tipsWarn("抱歉，请求错误，请刷新再试！");
