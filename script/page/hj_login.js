@@ -14,15 +14,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     hjLogin.prototype.init = function() {
         var _self = this;
     };
-    /**
-     * 表单操作控制
-     * @param  {String} form       操作的表单
-     * @param  {String} btn        发送验证码按钮
-     * @param  {String} sec        验证等待时间
-     * @param  {String} url        验证码发送接口地址
-     * @param  {String} phoneInput 手机号input框
-     * @return {[type]}            [description]
-     */
     hjLogin.prototype.formtap = function(form, obj1, obj2 ,obj3) {
         $(form).find(obj1).each(function(){
             $(this).on('input propertychange', function(){
@@ -82,7 +73,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         })
     }
     hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
-        formValid.init(form);
         $(subBtn).on("click", function() {
             var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
@@ -113,7 +103,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         })
     }
     hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
-        formValid.init(form);
         $(subBtn).on("click", function() {
             var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
@@ -145,7 +134,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     }
     hjLogin.prototype.sendValidCode = function(isForm ,form, sedBtn, sec, ajaxUrl) {
         var _self = this, num = sec ,timer = null;
-        // var url = "<{$smarty.get.forward}>";
         var type = isForm ? isForm : "lostpass"
         $(sedBtn).on("click",function(){
             var _this = $(this) , mobileVal = $(form).find("input[name=mobile]").val();
