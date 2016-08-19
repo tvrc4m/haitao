@@ -9,4 +9,8 @@
 		//$config['dbname'] = 'mallbuilder_bwj';     //数据库名
 		$config['table_pre']='mallbuilder_';  //数据库表前缀
 		$config['authkey']='2c7832406405c2479e3da150925a73e0';  //数据库表前缀
+
+		/*
+		 *用户中心配置
+		 */
 		?>
