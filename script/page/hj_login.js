@@ -91,7 +91,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 data: {
                     username:mobileVal,
                     password:pwdVal,
-                    action:"login",
+                    action:"register",
                     forword:url
                 },
                 success: function(data) {
@@ -117,7 +117,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 data: {
                     username:mobileVal,
                     password:pwdVal,
-                    action:"login",
+                    action:"lostpass",
                     forword:url
                 },
                 success: function(data) {
@@ -132,7 +132,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     hjLogin.prototype.sendValidCode = function(isForm ,form, sedBtn, sec, ajaxUrl) {
         var _self = this, num = sec ,timer = null;
         var url = "<{$smarty.get.forward}>";
-        var types = isForm ? isForm : "lostpass";
+        var type = isForm ? isForm : "lostpass";
         $(sedBtn).on("tap",function(){
             var _this = $(this) , mobileVal = $(form).find("input[name=mobile]").val();
             $.ajax({
@@ -142,7 +142,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 data: {
                     username:mobileVal,
                     action:"yzCode",
-                    type:types
+                    type:type
                 },
                 success: function(data) {
                     utility.tipsWarn(data.errmsg);
