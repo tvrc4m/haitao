@@ -5,26 +5,26 @@
  * describe:
  * 		用户中心：注册、登录、找回密码、修改密码
  */
-include_once("../includes/global.php");
-include_once($config['webroot']."/includes/verification.php");
+
 include_once($config['webroot']."/includes/uc_server.php");
 
 class uc_login extends verification
 {
 
-	protected $_account = '';//用户
+	
 	private $_password = '';//密码
 	private $_password_old = '';//旧密码
 	private $_yzm = '';
-	protected $_yzm_mobile = '';
 	private $_salt = '';
 	private $_users = '';
 	private $_uc_users = '';
 	private $_type = '';
-	protected $_config = '';
 	private $_db = '';
 	private $_uc_obj = '';
 	private $_userinfo = '';//存储用户信息
+	protected $_account = '';//用户
+	protected $_yzm_mobile = '';
+	protected $_config = '';
 	protected $_action = '';//请求方法名
 	protected $_response_code = '';//回调状态
 	protected $_response_data = null;//回调数据

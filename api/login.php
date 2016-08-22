@@ -14,17 +14,18 @@ include_once($config['webroot']."/api/uc_login.php");
 class login extends verification
 {
 
-	protected $_account = '';//用户
+	
 	private $_password = '';//密码
 	private $_password_old = '';//旧密码
 	private $_yzm = '';
-	protected $_yzm_mobile = '';
 	private $_salt = '';
 	private $_users = '';
 	private $_type = '';
-	protected $_config = '';
 	private $_db = '';
 	private $_userinfo = '';//存储用户信息
+	protected $_account = '';//用户
+	protected $_yzm_mobile = '';
+	protected $_config = '';
 	protected $_action = '';//请求方法名
 	protected $_response_code = '';//回调状态
 	protected $_response_data = null;//回调数据
@@ -61,8 +62,8 @@ class login extends verification
 		$this->_action = $post['action'];
 
 		if (empty($post['username'])) $this->_response_code='10004'; else $this->_account = $post['username'];
-		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes(trim($post['password'])));
-		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = md5(addslashes(trim($post['password_old'])));
+		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = addslashes(trim($post['password']));
+		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = addslashes(trim($post['password_old']));
 		if(!empty($post['type']))$this->_type = $post['type'];
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
 		if(!empty($post['forword']))$this->_old_url = $post['forword'];
