@@ -30,10 +30,9 @@
     </ul>
 </div>
 <{/if}>
-<script type="text/javascript" src="script/libs.js"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/page/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
-        //By default load any module IDs from js/lib
         baseUrl: 'script/',
         urlArgs: "v="+window.jsVersion,
         paths: {
@@ -43,7 +42,6 @@
         shim: {},
         waitSeconds:0
     });
-    /**JS版本号 */
     window.jsVersion = "7b3d28d5dd";
     require(['page/hj_login'], function (loginCtrl) {
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
