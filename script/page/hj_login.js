@@ -1,6 +1,6 @@
 /**
- * 用户登陆
- * @author LiXiongXiong
+ * 用户登陆注册找回密码
+ * @author hw
  * @method hjLogin
  * 
  */
@@ -43,7 +43,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         });  
     }
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl) {
-        formValid.init(form);
         $(subBtn).on("tap", function() {
             var url = skipUrl,
                 userVal = $(form).find("input[name=user]").val(),
