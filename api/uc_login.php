@@ -8,7 +8,6 @@
 include_once("../includes/global.php");
 include_once($config['webroot']."/includes/verification.php");
 include_once($config['webroot']."/includes/uc_server.php");
-$uc_obj = new Uc_server($config['_UC']);
 
 class uc_login extends verification
 {
@@ -57,23 +56,22 @@ class uc_login extends verification
 
 	public function __construct(){
 		
-        global $config,$db,$uc_obj;
+        global $config,$db;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 		$this->_action = $post['action'];
+		$this->_yzm_mobile = 'mon_yzm_'.$this->_account;
+		$this->_config = $config;
+   		$this->_db = $db;
+   		$this->_uc_obj = new Uc_server($config['_UC']);
+		$this->_salt = parent::rand_pwd();
 
 		if (empty($post['username'])) $this->_response_code='10004'; else $this->_account = $post['username'];
-		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes($post['password']));
-		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = md5(addslashes($post['password_old']));
+		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = addslashes(trim($post['password']));
+		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = addslashes(trim($post['password_old']));
 		if(!empty($post['type']))$this->_type = $post['type'];
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
 		if(!empty($post['forword']))$this->_old_url = $post['forword'];
-		$this->_salt = parent::rand_pwd();
 
-		$this->_yzm_mobile = 'mon_yzm_'.$this->_account;
-		
-		$this->_config = $config;
-   		$this->_db = $db;
-   		$this->_uc_obj = $uc_obj;
    		if(parent::checkData($this->_account,'mobile')){
    			$this->users();
 			if(!empty($this->_account)){
@@ -90,8 +88,8 @@ class uc_login extends verification
 	}
 
 	private function response(){
-		var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));die;
-		// echo json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'url'=>$this->_response_data));die;
+		// var_dump(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'url'=>$this->_response_data));die;
+		echo json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'url'=>$this->_response_data));die;
 
 	}
 	/*
@@ -103,33 +101,44 @@ class uc_login extends verification
 	 *本站不存在->用户中心检测是否存在(否)提醒注册（注册到本站和用户中心）(是)登录->注册到本站
 	 **/
 	private function login(){
-		
 		if(empty($this->_users['mobile'])){
 			$statu = $this->uc_users();
 			if($statu){
-				$this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
-				$type = $this->doreg();
-				if($type){
-					$this->login_success();
-					$this->_response_code = '00000';
-					$this->_response_data = $this->_old_url;
-					return false;
+				if($this->_uc_users['password']==md5(md5($this->_password).$this->_uc_users['salt'])){
+					$uc_statu = $this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
+					if($uc_statu->status==1100){
+						$type = $this->doreg();
+						if($type){
+							$this->login_success();
+							$this->_response_code = '00000';
+							$this->_response_data = $this->_old_url;
+							$_SESSION['script']=$uc_statu->data;
+							return false;
+						}
+					}
 				}else{
-					$this->_response_code = '10012';
+					$this->_response_code = '10006';
 					return false;
-				}
+	   			}
+				
+			}else{
+				$this->_response_code = '10013';
+				return false;
 			}
-			$this->_response_code = '10013';
-			return false;
+			
 		}
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
-	    if ($this->_password==$this->_users['password']) {
+	    if (md5(md5($this->_password).$this->_users['rand_pwd'])==$this->_users['password']) {
 	    	$this->login_success();
 	    	$this->_response_code = '00000';
 	    	$this->_response_data = $this->_old_url;
+
 	    	$statu = $this->uc_users();
-	    	if(!$statu){
-				$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$this->_salt));
+	    	if($statu){
+				$script = $this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
+				$_SESSION['script']=$script->data;
+	    	}else{
+	    		$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_salt),'salt'=>$this->_salt));
 	    	}
 	    	return false;
 	    }else{
@@ -139,12 +148,6 @@ class uc_login extends verification
 	    
 	}
 
-	/**
-	 * uc登录
-	 */
-	private function uc_login(){
-		$statu = $this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
-	}
 
 	/**
 	 * [register description]
@@ -160,10 +163,19 @@ class uc_login extends verification
 						$this->_response_code = '10021';
 						return false;
 					}else{
-						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$this->_salt));
-						$this->_response_code = '10011';
-						$this->_response_data = $this->_old_url;
-						return false;
+						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_salt),'salt'=>$this->_salt));
+						$type = $this->doreg();
+						if($type){
+							$this->login_success();
+							$this->_response_code = '10011';
+							$this->_response_data = $this->_old_url;
+							session_unset($_SESSION[$this->_yzm_mobile]);
+							return false;
+						}else{
+							$this->_response_code = '10012';
+							return false;
+						}
+						
 					}
 				}
 			}
@@ -184,7 +196,7 @@ class uc_login extends verification
 					session_unset($_SESSION[$this->_yzm_mobile]);
 					$statu = $this->uc_users();
 					if(!$statu){
-						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$this->_salt));
+						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_salt),'salt'=>$this->_salt));
 						}
 					return false;
 						
@@ -205,7 +217,26 @@ class uc_login extends verification
 	* 
 	*/
 	private function lostpass(){
-		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
+		if(empty($this->_users['mobile'])){
+			$statu = $this->uc_users();
+			if($statu){
+				if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
+					if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
+						$this->_response_code = '10021';
+						return false;
+					}else{
+						$this->_uc_obj->findpwd($this->_account,$this->_password);
+						$this->doreg();
+						$this->_response_code = '10014';
+						$this->_response_data = $this->_config['weburl'].'/login.php';
+						session_unset($_SESSION[$this->_yzm_mobile]);
+						return false;
+					}
+				}
+			}
+			$this->_response_code = '10013';
+			return false;
+		}
         if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
 			if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
 				$this->_response_code = '10021';
@@ -213,6 +244,13 @@ class uc_login extends verification
 			}else{
 				$status = $this->update_pwd();
 				if ($status){
+					$statu = $this->uc_users();
+
+					if($statu){
+						$this->_uc_obj->findpwd($this->_account,$this->_password);
+					}else{
+						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_users['rand_pwd']),'salt'=>$this->_users['rand_pwd']));
+					}var_dump($statu);die;
 					$this->_response_code = '10014';
 					$this->_response_data = $this->_config['weburl'].'/login.php';
 					session_unset($_SESSION[$this->_yzm_mobile]);
@@ -231,12 +269,41 @@ class uc_login extends verification
 	* 
 	*/
 	private function updatepass(){
-		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
-		if($this->_users['password']!=$this->_password_old)
+		if(empty($this->_users['mobile'])){
+			$statu = $this->uc_users();
+			if($statu){
+				if($this->_uc_users['password']!=md5(md5($this->_password_old).$this->_uc_users['salt'])){
+					$this->_response_code = '10016';
+					return false;
+				}
+				else{
+					$status = $this->_uc_obj->findpwd($this->_account,$this->_password);
+					if ($status->status==1100){
+						$this->doreg();
+						$this->_response_data = $this->_config['weburl'].'/login.php';
+						$this->_response_code = '10014';
+						return false;
+					}else{
+						$this->_response_code = '10015';
+						return false;
+					}
+				}
+			}
+			$this->_response_code = '10013';
+			return false;
+		}
+
+		if($this->_users['password']!=md5(md5($this->_password_old).$this->_users['rand_pwd']))
 			$this->_response_code = '10016';
 		else{
 			$status = $this->update_pwd();
 			if ($status){
+				$statu = $this->uc_users();
+				if($statu){
+					$this->_uc_obj->findpwd($this->_account,$this->_password);
+				}else{
+					$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_salt),'salt'=>$this->_salt));
+				}
 				$this->_response_data = $this->_config['weburl'].'/login.php';
 				$this->_response_code = '10014';
 			}else
@@ -267,7 +334,7 @@ class uc_login extends verification
 	 * @return [type] [description]
 	 */
 	private function users(){
-		$sql = "select userid,user,statu,pid,password,mobile from ".MEMBER." where mobile={$this->_account}";
+		$sql = "select userid,user,statu,pid,password,mobile,rand_pwd from ".MEMBER." where mobile={$this->_account}";
 		$this->_db->query($sql);
 		$this->_users = $this->_db->fetchRow();
 
@@ -279,14 +346,15 @@ class uc_login extends verification
 	 * 用户中心用户信息
 	 */
 	private function uc_users(){
-		$ths->_uc_users = $this->_uc_obj->userinfo(array('phone'=>$this->_account));
-		return $this->_uc_users['status']=='1100'?true:false;
+		$userList = $this->_uc_obj->userinfo(array('phone'=>(string)$this->_account));
+		$this->_uc_users = $userList;
+		return $userList['status']==1100?true:false;
 	}
 	/**
 	 * 修改密码
 	 */
 	private function update_pwd(){
-		$sql = "update ".MEMBER." set password='{$this->_password}' where userid='{$this->_users['userid']}'";
+		$sql = "update ".MEMBER." m set password='".md5(md5($this->_password).$this->_users['rand_pwd'])."' where userid='{$this->_users['userid']}'";
 		$status = $this->_db->query($sql);
 
 		return empty($status)?false:true;
@@ -303,6 +371,7 @@ class uc_login extends verification
 
 		return false;
 	}
+
 	/**
 	 * [doreg description]
 	 * @return [type] [description]
@@ -316,7 +385,7 @@ class uc_login extends verification
 		$ip = getip();
 		$ip = empty($ip)?NULL:$ip;
 
-	    $sql="insert into " . MEMBER . " (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','{$this->_password}','{$ip}','{$lastLoginTime}','','{$this->_account}','{$regtime}','{$user_reg}','0','1')";
+	    $sql="insert into " . MEMBER . " (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify,rand_pwd) values ('$user','".md5(md5($this->_password).$this->_salt)."','{$ip}','{$lastLoginTime}','','{$this->_account}','{$regtime}','{$user_reg}','0','1','{$this->_salt}')";
 	    $re=$this->_db->query($sql);
 	    $userid=$this->_db->lastid();
 
@@ -342,6 +411,6 @@ class uc_login extends verification
 	}
 
 }
-$obj = new uc_login();
+
 
  ?>

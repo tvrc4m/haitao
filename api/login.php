@@ -10,6 +10,7 @@
  */
 include_once("../includes/global.php");
 include_once($config['webroot']."/includes/verification.php");
+include_once($config['webroot']."/api/uc_login.php");
 class login extends verification
 {
 
@@ -18,6 +19,7 @@ class login extends verification
 	private $_password_old = '';//旧密码
 	private $_yzm = '';
 	protected $_yzm_mobile = '';
+	private $_salt = '';
 	private $_users = '';
 	private $_type = '';
 	protected $_config = '';
@@ -59,14 +61,14 @@ class login extends verification
 		$this->_action = $post['action'];
 
 		if (empty($post['username'])) $this->_response_code='10004'; else $this->_account = $post['username'];
-		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes($post['password']));
-		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = md5(addslashes($post['password_old']));
+		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = md5(addslashes(trim($post['password'])));
+		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = md5(addslashes(trim($post['password_old'])));
 		if(!empty($post['type']))$this->_type = $post['type'];
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
 		if(!empty($post['forword']))$this->_old_url = $post['forword'];
 
 		$this->_yzm_mobile = 'mon_yzm_'.$this->_account;
-		
+		$this->_salt = parent::rand_pwd();
 		$this->_config = $config;
    		$this->_db = $db;
    		if(parent::checkData($this->_account,'mobile')){
@@ -98,7 +100,7 @@ class login extends verification
 	private function login(){
 		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
-	    if ($this->_password==$this->_users['password']) {
+	    if (md5(md5($this->_password).$this->_users['rand_pwd'])==$this->_users['password']) {
 	    	$this->login_success();
 	    	$this->_response_code = '00000';
 	    	$this->_response_data = $this->_old_url;
@@ -169,7 +171,7 @@ class login extends verification
 	*/
 	private function updatepass(){
 		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
-		if($this->_users['password']!=$this->_password_old)
+		if($this->_users['password']!=md5(md5($this->_password_old).$this->_users['rand_pwd']))
 			$this->_response_code = '10016';
 		else{
 			$status = $this->update_pwd();
@@ -204,7 +206,7 @@ class login extends verification
 	 * @return [type] [description]
 	 */
 	private function users(){
-		$sql = "select userid,user,statu,pid,password,mobile from ".MEMBER." where mobile={$this->_account}";
+		$sql = "select userid,user,statu,pid,password,mobile,rand_pwd from ".MEMBER." where mobile={$this->_account}";
 		$this->_db->query($sql);
 		$this->_users = $this->_db->fetchRow();
 
@@ -216,7 +218,7 @@ class login extends verification
 	 * 修改密码
 	 */
 	private function update_pwd(){
-		$sql = "update ".MEMBER." set password='{$this->_password}' where userid='{$this->_users['userid']}'";
+		$sql = "update ".MEMBER." m set password='".md5(md5($this->_password).$this->_users['rand_pwd'])."' where userid='{$this->_users['userid']}'";
 		$status = $this->_db->query($sql);
 
 		return empty($status)?false:true;
@@ -246,7 +248,7 @@ class login extends verification
 		$ip = getip();
 		$ip = empty($ip)?NULL:$ip;
 
-	    $sql="insert into " . MEMBER . " (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','{$this->_password}','{$ip}','{$lastLoginTime}','','{$this->_account}','{$regtime}','{$user_reg}','0','1')";
+	    $sql="insert into " . MEMBER . " (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify,rand_pwd) values ('$user','".md5(md5($this->_password).$this->_salt)."','{$ip}','{$lastLoginTime}','','{$this->_account}','{$regtime}','{$user_reg}','0','1','{$this->_salt}')";
 	    $re=$this->_db->query($sql);
 	    $userid=$this->_db->lastid();
 
@@ -272,5 +274,8 @@ class login extends verification
 	}
 
 }
-
-$obj = new login();
+// var_dump($config['UC_state']);die;
+if($config['UC_state'])
+	$obj = new uc_login();
+else
+	$obj = new login();
