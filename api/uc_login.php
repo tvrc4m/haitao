@@ -18,7 +18,9 @@ class uc_login extends verification
 	private $_password_old = '';//旧密码
 	private $_yzm = '';
 	protected $_yzm_mobile = '';
+	private $_salt = '';
 	private $_users = '';
+	private $_uc_users = '';
 	private $_type = '';
 	protected $_config = '';
 	private $_db = '';
@@ -65,6 +67,7 @@ class uc_login extends verification
 		if(!empty($post['type']))$this->_type = $post['type'];
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
 		if(!empty($post['forword']))$this->_old_url = $post['forword'];
+		$this->_salt = parent::rand_pwd();
 
 		$this->_yzm_mobile = 'mon_yzm_'.$this->_account;
 		
@@ -96,14 +99,51 @@ class uc_login extends verification
 	 *param array('account'=>'','password'=>'') 数组
 	 *
 	 *return 状态 
+	 *本站存在->登录->用户中心是否存在(是)结束(否)注册到用户中心
+	 *本站不存在->用户中心检测是否存在(否)提醒注册（注册到本站和用户中心）(是)登录->注册到本站
 	 **/
 	private function login(){
-		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
+		
+		if(empty($this->_users['mobile'])){
+			$statu = $this->uc_users();
+			if($statu){
+				$this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
+				$type = $this->doreg();
+				if($type){
+					$this->login_success();
+					$this->_response_code = '00000';
+					$this->_response_data = $this->_old_url;
+					return false;
+				}else{
+					$this->_response_code = '10012';
+					return false;
+				}
+			}
+			$this->_response_code = '10013';
+			return false;
+		}
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
-	    $aaa = $this->_uc_obj->userinfo(array('phone'=>$login_phone));
-	    // $aaa = $this->_uc_obj->userinfo(array('phone'=>$login_phone,'password'=>$post['password']));
-	    var_dump($aaa);die;
+	    if ($this->_password==$this->_users['password']) {
+	    	$this->login_success();
+	    	$this->_response_code = '00000';
+	    	$this->_response_data = $this->_old_url;
+	    	$statu = $this->uc_users();
+	    	if(!$statu){
+				$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$this->_salt));
+	    	}
+	    	return false;
+	    }else{
+			$this->_response_code = '10006';
+			return false;
+	    }
 	    
+	}
+
+	/**
+	 * uc登录
+	 */
+	private function uc_login(){
+		$statu = $this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
 	}
 
 	/**
@@ -112,13 +152,29 @@ class uc_login extends verification
 	 * @return [type] [description]
 	 */
 	private function register(){
-		//if(!empty($this->_users['mobile'])){$this->_response_code = '10009';return false;}
-		$salt = parent::rand_pwd();
-		$a = $this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$salt));
-		var_dump($a);die;
-        /*if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
+		if(!empty($this->_users['mobile'])){
+			$statu = $this->uc_users();
+			if(!$statu){
+				if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
+					if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
+						$this->_response_code = '10021';
+						return false;
+					}else{
+						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$this->_salt));
+						$this->_response_code = '10011';
+						$this->_response_data = $this->_old_url;
+						return false;
+					}
+				}
+			}
+			$this->_response_code = '10009';
+			return false;
+		}
+		
+        if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
 			if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
 				$this->_response_code = '10021';
+				return false;
 			}else{
 				$type = $this->doreg();
 				if($type){
@@ -126,13 +182,21 @@ class uc_login extends verification
 					$this->_response_code = '10011';
 					$this->_response_data = $this->_old_url;
 					session_unset($_SESSION[$this->_yzm_mobile]);
-				}else
+					$statu = $this->uc_users();
+					if(!$statu){
+						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>$this->_password,'salt'=>$this->_salt));
+						}
+					return false;
+						
+				}else{
 					$this->_response_code = '10012';
+					return false;
+				}
 				
 	        }
 		}else{
 			$this->_response_code = '10020';
-		}*/
+		}
 		return false;
 	}
 
@@ -145,6 +209,7 @@ class uc_login extends verification
         if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
 			if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
 				$this->_response_code = '10021';
+				return false;
 			}else{
 				$status = $this->update_pwd();
 				if ($status){
@@ -210,6 +275,13 @@ class uc_login extends verification
 		
 	}
 
+	/*
+	 * 用户中心用户信息
+	 */
+	private function uc_users(){
+		$ths->_uc_users = $this->_uc_obj->userinfo(array('phone'=>$this->_account));
+		return $this->_uc_users['status']=='1100'?true:false;
+	}
 	/**
 	 * 修改密码
 	 */
