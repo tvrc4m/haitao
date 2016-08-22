@@ -37,14 +37,14 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 $(this).parent().find(obj2).removeClass(obj3);
             });  
         });
-        $(obj2).on("click", function(){ 
+        $(obj2).on("tap", function(){ 
             $(this).parent().find("input").val("");
             $(this).removeClass(obj3);
         });  
     }
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl) {
         formValid.init(form);
-        $(subBtn).on("click", function() {
+        $(subBtn).on("tap", function() {
             var url = skipUrl,
                 userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
@@ -73,7 +73,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         })
     }
     hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
-        $(subBtn).on("click", function() {
+        $(subBtn).on("tap", function() {
             var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
@@ -104,7 +104,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         })
     }
     hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
-        $(subBtn).on("click", function() {
+        $(subBtn).on("tap", function() {
             var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
@@ -137,7 +137,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     hjLogin.prototype.sendValidCode = function(isForm ,form, sedBtn, sec, ajaxUrl) {
         var _self = this, num = sec ,timer = null;
         var type = isForm ? isForm : "lostpass"
-        $(sedBtn).on("click",function(){
+        $(sedBtn).on("tap",function(){
             var _this = $(this) , mobileVal = $(form).find("input[name=mobile]").val();
             $.ajax({
                 url: ajaxUrl + "?" + Math.random(),
@@ -174,7 +174,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         });
     }
     hjLogin.prototype.checker = function(obj) {
-        $(obj).on("click", function() {
+        $(obj).on("tap", function() {
             var _this = $(this), icon=String("&#xe712;") ,icon2=String("&#xe738;");
             if (_this.hasClass("seled")) {
                 _this.removeClass("seled");
