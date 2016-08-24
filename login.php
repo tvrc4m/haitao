@@ -1,7 +1,7 @@
 <?php
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
-
+die('111');
 
 if($buid)
 {
