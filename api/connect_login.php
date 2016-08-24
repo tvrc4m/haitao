@@ -108,6 +108,26 @@ class connect
 	    //-------------------------------------------
 	}
 
+	private function users(){
+		$sql = "select userid,user,statu,pid,password,mobile,rand_pwd from ".MEMBER." where mobile={$this->_account}";
+		$this->_db->query($sql);
+		$this->_users = $this->_db->fetchRow();
+
+		return empty($this->_users)?false:true;
+		
+	}
+	/**
+	 * 登录成功
+	 */
+	private function login_success(){
+		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
+
+		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
+		$this->_db->query($sql);
+
+		return false;
+	}
+
 
 }
 
