@@ -12,6 +12,21 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     var utility = new Util();
     hjLogin.prototype.init = function() {
         var _self = this;
+        fixedInputBlur ();
+        function fixedInputBlur () {
+            var beforeIpt=null;
+            $("input").on("focus", function (e) {
+                beforeIpt=this;
+            });
+            $(document).on("tap", function (e) {
+                if(e.target.nodeName.toLowerCase()!="input") {
+                    if(beforeIpt) {
+                        beforeIpt.blur();
+                        beforeIpt=null;
+                    }
+                }
+            });
+        }
     };
     /**
      * 删除表单内容
