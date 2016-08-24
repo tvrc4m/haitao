@@ -24,7 +24,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 }
                 beforeIpt=this;
             });
-            $(window).on("tap", function (e) {
+            $("html,body").on("tap", function (e) {
                 e = e || window.event;
                 if (e.stopPropagation) { //W3C阻止冒泡方法
                     e.stopPropagation();
