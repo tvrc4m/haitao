@@ -2,8 +2,7 @@
  * 用户登陆注册找回密码
  * @author hw
  * @method hjLogin
- * 
- */
+*/
 define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     "use strict";
     function hjLogin() {
