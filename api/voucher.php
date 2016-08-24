@@ -45,6 +45,8 @@ class voucher extends Uc_server{
 
     const TIME=600;
 
+    const EXT = '.txt';
+
     private $_error = array(
         '00000'=>'操作成功',
         '10001'=>'请求方法不存在',
@@ -76,10 +78,15 @@ class voucher extends Uc_server{
         $this->_appid=$config['appid'];
         $this->_secret=$config['secret'];
         $this->_ucServer = $config['uc_server'];
+        // $_POST = "d15aufk5K9A6IgufR9X8DkdI5bc6QYuA9LuKm0QBDDbYOrxwf+7JXq2JhbRBANR2p\/Aedxun1pgOrd9mdJlT9MRo0aaTzWYxmqP9ev1AiADvgp\/BmCnb7yMd+eXjRpbxw7uM0hfh7CPtjcgpVv07U1hAmxpC1Z\/tX6jBpuT9qTfqWfSMHMXvjN4bxVDd+4J\/Wq5QJhqfdIgqzQUo2Vxx3f2dHkI1Rf5jFI6eyYlreRry5BbdLiaM9nlvhANXZA5Tib\/FCEnK0TYeF6FtfDTWa6aTEfm08+6by8ROXcGrZd64VY8irr0KgzT2+90U6tQNrwivS\/HthbzNzhsfX5KofzZqmaGZ++nuCFfQ2npCGqi6zfFMZHvREvxk+2oItmy5IuQKUlokeaax2A+iOeB+EaynZ2KD4wymVS7Na42TT3aN1hwfL+iGnSai2OmnMW3epChkOBNE62WxWkgPTIJhmWuIUhW4f8O3hV0XxymtsE181Lr40GXFohR\/L8UsbzO14+LYPxqJ+AFF1ycBXRMjL4ohHyVwPoRhZves31rErBd4a6+kzXHVvt\/I6L1kkzIKcZd1HNBAqixXTR6WSuy2OklrhIDdH+BzB1uuS3aEhjXHbzAYDthiLyoeBIUtkh5+sooAwQh+0JynWNv\/nm9LL5lB0ajerbFk0yZwxnj2qLBdY2xXK\/FNA2f62qJI6iIwUxcC96ANLXXm";
+
         $this->_timestamp = $_POST['timestamp'];
         $this->_action = $_POST['action'];
         $this->_signature = $_POST['signature'];
-
+        // var_dump($_REQUEST);die;
+        if(!empty($_REQUEST)){
+            $this->cacheLog('voucher_list',$_REQUEST,'cache');
+        }
         // 验证ip访问
         //if ($this->checkIp($user_ip)) {
             $params=$_POST['params'];
@@ -101,8 +108,9 @@ class voucher extends Uc_server{
 
         $json_str = json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));
         if(empty($json_str)){
-            $this->cacheLog('voucher',array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data),'cache');
+            $this->cacheLog('voucher_list',array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data),'cache');
         }
+
         exit($json_str);
     }
 
@@ -394,7 +402,7 @@ class voucher extends Uc_server{
     public function cacheLog($key='',$value='',$path=''){
         global $config;
         $data = $this->time.'>>>'.json_encode($value)."\r\n";
-        $filename = $config['webroot'].'/'.$path.$key.self::EXT;
+        $filename = $config['webroot'].'/'.$path.'/'.$key.self::EXT;
         if($data !== ''){
             $dir = dirname($filename);
             if(!is_dir($dir)){
