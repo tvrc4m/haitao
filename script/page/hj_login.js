@@ -21,6 +21,13 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
      * @param  {String} obj3        
     */
     hjLogin.prototype.formtap = function(form, obj1, obj2 ,obj3) {
+        window.onload = function() {  
+            document.querySelector('body').addEventListener('touchend', function(e) {  
+                if(e.target.className != 'input') {  
+                    document.querySelector('input').blur();  
+                }  
+            });  
+        }  
         $(form).find(obj1).each(function(){
             $(this).on('input propertychange', function(){
                 var val=$(this).val();
