@@ -5,6 +5,7 @@
  * Date: 2016/5/25
  * Time: 13:26
  */
+include_once("../includes/global.php");
 include_once("../includes/uc_server.php");
 
 class voucher extends Uc_server{
@@ -31,6 +32,8 @@ class voucher extends Uc_server{
 
     private $_serial;
 
+    private $_db = '';
+
     private $_name = '蚂蚁在线';
 
     private $_userinfo = array();
@@ -56,7 +59,8 @@ class voucher extends Uc_server{
         '10005'=>'参数不完整',
         '10006'=>'优惠卷已发放完',
         '10007'=>'该用户已领取优惠卷',
-        '10008'=>'用户不存在'
+        '10008'=>'用户不存在',
+        '10009'=>'请求数据为空'
     );
 
     private $_apps = array(
@@ -69,6 +73,8 @@ class voucher extends Uc_server{
     );
     public function __construct($config)
     {
+        global $db;
+        $this->_db = $db;
         $data['uc_appid']='201605270933';
         $data['uc_secret']='jindsf83nsdvi3n0ejj91jnlnapfnas92nvb';
         $data['uc_server']='https://m.mayizaixian.cn/apis/uc';
@@ -78,13 +84,15 @@ class voucher extends Uc_server{
         $this->_appid=$config['appid'];
         $this->_secret=$config['secret'];
         $this->_ucServer = $config['uc_server'];
-        // $_POST = "d15aufk5K9A6IgufR9X8DkdI5bc6QYuA9LuKm0QBDDbYOrxwf+7JXq2JhbRBANR2p\/Aedxun1pgOrd9mdJlT9MRo0aaTzWYxmqP9ev1AiADvgp\/BmCnb7yMd+eXjRpbxw7uM0hfh7CPtjcgpVv07U1hAmxpC1Z\/tX6jBpuT9qTfqWfSMHMXvjN4bxVDd+4J\/Wq5QJhqfdIgqzQUo2Vxx3f2dHkI1Rf5jFI6eyYlreRry5BbdLiaM9nlvhANXZA5Tib\/FCEnK0TYeF6FtfDTWa6aTEfm08+6by8ROXcGrZd64VY8irr0KgzT2+90U6tQNrwivS\/HthbzNzhsfX5KofzZqmaGZ++nuCFfQ2npCGqi6zfFMZHvREvxk+2oItmy5IuQKUlokeaax2A+iOeB+EaynZ2KD4wymVS7Na42TT3aN1hwfL+iGnSai2OmnMW3epChkOBNE62WxWkgPTIJhmWuIUhW4f8O3hV0XxymtsE181Lr40GXFohR\/L8UsbzO14+LYPxqJ+AFF1ycBXRMjL4ohHyVwPoRhZves31rErBd4a6+kzXHVvt\/I6L1kkzIKcZd1HNBAqixXTR6WSuy2OklrhIDdH+BzB1uuS3aEhjXHbzAYDthiLyoeBIUtkh5+sooAwQh+0JynWNv\/nm9LL5lB0ajerbFk0yZwxnj2qLBdY2xXK\/FNA2f62qJI6iIwUxcC96ANLXXm";
 
         $this->_timestamp = $_POST['timestamp'];
         $this->_action = $_POST['action'];
         $this->_signature = $_POST['signature'];
-        // var_dump($_REQUEST);die;
-        if(!empty($_REQUEST)){
+        if(empty($_POST)){
+            $this->_response_code='10009';
+            $this->_response_data='null';
+        }
+	if(!empty($_REQUEST)){
             $this->cacheLog('voucher_list',$_REQUEST,'cache');
         }
         // 验证ip访问
@@ -108,9 +116,10 @@ class voucher extends Uc_server{
 
         $json_str = json_encode(array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data));
         if(empty($json_str)){
-            $this->cacheLog('voucher_list',array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data),'cache');
-        }
+            $this->cacheLog('voucher',array('status'=>$this->_response_code,'errmsg'=>$this->_error[$this->_response_code],'data'=>$this->_response_data),'cache');
 
+        }
+	
         exit($json_str);
     }
 
@@ -118,18 +127,17 @@ class voucher extends Uc_server{
      * 获取店铺
      * @return json*/
     public function shop($shop_id=''){
-        global $db;
         if(empty($shop_id)){
             $sql = "select userid,company from mallbuilder_shop WHERE userid in(49,44,48,91)";
             //$sql = "select userid,company from mallbuilder_shop WHERE userid in(15,44,40,91)";
-            $db->query($sql);
-            $list = $db->getRows();
+            $this->_db->query($sql);
+            $list = $this->_db->getRows();
             $this->_response_data = $list;
             $this->_response_code = '00000';
         }else{
             $sql = "select userid,company from mallbuilder_shop where userid=".$shop_id;
-            $db->query($sql);
-            $this->_shopinfo = $db->fetchRow();
+            $this->_db->query($sql);
+            $this->_shopinfo = $this->_db->fetchRow();
         }
     }
 
@@ -138,10 +146,9 @@ class voucher extends Uc_server{
      * $param phone 手机号
      * $return array */
     public function userInfo($mobile){
-        global $db;
         $sql = "SELECT userid,user FROM mallbuilder_member WHERE mobile=".$mobile;
-        $db->query($sql);
-        $this->_userinfo = $db->fetchRow();
+        $this->_db->query($sql);
+        $this->_userinfo = $this->_db->fetchRow();
     }
     /*
      * 发放代金卷
@@ -175,11 +182,10 @@ class voucher extends Uc_server{
      * 店铺代金卷规则
      * */
     public function shopRule($list){
-        global $db;
         $this->shop($list['shop_id']);
         $sql = "select id,total,giveout from mallbuilder_voucher_temp where `shop_id`='".$list['shop_id']."' and `price`='".$list['price']."' and `limit`='".$list['limit']."'";
-        $db->query($sql);
-        $data = $db->fetchRow();
+        $this->_db->query($sql);
+        $data = $this->_db->fetchRow();
         if($data){
             if($data['total']>$data['giveout'])
                 $this->voucher($list,$data['id']);
@@ -188,8 +194,8 @@ class voucher extends Uc_server{
         }else{
             $logo=$this->_url."/image/red/".(int)$list['price'].".png";
             $sql = "insert into mallbuilder_voucher_temp (`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`shop_name`,`total`,`eachlimit`,`logo`,`status`,`points`,`TYPE`) values ('{$this->_name}','消费{$list['limit']}可用','{$this->_startTime}','6898435688','{$list['price']}','{$list['limit']}','{$list['shop_id']}','{$this->_shopinfo['company']}','999999999','0','{$logo}','1','','2')";
-            $db->query($sql);
-            $id = $db->lastid();
+            $this->_db->query($sql);
+            $id = $this->_db->lastid();
             $this->voucher($list,$id);
         }
     }
@@ -199,10 +205,9 @@ class voucher extends Uc_server{
      * $param list 代金卷数组信息   id 代金卷模板id
      * */
     public function voucher($list,$id=''){
-        global $db;
         $sql = "select id from mallbuilder_voucher_order where `mobile`=".$list['mobile']." and `order`='".$list['order_id']."'";
-        $db->query($sql);
-        if($db->num_rows()){
+        $this->_db->query($sql);
+        if($this->_db->num_rows()){
             $this->_response_code='10007';
         }else{
             for($i=0;$i<$list['user_number'];$i++){
@@ -212,9 +217,9 @@ class voucher extends Uc_server{
                 $this->_endTime = $list['time'];
                 $logo=$this->_url."/image/red/".(int)$list['price'].".png";
                 $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('{$this->_serial}','{$id}','{$this->_name}','消费{$list['limit']}可用','{$this->_startTime}','{$this->_endTime}','{$list['price']}','{$list['limit']}','{$list['shop_id']}',1,'".time()."','{$this->_userinfo['userid']}','{$this->_userinfo['user']}','{$logo}','{$this->_shopinfo['company']}') ";
-                $db->query($sql);
+                $this->_db->query($sql);
                 $sql = "update mallbuilder_voucher_temp set `giveout` = giveout+1 where id=".$id;
-                $db -> query($sql);
+                $this->_db -> query($sql);
                 $this->order($list['mobile'],$list['order_id'],$this->_serial);
             }
         }
@@ -226,10 +231,9 @@ class voucher extends Uc_server{
      * $param serial  代金卷序列号  mobile  手机号  order   投资流水单号
      * */
     public function order($mobile='',$order_id='',$serial=''){
-        global $db;
         $sql = "select `serial`,`mobile` from mallbuilder_voucher_order where `order`='".$order_id."'";
-        $db->query($sql);
-        $order = $db->fetchRow();
+        $this->_db->query($sql);
+        $order = $this->_db->fetchRow();
         if($order['serial']){
             $orders = json_decode($order['serial']);
             if(in_array($serial,$orders))
@@ -238,7 +242,7 @@ class voucher extends Uc_server{
                 array_push($orders,$serial);
                 $serialJson = json_encode($orders);
                 $sql="update mallbuilder_voucher_order set serial='$serialJson' where mobile='$mobile'";
-                $db->query($sql);
+                $this->_db->query($sql);
                 $this->_response_code='00000';
             }
         }else{
@@ -246,10 +250,10 @@ class voucher extends Uc_server{
             $serialJson = json_encode($serials);
             if($order['mobile']!=$mobile){
                 $sql = "insert into mallbuilder_voucher_order(`order`,`mobile`,`serial`)values ('$order_id','$mobile','$serialJson')";
-                $db->query($sql);
+                $this->_db->query($sql);
             }else{
                 $sql="update mallbuilder_voucher_order set serial='$serialJson' where mobile='$mobile'";
-                $db->query($sql);
+                $this->_db->query($sql);
             }
             $this->_response_code='00000';
         }
@@ -352,7 +356,6 @@ class voucher extends Uc_server{
     //数据入库
     public function doreg($mobile=null,$password=null,$rand_pwd=null)
     {
-        global $db;
         $user = 'mayi'.$mobile;
         $pass = addslashes($password);
         $mobile = $mobile;
@@ -360,9 +363,9 @@ class voucher extends Uc_server{
         $regtime = date("Y-m-d H:i:s");
         $user_reg = "2";
 
-        $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify,rand_pwd) values ('$user','".$pass."','NULL','$lastLoginTime','','$mobile','$regtime','$user_reg','0','1',$rand_pwd)";
-        $re=$db->query($sql);
-        $userid=$db->lastid();
+        $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify,rand_pwd) values ('$user','".$pass."','NULL','$lastLoginTime','','$mobile','$regtime','$user_reg','0','1','{$rand_pwd}')";
+        $re=$this->_db->query($sql);
+        $userid=$this->_db->lastid();
 
         if($userid)
         {
@@ -372,11 +375,12 @@ class voucher extends Uc_server{
             $_startTime = time();
             $logo=$this->_url."/image/red/20.png";
             $sql = "insert into  mallbuilder_voucher (`serial`,`temp_id`,`name`,`desc`,`start_time`,`end_time`,`price`,`limit`,`shop_id`,`status`,`create_time`,`member_id`,`member_name`,`logo`,`shop_name`) values ('{$_serial}','2','新用户代金卷','消费300可用','{$_startTime}','{$_endTime}','20','300','','1','".time()."','{$userid}','mayi{$mobile}','{$logo}','') ";
-            $db->query($sql);
+            $this->_db->query($sql);
             $sql = "update mallbuilder_voucher_temp set `giveout` = giveout+1 where id=2";
-            $db -> query($sql);
+            $this->_db -> query($sql);
             $sql="INSERT INTO ".MEMBERINFO." (member_id) VALUES ('$userid')";
-            $re=$db->query($sql);
+            $re=$this->_db->query($sql);
+
             if($re)
             {
                 $post['userid'] = $userid;
@@ -415,7 +419,7 @@ class voucher extends Uc_server{
 
 }
 
-include_once("../includes/global.php");
+
 $config['appid']='1464427700';
 $config['secret']='1a2e939f4c52360c3c774d5e68786aa5';
 $config['uc_server']='http://www.haitao.com/';
