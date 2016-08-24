@@ -45,7 +45,10 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         });
         $(obj2).on("tap", function(){ 
             $(this).parent().find("input").val("");
-            $(this).removeClass(obj3);
+            setTimeout(function() {
+                $(this).removeClass(obj3);
+            }, 100);
+            
         });  
     }
     /**
