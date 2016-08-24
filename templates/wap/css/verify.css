@@ -30,9 +30,9 @@ input{-webkit-appearance:none;appearance:none}
 	font-size: 0.8rem; opacity: 0;filter: alpha(opacity=0);margin-top: -0.4rem;}
 .login_container ul li .txt_up{opacity: 1;filter: alpha(opacity=100);}
 .login_container ul li .txt_icon{position: absolute;left: 0.45rem;top: 50%;color: #b9b9b9;
-	font-size: 1.1rem;margin-top: -0.55rem;height: 1.1rem;line-height: 1.2rem;}
-.login_container ul li .txt_icon1{font-size: 1.3rem;margin-top: -0.55rem;height: 1.1rem;line-height: 0.9rem;}
-.login_container ul li .txt_icon2{font-size: 0.8rem;left: 0.6rem;line-height: 1.1rem;}
+	font-size: 1rem;margin-top: -0.5rem;height: 1rem;line-height: 1rem;}
+.login_container ul li .txt_icon1{font-size: 1.05rem;margin-top: -0.55rem;height: 1.1rem;line-height: 0.9rem;}
+.login_container ul li .txt_icon2{font-size: 0.85rem;left: 0.6rem;line-height: 0.9rem;}
 .login_container ul li .txt_icon6{font-size: 0.6rem;font-weight: 500;}
 .login_container .real_notice{padding: 1.5rem 1rem 0;} 
 .login_container .real_notice_inner{background-color: #ddd;border-radius: 5px;padding: 20px;}
