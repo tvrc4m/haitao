@@ -15,10 +15,12 @@ include_once($config['webroot']."/config/connect_config.php");//connect
 */
 class connect
 {
+	private $_db = '';
 	private $_config = '';
 	private $_wx_akey = '';
 	private $_wx_skey = '';
 	private $_wx_callback_url = '';
+	private $_request = '';
 	private $_obj = '';
 	protected $_response_code = '';//回调状态
 	protected $_response_data = null;//回调数据
@@ -34,22 +36,13 @@ class connect
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 
 		$this->_config  = $config;
+		$this->_wx_akey = $connect_config['sina_app_id'];
+		$this->_wx_skey = $connect_config['sina_key'];
+		$this->_wx_callback_url = $config['weburl']."/api/connect_login.php?type=sina_connect";
 		
 		if(!empty($post['type'])){
 			$this->_action  = $post['type'];
-			$this->_wx_akey = $connect_config['sina_app_id'];
-			$this->_wx_skey = $connect_config['sina_key'];
-			$this->_wx_callback_url = $config['weburl']."/api/connect_login.php?type=sina_fun";
-			switch ($this->_action) {
-				case 'sina':
-				include_once( $this->_config['webroot'].'/includes/saetv2.ex.class.php' );
-		    	$this->_obj = new SaeTOAuthV2( $this->_wx_akey , $this->_wx_skey );
-					break;
-				
-				default:
-					break;
-			}
-			
+
 			if (method_exists($this,$this->_action)) {
                 call_user_func(array($this,$this->_action));
             }else{
@@ -67,34 +60,35 @@ class connect
 
 	}
 
-	public function sina_url(){
-	    return $this->_obj->getAuthorizeURL( $this->_wx_callback_url );
-	}
 
 	public function sina_connect(){
-		//------------------------------------------
-	    if($_GET['type']=='sina'&&isset($_REQUEST['code']))
+		include_once( $this->_config['webroot'].'/includes/saetv2.ex.class.php' );
+		$this->_obj = new SaeTOAuthV2( $this->_wx_akey , $this->_wx_skey );
+		if(empty($this->_action))
+		return $this->_obj->getAuthorizeURL( $this->_wx_callback_url );
+		//绑定会员
+	    if(!empty($this->_action)&&isset($_REQUEST['code']))
 	    {
 	        $keys = array();
 	        $keys['code'] = $_REQUEST['code'];
-	        $keys['redirect_uri'] = WB_CALLBACK_URL;
-	        $token = $o->getAccessToken( 'code', $keys ) ;
-	        $c = new SaeTClientV2( WB_AKEY , WB_SKEY , $token['access_token'] );
+	        $keys['redirect_uri'] = $this->_wx_callback_url;
+	        $token = $this->_obj->getAccessToken( 'code', $keys ) ;
+	        $c = new SaeTClientV2( $this->_wx_akey , $this->_wx_skey , $token['access_token'] );
 	        $uid_get = $c->get_uid();
 	        $uid = $uid_get['uid'];
 	        $ar = $c->show_user_by_id( $uid);
 	        //------------
 	        $sql="select * from ".USERCOON." where type=2 and client_id='$ar[id]'";
-	        $db->query($sql);
-	        $cre=$db->fetchRow();
+	        $this->_db->query($sql);
+	        $cre=$this->_db->fetchRow();
 	        if(empty($cre['id']))
 	        {
 	            $sql="insert into ".USERCOON."
 	            (nickname,figureurl,gender,type,access_token,client_id) 
 	            values 
 	            ('$ar[name]','$ar[profile_image_url]','$ar[gender]',2,'$token[access_token]','$ar[id]')";
-	            $db->query($sql);
-	            $cre['id']=$db->lastid();
+	            $this->_db->query($sql);
+	            $cre['id']=$this->_db->lastid();
 	        }
 	        if($cre['userid'])
 	        {

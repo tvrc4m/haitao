@@ -67,7 +67,7 @@ seajs.config({
 });
 
 seajs.use("<{$config.weburl}>/script/pc/login",function(Check){
-    url = "<{$smarty.get.forward}>";
+    url = "<{$config._FORWARD}>";
     Check.login();
 });
 </script>

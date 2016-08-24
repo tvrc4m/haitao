@@ -134,12 +134,13 @@ class uc_login extends verification
 	    	$this->_response_data = $this->_old_url;
 
 	    	$statu = $this->uc_users();
-	    	if($statu){
-				$script = $this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
-				$_SESSION['script']=$script->data;
-	    	}else{
-	    		$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_salt),'salt'=>$this->_salt));
+	    	if(!$statu){
+	    		$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_uc_users['salt']),'salt'=>$this->_uc_users['salt']));
 	    	}
+	    	
+			$script = $this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
+			$_SESSION['script']=$script->data;
+    	
 	    	return false;
 	    }else{
 			$this->_response_code = '10006';
@@ -163,7 +164,7 @@ class uc_login extends verification
 						$this->_response_code = '10021';
 						return false;
 					}else{
-						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_salt),'salt'=>$this->_salt));
+						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_uc_users['salt']),'salt'=>$this->_uc_users['salt']));
 						$type = $this->doreg();
 						if($type){
 							$this->login_success();
@@ -250,7 +251,7 @@ class uc_login extends verification
 						$this->_uc_obj->findpwd($this->_account,$this->_password);
 					}else{
 						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_users['rand_pwd']),'salt'=>$this->_users['rand_pwd']));
-					}var_dump($statu);die;
+					}
 					$this->_response_code = '10014';
 					$this->_response_data = $this->_config['weburl'].'/login.php';
 					session_unset($_SESSION[$this->_yzm_mobile]);
