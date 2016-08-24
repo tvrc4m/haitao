@@ -1,6 +1,6 @@
 /**
  * 表单验证方法
- * Create by LiXiongXiong on 2015/11/13
+ * Create by hw
  */
 ;
 define(['module', "utility"], function(module, Util) {
@@ -403,7 +403,7 @@ define(['module', "utility"], function(module, Util) {
          * @param  {String} phoneInput 手机号输入框
          * @return {[type]}            [description]
          */
-    formValid.prototype.sendValidCode = function(btn, sec, url, phoneInput) {
+    formValid.prototype.sendValidCode = function(btn, sec, codeUrl, phoneInput) {
         var _self = this;
         var isTap = true;
         $(btn).on("tap", function() {
