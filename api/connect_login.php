@@ -4,6 +4,12 @@
  * Time: 2016/8/22
  * describe:
  * 		登录互联：绑定QQ、微信、微博快速登录
+ * 		1、获取关联链接存入config
+ * 		2、接受回调方法
+ * 		3、判断回调id是否已绑定会员
+ * 		4、绑定了直接登录
+ * 		5、未绑定->登录或注册绑定会员
+ * 		6、登录成功以后绑定或注册成功以后直接登录绑定会员
  */
 
 
@@ -17,6 +23,8 @@ class connect
 {
 	private $_db = '';
 	private $_config = '';
+	private $_account = '';
+	private $_password = '';
 	private $_wx_akey = '';
 	private $_wx_skey = '';
 	private $_wx_callback_url = '';
@@ -32,9 +40,12 @@ class connect
 	
 	public function __construct()
 	{
-		global $connect_config,$config,$db;
+		global $connect_config,$config,$db,$buid;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 
+
+
+		var_dump($buid);die;
 		$this->_config  = $config;
 		$this->_wx_akey = $connect_config['sina_app_id'];
 		$this->_wx_skey = $connect_config['sina_key'];
@@ -78,15 +89,12 @@ class connect
 	        $uid = $uid_get['uid'];
 	        $ar = $c->show_user_by_id( $uid);
 	        //------------
-	        $sql="select * from ".USERCOON." where type=2 and client_id='$ar[id]'";
+	        $sql="select * from mallbuilder_user_connected where type=2 and client_id='$ar[id]'";
 	        $this->_db->query($sql);
 	        $cre=$this->_db->fetchRow();
 	        if(empty($cre['id']))
 	        {
-	            $sql="insert into ".USERCOON."
-	            (nickname,figureurl,gender,type,access_token,client_id) 
-	            values 
-	            ('$ar[name]','$ar[profile_image_url]','$ar[gender]',2,'$token[access_token]','$ar[id]')";
+	            $sql="insert into mallbuilder_user_connected (nickname,figureurl,gender,type,access_token,client_id) values ('$ar[name]','$ar[profile_image_url]','$ar[gender]',2,'$token[access_token]','$ar[id]')";
 	            $this->_db->query($sql);
 	            $cre['id']=$this->_db->lastid();
 	        }
@@ -122,6 +130,8 @@ class connect
 	private function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
 
+		$sql="update mallbuilder_user_connected set userid='$uid' where id='$post[connect_id]'";
+        $this->_db->query($sql);
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 
