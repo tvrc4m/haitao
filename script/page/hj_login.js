@@ -14,6 +14,13 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     hjLogin.prototype.init = function() {
         var _self = this;
     };
+    /**
+     * 删除表单内容
+     * @param  {String} form      操作的外层包裹元素
+     * @param  {String} obj1        
+     * @param  {String} obj2        
+     * @param  {String} obj3        
+    */
     hjLogin.prototype.formtap = function(form, obj1, obj2 ,obj3) {
         $(form).find(obj1).each(function(){
             $(this).on('input propertychange', function(){
@@ -42,136 +49,197 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             $(this).removeClass(obj3);
         });  
     }
+    /**
+     * 登录操作控制
+     * @param  {String} form       操作的外层包裹元素
+     * @param  {String} subBtn     操作提交按钮
+     * @param  {String} ajaxUrl    交互接口
+     * @param  {String} skipUrl    成功后跳转链接
+    */
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl) {
         $(subBtn).on("tap", function() {
             var url = skipUrl,
                 userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
-            $.ajax({
-                url: ajaxUrl + "?" + Math.random(),
-                type: "POST",
-                dataType: "json",
-                data: {
-                    username:userVal,
-                    password:pwdVal,
-                    action:"login",
-                    forword:url
-                },
-                success: function(data) {
-                    if(!data.url){
-                        utility.tipsWarn(data.errmsg);
-                    
-                    }else{
-                        window.location.href = data.url;  
-                    } 
-                },
-                error: function() {
-                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                }
-            })
+
+            var isPwdValid = formValid.isPwd(pwdVal);
+            var isMobileValid = formValid.isMobile(userVal);
+            if (isMobileValid && isPwdValid) {
+                $.ajax({
+                    url: ajaxUrl + "?" + Math.random(),
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        username:userVal,
+                        password:pwdVal,
+                        action:"login",
+                        forword:url
+                    },
+                    success: function(data) {
+                        if(!data.url){
+                            utility.tipsWarn(data.errmsg);
+                        
+                        }else{
+                            window.location.href = data.url;  
+                        } 
+                    },
+                    error: function() {
+                        utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                    }
+                })
+            }
         })
     }
+    /**
+     * 注册操作控制
+     * @param  {String} form       操作的外层包裹元素
+     * @param  {String} subBtn     操作提交按钮
+     * @param  {String} ajaxUrl    交互接口
+     * @param  {String} skipUrl    成功后跳转链接
+    */
     hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
         $(subBtn).on("tap", function() {
             var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
-            $.ajax({
-                url: ajaxUrl + "?" + Math.random(),
-                type: "POST",
-                dataType: "json",
-                data: {
-                    username:mobileVal,
-                    smsvode:svodeVal,
-                    password:pwdVal,
-                    action:"register",
-                    forword:url
-                },
-                success: function(data) {
-                    if(!data.url){
-                        utility.tipsWarn(data.errmsg);
-                    
-                    }else{
-                        window.location.href = data.url;  
-                    } 
-                },
-                error: function() {
-                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                }
-            })
+
+            var isPwdValid = formValid.isPwd(pwdVal);
+            var isSMSCodeValid = formValid.isSMSCode(svodeVal);
+            var isMobileValid = formValid.isMobile(mobileVal);
+            var isChk = $(form).find(".chk").hasClass('seled');
+            if(!isChk){
+                utility.tipsWarn("注册用户需阅读并同意网站协议");
+                return false;
+            }
+
+            if(isMobileValid && isSMSCodeValid && isPwdValid){
+                $.ajax({
+                    url: ajaxUrl + "?" + Math.random(),
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        username:mobileVal,
+                        smsvode:svodeVal,
+                        password:pwdVal,
+                        action:"register",
+                        forword:url
+                    },
+                    success: function(data) {
+                        if(!data.url){
+                            utility.tipsWarn(data.errmsg);
+                        
+                        }else{
+                            window.location.href = data.url;  
+                        } 
+                    },
+                    error: function() {
+                        utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                    }
+                })
+            }
         })
     }
+    /**
+     * 找回密码操作控制
+     * @param  {String} form       操作的外层包裹元素
+     * @param  {String} subBtn     操作提交按钮
+     * @param  {String} ajaxUrl    交互接口
+     * @param  {String} skipUrl    成功后跳转链接
+    */
     hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
         $(subBtn).on("tap", function() {
             var url = skipUrl,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
-            $.ajax({
-                url: ajaxUrl + "?" + Math.random(),
-                type: "POST",
-                dataType: "json",
-                data: {
-                    username:mobileVal,
-                    smsvode:svodeVal,
-                    password:pwdVal,
-                    action:"lostpass",
-                    forword:url
-                },
-                success: function(data) {
-                    if(!data.url){
-                        utility.tipsWarn(data.errmsg);
-                    
-                    }else{
-                        window.location.href = data.url;  
-                    } 
-                },
-                error: function() {
-                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                }
-            })
+
+            var isPwdValid = formValid.isPwd(pwdVal);              
+            var isSMSCodeValid = formValid.isSMSCode(svodeVal);
+            var isMobileValid = formValid.isMobile(mobileVal);
+  
+            if (isMobileValid && isSMSCodeValid && isPwdValid) {
+                $.ajax({
+                    url: ajaxUrl + "?" + Math.random(),
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        username:mobileVal,
+                        smsvode:svodeVal,
+                        password:pwdVal,
+                        action:"lostpass",
+                        forword:url
+                    },
+                    success: function(data) {
+                        if(!data.url){
+                            utility.tipsWarn(data.errmsg);
+                        
+                        }else{
+                            window.location.href = data.url;  
+                        } 
+                    },
+                    error: function() {
+                        utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                    }
+                })
+            }
         })
     }
+    /**
+     * 发送短信验证码
+     * @param  {String} isForm     判断从哪里发出的验证码
+     * @param  {String} form       操作的外层包裹元素
+     * @param  {String} sedBtn     操作提交按钮
+     * @param  {String} ajaxUrl    交互接口
+     * @param  {String} sec        发送停留时间
+    */
     hjLogin.prototype.sendValidCode = function(isForm ,form, sedBtn, sec, ajaxUrl) {
         var _self = this, num = sec ,timer = null;
         var type = isForm ? isForm : "lostpass"
         $(sedBtn).on("tap",function(){
             var _this = $(this) , mobileVal = $(form).find("input[name=mobile]").val();
-            $.ajax({
-                url: ajaxUrl + "?" + Math.random(),
-                type: "POST",
-                dataType: "json",
-                data: {
-                    username:mobileVal,
-                    action:"yzCode",
-                    type:type
-                },
-                success: function(data) {
-                    utility.tipsWarn(data.errmsg);
-                    if(data.status == '10017'){
-                        _this.attr("disabled",true);
-                        _this.removeClass("yes").addClass("no").html('<var>' + num + '</var>秒后重新发送');
-                        timer = setInterval(function() {
-                            num--;
-                            if (num < 0) {
-                                clearInterval(timer);
-                                _this.attr("disabled",false);
-                                _this.removeClass("no").addClass("yes").html("发送短信验证码");
-                                num = sec;
-                            } else {
-                                _this.find("var").html(num);
-                            }
-                        }, 1000);
+            
+            var isMobileValid = formValid.isMobile(mobileVal);
+            if (isMobileValid) {
+                $.ajax({
+                    url: ajaxUrl + "?" + Math.random(),
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        username:mobileVal,
+                        action:"yzCode",
+                        type:type
+                    },
+                    success: function(data) {
+                        utility.tipsWarn(data.errmsg);
+                        if(data.status == '10017'){
+                            _this.attr("disabled",true);
+                            _this.removeClass("yes").addClass("no").html('<var>' + num + '</var>秒后重新发送');
+                            timer = setInterval(function() {
+                                num--;
+                                if (num < 0) {
+                                    clearInterval(timer);
+                                    _this.attr("disabled",false);
+                                    _this.removeClass("no").addClass("yes").html("发送短信验证码");
+                                    num = sec;
+                                } else {
+                                    _this.find("var").html(num);
+                                }
+                            }, 1000);
+                        }
+                    },
+                    error: function() {
+                        utility.tipsWarn("抱歉，请求错误，请刷新再试！");
                     }
-                },
-                error: function() {
-                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                }
-            })
+                })
+            }
             return false;
         });
     }
+    /**
+     * 协议切换状态
+     * @param  {String} obj     切换按钮
+    */
     hjLogin.prototype.checker = function(obj) {
         $(obj).on("tap", function() {
             var _this = $(this), icon=String("&#xe712;") ,icon2=String("&#xe738;");

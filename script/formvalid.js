@@ -1,6 +1,6 @@
 /**
  * 表单验证方法
- * Create by LiXiongXiong on 2015/11/13
+ * Create by hw
  */
 ;
 define(['module', "utility"], function(module, Util) {
@@ -39,6 +39,9 @@ define(['module', "utility"], function(module, Util) {
         //     _self.isRepwd(v);
         // });
     };
+    /**
+     * 手机号码验证
+    */
     formValid.prototype.isMobile = function(s) {
         var _self = this;
         var patrn = /^(0|86|17951)?(13[0-9]|15[012356789]|17[0678]|18[0-9]|14[57])[0-9]{8}$/;
@@ -58,6 +61,9 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
+    /**
+     * 密码验证
+    */
     formValid.prototype.isPwd = function(s, tip) {
         var _self = this;
         var patrn = /^(?=.{6,16}$)[0-9a-zA-Z#@^&\[\]_]+$/;
@@ -74,6 +80,9 @@ define(['module', "utility"], function(module, Util) {
             return false;
         }
     };
+    /**
+     * 密码是否一致验证
+    */
     formValid.prototype.isRepwd = function(s, pwd) {
         var _self = this;
         var patrn = /^(?=.{6,16}$)[0-9a-zA-Z#@^&\[\]_]+$/;
@@ -96,6 +105,31 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
+    /**
+     * 验证码验证
+    */
+    formValid.prototype.isSMSCode = function(s) {
+        var _self = this;
+        var patrn = /^\d{6}$/;
+        var nl = $("body").find(".next_btn").length;
+        if (s != "" && s != undefined) {
+            if (!patrn.exec(s)) {
+                utility.tipsWarn("请输入6位数字验证码");
+                return false
+            } else {
+                if (nl > 0) {
+                    $("body").find(".next_btn").addClass("on");
+                }
+                return true
+            }
+        } else {
+            utility.tipsWarn("验证码不能为空！");
+            return false
+        }
+    };
+    /**
+     * 昵称验证
+    */
     formValid.prototype.isNick = function(s) {
         var _self = this;
         var patrn = /^[\u4e00-\u9fff\w]{6,12}$/;
@@ -115,6 +149,9 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
+    /**
+     * qq验证
+    */
     formValid.prototype.isQq = function(s) {
         var _self = this;
         var patrn = /^[1-9]\d{4,8}$/;
@@ -134,6 +171,9 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
+    /**
+     * 身份证号码验证
+    */
     formValid.prototype.isCardNo = function(s) {
         var _self = this;
         var patrn = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
@@ -153,25 +193,9 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
-    formValid.prototype.isNull = function(s , txt) {
-        var _self = this;
-        if (s != "" && s != undefined) {
-           return true
-        } else {
-            utility.tipsWarn(txt);
-            return false
-        }
-    };
-    formValid.prototype.isZero = function(s , txt) {
-        var _self = this;
-        if (s == 0) {
-            utility.tipsWarn(txt);
-            return false
-           
-        } else {
-            return true
-        }
-    };
+    /**
+     * 正确的姓名格式验证
+    */
     formValid.prototype.isRealName = function(s) {
         var _self = this;
         var patrn = /^[\u4E00-\u9FA5]{2,16}(?:·[\u4E00-\u9FA5]{2,16})*$/;
@@ -191,6 +215,31 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
+    /**
+     * 是否为空验证
+    */
+    formValid.prototype.isNull = function(s , txt) {
+        var _self = this;
+        if (s != "" && s != undefined) {
+           return true
+        } else {
+            utility.tipsWarn(txt);
+            return false
+        }
+    };
+    formValid.prototype.isZero = function(s , txt) {
+        var _self = this;
+        if (s == 0) {
+            utility.tipsWarn(txt);
+            return false
+           
+        } else {
+            return true
+        }
+    };
+    /**
+     * 邀请码验证
+    */
     formValid.prototype.isInviteCode = function(s) {
         var _self = this;
         var patrn = /^(\d{8}|\d{11})$/;
@@ -203,6 +252,9 @@ define(['module', "utility"], function(module, Util) {
             }
         }
     }
+    /**
+     * 银行卡号验证
+    */
     formValid.prototype.isBankNo = function(s) {
         var _self = this;
         var patrn = /^(\d{16}|\d{18}|\d{19})$/;
@@ -222,6 +274,9 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
+    /**
+     * 金额验证
+    */
     formValid.prototype.isDigital = function(s, txt, floatNum) {
         var _self = this,
             patrn;
@@ -251,25 +306,6 @@ define(['module', "utility"], function(module, Util) {
             patrn = new RegExp("^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$");
         if (!patrn.test(s)) {
             utility.tipsWarn(txt);
-            return false
-        }
-    };
-    formValid.prototype.isSMSCode = function(s) {
-        var _self = this;
-        var patrn = /^\d{6}$/;
-        var nl = $("body").find(".next_btn").length;
-        if (s != "" && s != undefined) {
-            if (!patrn.exec(s)) {
-                utility.tipsWarn("请输入6位数字验证码");
-                return false
-            } else {
-                if (nl > 0) {
-                    $("body").find(".next_btn").addClass("on");
-                }
-                return true
-            }
-        } else {
-            utility.tipsWarn("验证码不能为空！");
             return false
         }
     };
@@ -328,9 +364,9 @@ define(['module', "utility"], function(module, Util) {
                 })
             }
         }
-            /**
+    /**
      * 限制文字输入
-     */
+    */
     formValid.prototype.limitWord = function(apply_txaa, limit_num, num) {
             var _self = this , maxChars = num;
             $(apply_txaa).on("keyup",function(){
@@ -352,117 +388,74 @@ define(['module', "utility"], function(module, Util) {
                 }
             })
         }
-        /**
-         * 浮层提示
-         * @method tipsWarn
-         * @param {String} str 提示文字
-         * @param {String} time 显示时长
-         */
-    // formValid.prototype.tipsWarn = function(str, time) {
-    //         var tipsWrap = $("<div class='alert_tips'><p class='time_01 fadeDown'>" + str + "</p></div>");
-    //         var timenum = time || 2500,
-    //             tips = $(".alert_tips"),
-    //             tips_len = tips.size(),
-    //             num = 0;
-    //         if (tips_len > 0) {
-    //             tips.find("p").html(str);
-    //             clearTimeout(window.timmer);
-    //             num = 0;
-    //             window.timmer = setInterval(function() {
-    //                 num += 100;
-    //                 if (num > timenum) {
-    //                     tips.removeClass('active');
-    //                     clearInterval(window.timmer);
-    //                     setTimeout(function() {
-    //                         tips.remove();
-    //                     }, 500);
-    //                 }
-    //             }, 100);
-    //         } else {
-    //             $("body").append(tipsWrap);
-    //             setTimeout(function() {
-    //                 tipsWrap.addClass('active');
-    //             }, 200);
-    //             window.timmer = setInterval(function() {
-    //                 num += 100;
-    //                 if (num > timenum) {
-    //                     tipsWrap.removeClass('active');
-    //                     clearInterval(window.timmer);
-    //                     setTimeout(function() {
-    //                         tipsWrap.remove();
-    //                     }, 500);
-    //                 }
-    //             }, 100);
-    //         }
-    //     }
-        /**
-         * 发送短信验证码
-         * @param  {String} btn        发送按钮
-         * @param  {Number} sec        等待时间
-         * @param  {String} url        短息接口地址
-         * @param  {String} phoneInput 手机号输入框
-         * @return {[type]}            [description]
-         */
-    formValid.prototype.sendValidCode = function(btn, sec, url, phoneInput) {
-        var _self = this;
-        var isTap = true;
-        $(btn).on("tap", function() {
-            var _this = $(this);
-            if (isTap) {
-                isTap = false;
-                if (_this.hasClass("yes")) {
-                    var phone = $(phoneInput).val();
-                    if (!_self.isMobile(phone)) {
-                        isTap = true;
-                        return false;
-                    } else {
-                        var n = sec;
-                        var timer = null;
-                        $.ajax({
-                            url: url + "?" + Math.random(),
-                            type: "POST",
-                            dataType: "json",
-                            data: {
-                                phone_number: phone
-                            },
-                            success: function(data) {
-                                isTap = true;
-                                // var data = $.parseJSON(data);
-                                if (data.statusCode == 200) {
-                                    _this.removeClass("yes").addClass("no").html('<var>' + n + '</var>s后重发');
-                                    timer = setInterval(function() {
-                                        n--;
-                                        if (n < 0) {
-                                            isTap = true;
-                                            clearInterval(timer);
-                                            _this.removeClass("no").addClass("yes").html("重发验证码");
-                                        } else {
-                                            _this.find("var").html(n);
-                                        }
-                                    }, 1000);
-                                } else {
-                                    isTap = true;
-                                    utility.tipsWarn(data.warnings.server);
-                                }
-                            },
-                            error: function() {
-                                isTap = true;
-                                utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                            }
-                        })
-                    }
-                }
-            }
-        })
-    }
     /**
-         * 发送短信验证码
-         * @param  {String} btn        发送按钮
-         * @param  {Number} sec        等待时间
-         * @param  {String} url        短息接口地址
-         * @param  {String} phoneInput 手机号输入框
-         * @return {[type]}            [description]
-         */
+     * 发送短信验证码
+     * @param  {String} btn        发送按钮
+     * @param  {Number} sec        等待时间
+     * @param  {String} url        短息接口地址
+     * @param  {String} phoneInput 手机号输入框
+     * @return {[type]}            [description]
+     */
+    // formValid.prototype.sendValidCode = function(btn, sec, url, phoneInput) {
+    //     var _self = this;
+    //     var isTap = true;
+    //     $(btn).on("tap", function() {
+    //         var _this = $(this);
+    //         if (isTap) {
+    //             isTap = false;
+    //             if (_this.hasClass("yes")) {
+    //                 var phone = $(phoneInput).val();
+    //                 if (!_self.isMobile(phone)) {
+    //                     isTap = true;
+    //                     return false;
+    //                 } else {
+    //                     var n = sec;
+    //                     var timer = null;
+    //                     $.ajax({
+    //                         url: url + "?" + Math.random(),
+    //                         type: "POST",
+    //                         dataType: "json",
+    //                         data: {
+    //                             phone_number: phone
+    //                         },
+    //                         success: function(data) {
+    //                             isTap = true;
+    //                             // var data = $.parseJSON(data);
+    //                             if (data.statusCode == 200) {
+    //                                 _this.removeClass("yes").addClass("no").html('<var>' + n + '</var>s后重发');
+    //                                 timer = setInterval(function() {
+    //                                     n--;
+    //                                     if (n < 0) {
+    //                                         isTap = true;
+    //                                         clearInterval(timer);
+    //                                         _this.removeClass("no").addClass("yes").html("重发验证码");
+    //                                     } else {
+    //                                         _this.find("var").html(n);
+    //                                     }
+    //                                 }, 1000);
+    //                             } else {
+    //                                 isTap = true;
+    //                                 utility.tipsWarn(data.warnings.server);
+    //                             }
+    //                         },
+    //                         error: function() {
+    //                             isTap = true;
+    //                             utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+    //                         }
+    //                     })
+    //                 }
+    //             }
+    //         }
+    //     })
+    // }
+    /**
+     * 上传图片功能/验证
+     * @param  {String} btn        发送按钮
+     * @param  {Number} sec        等待时间
+     * @param  {String} url        短息接口地址
+     * @param  {String} phoneInput 手机号输入框
+     * @return {[type]}            [description]
+     */
     formValid.prototype.uploadPicture = function(btn, btnInp) {
         var _self = this;
         var isTap = true;
