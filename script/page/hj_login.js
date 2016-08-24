@@ -19,6 +19,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 beforeIpt=this;
             });
             $(document).on("tap", function (e) {
+                alert(1)
                 if(e.target.nodeName.toLowerCase()!="input") {
                     if(beforeIpt) {
                         beforeIpt.blur();
