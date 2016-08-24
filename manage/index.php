@@ -11,7 +11,7 @@ if(!empty($_POST["user"]))
     }
     else
     {
-        $obj = new Uc_server($_SESSION['ucenter_data']);
+        $obj = new Uc_server($config['_UC']);
         $ps=md5(md5($_POST['password']).$us['salt']);
         //验证手机号登录
         $login_phone = "";

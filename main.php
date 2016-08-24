@@ -135,7 +135,7 @@ switch ($action)
 		include_once("$config[webroot]/config/reg_config.php");
 		include_once ("$config[webroot]/includes/uc_server.php");
 
-		$obj = new Uc_server($_SESSION['ucenter_data']);
+		$obj = new Uc_server($config['_UC']);
 		$config = array_merge($config,$reg_config);
 		bsetcookie("USERID",NULL,time(),"/",$config['baseurl']);
 		setcookie("USER",NULL,time(),"/",$config['baseurl']);

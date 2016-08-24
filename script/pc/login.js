@@ -47,7 +47,7 @@ define(function (require,exports,module) {
 	Check.prototype.regist = function() {
 		var _self = this;
 		$(".button").click(function(){
-			$.post("/api/login.php",{username:$("#mobile").val(),smsvode:$("#smsvode").val(),action:"register",password:$("#password").val()},function(msg){
+			$.post("/api/login.php",{username:$("#mobile").val(),smsvode:$("#smsvode").val(),action:"register",password:$("#password").val(),forword:url},function(msg){
 				var data = JSON.parse(msg);
 				if(data.url){
 					window.location.href = data.url;
@@ -63,7 +63,7 @@ define(function (require,exports,module) {
 	Check.prototype.lostpass = function() {
 		var _self = this;
 		$(".button").click(function(){
-			$.post("/api/login.php",{username:$("#mobile").val(),smsvode:$("#smsvode").val(),action:"lostpass",password:$("#password").val()},function(msg){
+			$.post("/api/login.php",{username:$("#mobile").val(),smsvode:$("#smsvode").val(),action:"lostpass",password:$("#password").val(),forword:url},function(msg){
 				var data = JSON.parse(msg);
 				if(data.url){
 					window.location.href = data.url;
