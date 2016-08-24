@@ -56,6 +56,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
      * @param  {String} skipUrl    成功后跳转链接
     */
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl) {
+        formValid.init(form);
         $(subBtn).on("tap", function() {
             var url = skipUrl,
                 userVal = $(form).find("input[name=user]").val(),
