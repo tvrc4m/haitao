@@ -148,7 +148,7 @@ class voucher extends Uc_server{
             }else{
                 $user =parent::userinfo(array('phone'=>$this->_params[$i]['mobile']));
                 if($user['status']=='1100'){
-                    $this->doreg($user['phone'],$user['password']);
+                    $this->doreg($user['phone'],$user['password'],$user['salt']);
                     $this->userInfo($this->_params[$i]['mobile']);
                     $this->shopRule($this->_params[$i]);
                 }else{
@@ -342,7 +342,7 @@ class voucher extends Uc_server{
     }
 
     //数据入库
-    public function doreg($mobile=null,$password=null)
+    public function doreg($mobile=null,$password=null,$rand_pwd=null)
     {
         global $db;
         $user = 'mayi'.$mobile;
@@ -352,7 +352,7 @@ class voucher extends Uc_server{
         $regtime = date("Y-m-d H:i:s");
         $user_reg = "2";
 
-        $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify) values ('$user','".$pass."','NULL','$lastLoginTime','','$mobile','$regtime','$user_reg','0','1')";
+        $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify,rand_pwd) values ('$user','".$pass."','NULL','$lastLoginTime','','$mobile','$regtime','$user_reg','0','1',$rand_pwd)";
         $re=$db->query($sql);
         $userid=$db->lastid();
 
@@ -373,24 +373,14 @@ class voucher extends Uc_server{
             {
                 $post['userid'] = $userid;
                 $post['email'] = $user;
+                $post['pay_mobile'] = $mobile;
                 $pay_id = member_get_url($post,true);
                 if($pay_id)
                 {
-                    $sql="update ".MEMBER." set pay_id='$pay_id' where userid='$userid'";
-                    $re=$db->query($sql);
+                    $sql="update ".MEMBER." set pay_id='{$pay_id}' where userid='{$userid}'";
+                    $re=$this->_db->query($sql);
+                    return true;
                 }
-                //-------------绑定一键连接
-
-                if(!empty($_REQUEST['connect_id']))
-                {
-                    $sql="update ".USERCOON." set userid='$userid' where id='$_REQUEST[connect_id]'";
-                    $db->query($sql);
-                }
-
-                $sql="update pay_member set mobile_verify=true, pay_mobile = '$mobile' where userid=".$userid;
-                $db->query($sql);
-                $sql="update ". MEMBER ." set mobile_verify = 1 where userid=".$userid;
-                $db->query($sql);
             }
         }
     }
