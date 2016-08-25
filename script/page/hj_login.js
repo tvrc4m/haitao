@@ -21,16 +21,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             $("input").on("focus", function (e) {
                 utility.stopPropagation(e);
                 beforeIpt=this;
-                setTimeout(function() {
-                    var innerH = Number($(".login_container").height());
-                    var scrollH = $(window).height()-60;
-                    console.log(innerH)
-                    if (innerH < scrollH) {
-                        $(".login_container").height(scrollH + 1);
-                    } else {
-                        $(".login_container").height(innerH);
-                    }
-                }, 800);
             });
             $(document).on("tap", function (e) {
                 utility.stopPropagation(e);
