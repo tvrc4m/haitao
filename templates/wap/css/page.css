@@ -37,7 +37,7 @@ html *
     url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 /*头部导航样式 新*/
-.header_nav{background-color:#ff5c5c;width:100%;height:2.2rem;line-height:2.2rem;
+.header_nav{background-color:#ff5c5c;width:100%;height:2.2rem;line-height:2.25rem;
     display:-webkit-box;left:0;position: fixed;top:0;z-index:1999;}
 .header_nav .nav_l{padding-left: 0.5rem;height: 2.2rem;width: 2.2rem;}
 .header_nav .nav_c{text-align: center;-webkit-box-flex: 1;font-size: 0.75rem;color: #fff;}

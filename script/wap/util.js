@@ -222,12 +222,12 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
     */
     Util.prototype.scrollTop = function(obj) {
         $(document).scroll(function(){
-            var h = $(document).scrollTop();
+            var h = document.body.scrollTop;
             var wHeight=$(window).height();
             if(h>wHeight){
                 $(obj).show();
                 $(obj).on("tap",function(){
-                    $jj(window).scrollTop(0);
+                    document.body.scrollTop = 0;
                     $(obj).hide();
                 })
             }else{
