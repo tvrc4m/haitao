@@ -274,5 +274,50 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
             }
         });
     }
+    /**
+     * 实名认证
+     * @param  {String} form       操作的外层包裹元素
+     * @param  {String} subBtn     操作提交按钮
+    */
+    hjLogin.prototype.realCtrl = function(form, subBtn , btn ,btnInp) {
+        formValid.init(form);
+        formValid.uploadPicture(btn ,btnInp)
+        $(subBtn).on("tap", function() {
+            var usersVal = $(form).find("input[name=users]").val(),
+                realVal = $(form).find("input[name=real]").val(),
+                Inpimg1Val = $(form).find("input[name=img1]").val(),
+                Inpimg2Val = $(form).find("input[name=img2]").val();
+   
+            var isNull2Valid = formValid.isNull(Inpimg2Val ,"身份证反面不能为空"); 
+            var isNull1Valid = formValid.isNull(Inpimg1Val ,"身份证正面不能为空"); 
+            var isCardNoValid = formValid.isCardNo(realVal);              
+            var isRealNameValid = formValid.isRealName(usersVal);
+            if (isRealNameValid && isCardNoValid && isNull1Valid && isNull2Valid) {
+                // $.ajax({
+                //     url: ajaxUrl + "?" + Math.random(),
+                //     type: "POST",
+                //     dataType: "json",
+                //     data: {
+                //         username:mobileVal,
+                //         smsvode:svodeVal,
+                //         password:pwdVal,
+                //         action:"lostpass",
+                //         forword:url
+                //     },
+                //     success: function(data) {
+                //         if(!data.url){
+                //             utility.tipsWarn(data.errmsg);
+                        
+                //         }else{
+                //             window.location.href = data.url;  
+                //         } 
+                //     },
+                //     error: function() {
+                //         utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                //     }
+                // })
+            }
+        })
+    }
     module.exports = new hjLogin();
 });
