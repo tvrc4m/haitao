@@ -1,15 +1,19 @@
 <{include file="header.htm"}>
-<link href="<{$config.weburl}>/templates/wap/css/agreement.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    body{margin:10px;background-color: #fff;}
+    h1{font-size: 24px}
+    h5{font-size: 16px;margin: 10px 0px;}
+    p{line-height: 24px;}
+    ul{margin: 0;padding-left: 20px;}
+    ul li{line-height: 24px;margin-bottom: 5px;list-style-type: disc;}
+</style>
 <header>
-    <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe60d</font> --></section>
-        <section class="nav-c"><span>蚂蚁海淘注册协议</span></section>
-        <!-- <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section> -->
+    <div class="header_nav">
+        <div class="nav_l" onclick="javascript:history.back(-1)"><i class="back_icon"></i></div>
+        <div class="nav_c"><span>蚂蚁海淘注册协议</span></div>
+        <div class="nav_r"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></div>
     </div>
 </header>
-<!-- <h1 align="center" style="margin-left:0.0000pt;text-align:center;">
-    <b>蚂蚁海淘</b><b>服务协议</b><a href="https://reg.gome.com.cn/register/index/javascript:void(0);"></a>
-</h1> -->
 <p class="p first-p">
     &nbsp;&nbsp;本协议是您与蚂蚁海淘网站（简称"本站"，网址：www.mayihaitao.com.）所有者及关联公司（以下统称为"蚂蚁海淘"）之间就蚂蚁海淘网站服务等相关事宜所订立的契约，请您仔细阅读本注册协议，您点击"同意并继续"按钮后，本协议即构成对双方有约束力的法律文件。
 </p>
@@ -380,3 +384,4 @@
     16.2.您点击本协议下方的"同意并继续"按钮即视为您完全接受本协议，在点击之前请您再次确认已知悉并完全理解本协议的全部内容。
 </p>
 <br />
+<{include file="footer.htm"}>
