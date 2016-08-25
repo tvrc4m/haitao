@@ -6,7 +6,7 @@ ul,ol,li{list-style:none;}
 em,i{font-style:normal;}
 img{border:0;}
 input,img{vertical-align:middle;}
-body{color:#535353;font:400 14px/18px 'microsoft yahei';background:#f5f5f5;max-width: 720px;margin: 0 auto;}
+body{overflow-x: hidden;overflow-y: hidden;color:#535353;font:400 14px/18px 'microsoft yahei';background:#f5f5f5;max-width: 720px;margin: 0 auto;}
 a,a:visited{color:#535353;text-decoration:none;}
 .clearfix:after{display:block;content:'';clear:both;visibility:hidden;}
 .hidden{display:none;}
