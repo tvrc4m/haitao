@@ -631,11 +631,10 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
         $access_token = json_decode(file_get_contents($access_token_url));
         if(!empty($access_token) && isset($access_token->openid) && !empty($access_token->openid))
         {
-            $_SESSION['openid_f'] = $access_token->openid;
+            //$_SESSION['openid_f'] = $access_token->openid;
         }
         $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
         $user_info = json_decode(@file_get_contents($user_info_url));
-
         $openid = $user_info -> openid;
         $nickname = $user_info -> nickname;
 
