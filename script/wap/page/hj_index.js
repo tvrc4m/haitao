@@ -48,8 +48,8 @@ define(["module", "utility"], function(module, Util) {
     * @menthod obj 返回按钮元素
     * @returns {object}
     */
-    hjIndex.prototype.scrollTopFn = function(obj) {
-        utility.scrollTop(obj);
+    hjIndex.prototype.scrollTopFn = function(btn) {
+        utility.scrollTop(btn);
     }
     /**
      * 字符串截取

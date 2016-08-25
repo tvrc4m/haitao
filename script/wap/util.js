@@ -220,20 +220,42 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
     * @menthod obj 返回按钮元素
     * @returns {object}
     */
-    Util.prototype.scrollTop = function(obj) {
-        $(document).scroll(function(){
-            var h = document.body.scrollTop;
-            var wHeight=$(window).height();
-            if(h>wHeight){
-                $(obj).show();
-                $(obj).on("tap",function(){
-                    document.body.scrollTop = 0;
-                    $(obj).hide();
-                })
+    Util.prototype.scrollTop = function(btn) {
+        function myEvent(obj,ev,fn){
+            if(obj.attachEvent){
+                obj.attachEvent('on'+ev,fn);
             }else{
-                $(obj).hide();
+                obj.addEventListener(ev,fn,false);
             }
-        })
+        }
+        myEvent(window,'load',function(){
+            var oRTT = document.querySelector(btn);   
+            var pH=document.documentElement.clientHeight;
+            var timer=null;
+            var scrollTop;
+            window.onscroll=function(){
+                scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+                if(scrollTop>=pH){
+                    oRTT.style.display='block';
+                }else{
+                    oRTT.style.display='none';
+                }
+                return scrollTop;
+            };
+            oRTT.onclick=function(){
+                clearInterval(timer);
+                timer=setInterval(function(){
+                    var now=scrollTop;
+                    var speed=(0-now)/10;
+                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(scrollTop==0){
+                        clearInterval(timer);
+                    }
+                    document.documentElement.scrollTop=scrollTop+speed;
+                    document.body.scrollTop=scrollTop+speed;
+                }, 30);
+            }
+        });
     }
     /**
     * 字符串截取(公共)
