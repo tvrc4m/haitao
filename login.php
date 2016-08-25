@@ -587,7 +587,7 @@ function is_repeat($str)
     }
 }
 
-if ($config['weixin_connect'] && !isset($_GET['connect_id']))
+/**if ($config['weixin_connect'] && !isset($_GET['connect_id']))
 {
     $appid = $config['weixin_app_id'];
     $appsecret = $config['weixin_key'];
@@ -673,6 +673,129 @@ if ($config['weixin_connect'] && !isset($_GET['connect_id']))
                     else
                 $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
 
+                msg($forward);
+            }
+            else
+            {
+                $_SESSION['connect_name'] = '微信';
+                msg("login.php?connect_id=$cre[id]");
+            }
+        }
+        /*
+        if($openid)
+        {
+            $sql = "select userid,user from ".MEMBER." where open_id = '$openid'";
+            $db -> query($sql);
+            $re = $db -> fetchRow();
+            if($re['userid'])
+            {
+                $nickname = $re['user'];
+                $member_id = $re['userid'];
+            }
+            else
+            {
+                $nickname = is_repeat($user_info -> nickname);
+                $sql="insert into ".MEMBER." (user,password,ip,lastLoginTime,email,mobile,regtime,statu,email_verify,mobile_verify,open_id) values ('$nickname','','".getip()."','".time()."','','','".date("Y-m-d H:i:s")."','2','0','0','$openid')";
+                $re = $db -> query($sql);
+                $member_id = $db -> lastid();
+
+
+                //
+                $PluginManager = Yf_Plugin_Manager::getInstance();
+                $PluginManager->trigger('reg_done', $member_id, $nickname);
+
+            }
+            login($member_id,$nickname);
+            msg($config["weburl"] . "/main.php");
+        }
+        */
+        /**
+    }
+}
+*/
+
+if ($config['weixin_connect'] && !isset($_GET['connect_id']))
+{
+    $appid = $config['weixin_app_id'];
+    $appsecret = $config['weixin_key'];
+
+    $redirect_uri = urlencode("$config[weburl]/login.php?connect_type=weixin");
+
+    if($config['bw'] == "weixin")
+    {
+        $wechat_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
+    }
+    else
+    {
+        $wechat_url = "https://open.weixin.qq.com/connect/qrconnect?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect";
+    }
+
+    $_SESSION['connect_name'] = '微信';
+    $tpl -> assign("wechat_url",$wechat_url);
+
+    if ($config['bw'] == "weixin")
+    {
+        if (!isset($_GET['code']))
+        {
+            if (true || $wechat_login_flag == true)
+            {
+                header('location:' . $wechat_url);
+                die();
+            }
+        }
+    }
+
+    $code = $_GET['code'];
+    $state = $_GET['state'];
+
+    if(!empty($code))
+    {
+        $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$appid.'&secret='.$appsecret.'&code='.$code.'&grant_type=authorization_code';
+        $token = json_decode(file_get_contents($token_url));
+
+        $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
+        $access_token = json_decode(file_get_contents($access_token_url));
+
+        $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
+        $user_info = json_decode(@file_get_contents($user_info_url));
+
+        $openid = $user_info -> openid;
+        $nickname = $user_info -> nickname;
+
+
+        if($openid)
+        {
+            //--------------------------
+            $sql="select * from ".USERCOON." where type=3 and openid='$openid'";
+            $db->query($sql);
+            $cre=$db->fetchRow();
+
+            if(empty($cre['id']))
+            {
+                $sql="insert into ".USERCOON."(nickname,figureurl,gender,vip,level,type,access_token,client_id,openid)
+                        values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid')";
+                $db->query($sql);
+                $cre['id']=$db->lastid();
+            }
+            else
+            {
+            }
+
+            //判断userid ， bind
+            if(!$cre['userid'])
+            {
+                //-------------绑定一键连接
+                if(!empty($cre['id']))
+                {
+                    $sql="update ".USERCOON." set userid='$buid' where id='$cre[id]'";
+                    $db->query($sql);
+                }
+            }
+
+            if($cre['userid'])
+            {
+                login($cre['userid'],NULL);
+                $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
                 msg($forward);
             }
             else
