@@ -10,28 +10,21 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     }
     var formValid = new formValid();
     var utility = new Util();
+    /**
+     * 表单初始化   
+    */
     hjLogin.prototype.init = function() {
         var _self = this;
         fixedInputBlur ();
         function fixedInputBlur () {
             var beforeIpt=null;
             $("input").on("focus", function (e) {
-                e = e || window.event;
-                if (e.stopPropagation) { //W3C阻止冒泡方法
-                    e.stopPropagation();
-                } else {
-                    e.cancelBubble = true; //IE阻止冒泡方法
-                }
+                utility.stopPropagation(e);
                 beforeIpt=this;
             });
             $(document).on("tap", function (e) {
-                e = e || window.event;
-                if (e.stopPropagation) { //W3C阻止冒泡方法
-                    e.stopPropagation();
-                } else {
-                    e.cancelBubble = true; //IE阻止冒泡方法
-                }
-                if(e.target.nodeName.toLowerCase()!="input") {
+                utility.stopPropagation(e);
+                if(e.target.nodeName.toLowerCase() != "input") {
                     if(beforeIpt) {
                         beforeIpt.blur();
                         beforeIpt=null;
@@ -43,9 +36,9 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     /**
      * 删除表单内容
      * @param  {String} form      操作的外层包裹元素
-     * @param  {String} obj1        
-     * @param  {String} obj2        
-     * @param  {String} obj3        
+     * @param  {String} obj1      需要遍历的表单内容 
+     * @param  {String} obj2      删除按钮  
+     * @param  {String} obj3      删除增加类
     */
     hjLogin.prototype.formtap = function(form, obj1, obj2 ,obj3) {
         $(form).find(obj1).each(function(){

@@ -1,10 +1,10 @@
 <{include file="header.htm"}>
 <link href="<{$config.weburl}>/templates/wap/css/verify.css" rel="stylesheet" type="text/css" />
 <header>
-	<div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
-    	<section class="nav-c"><span><{if $dist_id eq 1}>快速成为合伙人<{else}>注册蚂蚁海淘<{/if}></span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+    <div class="header_nav">
+        <div class="nav_l" onclick="javascript:history.back(-1)"><i class="back_icon"></i></div>
+        <div class="nav_c"><span><{if $dist_id eq 1}>快速成为合伙人<{else}>注册蚂蚁海淘<{/if}></span></div>
+        <div class="nav_r"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></div>
     </div>
 </header>
 <{if $config.closetype==2}>
