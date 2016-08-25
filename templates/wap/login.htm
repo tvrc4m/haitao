@@ -36,11 +36,11 @@
     </div>
     <{/if}>
 </div>
-<script type="text/javascript" src="<{$config.weburl}>/script/page/libs.js?v=<?=time();?>"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
         //By default load any module IDs from js/lib
-        baseUrl: 'script/',
+        baseUrl: 'script/wap/',
         urlArgs: "v="+window.jsVersion,
         paths: {
             "formValid":"formvalid",
