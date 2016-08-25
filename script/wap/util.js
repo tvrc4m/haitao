@@ -229,30 +229,29 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
             }
         }
         myEvent(window,'load',function(){
-            var oRTT = document.querySelector(btn);   
-            var pH=document.documentElement.clientHeight;
-            var timer=null;
-            var scrollTop;
+            var oBtn = document.querySelector(btn) , 
+                widH = document.documentElement.clientHeight ,
+                timer = null ,
+                scrollTop;
             window.onscroll=function(){
-                scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
-                if(scrollTop>=pH){
-                    oRTT.style.display='block';
+                scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+                if(scrollTop >= widH){
+                    oBtn.style.display = 'block';
                 }else{
-                    oRTT.style.display='none';
+                    oBtn.style.display = 'none';
                 }
                 return scrollTop;
             };
-            oRTT.onclick=function(){
+            oBtn.onclick=function(){
                 clearInterval(timer);
                 timer=setInterval(function(){
-                    var now=scrollTop;
-                    var speed=(0-now)/10;
-                    speed=speed>0?Math.ceil(speed):Math.floor(speed);
-                    if(scrollTop==0){
+                    var now = scrollTop , speed = (0-now)/10;
+                    speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                    if(scrollTop == 0){
                         clearInterval(timer);
                     }
-                    document.documentElement.scrollTop=scrollTop+speed;
-                    document.body.scrollTop=scrollTop+speed;
+                    document.documentElement.scrollTop = scrollTop+speed;
+                    document.body.scrollTop = scrollTop+speed;
                 }, 30);
             }
         });
