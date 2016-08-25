@@ -70,7 +70,7 @@ define(['module', "utility"], function(module, Util) {
         tip = tip || "密码";
         if (s != "" && s != undefined) {
             if (!patrn.exec(s)) {
-                utility.tipsWarn(tip + "需为6-20个字母、数字和一些常用特殊字符");
+                utility.tipsWarn(tip + "需为6-16个字母、数字和一些常用特殊字符");
                 return false;
             } else {
                 return true;
