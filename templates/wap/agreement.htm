@@ -435,7 +435,7 @@
 <script type="text/javascript">
     require(['page/hj_base','utility'], function (B,Util) {
         $(".hj_share_btn").on("tap", function() {
-            utility.hjShare("body");
+            B.share();
             window.wxShareDate = {
                 img:"<?=BASEURL;?>/resources/images/wx_share.png?v=75b2a2dd0",
                 link:"<?=BASEURL;?>/activity/online/index/"+"<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>",

@@ -18,10 +18,7 @@ define(["module", "utility"], function(module, Util) {
         var _self = this;
     }
     hjBase.prototype.share = function() {
-        $(".hj_share_btn").on("tap", function() {
-            var _vcode = $(this).attr("data-vcode");
-            utility.hjShare("body",_vcode);
-        })
+        utility.hjShare("body");
     }
     /**
      * 页面提示
