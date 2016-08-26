@@ -406,7 +406,7 @@
 </script>
 <{if $is_wechat}>
 <script type="text/javascript">
-     require(['pages/hj_base','utility'], function (B,Util) {
+     require(['page/hj_base','utility'], function (B,Util) {
         var utility  = new Util();
         var inviteCode = "<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?><?php endif;?>";
         var appid = '<{$wechat_share.appId}>',
