@@ -387,6 +387,7 @@
 <div id="addtop" class="addtop">
     <a class="top" href="javascript:void(0);"></a>
 </div>
+<a href="javascript:void(0);" class="hj_share_btn">邀请合伙人</a>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
@@ -406,7 +407,7 @@
 </script>
 <{if $is_wechat}>
 <script type="text/javascript">
-     require(['page/hj_base','utility'], function (B,Util) {
+    require(['page/hj_base','utility'], function (B,Util) {
         var utility  = new Util();
         var inviteCode = "<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?><?php endif;?>";
         var appid = '<{$wechat_share.appId}>',
@@ -431,4 +432,9 @@
     });
 </script> 
 <{/if}>
+<script type="text/javascript">
+    require(['page/hj_base','utility'], function (B,Util) {
+        B.share();
+    });
+</script>
 <{include file="footer.htm"}>
