@@ -387,7 +387,6 @@
 <div id="addtop" class="addtop">
     <a class="top" href="javascript:void(0);"></a>
 </div>
-<a href="javascript:void(0);" class="hj_share_btn">邀请合伙人</a>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
@@ -405,53 +404,4 @@
         hjIndex.scrollTopFn("#addtop");
     });  
 </script>
-<script type="text/javascript">
-    $(".hj_share_btn").on("tap", function() {
-        var shareDom = '<div class="hj_share_box" id="share_box"></div>';
-        $("body").append(shareDom);
-        $("#share_box").show();
-        $("#share_box").on("tap", function() {
-            $(this).animate({
-                "opacity": "0"
-            }, 800);
-            setTimeout(function() {
-                $("#share_box").remove();
-            }, 800);
-        })
-        window.wxShareDate = {
-            img:"<?=BASEURL;?>/resources/images/wx_share.png?v=75b2a2dd0",
-            link:"<?=BASEURL;?>/activity/online/index/"+"<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>",
-            desc:"<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！",
-            title:"抬头走路，低头“捡”钱！！！",
-            qtil:"抬头走路，低头“捡”钱！<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！"
-        }
-    });
-</script>
-<{if $is_wechat}>
-<script type="text/javascript">
-    require(['page/hj_base','utility'], function (B,Util) {
-        var utility  = new Util();
-        var inviteCode = "<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?><?php endif;?>";
-        var appid = '<{$wechat_share.appId}>',
-            timestamp =  '<{$wechat_share.timestamp}>',
-            nonceStr =  '<{$wechat_share.nonceStr}>', 
-            signature =  '<{$wechat_share.signature}>';
-        var img = "https://haitao-resource.b0.upaiyun.com/product/44/1469605881579867f9f3a2e.jpg_220X220.jpg";
-        var link = location.href;
-        var desc = '京东、天猫、苏宁、国美等大型电商应收账款，商业保理公司提供应收账款全额回购。';
-        var title = '蚂蚁在线，新春送福，加息3%';
-        var qtil = '蚂蚁在线，新春送福，加息3%，一年只有一次，只为深爱的你。京东、天猫、苏宁、国美等大型电商应收账款，商业保理公司提供应收账款全额回购。';
-
-        if(window.wxShareDate != "" && window.wxShareDate != undefined){
-            img = window.wxShareDate.img;
-            link = window.wxShareDate.link;
-            desc = window.wxShareDate.desc;
-            title = window.wxShareDate.title;
-            qtil = window.wxShareDate.qtil;
-        }
-
-        B.wxShare(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil);
-    });
-</script> 
-<{/if}>
 <{include file="footer.htm"}>

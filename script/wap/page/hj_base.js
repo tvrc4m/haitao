@@ -22,17 +22,7 @@ define(["module", "utility"], function(module, Util) {
             var _vcode = $(this).attr("data-vcode");
             utility.hjShare("body",_vcode);
         })
-    }
-    /**
-     * 页面提示
-     * @param  {String} str  提示文字
-     * @param  {Number} time 显示时长
-     * @return {[type]}      [description]
-    */
-    hjBase.prototype.tipsWarnFn = function(str, time) {
-        utility.tipsWarn(str, time);
-    }
-        
+    }       
     /**
      * [wxShare description]
      * @param  {[type]} appid     [description]
