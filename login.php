@@ -9,7 +9,7 @@ if($buid)
     exit();
 }
 include_once("footer.php");
-// include_once($config['webroot']."/config/connect_config.php");//connect
+include_once($config['webroot']."/config/connect_config.php");//connect
 include_once($config['webroot']."/api/connect_login.php");
 $config = array_merge($config,$connect_config);
 $tpl->assign('config',$config);
