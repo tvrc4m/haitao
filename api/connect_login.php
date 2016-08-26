@@ -13,7 +13,7 @@
  */
 
 
-include_once("../includes/global.php");
+//include_once("../includes/global.php");
 include_once($config['webroot']."/config/connect_config.php");//connect
 
 /**
