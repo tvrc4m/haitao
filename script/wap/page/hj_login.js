@@ -279,9 +279,8 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
      * @param  {String} form       操作的外层包裹元素
      * @param  {String} subBtn     操作提交按钮
     */
-    hjLogin.prototype.realCtrl = function(form, subBtn , btn ,btnInp) {
+    hjLogin.prototype.realCtrl = function(form, subBtn) {
         formValid.init(form);
-        formValid.uploadPicture(btn ,btnInp)
         $(subBtn).on("tap", function() {
             var usersVal = $(form).find("input[name=users]").val(),
                 realVal = $(form).find("input[name=real]").val(),

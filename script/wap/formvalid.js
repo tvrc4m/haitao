@@ -227,16 +227,6 @@ define(['module', "utility"], function(module, Util) {
             return false
         }
     };
-    formValid.prototype.isZero = function(s , txt) {
-        var _self = this;
-        if (s == 0) {
-            utility.tipsWarn(txt);
-            return false
-           
-        } else {
-            return true
-        }
-    };
     /**
      * 邀请码验证
     */
@@ -368,160 +358,26 @@ define(['module', "utility"], function(module, Util) {
      * 限制文字输入
     */
     formValid.prototype.limitWord = function(apply_txaa, limit_num, num) {
-            var _self = this , maxChars = num;
-            $(apply_txaa).on("keyup",function(){
-                var textStr=$(".apply_textarea").val().toString() , timer;
-                var re1=/[\x00-\xff]/g;
-                var re2=/./g;
-                if(textStr != ""){
-                    if(re1.test(textStr)){
-                        textNum=(textStr.match(re2).length)-Math.floor((textStr.match(re1).length)/2);
-                    }
-                    else{
-                        textNum=textStr.match(re2).length;
-                    }
-                    var surplusNum=parseInt(maxChars-textNum);
-                    $(limit_num).html(surplusNum);
+        var _self = this , maxChars = num;
+        $(apply_txaa).on("keyup",function(){
+            var textStr=$(".apply_textarea").val().toString() , timer;
+            var re1=/[\x00-\xff]/g;
+            var re2=/./g;
+            if(textStr != ""){
+                if(re1.test(textStr)){
+                    textNum=(textStr.match(re2).length)-Math.floor((textStr.match(re1).length)/2);
                 }
                 else{
-                    $(limit_num).html(maxChars);
+                    textNum=textStr.match(re2).length;
                 }
-            })
-        }
-    /**
-     * 发送短信验证码
-     * @param  {String} btn        发送按钮
-     * @param  {Number} sec        等待时间
-     * @param  {String} url        短息接口地址
-     * @param  {String} phoneInput 手机号输入框
-     * @return {[type]}            [description]
-     */
-    // formValid.prototype.sendValidCode = function(btn, sec, url, phoneInput) {
-    //     var _self = this;
-    //     var isTap = true;
-    //     $(btn).on("tap", function() {
-    //         var _this = $(this);
-    //         if (isTap) {
-    //             isTap = false;
-    //             if (_this.hasClass("yes")) {
-    //                 var phone = $(phoneInput).val();
-    //                 if (!_self.isMobile(phone)) {
-    //                     isTap = true;
-    //                     return false;
-    //                 } else {
-    //                     var n = sec;
-    //                     var timer = null;
-    //                     $.ajax({
-    //                         url: url + "?" + Math.random(),
-    //                         type: "POST",
-    //                         dataType: "json",
-    //                         data: {
-    //                             phone_number: phone
-    //                         },
-    //                         success: function(data) {
-    //                             isTap = true;
-    //                             // var data = $.parseJSON(data);
-    //                             if (data.statusCode == 200) {
-    //                                 _this.removeClass("yes").addClass("no").html('<var>' + n + '</var>s后重发');
-    //                                 timer = setInterval(function() {
-    //                                     n--;
-    //                                     if (n < 0) {
-    //                                         isTap = true;
-    //                                         clearInterval(timer);
-    //                                         _this.removeClass("no").addClass("yes").html("重发验证码");
-    //                                     } else {
-    //                                         _this.find("var").html(n);
-    //                                     }
-    //                                 }, 1000);
-    //                             } else {
-    //                                 isTap = true;
-    //                                 utility.tipsWarn(data.warnings.server);
-    //                             }
-    //                         },
-    //                         error: function() {
-    //                             isTap = true;
-    //                             utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-    //                         }
-    //                     })
-    //                 }
-    //             }
-    //         }
-    //     })
-    // }
-    /**
-     * 上传图片功能/验证
-     * @param  {String} btn        发送按钮
-     * @param  {Number} sec        等待时间
-     * @param  {String} url        短息接口地址
-     * @param  {String} phoneInput 手机号输入框
-     * @return {[type]}            [description]
-     */
-    formValid.prototype.uploadPicture = function(btn, btnInp) {
-        var _self = this;
-        var isTap = true;
-        $(btn).on("tap", function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-            var _this=$(this) , b = _this.parent().index();
-            a=$(this).attr("data-id");
-            if(b>0){
-                var c = _this.parent().prev().find("input").val();
-                if(c==""){
-                    utility.tipsWarn("按顺序上传图片");
-                }
-                else{
-                    _this.parent().find("input").trigger('click');
-                }
-            }else{
-                _this.parent().find("input").trigger('click');
+                var surplusNum=parseInt(maxChars-textNum);
+                $(limit_num).html(surplusNum);
             }
-            // _this.parent().find("input").trigger('click');
-        });
-        $(btnInp).on('change', function (e) {
-            var stype = $(this).attr('stype');
-            var rename = $(this).attr('rename');
-            var fs = e.target.files || e.dataTransfer && e.dataTransfer.files;
-            handleFiles(fs,stype,rename);
+            else{
+                $(limit_num).html(maxChars);
+            }
         })
-        function handleFiles (files, stype,rename) {
-            var tim = new Date();
-            var day = tim.getDate();
-            var year = tim.getFullYear();
-            var month = tim.getMonth()+1;
-            month = month < 10 ? '0' + month : month;
-            for (var i = 0; i < files.length; i++) {
-                var fd = new FormData();
-                if (files[i].type.match('image.*')) {
-                    fd.append('file', files[i])
-                    if(stype != ''){
-                        fd.append('stype', stype)
-                    }
-                    fd.append('rename', rename)
-                    fd.append('fileurl', "uploadfile/member/"+year+month+day + "/")
-                    sendFile(fd);
-                    break;
-                }
-            }
-        }
-        function sendFile (f) {
-            var uploadUrl = '/ajaxupload.php';
-            $.ajax({
-                url: uploadUrl,
-                type: 'POST',
-                dataType: "json",
-                contentType: false,
-                processData: false,
-                cache: false,
-                data: f,
-                success: function (msg) {
-                    $("input[name=img"+a+"]").attr("value",msg.key);
-                    $("input[name=img"+a+"]").next().attr("src", '../'+msg.key);
-                },
-                error: function (msg) {
-                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
-                }
-            });
-        }
     }
+
     module.exports = formValid;
 })
