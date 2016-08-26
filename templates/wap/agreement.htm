@@ -387,23 +387,6 @@
 <div id="addtop" class="addtop">
     <a class="top" href="javascript:void(0);"></a>
 </div>
-<script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
-<script type="text/javascript">
-    require.config({
-        baseUrl: 'script/wap/',
-        urlArgs: "v="+window.jsVersion,
-        paths: {
-            "formValid":"formvalid",
-            "utility":"util"
-        },
-        shim: {},
-        waitSeconds:0
-    });
-    window.jsVersion = "7b3d28d5dd";
-    require(['page/hj_index'], function (hjIndex) {
-        hjIndex.scrollTopFn("#addtop");
-    });   
-</script>
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <{if $is_wechat}>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
