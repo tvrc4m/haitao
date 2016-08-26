@@ -323,7 +323,7 @@ class uc_login extends verification
 	 * 互联绑定登录
 	 */
 	private function connect_login(){
-		$sql="update mallbuilder_user_connected set userid='{$this->_users['userid']}' where id=".$this->_connect_id;
+		$sql="update ".USERCOON." set userid='{$this->_users['userid']}' where id=".$this->_connect_id;
 	    $this->_db->query($sql);
 	}
 	/**

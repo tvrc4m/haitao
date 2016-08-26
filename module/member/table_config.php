@@ -6,4 +6,6 @@ define("MEMBERGRADE",$config['table_pre']."member_grade");//会员等级表
 define("MECART",$config['table_pre']."member_card");//会员卡
 define("MECARTTEM",$config['table_pre']."member_card_temp");//会员卡模板表
 define("MEMBERFLOW",$config['table_pre']."member_flow");//会员卡流水表
+
+define("USERCOON",$config['table_pre']."user_connected");//会员表
 ?>
