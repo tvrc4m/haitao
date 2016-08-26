@@ -414,7 +414,7 @@
             nonceStr =  '<{$wechat_share.nonceStr}>', 
             signature =  '<{$wechat_share.signature}>';
         var img = "https://haitao-resource.b0.upaiyun.com/product/44/1469605881579867f9f3a2e.jpg_220X220.jpg";
-        var link = "<?=BASEURL;?>?invite=<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>";
+        var link = location.href;
         var desc = '京东、天猫、苏宁、国美等大型电商应收账款，商业保理公司提供应收账款全额回购。';
         var title = '蚂蚁在线，新春送福，加息3%';
         var qtil = '蚂蚁在线，新春送福，加息3%，一年只有一次，只为深爱的你。京东、天猫、苏宁、国美等大型电商应收账款，商业保理公司提供应收账款全额回购。';
