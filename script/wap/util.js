@@ -761,12 +761,12 @@ define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.j
         }     
         return uuid.join('');
     }
-
-     /**
+    
+    /**
      * 分享
      * @param  {[type]} wrap [description]
      * @return {[type]}      [description]
-     */
+    */
     Util.prototype.hjShare = function(wrap,vcode) {
         var _self = this;
         var ua = _self.UA();
@@ -844,10 +844,10 @@ define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.j
         };
     }
     Util.prototype.isPhone = function() {
-            if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
-                return true;
-            } else {
-                return false;
-            }
+        if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+            return true;
+        } else {
+            return false;
         }
+    }
 })
