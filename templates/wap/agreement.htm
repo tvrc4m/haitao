@@ -404,7 +404,7 @@
         hjIndex.scrollTopFn("#addtop");
     });  
 </script>
-<{if $is_wechat}>
+
 <script type="text/javascript">
      require(['page/hj_base','utility'], function (B,Util) {
         var utility  = new Util();
@@ -430,5 +430,5 @@
         B.wxShare(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil);
     });
 </script>
-<{/if}> 
+ 
 <{include file="footer.htm"}>
