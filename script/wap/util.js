@@ -3,7 +3,7 @@
  * Create by huwei on 2016/6/13
  */
 ;
-define(["require", 'module', "IScroll"], function(require, module, IScroll) {
+define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.js"], function(require, module, IScroll,weixin) {
     /**
      * @class Util
      * @constructor
@@ -761,4 +761,93 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
         }     
         return uuid.join('');
     }
+
+     /**
+     * 分享
+     * @param  {[type]} wrap [description]
+     * @return {[type]}      [description]
+     */
+    Util.prototype.hjShare = function(wrap,vcode) {
+        var _self = this;
+        var ua = _self.UA();
+        if(ua.mayi){
+            Android.shareActivity(window.wxShareDate.title,window.wxShareDate.desc,window.wxShareDate.img,window.wxShareDate.link,window.wxShareDate.qtil);
+        }else{
+            var shareDom = '<div class="hj_share_box" id="share_box"></div>';
+            $(wrap).append(shareDom);
+            $("#share_box").show();
+            $("#share_box").on("tap", function() {
+                $(this).animate({
+                    "opacity": "0"
+                }, 800);
+                setTimeout(function() {
+                    $("#share_box").remove();
+                }, 800);
+            })
+        }
+    }
+    Util.prototype.weixinShare = function(appid, timestamp, nonceStr, signature, img, plink, pdesc, ptitle, qtil) {
+        var wxData = {
+            "appId": "", // 服务号可以填写appId
+            "imgUrl": img,
+            "link": plink,
+            "desc": pdesc,
+            "title": ptitle
+        };
+        weixin.config({
+            debug: false,
+            appId: appid,
+            timestamp: timestamp,
+            nonceStr: nonceStr,
+            signature: signature,
+            jsApiList: [
+                // 所有要调用的 API 都要加到这个列表中'checkJsApi',
+                'onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'translateVoice', 'startRecord', 'stopRecord', 'onRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'
+            ]
+        });
+        weixin.ready(function() {
+            //隐藏右上角菜单
+            // wx.hideOptionMenu();
+            // 在这里调用 API
+            var title = wxData.title;
+            var desc = wxData.desc;
+            var link = wxData.link;
+            var imgUrl = wxData.imgUrl;
+            // 2. 分享接口
+            // 2.1 监听“分享给朋友”，按钮点击、自定义分享内容及分享结果接口
+            weixin.onMenuShareAppMessage({
+                title: title,
+                desc: desc,
+                link: link,
+                imgUrl: imgUrl
+            });
+            // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
+            weixin.onMenuShareTimeline({
+                title: qtil,
+                link: link,
+                imgUrl: imgUrl
+            });
+        });
+    }
+    Util.prototype.UA = function() {
+        var userAgent = navigator.userAgent.toLowerCase();
+        return {
+            ipad: /ipad/.test(userAgent),
+            iphone: /iphone/.test(userAgent),
+            ipod: /ipod/.test(userAgent),
+            blackBerry: /blackBerry/.test(userAgent),
+            android: /android/.test(userAgent),
+            webos: /webOS/.test(userAgent),
+            windowsPhone: /Windows Phone/.test(userAgent),
+            weixin: /micromessenger/.test(userAgent),
+            mayi: /mayi/.test(userAgent)
+        };
+    }
+    Util.prototype.isPhone = function() {
+            if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 })
