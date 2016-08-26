@@ -44,5 +44,7 @@ if ($config['bw'] == "weixin")
 	$tpl->assign("is_wechat",true);
 
 }
+$dis = "?uid=".$_REQUEST['uid']."&dist_id=".$_REQUEST['dist_id']."&temp=wap";
+$tpl->assign("dis",$dis);
 $tpl->display('agreement.htm');
 ?>
