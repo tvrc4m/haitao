@@ -42,22 +42,6 @@ define(function (require,exports,module) {
 		});
 	};
 	/*
-	*绑定操作
-	*/
-	Check.prototype.connect = function(){
-		var _self = this;
-		$(".button").click(function(){
-			$.post("/api/login.php",{username:$("#user").val(),password:$("#password").val(),action:"login",forword:url},function(msg){
-				var data = JSON.parse(msg);
-				if(data.url){
-					window.location.href = data.url;
-				}else{
-					_self.setTip(data.errmsg);	
-				}
-			});
-		});
-	};
-	/*
 	*注册操作
 	*/
 	Check.prototype.regist = function() {
