@@ -18,6 +18,7 @@ class uc_login extends verification
 	private $_salt = '';
 	private $_users = '';
 	private $_uc_users = '';
+	private $_connect_id = '';//互联登录绑定id
 	private $_type = '';
 	private $_db = '';
 	private $_uc_obj = '';
@@ -72,6 +73,8 @@ class uc_login extends verification
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
 		if(!empty($post['forword']))$this->_old_url = $post['forword'];
 
+		if(!empty($post['connect']))$this->_connect_id = $post['connect_id'];
+
    		if(parent::checkData($this->_account,'mobile')){
    			$this->users();
 			if(!empty($this->_account)){
@@ -110,6 +113,7 @@ class uc_login extends verification
 						$type = $this->doreg();
 						if($type){
 							$this->login_success();
+							if(!empty($this->_connect_id)) $this->connect_login();
 							$this->_response_code = '00000';
 							$this->_response_data = $this->_old_url;
 							$_SESSION['script']=$uc_statu->data;
@@ -130,6 +134,7 @@ class uc_login extends verification
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
 	    if (md5(md5($this->_password).$this->_users['rand_pwd'])==$this->_users['password']) {
 	    	$this->login_success();
+	    	if(!empty($this->_connect_id)) $this->connect_login();
 	    	$this->_response_code = '00000';
 	    	$this->_response_data = $this->_old_url;
 
@@ -314,6 +319,13 @@ class uc_login extends verification
 		return false;
 	}
 
+	/**
+	 * 互联绑定登录
+	 */
+	private function connect_login(){
+		$sql="update mallbuilder_user_connected set userid='{$this->_users['userid']}' where id=".$this->_connect_id;
+	    $this->_db->query($sql);
+	}
 	/**
 	 * 验证码
 	 */

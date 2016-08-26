@@ -39,13 +39,13 @@
                 <input type="button" class="button" value="登录">
                 <div class="entries">快捷登录方式
                     <{if $config.qq_connect==1}>
-                    <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=<{$config.qq_app_id}>&redirect_uri=<{$config.weburl|cat:'/login.php'|urlencode}>&state=<{$config.company}>&client_secret=<{$config.qq_key}>"><i class="ic1"></i></a>
+                    <a href="<{$config._QQ_URL}>"><i class="ic1"></i></a>
                     <{/if}>
                     <{if $config.sina_connect==1}>
-                    <a href="<{$sina_login_url}>"><i class="ic2"></i></a>
+                    <a href="<{$config._SINA_URL}>"><i class="ic2"></i></a>
                     <{/if}>
                     <{if $config.weixin_connect==1}>
-                    <a href="<{$wechat_url}>"><i class="ic3"></i></a>
+                    <a href="<{$config._WX_URL}>"><i class="ic3"></i></a>
                     <{/if}>
                 </div>
             </form>
