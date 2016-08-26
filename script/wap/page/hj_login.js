@@ -10,15 +10,35 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     }
     var formValid = new formValid();
     var utility = new Util();
+    /**
+     * 表单初始化   
+    */
     hjLogin.prototype.init = function() {
         var _self = this;
+        fixedInputBlur ();
+        function fixedInputBlur () {
+            var beforeIpt=null;
+            $("input").on("focus", function (e) {
+                utility.stopPropagation(e);
+                beforeIpt=this;
+            });
+            $(document).on("tap", function (e) {
+                utility.stopPropagation(e);
+                if(e.target.nodeName.toLowerCase() != "input") {
+                    if(beforeIpt) {
+                        beforeIpt.blur();
+                        beforeIpt=null;
+                    }
+                }
+            });
+        }
     };
     /**
      * 删除表单内容
      * @param  {String} form      操作的外层包裹元素
-     * @param  {String} obj1        
-     * @param  {String} obj2        
-     * @param  {String} obj3        
+     * @param  {String} obj1      需要遍历的表单内容 
+     * @param  {String} obj2      删除按钮  
+     * @param  {String} obj3      删除增加类
     */
     hjLogin.prototype.formtap = function(form, obj1, obj2 ,obj3) {
         $(form).find(obj1).each(function(){
@@ -46,6 +66,9 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         $(obj2).on("tap", function(){ 
             $(this).parent().find("input").val("");
             $(this).removeClass(obj3);
+            // setTimeout(function() {
+            //     $(this).removeClass(obj3);
+            // }, 100);      
         });  
     }
     /**
@@ -56,7 +79,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
      * @param  {String} skipUrl    成功后跳转链接
     */
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl) {
-        formValid.init(form);
         $(subBtn).on("tap", function() {
             var url = skipUrl,
                 userVal = $(form).find("input[name=user]").val(),
@@ -251,6 +273,51 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 _this.find("i.txt_icon6").html(icon)
             }
         });
+    }
+    /**
+     * 实名认证
+     * @param  {String} form       操作的外层包裹元素
+     * @param  {String} subBtn     操作提交按钮
+    */
+    hjLogin.prototype.realCtrl = function(form, subBtn , btn ,btnInp) {
+        formValid.init(form);
+        formValid.uploadPicture(btn ,btnInp)
+        $(subBtn).on("tap", function() {
+            var usersVal = $(form).find("input[name=users]").val(),
+                realVal = $(form).find("input[name=real]").val(),
+                Inpimg1Val = $(form).find("input[name=img1]").val(),
+                Inpimg2Val = $(form).find("input[name=img2]").val();
+   
+            var isNull2Valid = formValid.isNull(Inpimg2Val ,"身份证反面不能为空"); 
+            var isNull1Valid = formValid.isNull(Inpimg1Val ,"身份证正面不能为空"); 
+            var isCardNoValid = formValid.isCardNo(realVal);              
+            var isRealNameValid = formValid.isRealName(usersVal);
+            if (isRealNameValid && isCardNoValid && isNull1Valid && isNull2Valid) {
+                // $.ajax({
+                //     url: ajaxUrl + "?" + Math.random(),
+                //     type: "POST",
+                //     dataType: "json",
+                //     data: {
+                //         username:mobileVal,
+                //         smsvode:svodeVal,
+                //         password:pwdVal,
+                //         action:"lostpass",
+                //         forword:url
+                //     },
+                //     success: function(data) {
+                //         if(!data.url){
+                //             utility.tipsWarn(data.errmsg);
+                        
+                //         }else{
+                //             window.location.href = data.url;  
+                //         } 
+                //     },
+                //     error: function() {
+                //         utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                //     }
+                // })
+            }
+        })
     }
     module.exports = new hjLogin();
 });

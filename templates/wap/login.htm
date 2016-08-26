@@ -1,22 +1,22 @@
 <{include file="header.htm"}>
 <link href="<{$config.weburl}>/templates/wap/css/verify.css" rel="stylesheet" type="text/css" />
 <header>
-	<div class="nav-w">
-    	<section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
-    	<section class="nav-c"><span>登录蚂蚁海淘</span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+	<div class="header_nav">
+    	<div class="nav_l" onclick="javascript:history.back(-1)"><i class="back_icon"></i></div>
+    	<div class="nav_c"><span>登录蚂蚁海淘</span></div>
+        <div class="nav_r"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></div>
     </div>
 </header>
 <div class="login_container">
     <ul class="txt_form">
         <li class="inp_box">
-            <i class="txt_icon txt_icon1 iconfont">&#xe60f;</i>
+            <i class="txt_icon txt_icon2 iconfont">&#xe60f;</i>
             <input class="text" name="user" type="tel" id="user" tabindex="2" maxlength="11" autocomplete="off" placeholder="请输入手机号" value=""/>
             <div class="txt_close iconfont">&#xe65e;</div>
         </li>
         <li class="inp_box">
-            <i class="txt_icon iconfont">&#xe609;</i>
-            <input class="text" type="password" maxlength="16" name="password" id="password" placeholder="请输入密码"/>
+            <i class="txt_icon txt_icon1 iconfont">&#xe67f;</i>
+            <input class="text" type="password" tabindex="3" maxlength="16" name="password" id="password" placeholder="请输入密码"/>
             <div class="txt_close iconfont">&#xe65e;</div>
         </li>
         <li class="inp_lops">
@@ -36,11 +36,11 @@
     </div>
     <{/if}>
 </div>
-<script type="text/javascript" src="<{$config.weburl}>/script/page/libs.js?v=<?=time();?>"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
         //By default load any module IDs from js/lib
-        baseUrl: 'script/',
+        baseUrl: 'script/wap/',
         urlArgs: "v="+window.jsVersion,
         paths: {
             "formValid":"formvalid",

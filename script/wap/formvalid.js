@@ -70,7 +70,7 @@ define(['module', "utility"], function(module, Util) {
         tip = tip || "密码";
         if (s != "" && s != undefined) {
             if (!patrn.exec(s)) {
-                utility.tipsWarn(tip + "需为6-20个字母、数字和一些常用特殊字符");
+                utility.tipsWarn(tip + "需为6-16个字母、数字和一些常用特殊字符");
                 return false;
             } else {
                 return true;
@@ -467,7 +467,7 @@ define(['module', "utility"], function(module, Util) {
             if(b>0){
                 var c = _this.parent().prev().find("input").val();
                 if(c==""){
-                    utility.tipsWarn("按顺序上传凭证图片");
+                    utility.tipsWarn("按顺序上传图片");
                 }
                 else{
                     _this.parent().find("input").trigger('click');
@@ -484,29 +484,6 @@ define(['module', "utility"], function(module, Util) {
             handleFiles(fs,stype,rename);
         })
         function handleFiles (files, stype,rename) {
-            var Max_Size = 5000; //5M
-            testMaxSize(files);
-            function testMaxSize(file){
-                if(file[0]){
-                    var fileData = file[0];
-                    var size = fileData.size;
-                    var imgSrc = fileData.name;
-                    var isAllow = false;
-                    if(!size) isAllow = false;
-                    var maxSize = Max_Size;
-                    maxSize = maxSize * 1024;
-                    isAllow = size <= maxSize;
-                    if(!/\.(gif|jpg|jpeg|bmp|png)$/.test(imgSrc)){
-                        utility.tipsWarn("图片类型必须是.gif,jpeg,jpg,bmp,png中的一种")
-                        return false;
-                    }
-                    if(!isAllow){
-                        utility.tipsWarn("图片大小要求低于5M");
-                        return false;
-                    }
-                    return true;
-                }
-            }
             var tim = new Date();
             var day = tim.getDate();
             var year = tim.getFullYear();
@@ -527,25 +504,23 @@ define(['module', "utility"], function(module, Util) {
             }
         }
         function sendFile (f) {
-            // var uploadUrl = '/ajaxupload.php';
-            // $.ajax({
-            //     url: uploadUrl,
-            //     type: 'POST',
-            //     contentType: false,
-            //     processData: false,
-            //     cache: false,
-            //     data: f,
-            //     success: function (e) {
-            //         console.log(e)
-            //         msg = JSON.parse(e);
-                    $("input[name=img"+a+"]").attr("value","https://haitao-resource.b0.upaiyun.com/product/44/1469000782578f2c4e0b33d.jpg");
-                    $("input[name=img"+a+"]").next().attr("src", "https://haitao-resource.b0.upaiyun.com/product/44/1469000782578f2c4e0b33d.jpg");
-
-
-            //     },
-            //     error: function (e) {
-            //     }
-            // });
+            var uploadUrl = '/ajaxupload.php';
+            $.ajax({
+                url: uploadUrl,
+                type: 'POST',
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                cache: false,
+                data: f,
+                success: function (msg) {
+                    $("input[name=img"+a+"]").attr("value",msg.key);
+                    $("input[name=img"+a+"]").next().attr("src", '../'+msg.key);
+                },
+                error: function (msg) {
+                    utility.tipsWarn("抱歉，请求错误，请刷新再试！");
+                }
+            });
         }
     }
     module.exports = formValid;

@@ -1,10 +1,10 @@
 <{include file="header.htm"}>
 <link href="<{$config.weburl}>/templates/wap/css/verify.css" rel="stylesheet" type="text/css" />
 <header>
-    <div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
-        <section class="nav-c"><span>找回密码</span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+    <div class="header_nav">
+        <div class="nav_l" onclick="javascript:history.back(-1)"><i class="back_icon"></i></div>
+        <div class="nav_c"><span>找回密码</span></div>
+        <div class="nav_r"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></div>
     </div>
 </header>
 <{if $config.closetype==2}>
@@ -13,27 +13,27 @@
 <div class="login_container">
     <ul class="txt_form">
         <li class="inp_box">
-            <i class="txt_icon txt_icon3 iconfont">&#xe62e;</i>
+            <i class="txt_icon iconfont">&#xe6d3;</i>
             <input  class="text" name="mobile" tabindex="2" maxlength="11" autocomplete="off" type="tel" id="mobile" placeholder="请输入手机号"/>
             <div class="txt_close iconfont">&#xe65e;</div>
         </li>
         <li class="inp_obtain clearfix">
-            <input name="smsvode" tabindex="3" maxlength="6" autocomplete="off" type="text" id="smsvode" placeholder="请输入验证码"/>
+            <input name="smsvode" tabindex="3" maxlength="6" autocomplete="off" type="tel" id="smsvode" placeholder="请输入验证码"/>
             <b id="obtain2" class="obtain yes">获取验证码</b>
         </li>
         <li class="inp_box">
-            <i class="txt_icon iconfont">&#xe609;</i>
-            <input class="text" type="password" name="password" id="password" maxlength="16" tabindex="2" autocomplete="off"  placeholder="请输入新密码"/> 
+            <i class="txt_icon txt_icon1 iconfont">&#xe67f;</i>
+            <input class="text" type="password" name="password" id="password" maxlength="16" tabindex="4" autocomplete="off"  placeholder="请输入新密码"/> 
             <div class="txt_close iconfont">&#xe65e;</div>
         </li>
         <li><div class="inp_btn" id="find_sub">确认修改</div></li>
     </ul>
 </div>
 <{/if}>
-<script type="text/javascript" src="<{$config.weburl}>/script/page/libs.js?v=<?=time();?>"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
-        baseUrl: 'script/',
+        baseUrl: 'script/wap/',
         urlArgs: "v="+window.jsVersion,
         paths: {
             "formValid":"formvalid",

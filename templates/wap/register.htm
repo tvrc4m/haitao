@@ -1,10 +1,10 @@
 <{include file="header.htm"}>
 <link href="<{$config.weburl}>/templates/wap/css/verify.css" rel="stylesheet" type="text/css" />
 <header>
-	<div class="nav-w">
-        <section class="nav-s iconfont" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i></section>
-    	<section class="nav-c"><span><{if $dist_id eq 1}>快速成为合伙人<{else}>注册蚂蚁海淘<{/if}></span></section>
-        <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
+    <div class="header_nav">
+        <div class="nav_l" onclick="javascript:history.back(-1)"><i class="back_icon"></i></div>
+        <div class="nav_c"><span><{if $dist_id eq 1}>快速成为合伙人<{else}>注册蚂蚁海淘<{/if}></span></div>
+        <div class="nav_r"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></div>
     </div>
 </header>
 <{if $config.closetype==2}>
@@ -13,16 +13,16 @@
 <div class="login_container">
     <ul class="txt_form">
         <li class="inp_box">
-            <i class="txt_icon txt_icon2 iconfont">&#xe62e;</i>
+            <i class="txt_icon iconfont">&#xe6d3;</i>
             <input  class="text" name="mobile" tabindex="2" maxlength="11" autocomplete="off" type="tel" id="mobile" placeholder="请输入手机号"/>
             <div class="txt_close iconfont">&#xe65e;</div>
         </li>
         <li class="inp_obtain clearfix">
-            <input name="smsvode" tabindex="3" maxlength="6" autocomplete="off" type="text" id="smsvode" placeholder="请输入验证码"/>
+            <input name="smsvode" tabindex="3" maxlength="6" autocomplete="off" type="tel" id="smsvode" placeholder="请输入验证码"/>
             <b id="obtain" class="obtain yes">获取验证码</b>
         </li>
         <li class="inp_box">
-            <i class="txt_icon iconfont">&#xe609;</i>
+            <i class="txt_icon txt_icon1 iconfont">&#xe67f;</i>
             <input class="text" type="password" maxlength="16" tabindex="4" autocomplete="off" name="password" id="password" placeholder="设置密码（6-16位）"/>
             <div class="txt_close iconfont">&#xe65e;</div>
         </li>
@@ -39,10 +39,10 @@
     </ul>
 </div>
 <{/if}>
-<script type="text/javascript" src="<{$config.weburl}>/script/page/libs.js?v=<?=time();?>"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
-        baseUrl: 'script/',
+        baseUrl: 'script/wap/',
         urlArgs: "v="+window.jsVersion,
         paths: {
             "formValid":"formvalid",
