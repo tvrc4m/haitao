@@ -197,17 +197,18 @@ class connect
 	                        values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid')";
 	                $db->query($sql);
 	                $cre['id']=$db->lastid();
-	                if(!empty($cre['userid']))
-		            {
-		                login($cre['userid'],NULL);
-		                $forward = $config["weburl"]."/main.php?cg_u_type=1";
-		                msg($forward);
-		            }
-		            else
-		            {
-		                $_SESSION['connect_name'] = '微信';
-		                msg("login.php?connect_id=$cre[id]");
-		            }
+	                msg("login.php?connect_id=$cre[id]");
+	            }
+	            if(!empty($cre['userid']))
+	            {
+	                if($this->users($cre['userid']))$this->login_success();
+	                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+	                msg($forward);
+	            }
+	            else
+	            {
+	                $_SESSION['connect_name'] = '微信';
+	                msg("login.php?connect_id=$cre[id]");
 	            }
 			}
 	}
@@ -228,8 +229,8 @@ class connect
 	 * [users description]
 	 * @return [type] [description]
 	 */
-	private function users(){
-		$sql = "select userid,user,statu,pid,password,mobile,rand_pwd from ".MEMBER." where mobile={$this->_account}";
+	private function users($userid = ''){
+		$sql = "select userid,user,statu,pid,password,mobile,rand_pwd from ".MEMBER." where userid={$userid}";
 		$this->_db->query($sql);
 		$this->_users = $this->_db->fetchRow();
 
@@ -241,9 +242,6 @@ class connect
 	 */
 	private function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
-
-		$sql="update mallbuilder_user_connected set userid='$uid' where id='$post[connect_id]'";
-        $this->_db->query($sql);
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 
