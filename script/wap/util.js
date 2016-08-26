@@ -761,7 +761,7 @@ define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.j
         }     
         return uuid.join('');
     }
-    
+
     /**
      * 分享
      * @param  {[type]} wrap [description]
@@ -819,13 +819,45 @@ define(["require", 'module', "IScroll", "//res.wx.qq.com/open/js/jweixin-1.0.0.j
                 title: title,
                 desc: desc,
                 link: link,
-                imgUrl: imgUrl
+                imgUrl: imgUrl,
+                success: function () {
+                    $("#share_box").animate({
+                        "opacity": "0"
+                    }, 800);
+                    setTimeout(function() {
+                        $("#share_box").remove();
+                    }, 800);
+                },
+                cancel: function () {
+                    $("#share_box").animate({
+                        "opacity": "0"
+                    }, 800);
+                    setTimeout(function() {
+                        $("#share_box").remove();
+                    }, 800);
+                }
             });
             // 2.2 监听“分享到朋友圈”按钮点击、自定义分享内容及分享结果接口
             weixin.onMenuShareTimeline({
                 title: qtil,
                 link: link,
-                imgUrl: imgUrl
+                imgUrl: imgUrl,
+                success: function () {
+                    $("#share_box").animate({
+                        "opacity": "0"
+                    }, 800);
+                    setTimeout(function() {
+                        $("#share_box").remove();
+                    }, 800);
+                },
+                cancel: function () {
+                    $("#share_box").animate({
+                        "opacity": "0"
+                    }, 800);
+                    setTimeout(function() {
+                        $("#share_box").remove();
+                    }, 800);
+                }
             });
         });
     }
