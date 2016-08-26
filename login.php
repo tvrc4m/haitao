@@ -13,7 +13,6 @@ include_once($config['webroot']."/api/connect_login.php");
 
 $tpl->assign('config',$config);
 
-
 if(!empty($_GET['connect_id'])){
     $tpl->assign('connect_id',$_GET['connect_id']);
     $tpl->display("user_connect.htm");

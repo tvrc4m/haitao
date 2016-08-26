@@ -173,6 +173,7 @@ class uc_login extends verification
 						$type = $this->doreg();
 						if($type){
 							$this->login_success();
+							if(!empty($this->_connect_id)) $this->connect_login();
 							$this->_response_code = '10011';
 							$this->_response_data = $this->_old_url;
 							session_unset($_SESSION[$this->_yzm_mobile]);
@@ -197,6 +198,7 @@ class uc_login extends verification
 				$type = $this->doreg();
 				if($type){
 					$this->login_success();
+					if(!empty($this->_connect_id)) $this->connect_login();
 					$this->_response_code = '10011';
 					$this->_response_data = $this->_old_url;
 					session_unset($_SESSION[$this->_yzm_mobile]);
