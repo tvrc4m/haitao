@@ -15,21 +15,11 @@ define(["module", "utility"], function(module, Util) {
      */
     hjIndex.prototype.init = function() {
         var _self = this;
-        // window.location.hash = "#/index";
-        // var wrapper = document.getElementById("wrapper");
-        //侧面导航控制
-        utility.textSlide("#end_pro", 3000);
-        // setTimeout(function(){
-        //     $("#cash_event_box").removeClass('anim');
-        // }, 3200);
-        
+        // utility.textSlide("#end_pro", 3000);       
     }
     /**
      * 活动谈层提示(公共)
-     * @method delsWarn
-     * @param {String} str 提示信息
-     * @param {String} obj1 删除按钮
-     * @param {String} obj2 删除元素
+     * @method actsWarnFn
     */
     hjIndex.prototype.actsWarnFn = function(imgsrc) {
             utility.actsWarn(imgsrc);
