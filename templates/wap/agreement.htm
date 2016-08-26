@@ -405,6 +405,28 @@
         hjIndex.scrollTopFn("#addtop");
     });  
 </script>
+<script type="text/javascript">
+    $(".hj_share_btn").on("tap", function() {
+        var shareDom = '<div class="hj_share_box" id="share_box"></div>';
+        $("body").append(shareDom);
+        $("#share_box").show();
+        $("#share_box").on("tap", function() {
+            $(this).animate({
+                "opacity": "0"
+            }, 800);
+            setTimeout(function() {
+                $("#share_box").remove();
+            }, 800);
+        })
+        window.wxShareDate = {
+            img:"<?=BASEURL;?>/resources/images/wx_share.png?v=75b2a2dd0",
+            link:"<?=BASEURL;?>/activity/online/index/"+"<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>",
+            desc:"<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！",
+            title:"抬头走路，低头“捡”钱！！！",
+            qtil:"抬头走路，低头“捡”钱！<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！"
+        }
+    });
+</script>
 <{if $is_wechat}>
 <script type="text/javascript">
     require(['page/hj_base','utility'], function (B,Util) {
@@ -432,27 +454,4 @@
     });
 </script> 
 <{/if}>
-<script type="text/javascript">
-    $(".hj_share_btn").on("tap", function() {
-        var shareDom = '<div class="hj_share_box" id="share_box"></div>';
-        $("body").append(shareDom);
-        $("#share_box").show();
-        $("#share_box").on("tap", function() {
-            $(this).animate({
-                "opacity": "0"
-            }, 800);
-            setTimeout(function() {
-                $("#share_box").remove();
-            }, 800);
-        })
-        window.wxShareDate = {
-            img:"<?=BASEURL;?>/resources/images/wx_share.png?v=75b2a2dd0",
-            link:"<?=BASEURL;?>/activity/online/index/"+"<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>",
-            desc:"<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！",
-            title:"抬头走路，低头“捡”钱！！！",
-            qtil:"抬头走路，低头“捡”钱！<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！"
-        }
-        console.log(window.wxShareDate)
-    });
-</script>
 <{include file="footer.htm"}>
