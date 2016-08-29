@@ -173,6 +173,7 @@ class uc_login extends verification
 						$type = $this->doreg();
 						if($type){
 							$this->login_success();
+							if(!empty($this->_connect_id)) $this->connect_login();
 							$this->_response_code = '10011';
 							$this->_response_data = $this->_old_url;
 							session_unset($_SESSION[$this->_yzm_mobile]);
@@ -197,6 +198,7 @@ class uc_login extends verification
 				$type = $this->doreg();
 				if($type){
 					$this->login_success();
+					if(!empty($this->_connect_id)) $this->connect_login();
 					$this->_response_code = '10011';
 					$this->_response_data = $this->_old_url;
 					session_unset($_SESSION[$this->_yzm_mobile]);
@@ -323,7 +325,7 @@ class uc_login extends verification
 	 * 互联绑定登录
 	 */
 	private function connect_login(){
-		$sql="update mallbuilder_user_connected set userid='{$this->_users['userid']}' where id=".$this->_connect_id;
+		$sql="update ".USERCOON." set userid='{$this->_users['userid']}' where id=".$this->_connect_id;
 	    $this->_db->query($sql);
 	}
 	/**

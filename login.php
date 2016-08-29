@@ -9,14 +9,13 @@ if($buid)
     exit();
 }
 include_once("footer.php");
-// include_once($config['webroot']."/config/connect_config.php");//connect
 include_once($config['webroot']."/api/connect_login.php");
-$config = array_merge($config,$connect_config);
+
 $tpl->assign('config',$config);
 
-
-if(!empty($_GET['connect_id']))
+if(!empty($_GET['connect_id'])){
+    $tpl->assign('connect_id',$_GET['connect_id']);
     $tpl->display("user_connect.htm");
-else
+}else
     $tpl->display("login.htm");
 ?>

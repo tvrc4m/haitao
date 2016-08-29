@@ -38,14 +38,14 @@
                 <a href="lostpass.php" class="linkpass">忘记密码?</a>
                 <input type="button" class="button" value="登录">
                 <div class="entries">快捷登录方式
-                    <{if $config.qq_connect==1}>
-                    <a href="<{$config._QQ_URL}>"><i class="ic1"></i></a>
+                    <{if $config._CONNCET._QQ_STATU==1}>
+                    <a href="<{$config._CONNCET._QQ_URL}>"><i class="ic1"></i></a>
                     <{/if}>
-                    <{if $config.sina_connect==1}>
-                    <a href="<{$config._SINA_URL}>"><i class="ic2"></i></a>
+                    <{if $config._CONNCET._SINA_STATU==1}>
+                    <a href="<{$config._CONNCET._SINA_URL}>"><i class="ic2"></i></a>
                     <{/if}>
-                    <{if $config.weixin_connect==1}>
-                    <a href="<{$config._WX_URL}>"><i class="ic3"></i></a>
+                    <{if $config._CONNCET._WX_STATU==1}>
+                    <a href="<{$config._CONNCET._WX_URL}>"><i class="ic3"></i></a>
                     <{/if}>
                 </div>
             </form>

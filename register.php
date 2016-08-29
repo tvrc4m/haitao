@@ -7,6 +7,7 @@ if($buid)
 {
 	msg('main.php');
 }
+if(!empty($_GET['connect_id']))$tpl->assign('connect_id',$_GET['connect_id']);
 
 $tpl->assign('config',$config);
 $tpl->display("register.htm");
