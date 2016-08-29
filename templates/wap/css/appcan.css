@@ -246,9 +246,9 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .c-wh-commit-gao{background-color: #fff;padding-bottom: 12px;padding-top: 15px;padding-right: 0.5rem;}
 /*商品詳情*/
 .nav-box {background-color: #fff;width: 100%;border-bottom: 1px solid #c4c4c4;margin-bottom: 15px;}
-.nav-wrapper {background-color: #fff;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;text-align: center;margin: 0 auto;height: 50px;line-height: 50px;}
+.nav-wrapper {background-color: #fff;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;text-align: center;margin: 0 auto;height: 2.2rem;line-height: 2.2rem;}
 .nav-wrapper-test{position: fixed;top: 0;left: 0;z-index: 99999;}
-.nav-wrapper li {font-size: .75rem;color: #000;-webkit-box-flex: 1;-ms-flex: 1;-webkit-flex: 1;flex: 1;height: 50px;line-height: 50px;font-weight: 550;}
+.nav-wrapper li {font-size: .75rem;color: #000;-webkit-box-flex: 1;-ms-flex: 1;-webkit-flex: 1;flex: 1;height: 2.2rem;line-height: 2.2rem;font-weight: 550;}
 .nav-wrapper li.active {color: #ff5c5c!important;border-bottom: solid 1px #ff5c5c!important;margin-bottom: -1px;}
 .j_tab{display: none;padding: 0 0.5rem;}
 .pdetail_show{display: block;}
