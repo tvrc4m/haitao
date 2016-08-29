@@ -466,43 +466,20 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
      * @return {[type]}      [description]
      */
     Util.prototype.hjLoading = function(wrap) {
-            var loadingDom = '<div class="loading_box" id="loading_box"></div>';
-            $(wrap).append(loadingDom);
-            $("#loading_box").show();
-        }
+        var loadingDom = '<div class="loading_box" id="loading_box"></div>';
+        $(wrap).append(loadingDom);
+        $("#loading_box").show();
+    }
     /**
      * Loading close
      * @param  {[type]} load [description]
      * @return {[type]}      [description]
      */
-    Util.prototype.hjLoadingClose = function(load) {
-              
-            setTimeout(function() {
-                $(load).remove();
-            }, 500);
-        }
-    Util.prototype.UA = function() {
-        var userAgent = navigator.userAgent.toLowerCase();
-        alert(userAgent);
-        return {
-            ipad: /ipad/.test(userAgent),
-            iphone: /iphone/.test(userAgent),
-            ipod: /ipod/.test(userAgent),
-            blackBerry: /blackBerry/.test(userAgent),
-            android: /android/.test(userAgent),
-            webos: /webOS/.test(userAgent),
-            windowsPhone: /Windows Phone/.test(userAgent),
-            weixin: /micromessenger/.test(userAgent),
-            mayi: /mayi/.test(userAgent)
-        };
+    Util.prototype.hjLoadingClose = function(load) {   
+        setTimeout(function() {
+            $(load).remove();
+        }, 500);
     }
-    Util.prototype.isPhone = function() {
-            if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
     /**
      * stopPropagation
      * @param  {[type]} e event
