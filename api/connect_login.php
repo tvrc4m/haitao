@@ -50,7 +50,7 @@ class connect
 
 		$this->_qq_akey = $connect_config['qq_app_id'];
 		$this->_qq_skey = $connect_config['qq_key'];
-		$this->_qq_callback_url = $this->_config['weburl']."/api/connect_login.php?action=qq_connect";
+		$this->_qq_callback_url = urlencode($this->_config['weburl']."/api/connect_login.php?action=qq_connect");
 
 		$this->_wx_akey = $connect_config['weixin_app_id'];
     	$this->_wx_skey = $connect_config['weixin_key'];
@@ -115,10 +115,10 @@ class connect
 	 */
 	public function qq_connect($type = null){
 
-		$this->_qq_callback_url=urlencode($this->_config['weburl'].'/login.php');
+		//$this->_qq_callback_url=urlencode($this->_config['weburl'].'/login.php');
 
 		if($type == 'url')
-		return "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=".$this->_qq_akey."&redirect_uri='".$this->_qq_callback_url."'&state=".$this->_config['company']."&client_secret=".$this->_qq_skey;
+		return "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=".$this->_qq_akey."&redirect_uri=".$this->_qq_callback_url."&state=".$this->_config['company']."&client_secret=".$this->_qq_skey;
 
 		
 	    $url="https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&"
