@@ -182,7 +182,8 @@ else
 
 $_SESSION['temp'] = $config['temp'];
 
-$config['_COOKIE'] = empty(bgetcookie("USERID"))?array():bgetcookie("USERID");
+//$config['_COOKIE'] = empty(bgetcookie("USERID"))?array():bgetcookie("USERID");
+$config['_COOKIE'] = bgetcookie("USERID");
 if(strstr($_SERVER['HTTP_REFERER'],'forward',true))
 	$config['_FORWARD'] = strstr($_SERVER['HTTP_REFERER'],'forward',true);
 else

@@ -14,7 +14,7 @@
 
 
 // include_once("../includes/global.php");
-include_once($config['webroot']."/config/connect_config.php");//connect
+include($config['webroot']."/config/connect_config.php");//connect
 
 /**
 * 关联登录
@@ -45,15 +45,15 @@ class connect
 		$this->_config  = $config;
 		$this->_sina_akey = $connect_config['sina_app_id'];
 		$this->_sina_skey = $connect_config['sina_key'];
-		$this->_sina_callback_url = $config['weburl']."/api/connect_login.php?action=sina_connect";
+		$this->_sina_callback_url = $this->_config['weburl']."/api/connect_login.php?action=sina_connect";
 
 		$this->_qq_akey = $connect_config['qq_app_id'];
 		$this->_qq_skey = $connect_config['qq_key'];
-		$this->_qq_callback_url = $config['weburl']."/api/connect_login.php?action=qq_connect";
+		$this->_qq_callback_url = $this->_config['weburl']."/api/connect_login.php?action=qq_connect";
 
 		$this->_wx_akey = $connect_config['weixin_app_id'];
     	$this->_wx_skey = $connect_config['weixin_key'];
-    	$this->_wx_callback_url = $config['weburl']."/api/connect_login.php?action=weixin_connect";
+    	$this->_wx_callback_url = $this->_config['weburl']."/api/connect_login.php?action=weixin_connect";
 		$this->_code = (isset($_REQUEST['code'])&&!empty($_REQUEST['code']))?$_REQUEST['code']:'';
 		
 	}
@@ -93,10 +93,10 @@ class connect
 	        if($cre['userid'])
 	        {
 	            login($cre['userid'],NULL);
-	            $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
-	            if(empty($forward) || $forward == $config["weburl"]."/login.php")
+	            $forward = $post['forward']?$post['forward']:$this->_config["weburl"]."/main.php?cg_u_type=1";
+	            if(empty($forward) || $forward == $this->_config["weburl"]."/login.php")
 	            {
-	                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+	                $forward = $this->_config["weburl"]."/main.php?cg_u_type=1";
 	            }
 	            msg($forward);
 	        }
@@ -136,9 +136,9 @@ class connect
 	    $ar2=json_decode($con,true);
 	    //----------------
 	    $url3 = "https://graph.qq.com/user/get_user_info?"
-	        . $takenid
+	        . $takenid 
 	        . "&oauth_consumer_key=" . $this->_qq_akey
-	        . "&openid=" . $ar2["openid"]
+	        . "&openid=" . $ar2["openid"]  
 	        . "&format=json";
 
 	    $con=get_url_contents($url3);
@@ -160,7 +160,7 @@ class connect
 	    if($cre['userid'])
 	    {
 	        login($cre['userid'],NULL);
-	        $forward = $post['forward']?$post['forward']:$config["weburl"]."/main.php?cg_u_type=1";
+	        $forward = $post['forward']?$post['forward']:$this->_config["weburl"]."/main.php?cg_u_type=1";
 	        msg($forward);
 	    }
 	    else
@@ -208,7 +208,7 @@ class connect
 	            if(!empty($cre['userid']))
 	            {
 	                if($this->users($cre['userid']))$this->login_success();
-	                $forward = $config["weburl"]."/main.php?cg_u_type=1";
+	                $forward = $this->_config["weburl"]."/main.php?cg_u_type=1";
 	                msg($forward);
 	            }
 	            else
@@ -223,7 +223,7 @@ class connect
 	 * 微信互联登录获取code
 	 */
 	private function weixin_code(){
-		if($config['bw'] == "weixin"){
+		if($this->_config['bw'] == "weixin"){
 		    $weixin_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$this->_wx_akey."&redirect_uri=".$this->_wx_callback_url."&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
 		    header('location:' . $weixin_url);
 		    return true;
@@ -282,6 +282,7 @@ if(!empty($post)){
 	}
 }
 
-
+if($config['bw'] == "weixin"&&$config['_CONNCET']['_WX_STATU']=='1')
+    $obj->weixin_connect();
 
 ?>
