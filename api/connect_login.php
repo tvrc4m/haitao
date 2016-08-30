@@ -180,7 +180,10 @@ class connect
 			}
 			if(!isset($_SESSION['openid_connect']) || $_SESSION['openid_connect']==""){
 				//获取code
-				if(empty($this->_code))$this->weixin_code();
+				if(empty($this->_code)){
+					$weixin_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$this->_wx_akey."&redirect_uri=".$this->_wx_callback_url."&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
+		   			header('location:' . $weixin_url);
+				}
 			    $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_wx_akey.'&secret='.$this->_wx_skey.'&code='.$this->_code.'&grant_type=authorization_code';
 			    $token = json_decode(file_get_contents($token_url));
 
@@ -223,11 +226,11 @@ class connect
 	 * 微信互联登录获取code
 	 */
 	private function weixin_code(){
-		if($this->_config['bw'] == "weixin"){
+		/*if($this->_config['bw'] == "weixin"){
 		    $weixin_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$this->_wx_akey."&redirect_uri=".$this->_wx_callback_url."&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
 		    header('location:' . $weixin_url);
 		    return true;
-		}else
+		}else*/
 	        return "https://open.weixin.qq.com/connect/qrconnect?appid=".$this->_wx_akey."&redirect_uri=".$this->_wx_callback_url."&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect";
 	}
 
