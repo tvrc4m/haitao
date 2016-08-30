@@ -38,8 +38,10 @@ define(["module", "utility"], function(module, Util) {
     * @menthod obj 返回按钮元素
     * @returns {object}
     */
-    hjIndex.prototype.scrollTopFn = function(btn) {
-        utility.scrollTop(btn);
+    hjIndex.prototype.scrollTopFn = function() {
+        var addtopWarn=$("<div id='addtop' class='addtop'><a class='top' href='javascript:void(0);'></a></div>")
+        $("body").append(addtopWarn)
+        utility.scrollTop("#addtop");
     }
     /**
      * 字符串截取

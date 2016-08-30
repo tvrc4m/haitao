@@ -39,7 +39,7 @@
 .i-select li{color:#FFFFFF;height:40px;padding:0 5px;cursor:pointer;}
 .i-select a{color:#FFFFFF;padding:5px 0;display:block;height:30px;line-height:30px;}
 /*新下拉列表样式*/
-.buyorder-list{width: 100%;background-color: #FFF;border-top: 2px solid #7753ff;position: fixed;top: 50px; left: 0;z-index: 88;}
+.buyorder-list{width: 100%;background-color: #FFF;border-top: 2px solid #7753ff;position: fixed;top: 2.2rem; left: 0;z-index: 88;}
 .buyorder-list ul li{width: 20%;float: left;height: 40px;line-height: 40px;text-align: center;font-size: 0.6rem;}
 .distribu-list ul li{width: 33.33%;float: left;height: 40px;line-height: 40px;text-align: center;font-size: 0.6rem;}
 .buyorder-list ul li a{width: 100%;display: inline-block;}
