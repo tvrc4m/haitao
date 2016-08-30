@@ -37,6 +37,7 @@ i.roll_icon{display: inline-block;height: 50px;width: 50px;background: url(../..
 .order_two_list ul li>a span.fore_h{background: url(../../../image/wap/wap_haitao_icon133.png) left no-repeat;background-size: 0.9rem;}
 .order_two_list ul li>a span.order_indents{padding-left: 0px;}
 .order_two_list ul li>a span.order_indents_f{position: absolute;right: 40px;font-size: 0.6rem;color: #ff5c5c;}
+.order_two_list ul li>a span.order_indents_fw{position: absolute;right: 40px;font-size: 0.6rem;color: #ff5c5c;}
 .order_two_list ul li>a span.order_indents_fs{position: absolute;right: 0.9rem;font-size: 0.6rem;color: #999;}
 .order_two_list ul li>a span.order_indents_fss{position: absolute;right: 40px;font-size: 0.6rem;color: #999;}
 .order_btn{background-color: #fff;}
