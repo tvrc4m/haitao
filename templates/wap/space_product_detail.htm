@@ -7,7 +7,6 @@
         <section class="nav-e"></section>
     </div>
 </header>
-<div class='collect_box_content'></div>
 <div class="select_style_one">
     <div class="shoping-fixed">
         <div class="addcart clearfix">
@@ -94,7 +93,7 @@
                     <dt class="select_style_shu">数量</dt>
                     <dd class="stock">
                         <a href="javascript:void(0);" id="low_num">-</a>
-                        <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="text" value="1" />
+                        <input onkeyup="check_nums();" size="3" name="nums" id="nums" type="tel" value="1" />
                         <a href="javascript:void(0);" id="add_num">+</a>
                     </dd>
                     <dd class="stock_kucun">
@@ -360,29 +359,57 @@ function check_nums()
             $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
         })    
     })
-    function altto(co){
-        $(".collect_box_content").show();
-        $(".collect_box_content").html(co);
-        var wid=$(".collect_box_content").width()/2;
-        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px"});
-    }
-    function wid(){
-        setTimeout(function(){
-            $(".collect_box_content").hide();
-        },2000)
+    function tipsWarn(str, time) {
+        var operasWrap = $("<div class='collect_box_content'><p class='time_01 fadeIn'>" + str + "</p></div>");
+        var timenum = time || 2500,
+            tips = $(".collect_box_content"),
+            tips_len = tips.size(),
+            num = 0;
+        if (tips_len > 0) {
+            tips.find("p").html(str);
+            clearTimeout(window.timmer);
+            num = 0;
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    tips.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        tips.remove();
+                    }, 500);
+                }
+            }, 100);
+        } else {
+            $("body").append(operasWrap);
+            var wid=$(".collect_box_content").width()/2;
+            $(".collect_box_content").css({"margin-left":-wid+"px"});
+            setTimeout(function() {
+                var wid=$(".collect_box_content").width()/2;
+                $(".collect_box_content").css({"margin-left":-wid+"px"});
+                operasWrap.addClass('active');
+            }, 200);
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    operasWrap.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        operasWrap.remove();
+                    }, 500);
+                }
+            }, 100);
+        }
     }
     function collect_goods(id){
         if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
-            altto('不能收藏自己店铺的商品！');
-            wid();
+            tipsWarn('不能收藏自己店铺的商品！');
             return;
         }
         var url = '<{$config.weburl}>/module/sns/ajax_update.php';
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
-            altto('请先登录！');
-            wid()
+            tipsWarn('请先登录！');
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -392,14 +419,12 @@ function check_nums()
             if(originalRequest.statu==1){
                 $("#collect").addClass("collect");
                 $(".col .nav-c").html("已收藏");
-                altto('成功添加至我的收藏夹!');
-                wid()
+                tipsWarn('成功添加至我的收藏夹!');
             }
             else if (originalRequest.statu==0){
                 $("#collect").removeClass("collect");
                 $(".col .nav-c").html("收藏");
-                altto('成功取消商品收藏');
-                wid()
+                tipsWarn('成功取消商品收藏');
             }
         }
     }
@@ -408,8 +433,7 @@ function check_nums()
         var uname='<{$smarty.cookies.USER}>';
         if(uname=='')
         {
-            altto('请先登录！');
-            wid()
+            tipsWarn('请先登录！');
             return false;
         }
         var pars = 'pid='+id+'&uname='+uname;
@@ -417,24 +441,20 @@ function check_nums()
         function showResponse(originalRequest)
         {
             if(originalRequest>1){
-                altto('成功添加至我的店铺！');
-                wid()
+                tipsWarn('成功添加至我的店铺！');
             }
             else if (originalRequest>0){
-                altto('该商品已经在我的店铺！');
-                wid()
+                tipsWarn('该商品已经在我的店铺！');
             }  
             else{
-                altto('参数传递错误<br>无法完成操作!');
-                wid()
+                tipsWarn('参数传递错误<br>无法完成操作!');
             }
         }
     }
 
     $(".incar_c").click(function(){       
         if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
-            altto('不能购买自己店铺的商品！');
-            wid();
+            tipsWarn('不能购买自己店铺的商品！');
             return;
         }
         flag = buy();
@@ -446,8 +466,7 @@ function check_nums()
             var pid = '<{$smarty.get.id}>';
             var dist_user_id = '<{$smarty.get.shop_id}>';
             $('#cart_show').load('<{$config.weburl}>/?m=product&s=cart&add_cart=1&price=' + price + '&nums=' + num + '&id=' + pid + '&sid=' + sid + '&dist_user_id=' + dist_user_id);
-            altto('添加成功');
-            wid();
+            tipsWarn('添加成功');
             return false;
         }
     })
@@ -456,7 +475,7 @@ function check_nums()
         var flag = false;
         if (goodsspec.getSpec() == null || flag)
         {
-            alert('请选择相关规格');
+            tipsWarn('请选择相关规格');
             return !flag;
         }
         else
@@ -466,8 +485,7 @@ function check_nums()
     }
      $(".btn-buy").click(function(){
         if('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
-            altto('不能购买自己店铺的商品！');
-            wid();
+            tipsWarn('不能购买自己店铺的商品！');
             return;
         }
         $("#form").attr("action","/?m=product&s=confirm_order");
@@ -757,20 +775,8 @@ require = null;
 </script>
 <{else}>
 <script type="text/javascript">
-function altto(co){
-    $(".collect_box_contentss").show();
-    $(".collect_box_contentss").html(co);
-}
-function wid(){
-    var wid=$(".collect_box_contentss").width()/2;
-    $(".collect_box_contentss").css({"margin-left":-wid+"px","padding":"10px"});
-    setTimeout(function(){
-        $(".collect_box_contentss").hide();
-    },2000)
-}
 $(".incars_l").bind("click",function(){
-    altto('只支持在微信端分享');
-    wid();
+    tipsWarn('只支持在微信端分享');
 })
 </script>
 <{/if}>

@@ -12,7 +12,7 @@
  * 		6、登录成功以后绑定或注册成功以后直接登录绑定会员
  */
 $post = !empty($_REQUEST['action'])?$_REQUEST['action']:'';
-if (!empty($post)) //判断是否在微信中打开
+if (!empty($post))
 include_once("../includes/global.php");
 
 include_once($config['webroot']."/config/connect_config.php");//connect
@@ -93,7 +93,7 @@ class connect
 	        }
 	        if($cre['userid'])
 	        {
-	            login($cre['userid'],NULL);
+	            if($this->users($cre['userid']))$this->login_success();
 	            $forward = $post['forward']?$post['forward']:$this->_config["weburl"]."/main.php?cg_u_type=1";
 	            if(empty($forward) || $forward == $this->_config["weburl"]."/login.php")
 	            {
@@ -160,7 +160,7 @@ class connect
 	    }
 	    if($cre['userid'])
 	    {
-	        login($cre['userid'],NULL);
+	        if($this->users($cre['userid']))$this->login_success();
 	        $forward = $post['forward']?$post['forward']:$this->_config["weburl"]."/main.php?cg_u_type=1";
 	        msg($forward);
 	    }

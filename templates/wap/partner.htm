@@ -51,7 +51,7 @@
     </div>
 </div>
 <div class="hj_share_box" id="share_box"></div>
-<div class='collect_box_contentss'></div>
+<script type="text/javascript" src="<{$config.weburl}>/script/libs.js"></script>
 <script src="<{$config.weburl}>/script/jquery-1.4.4.min.js" type="text/javascript"></script>
 <{if $is_wechat}>
 <script type="text/javascript">
@@ -166,20 +166,49 @@ wx.ready(function(){
 </script>
 <{else}>
 <script type="text/javascript">
-function altto(co){
-    $(".collect_box_contentss").show();
-    $(".collect_box_contentss").html(co);
-}
-function wid(){
-    var wid=$(".collect_box_contentss").width()/2;
-    $(".collect_box_contentss").css({"margin-left":-wid+"px","padding":"10px"});
-    setTimeout(function(){
-        $(".collect_box_contentss").hide();
-    },2000)
+function tipsWarn(str, time) {
+    var operasWrap = $("<div class='collect_box_content'><p class='time_01 fadeIn'>" + str + "</p></div>");
+    var timenum = time || 2500,
+        tips = $(".collect_box_content"),
+        tips_len = tips.size(),
+        num = 0;
+    if (tips_len > 0) {
+        tips.find("p").html(str);
+        clearTimeout(window.timmer);
+        num = 0;
+        window.timmer = setInterval(function() {
+            num += 100;
+            if (num > timenum) {
+                tips.removeClass('active');
+                clearInterval(window.timmer);
+                setTimeout(function() {
+                    tips.remove();
+                }, 500);
+            }
+        }, 100);
+    } else {
+        $("body").append(operasWrap);
+        var wid=$(".collect_box_content").width()/2;
+        $(".collect_box_content").css({"margin-left":-wid+"px"});
+        setTimeout(function() {
+            var wid=$(".collect_box_content").width()/2;
+            $(".collect_box_content").css({"margin-left":-wid+"px"});
+            operasWrap.addClass('active');
+        }, 200);
+        window.timmer = setInterval(function() {
+            num += 100;
+            if (num > timenum) {
+                operasWrap.removeClass('active');
+                clearInterval(window.timmer);
+                setTimeout(function() {
+                    operasWrap.remove();
+                }, 500);
+            }
+        }, 100);
+    }
 }
 $(".yp_button").bind("click",function(){
-    altto('只支持在微信端分享');
-    wid();
+    tipsWarn('只支持在微信端分享');
 })
 </script>
 <{/if}>

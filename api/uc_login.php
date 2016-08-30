@@ -73,7 +73,7 @@ class uc_login extends verification
 		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
 		if(!empty($post['forword']))$this->_old_url = $post['forword'];
 
-		if(!empty($post['connect']))$this->_connect_id = $post['connect_id'];
+		if(!empty($post['connect_id']))$this->_connect_id = $post['connect_id'];
 
    		if(parent::checkData($this->_account,'mobile')){
    			$this->users();

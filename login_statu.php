@@ -37,12 +37,12 @@ function showUser()
 	{	
 		if($config['temp']=='wap')
 		{
-			$new="<a href='".$config["weburl"]."/login.php?".$config['_FORWARD']."' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/register.php?".$config['_FORWARD']."' class='footer_denglu'>注册</a>";
+			$new="<a href='".$config["weburl"]."/login.php?forword=".$config['_FORWARD']."' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/register.php?forword=".$config['_FORWARD']."' class='footer_denglu'>注册</a>";
 		}
 		else
 		{
 			// $new="<a class='login' href='".$config["weburl"]."/login.php'>亲，请登录</a><a class='reg' href='".$config["weburl"]."/register.php?".$config['_FORWARD']."'>注册</a>";
-			$new="<li><a href='".$config["weburl"]."/login.php?".$config['_FORWARD']."'>亲，请登录</a></li><li><a href='".$config["weburl"]."/register.php?".$config['_FORWARD']."'>注册</a></li>";
+			$new="<li><a href='".$config["weburl"]."/login.php?forword=".$config['_FORWARD']."'>亲，请登录</a></li><li><a href='".$config["weburl"]."/register.php?forword=".$config['_FORWARD']."'>注册</a></li>";
 		}
 		if($_GET['m'] == 'index'&&$config['temp']=='wap')
 		{
