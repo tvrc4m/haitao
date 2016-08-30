@@ -11,10 +11,11 @@
  * 		5、未绑定->登录或注册绑定会员
  * 		6、登录成功以后绑定或注册成功以后直接登录绑定会员
  */
+$post = !empty($_REQUEST['action'])?$_REQUEST['action']:'';
+if (!empty($post)) //判断是否在微信中打开
+include_once("../includes/global.php");
 
-
-// include_once("../includes/global.php");
-include($config['webroot']."/config/connect_config.php");//connect
+include_once($config['webroot']."/config/connect_config.php");//connect
 
 /**
 * 关联登录
@@ -41,7 +42,7 @@ class connect
 	public function __construct()
 	{
 		global $connect_config,$config,$db,$buid;
-
+		$this->_db = $db;
 		$this->_config  = $config;
 		$this->_sina_akey = $connect_config['sina_app_id'];
 		$this->_sina_skey = $connect_config['sina_key'];
@@ -102,7 +103,7 @@ class connect
 	        }
 	        else
 	        {
-	            msg("login.php?connect_id=$cre[id]");
+	            msg($this->_config["weburl"]."/login.php?connect_id=$cre[id]");
 	        }
 	    }
 	    //-------------------------------------------
@@ -178,16 +179,14 @@ class connect
 			if($type == 'url'){
 				return $this->weixin_code();
 			}
+			
 			if(!isset($_SESSION['openid_connect']) || $_SESSION['openid_connect']==""){
 				//获取code
-				if(empty($this->_code)){
-					$weixin_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$this->_wx_akey."&redirect_uri=".$this->_wx_callback_url."&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
-		   			header('location:' . $weixin_url);
-				}
+				if(empty($this->_code))$this->weixin_code();
 			    $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->_wx_akey.'&secret='.$this->_wx_skey.'&code='.$this->_code.'&grant_type=authorization_code';
 			    $token = json_decode(file_get_contents($token_url));
 
-			    $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$appid.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
+			    $access_token_url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token?appid='.$this->_wx_akey.'&grant_type=refresh_token&refresh_token='.$token->refresh_token;
 		        $access_token = json_decode(file_get_contents($access_token_url));
 
 		        $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token->access_token.'&openid='.$access_token->openid.'&lang=zh_CN';
@@ -226,11 +225,10 @@ class connect
 	 * 微信互联登录获取code
 	 */
 	private function weixin_code(){
-		/*if($this->_config['bw'] == "weixin"){
+		if($this->_config['bw'] == "weixin"){
 		    $weixin_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=".$this->_wx_akey."&redirect_uri=".$this->_wx_callback_url."&response_type=code&scope=snsapi_login&state=123&connect_redirect=1#wechat_redirect";
-		    header('location:' . $weixin_url);
-		    return true;
-		}else*/
+		    if(empty($this->_code))header('location:' . $weixin_url);
+		}else
 	        return "https://open.weixin.qq.com/connect/qrconnect?appid=".$this->_wx_akey."&redirect_uri=".$this->_wx_callback_url."&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect";
 	}
 
@@ -259,7 +257,7 @@ class connect
 
 
 }
-$post = !empty($_REQUEST['action'])?$_REQUEST['action']:'';
+
 $obj = new connect();
 $config['_CONNCET']['_SINA_URL']= $obj->sina_connect('url');
 $config['_CONNCET']['_SINA_STATU'] =  $connect_config['qq_connect'];
@@ -285,7 +283,6 @@ if(!empty($post)){
 	}
 }
 
-if($config['bw'] == "weixin"&&$config['_CONNCET']['_WX_STATU']=='1')
-    $obj->weixin_connect();
+
 
 ?>

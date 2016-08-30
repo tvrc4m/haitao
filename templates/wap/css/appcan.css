@@ -211,7 +211,7 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .select_style dl{float:left;height: auto;overflow: visible;width: 100%;line-height:35px;}
 .select_style dl.select_style_num{line-height: 28px;padding: 10px 0;}
 .select_style dl.select_style_xiangqing{border-bottom: none;margin-bottom: 0px;}
-.select_style dt{color:#999;font-family:simsun;float:left;display: inline-block;font-size: 0.6rem;}
+.select_style dt{color:#999;font-family:simsun;float:left;display: inline-block;font-size: 0.6rem;width: 1.7rem;}
 .select_style dt.select_style_title{width: 100%;border-bottom: 1px dotted #666;margin-bottom: 0.5rem;font-size: 0.8rem;height: 2rem;line-height: 2rem;}
 .select_style dt.select_style_titleg{color: #ff5c5c;position: relative;z-index: 99;}
 .select_style dt a.select_style_titler{font-size: 0.7rem;color: #5c5c5c;float: right;padding-right: 15px;background: url(../../../image/wap/wap_haitao_icon19.png) no-repeat center right;background-size: 20%;}
@@ -225,7 +225,7 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .select_guanshui_hid i{width: 10px; height:10px;background-color:#ff5c5c;display: inline-block;-webkit-transform:rotate(-135deg);transform:rotate(-135deg);position: absolute;left: 60%;top: -4px;}
 .mayi_say{line-height: 0.8rem;font-size: 0.6rem;padding-left: 3.1rem;padding-bottom: 0.8rem;}
 .select_style dt.select_style_shu{color: #535353;}
-.select_style dd.stock{/*margin-top: 11px;*/margin-left: 0.5rem;float: left;}
+.select_style dd.stock{margin-left: 0.5rem;position: relative;}
 .select_style dd.stock_kucun{float: right;font-size: 0.6rem;}
 .select_style ul{clear:both;display:block;overflow: hidden;}
 .select_style ul.ub-ac{padding-top: 10px;border-top: 1px dotted #666;}
@@ -237,10 +237,10 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .select_style li i{display:none}
 .select_style li .checked{border:2px solid #ff5c5c;margin:-1px;}
 .select_style li .checked i{background:url(../../../image/wap/wap_haitao_icon21.png);background-size: contain; bottom:0;display:block;height:15px;overflow:hidden;position:absolute;right:0;margin:0px;width:15px;}
-.select_style .stock a{color:#000;display:block;_display:inline;*zoom:1;float:left;width:26px;height:26px;border:1px solid #ccc;line-height:26px;padding:0;vertical-align:top;overflow:hidden;text-align:center;background-color:#ededed;overflow:hidden;}
-.select_style #nums{-webkit-appearance: none;width:48px;float:left;height:26px;line-height:26px;margin:0;padding:0;font-size:16px;text-align:center;color:#666;background-color:#fff;border:1px solid #ccc;outline:0;ime-mode:disabled;}
-.select_style #low_num{-webkit-appearance: none;border-right:none;font-size:14px;border-top-left-radius: 0.2rem;border-bottom-left-radius: 0.2rem;}
-.select_style #add_num{-webkit-appearance: none;border-left:none;font-size:16px;border-top-right-radius: 0.2rem;border-bottom-right-radius: 0.2rem;}
+.select_style .stock a{position: absolute;color:#535353;display:block;_display:inline;*zoom:1;float:left;width:1.3rem;height:26px;border:1px solid #ccc;line-height:26px;padding:0;vertical-align:top;overflow:hidden;text-align:center;background-color:#ededed;overflow:hidden;}
+.select_style #nums{-webkit-appearance: none;width:1.8rem;float:left;height:26px;line-height:26px;margin:0;padding:0;font-size:0.7rem;text-align:center;color:#666;background-color:#fff;border:1px solid #ccc;outline:0;ime-mode:disabled;padding: 0 1.4rem;border-radius: 0.2rem;}
+.select_style #low_num{left: 1.2rem;font-size:16px;border-top-left-radius: 0.2rem;border-bottom-left-radius: 0.2rem;}
+.select_style #add_num{left: 4.55rem;font-size:16px;border-top-right-radius: 0.2rem;border-bottom-right-radius: 0.2rem;}
 .select_style .stock em{float:left;line-height:28px;margin-left:8px;}
 .commit-left{float: left;margin-right: 0.6rem;}
 .c-wh-commit-gao{background-color: #fff;padding-bottom: 12px;padding-top: 15px;padding-right: 0.5rem;}
@@ -309,7 +309,9 @@ div{outline: 0 !important; -webkit-text-size-adjust: none; -webkit-tap-highlight
 .col-money-bot{font-size: 0.7rem;height: 1.7rem;line-height: 1.7rem;}
 .col-money-bots{font-size: 0.7rem;}
 /*商品推荐*/
-.select_style .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;margin-top: 0!important}
+.select_style .shop_t .shopli{float:left;width:31%!important;text-align:center;height: auto;
+    overflow: hidden;background: #fff;margin-bottom: 8px;padding-top: 6px;margin-right:3.5%;
+    margin-top: 0!important;border-top: none!important;}
 .select_style .shop_t .shopli:nth-of-type(3n){margin-right: 0;}
 .shopli_bottom_rob{text-align: left;}
 .shopli_bottom_message p{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;margin-top: 0.25rem;}
