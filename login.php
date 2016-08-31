@@ -19,15 +19,15 @@ $config = array_merge($config,$connect_config);
 if(isset($_GET['code'])&&!empty($_GET['code'])&&$config['_CONNCET']['_QQ_STATU']=='1'){
     $config['return']=urlencode($config['weburl'].'/login.php');
     $url="https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&"
-        ."client_id=$config[qq_app_id]"
-        ."&client_secret=$config[qq_key]"
-        ."&code=$_GET[code]"
-        ."&state=$config[company]"
-        ."&redirect_uri=$config[return]";
-    $takenid=get_url_contents($url);
+        ."client_id=".$config['qq_app_id']
+        ."&client_secret=".$config['qq_key']
+        ."&code=".$_GET['code']
+        ."&state=".$config['company']
+        ."&redirect_uri=".$config['return'];
+    $takenid = file_get_contents($url);
     //----------------
     $url2="https://graph.qq.com/oauth2.0/me?$takenid";
-    $con=get_url_contents($url2);
+    $con = file_get_contents($url2);
     $lpos = strpos($con, "(");
     $rpos = strrpos($con, ")");
     $con  = substr($con, $lpos + 1, $rpos - $lpos -1);
@@ -39,7 +39,7 @@ if(isset($_GET['code'])&&!empty($_GET['code'])&&$config['_CONNCET']['_QQ_STATU']
         . "&openid=" . $ar2["openid"]
         . "&format=json";
 
-    $con=get_url_contents($url3);
+    $con = file_get_contents($url3);
     $ar=json_decode($con,true);
     //--------------------------
 
@@ -67,24 +67,6 @@ if(isset($_GET['code'])&&!empty($_GET['code'])&&$config['_CONNCET']['_QQ_STATU']
     }
 }
 
-function get_url_contents($url)
-{
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    $result =  curl_exec($ch);
-
-    if (curl_errno($ch))
-    {
-        echo "Error Occured in Curl\n";
-        echo "Error number: " . curl_errno($ch) . "\n";
-        echo "Error message: " . curl_error($ch) . "\n";
-    }
-
-    curl_close($ch);
-    return $result;
-}
 }
 /**
  * 是否使用微信登录

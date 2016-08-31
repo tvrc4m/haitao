@@ -343,7 +343,7 @@ class uc_login extends verification
 		$this->_db->query($sql);
 		$statu = $this->_db->fetchRow();
 		if(!empty($statu)){
-			$sql="update ".USERCOON." set status='{$this->_wx_status}' where userid=".$this->_buid;
+			$sql="update ".USERCOON." set status='{$this->_wx_status}' where type=3 and userid=".$this->_buid;
 	    	$statu = $this->_db->query($sql);
 	    	$this->_response_code = '10022';
 	    	return true;
