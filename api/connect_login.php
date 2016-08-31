@@ -200,6 +200,7 @@ class connect
 				$sql = "select * from ".USERCOON." where type=3 and openid='".$_SESSION['openid_connect']."'";
 				$this->_db->query($sql);
 				$cre = $this->_db->fetchRow();
+				if($cre['status']==2)msg($this->_config["weburl"]."/login.php?temp=wap");
 				if(empty($cre['id']))
 	            {
 	                $sql="insert into ".USERCOON."(nickname,figureurl,gender,vip,level,type,access_token,client_id,openid,status)

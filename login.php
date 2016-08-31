@@ -91,7 +91,7 @@ function get_url_contents($url)
  */
 function weixin_status(){
     global $db;
-    if(empty($_SESSION['openid_connect']))return false;
+    if(empty($_SESSION['openid_connect']))return true;
     $sql = "select status from ".USERCOON." where type=3 and openid='".$_SESSION['openid_connect']."'";
         $db->query($sql);
         $status = $db->fetchField('status');

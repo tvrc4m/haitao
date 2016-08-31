@@ -75,7 +75,7 @@ class uc_login extends verification
 		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = addslashes(trim($post['password_old']));
 		if(!empty($post['type']))$this->_type = $post['type'];
 		if(!empty($post['smsvode']))$this->_yzm = $post['smsvode'];
-		if(!empty($post['forword']))$this->_old_url = $post['forword'];
+		if(!empty($post['forword']))$this->_old_url = $post['forword']; else $this->_old_url = $this->_config['weburl'];
 
 		if(!empty($post['connect_id']))$this->_connect_id = $post['connect_id'];
 		if(!empty($post['wx_status']))$this->_wx_status = $post['wx_status'];
