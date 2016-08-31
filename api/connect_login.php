@@ -50,7 +50,7 @@ class connect
 
 		$this->_qq_akey = $connect_config['qq_app_id'];
 		$this->_qq_skey = $connect_config['qq_key'];
-		$this->_qq_callback_url = urlencode($this->_config['weburl']."/api/connect_login.php?action=qq_connect");
+		$this->_qq_callback_url = urlencode($this->_config['weburl']."/login.php");
 
 		$this->_wx_akey = $connect_config['weixin_app_id'];
     	$this->_wx_skey = $connect_config['weixin_key'];
@@ -121,16 +121,17 @@ class connect
 		return "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=".$this->_qq_akey."&redirect_uri=".$this->_qq_callback_url."&state=".$this->_config['company']."&client_secret=".$this->_qq_skey;
 
 		
-	    $url="https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&"
+	    /*$url="https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&"
 	        ."client_id=".$this->_qq_akey.""
 	        ."&client_secret=".$this->_qq_skey.""
 	        ."&code=".$this->_code.""
 	        ."&state=".$this->_config[company].""
 	        ."&redirect_uri=".$this->_qq_callback_url."";
-	    $takenid=@get_url_contents($url);
+	    $takenid=$this->get_url_contents($url);
+
 	    //----------------
 	    $url2="https://graph.qq.com/oauth2.0/me?$takenid";
-	    $con=get_url_contents($url2);
+	    $con=$this->get_url_contents($url2);
 	    $lpos = strpos($con, "(");
 	    $rpos = strrpos($con, ")");
 	    $con  = substr($con, $lpos + 1, $rpos - $lpos -1);
@@ -142,7 +143,7 @@ class connect
 	        . "&openid=" . $ar2["openid"]  
 	        . "&format=json";
 
-	    $con=get_url_contents($url3);
+	    $con=$this->get_url_contents($url3);
 	    $ar=json_decode($con,true);
 	    //--------------------------
 
@@ -167,7 +168,7 @@ class connect
 	    else
 	    {
 	        msg("login.php?connect_id=$cre[id]&connect_nickname=" . urlencode($ar['nickname']));
-	    }
+	    }*/
 
 
 	}
@@ -201,8 +202,8 @@ class connect
 				$cre = $this->_db->fetchRow();
 				if(empty($cre['id']))
 	            {
-	                $sql="insert into ".USERCOON."(nickname,figureurl,gender,vip,level,type,access_token,client_id,openid)
-	                        values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid')";
+	                $sql="insert into ".USERCOON."(nickname,figureurl,gender,vip,level,type,access_token,client_id,openid,status)
+	                        values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid',1)";
 	                $db->query($sql);
 	                $cre['id']=$db->lastid();
 	                msg("login.php?connect_id=$cre[id]");
@@ -233,10 +234,26 @@ class connect
 	}
 
 	/**
+	 * 是否使用微信登录
+	 */
+	public function weixin_status(){
+		if(empty($_SESSION['openid_connect']))return false;
+		$sql = "select status from ".USERCOON." where type=3 and openid='".$_SESSION['openid_connect']."'";
+			$this->_db->query($sql);
+			$status = $this->_db->fetchField('status');
+			if($status==1)
+				return true;
+			else
+				return false;
+			//msg($this->_config["weburl"]."/login.php?temp=wap");
+
+	}
+
+	/**
 	 * [users description]
 	 * @return [type] [description]
 	 */
-	private function users($userid = ''){
+	public function users($userid = ''){
 		$sql = "select userid,user,statu,pid,mobile from ".MEMBER." where userid={$userid}";
 		$this->_db->query($sql);
 		$this->_users = $this->_db->fetchRow();
@@ -247,12 +264,35 @@ class connect
 	/**
 	 * 登录成功
 	 */
-	private function login_success(){
+	public function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 
 		return false;
+	}
+
+	/**
+	 * curl
+	 */
+	private function get_url_contents($url)
+	{
+
+	    $ch = curl_init();
+	    curl_setopt($ch, CURLOPT_URL, $url);
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	    $result =  curl_exec($ch);
+
+	    if (curl_errno($ch))
+	    {
+	        echo "Error Occured in Curl\n";
+	        echo "Error number: " . curl_errno($ch) . "\n";
+	        echo "Error message: " . curl_error($ch) . "\n";
+	    }
+
+	    curl_close($ch);
+	    return $result;
 	}
 
 

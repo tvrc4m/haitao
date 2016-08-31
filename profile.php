@@ -11,16 +11,22 @@ if(!empty($buid)) {
 }else{
     $num = 0;
 }
-$userid = $_COOKIE['userid'];
-if(!empty($userid)) {
-    $sql = "select mobile from mallbuilder_member where userid = $userid";
+if(!empty($buid)) {
+    $sql = "select mobile from mallbuilder_member where userid = $buid";
     $db->query($sql);
     $mobile = $db->fetchField('mobile');
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) //判断是否在微信中打开
+	{
+	    $sql = "select status from mallbuilder_user_connected where userid = $buid";
+	    $db->query($sql);
+	    $status = $db->fetchField('status');
+	}else
+		$status = '';
 }
-
 $tpl->assign('oldUlr','https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 $tpl->assign("verify",$num);
 $tpl->assign("mobile",$mobile);
+$tpl->assign("status",$status);
 include_once("footer.php");
 $tpl->display('profile.htm');
 

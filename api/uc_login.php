@@ -23,6 +23,8 @@ class uc_login extends verification
 	private $_db = '';
 	private $_uc_obj = '';
 	private $_userinfo = '';//存储用户信息
+	private $_wx_status = '';
+	private $_buid = '';
 	protected $_account = '';//用户
 	protected $_yzm_mobile = '';
 	protected $_config = '';
@@ -52,7 +54,9 @@ class uc_login extends verification
         '10018'=>'操作过于频繁!',
         '10019'=>'请再次申请短信验证码',
         '10020'=>'请填写正确的验证码!',
-        '10021'=>'验证码已失效!'
+        '10021'=>'验证码已失效!',
+        '10022'=>'微信绑定成功',
+        '10023'=>'微信绑定失败'
     );
 
 	public function __construct(){
@@ -70,14 +74,16 @@ class uc_login extends verification
 		if (empty($post['password'])) $this->_response_code='10005'; else $this->_password = addslashes(trim($post['password']));
 		if (!empty($post['password_old'])&&$post['action']=='updatepass')$this->_password_old = addslashes(trim($post['password_old']));
 		if(!empty($post['type']))$this->_type = $post['type'];
-		if(empty($post['smsvode']))$this->_response_code = '10020'; else $this->_yzm = $post['smsvode'];
+		if(!empty($post['smsvode']))$this->_yzm = $post['smsvode'];
 		if(!empty($post['forword']))$this->_old_url = $post['forword'];
 
 		if(!empty($post['connect_id']))$this->_connect_id = $post['connect_id'];
+		if(!empty($post['wx_status']))$this->_wx_status = $post['wx_status'];
+		if(!empty($post['buid']))$this->_buid = $post['buid'];
 
-   		if(parent::checkData($this->_account,'mobile')){
-   			$this->users();
-			if(!empty($this->_account)){
+   		if(parent::checkData($this->_account,'mobile') || !empty($this->_buid)){
+   			if(empty($this->_buid))$this->users();
+			if(!empty($this->_account) || !empty($this->_buid)){
 				if (method_exists($this,$this->_action)) {
 	                call_user_func(array($this,$this->_action));
 	            }else{
@@ -328,6 +334,25 @@ class uc_login extends verification
 		$sql="update ".USERCOON." set userid='{$this->_users['userid']}' where id=".$this->_connect_id;
 	    $this->_db->query($sql);
 	}
+
+	/**
+	 * 微信开关
+	 */
+	private function weixin_status(){
+		$sql = "select userid from ".USERCOON." where userid =".$this->_buid;
+		$this->_db->query($sql);
+		$statu = $this->_db->fetchRow();
+		if(!empty($statu)){
+			$sql="update ".USERCOON." set status='{$this->_wx_status}' where userid=".$this->_buid;
+	    	$statu = $this->_db->query($sql);
+	    	$this->_response_code = '10022';
+	    	return true;
+		}else{
+			$this->_response_code = '10023';
+			return true;
+		}
+	}
+
 	/**
 	 * 验证码
 	 */

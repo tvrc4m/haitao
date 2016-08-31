@@ -20,16 +20,18 @@
         <li class="order_dotted">
             <a><span class="order_indents">手机绑定</span><span class="order_indents_fs">已绑定 <var class="mobile_spi"><{$mobile}></var></span></a>
         </li>
+        <{if $status neq ''}>
         <li class="order_dotted">
-            <a class="webchat_btn"><span class="order_indents">微信绑定</span><span class="order_indents_fw">未绑定</span><i></i></a>
+            <a class="webchat_btn"><span class="order_indents">微信绑定</span><span class="order_indents_fw"><{if $status eq 1}>已开启<{else}>未开启<{/if}></span><i></i></a>
             <div class="mask"></div>
                 <div id="xb_fixed">
                     <p>是否绑定微信</p>
                     <div class="xb_btns">
-                        <a href="javascript:void(0);" data-id="1"><img src="../image/wap/wap_haitao_icon165.png" alt="是"><span>是</span></a><a href="javascript:void(0);" data-id="2"><img src="../image/wap/wap_haitao_icon166.png" alt="否"><span>否</span></a>
+                        <a href="javascript:void(0);" data-id="1"><img src="../image/wap/wap_haitao_icon165.png" alt="是"><span data-name="已开启">是</span></a><a href="javascript:void(0);" data-id="2"><img src="../image/wap/wap_haitao_icon166.png" alt="否"><span data-name="未开启">否</span></a>
                     </div>
                 </div>
         </li>
+        <{/if}>
         <li class="order_dotted"><a href="<{$config.weburl}>/lostpass.php"><span class="order_indents">修改登录密码</span><i></i></a></li>
         <li class="order_dotted"><a href="main.php?m=member&s=admin_orderadder"><span class="order_indents">收货地址</span><i></i></a></li>
         <li><a href="<{$config.weburl}>/agreement.php"><span class="order_indents">注册协议</span><i></i></a></li>
@@ -79,26 +81,27 @@ $(function(){
             e.stopPropagation();
         } else {
             e.cancelBubble = true;
-        }               
-        var txt = $(this).find("span").text();
+        }       
+        var buid = <{$buid}>;
+        var txt = $(this).find("span").attr("data-name");
         var data_id=$(this).attr("data-id");
-        // $.ajax({
-        //     url: 'install.php',
-        //     type: 'post',
-        //     data: {user_sex: txt,user_id: data_id},
-        //     dataType: 'json',
-        //     success: function(data){
-        //         if(data.status==200){
-        //             $(".order_indents_fw").html("已绑定");
-        //             altto('微信绑定成功');
-        //             wid();
-        //         }else{
-        //             altto('微信绑定失败');
-        //             wid();
-        //         }
-        //     }
-        // });               
-        // inputselecty.val(txt);
+        $.ajax({
+            url: "<{$config.weburl}>/api/login.php",
+            type: 'post',
+            data: {action:'weixin_status',wx_status: data_id,buid: buid},
+            dataType: 'json',
+            success: function(data){
+                if(data.status==10022){
+                   $(".order_indents_fw").html(txt);
+                    altto(data.errmsg);
+                    wid();
+                }else{
+                    altto(data.errmsg);
+                    wid();
+                }
+            }
+        });      
+
         $("#xb_fixed").hide();
         $(".mask").hide();
     });
