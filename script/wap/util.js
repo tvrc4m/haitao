@@ -461,6 +461,68 @@ define(["require", 'module', "IScroll"], function(require, module, IScroll) {
             }, time);
         }
     /**
+        * [ajaxPager description] 分页加载
+        * @param  {String}   btn      点击加载按钮
+        * @param  {String}   ul       加载列表ul
+        * @param  {String}   ajaxUrl  Ajax加载url
+        * @param  {String}   method   Ajax 请求方式
+        * @param  {Object}   postdata Ajax 提交数据
+        * @param  {Function} callback 请求成功后回调
+        * @return {[type]}            [description]
+    */
+    Util.prototype.ajaxPager = function(btn, ul, ajaxUrl, method, postdata, callback) {
+            var _self = this,
+                isTap = false,
+                totalNum = $(ul).attr("data-pages");
+            var current = 1;
+            //delegate 函数  rightPaper处加载更多
+            $(".scroller").delegate(btn, "tap", function() {
+                isTap = true;
+                current++;
+                if (current <= totalNum) {
+                    if (isTap) {
+                        isTap = false;
+                        domLoad(current, true);
+                    }
+                }
+            })
+
+            function domLoad(page, isload) {
+                $(btn).html("正在加载...");
+                postdata.page = page;
+                $.ajax({
+                    url: ajaxUrl,
+                    type: method || 'GET',
+                    dataType: 'json',
+                    data: postdata,
+                    success: function(data) {
+                        if (data != "" && data != undefined) {
+                            if (data.statusCode == 200) {
+                                var dataList = data.content.data;
+                                callback(dataList);
+                                $(btn).html("查看更多");
+                                isTap = true;
+                                if (page == totalNum) $(btn).remove();
+                            } else {
+                                _self.tipsWarn("加载失败！请稍后刷新再试");
+                                $(btn).html("查看更多");
+                                isTap = true;
+                            }
+                        } else {
+                            _self.tipsWarn("服务器请求失败，请稍后刷新再试");
+                            $(btn).html("查看更多");
+                            isTap = true;
+                        }
+                    },
+                    error: function() {
+                        _self.tipsWarn("加载失败！请稍后刷新再试");
+                        $(btn).html("查看更多");
+                        isTap = true;
+                    }
+                })
+            }
+        }
+    /**
      * Loading显示
      * @param  {[type]} wrap [description]
      * @return {[type]}      [description]
