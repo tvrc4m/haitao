@@ -9,10 +9,7 @@ if($buid)
     exit();
 }
 include_once("footer.php");
-if($_SERVER['HTTP_REMOTEIP']=="119.57.72.164")
-{
-    var_dump(weixin_status() || $config['bw'] != "weixin");die;
-}
+
 if((weixin_status() || $config['bw'] != "weixin")&&empty($_GET['connect_id']))
 include_once($config['webroot']."/api/connect_login.php");
 

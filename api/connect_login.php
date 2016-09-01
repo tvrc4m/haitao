@@ -207,7 +207,8 @@ class connect
 	                        values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid',1)";
 	                $this->_db->query($sql);
 	                $cre['id']=$this->_db->lastid();
-	                msg("login.php?connect_id=$cre[id]");
+	                $forward = $this->_config['weburl']."/login.php?connect_id=".$cre['id']."&temp=wap";
+	                msg($forward);
 	            }
 	            if(!empty($cre['userid']))
 	            {
@@ -218,7 +219,7 @@ class connect
 	            else
 	            {
 	                $_SESSION['connect_name'] = '微信';
-	                $forward = $this->_config['weburl']."/login.php?connect_id=$cre[id]&temp=wap";
+	                $forward = $this->_config['weburl']."/login.php?connect_id=".$cre['id']."&temp=wap";
 	                msg($forward);
 	            }
 			}
