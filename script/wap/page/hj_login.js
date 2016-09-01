@@ -65,10 +65,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
         });
         $(obj2).on("tap", function(){ 
             $(this).parent().find("input").val("");
-            $(this).removeClass(obj3);
-            // setTimeout(function() {
-            //     $(this).removeClass(obj3);
-            // }, 100);      
+            $(this).removeClass(obj3);     
         });  
     }
     /**
@@ -78,9 +75,10 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
      * @param  {String} ajaxUrl    交互接口
      * @param  {String} skipUrl    成功后跳转链接
     */
-    hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl) {
+    hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl ,connect_id) {
         $(subBtn).on("tap", function() {
             var url = skipUrl,
+                connect_id = connect_id,
                 userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
 
@@ -95,7 +93,8 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                         username:userVal,
                         password:pwdVal,
                         action:"login",
-                        forword:url
+                        forword:url,
+                        connect_id:connect_id
                     },
                     success: function(data) {
                         if(!data.url){
@@ -119,9 +118,10 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
      * @param  {String} ajaxUrl    交互接口
      * @param  {String} skipUrl    成功后跳转链接
     */
-    hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
+    hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl ,connect_id) {
         $(subBtn).on("tap", function() {
             var url = skipUrl,
+                connect_id = connect_id,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
@@ -145,7 +145,8 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                         smsvode:svodeVal,
                         password:pwdVal,
                         action:"register",
-                        forword:url
+                        forword:url,
+                        connect_id:connect_id
                     },
                     success: function(data) {
                         if(!data.url){
