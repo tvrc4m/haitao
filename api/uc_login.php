@@ -55,7 +55,7 @@ class uc_login extends verification
         '10019'=>'请再次申请短信验证码',
         '10020'=>'请填写正确的验证码!',
         '10021'=>'验证码已失效!',
-        '10022'=>'微信绑定成功',
+        '10022'=>'操作成功!',
         '10023'=>'微信绑定失败'
     );
 
@@ -339,7 +339,7 @@ class uc_login extends verification
 	 * 微信开关
 	 */
 	private function weixin_status(){
-		$sql = "select userid from ".USERCOON." where userid =".$this->_buid;
+		$sql = "select userid from ".USERCOON." where type=3 and userid =".$this->_buid;
 		$this->_db->query($sql);
 		$statu = $this->_db->fetchRow();
 		if(!empty($statu)){
@@ -405,7 +405,7 @@ class uc_login extends verification
 	 */
 	private function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
-
+		$_SESSION['buid'] = $this->_users['userid'];
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 

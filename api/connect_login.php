@@ -267,6 +267,7 @@ class connect
 	 */
 	public function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
+		$_SESSION['buid'] = $this->_users['userid'];
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 
@@ -298,7 +299,8 @@ class connect
 
 
 }
-
+if($buid == NULL || !empty($buid))
+$buid = $_SESSION['buid'];
 $obj = new connect();
 $config['_CONNCET']['_SINA_URL']= $obj->sina_connect('url');
 $config['_CONNCET']['_SINA_STATU'] =  $connect_config['qq_connect'];

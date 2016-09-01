@@ -22,7 +22,7 @@
         </li>
         <{if $status neq ''}>
         <li class="order_dotted">
-            <a class="webchat_btn"><span class="order_indents">微信绑定</span><span class="order_indents_fw"><{if $status eq 1}>已开启<{else}>未开启<{/if}></span><i></i></a>
+            <a class="webchat_btn"><span class="order_indents">微信绑定</span><span class="order_indents_fw"><{if $status eq 1}>已开启<{/if}><{if $status eq 2}>未开启<{/if}></span><i></i></a>
             <div class="mask"></div>
                 <div id="xb_fixed">
                     <p>是否绑定微信</p>
@@ -123,11 +123,9 @@ $(function(){
             success: function(data){
                 if(data.status==10022){
                    $(".order_indents_fw").html(txt);
-                    altto(data.errmsg);
-                    wid();
+                    tipsWarn(data.errmsg);
                 }else{
-                    altto(data.errmsg);
-                    wid();
+                    tipsWarn(data.errmsg);
                 }
             }
         });      

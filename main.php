@@ -5,6 +5,9 @@ include_once("includes/admin_global.php");
 include_once("includes/admin_class.php");
 include_once("includes/insert_function.php");
 include_once($config["webroot"]."/config/nav_menu.php");
+
+
+
 //===============================================
 //================未读消息验证===================
 /*$sql="select iflook from ".FEEDBACK." where touserid=$buid and iflook=0";
@@ -20,7 +23,7 @@ $admin = new admin();
 if(!empty($_POST)||!empty($_GET['deid'])||!empty($_GET['rec']))
 	$admin->clear_user_shop_cache();
 //---------------------登录检查,个人或企业会员
-
+if(empty($buid))
 $admin->is_login($action);
 $is_company=$admin->check_myshop();
 if(!empty($_GET['oldUrl']))$tpl->assign('oldUrl',$_GET['oldUrl']);
@@ -138,6 +141,7 @@ switch ($action)
 		$obj = new Uc_server($config['_UC']);
 		$config = array_merge($config,$reg_config);
 		bsetcookie("USERID",NULL,time(),"/",$config['baseurl']);
+		$_SESSION['buid'] = NULL;
 		setcookie("USER",NULL,time(),"/",$config['baseurl']);
 		//=====================
 		if($config['openbbs']==2)

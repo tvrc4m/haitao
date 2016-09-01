@@ -215,6 +215,9 @@ $b2bbuilder_auth = bgetcookie("USERID");
 $buid  = $b2bbuilder_auth['0'];
 $buser = $b2bbuilder_auth['1'];
 
+if($buid == NULL || !empty($buid))
+$buid = $_SESSION['buid'];
+
 Yf_Registry::set('buid', $buid);
 
 //插件启动
