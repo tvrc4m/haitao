@@ -405,7 +405,6 @@ class uc_login extends verification
 	 */
 	private function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
-		$_SESSION['buid'] = $this->_users['userid'];
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 

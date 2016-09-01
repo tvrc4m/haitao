@@ -205,8 +205,8 @@ class connect
 	            {
 	                $sql="insert into ".USERCOON."(nickname,figureurl,gender,vip,level,type,access_token,client_id,openid,status)
 	                        values('$nickname','$ar[figureurl]','$ar[gender]','$ar[vip]','$ar[level]',3,'$takenid','$ar2[client_id]','$openid',1)";
-	                $db->query($sql);
-	                $cre['id']=$db->lastid();
+	                $this->_db->query($sql);
+	                $cre['id']=$this->_db->lastid();
 	                msg("login.php?connect_id=$cre[id]");
 	            }
 	            if(!empty($cre['userid']))
@@ -218,7 +218,8 @@ class connect
 	            else
 	            {
 	                $_SESSION['connect_name'] = '微信';
-	                msg("login.php?connect_id=$cre[id]");
+	                $forward = $this->_config['weburl']."/login.php?connect_id=$cre[id]&temp=wap";
+	                msg($forward);
 	            }
 			}
 	}
@@ -267,7 +268,6 @@ class connect
 	 */
 	public function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
-		$_SESSION['buid'] = $this->_users['userid'];
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 
@@ -299,8 +299,7 @@ class connect
 
 
 }
-if($buid == NULL || !empty($buid))
-$buid = $_SESSION['buid'];
+
 $obj = new connect();
 $config['_CONNCET']['_SINA_URL']= $obj->sina_connect('url');
 $config['_CONNCET']['_SINA_STATU'] =  $connect_config['qq_connect'];

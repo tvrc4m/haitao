@@ -17,6 +17,26 @@ $tpl->assign("numRows",$numRows);*/
 $action=isset($_GET['action'])?$_GET['action']:"main";
 $submit=isset($_POST['submit'])?$_POST['submit']:NULL;
 $deid=isset($_GET['deid'])?$_GET['deid']:NULL;
+
+if($action=='logout'){
+		include_once("$config[webroot]/config/reg_config.php");
+		include_once ("$config[webroot]/includes/uc_server.php");
+
+		$obj = new Uc_server($config['_UC']);
+		$config = array_merge($config,$reg_config);
+		bsetcookie("USERID",NULL,time(),"/",$config['baseurl']);
+		setcookie("USER",NULL,time(),"/",$config['baseurl']);
+		$_SESSION['USER_TYPE']=NULL;
+	
+		$sql = "select mobile from mallbuilder_member where userid=".$buid;
+		$db->query($sql);
+		$list = $db->fetchRow();
+		$script = $obj->logout(array('phone'=>$list['mobile']));
+		$_SESSION['script']=$script->data;
+		msg($config['weburl']);
+		die;
+}
+
 $admin = new admin();
 //---------------------清缓存
 
@@ -128,20 +148,18 @@ if($_SESSION['USER_TYPE']==1)
 	include("lang/cn/admin_menu.inc_p.php");
 else
 	include("lang/cn/admin_menu.inc.php");
-
 switch ($action)
 {
 	case "logout":
 	{
 
-		global $config;
+		/*global $config;
 		include_once("$config[webroot]/config/reg_config.php");
 		include_once ("$config[webroot]/includes/uc_server.php");
 
 		$obj = new Uc_server($config['_UC']);
 		$config = array_merge($config,$reg_config);
 		bsetcookie("USERID",NULL,time(),"/",$config['baseurl']);
-		$_SESSION['buid'] = NULL;
 		setcookie("USER",NULL,time(),"/",$config['baseurl']);
 		//=====================
 		if($config['openbbs']==2)
@@ -157,7 +175,7 @@ switch ($action)
 		$list = $db->fetchRow();
 		$script = $obj->logout(array('phone'=>$list['mobile']));
 		$_SESSION['script']=$script->data;
-		msg($config['weburl']);
+		msg($config['weburl']);*/
 		die;
 		break;
 	}
