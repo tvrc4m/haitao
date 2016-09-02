@@ -15,6 +15,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     */
     hjLogin.prototype.init = function() {
         var _self = this;
+
         fixedInputBlur ();
         function fixedInputBlur () {
             var beforeIpt=null;
