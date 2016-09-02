@@ -15,23 +15,24 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     */
     hjLogin.prototype.init = function() {
         var _self = this;
-        fixedInputBlur ();
-        function fixedInputBlur () {
-            var beforeIpt=null;
-            $("input").on("focus", function (e) {
-                utility.stopPropagation(e);
-                beforeIpt=this;
-            });
-            $(document).on("tap", function (e) {
-                utility.stopPropagation(e);
-                if(e.target.nodeName.toLowerCase() != "input") {
-                    if(beforeIpt) {
-                        beforeIpt.blur();
-                        beforeIpt=null;
-                    }
-                }
-            });
-        }
+        utility.Iscroll("body");
+        // fixedInputBlur ();
+        // function fixedInputBlur () {
+        //     var beforeIpt=null;
+        //     $("input").on("focus", function (e) {
+        //         utility.stopPropagation(e);
+        //         beforeIpt=this;
+        //     });
+        //     $(document).on("tap", function (e) {
+        //         utility.stopPropagation(e);
+        //         if(e.target.nodeName.toLowerCase() != "input") {
+        //             if(beforeIpt) {
+        //                 beforeIpt.blur();
+        //                 beforeIpt=null;
+        //             }
+        //         }
+        //     });
+        // }
     };
     /**
      * 删除表单内容
