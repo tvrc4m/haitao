@@ -15,7 +15,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     */
     hjLogin.prototype.init = function() {
         var _self = this;
-        utility.Iscroll("body");
+        utility.Iscroll(".login_container");
         // fixedInputBlur ();
         // function fixedInputBlur () {
         //     var beforeIpt=null;
