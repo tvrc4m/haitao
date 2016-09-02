@@ -6,7 +6,7 @@ ul,ol,li{list-style:none;}
 em,i{font-style:normal;}
 img{border:0;}
 input,img{vertical-align:middle;}
-body{overflow-x: hidden;overflow-y: hidden;color:#535353;font:400 14px/18px 'microsoft yahei';background:#f5f5f5;max-width: 720px;margin: 0 auto;}
+body{overflow-x: hidden;color:#535353;font:400 14px/18px 'microsoft yahei';background:#f5f5f5;max-width: 720px;margin: 0 auto;}
 a,a:visited{color:#535353;text-decoration:none;}
 .clearfix:after{display:block;content:'';clear:both;visibility:hidden;}
 .hidden{display:none;}
@@ -14,7 +14,7 @@ a,a:visited{color:#535353;text-decoration:none;}
 .org{color:#ff5c5c!important;}
 .gre{color:#999;}
 .m30{margin:30px auto;text-align:center;}
-html{height:100%;overflow:hidden;-ms-touch-action: none}
+html{height:100%;-ms-touch-action: none}
 input,button,img,fieldset{border:0;outline:none}
 html *
 {
@@ -166,8 +166,6 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .da_list div.list_current{display: block;}
 .da_list_test {position: fixed;top: 50px;z-index: 999999999999;width: 93.3%;}
 .shopinfo-xin{color:#999;font-size: 1.1rem!important;}
-.collect_box_content{position: fixed;z-index: 9999; left: 50%;top: 65%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;font-size: 14px;}
- 
 /*合伙人页面*/
 .partner_container{background: url(../../../image/wap/bg.png) no-repeat;padding: 0px 0.5rem;padding-bottom: 0.5rem;background-size:100% 100%;overflow: hidden;}
 .partner_container_top{padding: 2.5rem 0rem;background: url(../../../image/wap/wap_haitao_icon106.png) no-repeat;background-size: 100%;margin-top: 1rem;margin-bottom: -1.8rem;}
@@ -189,7 +187,6 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 .partner_button{text-align: center;background-color: #ff5c5c;width: 90%;margin: 0 auto;border-radius: 5px;}
 .partner_button a{display: inline-block;font-size: 0.7rem;padding: 0.7rem 0;color: #fff;}
 .hj_share_box{position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 999999;background: url(../../../image/wap/hj_share.png) 83% 0 no-repeat rgba(0,0,0,.8);background-size:70%;opacity:0;display: none;}
-.collect_box_contentss{position: fixed;z-index: 9999;left: 50%;top: 35%;background-color: rgba(0,0,0,0.7);border-radius: 8px;color: #fff;font-size: 14px;}
 .shop_over {width: 4rem;height: 4rem;font-size: 0.7rem;position: absolute;top: 20%;left: 50%;margin-left: -2rem;line-height: 4rem;
     text-align: center;color: #fff;background-color: rgba(0,0,0,0.5);border-radius: 50%;}
 .shop_t {background-color: #fff;}
@@ -305,3 +302,30 @@ a.ncp-btn-red{background-color: #da4f49;line-height: 29px;border-color: #c44742 
 70%{-moz-transform:scale(.9)}
 100%{-moz-transform:scale(1)}
 }
+/**公共提示框样式20160902*/
+/**验证提示20160902*/
+.alert_tips{width:90%;height:2.4rem;margin-left:-45%;position:fixed;top:18%;left:50%;
+    z-index:99999;}
+.alert_tips p{padding:.5rem .2rem;line-height:1.2rem;font-size:.7rem;font-weight:bold;
+    color:#fff;text-align:center;border-radius:.2rem;background-color:rgba(0,0,0,0.7)}
+.skip_txt{font-size:.7rempadding:1rem .5rem;text-align:center;}
+/**弹层提示20160902*/
+.collect_box_content {position: fixed;z-index: 9999;left: 50%;top: 65%;max-width: 70%;
+    text-align: center;}
+.collect_box_content p{padding:.3rem .5rem;font-size:.6rem;font-weight:bold;color:#fff;
+    text-align:center;border-radius:.2rem;background-color:rgba(0,0,0,0.7)}
+/***动画播放时间20160902****/
+.time_01{-webkit-transition: all .5s;transition: all .5s}
+.time_02{-webkit-transition: all .8s;transition: all .8s}
+.time_03{-webkit-transition: all 1s;transition: all 1s}
+.time_04{-webkit-transition: all 1.2s;transition: all 1.2s}
+.time_05{-webkit-transition: all 1.5s;transition: all 1.5s}
+.time_06{-webkit-transition: all 1.8s;transition: all 1.8s}
+/***动画效果20160902****/
+.fadeIn{opacity: 0}
+.active.fadeIn,.active .fadeIn{opacity:1}
+/**向上淡入0160902*/
+.fadeUp{opacity: 0;-webkit-transform: translate3d(0, 100%, 0);transform: translate3d(0, 100%, 0)}
+.active .fadeUp{opacity: 1;-webkit-transform: none;transform: none}
+.fadeDown{opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0)}
+.active .fadeDown{opacity: 1;-webkit-transform: none;transform: none}
