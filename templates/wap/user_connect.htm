@@ -1,5 +1,5 @@
 <{include file="header.htm"}>
-<link href="<{$config.weburl}>/templates/wap/css/verify.css" rel="stylesheet" type="text/css" />
+<link href="<{$config.weburl}>/templates/wap/css/verify.css?v=747585011" rel="stylesheet" type="text/css" />
 <header>
     <div class="header_nav">
         <div class="nav_l" onclick="javascript:history.back(-1)"><i class="back_icon"></i></div>
@@ -33,8 +33,10 @@
         </div>  
     </div>
 </div>
-<script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
+<script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=7b3d28d5dd"></script>
 <script type="text/javascript">
+    /**JS版本号 */
+    window.jsVersion = "7b3d28d5dd";
     require.config({
         //By default load any module IDs from js/lib
         baseUrl: 'script/wap/',
@@ -46,8 +48,6 @@
         shim: {},
         waitSeconds:0
     });
-    /**JS版本号 */
-    window.jsVersion = "7b3d28d5dd";
     require(['page/hj_login'], function (loginCtrl) {
         loginCtrl.loginCtrl(".txt_form","#login_sub","/api/login.php","<{$config._FORWARD}>","<{$connect_id}>");
         loginCtrl.formtap(".txt_form",".text",".txt_close","txt_up");
