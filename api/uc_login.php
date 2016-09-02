@@ -63,6 +63,8 @@ class uc_login extends verification
 		
         global $config,$db;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
+		$this->cacheLog('login_uc_33',array($_POST),'cache');
+		$this->cacheLog('login_uc_22',array($post),'cache');
 		$this->_action = $post['action'];
 		$this->_yzm_mobile = 'mon_yzm_'.$this->_account;
 		$this->_config = $config;
@@ -78,6 +80,7 @@ class uc_login extends verification
 		if(!empty($post['forword']))$this->_old_url = $post['forword']; else $this->_old_url = $this->_config['weburl'];
 
 		if(!empty($post['connect_id']))$this->_connect_id = $post['connect_id'];
+		$this->cacheLog('login_uc_11',array('connect'=>$this->_connect_id),'cache');
 		if(!empty($post['wx_status']))$this->_wx_status = $post['wx_status'];
 		if(!empty($post['buid']))$this->_buid = $post['buid'];
 
@@ -119,6 +122,7 @@ class uc_login extends verification
 						$type = $this->doreg();
 						if($type){
 							$this->login_success();
+							$this->cacheLog('login_uc',array('connect'=>$this->_connect_id),'cache');
 							if(!empty($this->_connect_id)) $this->connect_login();
 							$this->_response_code = '00000';
 							$this->_response_data = $this->_old_url;
@@ -140,6 +144,7 @@ class uc_login extends verification
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
 	    if (md5(md5($this->_password).$this->_users['rand_pwd'])==$this->_users['password']) {
 	    	$this->login_success();
+	    	$this->cacheLog('login_uc_1',array('connect'=>$this->_connect_id),'cache');
 	    	if(!empty($this->_connect_id)) $this->connect_login();
 	    	$this->_response_code = '00000';
 	    	$this->_response_data = $this->_old_url;
@@ -332,7 +337,9 @@ class uc_login extends verification
 	 */
 	private function connect_login(){
 		$sql="update ".USERCOON." set userid='{$this->_users['userid']}' where id=".$this->_connect_id;
+		$this->cacheLog('login_uc_sql',array('sql'=>$sql),'cache');
 	    $this->_db->query($sql);
+	    return true;
 	}
 
 	/**
@@ -405,12 +412,31 @@ class uc_login extends verification
 	 */
 	private function login_success(){
 		bsetcookie("USERID",$this->_users['userid']."\t".$this->_users['user']."\t".$this->_users['pid'],NULL,"/",$this->_config['baseurl']);
-		$_SESSION['buid'] = $this->_users['userid'];
 		$sql="update ".MEMBER." set lastLoginTime='".time()."' WHERE userid='{$this->_users['userid']}'";
 		$this->_db->query($sql);
 
 		return false;
 	}
+
+	/*
+     * 缓存日志
+     * $key 文件名
+     * $value 存储数据
+     * $path  存储文件路径
+     * */
+    private function cacheLog($key='',$value='',$path=''){
+        global $config;
+        $data = time().'>>>'.json_encode($value)."\r\n";
+        $filename = $config['webroot'].'/'.$path.'/'.$key.'.txt';
+        if($data !== ''){
+            $dir = dirname($filename);
+            if(!is_dir($dir)){
+                mkdir($dir,0777);
+            }
+            return file_put_contents($filename,$data,FILE_APPEND);
+        }
+
+    }
 
 	/**
 	 * [doreg description]

@@ -77,7 +77,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl ,connect_id) {
         $(subBtn).on("tap", function() {
             var url = skipUrl,
-                connect_id = connect_id,
                 userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
 
@@ -120,7 +119,6 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl ,connect_id) {
         $(subBtn).on("tap", function() {
             var url = skipUrl,
-                connect_id = connect_id,
                 mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();

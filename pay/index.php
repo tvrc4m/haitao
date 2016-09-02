@@ -75,7 +75,6 @@ switch($act)
 	case "logout":
 	{
 		bsetcookie("USERID",NULL,NULL,"/",$config['baseurl']);
-		$_SESSION['buid'] = NULL;
 		header("Location: $config[web_url]/login.php");
 		break;	
 	}

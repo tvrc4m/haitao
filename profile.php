@@ -1,7 +1,6 @@
 <?php
 include_once("includes/global.php");
 include_once("includes/smarty_config.php");
-
 //身份证认证
 if(!empty($buid)) {
     $sql = "select identity_verify from pay_member where userid = $buid";
