@@ -76,8 +76,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     */
     hjLogin.prototype.loginCtrl = function(form, subBtn , ajaxUrl ,skipUrl ,connect_id) {
         $(subBtn).on("tap", function() {
-            var url = skipUrl,
-                userVal = $(form).find("input[name=user]").val(),
+            var userVal = $(form).find("input[name=user]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
 
             var isPwdValid = formValid.isPwd(pwdVal);
@@ -91,7 +90,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                         username:userVal,
                         password:pwdVal,
                         action:"login",
-                        forword:url,
+                        forword:skipUrl,
                         connect_id:connect_id
                     },
                     success: function(data) {
@@ -118,8 +117,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     */
     hjLogin.prototype.registerCtrl = function(form, subBtn , ajaxUrl, skipUrl ,connect_id) {
         $(subBtn).on("tap", function() {
-            var url = skipUrl,
-                mobileVal = $(form).find("input[name=mobile]").val(),
+            var mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
 
@@ -142,7 +140,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                         smsvode:svodeVal,
                         password:pwdVal,
                         action:"register",
-                        forword:url,
+                        forword:skipUrl,
                         connect_id:connect_id
                     },
                     success: function(data) {
@@ -169,8 +167,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
     */
     hjLogin.prototype.lostpassCtrl = function(form, subBtn , ajaxUrl, skipUrl) {
         $(subBtn).on("tap", function() {
-            var url = skipUrl,
-                mobileVal = $(form).find("input[name=mobile]").val(),
+            var mobileVal = $(form).find("input[name=mobile]").val(),
                 svodeVal = $(form).find("input[name=smsvode]").val(),
                 pwdVal = $(form).find("input[name=password]").val();
 
@@ -188,7 +185,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                         smsvode:svodeVal,
                         password:pwdVal,
                         action:"lostpass",
-                        forword:url
+                        forword:skipUrl
                     },
                     success: function(data) {
                         if(!data.url){
