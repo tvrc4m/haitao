@@ -64,8 +64,7 @@ define(["module", "utility",  "formValid"], function(module, Util, formValid) {
                 $(this).parent().find(obj2).removeClass(obj3);
             });  
         });
-        $(obj2).on("tap", function(e){
-            $('input').trigger('focus'); 
+        $(obj2).on("tap", function(){ 
             $(this).parent().find("input").val("");   
         });  
     }
