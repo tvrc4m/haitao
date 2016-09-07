@@ -6,8 +6,6 @@
     p{line-height: 24px;}
     ul{margin: 0;padding-left: 20px;}
     ul li{line-height: 24px;margin-bottom: 5px;list-style-type: disc;}
-    /**分享*/
-.hj_share_box{display:none;position:absolute;top:0;left:0;right:0;bottom:0;z-index:999999;background:rgba(0,0,0,.8) url(../image/wap/hj_share.png) 83% 0 no-repeat;background-size:10rem}
 </style>
 <header>
     <div class="header_nav">
@@ -386,7 +384,6 @@
     16.2.您点击本协议下方的"同意并继续"按钮即视为您完全接受本协议，在点击之前请您再次确认已知悉并完全理解本协议的全部内容。
 </p>
 <br />
-<div class="hj_share_btn">fenxiang</div>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap/libs.js?v=<?=time();?>"></script>
 <script type="text/javascript">
     require.config({
@@ -404,53 +401,4 @@
         hjIndex.scrollTopFn();
     });  
 </script>
-<{if $is_wechat}>
-<script type="text/javascript">
-    require(['page/hj_base','utility'], function (B,Util) {
-        var utility  = new Util();
-        var inviteCode = "<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?><?php endif;?>";
-        var appid = '<{$wechat_share.appId}>',
-            timestamp =  '<{$wechat_share.timestamp}>',
-            nonceStr =  '<{$wechat_share.nonceStr}>', 
-            signature =  '<{$wechat_share.signature}>';
-        var img = "https://haitao-resource.b0.upaiyun.com/product/44/1469605881579867f9f3a2e.jpg_220X220.jpg";
-        var link = location.href;
-        var desc = '京东、天猫、苏宁、国美等大型电商应收账款，商业保理公司提供应收账款全额回购。';
-        var title = '蚂蚁在线，新春送福，加息3%';
-        var qtil = '蚂蚁在线，新春送福，加息3%，一年只有一次，只为深爱的你。京东、天猫、苏宁、国美等大型电商应收账款，商业保理公司提供应收账款全额回购。';
-
-        if(window.wxShareDate != "" && window.wxShareDate != undefined){
-            img = window.wxShareDate.img;
-            link = window.wxShareDate.link;
-            desc = window.wxShareDate.desc;
-            title = window.wxShareDate.title;
-            qtil = window.wxShareDate.qtil;
-        }
-
-        B.wxShare(appid,timestamp,nonceStr,signature,img,link,desc,title,qtil);
-        $(".hj_share_btn").on("tap", function() {
-            var a = "https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461810969.jpg"
-            var shareDom = '<div class="hj_share_box" id="share_box"></div>';
-            $("body").append(shareDom);
-            $("#share_box").show();
-            $("#share_box").on("tap", function() {
-                $(this).animate({
-                    "opacity": "0"
-                }, 800);
-                setTimeout(function() {
-                    $("#share_box").remove();
-                }, 800);
-            })
-            console.log(a)
-            window.wxShareDate = {
-                img:a,
-                link:"<?=BASEURL;?>/activity/online/index/"+"<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>",
-                desc:"<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！",
-                title:"抬头走路，低头“捡”钱！！！",
-                qtil:"抬头走路，低头“捡”钱！<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！"
-            }
-        });
-    });
-</script> 
-<{/if}>
 <{include file="footer.htm"}>
