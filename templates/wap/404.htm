@@ -1,9 +1,11 @@
-<div class="nav-w">
-    <section class="nav-s nav-ss" onclick="javascript:history.back(-1)"><i class="fanhui_icon"></i><!-- <font>&#xe619</font> --></section>
-    <section class="nav-c"><span></span></section>
-    <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
-</div>
 <{include file="header.htm"}>
+<header>
+    <div class="header_nav">
+        <div class="nav_l" onclick="javascript:history.back(-1)"><i class="back_icon"></i></div>
+        <div class="nav_c"><span></span></div>
+        <div class="nav_r"><a href="<{$config.weburl}>"><i class="home_icon"></i></a></div>
+    </div>
+</header>
 <div class="error_container">
 	<div class="error_img">
 		<img src="../../../image/wap/wap_haitao_404.png">
@@ -13,5 +15,4 @@
     	<p>去<a href="<{$config.weburl}>">首页</a></p>
     </div>	  	
 </div>
-</body>
-</html>
+<{include file="footer.htm"}>

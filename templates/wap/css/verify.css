@@ -60,29 +60,3 @@ input{-webkit-appearance:none;appearance:none;}
 .logo_show:nth-of-type(1){margin-right: 2%;}
 .logo_show img{width:100%;height: 4.35rem;}
 .input {display: none;}
-/**验证提示*/
-.alert_tips{position:fixed;top:18%;left:50%;z-index:99999;width:90%;height:2.4rem;
-	margin-left:-45%;}
-.alert_tips p{padding:.5rem .2rem;line-height:1.2rem;font-size:.7rem;font-weight:bold;
-	color:#fff;text-align:center;border-radius:.2rem;background-color:rgba(0,0,0,0.7)}
-.skip_txt{padding:1rem .5rem;text-align:center;font-size:.7rem}
-/**弹层提示*/
-.collect_box_content {position: fixed;z-index: 9999;left: 50%;top: 65%;max-width: 70%;
-	text-align: center;}
-.collect_box_content p{padding:0.3rem 0.5rem;font-size:.6rem;font-weight:bold;color:#fff;
-	text-align:center;border-radius:.2rem;background-color:rgba(0,0,0,0.7)}
-/***动画播放时间****/
-.time_01{-webkit-transition: all .5s;transition: all .5s}
-.time_02{-webkit-transition: all .8s;transition: all .8s}
-.time_03{-webkit-transition: all 1s;transition: all 1s}
-.time_04{-webkit-transition: all 1.2s;transition: all 1.2s}
-.time_05{-webkit-transition: all 1.5s;transition: all 1.5s}
-.time_06{-webkit-transition: all 1.8s;transition: all 1.8s}
-/***动画效果****/
-.fadeIn{opacity: 0}
-.active.fadeIn,.active .fadeIn{opacity:1}
-/**向上淡入*/
-.fadeUp{opacity: 0;-webkit-transform: translate3d(0, 100%, 0);transform: translate3d(0, 100%, 0)}
-.active .fadeUp{opacity: 1;-webkit-transform: none;transform: none}
-.fadeDown{opacity: 0;-webkit-transform: translate3d(0, -100%, 0);transform: translate3d(0, -100%, 0)}
-.active .fadeDown{opacity: 1;-webkit-transform: none;transform: none}
