@@ -1,5 +1,5 @@
 <?php
-		$config['dbhost'] = '192.168.1.153';      //数据库所在IP地址
+		$config['dbhost'] = '172.16.3.218';      //数据库所在IP地址
 		/*$config['dbhost'] = '127.0.0.1';
 		$config['dbpass'] = '';*/
 		$config['dbport'] = '';  //数据库用户
