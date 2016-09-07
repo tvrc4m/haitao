@@ -433,13 +433,7 @@
 <{/if}>
 <script type="text/javascript">
     $(".hj_share_btn").on("tap", function() {
-        window.wxShareDate = {
-        img:"https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461810969.jpg",
-        link:"<?=BASEURL;?>/activity/online/index/"+"<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>",
-        desc:"<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！",
-        title:"抬头走路，低头“捡”钱！！！",
-        qtil:"抬头走路，低头“捡”钱！<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！"
-    }
+        var a = "https://www.mayihaitao.com/uploadfile/adv/2016/04/28/1461810969.jpg"
         var shareDom = '<div class="hj_share_box" id="share_box"></div>';
         $("body").append(shareDom);
         $("#share_box").show();
@@ -452,5 +446,12 @@
             }, 800);
         })
     });
+    window.wxShareDate = {
+        img:a,
+        link:"<?=BASEURL;?>/activity/online/index/"+"<?php if(isset($user_login->invite_code)):;?><?=$user_login->invite_code;?><?php elseif(isset($user_invite['invite_code'])):;?><?=$user_invite['invite_code'];?><?php else:;?>20263631<?php endif;?>",
+        desc:"<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！",
+        title:"抬头走路，低头“捡”钱！！！",
+        qtil:"抬头走路，低头“捡”钱！<?=$product_name;?>，注册送3000，邀好友送1000，亿元红包，还不快“捡”！"
+    }
 </script>
 <{include file="footer.htm"}>
