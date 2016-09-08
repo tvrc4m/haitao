@@ -67,7 +67,7 @@ if(isset($_GET['code'])&&!empty($_GET['code'])&&$config['_CONNCET']['_QQ_STATU']
         msg("login.php?connect_id=$cre[id]&connect_nickname=" . urlencode($ar['nickname']));
     }
 }
-
+}
 /**
  * 是否使用微信登录
  */
