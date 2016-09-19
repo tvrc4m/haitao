@@ -46,7 +46,7 @@ function chk()
 <div class="main">
 <div class="wrap">
 
-<div class="hd" style="position:relative;">
+<div class="hd">
     <ul class="tabs"><li class="active"><a href="main.php?m=logistics&s=admin_logistics_temp">运费模板</a></li></ul>
     <a href="main.php?m=logistics&s=admin_logistics_temp&type=add" class="btn3">新增运费模板 </a>
 </div>
@@ -99,7 +99,7 @@ function chk()
             <{if $de.price_type}>
             <input type="hidden" name="price_type" value="<{$de.price_type}>" />
             <{/if}>
-            
+
             <{if $de.price_type=='kg'}>按重量
             <{elseif $de.price_type=='m³'}>按体积
             <{elseif $de.price_type=='件'}>按件数
@@ -191,14 +191,14 @@ var sca=new Array();
 var temp_str='';
 
 var input=span='';
-$('a[data="edit"]').live('click',function(){
+$('a[data="edit"]').on('click',function(){
 	ajax_form("district", '选择城市', '<{$config.weburl}>/?m=logistics&s=district', 850,1);
 	input=$(this).prevAll("input");
 	span=$(this).prevAll("span");
 	sca=new Array();
 });
 
-$('input[name="type"]').live('click',function(){
+$('input[name="type"]').on('click',function(){
 	if($(this).val()=='2')
 	{
 		alert('选择"卖家承担运费"后，所有区域的运费将设置为0元且原运费设置无法恢复。');
@@ -235,7 +235,7 @@ function cg_type(type)
 
 function show_lgs_con(id)
 {
-	if($('#'+id).attr("checked")==true)
+	if($('#'+id).prop("checked")==true)
 	{
 		if($("input[name='type']:checked").val()=='1')
 		{
