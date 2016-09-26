@@ -275,7 +275,7 @@ var weburl="<{$config.weburl}>";
     <{/if}>
 
     <tr>
-        <th><font color="red"> *</font>商品数量</th>
+        <th><!-- <font color="red"> *</font> -->商品数量</th>
         <td><input maxlength="8" id="amount" name="amount" type="text" value="<{$de.stock}>" onkeyup="value=value.replace(/[^\d]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" /> 件</td>
     </tr>
 
@@ -603,12 +603,12 @@ function check_value()
         $('#market_price').focus();
         return false;
     }*/
-	if($('#amount').val()<0)
+	/*if($('#amount').val()<0)
 	{
 		alert('请填写数量');
 		$('#amount').focus();
 		return false;
-	}
+	}*/
 
 	if($('#id_2').val()=='')
 	{

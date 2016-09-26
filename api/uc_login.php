@@ -465,6 +465,10 @@ class uc_login extends verification
 	            $post['userid'] = $userid;
 	            $post['email'] = $user;
 	            $post['pay_mobile'] = $this->_account;
+
+	            $PluginManager = Yf_Plugin_Manager::getInstance();
+				$PluginManager->trigger('reg_done', $userid, $user);
+				
 	            $pay_id = member_get_url($post,true);
 	            if($pay_id)
 	            {
