@@ -12,7 +12,7 @@ function showUser()
 		}
 		else if($_GET['m'] == 'index')
 		{
-			
+
 			$sql="select b.pic from ".MEMBER." a left join ".MEMBERGRADE." b on a.grade_id = b.id where user = '{$config['_COOKIE']['1']}' ";
 			$db->query($sql);
 			$pic = $db->fetchField('pic');
@@ -25,16 +25,16 @@ function showUser()
 				$new.= "<li class='nav msg'><div class='nav-fore1'><a class='name' href='main.php?m=message&s=admin_message_list_inbox&cg_u_type=1'><span>消息</span></a></div></li>";
 			}
 
-			
+
 		}
 		else
 		{
 			$new="欢迎来".$config['company'].'！<a class=\'name\' href=\'main.php\'>'.$config['_COOKIE']['1']."</a> &nbsp;<a href='$config[weburl]/main.php?action=logout'>退出</a>";
 		}
-	
+
 	}
 	else
-	{	
+	{
 		if($config['temp']=='wap')
 		{
 			$new="<a href='".$config["weburl"]."/login.php?forword=".$config['_FORWARD']."' class='footer_denglu'>登录</a> &nbsp;&nbsp;<a href='".$config["weburl"]."/register.php?forword=".$config['_FORWARD']."' class='footer_denglu'>注册</a>";
@@ -49,7 +49,15 @@ function showUser()
 			$new="<div class='nav-fore1'>".$new."</div>";
 		}
 	}
+
 	return $new;
 }
+
 echo "document.write(\"".showUser()."\");";
+
+
+if(isset($_SESSION['script']) && !empty($_SESSION['script'])){
+    echo "document.write(\"".str_replace('"', "'", $_SESSION['script'])."\");";
+    unset($_SESSION['script']);
+}
 ?>
