@@ -9,7 +9,6 @@
         <section class="nav-e"><a id="list" href="<{$config.weburl}>"><i class="home_icon"></i></a></section>
     </div>
 </header>
-<div class='collect_box_content'></div>
 <section class="filter clearfix">
 	<ul class="clearfix">
     	<{assign var=s value=$smarty.get.orderby}>
@@ -92,42 +91,68 @@
 <script type="text/javascript" src="<{$config.weburl}>/script/jquery.scrollLoading.js"></script>
 <script type="text/javascript" src="<{$config.weburl}>/script/wap_list.js"></script>
 <script type="text/javascript">
-    function altto(co){
-        $(".collect_box_content").show();
-        $(".collect_box_content").html(co);
-    }
-    function wid(){
-        var wid=$(".collect_box_content").width()/2;
-        $(".collect_box_content").css({"margin-left":-wid+"px","padding":"10px","top":"30%"});
-        setTimeout(function(){
-            $(".collect_box_content").hide();
-        },2000)
+    function tipsWarn(str, time) {
+        var operasWrap = $("<div class='collect_box_content'><p class='time_01 fadeIn'>" + str + "</p></div>");
+        var timenum = time || 2500,
+            tips = $(".collect_box_content"),
+            tips_len = tips.size(),
+            num = 0;
+        if (tips_len > 0) {
+            tips.find("p").html(str);
+            clearTimeout(window.timmer);
+            num = 0;
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    tips.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        tips.remove();
+                    }, 500);
+                }
+            }, 100);
+        } else {
+            $("body").append(operasWrap);
+            var wid=$(".collect_box_content").width()/2;
+            $(".collect_box_content").css({"margin-left":-wid+"px"});
+            setTimeout(function() {
+                var wid=$(".collect_box_content").width()/2;
+                $(".collect_box_content").css({"margin-left":-wid+"px"});
+                operasWrap.addClass('active');
+            }, 200);
+            window.timmer = setInterval(function() {
+                num += 100;
+                if (num > timenum) {
+                    operasWrap.removeClass('active');
+                    clearInterval(window.timmer);
+                    setTimeout(function() {
+                        operasWrap.remove();
+                    }, 500);
+                }
+            }, 100);
+        }
     }
     function distribute_goods(id){
         var url = '<{$config.weburl}>/module/distribution/add.php';
         var uname='<{$smarty.cookies.USER}>';
-        if(uname=='')
+        /*if(uname=='')
         {
-            altto('请先登录！');
-            wid();
+            tipsWarn('请先登录！');
             return false;
-        }
+        }*/
         var pars = 'pid='+id+'&uname='+uname;
         $.post(url, pars,showResponse);
         function showResponse(originalRequest)
         {
 
             if(originalRequest>1){
-                altto('成功添加至我的店铺!');
-                wid();
+                tipsWarn('成功添加至我的店铺!');
             }
             else if (originalRequest>0){
-                altto('该商品已经在我的店铺！');
-                wid();
+                tipsWarn('该商品已经在我的店铺！');
             }
             else{
-                altto('参数传递错误<br>无法完成操作!');
-                wid();
+                tipsWarn('参数传递错误<br>无法完成操作!');
             }
         }
     }
