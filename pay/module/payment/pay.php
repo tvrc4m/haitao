@@ -3,9 +3,19 @@
 $order_id=$_GET['tradeNo']?$_GET['tradeNo']:NULL;
 
 
-$sql="select a.*,b.real_name from ".RECORD." a left join ".MEMBER." b on a.pay_uid=b.pay_id 	 where order_id='$order_id' and pay_uid='$buid'";
-$db->query($sql);
-$re=$db->fetchRow();
+$u_sql="select a.*,b.real_name from ".RECORD." a left join ".MEMBER." b on a.pay_uid=b.pay_id  where LOCATE('$order_id',extra_param)>0 and pay_uid='$buid'";
+$db->query($u_sql);
+$u_re=$db->fetchRow();
+if(empty($u_re))
+{
+  $sql="select a.*,b.real_name from ".RECORD." a left join ".MEMBER." b on a.pay_uid=b.pay_id  where order_id='$order_id' and pay_uid='$buid'";
+  $db->query($sql);
+  $re=$db->fetchRow();
+}
+else{
+  $re= $u_re;
+}
+
 $re['price']=$re['price']<0?($re['price']*(-1)):$re['price'];
 $re_wx = $re;
 $tpl->assign("re",$re);
@@ -15,7 +25,7 @@ if($config['bw'] == "weixin")
 {
 //========= 调用微信支付===========================
 /**
- * 
+ *
  * 在微信浏览器里面打开H5网页中执行JS调起支付。接口输入输出数据格式为JSON。
  * 成功调起支付需要三个步骤：
  * 步骤1：网页授权获取用户openid
@@ -36,20 +46,20 @@ if($config['bw'] == "weixin")
 
 	$timeStamp = time();
 	$out_trade_no = WxPayConf_pub::APPID."$timeStamp";
-	$unifiedOrder->setParameter("out_trade_no",$out_trade_no);//商户订单号 
+	$unifiedOrder->setParameter("out_trade_no",$out_trade_no);//商户订单号
 	$unifiedOrder->setParameter("total_fee",$re_wx['price']*100);//总金额
-	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址 
+	$unifiedOrder->setParameter("notify_url",WxPayConf_pub::NOTIFY_URL);//通知地址
 	$unifiedOrder->setParameter("trade_type","JSAPI");//交易类型
 	//非必填参数，商户可根据实际情况选填
-	//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号  
-	//$unifiedOrder->setParameter("device_info","XXXX");//设备号 
-	$unifiedOrder->setParameter("attach",$re_wx['id']."|".$order_id);//附加数据 
+	//$unifiedOrder->setParameter("sub_mch_id","XXXX");//子商户号
+	//$unifiedOrder->setParameter("device_info","XXXX");//设备号
+	$unifiedOrder->setParameter("attach",$re_wx['id']."|".$order_id);//附加数据
 
 	$prepay_id = $unifiedOrder->getPrepayId();
 	//=========步骤3：使用jsapi调起支付============
 	$jsApi->setPrepayId($prepay_id);
 	$jsApiParameters = $jsApi->getParameters();
-	
+
 	$tpl->assign("jsApiParameters",json_decode($jsApiParameters,true));
     $s.=" and payment_type != 'wap_alipay'";
 }
@@ -121,7 +131,7 @@ if($_POST['act']=='pay'&&$re['statu']==1)
 	{
 		$sql = "update ".MEMBER." set cash= cash - ".$re['price']." where pay_id='$re[pay_uid]'";
 		$db->query($sql);
-		
+
 		if($re['type']==2)
 		{
 			$sql = "update ".MEMBER." set unreachable=unreachable+".$re['price']." where pay_id='$re[pay_id]'";
@@ -147,22 +157,22 @@ if($_POST['act']=='pay'&&$re['statu']==1)
 			}
 		}
 		//--异步处理,以后处理
-		
+
         if($re['type']==1)
         {
         	$sql="update ".RECORD." set statu='4' where order_id='$order_id'";
 			$db->query($sql);
-                
+
             $sql = "update ".MEMBER." set cash= cash + ".$re['price']." where pay_email='admin@systerm.com'";
             $db->query($sql);
-            
-            
+
+
             $auth_key = rand(100,999999).rand(100,999999);
             $_SESSION['auth_key'] = $auth_key;
             $_SESSION['auth_price'] = $re['price'];
-            
+
             $str = md5(md5($auth_key.$re['price']));
-            
+
             //返回同步处理结果
             $url = $re['return_url']."&auth=".md5($config['authkey'])."&price=".$re['price']."&auth_key=".$auth_key."&code=$str";
             msg($url);

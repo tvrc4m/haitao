@@ -14,7 +14,7 @@ include_once($config['webroot']."/api/uc_login.php");
 class login extends verification
 {
 
-	
+
 	private $_password = '';//密码
 	private $_password_old = '';//旧密码
 	private $_yzm = '';
@@ -56,7 +56,7 @@ class login extends verification
     );
 
 	public function __construct(){
-		
+
         global $config,$db;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 		$this->_action = $post['action'];
@@ -81,7 +81,7 @@ class login extends verification
 	                // 请求的方法不存在
 	                $this->_response_code='10002';
 	            }
-			} 
+			}
 		}else $this->_response_code = '10010';
 
         $this->response();
@@ -96,7 +96,7 @@ class login extends verification
 	 *登录
 	 *param array('account'=>'','password'=>'') 数组
 	 *
-	 *return 状态 
+	 *return 状态
 	 **/
 	private function login(){
 		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
@@ -111,7 +111,7 @@ class login extends verification
 			return false;
 	    }
 
-	    
+
 	}
 
 	/**
@@ -133,7 +133,7 @@ class login extends verification
 					session_unset($_SESSION[$this->_yzm_mobile]);
 				}else
 					$this->_response_code = '10012';
-				
+
 	        }
 		}else{
 			$this->_response_code = '10020';
@@ -143,7 +143,7 @@ class login extends verification
 
 	/*
 	*找回密码
-	* 
+	*
 	*/
 	private function lostpass(){
 		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
@@ -168,7 +168,7 @@ class login extends verification
 
 	/*
 	*修改密码
-	* 
+	*
 	*/
 	private function updatepass(){
 		if(empty($this->_users['mobile'])){$this->_response_code = '10013';return false;}
@@ -200,7 +200,7 @@ class login extends verification
 
 		return false;
 	}
-	
+
 
 	/**
 	 * [users description]
@@ -212,7 +212,7 @@ class login extends verification
 		$this->_users = $this->_db->fetchRow();
 
 		return empty($this->_users)?false:true;
-		
+
 	}
 
 	/**
@@ -262,6 +262,9 @@ class login extends verification
 	            $post['userid'] = $userid;
 	            $post['email'] = $user;
 	            $post['pay_mobile'] = $this->_account;
+
+	            $PluginManager = Yf_Plugin_Manager::getInstance();
+							$PluginManager->trigger('reg_done', $userid, $user);
 	            $pay_id = member_get_url($post,true);
 	            if($pay_id)
 	            {
