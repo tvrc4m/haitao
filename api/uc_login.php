@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * User: wonder
  * Time: 2016/8/18
@@ -11,7 +11,7 @@ include_once($config['webroot']."/includes/uc_server.php");
 class uc_login extends verification
 {
 
-	
+
 	private $_password = '';//密码
 	private $_password_old = '';//旧密码
 	private $_yzm = '';
@@ -60,7 +60,7 @@ class uc_login extends verification
     );
 
 	public function __construct(){
-		
+
         global $config,$db;
 		$post = !empty($_REQUEST)?$_REQUEST:$this->_response_code='10001';
 		$this->cacheLog('login_uc_33',array($_POST),'cache');
@@ -93,7 +93,7 @@ class uc_login extends verification
 	                // 请求的方法不存在
 	                $this->_response_code='10002';
 	            }
-			} 
+			}
 		}else $this->_response_code = '10010';
 
         $this->response();
@@ -108,7 +108,7 @@ class uc_login extends verification
 	 *登录
 	 *param array('account'=>'','password'=>'') 数组
 	 *
-	 *return 状态 
+	 *return 状态
 	 *本站存在->登录->用户中心是否存在(是)结束(否)注册到用户中心
 	 *本站不存在->用户中心检测是否存在(否)提醒注册（注册到本站和用户中心）(是)登录->注册到本站
 	 **/
@@ -134,12 +134,12 @@ class uc_login extends verification
 					$this->_response_code = '10006';
 					return false;
 	   			}
-				
+
 			}else{
 				$this->_response_code = '10013';
 				return false;
 			}
-			
+
 		}
 	    if(substr($this->_users['password'],0,4)=='lock'){$this->_response_code = '10007';return false;}
 	    if (md5(md5($this->_password).$this->_users['rand_pwd'])==$this->_users['password']) {
@@ -153,16 +153,16 @@ class uc_login extends verification
 	    	if(!$statu){
 	    		$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_uc_users['salt']),'salt'=>$this->_uc_users['salt']));
 	    	}
-	    	
+
 			$script = $this->_uc_obj->login(array('phone'=>$this->_account,'password'=>$this->_password));
 			$_SESSION['script']=$script->data;
-    	
+
 	    	return false;
 	    }else{
 			$this->_response_code = '10006';
 			return false;
 	    }
-	    
+
 	}
 
 
@@ -193,14 +193,14 @@ class uc_login extends verification
 							$this->_response_code = '10012';
 							return false;
 						}
-						
+
 					}
 				}
 			}
 			$this->_response_code = '10009';
 			return false;
 		}
-		
+
         if($this->_yzm==$_SESSION[$this->_yzm_mobile]['yzm']){
 			if($_SESSION[$this->_yzm_mobile]['ytime']<time()){
 				$this->_response_code = '10021';
@@ -218,12 +218,12 @@ class uc_login extends verification
 						$this->_uc_obj->register(array('phone'=>$this->_account,'password'=>md5(md5($this->_password).$this->_salt),'salt'=>$this->_salt));
 						}
 					return false;
-						
+
 				}else{
 					$this->_response_code = '10012';
 					return false;
 				}
-				
+
 	        }
 		}else{
 			$this->_response_code = '10020';
@@ -233,7 +233,7 @@ class uc_login extends verification
 
 	/*
 	*找回密码
-	* 
+	*
 	*/
 	private function lostpass(){
 		if(empty($this->_users['mobile'])){
@@ -285,7 +285,7 @@ class uc_login extends verification
 
 	/*
 	*修改密码
-	* 
+	*
 	*/
 	private function updatepass(){
 		if(empty($this->_users['mobile'])){
@@ -374,7 +374,7 @@ class uc_login extends verification
 
 		return false;
 	}
-	
+
 
 	/**
 	 * [users description]
@@ -386,7 +386,7 @@ class uc_login extends verification
 		$this->_users = $this->_db->fetchRow();
 
 		return empty($this->_users)?false:true;
-		
+
 	}
 
 	/*
@@ -467,8 +467,8 @@ class uc_login extends verification
 	            $post['pay_mobile'] = $this->_account;
 
 	            $PluginManager = Yf_Plugin_Manager::getInstance();
-				$PluginManager->trigger('reg_done', $userid, $user);
-				
+							$PluginManager->trigger('reg_done', $userid, $user);
+
 	            $pay_id = member_get_url($post,true);
 	            if($pay_id)
 	            {
