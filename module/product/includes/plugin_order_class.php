@@ -20,16 +20,16 @@ class order
 	var $db;
 	var $tpl;
 	var $page;
-	
+
 	function order()
 	{
 		global $db;
-		
-		global $tpl;		
+
+		global $tpl;
 		$this -> db     = & $db;
 		$this -> tpl    = & $tpl;
 	}
-	
+
 	/**
 	 * 修改订单状态
 	 * @param $order_id 订单ID
@@ -49,14 +49,14 @@ class order
 			$this->db->query($sql);
 		}
 	}
-	
+
 	/**
 	 * 买家订单状态
 	 * @param $status 状态 默认值 NULL
 	 * return 结果字符串
 	 */
 	function get_order_status($status=NULL)
-	{	
+	{
 		global $config;
 		include($config['webroot']."/lang/cn/company_type_config.php");
 		if($status!='')
@@ -64,14 +64,14 @@ class order
 		else
 			return $order_status;
 	}
-	
+
 	/**
 	 * 买家订单商品状态
 	 * @param $status 状态 默认值 NULL
 	 * return 结果字符串
 	 */
 	function get_order_product_status($status=NULL)
-	{	
+	{
 		global $config;
 		include($config['webroot']."/lang/cn/company_type_config.php");
 		if($status!='')
@@ -79,7 +79,7 @@ class order
 		else
 			return $order_product_status;
 	}
-	
+
 	/**
 	 * 订单商品
 	 * @param $order_id 状态
@@ -109,23 +109,23 @@ class order
 		$this -> db -> query($sql);
 		$re = $this -> db -> getRows();
 		foreach($re as $key => $val)
-		{ 	
+		{
 			$spec_value = $val['spec_value'] ? explode(',',$val['spec_value']) : "";
 			$spec_name = $val['spec_name'] ? explode(',',$val['spec_name']) : "";
-			
+
 			if($spec_name && $spec_value)
 			{
 				foreach($spec_value as $k => $v)
 				{
-					$re[$key]['spec'][] = $spec_name[$k].":".$v;	
-				}	
+					$re[$key]['spec'][] = $spec_name[$k].":".$v;
+				}
 			}
 			$re[$key]['product_status'] = $this -> get_order_product_status($val['status']);
 
 		}
 		return $re;
 	}
-	
+
 	/**
 	 * 买家订单列表
 	 * @param $status 状态 默认值 NULL
@@ -145,31 +145,31 @@ class order
 		{
 			$table = " left join ".ORPRO." c on a.order_id = c.order_id";
 			$str .= " and c.is_tg = 'true' ";
-			$str .= " and `is_virtual` =".$flag; 
+			$str .= " and `is_virtual` =".$flag;
 		}
 		if(isset($_GET['type']) && $_GET['type'] == 2)
 		{
 			$flag = 1;
 			// 开启虚拟订单
-			$str .= " and `is_virtual` =".$flag; 
+			$str .= " and `is_virtual` =".$flag;
 		}
-		
+
 		if($_GET['zt'])
 		{
 			$zt = $_GET['zt']*1-1;
-			$str .= " and a.status = '$zt'"; 
+			$str .= " and a.status = '$zt'";
 		}
 		else
 		{
 			if($status!=NULL && $status >= -1 && $status<=6)
-				$str .= " and a.status = '$status'"; 
+				$str .= " and a.status = '$status'";
 			else
-				$str .= " and a.status >= 0 ";		
+				$str .= " and a.status >= 0 ";
 		}
 		if($_GET['stime'])
 		{
 			$stime = strtotime(trim($_GET['stime']));
-			$str .= " and a.create_time >= '$stime'"; 
+			$str .= " and a.create_time >= '$stime'";
 		}
 		if($_GET['etime'])
 		{
@@ -187,22 +187,22 @@ class order
 			{
 				case "1":
 				{
-					$str .= " and status = '4' and buyer_comment='0' and seller_comment = '0'"; 
+					$str .= " and status = '4' and buyer_comment='0' and seller_comment = '0'";
 					break;
 				}
 				case "2":
 				{
-					$str .= " and buyer_comment='1' and seller_comment ='0' "; 
+					$str .= " and buyer_comment='1' and seller_comment ='0' ";
 					break;
 				}
 				case "3":
 				{
-					$str .= " and buyer_comment='0' and seller_comment ='1' "; 
+					$str .= " and buyer_comment='0' and seller_comment ='1' ";
 					break;
 				}
 				case "4":
 				{
-					$str .= " and buyer_comment='1' and seller_comment ='1' "; 
+					$str .= " and buyer_comment='1' and seller_comment ='1' ";
 					break;
 				}
 				default:
@@ -213,9 +213,9 @@ class order
 		}
 		if($_GET['sh'])
 		{
-			
+
 		}
-		
+
 		$sql = "select a.*,b.company from ".ORDER." a left join ".SHOP." b on a.seller_id=b.userid $table where a.userid = '".$buid."' $str and seller_id != '' order by  FROM_UNIXTIME(a.`create_time`, '%Y-%m-%d') desc,field(a.status,'1','3','2','4','5','6','0'),buyer_comment,seller_comment,a.id desc";
 
 		//=============================
@@ -237,7 +237,7 @@ class order
 			if($k['status']=='3')
 			{
 				$time = $k['deliver_time'] + $k['time_expand']*86400-1 - time();
-				$d = floor($time / 86400);   
+				$d = floor($time / 86400);
 				$h = floor(($time % 86400) / 3600);
 				$k['time_expand']= $d."天".$h."时";
 			}
@@ -257,7 +257,7 @@ class order
 			{
 				foreach($product as $key=>$val)
 				{
-					$product[$key]['name'] = str_replace($keys,"<font color='red'>$keys</font>",$val['name']);	
+					$product[$key]['name'] = str_replace($keys,"<font color='red'>$keys</font>",$val['name']);
 				}
 			}
 			$k['product'] = $product;
@@ -268,7 +268,7 @@ class order
 		$re["page"] = $page -> prompt();
 		return $re;
 	}
-	
+
 	/**
 	 * 卖家订单列表
 	 * @param $status 状态 默认值 NULL
@@ -277,11 +277,11 @@ class order
 	function sellorder($status='',$flag = 0, $dist_user_id=0,$begin = 0, $limit = 10)
 	{
 		global $buid;
-		
+
 		if($status!='' && $status >= -1 && $status<=6)
-			$str = " and a.status = '$status'"; 
+			$str = " and a.status = '$status'";
 		else
-			$str = " and a.status >= 0 ";	
+			$str = " and a.status >= 0 ";
 
 		if($_GET['key'])
 		{
@@ -403,7 +403,7 @@ class order
 		$re["page"] = $page->prompt();
 		return $re;
 	}
-	
+
 	/**
 	 * 延长收货时间
 	 * @param $order_id 订单ID
@@ -423,7 +423,7 @@ class order
 			$this->db->query($sql);
 		}
 	}
-	
+
 	function orderdetail($id)
 	{
 		global $buid;
@@ -505,7 +505,7 @@ class order
 			$this->db->query($sql);
 			$re['sellerinfo']=$this->db->fetchRow();
 		}
-		
+
 		if($re['buyer_id'])
 		{
 			$sql="select * from ".MEMBER." where userid='$re[buyer_id]'";
@@ -515,30 +515,30 @@ class order
 
 		return $re;
 	}
-		
+
 	function get_addr()
-	{	
+	{
 		global $buid;
 		$sql="select * from  ".SHIPPINGADDR." where `userid`='$buid'";
 		$this->db->query($sql);
 		return $this->db->getRows($sql);
 	}
-	
+
 	function get_fastmail()
-	{	
+	{
 		$sql="select * from ".FASTMAIL." where status = '1' order by id";
 		$this->db->query($sql);
 	    return $this->db->getRows();
 	}
-	
+
 	function set_order_product_statu($order_id,$status,$product_id="")
 	{
 		$status = $status -1;
 		if($product_id)
 		{
-			$str = " and id = '$product_id' ";	
+			$str = " and id = '$product_id' ";
 		}
-	
+
 		$sql = "select id,status from ".ORPRO." where order_id = '$order_id' $str";
 		$this->db->query($sql);
 		$re = $this->db->getRows();
@@ -563,7 +563,7 @@ class order
 				break;
 			}
 			default:
-			{	
+			{
 				$close_reason = '';
 				break;
 			}
@@ -571,10 +571,10 @@ class order
 		if($close_reason)
 		{
 			$sql="update ".REFUND." set close_reason = '$close_reason',status = '0' where order_id = '$order_id' and status ='1' and status ='4' ";
-			$this->db->query($sql);	
+			$this->db->query($sql);
 		}
 	}
-	
+
 	function set_order_statu($oid="",$status="",$member_id="")
 	{
 		global $buid,$config;
@@ -587,7 +587,7 @@ class order
 			/*if($de['status']>=2)
 			{
 				include_once("module/member/includes/plugin_member_class.php");
-				$member = new member();				
+				$member = new member();
 				$member->add_points(($de['product_price']+$de['logistics_price'])*-1,'3',$oid,$buid);
 			}*/
 			$post['action']='update';
@@ -652,13 +652,13 @@ class order
 
 			fb($res);
 		}
-		
+
 		if($status==5)
 		{
 			//提交退货审请
 			$sql="select seller_id from ".ORDER." where order_id='$oid' and userid='$buid'";
 			$this->db->query($sql);
-			
+
 			$post['action']='update';
 			$post['seller_email']=$this->db->fetchField('seller_id');
 			$post['buyer_email']=$buid;//卖家账号
@@ -667,12 +667,12 @@ class order
 			$res=pay_get_url($post,true);//跳转至订单生成页面
 		}
 		if($status==6)
-		{	
+		{
 			//退款，由买家发起，管理员进行退款操作。
 			$sql="select userid,seller_id from ".ORDER." where order_id='$oid' and seller_id!=''";
 			$this->db->query($sql);
 			$re=$this->db->fetchRow();
-			
+
 			$post['action']='update';
 			$post['seller_email']=$re['seller_id'];//卖家账号
 			$post['buyer_email']=$re['userid'];//买家账号
@@ -680,7 +680,7 @@ class order
 			$post['statu']=6;
 			$res=pay_get_url($post,true);//跳转至订单生成页面
 		}
-		
+
 		if(!empty($res))
 		{
 			$res=json_decode($res);
@@ -700,6 +700,10 @@ class order
 					//分销分佣结算
 					$PluginManager = Yf_Plugin_Manager::getInstance();
 					$PluginManager->trigger('confirm_received_product', $oid, $de);
+					//添加分销资格
+					include_once("$config[webroot]/module/distribution/includes/plugin_distribution_shop_limit_class.php");
+					$distribution_shop_limit = new distribution_shop_limit();
+					$distribution_shop_limit -> add_shop_access_user($de['seller_id'],$buid);
 				}
 			}
 			return true;
@@ -738,14 +742,14 @@ class order
 			//--------------
 		}
 	}
-	
+
 	//修改订单价格，需要请求支付中心
 	function update_price()
-	{	
+	{
 		global $buid,$config;
 		$order_id = $_POST['order_id'];
 		$logistics_price = $_POST['logistics_price']*1;
-		
+
 		$sql = "select buyer_id,product_price,logistics_price,status from ".ORDER." where order_id = '$order_id' and userid = '$buid' and seller_id = '0'";
 		$this->db->query($sql);
 		$re = $this->db->fetchRow();
@@ -762,14 +766,14 @@ class order
 		}
 
 		$num = $re['product_price'] + $count;
-		$price = $num + $logistics_price; 
+		$price = $num + $logistics_price;
 		if(!empty($price)&&$price!=$sum&&$num>0&&$re['status']==1)
 		{
 			$post['action']='reprice';
 			$post['buyer_email'] = $re['buyer_id'];
-			$post['seller_email'] = $buid;   
-			$post['order_id'] = $order_id;        
-			$post['price'] = $price;  
+			$post['seller_email'] = $buid;
+			$post['order_id'] = $order_id;
+			$post['price'] = $price;
 			$res=pay_get_url($post,true);
 
 			if(!empty($res))
@@ -797,7 +801,7 @@ class order
 			return 88;
 		}
 	}
-	
+
 	function send_product()
 	{
 		$sql="update ".ORDER." set invoice_no='$_POST[deliver_code]',logistics_name='$_POST[deliver_name]',deliver_time=".time()." where order_id='$_POST[id]'";
@@ -805,6 +809,6 @@ class order
 		//----------------------- 更新订单状态
 		$this->set_order_statu($_POST['id'],3);
 	}
-	
+
 }
 ?>
