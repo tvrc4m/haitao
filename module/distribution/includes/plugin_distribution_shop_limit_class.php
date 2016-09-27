@@ -77,7 +77,7 @@ class distribution_shop_limit
 						}
 					}
 					//加入分销
-					$inser_sql = sprintf("INSERT INTO %s ( `shop_id`, `user_id`, `create_time`) VALUES (%s,%s,%s,%s)",DISTRIBUTION_SHOP_ACCESS_USER,$shop_id,$user_id,time());
+					$inser_sql = sprintf("INSERT INTO %s ( `shop_id`, `user_id`, `create_time`) VALUES (%s,%s,%s)",DISTRIBUTION_SHOP_ACCESS_USER,$shop_id,$user_id,time());
 					return $this->db->query($inser_sql);
 				}
 			}
