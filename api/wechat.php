@@ -2,7 +2,7 @@
 include_once("../includes/global.php");
 @include_once("../config/wechat_config.php");
 $wechat = $wechat_config['wechat']?$wechat_config['wechat']:"";
-$wechat = $_GET['uid'] ? "WeiXin" : $wechat ;  
+$wechat = $_GET['uid'] ? "WeiXin" : $wechat ;
 define("TOKEN", $wechat);
 
 Yf_Log::log('Request : ' . json_encode($_REQUEST), Yf_Log::INFO, 'wechat');
@@ -12,7 +12,7 @@ $wechatObj = new wechatCallbackapiTest();
 
 if($_GET["echostr"]&&$_GET["signature"]&&$_GET["timestamp"]&&$_GET["nonce"])
 {
-	$wechatObj->valid();	
+	$wechatObj->valid();
 }
 else
 {
@@ -93,8 +93,8 @@ class wechatCallbackapiTest
 			$uid = $_GET['uid'];
 			if($uid)
 			{
-				$str = " and member_id ='$uid' ";	
-			}								
+				$str = " and member_id ='$uid' ";
+			}
 			$sql="select name as pname,id,pic from ".PRODUCT." where name like '%$keyword%' $str order by id desc limit 0,4";
 			$db->query($sql);
 			$re=$db->getRows();
@@ -107,6 +107,9 @@ class wechatCallbackapiTest
 
 			$msg["type"] = Weixin_model :: REPLY_TYPE_TUWEN_MSG;
             $msg["content"] = $msg_arr;
+            if(empty($msg_arr)){
+                return "";
+            }
 			$this->returnMsg($msg);
 		}
 	}
@@ -132,7 +135,7 @@ class wechatCallbackapiTest
                 break;
             case 'subscribe':// 关注后消息
             	$msg["type"] = Weixin_model :: REPLY_TYPE_TEXT_MSG;
-            	$msg["description"] = 
+            	$msg["description"] =
 "欢迎有品位会生活的你关注蚂蚁海淘，在这您可以：全球商品自由购，在家享受出国扫货般乐趣！\r\r1.全世界最有趣的新商品推荐，真正好用的口碑商品盘点\r2.我们只提供最受当地人欢迎的尖货商品\r3.海外直邮，正品保证\r4.会员可加入分销，边买边赚\r5.定期发送独家福利\r\r点击【海淘】浏览商品\r点击【赚钱】加入分销\r客服电话：400-010-1977
 ";
 				$this->returnMsg($msg);
@@ -180,14 +183,14 @@ class wechatCallbackapiTest
 	{
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"];	
-        		
+        $nonce = $_GET["nonce"];
+
 		$token = TOKEN;
 		$tmpArr = array($token, $timestamp, $nonce);
 		sort($tmpArr);
 		$tmpStr = implode( $tmpArr );
 		$tmpStr = sha1( $tmpStr );
-		
+
 		if( $tmpStr == $signature ){
 			return true;
 		}else{
