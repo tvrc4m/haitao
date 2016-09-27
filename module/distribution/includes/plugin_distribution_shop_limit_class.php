@@ -93,7 +93,7 @@ class distribution_shop_limit
 		$shop_id = $this->db->fetchField("member_id");
 
 		$shop_limit_sql = sprintf("SELECT * FROM %s WHERE shop_id=%s AND status=%s",DISTRIBUTION_SHOP_LIMIT,$shop_id,1);
-		$this->db->query($inser_sql);
+		$this->db->query($shop_limit_sql);
 		$shop_limit_result = $this->db->fetchRow();
 		if(empty($shop_limit_result)){
 			return true;
