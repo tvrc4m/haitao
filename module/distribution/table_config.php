@@ -21,5 +21,9 @@ define("DISTRIBUTION_USER_SETTLEMENT",$config['table_pre']."distribution_user_se
 
 define("DISTRIBUTION_USER_ADV",$config['table_pre']."distribution_user_adv");
 
+define("DISTRIBUTION_SHOP_LIMIT",$config['table_pre']."distribution_shop_limit");//店铺分销限制
+
+define("DISTRIBUTION_SHOP_ACCESS_USER",$config['table_pre']."distribution_shop_access_user");//店铺分销限制允许的用户
+
 
 

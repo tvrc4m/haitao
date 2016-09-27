@@ -12,17 +12,28 @@ if ($p_rows)
 }
 else
 {
+	//判断商铺是否允许改用户分销
+	$distribution_shop_limit = new distribution_shop_limit();
+	include_once("$config[webroot]/module/distribution/includes/plugin_distribution_shop_limit_class.php");
 	//需要判断产品是否为分销产品
-	$rs = $distribution->addDistributionProduct($buid, $product_id);
-
-	if ($rs)
+	if($distribution_shop_limit->is_access_user($product_id,$buid))
 	{
-		echo 2;
+		$rs = $distribution->addDistributionProduct($buid, $product_id);
+
+		if ($rs)
+		{
+			echo 2;
+		}
+		else
+		{
+			echo -1;
+		}
 	}
 	else
 	{
-		echo -1;
+		echo -2;
 	}
+
 }
 
 
