@@ -242,9 +242,9 @@ $(".btn-buy").click(function(){
 // 分享
 window._bd_share_config = {
     common : {
-        bdText : $(".property h3>div").text(), 
-        bdDesc : '', 
-        bdUrl : 'https://www.mayihaitao.com/?m=product&s=detail&id=<{$de.id}>',    
+        bdText : $(".property h3>div").text(),
+        bdDesc : '',
+        bdUrl : 'https://www.mayihaitao.com/?m=product&s=detail&id=<{$de.id}>',
         bdPic : $(".jqzoom").attr("src")
     },
     share : [{
@@ -269,7 +269,10 @@ function distribute_goods(id){
             layer.msg('成功添加至我的分销!');
         else if (originalRequest>0)
             layer.msg('该内容已经在你的分销中心，请勿重复添加！');
+        else if (originalRequest==-2)
+            layer.msg('抱歉您没有权限分销该店铺商品！');
         else
+
             layer.msg('参数传递错误，无法完成操作!');
     }
 }

@@ -151,6 +151,9 @@
             else if (originalRequest>0){
                 tipsWarn('该商品已经在我的店铺！');
             }
+            else if (originalRequest==-2){
+                layer.msg('抱歉您没有权限分销该店铺商品！');
+            }
             else{
                 tipsWarn('参数传递错误<br>无法完成操作!');
             }
@@ -186,23 +189,23 @@ $(function(){
                         for(var i=0;i<dataLen;i++){
                         var nat=msg.data[i].nat;
                         var nums=msg.data[i].commission_product_price_0;
-                            function toDecimal2(x) {    
-                                var f = parseFloat(x);    
-                                if (isNaN(f)) {    
-                                    return false;    
-                                }    
-                                var f = Math.round(x*100)/100;    
-                                var s = f.toString();    
-                                var rs = s.indexOf('.');    
-                                if (rs < 0) {    
-                                    rs = s.length;    
-                                    s += '.';    
-                                }    
-                                while (s.length <= rs + 2) {    
-                                    s += '0';    
-                                }    
-                                return s;    
-                            } 
+                            function toDecimal2(x) {
+                                var f = parseFloat(x);
+                                if (isNaN(f)) {
+                                    return false;
+                                }
+                                var f = Math.round(x*100)/100;
+                                var s = f.toString();
+                                var rs = s.indexOf('.');
+                                if (rs < 0) {
+                                    rs = s.length;
+                                    s += '.';
+                                }
+                                while (s.length <= rs + 2) {
+                                    s += '0';
+                                }
+                                return s;
+                            }
                         var amount_num=toDecimal2(nums);
                         $(".shoplist").append("<li class='shopli clearfix'>"+
                                     "<span class='pname_img' data-id='"+msg.data[i].id+"'>"+

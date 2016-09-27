@@ -56,7 +56,7 @@
                     <div class="col_ttt">
                         <div id="collect" class="iconfont shopinfo-xin <{if $spro}>collect<{/if}>">&#xe62b;</div>
                         <div class="nav-c" style="font-size: .6rem; color:#000;"><{if $spro}>已收藏<{else}>收藏<{/if}></div>
-                    </div>  
+                    </div>
                 </a>
             </div>
             </div>
@@ -80,7 +80,7 @@
                 <div><span>该商品由蚂蚁海淘<{$com.trade}>&nbsp预计&nbsp<span class="org">5-15</span> 天送达</span></div>
             </div>
             <div class="select_guanshui">
-                <div><span class="select_one">关税</span><span class="select_two">若在清关中产生税费及手续费需要收件人缴纳，请知悉</span></div>  
+                <div><span class="select_one">关税</span><span class="select_two">若在清关中产生税费及手续费需要收件人缴纳，请知悉</span></div>
                 <div><span class="select_one">服务</span><span class="select_two">不支持7天无理由退货，仅支持物流中损坏的商品</span></div>
             </div>
         </div>
@@ -238,7 +238,7 @@
             </div>
             <div class="wap_pdetail j_tab">
                 <{insert name="label" type="product" o=4 temp="product_list_li_4" limit=0}>
-            </div>          
+            </div>
         </div>
     </div>
     <div class="qg_bottom">
@@ -270,15 +270,15 @@
     }
     $("#hj_slide").on("swipeLeft", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { 
+        if (e.stopPropagation) {
             e.stopPropagation();
         } else {
-            e.cancelBubble = true; 
+            e.cancelBubble = true;
         }
     });
     $("#hj_slide").on("swipeRight", function(e) {
         e = e || window.event;
-        if (e.stopPropagation) { 
+        if (e.stopPropagation) {
             e.stopPropagation();
         } else {
             e.cancelBubble = true;
@@ -301,7 +301,7 @@
             var slideH = _slideObj.find("li").find("img").height();
             _slideObj.animate({height:slideH},800);
         }, 800);
-    }, false);    
+    }, false);
 </script>
 <script>
 $(document).ready(function(){
@@ -355,8 +355,8 @@ function check_nums()
     $(function(){
         $jq(".scrollLoading").scrollLoading();
         $("dl ul[genre*=property]").each(function(index){
-            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked"); 
-        })    
+            $("ul[genre*=property]").eq(index).find("li").eq(0).find("a").addClass("checked");
+        })
     })
     function tipsWarn(str, time) {
         var operasWrap = $("<div class='collect_box_content'><p class='time_01 fadeIn'>" + str + "</p></div>");
@@ -444,14 +444,17 @@ function check_nums()
             }
             else if (originalRequest>0){
                 tipsWarn('该商品已经在我的店铺！');
-            }  
+            }
+            else if (originalRequest==-2){
+                layer.msg('抱歉您没有权限分销该店铺商品！');
+            }
             else{
                 tipsWarn('参数传递错误<br>无法完成操作!');
             }
         }
     }
 
-    $(".incar_c").click(function(){       
+    $(".incar_c").click(function(){
         if ('<{$shop_user}>' == '<{$smarty.cookies.USER}>') {
             tipsWarn('不能购买自己店铺的商品！');
             return;
